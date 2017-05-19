@@ -2,7 +2,6 @@ package org.wheatgenetics.androidlibrarybuilder;
 
 /**
  * Uses:
- * android.content.res.Resources
  * android.os.Bundle
  * android.support.v7.app.AppCompatActivity
  * android.view.View
@@ -25,19 +24,9 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     public void onClick(final android.view.View view) throws java.io.IOException
     {
         if (this.changeLogAlertDialog == null)
-        {
-            java.io.InputStreamReader inputStreamReader;
-            {
-                final android.content.res.Resources resources = this.getResources();
-
-                assert resources != null;
-                inputStreamReader = new java.io.InputStreamReader(resources.openRawResource(
-                    org.wheatgenetics.androidlibrarybuilder.R.raw.changelog));
-            }
             this.changeLogAlertDialog = new org.wheatgenetics.changelog.ChangeLogAlertDialog(
-                /* context            => */ this             ,
-                /* inputStreamReader  => */ inputStreamReader);
-        }
+                /* context       => */ this                                                   ,
+                /* rawResourceId => */ org.wheatgenetics.androidlibrarybuilder.R.raw.changelog);
         this.changeLogAlertDialog.show();
     }
 }

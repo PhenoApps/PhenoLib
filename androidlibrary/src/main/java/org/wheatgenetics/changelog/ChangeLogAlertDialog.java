@@ -110,8 +110,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
         }
 
         // region Private Fields
-        private final android.content.Context   context          ;
-        private final java.io.InputStreamReader inputStreamReader;
+        private final android.content.Context   context      ;
+        private final int                       rawResourceId;
 
         private android.widget.LinearLayout linearLayout = null;
         private android.widget.ScrollView   scrollView   = null;
@@ -122,16 +122,14 @@ public class ChangeLogAlertDialog extends java.lang.Object
         // endregion
 
         // region Package Methods
-        ScrollView(final android.content.Context context,
-        final java.io.InputStreamReader inputStreamReader)
+        ScrollView(final android.content.Context context, final int rawResourceId)
         {
             super();
 
             assert context != null;
             this.context = context;
 
-            assert inputStreamReader != null;
-            this.inputStreamReader = inputStreamReader;
+            this.rawResourceId = rawResourceId;
         }
 
         android.widget.ScrollView get() throws java.io.IOException
@@ -155,8 +153,13 @@ public class ChangeLogAlertDialog extends java.lang.Object
                     this.lineHandler =
                         new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView.LineHandler(
                             this.context, this.linearLayout);
+
+                assert this.context != null;
+                final java.io.InputStreamReader inputStreamReader = new java.io.InputStreamReader(
+                    this.context.getResources().openRawResource(this.rawResourceId));
+
                 this.changeLog = new org.wheatgenetics.changelog.ChangeLog(
-                    this.inputStreamReader, this.lineHandler);
+                    inputStreamReader, this.lineHandler);
             }
 
             this.changeLog.iterate();                                  // throws java.io.IOException
@@ -167,8 +170,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
     // region Private Fields
     // region scrollView Private Fields
-    private final android.content.Context   context          ;
-    private final java.io.InputStreamReader inputStreamReader;
+    private final android.content.Context context      ;
+    private final int                     rawResourceId;
 
     private org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView scrollView = null;
     // endregion
@@ -182,15 +185,14 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
     // region Public Methods
     public ChangeLogAlertDialog(final android.content.Context context,
-    final java.io.InputStreamReader inputStreamReader)
+    final int rawResourceId)
     {
         super();
 
         assert context != null;
         this.context = context;
 
-        assert inputStreamReader != null;
-        this.inputStreamReader = inputStreamReader;
+        this.rawResourceId = rawResourceId;
     }
 
     public void show() throws java.io.IOException
@@ -201,7 +203,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
             {
                 if (this.scrollView == null) this.scrollView =
                     new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView(
-                        this.context, this.inputStreamReader);
+                        this.context, this.rawResourceId);
 
                 this.builder = new android.app.AlertDialog.Builder(this.context);
                 {
