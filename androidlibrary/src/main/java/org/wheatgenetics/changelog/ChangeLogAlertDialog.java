@@ -92,7 +92,6 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
             // region Package Constructor Method
             LineHandler(final android.content.Context context,
-            final android.content.Context applicationContext,
             final android.widget.LinearLayout linearLayout, final int versionResId,
             final int contentResId)
             {
@@ -101,8 +100,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
                 assert context != null;
                 this.context = context;
 
-                assert applicationContext != null;
-                this.applicationContext = applicationContext;
+                this.applicationContext = this.context.getApplicationContext();
 
                 assert linearLayout != null;
                 this.linearLayout = linearLayout;
@@ -158,14 +156,9 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
             if (this.changeLog == null)
             {
-                if (this.lineHandler == null)
-                {
-                    assert this.context != null;
-                    this.lineHandler =
-                        new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView.LineHandler(
-                            this.context, this.context.getApplicationContext(), this.linearLayout,
-                            this.versionResId, this.contentResId);
-                }
+                if (this.lineHandler == null) this.lineHandler =
+                    new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView.LineHandler(
+                        this.context, this.linearLayout, this.versionResId, this.contentResId);
 
                 assert this.context != null;
                 final android.content.res.Resources resources = this.context.getResources();
