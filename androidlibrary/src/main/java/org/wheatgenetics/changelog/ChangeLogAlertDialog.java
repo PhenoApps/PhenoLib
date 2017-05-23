@@ -13,6 +13,7 @@ package org.wheatgenetics.changelog;
  * android.widget.ScrollView
  * android.widget.TextView
  *
+ * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.changelog.ChangeLog
  * org.wheatgenetics.changelog.ChangeLog.LineHandler
  */
@@ -182,23 +183,16 @@ public class ChangeLogAlertDialog extends java.lang.Object
     private org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView scrollView = null;
     // endregion
 
-    // region builder Private Fields
-    private final java.lang.CharSequence title, positiveButtonText;
-
-    private android.app.AlertDialog.Builder builder = null;
-    // endregion
-
-    private android.app.AlertDialog alertDialog = null;
+    private android.app.AlertDialog.Builder builder     = null;
+    private android.app.AlertDialog         alertDialog = null;
     // endregion
 
     // region Public Methods
     public ChangeLogAlertDialog(final android.content.Context context,
-    final int changeLogRawResourceId, final int versionResId, final int contentResId,
-    final java.lang.CharSequence title, final java.lang.CharSequence positiveButtonText)
+    final int changeLogRawResourceId, final int versionResId, final int contentResId)
     {
         super();
 
-        // For scrollView:
         assert context != null;
         this.context = context;
 
@@ -206,14 +200,6 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
         this.versionResId = versionResId;
         this.contentResId = contentResId;
-
-
-        // For builder:
-        assert title != null;
-        this.title = title;
-
-        assert positiveButtonText != null;
-        this.positiveButtonText = positiveButtonText;
     }
 
     public void show() throws java.io.IOException
@@ -227,20 +213,28 @@ public class ChangeLogAlertDialog extends java.lang.Object
                         this.changeLogRawResourceId, this.versionResId, this.contentResId);
 
                 this.builder = new android.app.AlertDialog.Builder(this.context);
-                this.builder.setTitle(this.title           )
-                    .setView         (this.scrollView.get())           // throws java.io.IOException
-                    .setCancelable   (true                 )
-                    .setPositiveButton(this.positiveButtonText,
-                        new android.content.DialogInterface.OnClickListener()
-                        {
-                            @java.lang.Override
-                            public void onClick(final android.content.DialogInterface dialog,
-                            final int which)
+                {
+                    assert this.context != null;
+                    final android.content.res.Resources resources = this.context.getResources();
+
+                    assert resources != null;
+                    this.builder.setTitle(resources.getString(
+                            org.wheatgenetics.androidlibrary.R.string.changeLogAlertDialogTitle))
+                        .setView(this.scrollView.get())                // throws java.io.IOException
+                        .setCancelable(true)
+                        .setPositiveButton(resources.getString(org.wheatgenetics.androidlibrary.
+                                R.string.changeLogAlertDialogPositiveButtonText),
+                            new android.content.DialogInterface.OnClickListener()
                             {
-                                assert dialog != null;
-                                dialog.dismiss();
-                            }
-                        });
+                                @java.lang.Override
+                                public void onClick(final android.content.DialogInterface dialog,
+                                    final int which)
+                                {
+                                    assert dialog != null;
+                                    dialog.dismiss();
+                                }
+                            });
+                }
             }
             this.alertDialog = this.builder.create();
             assert this.alertDialog != null;

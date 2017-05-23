@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android Library</string>
+    <string name="changeLogAlertDialogTitle">ChangeLog</string>
+    <string name="changeLogAlertDialogPositiveButtonText">OK</string>
 </resources>
