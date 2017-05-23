@@ -39,11 +39,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
                     this.layoutParams = new android.widget.LinearLayout.LayoutParams(
                         /* width  => */ android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
                         /* height => */ android.widget.LinearLayout.LayoutParams.MATCH_PARENT);
-                    this.layoutParams.setMargins(
-                        /* left   => */ 20,
-                        /* top    => */  5,
-                        /* right  => */ 20,
-                        /* bottom => */  0);
+                    this.layoutParams.setMargins(/* left => */ 20,
+                        /* top => */ 5, /* right => */ 20, /* bottom => */ 0);
                 }
 
                 final android.widget.TextView textView = new android.widget.TextView(this.context);
@@ -186,8 +183,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
     // endregion
 
     // region builder Private Fields
-    private final android.content.Context activityClass            ;
-    private final java.lang.CharSequence  title, positiveButtonText;
+    private final java.lang.CharSequence title, positiveButtonText;
 
     private android.app.AlertDialog.Builder builder = null;
     // endregion
@@ -198,8 +194,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
     // region Public Methods
     public ChangeLogAlertDialog(final android.content.Context context,
     final int changeLogRawResourceId, final int versionResId, final int contentResId,
-    final android.content.Context activityClass, final java.lang.CharSequence title,
-    final java.lang.CharSequence positiveButtonText)
+    final java.lang.CharSequence title, final java.lang.CharSequence positiveButtonText)
     {
         super();
 
@@ -214,9 +209,6 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
 
         // For builder:
-        assert activityClass != null;
-        this.activityClass = activityClass;
-
         assert title != null;
         this.title = title;
 
@@ -234,7 +226,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
                     new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView(this.context,
                         this.changeLogRawResourceId, this.versionResId, this.contentResId);
 
-                this.builder = new android.app.AlertDialog.Builder(this.activityClass);
+                this.builder = new android.app.AlertDialog.Builder(this.context);
                 this.builder.setTitle(this.title           )
                     .setView         (this.scrollView.get())           // throws java.io.IOException
                     .setCancelable   (true                 )
