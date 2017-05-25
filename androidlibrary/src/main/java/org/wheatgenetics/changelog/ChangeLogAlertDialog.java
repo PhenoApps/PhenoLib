@@ -13,6 +13,7 @@ package org.wheatgenetics.changelog;
  * android.widget.ScrollView
  * android.widget.TextView
  *
+ * org.wheatgenetics.androidlibrary.BuildConfig
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.changelog.ChangeLog
  * org.wheatgenetics.changelog.ChangeLog.LineHandler
@@ -54,11 +55,13 @@ public class ChangeLogAlertDialog extends java.lang.Object
             public void handleBlankLine()
             {
                 final android.widget.TextView spacerTextView = this.makeTextView();
-                assert spacerTextView != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == spacerTextView)
+                    throw new java.lang.AssertionError();
                 spacerTextView.setTextSize(5);
                 spacerTextView.setText("\n");
 
-                assert this.linearLayout != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == linearLayout)
+                    throw new java.lang.AssertionError();
                 this.linearLayout.addView(spacerTextView);
             }
 
@@ -66,12 +69,14 @@ public class ChangeLogAlertDialog extends java.lang.Object
             public void handleVersionLine(final java.lang.String version)
             {
                 final android.widget.TextView headerTextView = this.makeTextView();
-                assert headerTextView != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == headerTextView)
+                    throw new java.lang.AssertionError();
                 headerTextView.setTextAppearance(this.applicationContext,
                     org.wheatgenetics.androidlibrary.R.style.changeLogAlertDialogVersionLine);
                 headerTextView.setText(version);
 
-                assert this.linearLayout != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == linearLayout)
+                    throw new java.lang.AssertionError();
                 this.linearLayout.addView(headerTextView);
             }
 
@@ -79,12 +84,14 @@ public class ChangeLogAlertDialog extends java.lang.Object
             public void handleContentLine(final java.lang.String content)
             {
                 final android.widget.TextView contentTextView = this.makeTextView();
-                assert contentTextView != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == contentTextView)
+                    throw new java.lang.AssertionError();
                 contentTextView.setTextAppearance(this.applicationContext,
                   org.wheatgenetics.androidlibrary.R.style.changeLogAlertDialogContentLine);
                 contentTextView.setText(content);
 
-                assert this.linearLayout != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == linearLayout)
+                    throw new java.lang.AssertionError();
                 this.linearLayout.addView(contentTextView);
             }
             // endregion
@@ -95,12 +102,14 @@ public class ChangeLogAlertDialog extends java.lang.Object
             {
                 super();
 
-                assert context != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == context)
+                    throw new java.lang.AssertionError();
                 this.context = context;
 
                 this.applicationContext = this.context.getApplicationContext();
 
-                assert linearLayout != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == linearLayout)
+                    throw new java.lang.AssertionError();
                 this.linearLayout = linearLayout;
             }
             // endregion
@@ -123,7 +132,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
         {
             super();
 
-            assert context != null;
+            if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == context)
+                throw new java.lang.AssertionError();
             this.context = context;
 
             this.changeLogRawResourceId = changeLogRawResourceId;
@@ -131,29 +141,32 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
         android.widget.ScrollView get() throws java.io.IOException
         {
-            if (this.scrollView == null)
+            if (null == this.scrollView)
             {
                 this.scrollView = new android.widget.ScrollView(this.context);
                 this.scrollView.removeAllViews();
 
-                if (this.linearLayout == null)
+                if (null == this.linearLayout)
                     this.linearLayout = new android.widget.LinearLayout(this.context);
                 this.scrollView.addView(this.linearLayout);
             }
 
-            assert this.linearLayout != null;
+            if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == this.linearLayout)
+                throw new java.lang.AssertionError();
             this.linearLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
 
-            if (this.changeLog == null)
+            if (null == this.changeLog)
             {
-                if (this.lineHandler == null) this.lineHandler =
+                if (null == this.lineHandler) this.lineHandler =
                     new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView.LineHandler(
                         this.context, this.linearLayout);
 
-                assert this.context != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == this.context)
+                    throw new java.lang.AssertionError();
                 final android.content.res.Resources resources = this.context.getResources();
 
-                assert resources != null;
+                if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == resources)
+                    throw new java.lang.AssertionError();
                 this.changeLog = new org.wheatgenetics.changelog.ChangeLog(
                     new java.io.InputStreamReader(resources.openRawResource(
                         this.changeLogRawResourceId)),
@@ -184,7 +197,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
     {
         super();
 
-        assert context != null;
+        if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == context)
+            throw new java.lang.AssertionError();
         this.context = context;
 
         this.changeLogRawResourceId = changeLogRawResourceId;
@@ -192,20 +206,22 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
     public void show() throws java.io.IOException
     {
-        if (this.alertDialog == null)
+        if (null == this.alertDialog)
         {
-            if (this.builder == null)
+            if (null == this.builder)
             {
-                if (this.scrollView == null) this.scrollView =
+                if (null == this.scrollView) this.scrollView =
                     new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView(
                         this.context, this.changeLogRawResourceId);
 
                 this.builder = new android.app.AlertDialog.Builder(this.context);
                 {
-                    assert this.context != null;
+                    if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == this.context)
+                        throw new java.lang.AssertionError();
                     final android.content.res.Resources resources = this.context.getResources();
 
-                    assert resources != null;
+                    if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == resources)
+                        throw new java.lang.AssertionError();
                     this.builder.setTitle(resources.getString(
                             org.wheatgenetics.androidlibrary.R.string.changeLogAlertDialogTitle))
                         .setView(this.scrollView.get())                // throws java.io.IOException
@@ -216,16 +232,19 @@ public class ChangeLogAlertDialog extends java.lang.Object
                             {
                                 @java.lang.Override
                                 public void onClick(final android.content.DialogInterface dialog,
-                                    final int which)
+                                final int which)
                                 {
-                                    assert dialog != null;
+                                    if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG
+                                    && null == dialog)
+                                        throw new java.lang.AssertionError();
                                     dialog.dismiss();
                                 }
                             });
                 }
             }
             this.alertDialog = this.builder.create();
-            assert this.alertDialog != null;
+            if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG && null == this.alertDialog)
+                throw new java.lang.AssertionError();
         }
         this.alertDialog.show();
     }
