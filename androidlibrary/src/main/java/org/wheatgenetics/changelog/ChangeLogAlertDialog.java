@@ -28,7 +28,6 @@ public class ChangeLogAlertDialog extends java.lang.Object
             // region Private Fields
             private final android.content.Context                  context, applicationContext;
             private final android.widget.LinearLayout              linearLayout               ;
-            private final int                                      versionResId, contentResId ;
             private       android.widget.LinearLayout.LayoutParams layoutParams = null        ;
             // endregion
 
@@ -68,7 +67,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
             {
                 final android.widget.TextView headerTextView = this.makeTextView();
                 assert headerTextView != null;
-                headerTextView.setTextAppearance(this.applicationContext, this.versionResId);
+                headerTextView.setTextAppearance(this.applicationContext,
+                    org.wheatgenetics.androidlibrary.R.style.changeLogAlertDialogVersionLine);
                 headerTextView.setText(version);
 
                 assert this.linearLayout != null;
@@ -80,7 +80,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
             {
                 final android.widget.TextView contentTextView = this.makeTextView();
                 assert contentTextView != null;
-                contentTextView.setTextAppearance(this.applicationContext, this.contentResId);
+                contentTextView.setTextAppearance(this.applicationContext,
+                  org.wheatgenetics.androidlibrary.R.style.changeLogAlertDialogContentLine);
                 contentTextView.setText(content);
 
                 assert this.linearLayout != null;
@@ -90,8 +91,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
             // region Package Constructor Method
             LineHandler(final android.content.Context context,
-            final android.widget.LinearLayout linearLayout, final int versionResId,
-            final int contentResId)
+            final android.widget.LinearLayout linearLayout)
             {
                 super();
 
@@ -102,17 +102,13 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
                 assert linearLayout != null;
                 this.linearLayout = linearLayout;
-
-                this.versionResId = versionResId;
-                this.contentResId = contentResId;
             }
             // endregion
         }
 
         // region Private Fields
-        private final android.content.Context context                   ;
-        private final int                     changeLogRawResourceId    ;
-        private final int                     versionResId, contentResId;
+        private final android.content.Context context               ;
+        private final int                     changeLogRawResourceId;
 
         private android.widget.LinearLayout linearLayout = null;
         private android.widget.ScrollView   scrollView   = null;
@@ -123,8 +119,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
         // endregion
 
         // region Package Methods
-        ScrollView(final android.content.Context context, final int changeLogRawResourceId,
-        final int versionResId, final int contentResId)
+        ScrollView(final android.content.Context context, final int changeLogRawResourceId)
         {
             super();
 
@@ -132,9 +127,6 @@ public class ChangeLogAlertDialog extends java.lang.Object
             this.context = context;
 
             this.changeLogRawResourceId = changeLogRawResourceId;
-
-            this.versionResId = versionResId;
-            this.contentResId = contentResId;
         }
 
         android.widget.ScrollView get() throws java.io.IOException
@@ -156,7 +148,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
             {
                 if (this.lineHandler == null) this.lineHandler =
                     new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView.LineHandler(
-                        this.context, this.linearLayout, this.versionResId, this.contentResId);
+                        this.context, this.linearLayout);
 
                 assert this.context != null;
                 final android.content.res.Resources resources = this.context.getResources();
@@ -176,9 +168,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
     // region Private Fields
     // region scrollView Private Fields
-    private final android.content.Context context                   ;
-    private final int                     changeLogRawResourceId    ;
-    private final int                     versionResId, contentResId;
+    private final android.content.Context context               ;
+    private final int                     changeLogRawResourceId;
 
     private org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView scrollView = null;
     // endregion
@@ -189,7 +180,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
     // region Public Methods
     public ChangeLogAlertDialog(final android.content.Context context,
-    final int changeLogRawResourceId, final int versionResId, final int contentResId)
+    final int changeLogRawResourceId)
     {
         super();
 
@@ -197,9 +188,6 @@ public class ChangeLogAlertDialog extends java.lang.Object
         this.context = context;
 
         this.changeLogRawResourceId = changeLogRawResourceId;
-
-        this.versionResId = versionResId;
-        this.contentResId = contentResId;
     }
 
     public void show() throws java.io.IOException
@@ -209,8 +197,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
             if (this.builder == null)
             {
                 if (this.scrollView == null) this.scrollView =
-                    new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView(this.context,
-                        this.changeLogRawResourceId, this.versionResId, this.contentResId);
+                    new org.wheatgenetics.changelog.ChangeLogAlertDialog.ScrollView(
+                        this.context, this.changeLogRawResourceId);
 
                 this.builder = new android.app.AlertDialog.Builder(this.context);
                 {
