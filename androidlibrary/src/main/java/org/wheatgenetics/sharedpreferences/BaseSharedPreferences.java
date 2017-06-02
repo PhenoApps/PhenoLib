@@ -6,25 +6,21 @@ package org.wheatgenetics.sharedpreferences;
  * android.content.SharedPreferences.Editor
  */
 
-abstract class SharedPreferences extends java.lang.Object
+public abstract class BaseSharedPreferences extends java.lang.Object
 {
-    // region Private Field
     private final android.content.SharedPreferences sharedPreferences;
-    // endregion
 
-    // region Package Methods
-    // region Constructor Package Method
-    SharedPreferences(final android.content.SharedPreferences sharedPreferences)
+    public BaseSharedPreferences(final android.content.SharedPreferences sharedPreferences)
     {
         super();
 
         assert null != sharedPreferences;
         this.sharedPreferences = sharedPreferences;
     }
-    // endregion
 
+    // region Package Methods
     // region String Package Methods
-    void validateStringKey(final java.lang.String key) {};
+    void validateStringKey(final java.lang.String key) {};                // Meant to be overridden.
 
     java.lang.String getString(final java.lang.String key, final boolean validateKey)
     {
@@ -53,6 +49,9 @@ abstract class SharedPreferences extends java.lang.Object
             editor.apply();
         }
     }
+
+    void setString(final java.lang.String key, final java.lang.String oldValue,
+    final java.lang.String newValue) { this.setString(key, oldValue, newValue, false); }
     // endregion
 
     // region Integer Package Methods

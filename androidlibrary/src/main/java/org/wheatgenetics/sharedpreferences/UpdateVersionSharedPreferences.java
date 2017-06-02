@@ -7,7 +7,7 @@ package org.wheatgenetics.sharedpreferences;
  */
 
 public class UpdateVersionSharedPreferences
-extends org.wheatgenetics.sharedpreferences.SharedPreferences
+extends org.wheatgenetics.sharedpreferences.BaseSharedPreferences
 {
     private static final java.lang.String UPDATE_VERSION = "UpdateVersion";
 
@@ -17,6 +17,7 @@ extends org.wheatgenetics.sharedpreferences.SharedPreferences
             org.wheatgenetics.sharedpreferences.UpdateVersionSharedPreferences.UPDATE_VERSION);
     }
 
+    // region Public Methods
     public UpdateVersionSharedPreferences(final android.content.SharedPreferences sharedPreferences)
     { super(sharedPreferences); }
 
@@ -29,4 +30,5 @@ extends org.wheatgenetics.sharedpreferences.SharedPreferences
             org.wheatgenetics.sharedpreferences.UpdateVersionSharedPreferences.UPDATE_VERSION,
             newUpdateVersion                                                                 );
     }
+    // endregion
 }
