@@ -22,7 +22,8 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
         final android.widget.TextView textView = (android.widget.TextView)
             this.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.textView);
         assert null != textView;
-        textView.setText(java.lang.String.format("doubleOf(%d) is %d",
-            number, org.wheatgenetics.javalib.Utils.doubleOf(number)));
+        textView.setText(java.lang.String.format("doubleOf(doubleOf(%d)) is %d", number,
+            org.wheatgenetics.androidlibrary.Utils.doubleOf(
+                org.wheatgenetics.javalib.Utils.doubleOf(number))));
     }
 }
