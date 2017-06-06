@@ -58,9 +58,9 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
                 if (null == this.barcodeScanner)
                     this.barcodeScanner = new org.wheatgenetics.zxing.BarcodeScanner(this);
                 this.barcodeScanner.scan();
-                break;
+                return true;
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
     @java.lang.Override
