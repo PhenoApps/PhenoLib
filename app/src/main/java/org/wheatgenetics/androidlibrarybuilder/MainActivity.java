@@ -7,18 +7,21 @@ package org.wheatgenetics.androidlibrarybuilder;
  * android.view.Menu
  * android.view.MenuInflater
  * android.view.MenuItem
+ * android.view.View
  * android.widget.TextView
  *
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrarybuilder.R
+ * org.wheatgenetics.changelog.ChangeLogAlertDialog
  * org.wheatgenetics.javalib.Utils
  * org.wheatgenetics.zxing.BarcodeScanner
  */
 
 public class MainActivity extends android.support.v7.app.AppCompatActivity
 {
-    private android.widget.TextView                textView;
-    private org.wheatgenetics.zxing.BarcodeScanner barcodeScanner = null;
+    private android.widget.TextView                          textView                   ;
+    private org.wheatgenetics.zxing.BarcodeScanner           barcodeScanner       = null;
+    private org.wheatgenetics.changelog.ChangeLogAlertDialog changeLogAlertDialog = null;
 
     @java.lang.Override
     protected void onCreate(final android.os.Bundle savedInstanceState)
@@ -70,5 +73,13 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
 
         assert null != this.textView;
         this.textView.setText(barcode);
+    }
+
+    public void onButtonClick(final android.view.View view) throws java.io.IOException
+    {
+        if (null == this.changeLogAlertDialog) this.changeLogAlertDialog =
+            new org.wheatgenetics.changelog.ChangeLogAlertDialog(
+                this, org.wheatgenetics.androidlibrarybuilder.R.raw.changelog);
+        this.changeLogAlertDialog.show();
     }
 }
