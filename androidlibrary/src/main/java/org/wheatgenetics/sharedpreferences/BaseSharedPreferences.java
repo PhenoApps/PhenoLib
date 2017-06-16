@@ -4,13 +4,17 @@ package org.wheatgenetics.sharedpreferences;
  * Uses:
  * android.content.SharedPreferences
  * android.content.SharedPreferences.Editor
+ * android.support.annotation.NonNull
+ *
+ * org.wheatgenetics.javalib.Utils
  */
 
 public abstract class BaseSharedPreferences extends java.lang.Object
 {
     private final android.content.SharedPreferences sharedPreferences;
 
-    public BaseSharedPreferences(final android.content.SharedPreferences sharedPreferences)
+    public BaseSharedPreferences(@android.support.annotation.NonNull
+    final android.content.SharedPreferences sharedPreferences)
     {
         super();
 
@@ -20,9 +24,13 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
     // region Package Methods
     // region String Package Methods
-    void validateStringKey(final java.lang.String key) {};                // Meant to be overridden.
+    /**
+     * Meant to be overridden.
+     */
+    void validateStringKey(@android.support.annotation.NonNull final java.lang.String key) {};
 
-    java.lang.String getString(final java.lang.String key, final boolean validateKey)
+    java.lang.String getString(@android.support.annotation.NonNull final java.lang.String key,
+    final boolean validateKey)
     {
         if (validateKey) this.validateStringKey(key);
 
@@ -30,13 +38,15 @@ public abstract class BaseSharedPreferences extends java.lang.Object
         return this.sharedPreferences.getString(key, "");
     }
 
-    java.lang.String getString(final java.lang.String key) { return this.getString(key, false); }
+    java.lang.String getString(@android.support.annotation.NonNull final java.lang.String key)
+    { return this.getString(key, false); }
 
-    void setString(final java.lang.String key, final java.lang.String oldValue,
+    void setString(@android.support.annotation.NonNull final java.lang.String key,
+    @android.support.annotation.NonNull final java.lang.String oldValue,
     java.lang.String newValue, final boolean validateKey)
     {
         assert null != oldValue;
-        if (null == newValue) newValue = "";
+        newValue = org.wheatgenetics.javalib.Utils.makeEmptyIfNull(newValue);
         if (!oldValue.equals(newValue))
         {
             if (validateKey) this.validateStringKey(key);
@@ -50,18 +60,19 @@ public abstract class BaseSharedPreferences extends java.lang.Object
         }
     }
 
-    void setString(final java.lang.String key, final java.lang.String oldValue,
+    void setString(@android.support.annotation.NonNull final java.lang.String key,
+    @android.support.annotation.NonNull final java.lang.String oldValue,
     final java.lang.String newValue) { this.setString(key, oldValue, newValue, false); }
     // endregion
 
     // region Integer Package Methods
-    int getInt(final java.lang.String key)
+    int getInt(@android.support.annotation.NonNull final java.lang.String key)
     {
         assert null != this.sharedPreferences;
         return this.sharedPreferences.getInt(key, -1);
     }
 
-    void setInt(final java.lang.String key, final int newInt)
+    void setInt(@android.support.annotation.NonNull final java.lang.String key, final int newInt)
     {
         if (this.getInt(key) != newInt)
         {
@@ -76,13 +87,13 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     // endregion
 
     // region Boolean Package Methods
-    java.lang.Boolean getBoolean(final java.lang.String key)
+    java.lang.Boolean getBoolean(@android.support.annotation.NonNull final java.lang.String key)
     {
         assert null != this.sharedPreferences;
         return this.sharedPreferences.getBoolean(key, false);
     }
 
-    void setBooleanToTrue(final java.lang.String key)
+    void setBooleanToTrue(@android.support.annotation.NonNull final java.lang.String key)
     {
         if (!this.getBoolean(key))
         {

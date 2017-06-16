@@ -12,8 +12,8 @@ package org.wheatgenetics.zxing;
 
 public class BarcodeScanner extends java.lang.Object
 {
-    private final android.app.Activity                                  activity        ;
-    private       com.google.zxing.integration.android.IntentIntegrator intentIntegrator;
+    private final android.app.Activity                                  activity               ;
+    private       com.google.zxing.integration.android.IntentIntegrator intentIntegrator = null;
 
     public BarcodeScanner(final android.app.Activity activity)
     {

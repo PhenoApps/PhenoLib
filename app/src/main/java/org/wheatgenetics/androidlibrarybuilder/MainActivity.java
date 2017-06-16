@@ -2,6 +2,7 @@ package org.wheatgenetics.androidlibrarybuilder;
 
 /**
  * Uses:
+ * android.content.Intent
  * android.os.Bundle
  * android.support.v7.app.AppCompatActivity
  * android.view.Menu
@@ -11,6 +12,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * android.widget.TextView
  *
  * org.wheatgenetics.androidlibrary.R
+ * org.wheatgenetics.androidlibrary.Utils
  * org.wheatgenetics.androidlibrarybuilder.R
  * org.wheatgenetics.changelog.ChangeLogAlertDialog
  * org.wheatgenetics.javalib.Utils
@@ -32,10 +34,9 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
         this.textView = (android.widget.TextView)
             this.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.textView);
         assert null != this.textView;
-        final int number = 2;
-        this.textView.setText(java.lang.String.format("doubleOf(doubleOf(%d)) is %d", number,
-            org.wheatgenetics.androidlibrary.Utils.doubleOf(
-                org.wheatgenetics.javalib.Utils.doubleOf(number))));
+        final java.lang.String unadjusted = "  2 leading spaces";
+        this.textView.setText(java.lang.String.format("adjust(\"%s\") is \"%s\"",
+            unadjusted, org.wheatgenetics.androidlibrary.Utils.adjust(unadjusted)));
     }
 
     @java.lang.Override
@@ -43,8 +44,6 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     {
         new android.view.MenuInflater(this).inflate(
             org.wheatgenetics.androidlibrary.R.menu.camera_options_menu, menu);
-        assert null != menu;
-        menu.findItem(org.wheatgenetics.androidlibrary.R.id.cameraOptionsMenuItem).setVisible(true);
         return true;
     }
 

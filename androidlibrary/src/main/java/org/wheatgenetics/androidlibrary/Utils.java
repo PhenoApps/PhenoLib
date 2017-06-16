@@ -7,6 +7,6 @@ package org.wheatgenetics.androidlibrary;
 
 public class Utils extends java.lang.Object
 {
-    public static int doubleOf(final int number)
-    { return org.wheatgenetics.javalib.Utils.doubleOf(number); }
+    public static java.lang.String adjust(final java.lang.String unadjusted)
+    { return org.wheatgenetics.javalib.Utils.adjust(unadjusted); }
 }
