@@ -5,8 +5,6 @@ package org.wheatgenetics.changelog;
  * android.app.AlertDialog
  * android.app.AlertDialog.Builder
  * android.content.Context
- * android.content.DialogInterface
- * android.content.DialogInterface.OnClickListener
  * android.content.res.Resources
  * android.support.annotation.NonNull
  * android.widget.LinearLayout
@@ -15,6 +13,7 @@ package org.wheatgenetics.changelog;
  * android.widget.TextView
  *
  * org.wheatgenetics.androidlibrary.R
+ * org.wheatgenetics.androidlibrary.Utils
  * org.wheatgenetics.changelog.ChangeLog
  * org.wheatgenetics.changelog.ChangeLog.LineHandler
  */
@@ -203,28 +202,12 @@ public class ChangeLogAlertDialog extends java.lang.Object
                         this.context, this.changeLogRawResourceId);
 
                 this.builder = new android.app.AlertDialog.Builder(this.context);
-                {
-                    assert null != this.context;
-                    final android.content.res.Resources resources = this.context.getResources();
-
-                    assert null != resources;
-                    this.builder.setTitle(resources.getString(
-                            org.wheatgenetics.androidlibrary.R.string.changeLogAlertDialogTitle))
-                        .setView      (this.scrollView.get())          // throws java.io.IOException
-                        .setCancelable(true)
-                        .setPositiveButton(resources.getString(org.wheatgenetics.androidlibrary.
-                                R.string.changeLogAlertDialogPositiveButtonText),
-                            new android.content.DialogInterface.OnClickListener()
-                            {
-                                @java.lang.Override
-                                public void onClick(final android.content.DialogInterface dialog,
-                                final int which)
-                                {
-                                    assert null != dialog;
-                                    dialog.dismiss();
-                                }
-                            });
-                }
+                this.builder.setTitle(
+                        org.wheatgenetics.androidlibrary.R.string.changeLogAlertDialogTitle)
+                    .setView          (this.scrollView.get())          // throws java.io.IOException
+                    .setCancelable    (true                 )
+                    .setPositiveButton(org.wheatgenetics.androidlibrary.R.string.okButtonText,
+                        org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListener());
             }
             this.alertDialog = this.builder.create();
             assert null != this.alertDialog;
