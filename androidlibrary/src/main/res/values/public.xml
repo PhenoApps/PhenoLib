@@ -1,4 +1,6 @@
 <resources>
     <public name="camera_options_menu" type="menu" />
     <public name="cameraOptionsMenuItem" type="id" />
+
+    <public name="okButtonText" type="string" />
 </resources>
