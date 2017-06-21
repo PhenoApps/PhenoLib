@@ -2,6 +2,8 @@ package org.wheatgenetics.usb;
 
 /**
  * Uses:
+ * android.app.Activity
+ * android.content.Context
  * android.hardware.usb.UsbDevice
  * android.hardware.usb.UsbManager
  * android.support.annotation.NonNull
@@ -13,9 +15,13 @@ class DeviceList extends java.lang.Object
 {
     private final java.util.ArrayList<org.wheatgenetics.usb.Device> deviceArrayList;
 
-    DeviceList(@android.support.annotation.NonNull final android.hardware.usb.UsbManager usbManager)
+    DeviceList(@android.support.annotation.NonNull final android.app.Activity activity)
     {
         super();
+
+        assert null != activity;
+        final android.hardware.usb.UsbManager usbManager = (android.hardware.usb.UsbManager)
+            activity.getSystemService(android.content.Context.USB_SERVICE);
 
         assert null != usbManager;
         final java.util.HashMap<java.lang.String, android.hardware.usb.UsbDevice> deviceList =
