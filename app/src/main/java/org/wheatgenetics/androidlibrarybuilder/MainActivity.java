@@ -32,6 +32,7 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     private org.wheatgenetics.changelog.ChangeLogAlertDialog changeLogAlertDialog = null;
     private org.wheatgenetics.about.OtherAppsAlertDialog     otherAppsAlertDialog = null;
     private org.wheatgenetics.usb.DeviceListTester           deviceListTester     = null;
+    private org.wheatgenetics.usb.ExtraDeviceTester          extraDeviceTester    = null;
 
     private int deviceListButtonClickCount = 0;
 
@@ -138,6 +139,14 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
             this.deviceListButtonClickCount = 0;
         else
             this.deviceListButtonClickCount++;
+    }
+
+    public void onScaleButtonClick(final android.view.View view)
+    {
+        if (null == this.extraDeviceTester)
+            this.extraDeviceTester = new org.wheatgenetics.usb.ExtraDeviceTester(this);
+        org.wheatgenetics.androidlibrarybuilder.MainActivity.sendVerboseLogMsg(
+            this.extraDeviceTester.information());
     }
     // endregion
 }

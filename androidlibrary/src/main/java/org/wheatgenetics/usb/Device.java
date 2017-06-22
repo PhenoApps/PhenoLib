@@ -25,16 +25,10 @@ class Device extends java.lang.Object
 
     // region Private Methods
     private java.lang.String getDeviceName()
-    {
-        assert null != this.usbDevice;
-        return this.usbDevice.getDeviceName();
-    }
+    { return null == this.usbDevice ? null : this.usbDevice.getDeviceName(); }
 
     private int getProductId()
-    {
-        assert null != this.usbDevice;
-        return this.usbDevice.getProductId();
-    }
+    { return null == this.usbDevice ? 0 : this.usbDevice.getProductId(); }
     // endregion
 
     Device(final android.hardware.usb.UsbDevice usbDevice,
@@ -49,19 +43,26 @@ class Device extends java.lang.Object
     }
 
     @java.lang.Override
-    public java.lang.String toString() { return this.getDeviceName(); }
+    public java.lang.String toString()
+    {
+        java.lang.String returnValue = this.getDeviceName();
+        if (null == returnValue) returnValue = super.toString();
+        return returnValue;
+    }
 
     // Package Methods
     // DeviceList Package Methods
     java.lang.String information()
     {
-        assert null != this.usbDevice;
-        return java.lang.String.format("name=%s id=%d productId=%d vendorId=%d " +
-                "class=%d subClass=%d protocol=%d interfaceCount=%d",
-            this.getDeviceName()              , this.usbDevice.getDeviceId      (),
-            this.getProductId ()              , this.usbDevice.getVendorId      (),
-            this.usbDevice.getDeviceClass   (), this.usbDevice.getDeviceSubclass(),
-            this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
+        if (null == this.usbDevice)
+            return null;
+        else
+            return java.lang.String.format("name=%s id=%d productId=%d vendorId=%d " +
+                    "class=%d subClass=%d protocol=%d interfaceCount=%d",
+                this.getDeviceName()              , this.usbDevice.getDeviceId      (),
+                this.getProductId ()              , this.usbDevice.getVendorId      (),
+                this.usbDevice.getDeviceClass   (), this.usbDevice.getDeviceSubclass(),
+                this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
     }
 
     boolean productIdsAreEqual(final int productId) { return this.getProductId() == productId; }
@@ -71,7 +72,7 @@ class Device extends java.lang.Object
     boolean usbDeviceIsNull() { return null == this.usbDevice; }
 
     void setUsbDevice(final org.wheatgenetics.usb.Device device)
-    { this.usbDevice = device.usbDevice; }
+    { if (null != device) this.usbDevice = device.usbDevice; }
     // endregion
 
     int read(final byte buffer[])
