@@ -8,7 +8,7 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.usb.ExtraDevice
  */
 
-public class ExtraDeviceTester extends java.lang.Object
+public class ScaleTester extends java.lang.Object
 {
     private final android.app.Activity              activity                  ;
     private       org.wheatgenetics.usb.ExtraDevice extraDeviceInstance = null;
@@ -20,8 +20,7 @@ public class ExtraDeviceTester extends java.lang.Object
         return this.extraDeviceInstance;
     }
 
-    public ExtraDeviceTester(
-    @android.support.annotation.NonNull final android.app.Activity activity)
+    public ScaleTester(@android.support.annotation.NonNull final android.app.Activity activity)
     {
         super();
 

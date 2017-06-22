@@ -21,6 +21,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.androidlibrarybuilder.R
  * org.wheatgenetics.changelog.ChangeLogAlertDialog
  * org.wheatgenetics.usb.DeviceListTester
+ * org.wheatgenetics.usb.ScaleTester
  * org.wheatgenetics.zxing.BarcodeScanner
  */
 
@@ -32,7 +33,7 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     private org.wheatgenetics.changelog.ChangeLogAlertDialog changeLogAlertDialog = null;
     private org.wheatgenetics.about.OtherAppsAlertDialog     otherAppsAlertDialog = null;
     private org.wheatgenetics.usb.DeviceListTester           deviceListTester     = null;
-    private org.wheatgenetics.usb.ExtraDeviceTester          extraDeviceTester    = null;
+    private org.wheatgenetics.usb.ScaleTester                scaleTester          = null;
 
     private int deviceListButtonClickCount = 0;
 
@@ -143,10 +144,10 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
 
     public void onScaleButtonClick(final android.view.View view)
     {
-        if (null == this.extraDeviceTester)
-            this.extraDeviceTester = new org.wheatgenetics.usb.ExtraDeviceTester(this);
+        if (null == this.scaleTester)
+            this.scaleTester = new org.wheatgenetics.usb.ScaleTester(this);
         org.wheatgenetics.androidlibrarybuilder.MainActivity.sendVerboseLogMsg(
-            this.extraDeviceTester.information());
+            this.scaleTester.information());
     }
     // endregion
 }
