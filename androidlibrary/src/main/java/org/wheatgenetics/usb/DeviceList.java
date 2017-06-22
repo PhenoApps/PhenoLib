@@ -19,15 +19,13 @@ class DeviceList extends java.lang.Object
     {
         super();
 
-        java.util.HashMap<java.lang.String, android.hardware.usb.UsbDevice> deviceList;
-        {
-            assert null != activity;
-            final android.hardware.usb.UsbManager usbManager = (android.hardware.usb.UsbManager)
-                activity.getSystemService(android.content.Context.USB_SERVICE);
+        assert null != activity;
+        final android.hardware.usb.UsbManager usbManager = (android.hardware.usb.UsbManager)
+            activity.getSystemService(android.content.Context.USB_SERVICE);
 
-            assert null != usbManager;
-            deviceList = usbManager.getDeviceList();
-        }
+        assert null != usbManager;
+        final java.util.HashMap<java.lang.String, android.hardware.usb.UsbDevice> deviceList =
+            usbManager.getDeviceList();
 
         assert null != deviceList;
         this.deviceArrayList = new java.util.ArrayList<org.wheatgenetics.usb.Device>(
@@ -35,7 +33,7 @@ class DeviceList extends java.lang.Object
 
         for (final android.hardware.usb.UsbDevice usbDevice: deviceList.values())
             if (null != usbDevice)
-                this.deviceArrayList.add(new org.wheatgenetics.usb.Device(usbDevice));
+                this.deviceArrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
     }
 
     @java.lang.Override
