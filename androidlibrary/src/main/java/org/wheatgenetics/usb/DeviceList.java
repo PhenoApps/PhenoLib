@@ -19,13 +19,15 @@ class DeviceList extends java.lang.Object
     {
         super();
 
-        assert null != activity;
-        final android.hardware.usb.UsbManager usbManager = (android.hardware.usb.UsbManager)
-            activity.getSystemService(android.content.Context.USB_SERVICE);
+        java.util.HashMap<java.lang.String, android.hardware.usb.UsbDevice> deviceList;
+        {
+            assert null != activity;
+            final android.hardware.usb.UsbManager usbManager = (android.hardware.usb.UsbManager)
+                activity.getSystemService(android.content.Context.USB_SERVICE);
 
-        assert null != usbManager;
-        final java.util.HashMap<java.lang.String, android.hardware.usb.UsbDevice> deviceList =
-            usbManager.getDeviceList();
+            assert null != usbManager;
+            deviceList = usbManager.getDeviceList();
+        }
 
         assert null != deviceList;
         this.deviceArrayList = new java.util.ArrayList<org.wheatgenetics.usb.Device>(
@@ -55,6 +57,7 @@ class DeviceList extends java.lang.Object
         return returnValue;
     }
 
+    // Package Methods
     int size()
     {
         assert null != this.deviceArrayList;
@@ -77,4 +80,13 @@ class DeviceList extends java.lang.Object
         }
         return returnValue;
     }
+
+    org.wheatgenetics.usb.Device get(final int productId)
+    {
+        assert null != this.deviceArrayList;
+        for (final org.wheatgenetics.usb.Device device: this.deviceArrayList)
+            if (device.productIdsAreEqual(productId)) return device;
+        return null;
+    }
+    // endregion
 }
