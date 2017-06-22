@@ -54,7 +54,7 @@ class Device extends java.lang.Object
     // DeviceList Package Methods
     java.lang.String information()
     {
-        if (null == this.usbDevice)
+        if (this.usbDeviceIsNull())
             return null;
         else
             return java.lang.String.format("name=%s id=%d productId=%d vendorId=%d " +
