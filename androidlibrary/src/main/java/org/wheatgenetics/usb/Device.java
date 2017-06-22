@@ -22,6 +22,12 @@ class Device extends java.lang.Object
     public java.lang.String toString()
     {
         assert null != this.usbDevice;
+        return this.usbDevice.getDeviceName();
+    }
+
+    java.lang.String information()
+    {
+        assert null != this.usbDevice;
         return java.lang.String.format("name=%s id=%d productId=%d vendorId=%d " +
                 "class=%d subClass=%d protocol=%d interfaceCount=%d",
             this.usbDevice.getDeviceName    (), this.usbDevice.getDeviceId      (),

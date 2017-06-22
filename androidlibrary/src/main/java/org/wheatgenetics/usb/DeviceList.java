@@ -51,6 +51,7 @@ class DeviceList extends java.lang.Object
                 }
                 else returnValue += '\n' + device.toString();
         }
+        if (null == returnValue) returnValue = super.toString();
         return returnValue;
     }
 
@@ -58,5 +59,22 @@ class DeviceList extends java.lang.Object
     {
         assert null != this.deviceArrayList;
         return this.deviceArrayList.size();
+    }
+
+    java.lang.String information()
+    {
+        java.lang.String returnValue = null;
+        {
+            java.lang.Boolean firstDevice = true;
+            assert null != this.deviceArrayList;
+            for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
+                if (firstDevice)
+                {
+                    returnValue = device.information();
+                    firstDevice = false;
+                }
+                else returnValue += '\n' + device.information();
+        }
+        return returnValue;
     }
 }
