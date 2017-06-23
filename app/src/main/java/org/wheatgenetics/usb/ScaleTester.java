@@ -16,7 +16,7 @@ public class ScaleTester extends java.lang.Object
     private org.wheatgenetics.usb.ExtraDevice extraDevice()
     {
         if (null == this.extraDeviceInstance)
-            this.extraDeviceInstance = new org.wheatgenetics.usb.ExtraDevice(this.activity, 519);
+            this.extraDeviceInstance = new org.wheatgenetics.usb.ExtraDevice(this.activity, 513);
         return this.extraDeviceInstance;
     }
 
@@ -32,13 +32,10 @@ public class ScaleTester extends java.lang.Object
 
     public java.lang.String read()
     {
-        final byte buffer[]    = new byte[128]                  ;
-        final int  returnValue = this.extraDevice().read(buffer);
-
-        if (returnValue > 0)
-            return java.lang.String.format(
-                "length: %d, buffer: %s", returnValue, buffer.toString());
-        else
-            return java.lang.String.format("length: %d", returnValue);
+              int  length                  ;
+        final byte buffer[] = new byte[128];
+        try { length = this.extraDevice().read(buffer); }
+        catch (final org.wheatgenetics.usb.Device.Exception e) { return e.getMessage(); }
+        return java.lang.String.format("length: %d, buffer: %s", length, buffer.toString());
     }
 }

@@ -14,11 +14,53 @@ package org.wheatgenetics.usb;
 class Device extends java.lang.Object
 {
 //    private static class AsyncTask
-//    extends android.os.AsyncTask<java.lang.Void, java.lang.Double, java.lang.Void>
+//    extends android.os.AsyncTask<java.lang.Void, byte[], java.lang.Void>
 //    {
+//        private interface Handler
+//        {
+//            public abstract boolean read   (byte buffer[]);
+//            public abstract void    publish(byte buffer[]);
+//        }
+//
+//        private final org.wheatgenetics.usb.Device.AsyncTask.Handler handler;
+//
+//        private AsyncTask(@android.support.annotation.NonNull
+//        final org.wheatgenetics.usb.Device.AsyncTask.Handler handler)
+//        {
+//            super();
+//
+//            assert null != handler;
+//            this.handler = handler;
+//        }
+//
 //        @java.lang.Override
-//        protected java.lang.Void doInBackground(final java.lang.Void... params) { return null; }
+//        protected java.lang.Void doInBackground(final java.lang.Void... params)
+//        {
+//            final byte buffer[] = new byte[128];
+//            assert null != this.handler;
+//            while (this.handler.read(buffer)) { this.publishProgress(buffer); }
+//            return null;
+//        }
+//
+//        @java.lang.Override
+//        protected void onProgressUpdate(final byte[]... values)
+//        {
+//            assert null != this.handler;
+//            this.handler.publish(values[0]);
+//        }
 //    }
+
+    static abstract class Exception extends java.lang.Exception
+    { Exception(final java.lang.String message) { super(message); }}
+
+    static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception
+    { UsbDeviceIsNull() { super("Device.this.usbDevice is still null."); }}
+
+    static class UsbInterfaceIsNull extends org.wheatgenetics.usb.Device.Exception
+    { UsbInterfaceIsNull() { super("Device.this.usbDevice.getInterface(0) returned null."); }}
+
+    static class UsbDeviceConnectionIsNull extends org.wheatgenetics.usb.Device.Exception
+    { UsbDeviceConnectionIsNull() { super("Device.this.usbManager.openDevice() returned null."); }}
 
     private       android.hardware.usb.UsbDevice  usbDevice ;
     private final android.hardware.usb.UsbManager usbManager;
@@ -65,7 +107,13 @@ class Device extends java.lang.Object
                 this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
     }
 
-    boolean productIdsAreEqual(final int productId) { return this.getProductId() == productId; }
+    boolean productIdsAreEqual(final int productId)
+    {
+        if (this.usbDeviceIsNull())
+            return false;
+        else
+            if (0 == productId) return false; else return this.getProductId() == productId;
+    }
     // endregion
 
     // region ExtraDevice Package Methods
@@ -75,10 +123,10 @@ class Device extends java.lang.Object
     { if (null != device) this.usbDevice = device.usbDevice; }
     // endregion
 
-    int read(final byte buffer[])
+    int read(final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception
     {
         if (this.usbDeviceIsNull())
-            return -1;
+            throw new org.wheatgenetics.usb.Device.UsbDeviceIsNull();
         else
         {
             android.hardware.usb.UsbEndpoint         usbEndpoint        ;
@@ -86,12 +134,18 @@ class Device extends java.lang.Object
             {
                 final android.hardware.usb.UsbInterface usbInterface =
                     this.usbDevice.getInterface(0);
-                assert null != usbInterface;
-                usbEndpoint         = usbInterface.getEndpoint(0)               ;
-                usbDeviceConnection = this.usbManager.openDevice(this.usbDevice);
+                if (null == usbInterface)
+                    throw new org.wheatgenetics.usb.Device.UsbInterfaceIsNull();
+                else
+                {
+                    usbEndpoint         = usbInterface.getEndpoint(0)               ;
+                    usbDeviceConnection = this.usbManager.openDevice(this.usbDevice);
 
-                assert usbDeviceConnection != null;
-                usbDeviceConnection.claimInterface(usbInterface, true);
+                    if (null == usbDeviceConnection)
+                        throw new org.wheatgenetics.usb.Device.UsbDeviceConnectionIsNull();
+                    else
+                        usbDeviceConnection.claimInterface(usbInterface, true);
+                }
             }
             return usbDeviceConnection.bulkTransfer(usbEndpoint, buffer,
                 null == buffer ? 0 : buffer.length, /* timeout => */ 2000);
