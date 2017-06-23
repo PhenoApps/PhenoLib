@@ -13,43 +13,6 @@ package org.wheatgenetics.usb;
 
 class Device extends java.lang.Object
 {
-//    private static class AsyncTask
-//    extends android.os.AsyncTask<java.lang.Void, byte[], java.lang.Void>
-//    {
-//        private interface Handler
-//        {
-//            public abstract boolean read   (byte buffer[]);
-//            public abstract void    publish(byte buffer[]);
-//        }
-//
-//        private final org.wheatgenetics.usb.Device.AsyncTask.Handler handler;
-//
-//        private AsyncTask(@android.support.annotation.NonNull
-//        final org.wheatgenetics.usb.Device.AsyncTask.Handler handler)
-//        {
-//            super();
-//
-//            assert null != handler;
-//            this.handler = handler;
-//        }
-//
-//        @java.lang.Override
-//        protected java.lang.Void doInBackground(final java.lang.Void... params)
-//        {
-//            final byte buffer[] = new byte[128];
-//            assert null != this.handler;
-//            while (this.handler.read(buffer)) { this.publishProgress(buffer); }
-//            return null;
-//        }
-//
-//        @java.lang.Override
-//        protected void onProgressUpdate(final byte[]... values)
-//        {
-//            assert null != this.handler;
-//            this.handler.publish(values[0]);
-//        }
-//    }
-
     static abstract class Exception extends java.lang.Exception
     { Exception(final java.lang.String message) { super(message); }}
 
@@ -62,8 +25,68 @@ class Device extends java.lang.Object
     static class UsbDeviceConnectionIsNull extends org.wheatgenetics.usb.Device.Exception
     { UsbDeviceConnectionIsNull() { super("Device.this.usbManager.openDevice() returned null."); }}
 
+    interface Handler
+    {
+        public abstract void publish    (byte             buffer[]);
+        public abstract void reportError(java.lang.String message );
+    }
+
+    private static class AsyncTask
+    extends android.os.AsyncTask<java.lang.Void, byte[], org.wheatgenetics.usb.Device.Exception>
+    {
+        private interface Handler
+        {
+            public abstract int  read(byte buffer[]) throws org.wheatgenetics.usb.Device.Exception;
+            public abstract void publish    (byte             buffer[]);
+            public abstract void reportError(java.lang.String message );
+        }
+
+        private final org.wheatgenetics.usb.Device.AsyncTask.Handler handler;
+
+        private AsyncTask(@android.support.annotation.NonNull
+        final org.wheatgenetics.usb.Device.AsyncTask.Handler handler)
+        {
+            super();
+
+            assert null != handler;
+            this.handler = handler;
+        }
+
+        @java.lang.Override
+        protected org.wheatgenetics.usb.Device.Exception doInBackground(
+        final java.lang.Void... params)
+        {
+            final byte buffer[] = new byte[128];
+            assert null != this.handler;
+            do
+            {
+                try { this.handler.read(buffer); }
+                catch (final org.wheatgenetics.usb.Device.Exception e) { return e; }
+                this.publishProgress(buffer);
+            }
+            while (true);
+        }
+
+        @java.lang.Override
+        protected void onProgressUpdate(final byte[]... values)
+        {
+            assert null != this.handler;
+            this.handler.publish(values[0]);
+        }
+
+        @java.lang.Override
+        protected void onPostExecute(final org.wheatgenetics.usb.Device.Exception e)
+        {
+            assert null != e           ;
+            assert null != this.handler;
+            this.handler.reportError(e.getMessage());
+        }
+    }
+
     private       android.hardware.usb.UsbDevice  usbDevice ;
     private final android.hardware.usb.UsbManager usbManager;
+
+    private org.wheatgenetics.usb.Device.Handler handler = null;
 
     // region Private Methods
     private java.lang.String getDeviceName()
@@ -71,8 +94,15 @@ class Device extends java.lang.Object
 
     private int getProductId()
     { return null == this.usbDevice ? 0 : this.usbDevice.getProductId(); }
+
+    private void publish(final byte[] buffer)
+    { if (null != this.handler) this.handler.publish(buffer); }
+
+    private void reportError(final java.lang.String message)
+    { if (null != this.handler) this.handler.reportError(message); }
     // endregion
 
+    // region Constructors
     Device(final android.hardware.usb.UsbDevice usbDevice,
     @android.support.annotation.NonNull final android.hardware.usb.UsbManager usbManager)
     {
@@ -84,6 +114,17 @@ class Device extends java.lang.Object
         this.usbManager = usbManager;
     }
 
+    Device(                             final android.hardware.usb.UsbDevice       usbDevice ,
+    @android.support.annotation.NonNull final android.hardware.usb.UsbManager      usbManager,
+    @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Handler handler   )
+    {
+        this(usbDevice, usbManager);
+
+        assert null != handler;
+        this.handler = handler;
+    }
+    // endregion
+
     @java.lang.Override
     public java.lang.String toString()
     {
@@ -92,8 +133,8 @@ class Device extends java.lang.Object
         return returnValue;
     }
 
-    // Package Methods
-    // DeviceList Package Methods
+    // region Package Methods
+    // region DeviceList Package Methods
     java.lang.String information()
     {
         if (this.usbDeviceIsNull())
@@ -150,6 +191,28 @@ class Device extends java.lang.Object
             return usbDeviceConnection.bulkTransfer(usbEndpoint, buffer,
                 null == buffer ? 0 : buffer.length, /* timeout => */ 2000);
         }
+    }
+
+    void readContinuously()
+    {
+        final org.wheatgenetics.usb.Device.AsyncTask asyncTask =
+            new org.wheatgenetics.usb.Device.AsyncTask(
+                new org.wheatgenetics.usb.Device.AsyncTask.Handler()
+                {
+                    @java.lang.Override
+                    public int read(final byte[] buffer)
+                    throws org.wheatgenetics.usb.Device.Exception
+                    { return org.wheatgenetics.usb.Device.this.read(buffer); }
+
+                    @java.lang.Override
+                    public void publish(final byte[] buffer)
+                    { org.wheatgenetics.usb.Device.this.publish(buffer); }
+
+                    @java.lang.Override
+                    public void reportError(final java.lang.String message)
+                    { org.wheatgenetics.usb.Device.this.reportError(message); }
+                });
+        asyncTask.execute();
     }
     // endregion
 }
