@@ -103,6 +103,7 @@ class Device extends java.lang.Object
     // endregion
 
     // region Constructors
+    // region DeviceList Constructor
     Device(final android.hardware.usb.UsbDevice usbDevice,
     @android.support.annotation.NonNull final android.hardware.usb.UsbManager usbManager)
     {
@@ -113,7 +114,9 @@ class Device extends java.lang.Object
         assert null != usbManager;
         this.usbManager = usbManager;
     }
+    // endregion
 
+    // region ExtraDevice Constructor
     Device(                             final android.hardware.usb.UsbDevice       usbDevice ,
     @android.support.annotation.NonNull final android.hardware.usb.UsbManager      usbManager,
     @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Handler handler   )
@@ -123,6 +126,7 @@ class Device extends java.lang.Object
         assert null != handler;
         this.handler = handler;
     }
+    // endregion
     // endregion
 
     @java.lang.Override
@@ -153,7 +157,7 @@ class Device extends java.lang.Object
         if (this.usbDeviceIsNull())
             return false;
         else
-            if (0 == productId) return false; else return this.getProductId() == productId;
+            return 0 == productId ? false : this.getProductId() == productId;
     }
     // endregion
 

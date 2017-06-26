@@ -19,11 +19,12 @@ class ExtraDevice extends org.wheatgenetics.usb.Device
     @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Handler handler)
     {
         super(
-            (android.hardware.usb.UsbDevice) activity.getIntent().getParcelableExtra(
-                android.hardware.usb.UsbManager.EXTRA_DEVICE),
-            (android.hardware.usb.UsbManager) activity.getSystemService(
+            /* usbDevice => */ (android.hardware.usb.UsbDevice)
+                activity.getIntent().getParcelableExtra(
+                    android.hardware.usb.UsbManager.EXTRA_DEVICE),
+            /* usbManager => */ (android.hardware.usb.UsbManager) activity.getSystemService(
                 android.content.Context.USB_SERVICE),
-        handler);
+            handler);
 
         if (this.usbDeviceIsNull())
             this.setUsbDevice(new org.wheatgenetics.usb.DeviceList(activity).get(productId));
