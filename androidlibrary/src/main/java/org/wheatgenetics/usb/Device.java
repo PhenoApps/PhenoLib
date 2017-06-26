@@ -19,11 +19,20 @@ class Device extends java.lang.Object
     static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception
     { UsbDeviceIsNull() { super("Device.this.usbDevice is still null."); }}
 
-    static class UsbInterfaceIsNull extends org.wheatgenetics.usb.Device.Exception
-    { UsbInterfaceIsNull() { super("Device.this.usbDevice.getInterface(0) returned null."); }}
+    static class GetInterfaceFailed extends org.wheatgenetics.usb.Device.Exception
+    { GetInterfaceFailed() { super("Device.this.usbDevice.getInterface(0) returned null."); }}
 
-    static class UsbDeviceConnectionIsNull extends org.wheatgenetics.usb.Device.Exception
-    { UsbDeviceConnectionIsNull() { super("Device.this.usbManager.openDevice() returned null."); }}
+    static class OpenDeviceFailed extends org.wheatgenetics.usb.Device.Exception
+    {
+        OpenDeviceFailed() { super("Device.this.usbManager.openDevice() returned null."); }
+        OpenDeviceFailed(final java.lang.String message) { super(message); }
+    }
+
+    static class OpenDeviceLacksPermission extends org.wheatgenetics.usb.Device.OpenDeviceFailed
+    {
+        OpenDeviceLacksPermission()
+        { super("Device.this.usbManager.openDevice() lacks permission."); }
+    }
 
     interface Handler
     {
@@ -180,14 +189,17 @@ class Device extends java.lang.Object
                 final android.hardware.usb.UsbInterface usbInterface =
                     this.usbDevice.getInterface(0);
                 if (null == usbInterface)
-                    throw new org.wheatgenetics.usb.Device.UsbInterfaceIsNull();
+                    throw new org.wheatgenetics.usb.Device.GetInterfaceFailed();
                 else
                 {
                     usbEndpoint         = usbInterface.getEndpoint(0)               ;
                     usbDeviceConnection = this.usbManager.openDevice(this.usbDevice);
 
                     if (null == usbDeviceConnection)
-                        throw new org.wheatgenetics.usb.Device.UsbDeviceConnectionIsNull();
+                        if (this.usbManager.hasPermission(this.usbDevice))
+                            throw new org.wheatgenetics.usb.Device.OpenDeviceFailed();
+                        else
+                            throw new org.wheatgenetics.usb.Device.OpenDeviceLacksPermission();
                     else
                         usbDeviceConnection.claimInterface(usbInterface, true);
                 }
