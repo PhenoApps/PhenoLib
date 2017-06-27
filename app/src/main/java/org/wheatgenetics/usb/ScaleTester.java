@@ -5,6 +5,7 @@ package org.wheatgenetics.usb;
  * android.app.Activity
  * android.support.annotation.NonNull
  *
+ * org.wheatgenetics.usb.Device.Exception
  * org.wheatgenetics.usb.Device.Handler
  * org.wheatgenetics.usb.ExtraDevice
  */
@@ -62,7 +63,10 @@ public class ScaleTester extends java.lang.Object
     { return "information: " + this.extraDevice().information(); }
 
     public java.lang.String formattedRead()
-    { return this.extraDevice().formattedRead(); }
+    {
+        try { return this.extraDevice().formattedRead(); }
+        catch (final org.wheatgenetics.usb.Device.Exception e) { return e.getMessage(); }
+    }
 
 //    public void readContinuously() { this.extraDevice().readContinuously(); }
     // endregion

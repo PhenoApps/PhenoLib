@@ -126,14 +126,13 @@ class Device extends java.lang.Object
         }
     }
 
-    java.lang.String formattedRead()
+    java.lang.String formattedRead() throws org.wheatgenetics.usb.Device.Exception
     {
         int              length     ;
         java.lang.String data   = "";
         {
             final byte buffer[] = new byte[128];
-            try { length = this.read(buffer); }
-            catch (final org.wheatgenetics.usb.Device.Exception e) { return e.getMessage(); }
+            length = this.read(buffer);             // throws org.wheatgenetics.usb.Device.Exception
 
             final int              last = length - 1;
                   java.lang.String d                ;
