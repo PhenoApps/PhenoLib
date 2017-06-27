@@ -30,7 +30,7 @@ public class ScaleTester extends java.lang.Object
     private org.wheatgenetics.usb.ExtraDevice extraDevice()
     {
         if (null == this.extraDeviceInstance)
-            this.extraDeviceInstance = new org.wheatgenetics.usb.ExtraDevice(this.activity, 513,
+            this.extraDeviceInstance = new org.wheatgenetics.usb.ExtraDevice(this.activity, 513/*,
                 new org.wheatgenetics.usb.Device.Handler()
                 {
                     @java.lang.Override
@@ -40,7 +40,7 @@ public class ScaleTester extends java.lang.Object
                     @java.lang.Override
                     public void reportError(final java.lang.String message)
                     { org.wheatgenetics.usb.ScaleTester.this.display(message); }
-                });
+                }*/);
         return this.extraDeviceInstance;
     }
     // endregion
@@ -64,6 +64,6 @@ public class ScaleTester extends java.lang.Object
     public java.lang.String formattedRead()
     { return this.extraDevice().formattedRead(); }
 
-    public void readContinuously() { this.extraDevice().readContinuously(); }
+//    public void readContinuously() { this.extraDevice().readContinuously(); }
     // endregion
 }

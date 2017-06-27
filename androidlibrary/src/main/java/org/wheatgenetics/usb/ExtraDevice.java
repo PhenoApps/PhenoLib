@@ -8,23 +8,20 @@ package org.wheatgenetics.usb;
  * android.support.annotation.NonNull
  *
  * org.wheatgenetics.usb.Device
- * org.wheatgenetics.usb.Device.Handler
  * org.wheatgenetics.usb.DeviceList
  */
 
 class ExtraDevice extends org.wheatgenetics.usb.Device
 {
     ExtraDevice(@android.support.annotation.NonNull final android.app.Activity activity,
-    final int productId,
-    @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Handler handler)
+    final int productId)
     {
         super(
             /* usbDevice => */ (android.hardware.usb.UsbDevice)
                 activity.getIntent().getParcelableExtra(
                     android.hardware.usb.UsbManager.EXTRA_DEVICE),
             /* usbManager => */ (android.hardware.usb.UsbManager) activity.getSystemService(
-                android.content.Context.USB_SERVICE),
-            handler);
+                android.content.Context.USB_SERVICE));
 
         if (this.usbDeviceIsNull())
             this.setUsbDevice(new org.wheatgenetics.usb.DeviceList(activity).get(productId));
