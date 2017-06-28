@@ -8,6 +8,8 @@ package org.wheatgenetics.usb;
  * android.hardware.usb.UsbInterface
  * android.hardware.usb.UsbManager
  * android.support.annotation.NonNull
+ *
+ * org.wheatgenetics.javalib.Utils
  */
 
 class Device extends java.lang.Object
@@ -33,12 +35,14 @@ class Device extends java.lang.Object
         { super("Device.this.usbManager.openDevice() lacks permission."); }
     }
 
+    // region Fields
     private       android.hardware.usb.UsbDevice  usbDevice ;
     private final android.hardware.usb.UsbManager usbManager;
 
     private android.hardware.usb.UsbInterface        usbInterface        = null;
     private android.hardware.usb.UsbEndpoint         usbEndpoint         = null;
     private android.hardware.usb.UsbDeviceConnection usbDeviceConnection = null;
+    // endregion
 
     // region Private Methods
     private java.lang.String getDeviceName()
@@ -137,14 +141,7 @@ class Device extends java.lang.Object
         {
             final byte buffer[] = new byte[128];
             length = this.read(buffer);             // throws org.wheatgenetics.usb.Device.Exception
-
-            final int              last = length - 1;
-                  java.lang.String d                ;
-            for (int i = 0; i <= last; i++)
-            {
-                d = java.lang.Byte.toString(buffer[i]);
-                if (0 == i) data = d; else data += "," + d;
-            }
+            data = org.wheatgenetics.javalib.Utils.convert(buffer);
         }
         return java.lang.String.format("length: %d, data: %s", length, data);
     }
