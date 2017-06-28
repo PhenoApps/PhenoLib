@@ -50,6 +50,25 @@ class Device extends java.lang.Object
 
     private int getProductId()
     { return null == this.usbDevice ? 0 : this.usbDevice.getProductId(); }
+
+    private boolean close()
+    {
+        boolean released;
+
+        if (null == this.usbDeviceConnection)
+            released = true;
+        else
+        {
+            released = this.usbDeviceConnection.releaseInterface(this.usbInterface);
+            this.usbDeviceConnection.close();
+            this.usbDeviceConnection = null;
+        }
+
+        this.usbEndpoint  = null;
+        this.usbInterface = null;
+
+        return released;
+    }
     // endregion
 
     Device(final android.hardware.usb.UsbDevice usbDevice,
@@ -63,6 +82,7 @@ class Device extends java.lang.Object
         this.usbManager = usbManager;
     }
 
+    // region Overridden Methods
     @java.lang.Override
     public java.lang.String toString()
     {
@@ -70,6 +90,14 @@ class Device extends java.lang.Object
         if (null == returnValue) returnValue = super.toString();
         return returnValue;
     }
+
+    @java.lang.Override
+    protected void finalize() throws java.lang.Throwable
+    {
+        this.close();
+        super.finalize();
+    }
+    // endregion
 
     // region Package Methods
     // region DeviceList Package Methods
