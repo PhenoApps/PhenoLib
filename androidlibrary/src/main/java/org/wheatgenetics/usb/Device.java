@@ -36,6 +36,10 @@ class Device extends java.lang.Object
     private       android.hardware.usb.UsbDevice  usbDevice ;
     private final android.hardware.usb.UsbManager usbManager;
 
+    private android.hardware.usb.UsbInterface        usbInterface        = null;
+    private android.hardware.usb.UsbEndpoint         usbEndpoint         = null;
+    private android.hardware.usb.UsbDeviceConnection usbDeviceConnection = null;
+
     // region Private Methods
     private java.lang.String getDeviceName()
     { return null == this.usbDevice ? null : this.usbDevice.getDeviceName(); }
@@ -100,28 +104,28 @@ class Device extends java.lang.Object
             throw new org.wheatgenetics.usb.Device.UsbDeviceIsNull();
         else
         {
-            android.hardware.usb.UsbEndpoint         usbEndpoint        ;
-            android.hardware.usb.UsbDeviceConnection usbDeviceConnection;
+            if (null == this.usbInterface)
             {
-                final android.hardware.usb.UsbInterface usbInterface =
-                    this.usbDevice.getInterface(0);
-                if (null == usbInterface)
+                this.usbInterface = this.usbDevice.getInterface(0);
+                if (null == this.usbInterface)
                     throw new org.wheatgenetics.usb.Device.GetInterfaceFailed();
-                else
-                {
-                    usbEndpoint         = usbInterface.getEndpoint(0)               ;
-                    usbDeviceConnection = this.usbManager.openDevice(this.usbDevice);
-
-                    if (null == usbDeviceConnection)
-                        if (this.usbManager.hasPermission(this.usbDevice))
-                            throw new org.wheatgenetics.usb.Device.OpenDeviceFailed();
-                        else
-                            throw new org.wheatgenetics.usb.Device.OpenDeviceLacksPermission();
-                    else
-                        usbDeviceConnection.claimInterface(usbInterface, true);
-                }
             }
-            return usbDeviceConnection.bulkTransfer(usbEndpoint, buffer,
+
+            if (null == this.usbEndpoint) this.usbEndpoint = this.usbInterface.getEndpoint(0);
+
+            if (null == this.usbDeviceConnection)
+            {
+                this.usbDeviceConnection = this.usbManager.openDevice(this.usbDevice);
+                if (null == this.usbDeviceConnection)
+                    if (this.usbManager.hasPermission(this.usbDevice))
+                        throw new org.wheatgenetics.usb.Device.OpenDeviceFailed();
+                    else
+                        throw new org.wheatgenetics.usb.Device.OpenDeviceLacksPermission();
+                else
+                    this.usbDeviceConnection.claimInterface(this.usbInterface, /* force => */ true);
+            }
+
+            return this.usbDeviceConnection.bulkTransfer(this.usbEndpoint, buffer,
                 null == buffer ? 0 : buffer.length, /* timeout => */ 2000);
         }
     }
