@@ -14,6 +14,7 @@ package org.wheatgenetics.usb;
 
 class Device extends java.lang.Object
 {
+    // region Types
     static abstract class Exception extends java.lang.Exception
     { Exception(final java.lang.String message) { super(message); }}
 
@@ -34,6 +35,7 @@ class Device extends java.lang.Object
         OpenDeviceLacksPermission()
         { super("Device.this.usbManager.openDevice() lacks permission."); }
     }
+    // endregion
 
     // region Fields
     private       android.hardware.usb.UsbDevice  usbDevice ;
