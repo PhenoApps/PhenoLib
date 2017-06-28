@@ -169,7 +169,7 @@ class Device extends java.lang.Object
         {
             final byte buffer[] = new byte[128];
             length = this.read(buffer);             // throws org.wheatgenetics.usb.Device.Exception
-            data = org.wheatgenetics.javalib.Utils.convert(buffer);
+            data = org.wheatgenetics.javalib.Utils.convert(buffer, length);
         }
         return java.lang.String.format("length: %d, data: %s", length, data);
     }
