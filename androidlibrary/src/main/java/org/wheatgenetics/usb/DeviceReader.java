@@ -81,22 +81,31 @@ class DeviceReader extends java.lang.Object
         protected void onCancelled() { this.reportCancelled(); }
     }
 
-    private final org.wheatgenetics.usb.DeviceReader.Handler   handler         ;
-    private       org.wheatgenetics.usb.DeviceReader.AsyncTask asyncTask = null;
+    private org.wheatgenetics.usb.DeviceReader.Handler   handler   = null;
+    private org.wheatgenetics.usb.DeviceReader.AsyncTask asyncTask = null;
 
     // region Package Methods
+    // region Constructor Package Methods
+    DeviceReader() { super(); }
+
     DeviceReader(@android.support.annotation.NonNull
     final org.wheatgenetics.usb.DeviceReader.Handler handler)
     {
         super();
+        this.setHandler(handler);
+    }
+    // endregion
 
+    void setHandler(@android.support.annotation.NonNull
+    final org.wheatgenetics.usb.DeviceReader.Handler handler)
+    {
         assert null != handler;
         this.handler = handler;
     }
 
     void execute()
     {
-        if (null == this.asyncTask)
+        if (null == this.asyncTask) if (null != this.handler)
         {
             this.asyncTask = new org.wheatgenetics.usb.DeviceReader.AsyncTask(this.handler);
             this.asyncTask.execute();
