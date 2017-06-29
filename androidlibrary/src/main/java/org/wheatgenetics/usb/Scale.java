@@ -65,7 +65,7 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
                 {
                     case 1: throw new org.wheatgenetics.usb.Scale.Fault();
 
-                    case 2: case 3: case 4:
+                    case 2: case 3: case 4:                  // 3 == weighing;  2, 4 == final weight
                         final byte LSB = buffer[4], MSB = buffer[5];
                         this.weight = MSB * 256.0 + LSB;
                         break;

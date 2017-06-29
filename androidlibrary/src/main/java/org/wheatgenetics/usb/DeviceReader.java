@@ -15,8 +15,8 @@ class DeviceReader extends java.lang.Object
     {
         public abstract java.lang.String formattedRead()
             throws org.wheatgenetics.usb.Device.Exception;
-        public abstract void publish    (java.lang.String data   );
-        public abstract void reportError(java.lang.String message);
+        public abstract void publish        (java.lang.String data   );
+        public abstract void reportException(java.lang.String message);
     }
 
     private static class AsyncTask extends android.os.AsyncTask<
@@ -25,10 +25,10 @@ class DeviceReader extends java.lang.Object
         private final org.wheatgenetics.usb.DeviceReader.Handler handler     ;
         private       java.lang.String                           oldData = "";
 
-        private void publishCancelled()
+        private void reportCancelled()
         {
             assert null != this.handler;
-            this.handler.publish("cancelled");
+            this.handler.reportException("cancelled");
         }
 
         private AsyncTask(@android.support.annotation.NonNull
@@ -69,16 +69,16 @@ class DeviceReader extends java.lang.Object
         protected void onPostExecute(final org.wheatgenetics.usb.Device.Exception e)
         {
             if (null == e)
-                this.publishCancelled();
+                this.reportCancelled();
             else
             {
                 assert null != this.handler;
-                this.handler.reportError(e.getMessage());
+                this.handler.reportException(e.getMessage());
             }
         }
 
         @java.lang.Override
-        protected void onCancelled() { this.publishCancelled(); }
+        protected void onCancelled() { this.reportCancelled(); }
     }
 
     private final org.wheatgenetics.usb.DeviceReader.Handler   handler         ;
