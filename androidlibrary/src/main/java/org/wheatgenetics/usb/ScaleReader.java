@@ -11,9 +11,9 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.usb.Scale
  */
 
-class ScaleReader extends org.wheatgenetics.usb.DeviceReader
+public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
 {
-    interface Handler
+    public interface Handler
     {
         public abstract void publish        (java.lang.String data   );
         public abstract void reportException(java.lang.String message);
@@ -50,7 +50,7 @@ class ScaleReader extends org.wheatgenetics.usb.DeviceReader
     }
     // endregion
 
-    ScaleReader(@android.support.annotation.NonNull final android.app.Activity activity,
+    public ScaleReader(@android.support.annotation.NonNull final android.app.Activity activity,
     @android.support.annotation.NonNull final org.wheatgenetics.usb.ScaleReader.Handler handler)
     {
         super();

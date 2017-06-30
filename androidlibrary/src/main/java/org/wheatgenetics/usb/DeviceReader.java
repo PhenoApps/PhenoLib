@@ -103,7 +103,7 @@ class DeviceReader extends java.lang.Object
         this.handler = handler;
     }
 
-    void execute()
+    public void execute()
     {
         if (null == this.asyncTask) if (null != this.handler)
         {
@@ -112,7 +112,7 @@ class DeviceReader extends java.lang.Object
         }
     }
 
-    boolean cancel()
+    public boolean cancel()
     {
         if (null == this.asyncTask)
             return false;
