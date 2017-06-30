@@ -5,6 +5,8 @@ package org.wheatgenetics.about;
  * android.app.AlertDialog
  * android.app.AlertDialog.Builder
  * android.content.Context
+ * android.content.Intent
+ * android.net.Uri
  * android.support.annotation.NonNull
  * android.view.LayoutInflater
  * android.view.View
@@ -23,8 +25,6 @@ package org.wheatgenetics.about;
 
 public class OtherAppsAlertDialog extends java.lang.Object
 {
-    public interface Handler { public abstract void handleItemClick(java.lang.String uriString); }
-
     private static class ListView extends android.widget.ListView
     {
         private static class ArrayAdapter extends android.widget.ArrayAdapter<java.lang.String>
@@ -81,14 +81,17 @@ public class OtherAppsAlertDialog extends java.lang.Object
             }
         }
 
+        private interface Handler
+        { public abstract void handleItemClick(java.lang.String uriString); }
+
         private static class OnItemClickListener extends java.lang.Object
         implements android.widget.AdapterView.OnItemClickListener
         {
-            private final org.wheatgenetics.about.OtherApps                    otherApps;
-            private final org.wheatgenetics.about.OtherAppsAlertDialog.Handler handler  ;
+            private final org.wheatgenetics.about.OtherApps                             otherApps;
+            private final org.wheatgenetics.about.OtherAppsAlertDialog.ListView.Handler handler  ;
 
             OnItemClickListener(@android.support.annotation.NonNull
-                final org.wheatgenetics.about.OtherAppsAlertDialog.Handler handler,
+                final org.wheatgenetics.about.OtherAppsAlertDialog.ListView.Handler handler,
             @android.support.annotation.NonNull org.wheatgenetics.about.OtherApps otherApps)
             {
                 super();
@@ -110,9 +113,7 @@ public class OtherAppsAlertDialog extends java.lang.Object
         }
 
         public ListView(final android.content.Context context,
-        @android.support.annotation.NonNull org.wheatgenetics.about.OtherApps otherApps,
-        @android.support.annotation.NonNull
-            final org.wheatgenetics.about.OtherAppsAlertDialog.Handler handler)
+        @android.support.annotation.NonNull org.wheatgenetics.about.OtherApps otherApps)
         {
             super(context);
 
@@ -122,22 +123,29 @@ public class OtherAppsAlertDialog extends java.lang.Object
                 context, otherApps));
             this.setOnItemClickListener(
                 new org.wheatgenetics.about.OtherAppsAlertDialog.ListView.OnItemClickListener(
-                    handler, otherApps));
+                    new org.wheatgenetics.about.OtherAppsAlertDialog.ListView.Handler()
+                    {
+                        @java.lang.Override
+                        public void handleItemClick(final java.lang.String uriString)
+                        {
+                            org.wheatgenetics.about.OtherAppsAlertDialog.ListView.
+                                this.getContext().startActivity(new android.content.Intent(
+                                    android.content.Intent.ACTION_VIEW,
+                                    android.net.Uri.parse(uriString)  ));
+                        }
+                    }, otherApps));
         }
     };
 
-    private final android.content.Context                              context  ;
-    private final org.wheatgenetics.about.OtherApps                    otherApps;
-    private final org.wheatgenetics.about.OtherAppsAlertDialog.Handler handler  ;
+    private final android.content.Context           context  ;
+    private final org.wheatgenetics.about.OtherApps otherApps;
 
     private android.app.AlertDialog.Builder builder     = null;
     private android.app.AlertDialog         alertDialog = null;
 
     public OtherAppsAlertDialog(
     @android.support.annotation.NonNull final android.content.Context           context  ,
-    @android.support.annotation.NonNull final org.wheatgenetics.about.OtherApps otherApps,
-    @android.support.annotation.NonNull
-        final org.wheatgenetics.about.OtherAppsAlertDialog.Handler handler)
+    @android.support.annotation.NonNull final org.wheatgenetics.about.OtherApps otherApps)
     {
         super();
 
@@ -146,9 +154,6 @@ public class OtherAppsAlertDialog extends java.lang.Object
 
         assert null != otherApps;
         this.otherApps = otherApps;
-
-        assert null != handler;
-        this.handler = handler;
     }
 
     public void show()
@@ -161,7 +166,7 @@ public class OtherAppsAlertDialog extends java.lang.Object
                 this.builder.setCancelable(true)
                     .setTitle(org.wheatgenetics.androidlibrary.R.string.otherAppsAlertDialogTitle)
                     .setView (new org.wheatgenetics.about.OtherAppsAlertDialog.ListView(
-                        this.context, this.otherApps, this.handler))
+                        this.context, this.otherApps))
                     .setNegativeButton(org.wheatgenetics.androidlibrary.R.string.okButtonText,
                         org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListener());
             }
