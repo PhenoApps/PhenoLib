@@ -19,7 +19,21 @@ class Device extends java.lang.Object
     { Exception(final java.lang.String message) { super(message); }}
 
     static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception
-    { UsbDeviceIsNull() { super("Device.this.usbDevice is null."); }}
+    {
+        private static final java.lang.String MESSAGE = "Device.this.usbDevice is null.";
+
+        UsbDeviceIsNull() { super(org.wheatgenetics.usb.Device.UsbDeviceIsNull.MESSAGE); }
+
+        static java.lang.String appendIfEqual(
+        @android.support.annotation.NonNull final java.lang.String message,
+        @android.support.annotation.NonNull final java.lang.String postfix)
+        {
+            if (org.wheatgenetics.usb.Device.UsbDeviceIsNull.MESSAGE.equals(message))
+                return message + "  " + postfix;
+            else
+                return message;
+        }
+    }
 
     static class GetInterfaceFailed extends org.wheatgenetics.usb.Device.Exception
     { GetInterfaceFailed() { super("Device.this.usbDevice.getInterface(0) returned null."); }}

@@ -133,7 +133,7 @@ class DeviceReader extends java.lang.Object
     // region Public Methods
     public void execute()
     {
-        if (null == this.asyncTask) if (null != this.handler)
+        if (null == this.asyncTask) if (null != this.dataSource && null != this.handler)
         {
             this.asyncTask = new org.wheatgenetics.usb.DeviceReader.AsyncTask(
                 this.dataSource, this.handler);
@@ -149,13 +149,8 @@ class DeviceReader extends java.lang.Object
             cancelled = false;
         else
         {
-            final boolean wasAlreadyCancelled = this.asyncTask.isCancelled();
-            if (wasAlreadyCancelled)
-                cancelled = false;
-            else
-                cancelled = this.asyncTask.cancel(/* mayInterruptIfRunning => */ true);
-
-            if (wasAlreadyCancelled | cancelled) this.asyncTask = null;
+            cancelled = this.asyncTask.cancel(/* mayInterruptIfRunning => */ true);
+            this.asyncTask = null;
         }
 
         return cancelled;

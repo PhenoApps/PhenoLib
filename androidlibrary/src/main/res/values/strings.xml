@@ -7,4 +7,9 @@
     <string name="cameraOptionsMenuItemTitle">Camera scanner</string>
 
     <string name="otherAppsAlertDialogTitle">Other Apps</string>
+
+    <string name="scaleExceptionAlertDialogTitle">Scale Issue</string>
+    <string name="scaleExceptionAlertDialogMessage">Please connect scale with OTG cable and turn the scale on.</string>
+    <string name="scaleExceptionAlertDialogPositiveButtonText">Try Again</string>
+    <string name="scaleExceptionAlertDialogNegativeButtonText">Ignore</string>
 </resources>
