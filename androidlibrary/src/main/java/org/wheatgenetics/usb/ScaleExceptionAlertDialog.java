@@ -10,6 +10,7 @@ package org.wheatgenetics.usb;
  * android.support.annotation.NonNull
  *
  * org.wheatgenetics.androidlibrary.R
+ * org.wheatgenetics.usb.Device.Exception
  * org.wheatgenetics.usb.Device.UsbDeviceIsNull
  */
 
@@ -58,46 +59,55 @@ class ScaleExceptionAlertDialog extends java.lang.Object
         this.handler = handler;
     }
 
-    void show(@android.support.annotation.NonNull java.lang.String message)
+    void show(@android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     {
-        if (null == this.alertDialog)
+        if (null != e)
         {
-            if (null == this.builder)
+            if (null == this.alertDialog)
             {
-                this.builder = new android.app.AlertDialog.Builder(this.context);
-                this.builder.setTitle(
-                        org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogTitle)
-                    .setCancelable    (false  )
-                    .setPositiveButton(
-                        org.wheatgenetics.androidlibrary.
-                            R.string.scaleExceptionAlertDialogPositiveButtonText,
-                        new android.content.DialogInterface.OnClickListener()
-                        {
-                            @java.lang.Override
-                            public void onClick(final android.content.DialogInterface dialog,
-                            final int which)
-                            { org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.tryAgain(); }
-                        })
-                    .setNegativeButton(
-                        org.wheatgenetics.androidlibrary.
-                            R.string.scaleExceptionAlertDialogNegativeButtonText,
-                        new android.content.DialogInterface.OnClickListener()
-                        {
-                            @java.lang.Override
-                            public void onClick(final android.content.DialogInterface dialog,
-                            final int which)
-                            { org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.ignore(); }
-                        });
+                if (null == this.builder)
+                {
+                    this.builder = new android.app.AlertDialog.Builder(this.context);
+                    this.builder.setTitle(org.wheatgenetics.androidlibrary.
+                            R.string.scaleExceptionAlertDialogTitle)
+                        .setCancelable    (false)
+                        .setPositiveButton(
+                            org.wheatgenetics.androidlibrary.
+                                R.string.scaleExceptionAlertDialogPositiveButtonText,
+                            new android.content.DialogInterface.OnClickListener()
+                            {
+                                @java.lang.Override
+                                public void onClick(final android.content.DialogInterface dialog,
+                                final int which)
+                                { org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.tryAgain(); }
+                            })
+                        .setNegativeButton(
+                            org.wheatgenetics.androidlibrary.
+                                R.string.scaleExceptionAlertDialogNegativeButtonText,
+                            new android.content.DialogInterface.OnClickListener()
+                            {
+                                @java.lang.Override
+                                public void onClick(final android.content.DialogInterface dialog,
+                                final int which)
+                                { org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.ignore(); }
+                            });
+                }
+                this.alertDialog = this.builder.create();
+                assert null != this.alertDialog;
             }
-            this.alertDialog = this.builder.create();
-            assert null != this.alertDialog;
-        }
 
-        assert null != this.context;
-        this.alertDialog.setMessage(org.wheatgenetics.usb.Device.UsbDeviceIsNull.appendIfEqual(
-            message, this.context.getString(
-                org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogMessage)));
-        this.alertDialog.show();
+            java.lang.String message;
+            if (e instanceof org.wheatgenetics.usb.Device.UsbDeviceIsNull)
+            {
+                assert null != this.context;
+                message = e.getMessage() + "  " + this.context.getString(
+                    org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogMessage);
+            }
+            else message = e.getMessage();
+            this.alertDialog.setMessage(message);
+
+            this.alertDialog.show();
+        }
     }
     // endregion
 }

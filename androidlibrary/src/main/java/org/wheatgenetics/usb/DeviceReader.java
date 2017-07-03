@@ -12,44 +12,41 @@ package org.wheatgenetics.usb;
 class DeviceReader extends java.lang.Object
 {
     // region Types
+    public interface Handler
+    {
+        public abstract void publish        (java.lang.String                       data);
+        public abstract void reportException(org.wheatgenetics.usb.Device.Exception e   );
+    }
+
     interface DataSource
     {
         public abstract java.lang.String formattedRead()
             throws org.wheatgenetics.usb.Device.Exception;
     }
 
-    public interface Handler
-    {
-        public abstract void publish        (java.lang.String data   );
-        public abstract void reportException(java.lang.String message);
-    }
+    static class Cancelled extends org.wheatgenetics.usb.Device.Exception
+    { Cancelled() { super("Cancelled."); }}
 
     private static class AsyncTask extends android.os.AsyncTask<
     java.lang.Void, java.lang.String, org.wheatgenetics.usb.Device.Exception>
     {
-        private final org.wheatgenetics.usb.DeviceReader.DataSource dataSource;
         private final org.wheatgenetics.usb.DeviceReader.Handler    handler   ;
+        private final org.wheatgenetics.usb.DeviceReader.DataSource dataSource;
 
         private java.lang.String oldData = "";
 
-        private void reportCancelled()
-        {
-            assert null != this.handler;
-            this.handler.reportException("cancelled");
-        }
-
         private AsyncTask(@android.support.annotation.NonNull
-            final org.wheatgenetics.usb.DeviceReader.DataSource dataSource,
+            final org.wheatgenetics.usb.DeviceReader.Handler handler,
         @android.support.annotation.NonNull
-            final org.wheatgenetics.usb.DeviceReader.Handler handler)
+            final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
         {
             super();
 
-            assert null != dataSource;
-            this.dataSource = dataSource;
-
             assert null != handler;
             this.handler = handler;
+
+            assert null != dataSource;
+            this.dataSource = dataSource;
         }
 
         @java.lang.Override
@@ -80,36 +77,38 @@ class DeviceReader extends java.lang.Object
         @java.lang.Override
         protected void onPostExecute(final org.wheatgenetics.usb.Device.Exception e)
         {
-            if (null == e)
-                this.reportCancelled();
-            else
+            if (null != e)
             {
                 assert null != this.handler;
-                this.handler.reportException(e.getMessage());
+                this.handler.reportException(e);
             }
         }
 
         @java.lang.Override
-        protected void onCancelled() { this.reportCancelled(); }
+        protected void onCancelled()
+        {
+            assert null != this.handler;
+            this.handler.reportException(new org.wheatgenetics.usb.DeviceReader.Cancelled());
+        }
     }
     // endregion
 
-    private org.wheatgenetics.usb.DeviceReader.DataSource dataSource = null;
     private org.wheatgenetics.usb.DeviceReader.Handler    handler    = null;
+    private org.wheatgenetics.usb.DeviceReader.DataSource dataSource = null;
     private org.wheatgenetics.usb.DeviceReader.AsyncTask  asyncTask  = null;
 
     // region Package Methods
     // region Constructor Package Methods
     DeviceReader(
-    @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.DataSource dataSource,
-    @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.Handler handler      )
+    @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.Handler handler      ,
+    @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
     {
         super();
 
-        this.setDataSource(dataSource);
-
         assert null != handler;
         this.handler = handler;
+
+        this.setDataSource(dataSource);
     }
 
     DeviceReader(@android.support.annotation.NonNull
@@ -133,10 +132,10 @@ class DeviceReader extends java.lang.Object
     // region Public Methods
     public void execute()
     {
-        if (null == this.asyncTask) if (null != this.dataSource && null != this.handler)
+        if (null == this.asyncTask) if (null != this.handler && null != this.dataSource)
         {
             this.asyncTask = new org.wheatgenetics.usb.DeviceReader.AsyncTask(
-                this.dataSource, this.handler);
+                this.handler, this.dataSource);
             this.asyncTask.execute();
         }
     }
