@@ -8,6 +8,7 @@ package org.wheatgenetics.usb;
  * android.hardware.usb.UsbManager
  * android.support.annotation.NonNull
  *
+ * org.wheatgenetics.javalib.Utils
  * org.wheatgenetics.usb.Device
  */
 
@@ -39,23 +40,22 @@ class DeviceList extends java.lang.Object
     @java.lang.Override
     public java.lang.String toString()
     {
-        java.lang.String returnValue = null;
+        java.lang.String result = null;
         {
             java.lang.Boolean firstDevice = true;
             assert null != this.deviceArrayList;
             for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
                 if (firstDevice)
                 {
-                    returnValue = device.toString();
+                    result = device.toString();
                     firstDevice = false;
                 }
-                else returnValue += '\n' + device.toString();
+                else result += '\n' + device.toString();
         }
-        if (null == returnValue) returnValue = super.toString();
-        return returnValue;
+        return org.wheatgenetics.javalib.Utils.replaceIfNull(result, super.toString());
     }
 
-    // Package Methods
+    // region Package Methods
     int size()
     {
         assert null != this.deviceArrayList;
@@ -64,19 +64,19 @@ class DeviceList extends java.lang.Object
 
     java.lang.String information()
     {
-        java.lang.String returnValue = null;
+        java.lang.String result = null;
         {
             java.lang.Boolean firstDevice = true;
             assert null != this.deviceArrayList;
             for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
                 if (firstDevice)
                 {
-                    returnValue = device.information();
+                    result = device.information();
                     firstDevice = false;
                 }
-                else returnValue += '\n' + device.information();
+                else result += '\n' + device.information();
         }
-        return returnValue;
+        return result;
     }
 
     org.wheatgenetics.usb.Device get(final int productId)

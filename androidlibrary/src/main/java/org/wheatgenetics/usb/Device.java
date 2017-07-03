@@ -19,10 +19,13 @@ class Device extends java.lang.Object
     { Exception(final java.lang.String message) { super(message); }}
 
     static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception
-    { UsbDeviceIsNull() { super("Device.this.usbDevice is still null."); }}
+    { UsbDeviceIsNull() { super("Device.this.usbDevice is null."); }}
 
     static class GetInterfaceFailed extends org.wheatgenetics.usb.Device.Exception
     { GetInterfaceFailed() { super("Device.this.usbDevice.getInterface(0) returned null."); }}
+
+    static class UsbManagerIsNull extends org.wheatgenetics.usb.Device.Exception
+    { UsbManagerIsNull() { super("Device.this.usbManager is null."); }}
 
     static class OpenDeviceFailed extends org.wheatgenetics.usb.Device.Exception
     {
@@ -48,10 +51,10 @@ class Device extends java.lang.Object
 
     // region Private Methods
     private java.lang.String getDeviceName()
-    { return null == this.usbDevice ? null : this.usbDevice.getDeviceName(); }
+    { return this.usbDeviceIsNull() ? null : this.usbDevice.getDeviceName(); }
 
     private int getProductId()
-    { return null == this.usbDevice ? 0 : this.usbDevice.getProductId(); }
+    { return this.usbDeviceIsNull() ? 0 : this.usbDevice.getProductId(); }
 
     private boolean close()
     {
@@ -88,9 +91,8 @@ class Device extends java.lang.Object
     @java.lang.Override
     public java.lang.String toString()
     {
-        java.lang.String returnValue = this.getDeviceName();
-        if (null == returnValue) returnValue = super.toString();
-        return returnValue;
+        return org.wheatgenetics.javalib.Utils.replaceIfNull(
+            this.getDeviceName(), super.toString());
     }
 
     @java.lang.Override
@@ -129,7 +131,13 @@ class Device extends java.lang.Object
     boolean usbDeviceIsNull() { return null == this.usbDevice; }
 
     void setUsbDevice(final org.wheatgenetics.usb.Device device)
-    { if (null != device) this.usbDevice = device.usbDevice; }
+    {
+        if (null != device)
+        {
+            this.close();
+            this.usbDevice = device.usbDevice;
+        }
+    }
     // endregion
 
     int read(final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception
@@ -151,6 +159,9 @@ class Device extends java.lang.Object
 
                 if (null == this.usbDeviceConnection)
                 {
+                    if (null == this.usbManager)
+                        throw new org.wheatgenetics.usb.Device.UsbManagerIsNull();
+
                     this.usbDeviceConnection = this.usbManager.openDevice(this.usbDevice);
                     if (null == this.usbDeviceConnection)
                         if (this.usbManager.hasPermission(this.usbDevice))

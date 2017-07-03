@@ -12,7 +12,7 @@ package org.wheatgenetics.usb;
 class Scale extends org.wheatgenetics.usb.ExtraDevice
 {
     // region Types
-    static class Exception extends org.wheatgenetics.usb.Device.Exception
+    static abstract class Exception extends org.wheatgenetics.usb.Device.Exception
     { Exception(final java.lang.String message) { super(message); }}
 
     static class BadLength extends org.wheatgenetics.usb.Scale.Exception
@@ -49,16 +49,17 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     private double weight;
 
     Scale(@android.support.annotation.NonNull final android.app.Activity activity)
-    { super(activity, 513); }
+    { super(activity, /* productId => */ 513); }
 
     // region Overridden Methods
     @java.lang.Override
     int read(final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception
     {
-        final int length = super.read(buffer);
+        final int length = super.read(buffer);      // throws org.wheatgenetics.usb.Device.Exception
 
         if (6 == length)
         {
+            assert null != buffer;
             final byte report = buffer[0], status = buffer[1];
             if (3 == report)
                 switch (status)
@@ -86,7 +87,7 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     @java.lang.Override
     java.lang.String formattedRead() throws org.wheatgenetics.usb.Device.Exception
     {
-        super.formattedRead();
+        super.formattedRead();                      // throws org.wheatgenetics.usb.Device.Exception
         return java.lang.Double.toString(this.weight);
     }
     // endregion
