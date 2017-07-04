@@ -100,7 +100,7 @@ class DeviceReader extends java.lang.Object
     // region Package Methods
     // region Constructor Package Methods
     DeviceReader(
-    @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.Handler handler      ,
+    @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.Handler    handler   ,
     @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
     {
         super();
