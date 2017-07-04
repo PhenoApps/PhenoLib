@@ -90,7 +90,11 @@ public class ScaleExceptionAlertDialog extends java.lang.Object
                                 @java.lang.Override
                                 public void onClick(final android.content.DialogInterface dialog,
                                 final int which)
-                                { org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.ignore(); }
+                                {
+                                    org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.ignore();
+                                    assert null != dialog;
+                                    dialog.cancel();
+                                }
                             });
                 }
                 this.alertDialog = this.builder.create();
