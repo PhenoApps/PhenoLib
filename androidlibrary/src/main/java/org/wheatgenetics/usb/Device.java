@@ -12,10 +12,10 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.javalib.Utils
  */
 
-class Device extends java.lang.Object
+public class Device extends java.lang.Object
 {
     // region Types
-    static abstract class Exception extends java.lang.Exception
+    public static abstract class Exception extends java.lang.Exception
     { Exception(final java.lang.String message) { super(message); }}
 
     static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception

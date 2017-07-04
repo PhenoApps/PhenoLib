@@ -14,9 +14,9 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.usb.Device.UsbDeviceIsNull
  */
 
-class ScaleExceptionAlertDialog extends java.lang.Object
+public class ScaleExceptionAlertDialog extends java.lang.Object
 {
-    interface Handler
+    public interface Handler
     {
         public abstract void tryAgain();
         public abstract void ignore  ();
@@ -44,8 +44,8 @@ class ScaleExceptionAlertDialog extends java.lang.Object
     }
     // endregion
 
-    // region Package Methods
-    ScaleExceptionAlertDialog(
+    // region Public Methods
+    public ScaleExceptionAlertDialog(
     @android.support.annotation.NonNull final android.content.Context context,
     @android.support.annotation.NonNull
         final org.wheatgenetics.usb.ScaleExceptionAlertDialog.Handler handler)
@@ -59,7 +59,8 @@ class ScaleExceptionAlertDialog extends java.lang.Object
         this.handler = handler;
     }
 
-    void show(@android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
+    public void show(
+    @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     {
         if (null != e)
         {
