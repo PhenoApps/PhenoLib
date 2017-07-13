@@ -17,6 +17,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrarybuilder.R
  * org.wheatgenetics.changelog.ChangeLogAlertDialog
+ * org.wheatgenetics.javalib.Utils
  * org.wheatgenetics.usb.DeviceListTester
  * org.wheatgenetics.usb.DeviceReaderTester
  * org.wheatgenetics.usb.DeviceReaderTester.Publisher
@@ -99,10 +100,10 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     protected void onActivityResult(final int requestCode,
     final int resultCode, final android.content.Intent data)
     {
-        java.lang.String barcode = org.wheatgenetics.zxing.BarcodeScanner.parseActivityResult(
-            requestCode, resultCode, data);
-        if (null == barcode) barcode = "null";
-        this.setTextViewText(barcode);
+        this.setTextViewText(org.wheatgenetics.javalib.Utils.replaceIfNull(
+            org.wheatgenetics.zxing.BarcodeScanner.parseActivityResult(
+                requestCode, resultCode, data),
+            "null"));
     }
     // endregion
 
