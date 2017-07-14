@@ -24,16 +24,18 @@ class DeviceReader extends java.lang.Object
             throws org.wheatgenetics.usb.Device.Exception;
     }
 
-    static class Cancelled extends org.wheatgenetics.usb.Device.Exception
-    { Cancelled() { super("Cancelled."); }}
+    private static class Cancelled extends org.wheatgenetics.usb.Device.Exception
+    { private Cancelled() { super("Cancelled."); }}
 
     private static class AsyncTask extends android.os.AsyncTask<
     java.lang.Void, java.lang.String, org.wheatgenetics.usb.Device.Exception>
     {
+        // region Fields
         private final org.wheatgenetics.usb.DeviceReader.Handler    handler   ;
         private final org.wheatgenetics.usb.DeviceReader.DataSource dataSource;
 
         private java.lang.String oldData = "";
+        // endregion
 
         private AsyncTask(@android.support.annotation.NonNull
             final org.wheatgenetics.usb.DeviceReader.Handler handler,
@@ -49,18 +51,21 @@ class DeviceReader extends java.lang.Object
             this.dataSource = dataSource;
         }
 
+        // region Overridden Methods
         @java.lang.Override
         protected org.wheatgenetics.usb.Device.Exception doInBackground(
         final java.lang.Void... params)
         {
-            java.lang.String newData;
-            assert null != this.dataSource;
-            while (!this.isCancelled())
             {
-                try { newData = this.dataSource.formattedRead(); }
-                catch (final org.wheatgenetics.usb.Device.Exception e) { return e; }
-                if (!this.oldData.equals(newData)) this.publishProgress(newData);
-                android.os.SystemClock.sleep(/* ms => */ 500);
+                java.lang.String newData;
+                assert null != this.dataSource;
+                while (!this.isCancelled())
+                {
+                    try { newData = this.dataSource.formattedRead(); }
+                    catch (final org.wheatgenetics.usb.Device.Exception e) { return e; }
+                    if (!this.oldData.equals(newData)) this.publishProgress(newData);
+                    android.os.SystemClock.sleep(/* ms => */ 500);
+                }
             }
             return null;
         }
@@ -90,6 +95,7 @@ class DeviceReader extends java.lang.Object
             assert null != this.handler;
             this.handler.reportException(new org.wheatgenetics.usb.DeviceReader.Cancelled());
         }
+        // endregion
     }
     // endregion
 

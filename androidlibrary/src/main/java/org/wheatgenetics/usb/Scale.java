@@ -12,38 +12,39 @@ package org.wheatgenetics.usb;
 class Scale extends org.wheatgenetics.usb.ExtraDevice
 {
     // region Types
-    static abstract class Exception extends org.wheatgenetics.usb.Device.Exception
-    { Exception(final java.lang.String message) { super(message); }}
+    private static abstract class Exception extends org.wheatgenetics.usb.Device.Exception
+    { private Exception(final java.lang.String message) { super(message); }}
 
-    static class BadLength extends org.wheatgenetics.usb.Scale.Exception
-    { BadLength() { super("Length of data read() is not equal to 6."); }}
+    private static class BadLength extends org.wheatgenetics.usb.Scale.Exception
+    { private BadLength() { super("Length of data read() is not equal to 6."); }}
 
-    static class BadReport extends org.wheatgenetics.usb.Scale.Exception
+    private static class BadReport extends org.wheatgenetics.usb.Scale.Exception
     {
-        BadReport(final byte report, final byte status)
+        @android.annotation.SuppressLint("DefaultLocale")
+        private BadReport(final byte report, final byte status)
         {
             super(java.lang.String.format(
                 "report is %d (not 3) and status is %d.", report, status));
         }
     }
 
-    static class Fault extends org.wheatgenetics.usb.Scale.Exception
-    { Fault() { super("Scale reports FAULT!\n"); }}
+    private static class Fault extends org.wheatgenetics.usb.Scale.Exception
+    { private Fault() { super("Scale reports FAULT!\n"); }}
 
-    static class UnderZero extends org.wheatgenetics.usb.Scale.Exception
-    { UnderZero() { super("Scale reports Under Zero"); }}
+    private static class UnderZero extends org.wheatgenetics.usb.Scale.Exception
+    { private UnderZero() { super("Scale reports Under Zero"); }}
 
-    static class OverWeight extends org.wheatgenetics.usb.Scale.Exception
-    { OverWeight() { super("Scale reports Over Weight!"); }}
+    private static class OverWeight extends org.wheatgenetics.usb.Scale.Exception
+    { private OverWeight() { super("Scale reports Over Weight!"); }}
 
-    static class CalibrationNeeded extends org.wheatgenetics.usb.Scale.Exception
-    { CalibrationNeeded() { super("Scale reports Calibration Needed!"); }}
+    private static class CalibrationNeeded extends org.wheatgenetics.usb.Scale.Exception
+    { private CalibrationNeeded() { super("Scale reports Calibration Needed!"); }}
 
-    static class RezeroingNeeded extends org.wheatgenetics.usb.Scale.Exception
-    { RezeroingNeeded() { super("Scale reports Re-zeroing Needed!\n"); }}
+    private static class RezeroingNeeded extends org.wheatgenetics.usb.Scale.Exception
+    { private RezeroingNeeded() { super("Scale reports Re-zeroing Needed!\n"); }}
 
-    static class UnknownStatus extends org.wheatgenetics.usb.Scale.Exception
-    { UnknownStatus() { super("Unknown status code"); }}
+    private static class UnknownStatus extends org.wheatgenetics.usb.Scale.Exception
+    { private UnknownStatus() { super("Unknown status code"); }}
     // endregion
 
     private double weight;

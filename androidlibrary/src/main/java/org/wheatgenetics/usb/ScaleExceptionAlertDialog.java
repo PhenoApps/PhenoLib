@@ -101,15 +101,16 @@ public class ScaleExceptionAlertDialog extends java.lang.Object
                 assert null != this.alertDialog;
             }
 
-            java.lang.String message;
-            if (e instanceof org.wheatgenetics.usb.Device.UsbDeviceIsNull)
             {
-                assert null != this.context;
-                message = e.getMessage() + "  " + this.context.getString(
-                    org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogMessage);
+                java.lang.String message = e.getMessage();
+                if (e instanceof org.wheatgenetics.usb.Device.UsbDeviceIsNull)
+                {
+                    assert null != this.context;
+                    message += "  " + this.context.getString(
+                        org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogMessage);
+                }
+                this.alertDialog.setMessage(message);
             }
-            else message = e.getMessage();
-            this.alertDialog.setMessage(message);
 
             this.alertDialog.show();
         }

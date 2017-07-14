@@ -57,10 +57,7 @@ class DeviceList extends java.lang.Object
 
     // region Package Methods
     int size()
-    {
-        assert null != this.deviceArrayList;
-        return this.deviceArrayList.size();
-    }
+    { return null == this.deviceArrayList ? 0 : this.deviceArrayList.size(); }
 
     java.lang.String information()
     {
@@ -81,10 +78,14 @@ class DeviceList extends java.lang.Object
 
     org.wheatgenetics.usb.Device get(final int productId)
     {
-        assert null != this.deviceArrayList;
-        for (final org.wheatgenetics.usb.Device device: this.deviceArrayList)
-            if (device.productIdsAreEqual(productId)) return device;
-        return null;
+        if (null == this.deviceArrayList)
+            return null;
+        else
+        {
+            for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
+                if (device.productIdsAreEqual(productId)) return device;
+            return null;
+        }
     }
     // endregion
 }

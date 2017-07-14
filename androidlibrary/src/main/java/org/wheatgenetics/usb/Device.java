@@ -2,6 +2,7 @@ package org.wheatgenetics.usb;
 
 /**
  * Uses:
+ * android.annotation.SuppressLint
  * android.hardware.usb.UsbDevice
  * android.hardware.usb.UsbDeviceConnection
  * android.hardware.usb.UsbEndpoint
@@ -19,23 +20,27 @@ public class Device extends java.lang.Object
     { Exception(final java.lang.String message) { super(message); }}
 
     static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception
-    { UsbDeviceIsNull() { super("Device.this.usbDevice is null."); }}
+    { private UsbDeviceIsNull() { super("Device.this.usbDevice is null."); }}
 
-    static class GetInterfaceFailed extends org.wheatgenetics.usb.Device.Exception
-    { GetInterfaceFailed() { super("Device.this.usbDevice.getInterface(0) returned null."); }}
-
-    static class UsbManagerIsNull extends org.wheatgenetics.usb.Device.Exception
-    { UsbManagerIsNull() { super("Device.this.usbManager is null."); }}
-
-    static class OpenDeviceFailed extends org.wheatgenetics.usb.Device.Exception
+    private static class GetInterfaceFailed extends org.wheatgenetics.usb.Device.Exception
     {
-        OpenDeviceFailed() { super("Device.this.usbManager.openDevice() returned null."); }
-        OpenDeviceFailed(final java.lang.String message) { super(message); }
+        private GetInterfaceFailed()
+        { super("Device.this.usbDevice.getInterface(0) returned null."); }
     }
 
-    static class OpenDeviceLacksPermission extends org.wheatgenetics.usb.Device.OpenDeviceFailed
+    private static class UsbManagerIsNull extends org.wheatgenetics.usb.Device.Exception
+    { private UsbManagerIsNull() { super("Device.this.usbManager is null."); }}
+
+    private static class OpenDeviceFailed extends org.wheatgenetics.usb.Device.Exception
     {
-        OpenDeviceLacksPermission()
+        private OpenDeviceFailed(final java.lang.String message) { super(message); }
+        private OpenDeviceFailed() { super("Device.this.usbManager.openDevice() returned null."); }
+    }
+
+    private static class OpenDeviceLacksPermission
+    extends org.wheatgenetics.usb.Device.OpenDeviceFailed
+    {
+        private OpenDeviceLacksPermission()
         { super("Device.this.usbManager.openDevice() lacks permission."); }
     }
     // endregion
@@ -105,6 +110,7 @@ public class Device extends java.lang.Object
 
     // region Package Methods
     // region DeviceList Package Methods
+    @android.annotation.SuppressLint("DefaultLocale")
     java.lang.String information()
     {
         if (this.usbDeviceIsNull())
@@ -148,16 +154,17 @@ public class Device extends java.lang.Object
                 throw new org.wheatgenetics.usb.Device.UsbDeviceIsNull();
             else
             {
-                if (null == this.usbInterface)
+                if (null == this.usbInterface)                                         // Lazy load.
                 {
                     this.usbInterface = this.usbDevice.getInterface(0);
                     if (null == this.usbInterface)
                         throw new org.wheatgenetics.usb.Device.GetInterfaceFailed();
                 }
 
-                if (null == this.usbEndpoint) this.usbEndpoint = this.usbInterface.getEndpoint(0);
+                if (null == this.usbEndpoint)                                          // Lazy load.
+                    this.usbEndpoint = this.usbInterface.getEndpoint(0);
 
-                if (null == this.usbDeviceConnection)
+                if (null == this.usbDeviceConnection)                                  // Lazy load.
                 {
                     if (null == this.usbManager)
                         throw new org.wheatgenetics.usb.Device.UsbManagerIsNull();
@@ -174,12 +181,13 @@ public class Device extends java.lang.Object
                 }
 
                 return this.usbDeviceConnection.bulkTransfer(this.usbEndpoint, buffer,
-                    null == buffer ? 0 : buffer.length, /* timeout => */ 2000);
+                    null == buffer ? 0 : buffer.length, /* timeout => */ 2000 /* milliseconds */);
             }
         }
         catch (final org.wheatgenetics.usb.Device.Exception e) { this.close(); throw e; }
     }
 
+    @android.annotation.SuppressLint("DefaultLocale")
     java.lang.String formattedRead() throws org.wheatgenetics.usb.Device.Exception
     {
         int              length     ;
