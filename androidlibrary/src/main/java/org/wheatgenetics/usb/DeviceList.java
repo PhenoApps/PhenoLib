@@ -76,16 +76,20 @@ class DeviceList extends java.lang.Object
         return result;
     }
 
-    org.wheatgenetics.usb.Device get(final int productId)
+    org.wheatgenetics.usb.Device get(final int vendorId, final int productIds[])
     {
-        if (null == this.deviceArrayList)
+        if (null == this.deviceArrayList || null == productIds)
             return null;
         else
-        {
-            for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
-                if (device.productIdsAreEqual(productId)) return device;
-            return null;
-        }
+            if (productIds.length <= 0)
+                return null;
+            else
+            {
+                for (final int productId: productIds)
+                    for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
+                        if (device.idsAreEqual(vendorId, productId)) return device;
+                return null;
+            }
     }
     // endregion
 }

@@ -14,7 +14,7 @@ package org.wheatgenetics.usb;
 class ExtraDevice extends org.wheatgenetics.usb.Device
 {
     ExtraDevice(@android.support.annotation.NonNull final android.app.Activity activity,
-    final int productId)
+    final int vendorId, final int productIds[])
     {
         super(
             /* usbDevice => */ (android.hardware.usb.UsbDevice)
@@ -24,6 +24,6 @@ class ExtraDevice extends org.wheatgenetics.usb.Device
                 android.content.Context.USB_SERVICE));
 
         if (this.usbDeviceIsNull())
-            this.setUsbDevice(new org.wheatgenetics.usb.DeviceList(activity).get(productId));
+            new org.wheatgenetics.usb.DeviceList(activity).get(vendorId, productIds);
     }
 }

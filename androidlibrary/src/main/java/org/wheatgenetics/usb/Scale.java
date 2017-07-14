@@ -47,10 +47,20 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     { private UnknownStatus() { super("Unknown status code"); }}
     // endregion
 
+    // region Constants
+    static         final int ELANEVendorId            = 31612                                 ;
+    private static final int ELANEUSBPlus5kgProductId =   513, ELANEPS2000USB5iProductId = 519;
+    static         final int ELANEProductIds[]        =
+        {ELANEPS2000USB5iProductId, ELANEUSBPlus5kgProductId};
+    // endregion
+
     private double weight;
 
     Scale(@android.support.annotation.NonNull final android.app.Activity activity)
-    { super(activity, /* productId => */ 513); }
+    {
+        super(activity, org.wheatgenetics.usb.Scale.ELANEVendorId,
+            org.wheatgenetics.usb.Scale.ELANEProductIds);
+    }
 
     // region Overridden Methods
     @java.lang.Override
@@ -68,8 +78,13 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
                     case 1: throw new org.wheatgenetics.usb.Scale.Fault();
 
                     case 2: case 3: case 4:                  // 3 == weighing;  2, 4 == final weight
-                        final byte LSB = buffer[4], MSB = buffer[5];
-                        this.weight = MSB * 256.0 + LSB;
+                        {
+                            final byte LSB = buffer[4], MSB = buffer[5];
+                            this.weight = MSB * 256.0 + LSB;
+                        }
+                        if (this.idsAreEqual(org.wheatgenetics.usb.Scale.ELANEVendorId,
+                        org.wheatgenetics.usb.Scale.ELANEPS2000USB5iProductId))
+                            this.weight /= 10.0;
                         break;
 
                     case 5 : throw new org.wheatgenetics.usb.Scale.UnderZero        ();

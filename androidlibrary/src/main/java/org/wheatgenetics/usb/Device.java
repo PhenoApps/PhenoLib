@@ -58,6 +58,9 @@ public class Device extends java.lang.Object
     private java.lang.String getDeviceName()
     { return this.usbDeviceIsNull() ? null : this.usbDevice.getDeviceName(); }
 
+    private int getVendorId()
+    { return this.usbDeviceIsNull() ? 0 : this.usbDevice.getVendorId(); }
+
     private int getProductId()
     { return this.usbDeviceIsNull() ? 0 : this.usbDevice.getProductId(); }
 
@@ -118,18 +121,19 @@ public class Device extends java.lang.Object
         else
             return java.lang.String.format("name=%s id=%d productId=%d vendorId=%d " +
                     "class=%d subClass=%d protocol=%d interfaceCount=%d",
-                this.getDeviceName()              , this.usbDevice.getDeviceId      (),
-                this.getProductId ()              , this.usbDevice.getVendorId      (),
+                this.getDeviceName              (), this.usbDevice.getDeviceId      (),
+                this.getProductId               (), this.getVendorId                (),
                 this.usbDevice.getDeviceClass   (), this.usbDevice.getDeviceSubclass(),
                 this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
     }
 
-    boolean productIdsAreEqual(final int productId)
+    boolean idsAreEqual(final int vendorId, final int productId)
     {
         if (this.usbDeviceIsNull())
             return false;
         else
-            return 0 == productId ? false : this.getProductId() == productId;
+            return 0 == vendorId || 0 == productId ? false :
+                this.getVendorId() == vendorId && this.getProductId() == productId;
     }
     // endregion
 
