@@ -27,6 +27,7 @@ public class OtherAppsAlertDialog extends java.lang.Object
 {
     private static class ListView extends android.widget.ListView
     {
+        // region Types
         private static class ArrayAdapter extends android.widget.ArrayAdapter<java.lang.String>
         {
             private final org.wheatgenetics.about.OtherApps otherApps;
@@ -73,46 +74,48 @@ public class OtherAppsAlertDialog extends java.lang.Object
                     final android.widget.ImageView imageView =
                         (android.widget.ImageView) appView.findViewById(
                             org.wheatgenetics.androidlibrary.R.id.otherAppsImageView);
-                    assert null != this.otherApps;
-                    assert null != imageView     ;
+                    assert null != imageView;
                     imageView.setImageResource(this.otherApps.getResIds()[position]);
                 }
                 return appView;
             }
         }
 
-        private interface Handler
-        { public abstract void handleItemClick(java.lang.String uriString); }
-
         private static class OnItemClickListener extends java.lang.Object
         implements android.widget.AdapterView.OnItemClickListener
         {
-            private final org.wheatgenetics.about.OtherApps                             otherApps;
-            private final org.wheatgenetics.about.OtherAppsAlertDialog.ListView.Handler handler  ;
+            // region Fields
+            private final android.content.Context           context  ;
+            private final org.wheatgenetics.about.OtherApps otherApps;
+            // endregion
 
-            OnItemClickListener(@android.support.annotation.NonNull
-                final org.wheatgenetics.about.OtherAppsAlertDialog.ListView.Handler handler,
-            @android.support.annotation.NonNull org.wheatgenetics.about.OtherApps otherApps)
+            OnItemClickListener(
+            @android.support.annotation.NonNull final android.content.Context           context  ,
+            @android.support.annotation.NonNull final org.wheatgenetics.about.OtherApps otherApps)
             {
                 super();
 
+                assert null != context;
+                this.context = context;
+
                 assert null != otherApps;
                 this.otherApps = otherApps;
-
-                assert null != handler;
-                this.handler = handler;
             }
 
             @java.lang.Override
             public void onItemClick(final android.widget.AdapterView<?> parent,
             final android.view.View view, final int position, final long id)
             {
-                assert null != this.handler;
-                this.handler.handleItemClick(this.otherApps.getUris()[position]);
+                assert null != this.otherApps;
+                assert null != this.context  ;
+                this.context.startActivity(new android.content.Intent(
+                    android.content.Intent.ACTION_VIEW                       ,
+                    android.net.Uri.parse(this.otherApps.getUris()[position])));
             }
         }
+        // endregion
 
-        public ListView(final android.content.Context context,
+        private ListView(final android.content.Context context,
         @android.support.annotation.NonNull org.wheatgenetics.about.OtherApps otherApps)
         {
             super(context);
@@ -123,26 +126,19 @@ public class OtherAppsAlertDialog extends java.lang.Object
                 context, otherApps));
             this.setOnItemClickListener(
                 new org.wheatgenetics.about.OtherAppsAlertDialog.ListView.OnItemClickListener(
-                    new org.wheatgenetics.about.OtherAppsAlertDialog.ListView.Handler()
-                    {
-                        @java.lang.Override
-                        public void handleItemClick(final java.lang.String uriString)
-                        {
-                            org.wheatgenetics.about.OtherAppsAlertDialog.ListView.
-                                this.getContext().startActivity(new android.content.Intent(
-                                    android.content.Intent.ACTION_VIEW,
-                                    android.net.Uri.parse(uriString)  ));
-                        }
-                    }, otherApps));
+                    context, otherApps));
         }
     };
 
+    // region Fields
     private final android.content.Context           context  ;
     private final org.wheatgenetics.about.OtherApps otherApps;
 
     private android.app.AlertDialog.Builder builder     = null;
     private android.app.AlertDialog         alertDialog = null;
+    // endregion
 
+    // region Public Methods
     public OtherAppsAlertDialog(
     @android.support.annotation.NonNull final android.content.Context           context  ,
     @android.support.annotation.NonNull final org.wheatgenetics.about.OtherApps otherApps)
@@ -175,4 +171,5 @@ public class OtherAppsAlertDialog extends java.lang.Object
         }
         this.alertDialog.show();
     }
+    // endregion
 }

@@ -14,6 +14,7 @@ public class OtherApps extends java.lang.Object
         private Index(final int position) { this.position = position; }
     }
 
+    // region Constants
     private static final java.lang.String allTexts[] =
         {"Field Book", "Inventory", "Coordinate", "1KK"};
     private static final java.lang.Integer allResIds[] = {
@@ -26,24 +27,32 @@ public class OtherApps extends java.lang.Object
         "http://wheatgenetics.org/apps"                                      ,
         "http://wheatgenetics.org/apps"                                      ,
         "http://wheatgenetics.org/apps"                                      };
+    // endregion
 
+    // region Fields
     private final java.lang.String  texts [];
     private final java.lang.Integer resIds[];
     private final java.lang.String  uris  [];
+    // endregion
 
     private static <T> T[] removeElement(@android.support.annotation.NonNull
     final T inputArray[], final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     {
-        assert null != inputArray;
-        final T outputArray[] = java.util.Arrays.copyOf(inputArray, inputArray.length - 1);
+        if (null == inputArray)
+            return null;
+        else
         {
-            int i = 0;
-            for (final org.wheatgenetics.about.OtherApps.Index index :
-            org.wheatgenetics.about.OtherApps.Index.values())
-                if (suppressIndex != index && org.wheatgenetics.about.OtherApps.Index.NONE != index)
-                    outputArray[i++] = inputArray[index.position];
+            final T outputArray[] = java.util.Arrays.copyOf(inputArray, inputArray.length - 1);
+            {
+                int i = 0;
+                for (final org.wheatgenetics.about.OtherApps.Index index :
+                org.wheatgenetics.about.OtherApps.Index.values())
+                    if (org.wheatgenetics.about.OtherApps.Index.NONE != index
+                    &&  suppressIndex                                != index)
+                        outputArray[i++] = inputArray[index.position];
+            }
+            return outputArray;
         }
-        return outputArray;
     }
 
     public OtherApps(final org.wheatgenetics.about.OtherApps.Index suppressIndex)
@@ -67,7 +76,9 @@ public class OtherApps extends java.lang.Object
         }
     }
 
+    // region Package Methods
     java.lang.String [] getTexts () { return this.texts ; }
     java.lang.Integer[] getResIds() { return this.resIds; }
     java.lang.String [] getUris  () { return this.uris  ; }
+    // endregion
 }
