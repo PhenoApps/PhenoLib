@@ -27,7 +27,8 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     /**
      * Meant to be overridden.
      */
-    void validateStringKey(@android.support.annotation.NonNull final java.lang.String key) {};
+    void validateStringKey(@android.support.annotation.NonNull final java.lang.String key)
+    { throw new java.lang.AssertionError(key + " is not a valid key."); }
 
     java.lang.String getString(@android.support.annotation.NonNull final java.lang.String key,
     final boolean validateKey)
