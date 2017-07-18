@@ -39,7 +39,7 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     }
 
     java.lang.String getString(@android.support.annotation.NonNull final java.lang.String key)
-    { return this.getString(key, false); }
+    { return this.getString(key, /* validateKey => */ false); }
 
     void setString(@android.support.annotation.NonNull final java.lang.String key,
     @android.support.annotation.NonNull final java.lang.String oldValue,
@@ -62,7 +62,8 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
     void setString(@android.support.annotation.NonNull final java.lang.String key,
     @android.support.annotation.NonNull final java.lang.String oldValue,
-    final java.lang.String newValue) { this.setString(key, oldValue, newValue, false); }
+    final java.lang.String newValue)
+    { this.setString(key, oldValue, newValue, /* validateKey => */ false); }
     // endregion
 
     // region Integer Package Methods
@@ -81,6 +82,27 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
             assert null != editor;
             editor.putInt(key, newInt);
+            editor.apply();
+        }
+    }
+    // endregion
+
+    // region Long Package Methods
+    long getLong(@android.support.annotation.NonNull final java.lang.String key)
+    {
+        assert null != this.sharedPreferences;
+        return this.sharedPreferences.getLong(key, -1);
+    }
+
+    void setLong(@android.support.annotation.NonNull final java.lang.String key, final long newLong)
+    {
+        if (this.getLong(key) != newLong)
+        {
+            assert null != this.sharedPreferences;
+            final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
+
+            assert null != editor;
+            editor.putLong(key, newLong);
             editor.apply();
         }
     }
