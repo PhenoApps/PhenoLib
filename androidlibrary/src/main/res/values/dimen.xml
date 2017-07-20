@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="changeLogAlertDialogTextSize">14sp</dimen>
+    <dimen name="aboutAlertDialogTextSize">14sp</dimen>
 </resources>
