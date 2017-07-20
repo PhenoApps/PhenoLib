@@ -19,6 +19,7 @@ package org.wheatgenetics.about;
  * android.widget.TextView
  *
  * org.wheatgenetics.about.OtherApps
+ * org.wheatgenetics.about.OtherApps.Index
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
  */
@@ -116,12 +117,15 @@ public class OtherAppsAlertDialog extends java.lang.Object
         // endregion
 
         private ListView(final android.content.Context context,
-        @android.support.annotation.NonNull org.wheatgenetics.about.OtherApps otherApps)
+        @android.support.annotation.NonNull org.wheatgenetics.about.OtherApps.Index suppressIndex)
         {
             super(context);
 
             this.setDivider      (null);
             this.setDividerHeight(   0);
+
+            final org.wheatgenetics.about.OtherApps otherApps =
+                new org.wheatgenetics.about.OtherApps(suppressIndex);
             this.setAdapter(new org.wheatgenetics.about.OtherAppsAlertDialog.ListView.ArrayAdapter(
                 context, otherApps));
             this.setOnItemClickListener(
@@ -131,8 +135,8 @@ public class OtherAppsAlertDialog extends java.lang.Object
     };
 
     // region Fields
-    private final android.content.Context           context  ;
-    private final org.wheatgenetics.about.OtherApps otherApps;
+    private final android.content.Context                 context      ;
+    private final org.wheatgenetics.about.OtherApps.Index suppressIndex;
 
     private android.app.AlertDialog.Builder builder     = null;
     private android.app.AlertDialog         alertDialog = null;
@@ -140,16 +144,17 @@ public class OtherAppsAlertDialog extends java.lang.Object
 
     // region Public Methods
     public OtherAppsAlertDialog(
-    @android.support.annotation.NonNull final android.content.Context           context  ,
-    @android.support.annotation.NonNull final org.wheatgenetics.about.OtherApps otherApps)
+    @android.support.annotation.NonNull final android.content.Context context,
+    @android.support.annotation.NonNull
+    final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     {
         super();
 
         assert null != context;
         this.context = context;
 
-        assert null != otherApps;
-        this.otherApps = otherApps;
+        assert null != suppressIndex;
+        this.suppressIndex = suppressIndex;
     }
 
     public void show()
@@ -162,7 +167,7 @@ public class OtherAppsAlertDialog extends java.lang.Object
                 this.builder.setCancelable(true)
                     .setTitle(org.wheatgenetics.androidlibrary.R.string.otherAppsAlertDialogTitle)
                     .setView (new org.wheatgenetics.about.OtherAppsAlertDialog.ListView(
-                        this.context, this.otherApps))
+                        this.context, this.suppressIndex))
                     .setNegativeButton(org.wheatgenetics.androidlibrary.R.string.okButtonText,
                         org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListener());
             }

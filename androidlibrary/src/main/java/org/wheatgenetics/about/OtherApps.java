@@ -2,6 +2,8 @@ package org.wheatgenetics.about;
 
 /**
  * Uses:
+ * android.support.annotation.NonNull
+ *
  * org.wheatgenetics.androidlibrary.R
  */
 
@@ -55,7 +57,7 @@ public class OtherApps extends java.lang.Object
         }
     }
 
-    public OtherApps(final org.wheatgenetics.about.OtherApps.Index suppressIndex)
+    OtherApps(final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     {
         super();
 
