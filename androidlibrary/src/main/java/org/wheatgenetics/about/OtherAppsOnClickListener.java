@@ -10,7 +10,7 @@ package org.wheatgenetics.about;
  * org.wheatgenetics.about.OtherAppsAlertDialog
  */
 
-class OtherAppsOnClickListener extends java.lang.Object
+public class OtherAppsOnClickListener extends java.lang.Object
 implements android.view.View.OnClickListener
 {
     // region Fields
@@ -27,7 +27,7 @@ implements android.view.View.OnClickListener
         this.otherAppsAlertDialog.show();
     }
 
-    OtherAppsOnClickListener(final android.content.Context context,
+    public OtherAppsOnClickListener(final android.content.Context context,
     final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     {
         super();
