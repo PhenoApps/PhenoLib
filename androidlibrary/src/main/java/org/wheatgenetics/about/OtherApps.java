@@ -25,10 +25,10 @@ public class OtherApps extends java.lang.Object
         org.wheatgenetics.androidlibrary.R.drawable.ic_coordinate,
         org.wheatgenetics.androidlibrary.R.drawable.ic_1kk       };
     private static final java.lang.String allUris[] = {
-        "https://play.google.com/store/apps/details?id=com.fieldbook.tracker",
-        "http://wheatgenetics.org/apps"                                      ,
-        "http://wheatgenetics.org/apps"                                      ,
-        "http://wheatgenetics.org/apps"                                      };
+        "https://play.google.com/store/apps/details?id=com.fieldbook.tracker"       ,
+        "https://play.google.com/store/apps/details?id=org.wheatgenetics.inventory" ,
+        "https://play.google.com/store/apps/details?id=org.wheatgenetics.coordinate",
+        "https://play.google.com/store/apps/details?id=org.wheatgenetics.onekk"     };
     // endregion
 
     // region Fields
