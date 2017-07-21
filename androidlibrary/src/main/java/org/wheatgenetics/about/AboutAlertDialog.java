@@ -112,15 +112,17 @@ public class AboutAlertDialog extends java.lang.Object
 
                             private void execute()
                             {
-                                if (null != this.msgs)
+                                if (null != this.msgs) if (this.msgs.length > 0)
                                 {
-                                    final int length = this.msgs.length;
-                                    if (length >= 1 && length <= 3)
+                                    assert null != this.aboutView;
+                                    int i = 1;
+                                    for (final java.lang.String msg: this.msgs) if (i > 3)
+                                        break;
+                                    else
                                     {
-                                        assert null != this.aboutView;
-                                        int i = 1, msgTextViewId = 0;
-                                        for (final java.lang.String msg: this.msgs)
+                                        android.widget.TextView msgTextView;
                                         {
+                                            int msgTextViewId;
                                             switch (i++)
                                             {
                                                 case 1: msgTextViewId = org.wheatgenetics.
@@ -129,14 +131,13 @@ public class AboutAlertDialog extends java.lang.Object
                                                     androidlibrary.R.id.aboutMsg2TextView; break;
                                                 case 3: msgTextViewId = org.wheatgenetics.
                                                     androidlibrary.R.id.aboutMsg3TextView; break;
+                                                default: msgTextViewId = 0; return;
                                             }
-
-                                            final android.widget.TextView msgTextView =
-                                                (android.widget.TextView)
-                                                    this.aboutView.findViewById(msgTextViewId);
-                                            assert null != msgTextView;
-                                            msgTextView.setText(msg);
+                                            msgTextView = (android.widget.TextView)
+                                                this.aboutView.findViewById(msgTextViewId);
                                         }
+                                        assert null != msgTextView;
+                                        msgTextView.setText(msg);
                                     }
                                 }
                             }
