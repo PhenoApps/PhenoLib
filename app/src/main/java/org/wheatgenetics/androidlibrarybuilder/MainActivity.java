@@ -19,7 +19,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.about.OtherApps.Index
  * org.wheatgenetics.about.OtherAppsAlertDialog
  * org.wheatgenetics.androidlibrary.R
- * org.wheatgenetics.androidlibrarybuilder.R
+ * org.wheatgenetics.androidlibrary.Utils
  * org.wheatgenetics.changelog.ChangeLogAlertDialog
  * org.wheatgenetics.javalib.Utils
  * org.wheatgenetics.usb.DeviceListTester
@@ -30,15 +30,16 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.usb.ScaleReaderTester
  * org.wheatgenetics.usb.ScaleReaderTester.Publisher
  * org.wheatgenetics.zxing.BarcodeScanner
+ *
+ * org.wheatgenetics.androidlibrarybuilder.R
  */
 
 public class MainActivity extends android.support.v7.app.AppCompatActivity
 {
     // region Fields
     private android.widget.TextView textView = null;
-    private android.widget.Button
-        otherAppsButton = null, deviceListButton  = null,
-        scaleButton     = null, scaleReaderButton = null;
+    private android.widget.Button toastButton = null, otherAppsButton   = null,
+        deviceListButton = null,  scaleButton = null, scaleReaderButton = null;
 
     private org.wheatgenetics.zxing.BarcodeScanner           barcodeScanner       = null;
     private org.wheatgenetics.changelog.ChangeLogAlertDialog changeLogAlertDialog = null;
@@ -50,8 +51,9 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     private org.wheatgenetics.usb.DeviceReaderTester         deviceReaderTester   = null;
     private org.wheatgenetics.usb.ScaleReaderTester          scaleReaderTester    = null;
 
-    private int otherAppsButtonClickCount = 0, deviceListButtonClickCount = 0,
-        scaleButtonClickCount = 0, scaleReaderButtonClickCount = 0;
+    private int toastButtonClickCount = 0, otherAppsButtonClickCount = 0,
+        deviceListButtonClickCount    = 0, scaleButtonClickCount     = 0,
+        scaleReaderButtonClickCount   = 0;
     // endregion
 
     // region Private Methods
@@ -91,6 +93,12 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     }
 
 
+    private void setToastButtonText(final java.lang.String text)
+    {
+        org.wheatgenetics.androidlibrarybuilder.MainActivity.setButtonText(
+            this.toastButton, text);
+    }
+
     private void setOtherAppsButtonText(final java.lang.String text)
     {
         org.wheatgenetics.androidlibrarybuilder.MainActivity.setButtonText(
@@ -116,8 +124,8 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     }
 
 
-    private void resetOtherAppsButtonText() { this.setOtherAppsButtonText("Other Apps"); }
-
+    private void resetToastButtonText     () { this.setToastButtonText     ("Short Toast"      ); }
+    private void resetOtherAppsButtonText () { this.setOtherAppsButtonText ("Other Apps"       ); }
     private void resetDeviceListButtonText() { this.setDeviceListButtonText("DeviceList.size()"); }
 
     private void resetScaleButtonText()
@@ -139,6 +147,10 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
         this.textView = (android.widget.TextView)
             this.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.textView);
 
+
+        this.toastButton = (android.widget.Button)
+            this.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.toastButton);
+        this.resetToastButtonText();
 
         this.otherAppsButton = (android.widget.Button)
             this.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.otherAppsButton);
@@ -192,8 +204,22 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     // endregion
 
     // region Event Handlers
-    public void onChangeLogButtonClick(final android.view.View view)
-    { this.showChangeLog(); }
+    public void onToastButtonClick(final android.view.View view)
+    {
+        switch (this.toastButtonClickCount)
+        {
+            case 0: org.wheatgenetics.androidlibrary.Utils.showShortToast(this, "short"); break;
+            case 1: org.wheatgenetics.androidlibrary.Utils.showLongToast (this, "long" ); break;
+            case 2: this.showChangeLog();                                                 break;
+        }
+
+        switch (this.toastButtonClickCount)
+        {
+            case 0 : this.toastButtonClickCount++  ; this.setToastButtonText("Long Toast"); break;
+            case 1 : this.toastButtonClickCount++  ; this.setToastButtonText("ChangeLog" ); break;
+            default: this.toastButtonClickCount = 0; this.resetToastButtonText();           break;
+        }
+    }
 
     public void onOtherAppsButtonClick(final android.view.View view)
     {
