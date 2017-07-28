@@ -33,7 +33,6 @@ package org.wheatgenetics.androidlibrarybuilder;
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  */
-
 public class MainActivity extends android.support.v7.app.AppCompatActivity
 {
     // region Fields
