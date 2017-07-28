@@ -5,9 +5,13 @@ package org.wheatgenetics.androidlibrary;
  * android.content.Context
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
+ * android.content.Intent
+ * android.media.MediaScannerConnection
+ * android.net.Uri
  * android.widget.Toast
+ *
+ * org.wheatgenetics.javalib.Utils
  */
-
 public class Utils extends java.lang.Object
 {
     private static android.content.DialogInterface.OnClickListener
@@ -68,4 +72,21 @@ public class Utils extends java.lang.Object
             context, text, android.widget.Toast.LENGTH_SHORT);
     }
     // endregion
+
+    public static void makeFileDiscoverable(final android.content.Context context,
+    final java.io.File file)
+    {
+        if (file != null)
+        {
+            android.media.MediaScannerConnection.scanFile(
+                /* context   => */ context                                                    ,
+                /* paths     => */ org.wheatgenetics.javalib.Utils.stringArray(file.getPath()),
+                /* mimeTypes => */ null                                                       ,
+                /* callback  => */ null                                                       );
+            assert null != context;
+            context.sendBroadcast(new android.content.Intent(
+                /* action => */ android.content.Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                /* uri    => */ android.net.Uri.fromFile(file)                       ));
+        }
+    }
 }
