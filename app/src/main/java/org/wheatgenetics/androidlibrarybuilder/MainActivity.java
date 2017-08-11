@@ -78,9 +78,9 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
             this.changeLogAlertDialog = new org.wheatgenetics.changelog.ChangeLogAlertDialog(
                 /* context                => */ this,
                 /* changeLogRawResourceId => */
-                org.wheatgenetics.androidlibrarybuilder.R.raw.changelog);
+                    org.wheatgenetics.androidlibrarybuilder.R.raw.changelog);
         try                                 { this.changeLogAlertDialog.show(); }
-        catch (final java.io.IOException e) { /* Don't show. */                 }
+        catch (final java.io.IOException e) { /* Don't show.                 */ }
     }
 
     // region Button Private Methods
@@ -245,10 +245,9 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
                     catch (final android.content.pm.PackageManager.NameNotFoundException e)
                     { versionName = org.wheatgenetics.javalib.Utils.adjust(null); }
 
-                    this.aboutAlertDialog = new org.wheatgenetics.about.AboutAlertDialog(
-                        (android.content.Context) this, "About Android Library Builder",
-                        versionName, new java.lang.String[] {
-                            "msg1: test (http://www.google.com/ )"  ,
+                    this.aboutAlertDialog = new org.wheatgenetics.about.AboutAlertDialog(this,
+                        "About Android Library Builder", versionName, new java.lang.String[] {
+                            "msg1: test (http://www.google.com/ )" ,
                             "msg2: (http://www.google.com/) test"  ,
                             "msg3: abc http://www.google.com/ def" },
                         org.wheatgenetics.about.OtherApps.Index.INVENTORY,
@@ -388,7 +387,7 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
 
         switch (this.scaleReaderButtonClickCount)
         {
-            case 0 : this.resetScaleReaderButtonText(); break;
+            case 0 : this.resetScaleReaderButtonText()                     ; break;
             case 1 : this.setScaleReaderButtonText("DeviceReader.cancel()"); break;
             case 2 : this.setScaleReaderButtonText("ScaleReader.execute()"); break;
             case 3 : this.setScaleReaderButtonText("ScaleReader.cancel()" ); break;
