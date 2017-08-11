@@ -11,7 +11,6 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.usb.DeviceReader.Handler
  * org.wheatgenetics.usb.Scale
  */
-
 public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
 {
     // region Fields
@@ -36,7 +35,6 @@ public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
     {
         super(handler);
 
-        assert null != activity;
         this.activity = activity;
 
         this.setDataSource(new org.wheatgenetics.usb.DeviceReader.DataSource()

@@ -17,7 +17,6 @@ package org.wheatgenetics.about;
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
  */
-
 public class AboutAlertDialog extends java.lang.Object
 {
     // region Fields
@@ -43,21 +42,14 @@ public class AboutAlertDialog extends java.lang.Object
     {
         super();
 
-        assert null != context;
         this.context = context;
 
-        assert null != title;
-        this.title = title;
-
-        assert null != versionName;
+        this.title       = title      ;
         this.versionName = versionName;
-
-        assert null != msgs;
-        this.msgs = msgs;
+        this.msgs        = msgs       ;
 
         this.suppressIndex = suppressIndex;
 
-        assert null != versionOnClickListener;
         this.versionOnClickListener = versionOnClickListener;
     }
 
@@ -71,7 +63,8 @@ public class AboutAlertDialog extends java.lang.Object
                 {
                     final android.view.View aboutView =
                         android.view.LayoutInflater.from(this.context).inflate(
-                            org.wheatgenetics.androidlibrary.R.layout.about_alert_dialog            ,
+                            /* resource => */
+                                org.wheatgenetics.androidlibrary.R.layout.about_alert_dialog,
                             /* root         => */ new android.widget.LinearLayout(this.context),
                             /* attachToRoot => */ false                                        );
                     {
@@ -103,11 +96,8 @@ public class AboutAlertDialog extends java.lang.Object
                             {
                                 super();
 
-                                assert null != aboutView;
                                 this.aboutView = aboutView;
-
-                                assert null != msgs;
-                                this.msgs = msgs;
+                                this.msgs      = msgs     ;
                             }
 
                             private void execute()

@@ -8,15 +8,14 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.usb.Device.Exception
  * org.wheatgenetics.usb.ExtraDevice
  */
-
 class Scale extends org.wheatgenetics.usb.ExtraDevice
 {
-    // region Types
+    // region Exceptions
     private static abstract class Exception extends org.wheatgenetics.usb.Device.Exception
-    { private Exception(final java.lang.String message) { super(message); }}
+    { private Exception(final java.lang.String message) { super(message); } }
 
     private static class BadLength extends org.wheatgenetics.usb.Scale.Exception
-    { private BadLength() { super("Length of data read() is not equal to 6."); }}
+    { private BadLength() { super("Length of data read() is not equal to 6."); } }
 
     private static class BadReport extends org.wheatgenetics.usb.Scale.Exception
     {
@@ -29,29 +28,29 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     }
 
     private static class Fault extends org.wheatgenetics.usb.Scale.Exception
-    { private Fault() { super("Scale reports FAULT!\n"); }}
+    { private Fault() { super("Scale reports FAULT!\n"); } }
 
     private static class UnderZero extends org.wheatgenetics.usb.Scale.Exception
-    { private UnderZero() { super("Scale reports Under Zero"); }}
+    { private UnderZero() { super("Scale reports Under Zero"); } }
 
     private static class OverWeight extends org.wheatgenetics.usb.Scale.Exception
-    { private OverWeight() { super("Scale reports Over Weight!"); }}
+    { private OverWeight() { super("Scale reports Over Weight!"); } }
 
     private static class CalibrationNeeded extends org.wheatgenetics.usb.Scale.Exception
-    { private CalibrationNeeded() { super("Scale reports Calibration Needed!"); }}
+    { private CalibrationNeeded() { super("Scale reports Calibration Needed!"); } }
 
     private static class RezeroingNeeded extends org.wheatgenetics.usb.Scale.Exception
-    { private RezeroingNeeded() { super("Scale reports Re-zeroing Needed!\n"); }}
+    { private RezeroingNeeded() { super("Scale reports Re-zeroing Needed!\n"); } }
 
     private static class UnknownStatus extends org.wheatgenetics.usb.Scale.Exception
-    { private UnknownStatus() { super("Unknown status code"); }}
+    { private UnknownStatus() { super("Unknown status code"); } }
     // endregion
 
     // region Constants
-    static         final int ELANEVendorId            = 31612                                 ;
-    private static final int ELANEUSBPlus5kgProductId =   513, ELANEPS2000USB5iProductId = 519;
-    static         final int ELANEProductIds[]        =
-        {ELANEPS2000USB5iProductId, ELANEUSBPlus5kgProductId};
+            static final int ELANEVendorId            = 31612                                  ;
+    private static final int ELANEUSBPlus5kgProductId =   513, ELANEUSBPS20005kgProductId = 519;
+            static final int ELANEProductIds[]        =
+        { ELANEUSBPS20005kgProductId, ELANEUSBPlus5kgProductId };
     // endregion
 
     private double weight;
@@ -83,7 +82,7 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
                             this.weight = MSB * 256.0 + LSB;
                         }
                         if (this.idsAreEqual(org.wheatgenetics.usb.Scale.ELANEVendorId,
-                        org.wheatgenetics.usb.Scale.ELANEPS2000USB5iProductId))
+                        org.wheatgenetics.usb.Scale.ELANEUSBPS20005kgProductId))
                             this.weight /= 10.0;
                         break;
 

@@ -12,15 +12,14 @@ package org.wheatgenetics.usb;
  *
  * org.wheatgenetics.javalib.Utils
  */
-
 public class Device extends java.lang.Object
 {
-    // region Types
+    // region Exceptions
     public static abstract class Exception extends java.lang.Exception
-    { Exception(final java.lang.String message) { super(message); }}
+    { Exception(final java.lang.String message) { super(message); } }
 
     static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception
-    { private UsbDeviceIsNull() { super("Device.this.usbDevice is null."); }}
+    { private UsbDeviceIsNull() { super("Device.this.usbDevice is null."); } }
 
     private static class GetInterfaceFailed extends org.wheatgenetics.usb.Device.Exception
     {
@@ -29,7 +28,7 @@ public class Device extends java.lang.Object
     }
 
     private static class UsbManagerIsNull extends org.wheatgenetics.usb.Device.Exception
-    { private UsbManagerIsNull() { super("Device.this.usbManager is null."); }}
+    { private UsbManagerIsNull() { super("Device.this.usbManager is null."); } }
 
     private static class OpenDeviceFailed extends org.wheatgenetics.usb.Device.Exception
     {
@@ -46,7 +45,7 @@ public class Device extends java.lang.Object
     // endregion
 
     // region Fields
-    private       android.hardware.usb.UsbDevice  usbDevice ;
+    private final android.hardware.usb.UsbDevice  usbDevice ;
     private final android.hardware.usb.UsbManager usbManager;
 
     private android.hardware.usb.UsbInterface        usbInterface        = null;
@@ -58,8 +57,7 @@ public class Device extends java.lang.Object
     private java.lang.String getDeviceName()
     { return this.usbDeviceIsNull() ? null : this.usbDevice.getDeviceName(); }
 
-    private int getVendorId()
-    { return this.usbDeviceIsNull() ? 0 : this.usbDevice.getVendorId(); }
+    private int getVendorId() { return this.usbDeviceIsNull() ? 0 : this.usbDevice.getVendorId(); }
 
     private int getProductId()
     { return this.usbDeviceIsNull() ? 0 : this.usbDevice.getProductId(); }
@@ -89,9 +87,7 @@ public class Device extends java.lang.Object
     {
         super();
 
-        this.usbDevice = usbDevice;
-
-        assert null != usbManager;
+        this.usbDevice  = usbDevice ;
         this.usbManager = usbManager;
     }
 
@@ -127,6 +123,7 @@ public class Device extends java.lang.Object
                 this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
     }
 
+    @java.lang.SuppressWarnings("SimplifiableConditionalExpression")
     boolean idsAreEqual(final int vendorId, final int productId)
     {
         if (this.usbDeviceIsNull())
@@ -137,17 +134,8 @@ public class Device extends java.lang.Object
     }
     // endregion
 
-    // region ExtraDevice Package Methods
+    // region ExtraDevice Package Method
     boolean usbDeviceIsNull() { return null == this.usbDevice; }
-
-    void setUsbDevice(final org.wheatgenetics.usb.Device device)
-    {
-        if (null != device)
-        {
-            this.close();
-            this.usbDevice = device.usbDevice;
-        }
-    }
     // endregion
 
     int read(final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception

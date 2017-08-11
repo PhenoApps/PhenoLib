@@ -9,12 +9,12 @@ package org.wheatgenetics.usb;
  * android.support.annotation.NonNull
  *
  * org.wheatgenetics.javalib.Utils
+ *
  * org.wheatgenetics.usb.Device
  */
-
 class DeviceList extends java.lang.Object
 {
-    private final java.util.ArrayList<org.wheatgenetics.usb.Device> deviceArrayList;
+    private final java.util.ArrayList<org.wheatgenetics.usb.Device> arrayList;
 
     DeviceList(@android.support.annotation.NonNull final android.app.Activity activity)
     {
@@ -29,12 +29,11 @@ class DeviceList extends java.lang.Object
             usbManager.getDeviceList();
 
         assert null != deviceList;
-        this.deviceArrayList = new java.util.ArrayList<org.wheatgenetics.usb.Device>(
-            deviceList.size());
+        this.arrayList = new java.util.ArrayList<org.wheatgenetics.usb.Device>(deviceList.size());
 
         for (final android.hardware.usb.UsbDevice usbDevice: deviceList.values())
             if (null != usbDevice)
-                this.deviceArrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
+                this.arrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
     }
 
     @java.lang.Override
@@ -43,8 +42,8 @@ class DeviceList extends java.lang.Object
         java.lang.String result = null;
         {
             java.lang.Boolean firstDevice = true;
-            assert null != this.deviceArrayList;
-            for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
+            assert null != this.arrayList;
+            for (final org.wheatgenetics.usb.Device device: this.arrayList)
                 if (firstDevice)
                 {
                     result = device.toString();
@@ -56,16 +55,15 @@ class DeviceList extends java.lang.Object
     }
 
     // region Package Methods
-    int size()
-    { return null == this.deviceArrayList ? 0 : this.deviceArrayList.size(); }
+    int size() { return null == this.arrayList ? 0 : this.arrayList.size(); }
 
     java.lang.String information()
     {
         java.lang.String result = null;
         {
             java.lang.Boolean firstDevice = true;
-            assert null != this.deviceArrayList;
-            for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
+            assert null != this.arrayList;
+            for (final org.wheatgenetics.usb.Device device: this.arrayList)
                 if (firstDevice)
                 {
                     result = device.information();
@@ -78,7 +76,7 @@ class DeviceList extends java.lang.Object
 
     org.wheatgenetics.usb.Device get(final int vendorId, final int productIds[])
     {
-        if (null == this.deviceArrayList || null == productIds)
+        if (null == this.arrayList || null == productIds)
             return null;
         else
             if (productIds.length <= 0)
@@ -86,7 +84,7 @@ class DeviceList extends java.lang.Object
             else
             {
                 for (final int productId: productIds)
-                    for (final org.wheatgenetics.usb.Device device : this.deviceArrayList)
+                    for (final org.wheatgenetics.usb.Device device: this.arrayList)
                         if (device.idsAreEqual(vendorId, productId)) return device;
                 return null;
             }

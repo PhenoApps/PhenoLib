@@ -28,7 +28,7 @@ public class Utils extends java.lang.Object
                     public void onClick(final android.content.DialogInterface dialog,
                     final int which)
                     {
-                        assert dialog != null;
+                        assert null != dialog;
                         dialog.dismiss();
                     }
                 };
@@ -45,7 +45,7 @@ public class Utils extends java.lang.Object
                     public void onClick(final android.content.DialogInterface dialog,
                     final int which)
                     {
-                        assert dialog != null;
+                        assert null != dialog;
                         dialog.cancel();
                     }
                 };
@@ -66,7 +66,7 @@ public class Utils extends java.lang.Object
     }
 
     public static void showShortToast(final android.content.Context context,
-        final java.lang.CharSequence text)
+    final java.lang.CharSequence text)
     {
         org.wheatgenetics.androidlibrary.Utils.showToast(
             context, text, android.widget.Toast.LENGTH_SHORT);
@@ -76,7 +76,7 @@ public class Utils extends java.lang.Object
     public static void makeFileDiscoverable(final android.content.Context context,
     final java.io.File file)
     {
-        if (file != null)
+        if (null != file)
         {
             android.media.MediaScannerConnection.scanFile(
                 /* context   => */ context                                                    ,

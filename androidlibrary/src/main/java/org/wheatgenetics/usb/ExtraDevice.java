@@ -10,7 +10,6 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.usb.Device
  * org.wheatgenetics.usb.DeviceList
  */
-
 class ExtraDevice extends org.wheatgenetics.usb.Device
 {
     ExtraDevice(@android.support.annotation.NonNull final android.app.Activity activity,

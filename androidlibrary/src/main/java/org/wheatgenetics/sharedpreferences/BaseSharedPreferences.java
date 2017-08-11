@@ -8,7 +8,6 @@ package org.wheatgenetics.sharedpreferences;
  *
  * org.wheatgenetics.javalib.Utils
  */
-
 public abstract class BaseSharedPreferences extends java.lang.Object
 {
     private final android.content.SharedPreferences sharedPreferences;
@@ -17,8 +16,6 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     final android.content.SharedPreferences sharedPreferences)
     {
         super();
-
-        assert null != sharedPreferences;
         this.sharedPreferences = sharedPreferences;
     }
 

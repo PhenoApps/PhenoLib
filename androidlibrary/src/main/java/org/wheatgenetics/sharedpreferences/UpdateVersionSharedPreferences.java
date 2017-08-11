@@ -7,7 +7,6 @@ package org.wheatgenetics.sharedpreferences;
  *
  * org.wheatgenetics.sharedpreferences.BaseSharedPreferences
  */
-
 public class UpdateVersionSharedPreferences
 extends org.wheatgenetics.sharedpreferences.BaseSharedPreferences
 {

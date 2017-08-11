@@ -13,7 +13,6 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.usb.Device.Exception
  * org.wheatgenetics.usb.Device.UsbDeviceIsNull
  */
-
 public class ScaleExceptionAlertDialog extends java.lang.Object
 {
     public interface Handler
@@ -52,10 +51,7 @@ public class ScaleExceptionAlertDialog extends java.lang.Object
     {
         super();
 
-        assert null != context;
         this.context = context;
-
-        assert null != handler;
         this.handler = handler;
     }
 

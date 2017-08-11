@@ -8,7 +8,6 @@ package org.wheatgenetics.usb;
  *
  * org.wheatgenetics.usb.Device.Exception
  */
-
 class DeviceReader extends java.lang.Object
 {
     // region Types
@@ -44,10 +43,7 @@ class DeviceReader extends java.lang.Object
         {
             super();
 
-            assert null != handler;
-            this.handler = handler;
-
-            assert null != dataSource;
+            this.handler    = handler   ;
             this.dataSource = dataSource;
         }
 
@@ -99,36 +95,26 @@ class DeviceReader extends java.lang.Object
     }
     // endregion
 
-    private org.wheatgenetics.usb.DeviceReader.Handler    handler    = null;
-    private org.wheatgenetics.usb.DeviceReader.DataSource dataSource = null;
-    private org.wheatgenetics.usb.DeviceReader.AsyncTask  asyncTask  = null;
+    // region Fields
+    private final org.wheatgenetics.usb.DeviceReader.Handler    handler          ;
+    private       org.wheatgenetics.usb.DeviceReader.DataSource dataSource = null;
+    private       org.wheatgenetics.usb.DeviceReader.AsyncTask  asyncTask  = null;
+    // endregion
 
     // region Package Methods
     // region Constructor Package Methods
     DeviceReader(@android.support.annotation.NonNull
-    final org.wheatgenetics.usb.DeviceReader.Handler handler)
-    {
-        super();
-
-        assert null != handler;
-        this.handler = handler;
-    }
+    final org.wheatgenetics.usb.DeviceReader.Handler handler) { super(); this.handler = handler; }
 
     DeviceReader(
     @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.Handler    handler   ,
     @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
-    {
-        this(handler);
-        this.setDataSource(dataSource);
-    }
+    { this(handler); this.setDataSource(dataSource); }
     // endregion
 
     void setDataSource(@android.support.annotation.NonNull
     final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
-    {
-        assert null != dataSource;
-        this.dataSource = dataSource;
-    }
+    { this.dataSource = dataSource; }
     // endregion
 
     // region Public Methods

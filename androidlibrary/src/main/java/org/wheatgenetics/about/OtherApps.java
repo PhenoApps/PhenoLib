@@ -6,7 +6,6 @@ package org.wheatgenetics.about;
  *
  * org.wheatgenetics.androidlibrary.R
  */
-
 public class OtherApps extends java.lang.Object
 {
     public enum Index
@@ -32,9 +31,8 @@ public class OtherApps extends java.lang.Object
     // endregion
 
     // region Fields
-    private final java.lang.String  texts [];
-    private final java.lang.Integer resIds[];
-    private final java.lang.String  uris  [];
+    private final java.lang.String  texts[], uris[];
+    private final java.lang.Integer resIds[]       ;
     // endregion
 
     private static <T> T[] removeElement(@android.support.annotation.NonNull

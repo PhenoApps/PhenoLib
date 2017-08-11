@@ -14,12 +14,11 @@ public class Dir extends org.wheatgenetics.javalib.Dir
 {
     private final android.content.Context context;
 
+    // region Public Methods
     public Dir(final android.content.Context context, final java.lang.String name,
     final java.lang.String blankHiddenFileName)
     {
         super(android.os.Environment.getExternalStorageDirectory(), name, blankHiddenFileName);
-
-        assert null != context;
         this.context = context;
     }
 
@@ -32,5 +31,9 @@ public class Dir extends org.wheatgenetics.javalib.Dir
     }
 
     public android.net.Uri parse(final java.lang.String fileName)
-    { return android.net.Uri.parse(this.path.toString() + fileName); }
+    {
+        assert null != this.path;
+        return android.net.Uri.parse(this.path.toString() + fileName);
+    }
+    // endregion
 }
