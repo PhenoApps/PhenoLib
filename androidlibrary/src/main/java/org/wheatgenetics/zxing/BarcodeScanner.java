@@ -15,10 +15,7 @@ public class BarcodeScanner extends java.lang.Object
     private       com.google.zxing.integration.android.IntentIntegrator intentIntegrator = null;
 
     public BarcodeScanner(final android.app.Activity activity)
-    {
-        super();
-        this.activity = activity;
-    }
+    { super(); this.activity = activity; }
 
     public android.app.AlertDialog scan()
     {

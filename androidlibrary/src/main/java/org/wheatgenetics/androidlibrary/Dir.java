@@ -23,7 +23,7 @@ public class Dir extends org.wheatgenetics.javalib.Dir
     }
 
     @java.lang.Override
-    public java.io.File createIfMissing() throws java.io.IOException
+    public java.io.File createIfMissing()
     {
         final java.io.File blankHiddenFile = super.createIfMissing();
         org.wheatgenetics.androidlibrary.Utils.makeFileDiscoverable(this.context, blankHiddenFile);
@@ -31,9 +31,6 @@ public class Dir extends org.wheatgenetics.javalib.Dir
     }
 
     public android.net.Uri parse(final java.lang.String fileName)
-    {
-        assert null != this.path;
-        return android.net.Uri.parse(this.path.toString() + fileName);
-    }
+    { assert null != this.path; return android.net.Uri.parse(this.path.toString() + fileName); }
     // endregion
 }
