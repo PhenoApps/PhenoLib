@@ -11,6 +11,8 @@ package org.wheatgenetics.androidlibrary;
  * android.widget.Toast
  *
  * org.wheatgenetics.javalib.Utils
+ *
+ * org.wheatgenetics.androidlibrary.R
  */
 public class Utils extends java.lang.Object
 {
@@ -73,6 +75,7 @@ public class Utils extends java.lang.Object
     }
     // endregion
 
+    // region File Methods
     public static java.io.File makeFileDiscoverable(final android.content.Context context,
     final java.io.File file)
     {
@@ -90,4 +93,16 @@ public class Utils extends java.lang.Object
         }
         return file;
     }
+
+    public static void shareFile(final android.content.Context context, final android.net.Uri uri)
+    {
+        final android.content.Intent intent =
+            new android.content.Intent(android.content.Intent.ACTION_SEND)
+                .setType ("text/plain")
+                .putExtra(android.content.Intent.EXTRA_STREAM, uri);
+
+        assert null != context; context.startActivity(android.content.Intent.createChooser(
+            intent, context.getString(org.wheatgenetics.androidlibrary.R.string.sendingFile)));
+    }
+    // endregion
 }

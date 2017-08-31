@@ -21,4 +21,6 @@
     <string name="scaleExceptionAlertDialogMessage">Please connect scale with OTG cable and turn the scale on.</string>
     <string name="scaleExceptionAlertDialogPositiveButtonText">Try Again</string>
     <string name="scaleExceptionAlertDialogNegativeButtonText">Ignore</string>
+
+    <string name="sendingFile">Sending File...</string>
 </resources>
