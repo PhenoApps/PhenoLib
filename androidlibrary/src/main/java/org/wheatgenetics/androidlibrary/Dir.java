@@ -34,5 +34,8 @@ public class Dir extends org.wheatgenetics.javalib.Dir
 
     public android.net.Uri parse(final java.lang.String fileName)
     { assert null != this.path; return android.net.Uri.parse(this.path.toString() + fileName); }
+
+    public android.net.Uri parse(final java.io.File file)
+    { assert null != file; return this.parse(file.getName()); }
     // endregion
 }
