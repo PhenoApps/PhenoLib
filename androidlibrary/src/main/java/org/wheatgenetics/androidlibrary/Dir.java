@@ -14,6 +14,8 @@ public class Dir extends org.wheatgenetics.javalib.Dir
 {
     private final android.content.Context context;
 
+    protected android.content.Context getContext() { return this.context; }
+
     // region Public Methods
     public Dir(final android.content.Context context, final java.lang.String name,
     final java.lang.String blankHiddenFileName)

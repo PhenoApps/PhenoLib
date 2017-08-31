@@ -73,7 +73,7 @@ public class Utils extends java.lang.Object
     }
     // endregion
 
-    public static void makeFileDiscoverable(final android.content.Context context,
+    public static java.io.File makeFileDiscoverable(final android.content.Context context,
     final java.io.File file)
     {
         if (null != file)
@@ -88,5 +88,6 @@ public class Utils extends java.lang.Object
                 /* action => */ android.content.Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
                 /* uri    => */ android.net.Uri.fromFile(file)                       ));
         }
+        return file;
     }
 }
