@@ -3,4 +3,5 @@
     <public name="cameraOptionsMenuItem" type="id" />
 
     <public name="okButtonText" type="string" />
+    <public name="cancelButtonText" type="string" />
 </resources>

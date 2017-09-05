@@ -2,6 +2,7 @@
     <string name="app_name">Android Library</string>
 
     <string name="okButtonText">OK</string>
+    <string name="cancelButtonText">Cancel</string>
 
     <string name="changeLogAlertDialogTitle">ChangeLog</string>
     <string name="cameraOptionsMenuItemTitle">Camera scanner</string>
