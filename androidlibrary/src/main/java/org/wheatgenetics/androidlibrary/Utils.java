@@ -107,7 +107,7 @@ public class Utils extends java.lang.Object
     }
     // endregion
 
-    static java.lang.String getText(final android.widget.EditText editText)
+    public static java.lang.String getText(final android.widget.EditText editText)
     {
         assert null != editText;
         return org.wheatgenetics.javalib.Utils.adjust(editText.getText().toString());
