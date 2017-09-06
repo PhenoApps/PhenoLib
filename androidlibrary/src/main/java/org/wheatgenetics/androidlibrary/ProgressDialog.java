@@ -45,6 +45,9 @@ public class ProgressDialog extends java.lang.Object
     public void setMessage(final java.lang.CharSequence message)
     { this.progressDialog().setMessage(message); }
 
+    public void setMessage(final int message)
+    { assert null != this.context; this.setMessage(this.context.getString(message)); }
+
     public void dismiss()
     {
         if (null != this.progressDialogInstance)
