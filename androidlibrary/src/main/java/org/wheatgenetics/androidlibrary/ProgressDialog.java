@@ -9,10 +9,10 @@ package org.wheatgenetics.androidlibrary;
 public class ProgressDialog extends java.lang.Object
 {
     // region Fields
-    private final android.content.Context                          context              ;
-    private final java.lang.CharSequence                           title, initialMessage;
-    private final android.content.DialogInterface.OnCancelListener onCancelListener     ;
+    private final android.content.Context                          context         ;
+    private final android.content.DialogInterface.OnCancelListener onCancelListener;
 
+    private java.lang.CharSequence     title, initialMessage        ;
     private android.app.ProgressDialog progressDialogInstance = null;
     // endregion
 
@@ -29,17 +29,29 @@ public class ProgressDialog extends java.lang.Object
         return this.progressDialogInstance;
     }
 
-    // region Public Methods
+    // region Constructors
+    private ProgressDialog(final android.content.Context context,
+    final android.content.DialogInterface.OnCancelListener onCancelListener)
+    { super(); this.context = context; this.onCancelListener = onCancelListener; }
+
     public ProgressDialog(final android.content.Context context, final java.lang.CharSequence title,
     final java.lang.CharSequence initialMessage,
     final android.content.DialogInterface.OnCancelListener onCancelListener)
+    { this(context, onCancelListener); this.title = title; this.initialMessage = initialMessage; }
+
+    public ProgressDialog(final android.content.Context context, final int title,
+    final int initialMessage,
+    final android.content.DialogInterface.OnCancelListener onCancelListener)
     {
-        super();
+        this(context, onCancelListener);
 
-        this.context        = context       ; this.title            = title           ;
-        this.initialMessage = initialMessage; this.onCancelListener = onCancelListener;
+        assert null != this.context;
+        this.title          = this.context.getString(title         );
+        this.initialMessage = this.context.getString(initialMessage);
     }
+    // endregion
 
+    // region Public Methods
     public void show() { this.progressDialog().show(); }
 
     public void setMessage(final java.lang.CharSequence message)
