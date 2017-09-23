@@ -2,9 +2,9 @@ package org.wheatgenetics.about;
 
 /**
  * Uses:
+ * android.app.Activity
  * android.app.AlertDialog
  * android.app.AlertDialog.Builder
- * android.content.Context
  * android.support.annotation.NonNull
  * android.view.LayoutInflater
  * android.view.View
@@ -21,7 +21,7 @@ package org.wheatgenetics.about;
 public class AboutAlertDialog extends java.lang.Object
 {
     // region Fields
-    private final android.content.Context                 context                   ;
+    private final android.app.Activity                    activity                  ;
     private final java.lang.String                        title, versionName, msgs[];
     private final org.wheatgenetics.about.OtherApps.Index suppressIndex             ;
     private final android.view.View.OnClickListener       versionOnClickListener    ;
@@ -31,10 +31,10 @@ public class AboutAlertDialog extends java.lang.Object
     // endregion
 
     public AboutAlertDialog(
-    @android.support.annotation.NonNull final android.content.Context context,
-    @android.support.annotation.NonNull final java.lang.String title         ,
-    @android.support.annotation.NonNull final java.lang.String versionName   ,
-    @android.support.annotation.NonNull final java.lang.String msgs[]        ,
+    @android.support.annotation.NonNull final android.app.Activity activity      ,
+    @android.support.annotation.NonNull final java.lang.String     title         ,
+    @android.support.annotation.NonNull final java.lang.String     versionName   ,
+    @android.support.annotation.NonNull final java.lang.String     msgs[]        ,
     @android.support.annotation.NonNull
         final org.wheatgenetics.about.OtherApps.Index suppressIndex,
     @android.support.annotation.NonNull
@@ -42,7 +42,7 @@ public class AboutAlertDialog extends java.lang.Object
     {
         super();
 
-        this.context = context;
+        this.activity = activity;
         this.title = title; this.versionName = versionName; this.msgs = msgs;
         this.suppressIndex          = suppressIndex         ;
         this.versionOnClickListener = versionOnClickListener;
@@ -54,14 +54,14 @@ public class AboutAlertDialog extends java.lang.Object
         {
             if (null == this.builder)
             {
-                this.builder = new android.app.AlertDialog.Builder(this.context);
+                this.builder = new android.app.AlertDialog.Builder(this.activity);
                 {
                     final android.view.View aboutView =
-                        android.view.LayoutInflater.from(this.context).inflate(
+                        android.view.LayoutInflater.from(this.activity).inflate(
                             /* resource => */
                                 org.wheatgenetics.androidlibrary.R.layout.about_alert_dialog,
-                            /* root         => */ new android.widget.LinearLayout(this.context),
-                            /* attachToRoot => */ false                                        );
+                            /* root         => */ new android.widget.LinearLayout(this.activity),
+                            /* attachToRoot => */ false                                         );
                     {
                         assert null != aboutView;
                         final android.widget.TextView versionTextView = (android.widget.TextView)
@@ -77,7 +77,7 @@ public class AboutAlertDialog extends java.lang.Object
                                 org.wheatgenetics.androidlibrary.R.id.aboutOtherAppsTextView);
                         assert null != otherAppsTextView; otherAppsTextView.setOnClickListener(
                             new org.wheatgenetics.about.OtherAppsOnClickListener(
-                                this.context, this.suppressIndex));
+                                this.activity, this.suppressIndex));
                     }
                     {
                         class MsgSetter extends java.lang.Object

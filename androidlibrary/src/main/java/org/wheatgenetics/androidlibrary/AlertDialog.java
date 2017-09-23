@@ -68,6 +68,9 @@ public abstract class AlertDialog extends java.lang.Object
     public org.wheatgenetics.androidlibrary.AlertDialog setCancelableToFalse()
     { this.builder().setCancelable(false); return this; }
 
+    public org.wheatgenetics.androidlibrary.AlertDialog setCancelableToTrue()
+    { this.builder().setCancelable(true); return this; }
+
     public org.wheatgenetics.androidlibrary.AlertDialog setMessage(final java.lang.String message)
     { this.builder().setMessage(message); return this; }
 
