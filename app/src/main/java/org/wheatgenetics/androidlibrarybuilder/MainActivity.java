@@ -76,11 +76,10 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
     {
         if (null == this.changeLogAlertDialog)
             this.changeLogAlertDialog = new org.wheatgenetics.changelog.ChangeLogAlertDialog(
-                /* context                => */ this,
+                /* activity               => */ this,
                 /* changeLogRawResourceId => */
                     org.wheatgenetics.androidlibrarybuilder.R.raw.changelog);
-        try                                 { this.changeLogAlertDialog.show(); }
-        catch (final java.io.IOException e) { /* Don't show.                 */ }
+        this.changeLogAlertDialog.show();
     }
 
     // region Button Private Methods
