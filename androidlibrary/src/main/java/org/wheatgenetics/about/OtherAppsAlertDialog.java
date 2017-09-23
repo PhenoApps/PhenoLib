@@ -19,7 +19,6 @@ package org.wheatgenetics.about;
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  * org.wheatgenetics.androidlibrary.R
- * org.wheatgenetics.androidlibrary.Utils
  *
  * org.wheatgenetics.about.OtherApps
  * org.wheatgenetics.about.OtherApps.Index
@@ -135,7 +134,6 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
     {
         this.setCancelableToTrue()
             .setTitle(org.wheatgenetics.androidlibrary.R.string.otherAppsAlertDialogTitle)
-            .setNegativeButton(org.wheatgenetics.androidlibrary.R.string.okButtonText,
-                org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListener());
+            .setOKNegativeButton();
     }
 }
