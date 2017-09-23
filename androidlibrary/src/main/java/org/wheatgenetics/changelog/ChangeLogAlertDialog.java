@@ -14,6 +14,7 @@ package org.wheatgenetics.changelog;
  *
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
+ *
  * org.wheatgenetics.changelog.ChangeLog
  * org.wheatgenetics.changelog.ChangeLog.LineHandler
  */
@@ -30,14 +31,10 @@ public class ChangeLogAlertDialog extends java.lang.Object
         private org.wheatgenetics.changelog.ChangeLog changeLog    = null;
         // endregion
 
-        ScrollView(@android.support.annotation.NonNull final android.content.Context context,
-        @android.support.annotation.NonNull final int changeLogRawResourceId)
-        {
-            super();
-
-            this.context                = context               ;
-            this.changeLogRawResourceId = changeLogRawResourceId;
-        }
+        private ScrollView(
+        @android.support.annotation.NonNull final android.content.Context context               ,
+        @android.support.annotation.NonNull final int                     changeLogRawResourceId)
+        { super(); this.context = context; this.changeLogRawResourceId = changeLogRawResourceId; }
 
         android.widget.ScrollView get() throws java.io.IOException
         {
@@ -54,8 +51,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
                     assert null != this.context;
                     final android.content.res.Resources resources = this.context.getResources();
 
-                    assert null != resources;
-                    inputStreamReader = new java.io.InputStreamReader(
+                    assert null != resources; inputStreamReader = new java.io.InputStreamReader(
                         resources.openRawResource(this.changeLogRawResourceId));
                 }
 
@@ -65,7 +61,8 @@ public class ChangeLogAlertDialog extends java.lang.Object
                     // region Fields
                     private final android.content.Context     context, applicationContext;
                     private final android.widget.LinearLayout linearLayout               ;
-                    private       android.widget.LinearLayout.LayoutParams layoutParams = null;
+
+                    private android.widget.LinearLayout.LayoutParams layoutParams = null;
                     // endregion
 
                     // region Private Methods
@@ -96,12 +93,11 @@ public class ChangeLogAlertDialog extends java.lang.Object
                         textView.setTextAppearance(this.applicationContext, resId);
                         textView.setText(text);
 
-                        assert null != this.linearLayout;
-                        this.linearLayout.addView(textView);
+                        assert null != this.linearLayout; this.linearLayout.addView(textView);
                     }
                     // endregion
 
-                    // region LineHandler Methods
+                    // region org.wheatgenetics.changelog.ChangeLog.LineHandler Overridden Methods
                     @java.lang.Override
                     public void handleBlankLine()
                     {
@@ -110,8 +106,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
                         spacerTextView.setTextSize(5);
                         spacerTextView.setText("\n");
 
-                        assert null != this.linearLayout;
-                        this.linearLayout.addView(spacerTextView);
+                        assert null != this.linearLayout; this.linearLayout.addView(spacerTextView);
                     }
 
                     @java.lang.Override
@@ -129,7 +124,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
                     }
                     // endregion
 
-                    LineHandler(
+                    private LineHandler(
                     @android.support.annotation.NonNull final android.content.Context context,
                     @android.support.annotation.NonNull
                         final android.widget.LinearLayout linearLayout)
@@ -154,8 +149,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
             if (null == this.scrollView)
             {
                 this.scrollView = new android.widget.ScrollView(this.context);
-                this.scrollView.removeAllViews();
-                this.scrollView.addView(this.linearLayout);
+                this.scrollView.removeAllViews(); this.scrollView.addView(this.linearLayout);
             }
             return this.scrollView;
         }
@@ -175,12 +169,7 @@ public class ChangeLogAlertDialog extends java.lang.Object
 
     public ChangeLogAlertDialog(@android.support.annotation.NonNull
     final android.content.Context context, final int changeLogRawResourceId)
-    {
-        super();
-
-        this.context                = context               ;
-        this.changeLogRawResourceId = changeLogRawResourceId;
-    }
+    { super(); this.context = context; this.changeLogRawResourceId = changeLogRawResourceId; }
 
     public void show() throws java.io.IOException
     {

@@ -18,10 +18,11 @@ package org.wheatgenetics.about;
  * android.widget.ListView
  * android.widget.TextView
  *
- * org.wheatgenetics.about.OtherApps
- * org.wheatgenetics.about.OtherApps.Index
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
+ *
+ * org.wheatgenetics.about.OtherApps
+ * org.wheatgenetics.about.OtherApps.Index
  */
 public class OtherAppsAlertDialog extends java.lang.Object
 {
@@ -38,12 +39,7 @@ public class OtherAppsAlertDialog extends java.lang.Object
     @android.support.annotation.NonNull final android.content.Context context,
     @android.support.annotation.NonNull
         final org.wheatgenetics.about.OtherApps.Index suppressIndex)
-    {
-        super();
-
-        this.context       = context      ;
-        this.suppressIndex = suppressIndex;
-    }
+    { super(); this.context = context; this.suppressIndex = suppressIndex; }
 
     public void show()
     {
@@ -57,12 +53,9 @@ public class OtherAppsAlertDialog extends java.lang.Object
                 {
                     private ListView(final android.content.Context context,
                     @android.support.annotation.NonNull
-                        org.wheatgenetics.about.OtherApps.Index suppressIndex)
+                        final org.wheatgenetics.about.OtherApps.Index suppressIndex)
                     {
-                        super(context);
-
-                        this.setDivider      (null);
-                        this.setDividerHeight(   0);
+                        super(context); this.setDivider(null); this.setDividerHeight(0);
 
                         final org.wheatgenetics.about.OtherApps otherApps =
                             new org.wheatgenetics.about.OtherApps(suppressIndex);
@@ -72,9 +65,9 @@ public class OtherAppsAlertDialog extends java.lang.Object
                             {
                                 private final org.wheatgenetics.about.OtherApps otherApps;
 
-                                ArrayAdapter(final android.content.Context context,
+                                private ArrayAdapter(final android.content.Context context,
                                 @android.support.annotation.NonNull
-                                    org.wheatgenetics.about.OtherApps otherApps)
+                                    final org.wheatgenetics.about.OtherApps otherApps)
                                 {
                                     super(
                                         /* context  => */ context,
@@ -110,8 +103,7 @@ public class OtherAppsAlertDialog extends java.lang.Object
                                             (android.widget.TextView) appView.findViewById(
                                                 org.wheatgenetics.androidlibrary.
                                                     R.id.otherAppsTextView);
-                                        assert null != this.otherApps;
-                                        assert null != textView      ;
+                                        assert null != this.otherApps; assert null != textView;
                                         textView.setText(this.otherApps.getTexts()[position]);
                                     }
                                     {
@@ -119,14 +111,12 @@ public class OtherAppsAlertDialog extends java.lang.Object
                                             (android.widget.ImageView) appView.findViewById(
                                                 org.wheatgenetics.androidlibrary.
                                                     R.id.otherAppsImageView);
-                                        assert null != imageView;
-                                        imageView.setImageResource(
+                                        assert null != imageView; imageView.setImageResource(
                                             this.otherApps.getResIds()[position]);
                                     }
                                     return appView;
                                 }
                             }
-
                             this.setAdapter(new ArrayAdapter(context, otherApps));
                         }
 
@@ -138,29 +128,22 @@ public class OtherAppsAlertDialog extends java.lang.Object
                             private final org.wheatgenetics.about.OtherApps otherApps;
                             // endregion
 
-                            OnItemClickListener(@android.support.annotation.NonNull
+                            private OnItemClickListener(@android.support.annotation.NonNull
                                 final android.content.Context context,
                             @android.support.annotation.NonNull
                                 final org.wheatgenetics.about.OtherApps otherApps)
-                            {
-                                super();
-
-                                this.context   = context  ;
-                                this.otherApps = otherApps;
-                            }
+                            { super(); this.context = context; this.otherApps = otherApps; }
 
                             @java.lang.Override
                             public void onItemClick(final android.widget.AdapterView<?> parent,
                             final android.view.View view, final int position, final long id)
                             {
-                                assert null != this.otherApps;
-                                assert null != this.context  ;
+                                assert null != this.otherApps; assert null != this.context;
                                 this.context.startActivity(new android.content.Intent(
                                     android.content.Intent.ACTION_VIEW                       ,
                                     android.net.Uri.parse(this.otherApps.getUris()[position])));
                             }
                         }
-
                         this.setOnItemClickListener(new OnItemClickListener(context, otherApps));
                     }
                 }

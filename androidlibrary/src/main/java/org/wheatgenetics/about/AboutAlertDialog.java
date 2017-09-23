@@ -12,10 +12,11 @@ package org.wheatgenetics.about;
  * android.widget.LinearLayout
  * android.widget.TextView
  *
- * org.wheatgenetics.about.OtherApps.Index
- * org.wheatgenetics.about.OtherAppsOnClickListener
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
+ *
+ * org.wheatgenetics.about.OtherApps.Index
+ * org.wheatgenetics.about.OtherAppsOnClickListener
  */
 public class AboutAlertDialog extends java.lang.Object
 {
@@ -29,7 +30,6 @@ public class AboutAlertDialog extends java.lang.Object
     private android.app.AlertDialog         alertDialog = null;
     // endregion
 
-    // region Public Methods
     public AboutAlertDialog(
     @android.support.annotation.NonNull final android.content.Context context,
     @android.support.annotation.NonNull final java.lang.String title         ,
@@ -43,13 +43,8 @@ public class AboutAlertDialog extends java.lang.Object
         super();
 
         this.context = context;
-
-        this.title       = title      ;
-        this.versionName = versionName;
-        this.msgs        = msgs       ;
-
-        this.suppressIndex = suppressIndex;
-
+        this.title = title; this.versionName = versionName; this.msgs = msgs;
+        this.suppressIndex          = suppressIndex         ;
         this.versionOnClickListener = versionOnClickListener;
     }
 
@@ -80,8 +75,7 @@ public class AboutAlertDialog extends java.lang.Object
                         final android.widget.TextView otherAppsTextView = (android.widget.TextView)
                             aboutView.findViewById(
                                 org.wheatgenetics.androidlibrary.R.id.aboutOtherAppsTextView);
-                        assert null != otherAppsTextView;
-                        otherAppsTextView.setOnClickListener(
+                        assert null != otherAppsTextView; otherAppsTextView.setOnClickListener(
                             new org.wheatgenetics.about.OtherAppsOnClickListener(
                                 this.context, this.suppressIndex));
                     }
@@ -93,12 +87,7 @@ public class AboutAlertDialog extends java.lang.Object
 
                             private MsgSetter(final android.view.View aboutView,
                             final java.lang.String msgs[])
-                            {
-                                super();
-
-                                this.aboutView = aboutView;
-                                this.msgs      = msgs     ;
-                            }
+                            { super(); this.aboutView = aboutView; this.msgs = msgs; }
 
                             private void execute()
                             {
@@ -126,17 +115,14 @@ public class AboutAlertDialog extends java.lang.Object
                                             msgTextView = (android.widget.TextView)
                                                 this.aboutView.findViewById(msgTextViewId);
                                         }
-                                        assert null != msgTextView;
-                                        msgTextView.setText(msg);
+                                        assert null != msgTextView; msgTextView.setText(msg);
                                     }
                                 }
                             }
                         }
                         new MsgSetter(aboutView, this.msgs).execute();
                     }
-                    builder.setCancelable(true)
-                        .setTitle(this.title)
-                        .setView (aboutView );
+                    builder.setCancelable(true).setTitle(this.title).setView(aboutView );
                 }
                 this.builder.setNegativeButton(
                     org.wheatgenetics.androidlibrary.R.string.okButtonText            ,
@@ -147,5 +133,4 @@ public class AboutAlertDialog extends java.lang.Object
         }
         this.alertDialog.show();
     }
-    // endregion
 }

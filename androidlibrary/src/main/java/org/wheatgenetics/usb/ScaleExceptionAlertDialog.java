@@ -10,16 +10,13 @@ package org.wheatgenetics.usb;
  * android.support.annotation.NonNull
  *
  * org.wheatgenetics.androidlibrary.R
+ *
  * org.wheatgenetics.usb.Device.Exception
  * org.wheatgenetics.usb.Device.UsbDeviceIsNull
  */
 public class ScaleExceptionAlertDialog extends java.lang.Object
 {
-    public interface Handler
-    {
-        public abstract void tryAgain();
-        public abstract void ignore  ();
-    }
+    public interface Handler { public abstract void tryAgain(); public abstract void ignore(); }
 
     // region Fields
     private final android.content.Context                                 context;
@@ -43,17 +40,11 @@ public class ScaleExceptionAlertDialog extends java.lang.Object
     }
     // endregion
 
-    // region Public Methods
     public ScaleExceptionAlertDialog(
     @android.support.annotation.NonNull final android.content.Context context,
     @android.support.annotation.NonNull
         final org.wheatgenetics.usb.ScaleExceptionAlertDialog.Handler handler)
-    {
-        super();
-
-        this.context = context;
-        this.handler = handler;
-    }
+    { super(); this.context = context; this.handler = handler; }
 
     public void show(
     @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
@@ -86,11 +77,7 @@ public class ScaleExceptionAlertDialog extends java.lang.Object
                                 @java.lang.Override
                                 public void onClick(final android.content.DialogInterface dialog,
                                 final int which)
-                                {
-                                    org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.ignore();
-                                    assert null != dialog;
-                                    dialog.cancel();
-                                }
+                                { org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.ignore(); }
                             });
                 }
                 this.alertDialog = this.builder.create();
@@ -111,5 +98,4 @@ public class ScaleExceptionAlertDialog extends java.lang.Object
             this.alertDialog.show();
         }
     }
-    // endregion
 }
