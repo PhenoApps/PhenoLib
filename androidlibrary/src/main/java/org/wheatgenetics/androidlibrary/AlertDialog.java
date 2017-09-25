@@ -188,6 +188,7 @@ public abstract class AlertDialog extends java.lang.Object
     public void showToast(final int textId) { this.showToast(this.getString(textId)); }
     // endregion
 
+    // region Public Methods Used To Keep Alert Dialog From Dismissing
     public boolean positiveOnClickListenerHasBeenReplaced()
     { return this.positiveOnClickListenerReplaced; }
 
@@ -206,5 +207,6 @@ public abstract class AlertDialog extends java.lang.Object
     { this.replaceOnClickListener(android.app.AlertDialog.BUTTON_NEUTRAL, onClickListener); }
 
     public void cancelAlertDialog() { if (null != this.alertDialog) this.alertDialog.cancel(); }
+    // endregion
     // endregion
 }

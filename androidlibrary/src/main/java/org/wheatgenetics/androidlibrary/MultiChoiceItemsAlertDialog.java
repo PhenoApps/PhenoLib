@@ -7,7 +7,8 @@ package org.wheatgenetics.androidlibrary;
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  */
-public abstract class MultiChoiceItemsAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
+public abstract class MultiChoiceItemsAlertDialog
+extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     public MultiChoiceItemsAlertDialog(final android.app.Activity activity) { super(activity); }
 
