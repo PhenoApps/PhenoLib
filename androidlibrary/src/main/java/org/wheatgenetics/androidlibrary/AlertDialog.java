@@ -74,6 +74,9 @@ public abstract class AlertDialog extends java.lang.Object
     public org.wheatgenetics.androidlibrary.AlertDialog setMessage(final java.lang.String message)
     { this.builder().setMessage(message); return this; }
 
+    public org.wheatgenetics.androidlibrary.AlertDialog setMessage(final int messageId)
+    { return this.setMessage(this.getString(messageId)); }
+
     public org.wheatgenetics.androidlibrary.AlertDialog setItems(final java.lang.String items[],
     final android.content.DialogInterface.OnClickListener onClickListener)
     { this.builder().setItems(items, onClickListener); return this; }
