@@ -129,9 +129,16 @@ public abstract class AlertDialog extends java.lang.Object
     final android.content.DialogInterface.OnClickListener onClickListener)
     { this.builder().setNegativeButton(textId, onClickListener); return this; }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setCancelNegativeButton()
+    public org.wheatgenetics.androidlibrary.AlertDialog setCancelNegativeButton(
+    final android.content.DialogInterface.OnClickListener onClickListener)
     {
         return this.setNegativeButton(org.wheatgenetics.androidlibrary.R.string.cancelButtonText,
+            onClickListener);
+    }
+
+    public org.wheatgenetics.androidlibrary.AlertDialog setCancelNegativeButton()
+    {
+        return this.setCancelNegativeButton(
             org.wheatgenetics.androidlibrary.Utils.cancellingOnClickListener());
     }
 
