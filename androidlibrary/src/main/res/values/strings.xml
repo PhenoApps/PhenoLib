@@ -4,5 +4,7 @@
     <string name="okButtonText">OK</string>
     <string name="cancelButtonText">Cancel</string>
 
+    <string name="changeLogAlertDialogTitle">ChangeLog</string>
+
     <string name="sendingFile">Sending File&#8230;</string>
 </resources>
