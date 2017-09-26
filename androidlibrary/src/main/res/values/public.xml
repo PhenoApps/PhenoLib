@@ -1,0 +1,4 @@
+<resources>
+    <public name="okButtonText" type="string" />
+    <public name="cancelButtonText" type="string" />
+</resources>
