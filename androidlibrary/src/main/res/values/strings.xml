@@ -7,5 +7,7 @@
     <string name="changeLogAlertDialogTitle">ChangeLog</string>
     <string name="cameraOptionsMenuItemTitle">Camera scanner</string>
 
+    <string name="otherAppsAlertDialogTitle">Other Apps</string>
+
     <string name="sendingFile">Sending File&#8230;</string>
 </resources>
