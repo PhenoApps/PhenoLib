@@ -9,5 +9,14 @@
 
     <string name="otherAppsAlertDialogTitle">Other Apps</string>
 
+    <string name="aboutVersionTextViewText">Version</string>
+    <string name="aboutOtherAppsTextViewText">Other Apps</string>
+    <string name="aboutTrevorName">Trevor Rife</string>
+    <string name="aboutUniversity">Kansas State University</string>
+    <string name="aboutTrevorEMail">trife@ksu.edu</string>
+    <string name="aboutJesseName">Jesse Poland</string>
+    <string name="aboutJesseEMail">jpoland@ksu.edu</string>
+    <string name="aboutWheatGeneticsWebSite">http://wheatgenetics.org\n</string>
+
     <string name="sendingFile">Sending File&#8230;</string>
 </resources>
