@@ -2,6 +2,7 @@ package org.wheatgenetics.usb;
 
 /**
  * Uses:
+ * android.annotation.SuppressLint
  * android.app.Activity
  * android.support.annotation.NonNull
  *
@@ -69,8 +70,7 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
 
         if (6 == length)
         {
-            assert null != buffer;
-            final byte report = buffer[0], status = buffer[1];
+            assert null != buffer; final byte report = buffer[0], status = buffer[1];
             if (3 == report)
                 switch (status)
                 {

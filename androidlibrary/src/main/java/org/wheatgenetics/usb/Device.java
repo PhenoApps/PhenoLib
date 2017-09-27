@@ -65,7 +65,6 @@ public class Device extends java.lang.Object
     private boolean close()
     {
         boolean released;
-
         if (null == this.usbDeviceConnection)
             released = true;
         else
@@ -74,22 +73,13 @@ public class Device extends java.lang.Object
             this.usbDeviceConnection.close();
             this.usbDeviceConnection = null;
         }
-
-        this.usbEndpoint  = null;
-        this.usbInterface = null;
-
-        return released;
+        this.usbEndpoint = null; this.usbInterface = null; return released;
     }
     // endregion
 
     Device(final android.hardware.usb.UsbDevice usbDevice,
     @android.support.annotation.NonNull final android.hardware.usb.UsbManager usbManager)
-    {
-        super();
-
-        this.usbDevice  = usbDevice ;
-        this.usbManager = usbManager;
-    }
+    { super(); this.usbDevice = usbDevice; this.usbManager = usbManager; }
 
     // region Overridden Methods
     @java.lang.Override
@@ -100,11 +90,7 @@ public class Device extends java.lang.Object
     }
 
     @java.lang.Override
-    protected void finalize() throws java.lang.Throwable
-    {
-        this.close();
-        super.finalize();
-    }
+    protected void finalize() throws java.lang.Throwable { this.close(); super.finalize(); }
     // endregion
 
     // region Package Methods
@@ -112,15 +98,12 @@ public class Device extends java.lang.Object
     @android.annotation.SuppressLint("DefaultLocale")
     java.lang.String information()
     {
-        if (this.usbDeviceIsNull())
-            return null;
-        else
-            return java.lang.String.format("name=%s id=%d productId=%d vendorId=%d " +
-                    "class=%d subClass=%d protocol=%d interfaceCount=%d",
-                this.getDeviceName              (), this.usbDevice.getDeviceId      (),
-                this.getProductId               (), this.getVendorId                (),
-                this.usbDevice.getDeviceClass   (), this.usbDevice.getDeviceSubclass(),
-                this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
+        return this.usbDeviceIsNull() ? null : java.lang.String.format("name=%s id=%d " +
+                "productId=%d vendorId=%d class=%d subClass=%d protocol=%d interfaceCount=%d",
+            this.getDeviceName              (), this.usbDevice.getDeviceId      (),
+            this.getProductId               (), this.getVendorId                (),
+            this.usbDevice.getDeviceClass   (), this.usbDevice.getDeviceSubclass(),
+            this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
     }
 
     @java.lang.SuppressWarnings("SimplifiableConditionalExpression")
@@ -182,8 +165,7 @@ public class Device extends java.lang.Object
     @android.annotation.SuppressLint("DefaultLocale")
     java.lang.String formattedRead() throws org.wheatgenetics.usb.Device.Exception
     {
-        int              length     ;
-        java.lang.String data   = "";
+        int length; java.lang.String data = "";
         {
             final byte buffer[] = new byte[128];
             length = this.read(buffer);             // throws org.wheatgenetics.usb.Device.Exception

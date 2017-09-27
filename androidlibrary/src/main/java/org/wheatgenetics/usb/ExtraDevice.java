@@ -22,7 +22,7 @@ class ExtraDevice extends org.wheatgenetics.usb.Device
             /* usbManager => */ (android.hardware.usb.UsbManager) activity.getSystemService(
                 android.content.Context.USB_SERVICE));
 
-        if (this.usbDeviceIsNull())
+        if (this.usbDeviceIsNull())                                      // TODO: this.usbDevice = ?
             new org.wheatgenetics.usb.DeviceList(activity).get(vendorId, productIds);
     }
 }

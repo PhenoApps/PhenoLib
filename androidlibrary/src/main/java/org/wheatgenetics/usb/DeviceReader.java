@@ -40,12 +40,7 @@ class DeviceReader extends java.lang.Object
             final org.wheatgenetics.usb.DeviceReader.Handler handler,
         @android.support.annotation.NonNull
             final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
-        {
-            super();
-
-            this.handler    = handler   ;
-            this.dataSource = dataSource;
-        }
+        { super(); this.handler = handler; this.dataSource = dataSource; }
 
         // region Overridden Methods
         @java.lang.Override
@@ -54,8 +49,7 @@ class DeviceReader extends java.lang.Object
         {
             {
                 java.lang.String newData;
-                assert null != this.dataSource;
-                while (!this.isCancelled())
+                assert null != this.dataSource; while (!this.isCancelled())
                 {
                     try { newData = this.dataSource.formattedRead(); }
                     catch (final org.wheatgenetics.usb.Device.Exception e) { return e; }
@@ -70,20 +64,13 @@ class DeviceReader extends java.lang.Object
         protected void onProgressUpdate(final java.lang.String... values)
         {
             final java.lang.String newData = values[0];
-            assert null != this.handler;
-            this.handler.publish(newData);
+            assert null != this.handler; this.handler.publish(newData);
             this.oldData = newData;
         }
 
         @java.lang.Override
         protected void onPostExecute(final org.wheatgenetics.usb.Device.Exception e)
-        {
-            if (null != e)
-            {
-                assert null != this.handler;
-                this.handler.reportException(e);
-            }
-        }
+        { if (null != e) { assert null != this.handler; this.handler.reportException(e); } }
 
         @java.lang.Override
         protected void onCancelled()
@@ -96,13 +83,13 @@ class DeviceReader extends java.lang.Object
     // endregion
 
     // region Fields
-    private final org.wheatgenetics.usb.DeviceReader.Handler    handler          ;
-    private       org.wheatgenetics.usb.DeviceReader.DataSource dataSource = null;
-    private       org.wheatgenetics.usb.DeviceReader.AsyncTask  asyncTask  = null;
+    private final org.wheatgenetics.usb.DeviceReader.Handler handler;
+
+    private org.wheatgenetics.usb.DeviceReader.DataSource dataSource = null;
+    private org.wheatgenetics.usb.DeviceReader.AsyncTask  asyncTask  = null;
     // endregion
 
-    // region Package Methods
-    // region Constructor Package Methods
+    // region Constructors
     DeviceReader(@android.support.annotation.NonNull
     final org.wheatgenetics.usb.DeviceReader.Handler handler) { super(); this.handler = handler; }
 
@@ -115,7 +102,6 @@ class DeviceReader extends java.lang.Object
     void setDataSource(@android.support.annotation.NonNull
     final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
     { this.dataSource = dataSource; }
-    // endregion
 
     // region Public Methods
     public void execute()

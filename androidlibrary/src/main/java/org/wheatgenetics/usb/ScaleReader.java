@@ -33,10 +33,7 @@ public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
     public ScaleReader(@android.support.annotation.NonNull final android.app.Activity activity,
     @android.support.annotation.NonNull final org.wheatgenetics.usb.DeviceReader.Handler handler)
     {
-        super(handler);
-
-        this.activity = activity;
-
+        super(handler); this.activity = activity;
         this.setDataSource(new org.wheatgenetics.usb.DeviceReader.DataSource()
             {
                 @java.lang.Override
@@ -48,9 +45,5 @@ public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
 
     @java.lang.Override
     public boolean cancel()
-    {
-        final boolean result = super.cancel();
-        this.scaleInstance = null;
-        return result;
-    }
+    { final boolean result = super.cancel(); this.scaleInstance = null; return result; }
 }

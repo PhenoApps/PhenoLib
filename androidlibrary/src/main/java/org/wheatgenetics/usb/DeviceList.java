@@ -39,19 +39,17 @@ class DeviceList extends java.lang.Object
     @java.lang.Override
     public java.lang.String toString()
     {
-        java.lang.String result = null;
+        java.lang.StringBuffer result = new java.lang.StringBuffer();
         {
             java.lang.Boolean firstDevice = true;
             assert null != this.arrayList;
             for (final org.wheatgenetics.usb.Device device: this.arrayList)
-                if (firstDevice)
-                {
-                    result = device.toString();
-                    firstDevice = false;
-                }
-                else result += '\n' + device.toString();
+            {
+                if (firstDevice) firstDevice = false; else result.append('\n');
+                result.append(device.toString());
+            }
         }
-        return org.wheatgenetics.javalib.Utils.replaceIfNull(result, super.toString());
+        return org.wheatgenetics.javalib.Utils.replaceIfNull(result.toString(), super.toString());
     }
 
     // region Package Methods
@@ -59,19 +57,17 @@ class DeviceList extends java.lang.Object
 
     java.lang.String information()
     {
-        java.lang.String result = null;
+        java.lang.StringBuffer result = new java.lang.StringBuffer();
         {
             java.lang.Boolean firstDevice = true;
             assert null != this.arrayList;
             for (final org.wheatgenetics.usb.Device device: this.arrayList)
-                if (firstDevice)
-                {
-                    result = device.information();
-                    firstDevice = false;
-                }
-                else result += '\n' + device.information();
+            {
+                if (firstDevice) firstDevice = false; else result.append('\n');
+                result.append(device.information());
+            }
         }
-        return result;
+        return result.toString();
     }
 
     org.wheatgenetics.usb.Device get(final int vendorId, final int productIds[])
