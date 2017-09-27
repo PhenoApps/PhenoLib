@@ -18,5 +18,10 @@
     <string name="aboutJesseEMail">jpoland@ksu.edu</string>
     <string name="aboutWheatGeneticsWebSite">http://wheatgenetics.org\n</string>
 
+    <string name="scaleExceptionAlertDialogTitle">Scale Issue</string>
+    <string name="scaleExceptionAlertDialogMessage">Please connect scale with OTG cable and turn the scale on.</string>
+    <string name="scaleExceptionAlertDialogPositiveButtonText">Try Again</string>
+    <string name="scaleExceptionAlertDialogNegativeButtonText">Ignore</string>
+
     <string name="sendingFile">Sending File&#8230;</string>
 </resources>
