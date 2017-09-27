@@ -5,6 +5,7 @@
     <string name="cancelButtonText">Cancel</string>
 
     <string name="changeLogAlertDialogTitle">ChangeLog</string>
+    <string name="cameraOptionsMenuItemTitle">Camera scanner</string>
 
     <string name="sendingFile">Sending File&#8230;</string>
 </resources>
