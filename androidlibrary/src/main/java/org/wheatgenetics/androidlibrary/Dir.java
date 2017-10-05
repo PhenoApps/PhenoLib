@@ -16,7 +16,6 @@ public class Dir extends org.wheatgenetics.javalib.Dir
 
     protected android.content.Context getContext() { return this.context; }
 
-    // region Public Methods
     public Dir(final android.content.Context context, final java.lang.String name,
     final java.lang.String blankHiddenFileName)
     {
@@ -25,13 +24,14 @@ public class Dir extends org.wheatgenetics.javalib.Dir
     }
 
     @java.lang.Override
-    public java.io.File createIfMissing()
+    public java.io.File createIfMissing() throws java.io.IOException
     {
-        final java.io.File blankHiddenFile = super.createIfMissing();
+        final java.io.File blankHiddenFile = super.createIfMissing();  // throws java.io.IOException
         org.wheatgenetics.androidlibrary.Utils.makeFileDiscoverable(this.context, blankHiddenFile);
         return blankHiddenFile;
     }
 
+    // region Public Methods
     public android.net.Uri parse(final java.lang.String fileName)
     { assert null != this.path; return android.net.Uri.parse(this.path.toString() + fileName); }
 

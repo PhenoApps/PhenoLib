@@ -9,6 +9,7 @@ package org.wheatgenetics.androidlibrary;
  * android.media.MediaScannerConnection
  * android.net.Uri
  * android.widget.EditText
+ * android.widget.TextView
  * android.widget.Toast
  *
  * org.wheatgenetics.javalib.Utils
@@ -107,9 +108,17 @@ public class Utils extends java.lang.Object
     }
     // endregion
 
+    // region getText() Methods
+    public static java.lang.String getText(final android.widget.TextView textView)
+    {
+        assert null != textView;
+        return org.wheatgenetics.javalib.Utils.adjust(textView.getText().toString());
+    }
+
     public static java.lang.String getText(final android.widget.EditText editText)
     {
         assert null != editText;
         return org.wheatgenetics.javalib.Utils.adjust(editText.getText().toString());
     }
+    // endregion
 }
