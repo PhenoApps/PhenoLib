@@ -55,19 +55,32 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
                 });
     }
 
-    public void show(
-    @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
+    // region Public Methods
+    public void testingShow(
+        @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     {
         if (null != e)
         {
-            {
-                java.lang.String message = e.getMessage();
-                if (e instanceof org.wheatgenetics.usb.Device.UsbDeviceIsNull)
-                    message +=  "  " +  this.getString(
-                        org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogMessage);
-                this.setMessage(message);
-            }
+            this.setMessage(e.getMessage());
             this.createShow();
         }
     }
+
+    public void show(
+        @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
+    {
+        if (null != e)
+            if (e instanceof org.wheatgenetics.usb.Device.UsbDeviceIsNull)
+            {
+                class PolishedUsbDeviceIsNull extends org.wheatgenetics.usb.Device.UsbDeviceIsNull
+                {
+                    private PolishedUsbDeviceIsNull(final java.lang.String message)
+                    { super(message); }
+                }
+                this.testingShow(new PolishedUsbDeviceIsNull(this.getString(
+                    org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogMessage)));
+            }
+            else this.testingShow(e);
+    }
+    // endregion
 }

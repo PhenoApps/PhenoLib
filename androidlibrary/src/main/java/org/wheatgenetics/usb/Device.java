@@ -19,7 +19,10 @@ public class Device extends java.lang.Object
     { Exception(final java.lang.String message) { super(message); } }
 
     static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception
-    { private UsbDeviceIsNull() { super("Device.this.usbDevice is null."); } }
+    {
+                UsbDeviceIsNull(final java.lang.String message) { super(message); }
+        private UsbDeviceIsNull()       { this("Device.this.usbDevice is null."); }
+    }
 
     private static class GetInterfaceFailed extends org.wheatgenetics.usb.Device.Exception
     {
@@ -33,7 +36,7 @@ public class Device extends java.lang.Object
     private static class OpenDeviceFailed extends org.wheatgenetics.usb.Device.Exception
     {
         private OpenDeviceFailed(final java.lang.String message) { super(message); }
-        private OpenDeviceFailed() { super("Device.this.usbManager.openDevice() returned null."); }
+        private OpenDeviceFailed() { this("Device.this.usbManager.openDevice() returned null."); }
     }
 
     private static class OpenDeviceLacksPermission
