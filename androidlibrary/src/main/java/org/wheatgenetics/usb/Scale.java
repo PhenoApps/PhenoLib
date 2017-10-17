@@ -78,8 +78,9 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
 
                     case 2: case 3: case 4:                  // 3 == weighing;  2, 4 == final weight
                         {
-                            final byte LSB = buffer[4], MSB = buffer[5];
-                            this.weight = MSB * 256.0 + LSB;
+                            final byte LSB  = buffer[4] , MSB = buffer[5];
+                            final int  mask = 0x000000FF;
+                            this.weight = (MSB & mask) * 256.0 + (LSB & mask);
                         }
                         if (this.idsAreEqual(org.wheatgenetics.usb.Scale.ELANEVendorId,
                         org.wheatgenetics.usb.Scale.ELANEUSBPS20005kgProductId))
