@@ -79,6 +79,9 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
                     case 2: case 3: case 4:                  // 3 == weighing;  2, 4 == final weight
                         {
                             final byte LSB  = buffer[4] , MSB = buffer[5];
+
+                            // Interpret byte as unsigned (not signed).  For more information, visit
+                            // https://stackoverflow.com/questions/4266756/can-we-make-unsigned-byte-in-java
                             final int  mask = 0x000000FF;
                             this.weight = (MSB & mask) * 256.0 + (LSB & mask);
                         }
