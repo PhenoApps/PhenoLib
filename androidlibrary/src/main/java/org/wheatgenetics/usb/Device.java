@@ -12,6 +12,7 @@ package org.wheatgenetics.usb;
  *
  * org.wheatgenetics.javalib.Utils
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public class Device extends java.lang.Object
 {
     // region Exceptions

@@ -12,6 +12,7 @@ package org.wheatgenetics.usb;
  *
  * org.wheatgenetics.usb.Device
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 class DeviceList extends java.lang.Object
 {
     private final java.util.ArrayList<org.wheatgenetics.usb.Device> arrayList;
@@ -39,7 +40,7 @@ class DeviceList extends java.lang.Object
     @java.lang.Override
     public java.lang.String toString()
     {
-        java.lang.StringBuffer result = new java.lang.StringBuffer();
+        java.lang.StringBuilder result = new java.lang.StringBuilder();
         {
             java.lang.Boolean firstDevice = true;
             assert null != this.arrayList;
@@ -57,7 +58,7 @@ class DeviceList extends java.lang.Object
 
     java.lang.String information()
     {
-        java.lang.StringBuffer result = new java.lang.StringBuffer();
+        java.lang.StringBuilder result = new java.lang.StringBuilder();
         {
             java.lang.Boolean firstDevice = true;
             assert null != this.arrayList;

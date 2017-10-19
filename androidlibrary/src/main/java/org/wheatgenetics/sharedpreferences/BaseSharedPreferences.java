@@ -8,6 +8,7 @@ package org.wheatgenetics.sharedpreferences;
  *
  * org.wheatgenetics.javalib.Utils
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public abstract class BaseSharedPreferences extends java.lang.Object
 {
     private final android.content.SharedPreferences sharedPreferences;
@@ -21,9 +22,7 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
     // region Package Methods
     // region String Package Methods
-    /**
-     * Meant to be overridden.
-     */
+    /** Meant to be overridden. */
     void validateStringKey(@android.support.annotation.NonNull final java.lang.String key)
     { throw new java.lang.AssertionError(key + " is not a valid key."); }
 

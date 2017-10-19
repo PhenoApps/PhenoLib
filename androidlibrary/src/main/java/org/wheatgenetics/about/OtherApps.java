@@ -6,6 +6,7 @@ package org.wheatgenetics.about;
  *
  * org.wheatgenetics.androidlibrary.R
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public class OtherApps extends java.lang.Object
 {
     public enum Index

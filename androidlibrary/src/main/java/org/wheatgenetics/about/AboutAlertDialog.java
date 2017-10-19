@@ -50,6 +50,7 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
             new org.wheatgenetics.about.OtherAppsOnClickListener(activity, suppressIndex));
         }
         {
+            @java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
             class MsgSetter extends java.lang.Object
             {
                 private final android.view.View aboutView;

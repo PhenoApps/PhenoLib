@@ -6,6 +6,7 @@ package org.wheatgenetics.androidlibrary;
  * android.content.Context
  * android.content.DialogInterface.OnCancelListener
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public class ProgressDialog extends java.lang.Object
 {
     // region Fields

@@ -26,6 +26,7 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
     {
         super(activity);
 
+        @java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
         class ScrollView extends java.lang.Object
         {
             // region Fields
@@ -39,7 +40,7 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
 
             private ScrollView(
             @android.support.annotation.NonNull final android.app.Activity activity              ,
-            @android.support.annotation.NonNull final int                  changeLogRawResourceId)
+                                                final int                  changeLogRawResourceId)
             {
                 super();
                 this.activity = activity; this.changeLogRawResourceId = changeLogRawResourceId;

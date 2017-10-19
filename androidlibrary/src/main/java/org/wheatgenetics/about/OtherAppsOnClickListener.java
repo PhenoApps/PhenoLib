@@ -9,6 +9,7 @@ package org.wheatgenetics.about;
  * org.wheatgenetics.about.OtherApps.Index
  * org.wheatgenetics.about.OtherAppsAlertDialog
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public class OtherAppsOnClickListener extends java.lang.Object
 implements android.view.View.OnClickListener
 {

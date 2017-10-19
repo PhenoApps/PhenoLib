@@ -16,6 +16,7 @@ package org.wheatgenetics.androidlibrary;
  *
  * org.wheatgenetics.androidlibrary.R
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public class Utils extends java.lang.Object
 {
     private static android.content.DialogInterface.OnClickListener

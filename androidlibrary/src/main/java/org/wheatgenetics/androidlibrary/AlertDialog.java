@@ -16,6 +16,7 @@ package org.wheatgenetics.androidlibrary;
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 public abstract class AlertDialog extends java.lang.Object
 {
     // region Fields

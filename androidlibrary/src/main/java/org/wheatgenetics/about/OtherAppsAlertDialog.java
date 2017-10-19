@@ -99,6 +99,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                     this.setAdapter(new ArrayAdapter(context, otherApps));
                 }
 
+                @java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
                 class OnItemClickListener extends java.lang.Object
                 implements android.widget.AdapterView.OnItemClickListener
                 {

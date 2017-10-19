@@ -8,6 +8,7 @@ package org.wheatgenetics.usb;
  *
  * org.wheatgenetics.usb.Device.Exception
  */
+@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
 class DeviceReader extends java.lang.Object
 {
     // region Types
