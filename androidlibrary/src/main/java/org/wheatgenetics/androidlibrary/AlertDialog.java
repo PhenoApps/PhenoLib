@@ -183,7 +183,7 @@ public abstract class AlertDialog extends java.lang.Object
 
     public void createShow() { this.createAlertDialog(); this.alertDialog.show(); }
 
-    public void createModifiyShow()
+    public void createModifyShow()
     {
         this.createAlertDialog();
         this.alertDialog.getWindow().setSoftInputMode(
