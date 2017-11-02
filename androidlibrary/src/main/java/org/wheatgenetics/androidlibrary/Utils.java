@@ -8,6 +8,7 @@ package org.wheatgenetics.androidlibrary;
  * android.content.Intent
  * android.media.MediaScannerConnection
  * android.net.Uri
+ * android.text.format.DateFormat
  * android.widget.EditText
  * android.widget.TextView
  * android.widget.Toast
@@ -122,4 +123,7 @@ public class Utils extends java.lang.Object
         return org.wheatgenetics.javalib.Utils.adjust(editText.getText().toString());
     }
     // endregion
+
+    public static java.lang.CharSequence formatDate(final long date)
+    { return android.text.format.DateFormat.format("yyyy-MM-dd", new java.util.Date(date)); }
 }
