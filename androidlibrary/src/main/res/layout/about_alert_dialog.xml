@@ -4,7 +4,9 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingStart="25dp"
+    android:paddingLeft="25dp"
     android:paddingEnd="20dp"
+    android:paddingRight="20dp"
     android:paddingTop="5dp"
     android:paddingBottom="5dp">
 
@@ -14,6 +16,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:paddingStart="10dp"
+        android:paddingLeft="10dp"
         android:paddingBottom="10dp"
         android:text="@string/aboutVersionTextViewText"
         android:textColor="@color/aboutAlertDialogAccentTextColor"
@@ -27,6 +30,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:paddingStart="10dp"
+        android:paddingLeft="10dp"
         android:paddingBottom="10dp"
         android:text="@string/aboutOtherAppsTextViewText"
         android:textColor="@color/aboutAlertDialogAccentTextColor"
@@ -44,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dip"
+        android:layout_marginLeft="15dip"
         android:text="@string/aboutUniversity"
         android:textSize="@dimen/aboutAlertDialogTextSize" />
 
@@ -51,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dip"
+        android:layout_marginLeft="15dip"
         android:autoLink="email"
         android:text="@string/aboutTrevorEMail"
         android:textSize="@dimen/aboutAlertDialogTextSize" />
@@ -66,6 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dip"
+        android:layout_marginLeft="15dip"
         android:text="@string/aboutUniversity"
         android:textSize="@dimen/aboutAlertDialogTextSize" />
 
@@ -73,6 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dip"
+        android:layout_marginLeft="15dip"
         android:autoLink="email"
         android:text="@string/aboutJesseEMail"
         android:textSize="@dimen/aboutAlertDialogTextSize" />
@@ -81,6 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dip"
+        android:layout_marginLeft="15dip"
         android:autoLink="web"
         android:text="@string/aboutWheatGeneticsWebSite"
         android:textSize="@dimen/aboutAlertDialogTextSize" />
@@ -95,21 +104,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoLink="web"
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/aboutMsg2TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoLink="web"
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/aboutMsg3TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dip"
+        android:layout_marginLeft="15dip"
         android:autoLink="web"
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
 </LinearLayout>

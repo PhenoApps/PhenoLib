@@ -23,5 +23,8 @@
     <string name="scaleExceptionAlertDialogPositiveButtonText">Try Again</string>
     <string name="scaleExceptionAlertDialogNegativeButtonText">Ignore</string>
 
+    <string name="getExportFileNameAlertDialogTitle">Set Filename</string>
+    <string name="getExportFileNameAlertDialogToast">Filename cannot be empty.</string>
+
     <string name="sendingFile">Sending File&#8230;</string>
 </resources>
