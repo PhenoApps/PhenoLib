@@ -62,7 +62,10 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
 
     public void show(final java.lang.String initialFileName)
     {
-        assert null != this.editText; this.editText.setText(initialFileName); this.show();
+        assert null != this.editText;
+        this.editText.setText(initialFileName); this.editText.selectAll();
+
+        this.show();
         if (!this.positiveOnClickListenerHasBeenReplaced()) this.replacePositiveOnClickListener(
             new android.view.View.OnClickListener()
             {
