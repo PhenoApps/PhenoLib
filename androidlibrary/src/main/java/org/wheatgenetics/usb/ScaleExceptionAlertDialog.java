@@ -15,6 +15,7 @@ package org.wheatgenetics.usb;
  */
 public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
+    @java.lang.SuppressWarnings("UnnecessaryInterfaceModifier")
     public interface Handler { public abstract void tryAgain(); public abstract void ignore(); }
 
     private final org.wheatgenetics.usb.ScaleExceptionAlertDialog.Handler handler;

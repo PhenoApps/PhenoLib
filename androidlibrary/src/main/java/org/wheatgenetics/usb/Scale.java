@@ -2,7 +2,6 @@ package org.wheatgenetics.usb;
 
 /**
  * Uses:
- * android.annotation.SuppressLint
  * android.app.Activity
  * android.support.annotation.NonNull
  *
@@ -22,7 +21,7 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
 
     private static class BadReport extends org.wheatgenetics.usb.Scale.Exception
     {
-        @android.annotation.SuppressLint("DefaultLocale")
+        @java.lang.SuppressWarnings("DefaultLocale")
         private BadReport(final byte report, final byte status)
         {
             super(java.lang.String.format(

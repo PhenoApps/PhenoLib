@@ -26,13 +26,14 @@ class DeviceList extends java.lang.Object
             activity.getSystemService(android.content.Context.USB_SERVICE);
 
         assert null != usbManager;
-        final java.util.HashMap<java.lang.String, android.hardware.usb.UsbDevice> deviceList =
+        final java.util.HashMap<java.lang.String, android.hardware.usb.UsbDevice> deviceHashMap =
             usbManager.getDeviceList();
 
-        assert null != deviceList;
-        this.arrayList = new java.util.ArrayList<org.wheatgenetics.usb.Device>(deviceList.size());
+        assert null != deviceHashMap;
+        this.arrayList =
+            new java.util.ArrayList<org.wheatgenetics.usb.Device>(deviceHashMap.size());
 
-        for (final android.hardware.usb.UsbDevice usbDevice: deviceList.values())
+        for (final android.hardware.usb.UsbDevice usbDevice: deviceHashMap.values())
             if (null != usbDevice)
                 this.arrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
     }
@@ -40,17 +41,18 @@ class DeviceList extends java.lang.Object
     @java.lang.Override
     public java.lang.String toString()
     {
-        java.lang.StringBuilder result = new java.lang.StringBuilder();
+        final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
         {
             java.lang.Boolean firstDevice = true;
             assert null != this.arrayList;
             for (final org.wheatgenetics.usb.Device device: this.arrayList)
             {
-                if (firstDevice) firstDevice = false; else result.append('\n');
-                result.append(device.toString());
+                if (firstDevice) firstDevice = false; else stringBuilder.append('\n');
+                stringBuilder.append(device.toString());
             }
         }
-        return org.wheatgenetics.javalib.Utils.replaceIfNull(result.toString(), super.toString());
+        return org.wheatgenetics.javalib.Utils.replaceIfNull(
+            stringBuilder.toString(), super.toString());
     }
 
     // region Package Methods
@@ -58,17 +60,17 @@ class DeviceList extends java.lang.Object
 
     java.lang.String information()
     {
-        java.lang.StringBuilder result = new java.lang.StringBuilder();
+        final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
         {
             java.lang.Boolean firstDevice = true;
             assert null != this.arrayList;
             for (final org.wheatgenetics.usb.Device device: this.arrayList)
             {
-                if (firstDevice) firstDevice = false; else result.append('\n');
-                result.append(device.information());
+                if (firstDevice) firstDevice = false; else stringBuilder.append('\n');
+                stringBuilder.append(device.information());
             }
         }
-        return result.toString();
+        return stringBuilder.toString();
     }
 
     org.wheatgenetics.usb.Device get(final int vendorId, final int productIds[])

@@ -3,6 +3,7 @@ package org.wheatgenetics.usb;
 /**
  * Uses:
  * android.app.Activity
+ * android.content.Context
  * android.hardware.usb.UsbDevice
  * android.hardware.usb.UsbManager
  * android.support.annotation.NonNull
@@ -22,7 +23,7 @@ class ExtraDevice extends org.wheatgenetics.usb.Device
             /* usbManager => */ (android.hardware.usb.UsbManager) activity.getSystemService(
                 android.content.Context.USB_SERVICE));
 
-        if (this.usbDeviceIsNull())                                      // TODO: this.usbDevice = ?
-            new org.wheatgenetics.usb.DeviceList(activity).get(vendorId, productIds);
+        if (this.usbDeviceIsNull()) this.setUsbDevice(
+            new org.wheatgenetics.usb.DeviceList(activity).get(vendorId, productIds));
     }
 }

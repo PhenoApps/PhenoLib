@@ -2,7 +2,6 @@ package org.wheatgenetics.usb;
 
 /**
  * Uses:
- * android.annotation.SuppressLint
  * android.hardware.usb.UsbDevice
  * android.hardware.usb.UsbDeviceConnection
  * android.hardware.usb.UsbEndpoint
@@ -49,7 +48,7 @@ public class Device extends java.lang.Object
     // endregion
 
     // region Fields
-    private final android.hardware.usb.UsbDevice  usbDevice ;
+    private       android.hardware.usb.UsbDevice  usbDevice ;
     private final android.hardware.usb.UsbManager usbManager;
 
     private android.hardware.usb.UsbInterface        usbInterface        = null;
@@ -77,7 +76,8 @@ public class Device extends java.lang.Object
             this.usbDeviceConnection.close();
             this.usbDeviceConnection = null;
         }
-        this.usbEndpoint = null; this.usbInterface = null; return released;
+        this.usbEndpoint = null; this.usbInterface = null;
+        return released;
     }
     // endregion
 
@@ -99,7 +99,7 @@ public class Device extends java.lang.Object
 
     // region Package Methods
     // region DeviceList Package Methods
-    @android.annotation.SuppressLint("DefaultLocale")
+    @java.lang.SuppressWarnings("DefaultLocale")
     java.lang.String information()
     {
         return this.usbDeviceIsNull() ? null : java.lang.String.format("name=%s id=%d " +
@@ -121,8 +121,11 @@ public class Device extends java.lang.Object
     }
     // endregion
 
-    // region ExtraDevice Package Method
+    // region ExtraDevice Package Methods
     boolean usbDeviceIsNull() { return null == this.usbDevice; }
+
+    void setUsbDevice(final org.wheatgenetics.usb.Device device)
+    { if (null != device) this.usbDevice = device.usbDevice; }
     // endregion
 
     int read(final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception
@@ -166,7 +169,7 @@ public class Device extends java.lang.Object
         catch (final org.wheatgenetics.usb.Device.Exception e) { this.close(); throw e; }
     }
 
-    @android.annotation.SuppressLint("DefaultLocale")
+    @java.lang.SuppressWarnings("DefaultLocale")
     java.lang.String formattedRead() throws org.wheatgenetics.usb.Device.Exception
     {
         int length; java.lang.String data = "";

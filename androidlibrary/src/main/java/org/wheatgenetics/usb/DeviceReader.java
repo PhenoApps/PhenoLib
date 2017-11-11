@@ -12,6 +12,7 @@ package org.wheatgenetics.usb;
 class DeviceReader extends java.lang.Object
 {
     // region Types
+    @java.lang.SuppressWarnings("UnnecessaryInterfaceModifier")
     public interface Handler
     {
         public abstract void publish        (java.lang.String                       data);
@@ -101,7 +102,7 @@ class DeviceReader extends java.lang.Object
     // endregion
 
     void setDataSource(@android.support.annotation.NonNull
-    final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
+        final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
     { this.dataSource = dataSource; }
 
     // region Public Methods
