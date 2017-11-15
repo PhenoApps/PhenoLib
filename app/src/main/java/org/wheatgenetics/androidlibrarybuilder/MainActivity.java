@@ -13,11 +13,14 @@ package org.wheatgenetics.androidlibrarybuilder;
  * android.view.View
  * android.view.View.OnClickListener
  * android.widget.Button
+ * android.widget.EditText
  * android.widget.TextView
  *
  * org.wheatgenetics.about.AboutAlertDialog
  * org.wheatgenetics.about.OtherApps.Index
  * org.wheatgenetics.about.OtherAppsAlertDialog
+ * org.wheatgenetics.androidlibrary.DebouncingEditorActionListener
+ * org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
  * org.wheatgenetics.changelog.ChangeLogAlertDialog
@@ -31,14 +34,17 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.usb.ScaleReaderTester.Publisher
  * org.wheatgenetics.zxing.BarcodeScanner
  *
+ * org.wheatgenetics.androidlibrarybuilder.BuildConfig
  * org.wheatgenetics.androidlibrarybuilder.R
  */
 public class MainActivity extends android.support.v7.app.AppCompatActivity
+implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver
 {
     // region Fields
     private android.widget.TextView textView = null;
     private android.widget.Button toastButton = null, otherAppsButton   = null,
         deviceListButton = null,  scaleButton = null, scaleReaderButton = null;
+    private android.widget.EditText editText = null;
 
     private org.wheatgenetics.zxing.BarcodeScanner           barcodeScanner       = null;
     private org.wheatgenetics.changelog.ChangeLogAlertDialog changeLogAlertDialog = null;
@@ -149,6 +155,12 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
         this.scaleReaderButton = (android.widget.Button)
             this.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.scaleReaderButton);
         this.resetScaleReaderButtonText();
+
+
+        this.editText = (android.widget.EditText)
+            this.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.editText);
+        new org.wheatgenetics.androidlibrary.DebouncingEditorActionListener(this.editText,
+            this, org.wheatgenetics.androidlibrarybuilder.BuildConfig.DEBUG, 1000);
     }
 
     @java.lang.Override
@@ -182,6 +194,15 @@ public class MainActivity extends android.support.v7.app.AppCompatActivity
                 requestCode, resultCode, data),
             "null"));
     }
+
+    // region org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver Overridden Method
+    @java.lang.Override
+    public void receiveText(final java.lang.String text)
+    {
+        assert null != this.textView; this.textView.setText(text) ;
+        assert null != this.editText; this.editText.requestFocus();
+    }
+    // endregion
     // endregion
 
     // region Event Handlers
