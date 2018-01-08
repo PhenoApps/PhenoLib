@@ -37,7 +37,10 @@ public abstract class AlertDialog extends java.lang.Object
     }
 
     private void createAlertDialog()
-    { this.alertDialog = this.builder().create(); assert null != this.alertDialog; }
+    {
+        this.alertDialog = this.builder().create(); assert null != this.alertDialog;
+        this.positiveOnClickListenerReplaced = false;
+    }
 
     private void replaceOnClickListener(final int whichButton,
     final android.view.View.OnClickListener onClickListener)
@@ -171,9 +174,9 @@ public abstract class AlertDialog extends java.lang.Object
     public android.view.View inflate(final int resource)
     {
         return this.layoutInflater().inflate(
-            /* resource     => */ resource,
+            /* resource     => */ resource                                        ,
             /* root         => */ new android.widget.LinearLayout(this.activity()),
-            /* attachToRoot => */ false);
+            /* attachToRoot => */ false                                           );
     }
     // endregion
 

@@ -14,7 +14,8 @@ package org.wheatgenetics.androidlibrary;
 public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     @java.lang.SuppressWarnings("UnnecessaryInterfaceModifier")
-    public interface Handler { public abstract void handleGetFileNameDone(java.lang.String fileName); }
+    public interface Handler
+    { public abstract void handleGetFileNameDone(java.lang.String fileName); }
 
     // region Fields
     private final org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog.Handler handler ;
