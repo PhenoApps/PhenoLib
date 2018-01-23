@@ -13,12 +13,19 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 {
     private final android.content.SharedPreferences sharedPreferences;
 
+    private void setBoolean(@android.support.annotation.NonNull final java.lang.String key,
+    final boolean value)
+    {
+        if (this.getBoolean(key) != value)
+        {
+            final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
+            assert null != editor; editor.putBoolean(key, value); editor.apply();
+        }
+    }
+
     public BaseSharedPreferences(@android.support.annotation.NonNull
     final android.content.SharedPreferences sharedPreferences)
-    {
-        super();
-        this.sharedPreferences = sharedPreferences;
-    }
+    { super(); this.sharedPreferences = sharedPreferences; }
 
     // region Package Methods
     // region String Package Methods
@@ -30,8 +37,6 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     final boolean validateKey)
     {
         if (validateKey) this.validateStringKey(key);
-
-        assert null != this.sharedPreferences;
         return this.sharedPreferences.getString(key, "");
     }
 
@@ -42,18 +47,13 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     @android.support.annotation.NonNull final java.lang.String oldValue,
     java.lang.String newValue, final boolean validateKey)
     {
-        assert null != oldValue;
         newValue = org.wheatgenetics.javalib.Utils.makeEmptyIfNull(newValue);
         if (!oldValue.equals(newValue))
         {
             if (validateKey) this.validateStringKey(key);
 
-            assert null != this.sharedPreferences;
             final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
-
-            assert null != editor;
-            editor.putString(key, newValue);
-            editor.apply();
+            assert null != editor; editor.putString(key, newValue); editor.apply();
         }
     }
 
@@ -65,65 +65,41 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
     // region Integer Package Methods
     int getInt(@android.support.annotation.NonNull final java.lang.String key)
-    {
-        assert null != this.sharedPreferences;
-        return this.sharedPreferences.getInt(key, -1);
-    }
+    { return this.sharedPreferences.getInt(key, -1); }
 
     void setInt(@android.support.annotation.NonNull final java.lang.String key, final int newInt)
     {
         if (this.getInt(key) != newInt)
         {
-            assert null != this.sharedPreferences;
             final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
-
-            assert null != editor;
-            editor.putInt(key, newInt);
-            editor.apply();
+            assert null != editor; editor.putInt(key, newInt); editor.apply();
         }
     }
     // endregion
 
     // region Long Package Methods
     long getLong(@android.support.annotation.NonNull final java.lang.String key)
-    {
-        assert null != this.sharedPreferences;
-        return this.sharedPreferences.getLong(key, -1);
-    }
+    { return this.sharedPreferences.getLong(key, -1); }
 
     void setLong(@android.support.annotation.NonNull final java.lang.String key, final long newLong)
     {
         if (this.getLong(key) != newLong)
         {
-            assert null != this.sharedPreferences;
             final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
-
-            assert null != editor;
-            editor.putLong(key, newLong);
-            editor.apply();
+            assert null != editor; editor.putLong(key, newLong); editor.apply();
         }
     }
     // endregion
 
     // region Boolean Package Methods
     java.lang.Boolean getBoolean(@android.support.annotation.NonNull final java.lang.String key)
-    {
-        assert null != this.sharedPreferences;
-        return this.sharedPreferences.getBoolean(key, false);
-    }
+    { return this.sharedPreferences.getBoolean(key, false); }
 
     void setBooleanToTrue(@android.support.annotation.NonNull final java.lang.String key)
-    {
-        if (!this.getBoolean(key))
-        {
-            assert null != this.sharedPreferences;
-            final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
+    { this.setBoolean(key, true); }
 
-            assert null != editor;
-            editor.putBoolean(key, true);
-            editor.apply();
-        }
-    }
+    void setBooleanToFalse(@android.support.annotation.NonNull final java.lang.String key)
+    { this.setBoolean(key, false); }
     // endregion
     // endregion
 }
