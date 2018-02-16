@@ -35,6 +35,9 @@ implements android.widget.TextView.OnEditorActionListener
     { return null == text ? true : text.length() <= 0; }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void clearEditTextText() { this.editText.setText(""); }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void sendText(final java.lang.String text)
     { assert null != this.receiver; this.receiver.receiveText(text); }
 
@@ -43,10 +46,14 @@ implements android.widget.TextView.OnEditorActionListener
     {
         if (!org.wheatgenetics.androidlibrary.EditorActionListener.isEmpty(text))
         {
-            this.editText.setText("");
+            this.clearEditTextText();
             this.sendText(text);
         }
     }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected org.wheatgenetics.androidlibrary.EditorActionListener.Receiver getReceiver()
+    { return this.receiver; }
     // endregion
 
     public EditorActionListener(final android.widget.EditText editText,
