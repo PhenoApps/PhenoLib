@@ -4,6 +4,8 @@ package org.wheatgenetics.androidlibrary;
  * This class 1) provides optional debug logging and 2) clears its editText's text when done.
  *
  * Uses:
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  * android.util.Log
  * android.view.KeyEvent
  * android.view.inputmethod.EditorInfo
@@ -26,8 +28,26 @@ implements android.widget.TextView.OnEditorActionListener
     private final boolean                                                        debug   ;
     // endregion
 
+    // region Protected Methods
+    @java.lang.SuppressWarnings("SimplifiableConditionalExpression")
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected static boolean isEmpty(final java.lang.String text)
+    { return null == text ? true : text.length() <= 0; }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void sendText(final java.lang.String text)
     { assert null != this.receiver; this.receiver.receiveText(text); }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void process(final java.lang.String text)
+    {
+        if (!org.wheatgenetics.androidlibrary.EditorActionListener.isEmpty(text))
+        {
+            this.editText.setText("");
+            this.sendText(text);
+        }
+    }
+    // endregion
 
     public EditorActionListener(final android.widget.EditText editText,
     final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver,
@@ -95,13 +115,7 @@ implements android.widget.TextView.OnEditorActionListener
                 // break statement is intentionally omitted here.
 
             case android.view.inputmethod.EditorInfo.IME_ACTION_DONE:
-                final java.lang.String text =
-                    org.wheatgenetics.androidlibrary.Utils.getText(this.editText);
-                if (null != text) if (text.length() > 0)
-                {
-                    this.editText.setText("");
-                    this.sendText(text);
-                }
+                this.process(org.wheatgenetics.androidlibrary.Utils.getText(this.editText));
                 return true;
 
             default: return false;

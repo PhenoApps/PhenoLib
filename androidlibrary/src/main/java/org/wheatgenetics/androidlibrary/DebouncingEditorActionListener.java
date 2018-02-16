@@ -7,6 +7,8 @@ package org.wheatgenetics.androidlibrary;
  *
  * Uses:
  * android.os.Handler
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  * android.util.Log
  * android.widget.EditText
  *
@@ -91,5 +93,6 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
     }
 
     @java.lang.Override
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void sendText(final java.lang.String text) { this.textAccumulator.accumulate(text); }
 }
