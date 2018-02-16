@@ -47,20 +47,24 @@ implements android.widget.TextView.OnEditorActionListener
     {
         if (this.debug)
         {
-            final java.lang.StringBuilder msg = new java.lang.StringBuilder("actionId == ");
+            final java.lang.StringBuilder stringBuilder =
+                new java.lang.StringBuilder("actionId == ");
             switch (actionId)
             {
                 case android.view.inputmethod.EditorInfo.IME_ACTION_NEXT:
-                    msg.append("IME_ACTION_NEXT"); break;
+                    stringBuilder.append("IME_ACTION_NEXT"); break;
 
                 case android.view.inputmethod.EditorInfo.IME_ACTION_DONE:
-                    msg.append("IME_ACTION_DONE"); break;
+                    stringBuilder.append("IME_ACTION_DONE"); break;
 
-                case android.view.inputmethod.EditorInfo.IME_NULL: msg.append("IME_NULL"); break;
-                default                                          : msg.append(actionId  ); break;
+                case android.view.inputmethod.EditorInfo.IME_NULL:
+                    stringBuilder.append("IME_NULL"); break;
+
+                default: stringBuilder.append(actionId); break;
             }
 
-            msg.append(", event == "); if (null != event) msg.append("not "); msg.append("null");
+            stringBuilder.append(", event == ");
+            if (null != event) stringBuilder.append("not "); stringBuilder.append("null");
 
             if (android.view.inputmethod.EditorInfo.IME_NULL == actionId && null != event)
             {
@@ -68,17 +72,19 @@ implements android.widget.TextView.OnEditorActionListener
                 switch (action)
                 {
                     case android.view.KeyEvent.ACTION_DOWN: case android.view.KeyEvent.ACTION_UP:
-                        msg.append(", event.getAction() == ACTION_");
+                        stringBuilder.append(", event.getAction() == ACTION_");
                         switch (action)
                         {
-                            case android.view.KeyEvent.ACTION_DOWN: msg.append("DOWN"); break;
-                            case android.view.KeyEvent.ACTION_UP  : msg.append("UP"  ); break;
+                            case android.view.KeyEvent.ACTION_DOWN:
+                                stringBuilder.append("DOWN"); break;
+
+                            case android.view.KeyEvent.ACTION_UP: stringBuilder.append("UP"); break;
                         }
                         break;
                 }
             }
 
-            android.util.Log.d("Debouncer", msg.toString());
+            android.util.Log.d("EditorActionListener", stringBuilder.toString());
         }
 
         switch (actionId)
@@ -93,7 +99,7 @@ implements android.widget.TextView.OnEditorActionListener
                     org.wheatgenetics.androidlibrary.Utils.getText(this.editText);
                 if (null != text) if (text.length() > 0)
                 {
-                    assert null != this.editText; this.editText.setText("");
+                    this.editText.setText("");
                     this.sendText(text);
                 }
                 return true;

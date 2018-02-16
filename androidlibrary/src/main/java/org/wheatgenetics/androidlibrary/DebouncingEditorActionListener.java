@@ -7,6 +7,7 @@ package org.wheatgenetics.androidlibrary;
  *
  * Uses:
  * android.os.Handler
+ * android.util.Log
  * android.widget.EditText
  *
  * org.wheatgenetics.androidlibrary.EditorActionListener
@@ -43,16 +44,16 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
 
             if (this.debug)
             {
-                final java.lang.StringBuilder msg = new java.lang.StringBuilder();
+                final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
                 {
                     boolean firstText = true;
                     for (final java.lang.String text: this.arrayList)
                     {
-                        if (firstText) firstText = false; else msg.append(", ");
-                        msg.append(text);
+                        if (firstText) firstText = false; else stringBuilder.append(", ");
+                        stringBuilder.append(text);
                     }
                 }
-                android.util.Log.d("Debouncer", msg.toString());
+                android.util.Log.d("EditorActionListener", stringBuilder.toString());
             }
 
             if (null != this.receiver)
