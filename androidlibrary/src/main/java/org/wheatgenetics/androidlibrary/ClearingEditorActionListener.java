@@ -12,7 +12,7 @@ package org.wheatgenetics.androidlibrary;
 public class ClearingEditorActionListener
 extends org.wheatgenetics.androidlibrary.EditorActionListener
 {
-    @java.lang.SuppressWarnings("UnnecessaryInterfaceModifier")
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
     public interface Receiver extends org.wheatgenetics.androidlibrary.EditorActionListener.Receiver
     { public abstract void clearText(); }
 

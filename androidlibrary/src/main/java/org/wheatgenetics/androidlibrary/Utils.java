@@ -17,7 +17,7 @@ package org.wheatgenetics.androidlibrary;
  *
  * org.wheatgenetics.androidlibrary.R
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class Utils extends java.lang.Object
 {
     private static android.content.DialogInterface.OnClickListener
@@ -32,11 +32,7 @@ public class Utils extends java.lang.Object
                 {
                     @java.lang.Override
                     public void onClick(final android.content.DialogInterface dialog,
-                    final int which)
-                    {
-                        assert null != dialog;
-                        dialog.dismiss();
-                    }
+                    final int which) { assert null != dialog; dialog.dismiss(); }
                 };
         return org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListenerInstance;
     }
@@ -49,11 +45,7 @@ public class Utils extends java.lang.Object
                 {
                     @java.lang.Override
                     public void onClick(final android.content.DialogInterface dialog,
-                    final int which)
-                    {
-                        assert null != dialog;
-                        dialog.cancel();
-                    }
+                    final int which) { assert null != dialog; dialog.cancel(); }
                 };
         return org.wheatgenetics.androidlibrary.Utils.cancellingOnClickListenerInstance;
     }
@@ -90,8 +82,7 @@ public class Utils extends java.lang.Object
                 /* paths     => */ org.wheatgenetics.javalib.Utils.stringArray(file.getPath()),
                 /* mimeTypes => */ null                                                       ,
                 /* callback  => */ null                                                       );
-            assert null != context;
-            context.sendBroadcast(new android.content.Intent(
+            assert null != context; context.sendBroadcast(new android.content.Intent(
                 /* action => */ android.content.Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
                 /* uri    => */ android.net.Uri.fromFile(file)                       ));
         }
@@ -102,8 +93,7 @@ public class Utils extends java.lang.Object
     {
         final android.content.Intent intent =
             new android.content.Intent(android.content.Intent.ACTION_SEND)
-                .setType ("text/plain")
-                .putExtra(android.content.Intent.EXTRA_STREAM, uri);
+                .setType("text/plain").putExtra(android.content.Intent.EXTRA_STREAM, uri);
 
         assert null != context; context.startActivity(android.content.Intent.createChooser(
             intent, context.getString(org.wheatgenetics.androidlibrary.R.string.sendingFile)));

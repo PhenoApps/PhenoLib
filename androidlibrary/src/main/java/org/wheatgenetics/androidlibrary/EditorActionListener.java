@@ -15,11 +15,11 @@ package org.wheatgenetics.androidlibrary;
  *
  * org.wheatgenetics.androidlibrary.Utils
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class EditorActionListener extends java.lang.Object
 implements android.widget.TextView.OnEditorActionListener
 {
-    @java.lang.SuppressWarnings("UnnecessaryInterfaceModifier")
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
     public interface Receiver { public abstract void receiveText(java.lang.String text); }
 
     // region Fields
@@ -29,13 +29,13 @@ implements android.widget.TextView.OnEditorActionListener
     // endregion
 
     // region Protected Methods
-    @java.lang.SuppressWarnings("SimplifiableConditionalExpression")
+    @java.lang.SuppressWarnings({"SimplifiableConditionalExpression"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static boolean isEmpty(final java.lang.String text)
     { return null == text ? true : text.length() <= 0; }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void clearEditTextText() { this.editText.setText(""); }
+    protected void clearEditTextText() { assert null != this.editText; this.editText.setText(""); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void sendText(final java.lang.String text)
@@ -45,10 +45,7 @@ implements android.widget.TextView.OnEditorActionListener
     protected void process(final java.lang.String text)
     {
         if (!org.wheatgenetics.androidlibrary.EditorActionListener.isEmpty(text))
-        {
-            this.clearEditTextText();
-            this.sendText(text);
-        }
+            { this.clearEditTextText(); this.sendText(text); }
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -68,9 +65,8 @@ implements android.widget.TextView.OnEditorActionListener
         this.receiver = receiver; this.debug = debug;
     }
 
-    @java.lang.Override
-    public boolean onEditorAction(final android.widget.TextView v, final int actionId,
-    final android.view.KeyEvent event)
+    @java.lang.Override public boolean onEditorAction(final android.widget.TextView v,
+    final int actionId, final android.view.KeyEvent event)
     {
         if (this.debug)
         {

@@ -7,6 +7,7 @@ package org.wheatgenetics.androidlibrary;
  *
  * Uses:
  * android.os.Handler
+ * android.support.annotation.IntRange
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.util.Log
@@ -18,20 +19,21 @@ package org.wheatgenetics.androidlibrary;
 public class DebouncingEditorActionListener
 extends org.wheatgenetics.androidlibrary.EditorActionListener
 {
-    @java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+    @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
     private static class TextAccumulator extends java.lang.Object
     {
         // region Fields
-        private final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver;
-        private final boolean                               debug               ;
-        private final long                                  delayMillis         ;
-        private       boolean                               accumulating = false;
-        private final java.util.ArrayList<java.lang.String> arrayList    =
+        private final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver   ;
+        private final boolean                                                        debug      ;
+        private final long                                                           delayMillis;
+
+        private boolean accumulating = false;
+        @java.lang.SuppressWarnings({"Convert2Diamond"})
+        private final java.util.ArrayList<java.lang.String> arrayList =
             new java.util.ArrayList<java.lang.String>();
         private final java.lang.Runnable runnable = new java.lang.Runnable()
         {
-            @java.lang.Override
-            public void run()
+            @java.lang.Override public void run()
             {
                 org.wheatgenetics.androidlibrary.DebouncingEditorActionListener
                     .TextAccumulator.this.stop();
@@ -84,7 +86,7 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
 
     public DebouncingEditorActionListener(final android.widget.EditText editText,
     final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver,
-    final boolean debug, final long delayMillis)
+    final boolean debug, @android.support.annotation.IntRange(from = 0) final long delayMillis)
     {
         super(editText, receiver, debug);
         this.textAccumulator =
