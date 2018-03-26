@@ -18,10 +18,10 @@ extends org.wheatgenetics.sharedpreferences.BaseSharedPreferences
             org.wheatgenetics.sharedpreferences.UpdateVersionSharedPreferences.UPDATE_VERSION);
     }
 
-    // region Public Methods
     public UpdateVersionSharedPreferences(@android.support.annotation.NonNull
     final android.content.SharedPreferences sharedPreferences) { super(sharedPreferences); }
 
+    // region Public Methods
     public boolean updateVersionIsSet(final int newUpdateVersion)
     { return this.getUpdateVersion() >= newUpdateVersion; }
 

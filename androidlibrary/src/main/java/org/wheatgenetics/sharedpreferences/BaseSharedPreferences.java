@@ -4,11 +4,14 @@ package org.wheatgenetics.sharedpreferences;
  * Uses:
  * android.content.SharedPreferences
  * android.content.SharedPreferences.Editor
+ * android.support.annotation.CallSuper
  * android.support.annotation.NonNull
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.Utils
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public abstract class BaseSharedPreferences extends java.lang.Object
 {
     private final android.content.SharedPreferences sharedPreferences;
@@ -23,29 +26,33 @@ public abstract class BaseSharedPreferences extends java.lang.Object
         }
     }
 
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.CallSuper
+    protected void validateStringKey(@android.support.annotation.NonNull final java.lang.String key)
+    { throw new java.lang.AssertionError(key + " is not a valid key."); }
+
     public BaseSharedPreferences(@android.support.annotation.NonNull
     final android.content.SharedPreferences sharedPreferences)
     { super(); this.sharedPreferences = sharedPreferences; }
 
-    // region Package Methods
-    // region String Package Methods
-    /** Meant to be overridden. */
-    void validateStringKey(@android.support.annotation.NonNull final java.lang.String key)
-    { throw new java.lang.AssertionError(key + " is not a valid key."); }
-
-    java.lang.String getString(@android.support.annotation.NonNull final java.lang.String key,
-    final boolean validateKey)
+    // region Public Methods
+    // region String Public Methods
+    public java.lang.String getString(
+    @android.support.annotation.NonNull final java.lang.String key, final boolean validateKey)
     {
         if (validateKey) this.validateStringKey(key);
         return this.sharedPreferences.getString(key, "");
     }
 
-    java.lang.String getString(@android.support.annotation.NonNull final java.lang.String key)
+    public java.lang.String getString(
+    @android.support.annotation.NonNull final java.lang.String key)
     { return this.getString(key, /* validateKey => */ false); }
 
-    void setString(@android.support.annotation.NonNull final java.lang.String key,
-    @android.support.annotation.NonNull final java.lang.String oldValue,
-    java.lang.String newValue, final boolean validateKey)
+    public void setString(
+    @android.support.annotation.NonNull final java.lang.String key        ,
+    @android.support.annotation.NonNull final java.lang.String oldValue   ,
+                                              java.lang.String newValue   ,
+                                        final boolean          validateKey)
     {
         newValue = org.wheatgenetics.javalib.Utils.makeEmptyIfNull(newValue);
         if (!oldValue.equals(newValue))
@@ -57,17 +64,18 @@ public abstract class BaseSharedPreferences extends java.lang.Object
         }
     }
 
-    void setString(@android.support.annotation.NonNull final java.lang.String key,
-    @android.support.annotation.NonNull final java.lang.String oldValue,
-    final java.lang.String newValue)
+    public void setString(@android.support.annotation.NonNull final java.lang.String key     ,
+                          @android.support.annotation.NonNull final java.lang.String oldValue,
+                                                              final java.lang.String newValue)
     { this.setString(key, oldValue, newValue, /* validateKey => */ false); }
     // endregion
 
-    // region Integer Package Methods
-    int getInt(@android.support.annotation.NonNull final java.lang.String key)
+    // region Integer Public Methods
+    public int getInt(@android.support.annotation.NonNull final java.lang.String key)
     { return this.sharedPreferences.getInt(key, -1); }
 
-    void setInt(@android.support.annotation.NonNull final java.lang.String key, final int newInt)
+    public void setInt(@android.support.annotation.NonNull final java.lang.String key,
+    final int newInt)
     {
         if (this.getInt(key) != newInt)
         {
@@ -77,11 +85,12 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     }
     // endregion
 
-    // region Long Package Methods
-    long getLong(@android.support.annotation.NonNull final java.lang.String key)
+    // region Long Public Methods
+    public long getLong(@android.support.annotation.NonNull final java.lang.String key)
     { return this.sharedPreferences.getLong(key, -1); }
 
-    void setLong(@android.support.annotation.NonNull final java.lang.String key, final long newLong)
+    public void setLong(@android.support.annotation.NonNull final java.lang.String key,
+    final long newLong)
     {
         if (this.getLong(key) != newLong)
         {
@@ -91,14 +100,15 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     }
     // endregion
 
-    // region Boolean Package Methods
-    java.lang.Boolean getBoolean(@android.support.annotation.NonNull final java.lang.String key)
+    // region Boolean Public Methods
+    public java.lang.Boolean getBoolean(
+    @android.support.annotation.NonNull final java.lang.String key)
     { return this.sharedPreferences.getBoolean(key, false); }
 
-    void setBooleanToTrue(@android.support.annotation.NonNull final java.lang.String key)
+    public void setBooleanToTrue(@android.support.annotation.NonNull final java.lang.String key)
     { this.setBoolean(key, true); }
 
-    void setBooleanToFalse(@android.support.annotation.NonNull final java.lang.String key)
+    public void setBooleanToFalse(@android.support.annotation.NonNull final java.lang.String key)
     { this.setBoolean(key, false); }
     // endregion
     // endregion
