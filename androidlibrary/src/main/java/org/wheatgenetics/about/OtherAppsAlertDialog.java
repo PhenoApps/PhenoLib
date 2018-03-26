@@ -25,14 +25,14 @@ package org.wheatgenetics.about;
  */
 public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
-    private final org.wheatgenetics.about.OtherApps.Index suppressIndex;
-
     public OtherAppsAlertDialog(
     @android.support.annotation.NonNull final android.app.Activity activity,
     @android.support.annotation.NonNull
         final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     {
-        super(activity); this.suppressIndex = suppressIndex;
+        super(activity);
+
+        @java.lang.SuppressWarnings({"ViewConstructor"})
         class ListView extends android.widget.ListView
         {
             private ListView(final android.content.Context context,
@@ -55,11 +55,11 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         {
                             super(
                                 /* context  => */ context,
-                                /* resource => */ org.wheatgenetics.androidlibrary.
-                                    R.layout.other_apps_alert_dialog);
+                                /* resource => */ org.wheatgenetics.androidlibrary
+                                    .R.layout.other_apps_alert_dialog);
 
                             this.otherApps = otherApps;
-                            assert null != this.otherApps; this.addAll(this.otherApps.getTexts());
+                            this.addAll(this.otherApps.getTexts());
                         }
 
                         @java.lang.Override
@@ -67,39 +67,39 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         getView(final int position, final android.view.View convertView,
                         @android.support.annotation.NonNull final android.view.ViewGroup parent)
                         {
-                            android.view.View appView;
+                            final android.view.View result;
                             {
                                 final android.view.LayoutInflater layoutInflater =
                                     (android.view.LayoutInflater)
                                         this.getContext().getSystemService(
                                             android.content.Context.LAYOUT_INFLATER_SERVICE);
                                 assert null != layoutInflater;
-                                appView = layoutInflater.inflate(org.wheatgenetics.
+                                result = layoutInflater.inflate(org.wheatgenetics.
                                         androidlibrary.R.layout.other_apps_alert_dialog,
                                     null, true);
                             }
-                            assert null != appView;
+                            assert null != result;
                             {
                                 final android.widget.TextView textView = (android.widget.TextView)
-                                    appView.findViewById(
+                                    result.findViewById(
                                         org.wheatgenetics.androidlibrary.R.id.otherAppsTextView);
                                 assert null != this.otherApps; assert null != textView;
                                 textView.setText(this.otherApps.getTexts()[position]);
                             }
                             {
                                 final android.widget.ImageView imageView =
-                                    (android.widget.ImageView) appView.findViewById(
+                                    (android.widget.ImageView) result.findViewById(
                                         org.wheatgenetics.androidlibrary.R.id.otherAppsImageView);
                                 assert null != imageView; imageView.setImageResource(
-                                this.otherApps.getResIds()[position]);
+                                    this.otherApps.getResIds()[position]);
                             }
-                            return appView;
+                            return result;
                         }
                     }
                     this.setAdapter(new ArrayAdapter(context, otherApps));
                 }
 
-                @java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+                @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
                 class OnItemClickListener extends java.lang.Object
                 implements android.widget.AdapterView.OnItemClickListener
                 {
@@ -109,7 +109,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                     // endregion
 
                     private OnItemClickListener(@android.support.annotation.NonNull
-                    final android.content.Context context,
+                        final android.content.Context context,
                     @android.support.annotation.NonNull
                         final org.wheatgenetics.about.OtherApps otherApps)
                     { super(); this.context = context; this.otherApps = otherApps; }
@@ -127,11 +127,10 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                 this.setOnItemClickListener(new OnItemClickListener(context, otherApps));
             }
         }
-        this.setView (new ListView(this.activity(), this.suppressIndex));
+        this.setView(new ListView(this.activity(), suppressIndex));
     }
 
-    @java.lang.Override
-    public void configure()
+    @java.lang.Override public void configure()
     {
         this.setCancelableToTrue()
             .setTitle(org.wheatgenetics.androidlibrary.R.string.otherAppsAlertDialogTitle)

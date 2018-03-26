@@ -3,6 +3,7 @@ package org.wheatgenetics.about;
 /**
  * Uses:
  * android.app.Activity
+ * android.support.annotation.IdRes
  * android.support.annotation.NonNull
  * android.view.LayoutInflater
  * android.view.View
@@ -47,14 +48,16 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
                 aboutView.findViewById(
                     org.wheatgenetics.androidlibrary.R.id.aboutOtherAppsTextView);
             assert null != otherAppsTextView; otherAppsTextView.setOnClickListener(
-            new org.wheatgenetics.about.OtherAppsOnClickListener(activity, suppressIndex));
+                new org.wheatgenetics.about.OtherAppsOnClickListener(activity, suppressIndex));
         }
         {
-            @java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+            @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
             class MsgSetter extends java.lang.Object
             {
+                // region Fields
                 private final android.view.View aboutView;
                 private final java.lang.String  msgs[]   ;
+                // endregion
 
                 private MsgSetter(final android.view.View aboutView, final java.lang.String msgs[])
                 { super(); this.aboutView = aboutView; this.msgs = msgs; }
@@ -69,9 +72,9 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
                             break;
                         else
                         {
-                            android.widget.TextView msgTextView;
+                            final android.widget.TextView msgTextView;
                             {
-                                int msgTextViewId;
+                                @android.support.annotation.IdRes final int msgTextViewId;
                                 switch (i++)
                                 {
                                     case 1: msgTextViewId =

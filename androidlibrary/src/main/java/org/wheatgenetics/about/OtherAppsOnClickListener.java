@@ -9,7 +9,7 @@ package org.wheatgenetics.about;
  * org.wheatgenetics.about.OtherApps.Index
  * org.wheatgenetics.about.OtherAppsAlertDialog
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class OtherAppsOnClickListener extends java.lang.Object
 implements android.view.View.OnClickListener
 {
@@ -24,8 +24,7 @@ implements android.view.View.OnClickListener
     final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     { super(); this.activity = activity; this.suppressIndex = suppressIndex; }
 
-    @java.lang.Override
-    public void onClick(final android.view.View v)
+    @java.lang.Override public void onClick(final android.view.View v)
     {
         if (null == this.otherAppsAlertDialog) this.otherAppsAlertDialog =
             new org.wheatgenetics.about.OtherAppsAlertDialog(this.activity, this.suppressIndex);
