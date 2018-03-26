@@ -9,7 +9,7 @@ package org.wheatgenetics.zxing;
  * com.google.zxing.integration.android.IntentIntegrator
  * com.google.zxing.integration.android.IntentResult
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class BarcodeScanner extends java.lang.Object
 {
     private final android.app.Activity                                  activity               ;

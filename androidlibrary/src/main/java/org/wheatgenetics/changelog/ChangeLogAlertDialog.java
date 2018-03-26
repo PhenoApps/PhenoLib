@@ -6,6 +6,8 @@ package org.wheatgenetics.changelog;
  * android.content.Context
  * android.content.res.Resources
  * android.support.annotation.NonNull
+ * android.support.annotation.RawRes
+ * android.support.annotation.StyleRes
  * android.widget.LinearLayout
  * android.widget.LinearLayout.LayoutParams
  * android.widget.ScrollView
@@ -21,12 +23,12 @@ package org.wheatgenetics.changelog;
 public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     public ChangeLogAlertDialog(
-    @android.support.annotation.NonNull final android.app.Activity activity,
-    final int changeLogRawResourceId)
+    @android.support.annotation.NonNull final android.app.Activity activity              ,
+    @android.support.annotation.RawRes  final int                  changeLogRawResourceId)
     {
         super(activity);
 
-        @java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+        @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
         class ScrollView extends java.lang.Object
         {
             // region Fields
@@ -34,19 +36,19 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
             private final int                  changeLogRawResourceId;
 
             private android.widget.LinearLayout           linearLayout = null;
-            private android.widget.ScrollView             scrollView   = null;
             private org.wheatgenetics.changelog.ChangeLog changeLog    = null;
+            private android.widget.ScrollView             scrollView   = null;
             // endregion
 
             private ScrollView(
             @android.support.annotation.NonNull final android.app.Activity activity              ,
-                                                final int                  changeLogRawResourceId)
+            @android.support.annotation.RawRes  final int                  changeLogRawResourceId)
             {
                 super();
                 this.activity = activity; this.changeLogRawResourceId = changeLogRawResourceId;
             }
 
-            android.widget.ScrollView get()
+            private android.widget.ScrollView get()
             {
                 if (null == this.linearLayout)
                 {
@@ -56,7 +58,7 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
 
                 if (null == this.changeLog)
                 {
-                    java.io.InputStreamReader inputStreamReader;
+                    final java.io.InputStreamReader inputStreamReader;
                     {
                         assert null != this.activity;
                         final android.content.res.Resources resources =
@@ -92,13 +94,15 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                                     /* right => */ 20, /* bottom => */ 0);
                             }
 
-                            final android.widget.TextView textView =
+                            final android.widget.TextView result =
                                 new android.widget.TextView(this.activity);
-                            textView.setLayoutParams(this.layoutParams);
-                            return textView;
+                            result.setLayoutParams(this.layoutParams);
+                            return result;
                         }
 
-                        private void handleLine(final int resId, final java.lang.CharSequence text)
+                        private void handleLine(
+                        @android.support.annotation.StyleRes final int                    resId,
+                                                             final java.lang.CharSequence text )
                         {
                             final android.widget.TextView textView = this.makeTextView();
                             assert null != textView;
@@ -110,13 +114,11 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         // endregion
 
                         // region org.wheatgenetics.changelog.ChangeLog.LineHandler Overridden Methods
-                        @java.lang.Override
-                        public void handleBlankLine()
+                        @java.lang.Override public void handleBlankLine()
                         {
                             final android.widget.TextView spacerTextView = this.makeTextView();
                             assert null != spacerTextView;
-                            spacerTextView.setTextSize(5);
-                            spacerTextView.setText("\n");
+                            spacerTextView.setTextSize(5); spacerTextView.setText("\n");
 
                             assert null != this.linearLayout;
                             this.linearLayout.addView(spacerTextView);
@@ -144,12 +146,9 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         {
                             super();
 
-                            this.activity = activity;
-
-                            assert null != this.activity;
+                            this.activity           = activity                             ;
                             this.applicationContext = this.activity.getApplicationContext();
-
-                            this.linearLayout = linearLayout;
+                            this.linearLayout       = linearLayout                         ;
                         }
                     }
 
@@ -172,12 +171,10 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
         this.setView(new ScrollView(activity, changeLogRawResourceId).get());
     }
 
-    @java.lang.Override
-    public void configure()
+    @java.lang.Override public void configure()
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.changeLogAlertDialogTitle)
-            .setCancelableToTrue()
-            .setOKPositiveButton(
+            .setCancelableToTrue().setOKPositiveButton(
                 org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListener());
     }
 }

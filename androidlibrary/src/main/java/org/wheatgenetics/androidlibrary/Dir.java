@@ -5,6 +5,8 @@ package org.wheatgenetics.androidlibrary;
  * android.content.Context
  * android.net.Uri
  * android.os.Environment
+ * android.support.annotation.RestrictTo.Scope
+ * android.support.annotation.RestrictTo.Scope.SUBCLASSES
  *
  * org.wheatgenetics.javalib.Dir
  *
@@ -14,6 +16,7 @@ public class Dir extends org.wheatgenetics.javalib.Dir
 {
     private final android.content.Context context;
 
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected android.content.Context getContext() { return this.context; }
 
     // region Constructors

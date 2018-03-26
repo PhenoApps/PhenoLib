@@ -7,6 +7,9 @@ package org.wheatgenetics.androidlibrary;
  * android.app.AlertDialog.Builder
  * android.content.DialogInterface.OnClickListener
  * android.content.DialogInterface.OnMultiChoiceClickListener
+ * android.support.annotation.LayoutRes
+ * android.support.annotation.Size
+ * android.support.annotation.StringRes
  * android.view.LayoutInflater
  * android.view.View
  * android.view.View.OnClickListener
@@ -16,7 +19,7 @@ package org.wheatgenetics.androidlibrary;
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public abstract class AlertDialog extends java.lang.Object
 {
     // region Fields
@@ -59,15 +62,16 @@ public abstract class AlertDialog extends java.lang.Object
     public android.app.Activity activity()
     { assert null != this.activityInstance; return this.activityInstance; }
 
-    public java.lang.String getString(final int stringId)
-    { return this.activity().getString(stringId); }
+    public java.lang.String getString(@android.support.annotation.StringRes final int resId)
+    { return this.activity().getString(resId); }
 
     // region set() Public Methods
     public org.wheatgenetics.androidlibrary.AlertDialog setTitle(final java.lang.String title)
     { this.builder().setTitle(title); return this; }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setTitle(final int titleId)
-    { this.builder().setTitle(titleId); return this; }
+    public org.wheatgenetics.androidlibrary.AlertDialog setTitle(
+    @android.support.annotation.StringRes final int resId)
+    { this.builder().setTitle(resId); return this; }
 
     public org.wheatgenetics.androidlibrary.AlertDialog setCancelableToFalse()
     { this.builder().setCancelable(false); return this; }
@@ -78,14 +82,17 @@ public abstract class AlertDialog extends java.lang.Object
     public org.wheatgenetics.androidlibrary.AlertDialog setMessage(final java.lang.String message)
     { this.builder().setMessage(message); return this; }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setMessage(final int messageId)
-    { return this.setMessage(this.getString(messageId)); }
+    public org.wheatgenetics.androidlibrary.AlertDialog setMessage(
+    @android.support.annotation.StringRes final int resId)
+    { return this.setMessage(this.getString(resId)); }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setItems(final java.lang.String items[],
+    public org.wheatgenetics.androidlibrary.AlertDialog setItems(
+    @android.support.annotation.Size(min = 1) final java.lang.String items[],
     final android.content.DialogInterface.OnClickListener onClickListener)
     { this.builder().setItems(items, onClickListener); return this; }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setItems(final int itemIds[],
+    public org.wheatgenetics.androidlibrary.AlertDialog setItems(
+    @android.support.annotation.Size(min = 1) final int itemIds[],
     final android.content.DialogInterface.OnClickListener onClickListener)
     {
         if (null != itemIds)
@@ -93,6 +100,7 @@ public abstract class AlertDialog extends java.lang.Object
             final int itemIdsLength = itemIds.length;
             if (itemIdsLength > 0)
             {
+                @java.lang.SuppressWarnings({"Convert2Diamond"})
                 final java.util.ArrayList<java.lang.String> arrayList =
                     new java.util.ArrayList<java.lang.String>(itemIdsLength);
                 for (final java.lang.Integer itemId: itemIds) arrayList.add(this.getString(itemId));
@@ -105,19 +113,29 @@ public abstract class AlertDialog extends java.lang.Object
     }
 
     public org.wheatgenetics.androidlibrary.AlertDialog setMultiChoiceItems(
-    final java.lang.CharSequence items[], final boolean checkedItems[],
-    final android.content.DialogInterface.OnMultiChoiceClickListener listener)
-    { this.builder().setMultiChoiceItems(items, checkedItems, listener); return this; }
+    @android.support.annotation.Size(min = 1) final java.lang.CharSequence items[]       ,
+                                              final boolean                checkedItems[],
+    final android.content.DialogInterface.OnMultiChoiceClickListener       listener      )
+    {
+        if (null != items)
+        {
+            if (null != checkedItems) assert checkedItems.length == items.length;
+            this.builder().setMultiChoiceItems(items, checkedItems, listener);
+        }
+        return this;
+    }
 
     public org.wheatgenetics.androidlibrary.AlertDialog setView(final android.view.View view)
     { this.builder().setView(view); return this; }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setPositiveButton(final int textId,
+    public org.wheatgenetics.androidlibrary.AlertDialog setPositiveButton(
+    @android.support.annotation.StringRes final int       resId          ,
     final android.content.DialogInterface.OnClickListener onClickListener)
-    { this.builder().setPositiveButton(textId, onClickListener); return this; }
+    { this.builder().setPositiveButton(resId, onClickListener); return this; }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setPositiveButton(final int textId)
-    { return this.setPositiveButton(textId, null); }
+    public org.wheatgenetics.androidlibrary.AlertDialog setPositiveButton(
+    @android.support.annotation.StringRes final int resId)
+    { return this.setPositiveButton(resId, null); }
 
     public org.wheatgenetics.androidlibrary.AlertDialog setOKPositiveButton(
     final android.content.DialogInterface.OnClickListener onClickListener)
@@ -132,9 +150,10 @@ public abstract class AlertDialog extends java.lang.Object
             org.wheatgenetics.androidlibrary.Utils.cancellingOnClickListener());
     }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setNegativeButton(final int textId,
+    public org.wheatgenetics.androidlibrary.AlertDialog setNegativeButton(
+    @android.support.annotation.StringRes final int       resId          ,
     final android.content.DialogInterface.OnClickListener onClickListener)
-    { this.builder().setNegativeButton(textId, onClickListener); return this; }
+    { this.builder().setNegativeButton(resId, onClickListener); return this; }
 
     public org.wheatgenetics.androidlibrary.AlertDialog setCancelNegativeButton(
     final android.content.DialogInterface.OnClickListener onClickListener)
@@ -155,12 +174,14 @@ public abstract class AlertDialog extends java.lang.Object
             org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListener());
     }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setNeutralButton(final int textId,
+    public org.wheatgenetics.androidlibrary.AlertDialog setNeutralButton(
+    @android.support.annotation.StringRes final int       resId          ,
     final android.content.DialogInterface.OnClickListener onClickListener)
-    { this.builder().setNeutralButton(textId, onClickListener); return this; }
+    { this.builder().setNeutralButton(resId, onClickListener); return this; }
 
-    public org.wheatgenetics.androidlibrary.AlertDialog setNeutralButton(final int textId)
-    { return this.setNeutralButton(textId, null); }
+    public org.wheatgenetics.androidlibrary.AlertDialog setNeutralButton(
+    @android.support.annotation.StringRes final int resId)
+    { return this.setNeutralButton(resId, null); }
     // endregion
 
     // region Inflater Public Methods
@@ -171,7 +192,7 @@ public abstract class AlertDialog extends java.lang.Object
         return this.layoutInflaterInstance;
     }
 
-    public android.view.View inflate(final int resource)
+    public android.view.View inflate(@android.support.annotation.LayoutRes final int resource)
     {
         return this.layoutInflater().inflate(
             /* resource     => */ resource                                        ,
@@ -197,9 +218,10 @@ public abstract class AlertDialog extends java.lang.Object
 
     // region showToast() Public Methods
     public void showToast(final java.lang.String text)
-    { org.wheatgenetics.androidlibrary.Utils.showLongToast(this.activity(), text); }
+    { org.wheatgenetics.androidlibrary.Utils.showLongToast(this.activityInstance, text); }
 
-    public void showToast(final int textId) { this.showToast(this.getString(textId)); }
+    public void showToast(@android.support.annotation.StringRes final int resId)
+    { this.showToast(this.getString(resId)); }
     // endregion
 
     // region Public Methods Used To Keep Alert Dialog From Dismissing

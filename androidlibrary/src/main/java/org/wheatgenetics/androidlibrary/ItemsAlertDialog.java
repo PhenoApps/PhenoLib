@@ -4,6 +4,7 @@ package org.wheatgenetics.androidlibrary;
  * Uses:
  * android.app.Activity
  * android.content.DialogInterface.OnClickListener
+ * android.support.annotation.Size
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  */
@@ -18,7 +19,7 @@ public abstract class ItemsAlertDialog extends org.wheatgenetics.androidlibrary.
     final android.content.DialogInterface.OnClickListener onClickListener)
     { this.onClickListener = onClickListener; }
 
-    public void show(final java.lang.String items[])
+    public void show(@android.support.annotation.Size(min = 1) final java.lang.String items[])
     { if (null != items) { this.setItems(items, this.onClickListener); this.createShow(); } }
     // endregion
 }

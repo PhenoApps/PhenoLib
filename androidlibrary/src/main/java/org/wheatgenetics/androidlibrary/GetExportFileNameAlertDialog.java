@@ -13,7 +13,7 @@ package org.wheatgenetics.androidlibrary;
  */
 public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
-    @java.lang.SuppressWarnings("UnnecessaryInterfaceModifier")
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
     public interface Handler
     { public abstract void handleGetFileNameDone(java.lang.String fileName); }
 
@@ -40,8 +40,7 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
     final org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog.Handler handler)
     { super(activity); this.handler = handler; }
 
-    @java.lang.Override
-    public void configure()
+    @java.lang.Override public void configure()
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.getExportFileNameAlertDialogTitle);
 
@@ -70,11 +69,10 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
         if (!this.positiveOnClickListenerHasBeenReplaced()) this.replacePositiveOnClickListener(
             new android.view.View.OnClickListener()
             {
-                @java.lang.Override
-                public void onClick(final android.view.View view)
+                @java.lang.Override public void onClick(final android.view.View view)
                 {
-                    org.wheatgenetics.androidlibrary
-                        .GetExportFileNameAlertDialog.this.handleGetFileNameDone();
+                    org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog
+                        .this.handleGetFileNameDone();
                 }
             });
     }
