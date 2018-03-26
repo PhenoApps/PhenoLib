@@ -7,12 +7,13 @@ package org.wheatgenetics.usb;
  * android.hardware.usb.UsbDevice
  * android.hardware.usb.UsbManager
  * android.support.annotation.NonNull
+ * android.support.annotation.Size
  *
  * org.wheatgenetics.javalib.Utils
  *
  * org.wheatgenetics.usb.Device
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 class DeviceList extends java.lang.Object
 {
     private final java.util.ArrayList<org.wheatgenetics.usb.Device> arrayList;
@@ -38,8 +39,7 @@ class DeviceList extends java.lang.Object
                 this.arrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
     }
 
-    @java.lang.Override
-    public java.lang.String toString()
+    @java.lang.Override public java.lang.String toString()
     {
         final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
         {
@@ -73,7 +73,8 @@ class DeviceList extends java.lang.Object
         return stringBuilder.toString();
     }
 
-    org.wheatgenetics.usb.Device get(final int vendorId, final int productIds[])
+    org.wheatgenetics.usb.Device get(final int vendorId,
+    @android.support.annotation.Size(min = 1) final int productIds[])
     {
         if (null == this.arrayList || null == productIds)
             return null;

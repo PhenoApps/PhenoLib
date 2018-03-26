@@ -11,11 +11,11 @@ package org.wheatgenetics.usb;
  *
  * org.wheatgenetics.javalib.Utils
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class Device extends java.lang.Object
 {
     // region Exceptions
-    public static abstract class Exception extends java.lang.Exception
+    public abstract static class Exception extends java.lang.Exception
     { Exception(final java.lang.String message) { super(message); } }
 
     static class UsbDeviceIsNull extends org.wheatgenetics.usb.Device.Exception
@@ -35,7 +35,7 @@ public class Device extends java.lang.Object
 
     private static class OpenDeviceFailed extends org.wheatgenetics.usb.Device.Exception
     {
-        private OpenDeviceFailed(final java.lang.String message) { super(message); }
+        private OpenDeviceFailed(final java.lang.String message)               { super(message); }
         private OpenDeviceFailed() { this("Device.this.usbManager.openDevice() returned null."); }
     }
 
@@ -67,7 +67,7 @@ public class Device extends java.lang.Object
 
     private boolean close()
     {
-        boolean released;
+        final boolean released;
         if (null == this.usbDeviceConnection)
             released = true;
         else
@@ -81,13 +81,13 @@ public class Device extends java.lang.Object
     }
     // endregion
 
-    Device(final android.hardware.usb.UsbDevice usbDevice,
+    Device(
+                                        final android.hardware.usb.UsbDevice  usbDevice ,
     @android.support.annotation.NonNull final android.hardware.usb.UsbManager usbManager)
     { super(); this.usbDevice = usbDevice; this.usbManager = usbManager; }
 
     // region Overridden Methods
-    @java.lang.Override
-    public java.lang.String toString()
+    @java.lang.Override public java.lang.String toString()
     {
         return org.wheatgenetics.javalib.Utils.replaceIfNull(
             this.getDeviceName(), super.toString());
@@ -99,7 +99,7 @@ public class Device extends java.lang.Object
 
     // region Package Methods
     // region DeviceList Package Methods
-    @java.lang.SuppressWarnings("DefaultLocale")
+    @java.lang.SuppressWarnings({"DefaultLocale"})
     java.lang.String information()
     {
         return this.usbDeviceIsNull() ? null : java.lang.String.format("name=%s id=%d " +
@@ -110,7 +110,7 @@ public class Device extends java.lang.Object
             this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
     }
 
-    @java.lang.SuppressWarnings("SimplifiableConditionalExpression")
+    @java.lang.SuppressWarnings({"SimplifiableIfStatement", "SimplifiableConditionalExpression"})
     boolean idsAreEqual(final int vendorId, final int productId)
     {
         if (this.usbDeviceIsNull())
@@ -169,10 +169,10 @@ public class Device extends java.lang.Object
         catch (final org.wheatgenetics.usb.Device.Exception e) { this.close(); throw e; }
     }
 
-    @java.lang.SuppressWarnings("DefaultLocale")
+    @java.lang.SuppressWarnings({"DefaultLocale"})
     java.lang.String formattedRead() throws org.wheatgenetics.usb.Device.Exception
     {
-        int length; java.lang.String data = "";
+        final int length; final java.lang.String data;
         {
             final byte buffer[] = new byte[128];
             length = this.read(buffer);             // throws org.wheatgenetics.usb.Device.Exception

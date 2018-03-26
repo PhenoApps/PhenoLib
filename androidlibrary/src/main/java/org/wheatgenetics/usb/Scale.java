@@ -24,7 +24,7 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
 
     private static class BadReport extends org.wheatgenetics.usb.Scale.Exception
     {
-        @java.lang.SuppressWarnings("DefaultLocale")
+        @java.lang.SuppressWarnings({"DefaultLocale"})
         private BadReport(final byte report, final byte status)
         {
             super(java.lang.String.format(
@@ -87,8 +87,7 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     }
 
     // region Overridden Methods
-    @java.lang.Override
-    int read(final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception
+    @java.lang.Override int read(final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception
     {
         final int length = super.read(buffer);      // throws org.wheatgenetics.usb.Device.Exception
 
