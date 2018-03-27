@@ -43,7 +43,6 @@ public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
             });
     }
 
-    @java.lang.Override
-    public boolean cancel()
+    @java.lang.Override public boolean cancel()
     { final boolean result = super.cancel(); this.scaleInstance = null; return result; }
 }

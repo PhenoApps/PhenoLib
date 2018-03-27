@@ -8,17 +8,18 @@ package org.wheatgenetics.usb;
  *
  * org.wheatgenetics.usb.Device.Exception
  */
-@java.lang.SuppressWarnings("ClassExplicitlyExtendsObject")
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 class DeviceReader extends java.lang.Object
 {
     // region Types
-    @java.lang.SuppressWarnings("UnnecessaryInterfaceModifier")
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
     public interface Handler
     {
         public abstract void publish        (java.lang.String                       data);
         public abstract void reportException(org.wheatgenetics.usb.Device.Exception e   );
     }
 
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
     interface DataSource
     {
         public abstract java.lang.String formattedRead()
@@ -49,33 +50,32 @@ class DeviceReader extends java.lang.Object
         protected org.wheatgenetics.usb.Device.Exception doInBackground(
         final java.lang.Void... params)
         {
+            assert null != this.dataSource; while (!this.isCancelled())
             {
-                java.lang.String newData;
-                assert null != this.dataSource; while (!this.isCancelled())
-                {
-                    try { newData = this.dataSource.formattedRead(); }
-                    catch (final org.wheatgenetics.usb.Device.Exception e) { return e; }
-                    if (!this.oldData.equals(newData)) this.publishProgress(newData);
-                    android.os.SystemClock.sleep(/* ms => */ 500);
-                }
+                final java.lang.String newData;
+                try { newData = this.dataSource.formattedRead(); }
+                catch (final org.wheatgenetics.usb.Device.Exception e) { return e; }
+                if (!this.oldData.equals(newData)) this.publishProgress(newData);
+                android.os.SystemClock.sleep(/* ms => */ 500);
             }
             return null;
         }
 
-        @java.lang.Override
-        protected void onProgressUpdate(final java.lang.String... values)
+        @java.lang.Override protected void onProgressUpdate(final java.lang.String... values)
         {
-            final java.lang.String newData = values[0];
-            assert null != this.handler; this.handler.publish(newData);
-            this.oldData = newData;
+            if (null != values)
+            {
+                final java.lang.String newData = values[0];
+                assert null != this.handler; this.handler.publish(newData);
+                this.oldData = newData;
+            }
         }
 
         @java.lang.Override
         protected void onPostExecute(final org.wheatgenetics.usb.Device.Exception e)
         { if (null != e) { assert null != this.handler; this.handler.reportException(e); } }
 
-        @java.lang.Override
-        protected void onCancelled()
+        @java.lang.Override protected void onCancelled()
         {
             assert null != this.handler;
             this.handler.reportException(new org.wheatgenetics.usb.DeviceReader.Cancelled());
@@ -118,7 +118,7 @@ class DeviceReader extends java.lang.Object
 
     public boolean cancel()
     {
-        boolean cancelled;
+        final boolean cancelled;
 
         if (null == this.asyncTask)
             cancelled = false;

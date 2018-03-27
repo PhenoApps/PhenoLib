@@ -15,7 +15,7 @@ package org.wheatgenetics.usb;
  */
 public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
-    @java.lang.SuppressWarnings("UnnecessaryInterfaceModifier")
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
     public interface Handler { public abstract void tryAgain(); public abstract void ignore(); }
 
     private final org.wheatgenetics.usb.ScaleExceptionAlertDialog.Handler handler;
@@ -31,8 +31,7 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
         final org.wheatgenetics.usb.ScaleExceptionAlertDialog.Handler handler)
     { super(activity); this.handler = handler; }
 
-    @java.lang.Override
-    public void configure()
+    @java.lang.Override public void configure()
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogTitle)
             .setCancelableToFalse()
@@ -59,13 +58,7 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
     // region Public Methods
     public void testingShow(
         @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
-    {
-        if (null != e)
-        {
-            this.setMessage(e.getMessage());
-            this.createShow();
-        }
-    }
+    { if (null != e) { this.setMessage(e.getMessage()); this.createShow(); } }
 
     public void show(
         @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
