@@ -21,5 +21,8 @@ public abstract class ItemsAlertDialog extends org.wheatgenetics.androidlibrary.
 
     public void show(@android.support.annotation.Size(min = 1) final java.lang.String items[])
     { if (null != items) { this.setItems(items, this.onClickListener); this.createShow(); } }
+
+    public void show(@android.support.annotation.Size(min = 1) final int items[])
+    { if (null != items) { this.setItems(items, this.onClickListener); this.createShow(); } }
     // endregion
 }
