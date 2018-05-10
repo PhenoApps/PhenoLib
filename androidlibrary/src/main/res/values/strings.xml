@@ -30,4 +30,10 @@
     <string name="aboutJesseName">Jesse Poland</string>
     <string name="aboutJesseEMail">jpoland@ksu.edu</string>
     <string name="aboutWheatGeneticsWebSite">http://wheatgenetics.org\n</string>
+
+    <!-- ScaleExceptionAlertDialog -->
+    <string name="scaleExceptionAlertDialogTitle">Scale Issue</string>
+    <string name="scaleExceptionAlertDialogMessage">No scale detected.  Please connect scale with an OTG cable and turn the scale on.</string>
+    <string name="scaleExceptionAlertDialogPositiveButtonText">Try Again</string>
+    <string name="scaleExceptionAlertDialogNegativeButtonText">Ignore</string>
 </resources>
