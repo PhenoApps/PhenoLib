@@ -2,6 +2,6 @@
     <public name="okButtonText" type="string" />
     <public name="cancelButtonText" type="string" />
 
-    <!--public name="camera_options_menu" type="menu" />
-    <public name="cameraOptionsMenuItem" type="id" /-->
+    <public name="camera_options_menu" type="menu" />
+    <public name="cameraOptionsMenuItem" type="id" />
 </resources>
