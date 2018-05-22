@@ -1,35 +1,49 @@
 <resources>
     <string name="app_name">Android Library</string>
 
+
     <!-- Utils -->
     <string name="sendingFile">Sending File&#8230;</string>
+
 
     <!-- AlertDialog -->
     <string name="okButtonText">OK</string>
     <string name="cancelButtonText">Cancel</string>
 
+
     <!-- GetExportFileNameAlertDialog -->
     <string name="getExportFileNameAlertDialogTitle">Set Filename</string>
     <string name="getExportFileNameAlertDialogToast">Filename cannot be empty.</string>
 
+
     <!-- ChangeLogAlertDialog -->
     <string name="changeLogAlertDialogTitle">ChangeLog</string>
+
 
     <!-- Camera Options Menu -->
     <string name="cameraOptionsMenuItemTitle">Camera scanner</string>
 
+
     <!-- OtherAppsAlertDialog -->
     <string name="otherAppsAlertDialogTitle">Other Apps</string>
+
 
     <!-- AboutAlertDialog -->
     <string name="aboutVersionTextViewText">Version</string>
     <string name="aboutOtherAppsTextViewText">Other Apps</string>
-    <string name="aboutTrevorName">Trevor Rife</string>
+
     <string name="aboutUniversity">Kansas State University</string>
+
+    <string name="aboutTrevorName">Trevor Rife</string>
     <string name="aboutTrevorEMail">trife@ksu.edu</string>
+
     <string name="aboutJesseName">Jesse Poland</string>
     <string name="aboutJesseEMail">jpoland@ksu.edu</string>
-    <string name="aboutWheatGeneticsWebSite">http://wheatgenetics.org\n</string>
+    <string name="aboutWheatGeneticsWebSite">http://wheatgenetics.org</string>
+
+    <string name="aboutPeteName">Peter J. Rosario</string>
+    <string name="aboutPeteEMail">peterrosario@ksu.edu\n</string>
+
 
     <!-- ScaleExceptionAlertDialog -->
     <string name="scaleExceptionAlertDialogTitle">Scale Issue</string>

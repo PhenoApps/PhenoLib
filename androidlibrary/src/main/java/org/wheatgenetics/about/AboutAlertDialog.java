@@ -37,16 +37,15 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
             /* attachToRoot => */ false                                                       );
         {
             assert null != aboutView;
-            final android.widget.TextView versionTextView = (android.widget.TextView)
+            final android.widget.TextView versionTextView =
                 aboutView.findViewById(org.wheatgenetics.androidlibrary.R.id.aboutVersionTextView);
             assert null != versionTextView;
             versionTextView.setText(versionTextView.getText() + " " + versionName);
             versionTextView.setOnClickListener(versionOnClickListener);
         }
         {
-            final android.widget.TextView otherAppsTextView = (android.widget.TextView)
-                aboutView.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.aboutOtherAppsTextView);
+            final android.widget.TextView otherAppsTextView = aboutView.findViewById(
+                org.wheatgenetics.androidlibrary.R.id.aboutOtherAppsTextView);
             assert null != otherAppsTextView; otherAppsTextView.setOnClickListener(
                 new org.wheatgenetics.about.OtherAppsOnClickListener(activity, suppressIndex));
         }
@@ -89,10 +88,9 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
                                         org.wheatgenetics.androidlibrary.R.id.aboutMsg3TextView;
                                         break;
 
-                                    default: msgTextViewId = 0; return;
+                                    default: return;
                                 }
-                                msgTextView = (android.widget.TextView)
-                                    this.aboutView.findViewById(msgTextViewId);
+                                msgTextView = this.aboutView.findViewById(msgTextViewId);
                             }
                             assert null != msgTextView; msgTextView.setText(msg);
                         }
