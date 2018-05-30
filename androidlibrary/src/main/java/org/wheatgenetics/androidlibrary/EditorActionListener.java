@@ -29,6 +29,10 @@ implements android.widget.TextView.OnEditorActionListener
     // endregion
 
     // region Protected Methods
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected static int log(final java.lang.String msg)
+    { return android.util.Log.d("EditorActionListener", msg); }
+
     @java.lang.SuppressWarnings({"SimplifiableConditionalExpression"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static boolean isEmpty(final java.lang.String text)
@@ -107,7 +111,7 @@ implements android.widget.TextView.OnEditorActionListener
                 }
             }
 
-            android.util.Log.d("EditorActionListener", stringBuilder.toString());
+            org.wheatgenetics.androidlibrary.EditorActionListener.log(stringBuilder.toString());
         }
 
         switch (actionId)

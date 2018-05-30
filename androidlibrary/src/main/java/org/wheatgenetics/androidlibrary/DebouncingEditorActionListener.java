@@ -22,10 +22,16 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
     @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
     private static class TextAccumulator extends java.lang.Object
     {
+        @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
+        private interface Logger { public void log(java.lang.String msg); }
+
         // region Fields
         private final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver   ;
         private final boolean                                                        debug      ;
         private final long                                                           delayMillis;
+        private final
+            org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator.Logger
+            logger;
 
         private boolean accumulating = false;
         @java.lang.SuppressWarnings({"Convert2Diamond"})
@@ -57,7 +63,7 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
                         stringBuilder.append(text);
                     }
                 }
-                android.util.Log.d("EditorActionListener", stringBuilder.toString());
+                assert null != this.logger; this.logger.log(stringBuilder.toString());
             }
 
             if (null != this.receiver)
@@ -66,8 +72,15 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
 
         private TextAccumulator(
         final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver,
-        final boolean debug, final long delayMillis)
-        { super(); this.receiver = receiver; this.debug = debug; this.delayMillis = delayMillis; }
+        final boolean debug, final long delayMillis,
+        final org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator.Logger
+            logger)
+        {
+            super();
+
+            this.receiver    = receiver   ; this.debug  = debug ;
+            this.delayMillis = delayMillis; this.logger = logger;
+        }
 
         private void accumulate(final java.lang.String text)
         {
@@ -91,7 +104,12 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
         super(editText, receiver, debug);
         this.textAccumulator =
             new org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator(
-                receiver, debug, delayMillis);
+                receiver, debug, delayMillis, new org.wheatgenetics.androidlibrary
+                .DebouncingEditorActionListener.TextAccumulator.Logger()
+                {
+                    @java.lang.Override public void log(final java.lang.String msg)
+                    { org.wheatgenetics.androidlibrary.EditorActionListener.log(msg); }
+                });
     }
 
     @java.lang.Override
