@@ -67,7 +67,21 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
             }
 
             if (null != this.receiver)
-                this.receiver.receiveText(this.arrayList.get(this.arrayList.size() - 1));
+            {
+                int longest;
+                {
+                    final int first     = 0, last = this.arrayList.size() - 1;
+                          int maxLength = 0                                  ;
+
+                    longest = first;
+                    for (int i = first; i <= last; i++)
+                    {
+                        final int length = this.arrayList.get(i).length();
+                        if (length > maxLength) { maxLength = length; longest = i; }
+                    }
+                }
+                this.receiver.receiveText(this.arrayList.get(longest));
+            }
         }
 
         private TextAccumulator(
