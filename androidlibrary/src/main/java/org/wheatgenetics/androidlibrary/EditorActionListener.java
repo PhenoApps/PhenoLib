@@ -43,7 +43,10 @@ implements android.widget.TextView.OnEditorActionListener
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void sendText(final java.lang.String text)
-    { assert null != this.receiver; this.receiver.receiveText(text); }
+    {
+        if (this.debug) org.wheatgenetics.androidlibrary.EditorActionListener.log(text);
+        assert null != this.receiver; this.receiver.receiveText(text);
+    }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void process(final java.lang.String text)
