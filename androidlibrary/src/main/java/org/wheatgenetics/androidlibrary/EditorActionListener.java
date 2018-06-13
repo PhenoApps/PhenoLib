@@ -4,6 +4,7 @@ package org.wheatgenetics.androidlibrary;
  * This class 1) provides optional debug logging and 2) clears its editText's text when done.
  *
  * Uses:
+ * android.os.Handler
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.util.Log
@@ -26,6 +27,16 @@ implements android.widget.TextView.OnEditorActionListener
     private final android.widget.EditText                                        editText;
     private final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver;
     private final boolean                                                        debug   ;
+
+    private final java.lang.Runnable runnable = new java.lang.Runnable()
+    {
+        @java.lang.Override public void run()
+        {
+            org.wheatgenetics.androidlibrary.EditorActionListener
+                .this.clearEditTextTextAfterDelay();
+        }
+    };
+    private final android.os.Handler handler = new android.os.Handler();
     // endregion
 
     // region Protected Methods
@@ -38,8 +49,12 @@ implements android.widget.TextView.OnEditorActionListener
     protected static boolean isEmpty(final java.lang.String text)
     { return null == text ? true : text.length() <= 0; }
 
+    private void clearEditTextTextAfterDelay()
+    { assert null != this.editText; this.editText.setText(""); }
+
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void clearEditTextText() { assert null != this.editText; this.editText.setText(""); }
+    protected void clearEditTextText()
+    { this.handler.postDelayed(this.runnable, /* delayMillis => */ 100); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void sendText(final java.lang.String text)
@@ -109,8 +124,7 @@ implements android.widget.TextView.OnEditorActionListener
                                 stringBuilder.append("DOWN"); break;
 
                             case android.view.KeyEvent.ACTION_UP: stringBuilder.append("UP"); break;
-                        }
-                        break;
+                        } break;
                 }
             }
 
