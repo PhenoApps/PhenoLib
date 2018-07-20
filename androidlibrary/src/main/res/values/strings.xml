@@ -22,4 +22,8 @@
 
     <!-- Camera Options Menu -->
     <string name="cameraOptionsMenuItemTitle">Camera scanner</string>
+
+
+    <!-- OtherAppsAlertDialog -->
+    <string name="otherAppsAlertDialogTitle">Other Apps</string>
 </resources>
