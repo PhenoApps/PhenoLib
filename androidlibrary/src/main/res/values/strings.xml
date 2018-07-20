@@ -18,4 +18,8 @@
 
     <!-- ChangeLogAlertDialog -->
     <string name="changeLogAlertDialogTitle">ChangeLog</string>
+
+
+    <!-- Camera Options Menu -->
+    <string name="cameraOptionsMenuItemTitle">Camera scanner</string>
 </resources>
