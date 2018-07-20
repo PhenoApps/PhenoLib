@@ -43,4 +43,11 @@
 
     <string name="aboutPeteName">Peter J. Rosario</string>
     <string name="aboutPeteEMail">peterrosario@ksu.edu\n</string>
+
+
+    <!-- ScaleExceptionAlertDialog -->
+    <string name="scaleExceptionAlertDialogTitle">Scale Issue</string>
+    <string name="scaleExceptionAlertDialogMessage">No scale detected.  Please connect scale with an OTG cable and turn the scale on.</string>
+    <string name="scaleExceptionAlertDialogPositiveButtonText">Try Again</string>
+    <string name="scaleExceptionAlertDialogNegativeButtonText">Ignore</string>
 </resources>
