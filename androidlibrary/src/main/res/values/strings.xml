@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Android Library</string>
+
+
+    <!-- Utils -->
+    <string name="sendingFile">Sending File&#8230;</string>
+
+
+    <!-- AlertDialog -->
+    <string name="okButtonText">OK</string>
+    <string name="cancelButtonText">Cancel</string>
+
+
+    <!-- GetExportFileNameAlertDialog -->
+    <string name="getExportFileNameAlertDialogTitle">Set Filename</string>
+    <string name="getExportFileNameAlertDialogToast">Filename cannot be empty.</string>
 </resources>

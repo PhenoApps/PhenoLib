@@ -8,3 +8,7 @@
 /build
 /captures
 .externalNativeBuild
+/androidlibrary/build/generated
+/androidlibrary/build/intermediates
+/androidlibrary/build/outputs/logs
+/androidlibrary/build/tmp
