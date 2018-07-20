@@ -14,4 +14,8 @@
     <!-- GetExportFileNameAlertDialog -->
     <string name="getExportFileNameAlertDialogTitle">Set Filename</string>
     <string name="getExportFileNameAlertDialogToast">Filename cannot be empty.</string>
+
+
+    <!-- ChangeLogAlertDialog -->
+    <string name="changeLogAlertDialogTitle">ChangeLog</string>
 </resources>
