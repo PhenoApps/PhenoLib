@@ -4,9 +4,12 @@ package org.wheatgenetics.androidlibrarybuilder;
  * Uses:
  * android.content.Intent
  * android.content.pm.PackageInfo
+ * android.content.pm.PackageManager
  * android.content.pm.PackageManager.NameNotFoundException
+ * android.Manifest.permission
  * android.os.Bundle
  * android.support.annotation.IntRange
+ * android.support.annotation.NonNull
  * android.support.v7.app.AppCompatActivity
  * android.view.Menu
  * android.view.MenuInflater
@@ -47,6 +50,8 @@ package org.wheatgenetics.androidlibrarybuilder;
 public class MainActivity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver
 {
+    private static final int REQUEST_CODE = 100;
+
     // region Fields
     private android.widget.TextView textView = null;
     private android.widget.Button button = null, otherAppsButton = null,
@@ -225,7 +230,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
             /* activity => */this, name, blankHiddenFileName);
         this.requestDir = new org.wheatgenetics.androidlibrary.RequestDir(
             /* activity    => */this, name, blankHiddenFileName,
-            /* requestCode => */100);
+            /* requestCode => */ org.wheatgenetics.androidlibrarybuilder.MainActivity.REQUEST_CODE);
     }
 
     @java.lang.Override public boolean onCreateOptionsMenu(final android.view.Menu menu)
@@ -255,6 +260,24 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
             org.wheatgenetics.zxing.BarcodeScanner.parseActivityResult(
                 requestCode, resultCode, data),
             "null"));
+    }
+
+    @java.lang.Override public void onRequestPermissionsResult(
+                                        final int              requestCode   ,
+    @android.support.annotation.NonNull final java.lang.String permissions [],
+    @android.support.annotation.NonNull final int              grantResults[])
+    {
+        if (org.wheatgenetics.androidlibrarybuilder.MainActivity.REQUEST_CODE == requestCode)
+        {
+            boolean permissionFound = false;
+            for (final java.lang.String permission: permissions)
+                if (android.Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(permission))
+                    { permissionFound = true; break; }
+
+            if (permissionFound) for (final int grantResult: grantResults)
+                if (android.content.pm.PackageManager.PERMISSION_GRANTED == grantResult)
+                    { this.listAll(this.requestDir); break; }
+        }
     }
 
     // region org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver Overridden Method
