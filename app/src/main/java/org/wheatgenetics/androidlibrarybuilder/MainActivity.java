@@ -25,6 +25,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.about.OtherAppsAlertDialog
  * org.wheatgenetics.androidlibrary.DebouncingEditorActionListener
  * org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver
+ * org.wheatgenetics.androidlibrary.PermissionDir
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
  * org.wheatgenetics.changelog.ChangeLogAlertDialog
@@ -51,6 +52,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     private android.widget.EditText editText = null;
 
     private org.wheatgenetics.zxing.BarcodeScanner           barcodeScanner       = null;
+    private org.wheatgenetics.androidlibrary.PermissionDir   permissionDir        = null;
     private org.wheatgenetics.changelog.ChangeLogAlertDialog changeLogAlertDialog = null;
     private org.wheatgenetics.about.OtherAppsAlertDialog     otherAppsAlertDialog = null;
     private org.wheatgenetics.about.AboutAlertDialog         aboutAlertDialog     = null;
@@ -119,6 +121,40 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     }
     // endregion
 
+    private void listAll()
+    {
+        if (null != this.permissionDir)
+        {
+            java.lang.String text;
+            try
+            {
+                final java.lang.String lines[] = this.permissionDir.list();  // throws java.securi-
+                                                                             //  ty.AccessControlEx-
+                if (null == lines)                                           //  ception
+                    text = "null";
+                else
+                    if (lines.length < 1)
+                        text = "null";
+                    else
+                    {
+                        final java.lang.StringBuilder stringBuilder;
+                        {
+                            final int first = 0;
+                            stringBuilder = new java.lang.StringBuilder(lines[first]);
+                        }
+                        {
+                            final int second = 1, last = lines.length - 1;
+                            for (int i = second; i <= last; i++)
+                                stringBuilder.append(',').append(lines[i]);
+                        }
+                        text = stringBuilder.toString();
+                    }
+            }
+            catch (final java.security.AccessControlException e) { text = e.getMessage(); }
+            this.setTextViewText(text);
+        }
+    }
+
     private android.content.Intent intent(
     final java.lang.String content, final java.lang.String encoding)
     {
@@ -137,7 +173,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     {
         if (null == this.changeLogAlertDialog)
             this.changeLogAlertDialog = new org.wheatgenetics.changelog.ChangeLogAlertDialog(
-                /* activity               => */ this,
+                /* activity               => */this,
                 /* changeLogRawResourceId => */
                     org.wheatgenetics.androidlibrarybuilder.R.raw.changelog);
         this.changeLogAlertDialog.show();
@@ -175,8 +211,15 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
 
 
         this.editText = this.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.editText);
-        new org.wheatgenetics.androidlibrary.DebouncingEditorActionListener(this.editText, this,
-            org.wheatgenetics.androidlibrarybuilder.BuildConfig.DEBUG, /* delayMillis => */ 1000);
+        new org.wheatgenetics.androidlibrary.DebouncingEditorActionListener(this.editText,
+            this, org.wheatgenetics.androidlibrarybuilder.BuildConfig.DEBUG,
+            /* delayMillis => */1000);
+
+
+        this.permissionDir = new org.wheatgenetics.androidlibrary.PermissionDir(
+            /* activity            => */this,
+            /* name                => */"AndroidLibraryBuilder",
+            /* blankHiddenFileName => */".androidlibrarybuilder");
     }
 
     @java.lang.Override public boolean onCreateOptionsMenu(final android.view.Menu menu)
@@ -222,19 +265,26 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     {
         switch (this.buttonClickCount)
         {
-            case 0: org.wheatgenetics.androidlibrary.Utils.showShortToast(this, "short"); break;
-            case 1: org.wheatgenetics.androidlibrary.Utils.showLongToast (this, "long" ); break;
+            case 0:
+                org.wheatgenetics.androidlibrary.Utils.showShortToast(this,"short");
+                break;
 
-            case 2:
+            case 1:
+                org.wheatgenetics.androidlibrary.Utils.showLongToast (this,"long" );
+                break;
+
+            case 2: this.listAll(); break;
+
+            case 3:
                 final org.wheatgenetics.javalib.Utils.Response response;
                 {
                     java.net.URL url;
                     try
                     {
                         url = new java.net.URL(             // throws java.net.MalformedURLException
-                            /* protocol => */ "http"           ,
-                            /* host     => */ "www.example.org",
-                            /* file     => */ "index.html"     );
+                            /* protocol => */"http",
+                            /* host     => */"www.example.org",
+                            /* file     => */"index.html");
                     }
                     catch (final java.net.MalformedURLException e) { url = null; }
                     response = org.wheatgenetics.javalib.Utils.threadedGet(url);
@@ -245,14 +295,15 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                     this.startActivity(this.intent(response.content(), response.contentEncoding()));
                 break;
 
-            case 3: this.showChangeLog(); break;
+            case 4: this.showChangeLog(); break;
         }
 
         switch (this.buttonClickCount)
         {
             case 0 : this.buttonClickCount++; this.setButtonText("Long Toast"             ); break;
-            case 1 : this.buttonClickCount++; this.setButtonText("http://www.example.org/"); break;
-            case 2 : this.buttonClickCount++; this.setButtonText("ChangeLog"              ); break;
+            case 1 : this.buttonClickCount++; this.setButtonText("permissionDir.list()"   ); break;
+            case 2 : this.buttonClickCount++; this.setButtonText("http://www.example.org/"); break;
+            case 3 : this.buttonClickCount++; this.setButtonText("ChangeLog"              ); break;
             default: this.buttonClickCount = 0; this.resetButtonText()                     ; break;
         }
     }
@@ -275,13 +326,14 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                     {
                         final android.content.pm.PackageInfo packageInfo =
                             this.getPackageManager().getPackageInfo(
-                                this.getPackageName(), /* flags => */ 0);
+                                this.getPackageName(), /* flags => */0);
                         assert null != packageInfo; versionName = packageInfo.versionName;
                     }
                     catch (final android.content.pm.PackageManager.NameNotFoundException e)
                     { versionName = org.wheatgenetics.javalib.Utils.adjust(null); }
 
-                    this.aboutAlertDialog = new org.wheatgenetics.about.AboutAlertDialog(this,
+                    this.aboutAlertDialog = new org.wheatgenetics.about.AboutAlertDialog(
+                        this,
                         "About Android Library Builder", versionName, new java.lang.String[]{
                             "msg1: test (http://www.google.com/ )",
                             "msg2: (http://www.google.com/) test" ,
@@ -337,13 +389,13 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         switch (this.scaleButtonClickCount)
         {
             case 0: case 1:
-                if (null == this.extraDeviceTester)
-                    this.extraDeviceTester = new org.wheatgenetics.usb.ExtraDeviceTester(this);
+                if (null == this.extraDeviceTester) this.extraDeviceTester =
+                    new org.wheatgenetics.usb.ExtraDeviceTester(this);
                 break;
 
             case 2: case 3:
-                if (null == this.scaleTester)
-                    this.scaleTester = new org.wheatgenetics.usb.ScaleTester(this);
+                if (null == this.scaleTester) this.scaleTester =
+                    new org.wheatgenetics.usb.ScaleTester(this);
                 break;
         }
 
@@ -377,7 +429,8 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         {
             case 0: case 1:
                 if (null == this.deviceReaderTester)
-                    this.deviceReaderTester = new org.wheatgenetics.usb.DeviceReaderTester(this,
+                    this.deviceReaderTester = new org.wheatgenetics.usb.DeviceReaderTester(
+                        this,
                         new org.wheatgenetics.usb.DeviceReaderTester.Publisher()
                         {
                             @java.lang.Override public void publish(final java.lang.String data)
@@ -390,7 +443,8 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
 
             case 2: case 3:
                 if (null == this.scaleReaderTester)
-                    this.scaleReaderTester = new org.wheatgenetics.usb.ScaleReaderTester(this,
+                    this.scaleReaderTester = new org.wheatgenetics.usb.ScaleReaderTester(
+                        this,
                         new org.wheatgenetics.usb.ScaleReaderTester.Publisher()
                         {
                             @java.lang.Override public void publish(final java.lang.String data)

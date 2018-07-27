@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="org.wheatgenetics.androidlibrarybuilder.MainActivity">
+    tools:activity="org.wheatgenetics.androidlibrarybuilder.MainActivity">
 
     <TextView
         android:id="@+id/textView"
