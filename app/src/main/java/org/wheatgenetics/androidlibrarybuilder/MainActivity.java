@@ -21,6 +21,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * android.widget.TextView
  *
  * org.wheatgenetics.javalib.Dir
+ * org.wheatgenetics.javalib.Dir.PermissionException
  * org.wheatgenetics.javalib.Utils
  * org.wheatgenetics.javalib.Utils.Response
  *
@@ -134,10 +135,12 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         if (null != dir)
         {
             java.lang.String text;
+
             try
             {
-                final java.lang.String lines[] = dir.list();             // throws java.security
-                                                                         //  .AccessControlException
+                dir.createIfMissing();                    // throws IOException, PermissionException
+                final java.lang.String lines[] = dir.list();           // throws PermissionException
+
                 if (null == lines)
                     text = "null";
                 else
@@ -158,7 +161,9 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                         text = stringBuilder.toString();
                     }
             }
-            catch (final java.security.AccessControlException e) { text = e.getMessage(); }
+            catch (final java.io.IOException | org.wheatgenetics.javalib.Dir.PermissionException e)
+            { text = e.getMessage(); }
+
             this.setTextViewText(text);
         }
     }

@@ -24,12 +24,15 @@ public class RequestDir extends org.wheatgenetics.androidlibrary.PermissionDir
     { super(activity, parent, name); this.requestCode = requestCode; }
     // endregion
 
-    @java.lang.Override protected void requestPermission()
+    @java.lang.Override protected boolean requestPermission()
     {
         if (!this.permissionGranted()) android.support.v4.app.ActivityCompat.requestPermissions(
             /* activity    => */ this.getActivity(),
             /* permissions => */ org.wheatgenetics.javalib.Utils.stringArray(
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
             /* requestCode => */ this.requestCode);
+
+        // noinspection UnnecessaryLocalVariable
+        final boolean permissionRequested = true; return permissionRequested;
     }
 }
