@@ -39,6 +39,7 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
             this.activity = activity;
     }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public PermissionDir(final android.app.Activity activity,
     final org.wheatgenetics.javalib.Dir parent, final java.lang.String name)
     {
@@ -50,17 +51,16 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
     }
     // endregion
 
+    // region Overridden Methods
     @java.lang.Override protected void log(final java.lang.String msg)
     { android.util.Log.d("Dir",this.label() + msg); }
 
-    // region Overridden Methods
     @java.lang.Override protected boolean permissionGranted()
     {
-        final boolean result = android.support.v4.content.ContextCompat.checkSelfPermission(
+        return android.support.v4.content.ContextCompat.checkSelfPermission(
                 /* context    => */ this.getActivity()                                ,
                 /* permission => */ android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
             == android.content.pm.PackageManager.PERMISSION_GRANTED;
-        return result;
     }
 
     @java.lang.Override public java.io.File createIfMissing()
@@ -74,6 +74,7 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
     // endregion
 
     // region Public Methods
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public android.net.Uri parse(final java.lang.String fileName)
     {
         final java.io.File path = this.getPath();

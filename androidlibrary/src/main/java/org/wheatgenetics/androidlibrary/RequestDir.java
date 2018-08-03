@@ -32,7 +32,6 @@ public class RequestDir extends org.wheatgenetics.androidlibrary.PermissionDir
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
             /* requestCode => */ this.requestCode);
 
-        // noinspection UnnecessaryLocalVariable
-        final boolean permissionRequested = true; return permissionRequested;
+        return true;
     }
 }
