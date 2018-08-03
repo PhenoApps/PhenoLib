@@ -22,7 +22,6 @@ class DeviceList extends java.lang.Object
     {
         super();
 
-        assert null != activity;
         final android.hardware.usb.UsbManager usbManager = (android.hardware.usb.UsbManager)
             activity.getSystemService(android.content.Context.USB_SERVICE);
 
@@ -31,6 +30,7 @@ class DeviceList extends java.lang.Object
             usbManager.getDeviceList();
 
         assert null != deviceHashMap;
+        // noinspection Convert2Diamond
         this.arrayList =
             new java.util.ArrayList<org.wheatgenetics.usb.Device>(deviceHashMap.size());
 

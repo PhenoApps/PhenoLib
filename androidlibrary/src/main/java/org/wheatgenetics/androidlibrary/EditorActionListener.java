@@ -40,11 +40,12 @@ implements android.widget.TextView.OnEditorActionListener
     // endregion
 
     // region Protected Methods
+    @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static int log(final java.lang.String msg)
     { return android.util.Log.d("EditorActionListener", msg); }
 
-    @java.lang.SuppressWarnings({"SimplifiableConditionalExpression"})
+    @java.lang.SuppressWarnings({"WeakerAccess", "SimplifiableConditionalExpression"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static boolean isEmpty(final java.lang.String text)
     { return null == text ? true : text.length() <= 0; }
@@ -52,10 +53,12 @@ implements android.widget.TextView.OnEditorActionListener
     private void clearEditTextTextAfterDelay()
     { assert null != this.editText; this.editText.setText(""); }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void clearEditTextText()
     { this.handler.postDelayed(this.runnable, /* delayMillis => */ 100); }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void sendText(final java.lang.String text)
     {
@@ -63,6 +66,7 @@ implements android.widget.TextView.OnEditorActionListener
         assert null != this.receiver; this.receiver.receiveText(text);
     }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void process(final java.lang.String text)
     {
@@ -70,14 +74,16 @@ implements android.widget.TextView.OnEditorActionListener
             { this.clearEditTextText(); this.sendText(text); }
     }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected org.wheatgenetics.androidlibrary.EditorActionListener.Receiver getReceiver()
     { return this.receiver; }
     // endregion
 
-    public EditorActionListener(final android.widget.EditText editText,
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public EditorActionListener(
+    final android.widget.EditText                                        editText,
     final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver,
-    final boolean debug)
+    final boolean                                                        debug   )
     {
         super();
 

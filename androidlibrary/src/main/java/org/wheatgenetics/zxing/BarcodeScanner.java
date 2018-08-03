@@ -18,7 +18,7 @@ public class BarcodeScanner extends java.lang.Object
     public BarcodeScanner(final android.app.Activity activity)
     { super(); this.activity = activity; }
 
-    public android.app.AlertDialog scan()
+    @java.lang.SuppressWarnings({"UnusedReturnValue"}) public android.app.AlertDialog scan()
     {
         if (null == this.intentIntegrator) this.intentIntegrator =
             new com.google.zxing.integration.android.IntentIntegrator(this.activity);

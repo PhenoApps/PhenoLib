@@ -19,7 +19,7 @@ public class RequestDir extends org.wheatgenetics.androidlibrary.PermissionDir
     final java.lang.String blankHiddenFileName, final int requestCode)
     { super(activity, name, blankHiddenFileName); this.requestCode = requestCode; }
 
-    public RequestDir(final android.app.Activity activity,
+    @java.lang.SuppressWarnings({"unused"}) public RequestDir(final android.app.Activity activity,
     final org.wheatgenetics.javalib.Dir parent, final java.lang.String name, final int requestCode)
     { super(activity, parent, name); this.requestCode = requestCode; }
     // endregion

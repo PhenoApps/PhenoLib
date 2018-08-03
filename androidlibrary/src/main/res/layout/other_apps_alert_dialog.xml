@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,13 +16,16 @@
         android:layout_height="wrap_content"
         android:paddingStart="15dp"
         android:paddingLeft="15dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+
+        tools:ignore="RtlSymmetry">
 
         <ImageView
             android:id="@+id/otherAppsImageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="1dp"/>
+            android:padding="1dp"
+            android:contentDescription="@string/otherAppsImageViewContentDescription" />
 
         <TextView
             android:id="@+id/otherAppsTextView"

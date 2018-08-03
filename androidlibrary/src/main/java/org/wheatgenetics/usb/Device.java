@@ -65,7 +65,7 @@ public class Device extends java.lang.Object
     private int getProductId()
     { return this.usbDeviceIsNull() ? 0 : this.usbDevice.getProductId(); }
 
-    private boolean close()
+    @java.lang.SuppressWarnings({"UnusedReturnValue"}) private boolean close()
     {
         final boolean released;
         if (null == this.usbDeviceConnection)

@@ -13,7 +13,7 @@ package org.wheatgenetics.androidlibrary;
  */
 public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier", "WeakerAccess"})
     public interface Handler
     { public abstract void handleGetFileNameDone(java.lang.String fileName); }
 
@@ -36,21 +36,23 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
         }
     }
 
-    public GetExportFileNameAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog.Handler handler)
+    @java.lang.SuppressWarnings({"unused"}) public GetExportFileNameAlertDialog(
+    final android.app.Activity                                                  activity,
+    final org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog.Handler handler )
     { super(activity); this.handler = handler; }
 
-    @java.lang.Override public void configure()
+    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public void configure()
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.getExportFileNameAlertDialogTitle);
 
         {
             final android.view.View view = this.layoutInflater().inflate(
-                org.wheatgenetics.androidlibrary.R.layout.get_export_file_name_alert_dialog, null);
+                org.wheatgenetics.androidlibrary.R.layout.get_export_file_name_alert_dialog,
+                null);
 
             if (null == this.editText)
             {
-                assert null != view; this.editText = (android.widget.EditText)
+                assert null != view; this.editText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id.editText);
             }
 
@@ -60,7 +62,7 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
         this.setOKPositiveButton(null).setCancelNegativeButton();
     }
 
-    public void show(final java.lang.String initialFileName)
+    @java.lang.SuppressWarnings({"unused"}) public void show(final java.lang.String initialFileName)
     {
         assert null != this.editText;
         this.editText.setText(initialFileName); this.editText.selectAll();

@@ -72,6 +72,7 @@ public class Utils extends java.lang.Object
     // endregion
 
     // region File Methods
+    @java.lang.SuppressWarnings({"UnusedReturnValue"})
     public static java.io.File makeFileDiscoverable(final android.content.Context context,
     final java.io.File file)
     {
@@ -80,8 +81,8 @@ public class Utils extends java.lang.Object
             android.media.MediaScannerConnection.scanFile(
                 /* context   => */ context                                                    ,
                 /* paths     => */ org.wheatgenetics.javalib.Utils.stringArray(file.getPath()),
-                /* mimeTypes => */ null                                                       ,
-                /* callback  => */ null                                                       );
+                /* mimeTypes => */null,
+                /* callback  => */null);
             assert null != context; context.sendBroadcast(new android.content.Intent(
                 /* action => */ android.content.Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
                 /* uri    => */ android.net.Uri.fromFile(file)                       ));
@@ -89,7 +90,8 @@ public class Utils extends java.lang.Object
         return file;
     }
 
-    public static void shareFile(final android.content.Context context, final android.net.Uri uri)
+    @java.lang.SuppressWarnings({"unused"}) public static void shareFile(
+    final android.content.Context context, final android.net.Uri uri)
     {
         final android.content.Intent intent =
             new android.content.Intent(android.content.Intent.ACTION_SEND)
@@ -101,6 +103,7 @@ public class Utils extends java.lang.Object
     // endregion
 
     // region getText() Methods
+    @java.lang.SuppressWarnings({"unused"})
     public static java.lang.String getText(final android.widget.TextView textView)
     {
         assert null != textView;
@@ -114,6 +117,10 @@ public class Utils extends java.lang.Object
     }
     // endregion
 
+    @java.lang.SuppressWarnings({"unused"})
     public static java.lang.CharSequence formatDate(final long date)
-    { return android.text.format.DateFormat.format("yyyy-MM-dd", new java.util.Date(date)); }
+    {
+        return android.text.format.DateFormat.format(
+            "yyyy-MM-dd", new java.util.Date(date));
+    }
 }

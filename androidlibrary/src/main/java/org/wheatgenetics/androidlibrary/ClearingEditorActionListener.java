@@ -9,13 +9,15 @@ package org.wheatgenetics.androidlibrary;
  * org.wheatgenetics.androidlibrary.EditorActionListener
  * org.wheatgenetics.androidlibrary.EditorActionListener.Receiver
  */
+@java.lang.SuppressWarnings({"WeakerAccess"})
 public class ClearingEditorActionListener
 extends org.wheatgenetics.androidlibrary.EditorActionListener
 {
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier", "WeakerAccess"})
     public interface Receiver extends org.wheatgenetics.androidlibrary.EditorActionListener.Receiver
     { public abstract void clearText(); }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void clearText()
     {
@@ -25,11 +27,12 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
         assert null != receiver; receiver.clearText();
     }
 
-    public ClearingEditorActionListener(final android.widget.EditText editText,
+    @java.lang.SuppressWarnings({"unused"}) public ClearingEditorActionListener(
+    final android.widget.EditText                                                editText,
     final org.wheatgenetics.androidlibrary.ClearingEditorActionListener.Receiver receiver,
     final boolean debug) { super(editText, receiver, debug); }
 
-    @java.lang.Override
+    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void process(final java.lang.String text)
     {

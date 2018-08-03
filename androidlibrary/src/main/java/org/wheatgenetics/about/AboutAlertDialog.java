@@ -2,6 +2,7 @@ package org.wheatgenetics.about;
 
 /**
  * Uses:
+ * android.annotation.SuppressLint
  * android.app.Activity
  * android.support.annotation.IdRes
  * android.support.annotation.NonNull
@@ -19,6 +20,7 @@ package org.wheatgenetics.about;
  */
 public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
+    @android.annotation.SuppressLint({"SetTextI18n"})
     public AboutAlertDialog(
     @android.support.annotation.NonNull final android.app.Activity activity   ,
     @android.support.annotation.NonNull final java.lang.String     title      ,
@@ -34,7 +36,7 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
         final android.view.View aboutView = android.view.LayoutInflater.from(activity).inflate(
             /* resource     => */ org.wheatgenetics.androidlibrary.R.layout.about_alert_dialog,
             /* root         => */ new android.widget.LinearLayout(activity)                   ,
-            /* attachToRoot => */ false                                                       );
+            /* attachToRoot => */false);
         {
             assert null != aboutView;
             final android.widget.TextView versionTextView =
@@ -102,6 +104,6 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
         this.setTitle(title).setView(aboutView);
     }
 
-    @java.lang.Override
-    public void configure() { this.setCancelableToTrue().setOKNegativeButton(); }
+    @java.lang.Override public void configure()
+    { this.setCancelableToTrue().setOKNegativeButton(); }
 }

@@ -80,16 +80,14 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                             }
                             assert null != result;
                             {
-                                final android.widget.TextView textView = (android.widget.TextView)
-                                    result.findViewById(
-                                        org.wheatgenetics.androidlibrary.R.id.otherAppsTextView);
+                                final android.widget.TextView textView = result.findViewById(
+                                    org.wheatgenetics.androidlibrary.R.id.otherAppsTextView);
                                 assert null != this.otherApps; assert null != textView;
                                 textView.setText(this.otherApps.getTexts()[position]);
                             }
                             {
-                                final android.widget.ImageView imageView =
-                                    (android.widget.ImageView) result.findViewById(
-                                        org.wheatgenetics.androidlibrary.R.id.otherAppsImageView);
+                                final android.widget.ImageView imageView = result.findViewById(
+                                    org.wheatgenetics.androidlibrary.R.id.otherAppsImageView);
                                 assert null != imageView; imageView.setImageResource(
                                     this.otherApps.getResIds()[position]);
                             }

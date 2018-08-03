@@ -67,10 +67,12 @@ public class OtherApps extends java.lang.Object
         }
         else
         {
+            // noinspection RedundantTypeArguments
             this.texts = org.wheatgenetics.about.OtherApps.<java.lang.String>removeElement(
                 org.wheatgenetics.about.OtherApps.ALL_TEXTS, suppressIndex);
             this.resIds = org.wheatgenetics.about.OtherApps.<java.lang.Integer>removeElement(
                 org.wheatgenetics.about.OtherApps.ALL_RES_IDS, suppressIndex);
+            // noinspection RedundantTypeArguments
             this.uris = org.wheatgenetics.about.OtherApps.<java.lang.String>removeElement(
                 org.wheatgenetics.about.OtherApps.ALL_URIS, suppressIndex);
         }

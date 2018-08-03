@@ -81,7 +81,9 @@ public class DeviceReaderTester extends java.lang.Object
     { super(); this.activity = activity; this.publisher = publisher; }
 
     // region Public Methods
-    public void    executeReader() {        this.deviceReader().execute(); }
-    public boolean cancelReader () { return this.deviceReader().cancel (); }
+    public void executeReader() { this.deviceReader().execute(); }
+
+    @java.lang.SuppressWarnings({"UnusedReturnValue"}) public boolean cancelReader()
+    { return this.deviceReader().cancel (); }
     // endregion
 }
