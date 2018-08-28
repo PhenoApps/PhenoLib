@@ -26,8 +26,44 @@ public class Call implements Serializable {
   private List<String> datatypes = null;
   @SerializedName("methods")
   private List<String> methods = null;
-  public enum List&lt;VersionsEnum&gt; {
-     1.0,  1.1,  1.2,  1.3, 
+  public enum VersionsEnum
+  {
+    _0("1.0"), _1("1.1"), _2("1.2"), _3("1.3");
+
+    private final java.lang.String value;
+
+    VersionsEnum(final java.lang.String value) { this.value = value; }
+
+    @java.lang.Override public java.lang.String toString()
+    { return java.lang.String.valueOf(this.value); }
+
+    // region Public Methods
+    public static io.swagger.client.model.Call.VersionsEnum fromValue(final java.lang.String text)
+    {
+      for (final io.swagger.client.model.Call.VersionsEnum versionsEnum:
+      io.swagger.client.model.Call.VersionsEnum.values())
+        if (versionsEnum.getValue().equals(text)) return versionsEnum;
+      return null;
+    }
+
+    public static class Adapter
+    extends com.google.gson.TypeAdapter<io.swagger.client.model.Call.VersionsEnum>
+    {
+      @java.lang.Override public void write(
+      final com.google.gson.stream.JsonWriter         jsonWriter ,
+      final io.swagger.client.model.Call.VersionsEnum enumeration) throws java.io.IOException
+      { jsonWriter.value(enumeration.getValue()); }
+
+      @java.lang.Override public io.swagger.client.model.Call.VersionsEnum read(
+      final com.google.gson.stream.JsonReader jsonReader) throws java.io.IOException
+      {
+        final java.lang.String value = jsonReader.nextString();
+        return io.swagger.client.model.Call.VersionsEnum.fromValue(java.lang.String.valueOf(value));
+      }
+    }
+
+    public java.lang.String getValue() { return this.value; }
+    // endregion
   };
   @SerializedName("versions")
   private List<VersionsEnum> versions = null;
