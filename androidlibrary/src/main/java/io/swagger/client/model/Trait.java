@@ -69,7 +69,7 @@ public class Trait implements Serializable {
    * Trait class. (examples: \"morphological trait\", \"phenological trait\", \"agronomical trait\", \"physiological trait\", \"abiotic stress trait\", \"biotic stress trait\", \"biochemical trait\", \"quality traits trait\", \"fertility trait\", etc.)
    **/
   @ApiModelProperty(value = "Trait class. (examples: \"morphological trait\", \"phenological trait\", \"agronomical trait\", \"physiological trait\", \"abiotic stress trait\", \"biotic stress trait\", \"biochemical trait\", \"quality traits trait\", \"fertility trait\", etc.)")
-  public String getClass() {
+  public String getTraitClass() {
     return _class;
   }
   public void setClass(String _class) {

@@ -39,7 +39,7 @@ public class Method implements Serializable {
    * Method class (examples: \"Measurement\", \"Counting\", \"Estimation\", \"Computation\", etc.
    **/
   @ApiModelProperty(value = "Method class (examples: \"Measurement\", \"Counting\", \"Estimation\", \"Computation\", etc.")
-  public String getClass() {
+  public String getMethodClass() {
     return _class;
   }
   public void setClass(String _class) {
