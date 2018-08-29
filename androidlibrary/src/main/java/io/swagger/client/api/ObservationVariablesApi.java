@@ -23,7 +23,7 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import io.swagger.client.model.ERRORUNKNOWN;
+import io.swagger.client.model.DataTypesResponse;
 import io.swagger.client.model.ObservationVariableResponse;
 import io.swagger.client.model.ObservationVariableSearchRequest;
 import io.swagger.client.model.ObservationVariablesResponse;
@@ -698,9 +698,9 @@ public class ObservationVariablesApi {
   * Call to retrieve a list of data types the variable can have.
    * @param pageSize The size of the pages to be returned. Default is &#x60;1000&#x60;.
    * @param page Which result page is requested. The page indexing starts at 0 (the first page is &#39;page&#39;&#x3D; 0). Default is &#x60;0&#x60;.
-   * @return ERRORUNKNOWN
+   * @return DataTypesResponse
   */
-  public ERRORUNKNOWN variablesDatatypesGet (Integer pageSize, Integer page) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public DataTypesResponse variablesDatatypesGet (Integer pageSize, Integer page) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -732,7 +732,7 @@ public class ObservationVariablesApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse, "", ERRORUNKNOWN.class);
+         return (DataTypesResponse) ApiInvoker.deserialize(localVarResponse, "", DataTypesResponse.class);
       } else {
          return null;
       }
@@ -758,7 +758,7 @@ public class ObservationVariablesApi {
    * Call to retrieve a list of data types the variable can have.
    * @param pageSize The size of the pages to be returned. Default is &#x60;1000&#x60;.   * @param page Which result page is requested. The page indexing starts at 0 (the first page is &#39;page&#39;&#x3D; 0). Default is &#x60;0&#x60;.
   */
-  public void variablesDatatypesGet (Integer pageSize, Integer page, final Response.Listener<ERRORUNKNOWN> responseListener, final Response.ErrorListener errorListener) {
+  public void variablesDatatypesGet (Integer pageSize, Integer page, final Response.Listener<DataTypesResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -800,7 +800,7 @@ public class ObservationVariablesApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse,  "", ERRORUNKNOWN.class));
+              responseListener.onResponse((DataTypesResponse) ApiInvoker.deserialize(localVarResponse,  "", DataTypesResponse.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -1071,9 +1071,9 @@ public class ObservationVariablesApi {
   * Variable search
   * Search observation variables. See &lt;a href&#x3D;\&quot;https://brapi.docs.apiary.io/#introduction/search-services\&quot;&gt;Search Services&lt;/a&gt; for additional implementation details. &lt;br&gt; &lt;strong&gt;Scope:&lt;/strong&gt; CORE. &lt;strong&gt;Status:&lt;/strong&gt; ACCEPTED.
    * @param body 
-   * @return ERRORUNKNOWN
+   * @return DataTypesResponse
   */
-  public ERRORUNKNOWN variablesSearchPost (ObservationVariableSearchRequest body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public DataTypesResponse variablesSearchPost (ObservationVariableSearchRequest body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
 
     // create path and map variables
@@ -1103,7 +1103,7 @@ public class ObservationVariablesApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse, "", ERRORUNKNOWN.class);
+         return (DataTypesResponse) ApiInvoker.deserialize(localVarResponse, "", DataTypesResponse.class);
       } else {
          return null;
       }
@@ -1129,7 +1129,7 @@ public class ObservationVariablesApi {
    * Search observation variables. See &lt;a href&#x3D;\&quot;https://brapi.docs.apiary.io/#introduction/search-services\&quot;&gt;Search Services&lt;/a&gt; for additional implementation details. &lt;br&gt; &lt;strong&gt;Scope:&lt;/strong&gt; CORE. &lt;strong&gt;Status:&lt;/strong&gt; ACCEPTED.
    * @param body 
   */
-  public void variablesSearchPost (ObservationVariableSearchRequest body, final Response.Listener<ERRORUNKNOWN> responseListener, final Response.ErrorListener errorListener) {
+  public void variablesSearchPost (ObservationVariableSearchRequest body, final Response.Listener<DataTypesResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
 
@@ -1169,7 +1169,7 @@ public class ObservationVariablesApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((ERRORUNKNOWN) ApiInvoker.deserialize(localVarResponse,  "", ERRORUNKNOWN.class));
+              responseListener.onResponse((DataTypesResponse) ApiInvoker.deserialize(localVarResponse,  "", DataTypesResponse.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
