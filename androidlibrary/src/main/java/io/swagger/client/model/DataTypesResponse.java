@@ -1,27 +1,17 @@
-package io.swagger.model;
+package io.swagger.client.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.model.DataTypesResponseResult;
-import io.swagger.model.Metadata;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import io.swagger.client.model.DataTypesResponseResult;
+import io.swagger.client.model.Metadata;
 
 /**
  * DataTypesResponse
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-04T21:50:05.517Z")
-
 public class DataTypesResponse   {
-  @JsonProperty("metadata")
   private Metadata metadata = null;
 
-  @JsonProperty("result")
   private DataTypesResponseResult result = null;
 
   public DataTypesResponse metadata(Metadata metadata) {
@@ -34,8 +24,6 @@ public class DataTypesResponse   {
    * @return metadata
   **/
   @ApiModelProperty(value = "")
-
-  @Valid
 
   public Metadata getMetadata() {
     return metadata;
@@ -55,8 +43,6 @@ public class DataTypesResponse   {
    * @return result
   **/
   @ApiModelProperty(value = "")
-
-  @Valid
 
   public DataTypesResponseResult getResult() {
     return result;
