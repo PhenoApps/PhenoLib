@@ -15,13 +15,15 @@
  */
 package io.swagger.client;
 
-public class ApiInvoker
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
+public class ApiInvoker extends java.lang.Object
 {
     // region Fields
     // region Static Fields
     /** Content type "text/plain" with UTF-8 encoding. */
     public static final org.apache.http.entity.ContentType TEXT_PLAIN_UTF8 =
-        org.apache.http.entity.ContentType.create("text/plain", org.apache.http.Consts.UTF_8);
+        org.apache.http.entity.ContentType.create(
+            "text/plain", org.apache.http.Consts.UTF_8);
 
     /**
      * ISO 8601 date time format.
@@ -44,6 +46,7 @@ public class ApiInvoker
     private com.android.volley.RequestQueue requestQueue     ;
     private int                             connectionTimeout;
 
+    @java.lang.SuppressWarnings({"Convert2Diamond"})
     private final java.util.Map<java.lang.String, java.lang.String> defaultHeaderMap =
         new java.util.HashMap<java.lang.String, java.lang.String>();
     private java.util.Map<java.lang.String, io.swagger.client.auth.Authentication> authentications;
@@ -93,9 +96,9 @@ public class ApiInvoker
     static
     {
         // Use UTC as the default time zone.
-        final java.util.TimeZone UTCtimeZone = java.util.TimeZone.getTimeZone("UTC");
-        io.swagger.client.ApiInvoker.DATE_TIME_FORMAT.setTimeZone(UTCtimeZone);
-        io.swagger.client.ApiInvoker.DATE_FORMAT.setTimeZone     (UTCtimeZone);
+        final java.util.TimeZone UTCTimeZone = java.util.TimeZone.getTimeZone("UTC");
+        io.swagger.client.ApiInvoker.DATE_TIME_FORMAT.setTimeZone(UTCTimeZone);
+        io.swagger.client.ApiInvoker.DATE_FORMAT.setTimeZone     (UTCTimeZone);
     }
 
     private ApiInvoker(
@@ -170,6 +173,7 @@ public class ApiInvoker
     final java.lang.String name            ,
     final java.lang.Object value           )
     {
+        // noinspection Convert2Diamond
         final java.util.List<io.swagger.client.Pair> result =
             new java.util.ArrayList<io.swagger.client.Pair>();
 
@@ -201,24 +205,17 @@ public class ApiInvoker
             return result;
         }
 
-        final java.lang.StringBuilder stringBuilder;
+        final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
         {
             final java.lang.String delimiter;
-            if (collectionFormat.equals("csv"))
-                delimiter = ",";
-            else
-                if (collectionFormat.equals("ssv"))
-                    delimiter = " ";
-                else
-                    if (collectionFormat.equals("tsv"))
-                        delimiter = "\t";
-                    else
-                        if (collectionFormat.equals("pipes"))
-                            delimiter = "|";
-                        else
-                            delimiter = ",";
+            switch (collectionFormat)
+            {
+                case "ssv"  : delimiter = " " ; break;
+                case "tsv"  : delimiter = "\t"; break;
+                case "pipes": delimiter = "|" ; break;
+                default     : delimiter = "," ; break;
+            }
 
-            stringBuilder = new java.lang.StringBuilder();
             for (final java.lang.Object item: valueCollection) stringBuilder.append(delimiter)
                 .append(io.swagger.client.ApiInvoker.parameterToString(item));
         }
@@ -230,7 +227,10 @@ public class ApiInvoker
     { io.swagger.client.ApiInvoker.initializeInstance(null); }
 
     public static void initializeInstance(final com.android.volley.Cache cache)
-    { io.swagger.client.ApiInvoker.initializeInstance(cache, null, 0, null, 30); }
+    {
+        io.swagger.client.ApiInvoker.initializeInstance(
+            cache,null,0,null,30);
+    }
 
     public static void initializeInstance(
     final com.android.volley.Cache            cache            ,
@@ -244,6 +244,7 @@ public class ApiInvoker
         io.swagger.client.ApiInvoker.setUserAgent("Swagger-Codegen/1.0.0/android");
 
         // Setup authentications (key: authentication name, value: authentication).
+        // noinspection Convert2Diamond
         io.swagger.client.ApiInvoker.INSTANCE.authentications =
             new java.util.HashMap<java.lang.String, io.swagger.client.auth.Authentication>();
 
@@ -267,7 +268,8 @@ public class ApiInvoker
     {
         try
         {
-            if (containerType.equalsIgnoreCase("list") || containerType.equalsIgnoreCase("array"))
+            if (containerType.equalsIgnoreCase("list" )
+            ||  containerType.equalsIgnoreCase("array"))
                 return io.swagger.client.JsonUtil.deserializeToList(json, cls);
             else
                 if (cls.equals(java.lang.String.class))
@@ -298,7 +300,7 @@ public class ApiInvoker
 
     public java.lang.String escapeString(final java.lang.String str)
     {
-        try { return java.net.URLEncoder.encode(str, "UTF-8"); }
+        try { return java.net.URLEncoder.encode(str,"UTF-8"); }
         catch (final java.io.UnsupportedEncodingException e) { return str; }
     }
 
@@ -463,6 +465,7 @@ public class ApiInvoker
                 url = host + path + queryString;
             }
 
+            @java.lang.SuppressWarnings({"Convert2Diamond"})
             final java.util.HashMap<java.lang.String, java.lang.String> headers =
                 new java.util.HashMap<java.lang.String, java.lang.String>();
             for (final java.lang.String key: headerParams.keySet())
@@ -472,7 +475,7 @@ public class ApiInvoker
                     headers.put(key, this.defaultHeaderMap.get(key));
             headers.put("Accept", "application/json");
 
-            java.lang.String formParamString;             // URL-encoded string from form parameters
+            final java.lang.String formParamString;       // URL-encoded string from form parameters
             if (contentType.equals("application/x-www-form-urlencoded"))            // for form data
             {
                 final java.lang.StringBuilder formParamStringBuilder =
@@ -487,8 +490,9 @@ public class ApiInvoker
                         if (formParamStringBuilder.length() > 0) formParamStringBuilder.append("&");
                         try
                         {
-                            formParamStringBuilder.append(java.net.URLEncoder.encode(key, "utf8"))
-                                .append("=").append(java.net.URLEncoder.encode(value, "utf8"));
+                            formParamStringBuilder.append(
+                                java.net.URLEncoder.encode(key,"utf8")).append("=")
+                                .append(java.net.URLEncoder.encode(value,"utf8"));
                         }
                         catch (final java.lang.Exception e) { /* move on to next */ }
                     }
@@ -499,89 +503,96 @@ public class ApiInvoker
 
             if (method.equals("GET"))
                 result = new io.swagger.client.request.GetRequest(
-                    url, headers, null, stringRequest, errorListener);
+                    url, headers,null, stringRequest, errorListener);
             else
                 if (method.equals("POST"))
                     if (null != formParamString)
                         result = new io.swagger.client.request.PostRequest(url, headers,
                             contentType,
-                            new org.apache.http.entity.StringEntity(formParamString, "UTF-8"),
+                            new org.apache.http.entity.StringEntity(
+                                formParamString,"UTF-8"),
                             stringRequest, errorListener);
                     else
                         if (null != body)
                             if (body instanceof org.apache.http.HttpEntity)
                                 result = new io.swagger.client.request.PostRequest(url, headers,
-                                    null, (org.apache.http.HttpEntity) body, stringRequest,
-                                    errorListener);
+                                    null, (org.apache.http.HttpEntity) body,
+                                    stringRequest, errorListener);
                             else
                                 result = new io.swagger.client.request.PostRequest(
                                     url, headers, contentType,
                                     new org.apache.http.entity.StringEntity(
-                                        io.swagger.client.ApiInvoker.serialize(body), "UTF-8"),
+                                        io.swagger.client.ApiInvoker.serialize(body),
+                                        "UTF-8"),
                                     stringRequest, errorListener);
                         else
-                            result = new io.swagger.client.request.PostRequest(
-                                url, headers, null, null, stringRequest, errorListener);
+                            result = new io.swagger.client.request.PostRequest(url, headers,
+                                null,null, stringRequest, errorListener);
                 else
                     if (method.equals("PUT"))
                         if (null != formParamString)
                             result = new io.swagger.client.request.PutRequest(url, headers,
                                 contentType,
-                                new org.apache.http.entity.StringEntity(formParamString, "UTF-8"),
+                                new org.apache.http.entity.StringEntity(
+                                    formParamString,"UTF-8"),
                                 stringRequest, errorListener);
                         else
                             if (null != body)
                                 if (body instanceof org.apache.http.HttpEntity)
                                     result = new io.swagger.client.request.PutRequest(url, headers,
-                                        null, (org.apache.http.HttpEntity) body, stringRequest,
-                                        errorListener);
+                                        null, (org.apache.http.HttpEntity) body,
+                                        stringRequest, errorListener);
                                 else
                                     result = new io.swagger.client.request.PutRequest(url, headers,
                                         contentType,
                                         new org.apache.http.entity.StringEntity(
-                                            io.swagger.client.ApiInvoker.serialize(body), "UTF-8"),
+                                            io.swagger.client.ApiInvoker.serialize(body),
+                                            "UTF-8"),
                                         stringRequest, errorListener);
                             else
-                                result = new io.swagger.client.request.PutRequest(
-                                    url, headers, null, null, stringRequest, errorListener);
+                                result = new io.swagger.client.request.PutRequest(url, headers,
+                                    null,null, stringRequest, errorListener);
                     else
                         if (method.equals("DELETE"))
                             if (null != formParamString)
                                 result = new io.swagger.client.request.DeleteRequest(url, headers,
                                     contentType,
                                     new org.apache.http.entity.StringEntity(
-                                        formParamString, "UTF-8"),
+                                        formParamString,"UTF-8"),
                                     stringRequest, errorListener);
                             else
                                 if (null != body)
                                     if (body instanceof org.apache.http.HttpEntity)
                                         result = new io.swagger.client.request.DeleteRequest(url,
-                                            headers, null, (org.apache.http.HttpEntity) body,
-                                            stringRequest, errorListener);
+                                            headers,null,
+                                            (org.apache.http.HttpEntity) body, stringRequest,
+                                            errorListener);
                                     else
-                                        result = new io.swagger.client.request.DeleteRequest(url,
-                                            headers, contentType,
+                                        result = new io.swagger.client.request.DeleteRequest(
+                                            url, headers, contentType,
                                             new org.apache.http.entity.StringEntity(
                                                 io.swagger.client.ApiInvoker.serialize(body),
                                                 "UTF-8"),
                                             stringRequest, errorListener);
                                 else
-                                    result = new io.swagger.client.request.DeleteRequest(
-                                        url, headers, null, null, stringRequest, errorListener);
+                                    result = new io.swagger.client.request.DeleteRequest(url,
+                                        headers,null,null, stringRequest,
+                                        errorListener);
                         else
                             if (method.equals("PATCH"))
                                 if (null != formParamString)
-                                    result = new io.swagger.client.request.PatchRequest(url,
-                                        headers, contentType,
+                                    result = new io.swagger.client.request.PatchRequest(
+                                        url, headers, contentType,
                                         new org.apache.http.entity.StringEntity(
-                                            formParamString, "UTF-8"),
+                                            formParamString,"UTF-8"),
                                         stringRequest, errorListener);
                                 else
                                     if (null != body)
                                         if (body instanceof org.apache.http.HttpEntity)
                                             result = new io.swagger.client.request.PatchRequest(url,
-                                                headers, null, (org.apache.http.HttpEntity) body,
-                                                stringRequest, errorListener);
+                                                headers,null,
+                                                (org.apache.http.HttpEntity) body, stringRequest,
+                                                errorListener);
                                         else
                                             result = new io.swagger.client.request.PatchRequest(url,
                                                 headers, contentType,
@@ -590,8 +601,9 @@ public class ApiInvoker
                                                     "UTF-8"),
                                                 stringRequest, errorListener);
                                     else
-                                        result = new io.swagger.client.request.PatchRequest(
-                                            url, headers, null, null, stringRequest, errorListener);
+                                        result = new io.swagger.client.request.PatchRequest(url,
+                                            headers,null,null, stringRequest,
+                                            errorListener);
                             else result = null;
         }
         // endregion
