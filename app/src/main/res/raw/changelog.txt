@@ -8,7 +8,7 @@ How now, brown cow?
 
 3/1.2.0
 1st line.
-Next next relase.
+Next next release.
 
 2/1.1.0
 Next release
