@@ -1,0 +1,108 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context="org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity">
+
+    <item
+        android:id="@+id/CallsMenuItemId"
+        android:title="@string/CallsResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/CropsMenuItemId"
+        android:title="@string/CropsResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ProgramsMenuItemId"
+        android:title="@string/ProgramsResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/LocationsMenuItemId"
+        android:title="@string/LocationsResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/TrialsMenuItemId"
+        android:title="@string/TrialsResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/StudiesMenuItemId"
+        android:title="@string/StudiesResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ObservationsMenuItemId"
+        android:title="@string/ObservationsResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ObservationVariablesMenuItemId"
+        android:title="@string/ObservationVariablesResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/PhenotypesMenuItemId"
+        android:title="@string/PhenotypesResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/GermplasmMenuItemId"
+        android:title="@string/GermplasmResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/GermplasmAttributesMenuItemId"
+        android:title="@string/GermplasmAttributesResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/MarkersMenuItemId"
+        android:title="@string/MarkersResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/MarkerProfilesMenuItemId"
+        android:title="@string/MarkerProfilesResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/GenomeMapsMenuItemId"
+        android:title="@string/GenomeMapsResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/SamplesMenuItemId"
+        android:title="@string/SamplesResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/VendorMenuItemId"
+        android:title="@string/VendorResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ListsMenuItemId"
+        android:title="@string/ListsResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ImagesMenuItemId"
+        android:title="@string/ImagesResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/PeopleMenuItemId"
+        android:title="@string/PeopleResourceName"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/SearchServicesMenuItemId"
+        android:title="@string/SearchServicesResourceName"
+        app:showAsAction="never" />
+
+</menu>

@@ -44,6 +44,8 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.usb.ScaleTester
  * org.wheatgenetics.zxing.BarcodeScanner
  *
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
+ *
  * org.wheatgenetics.androidlibrarybuilder.BuildConfig
  * org.wheatgenetics.androidlibrarybuilder.R
  * org.wheatgenetics.androidlibrarybuilder.WebViewActivity
@@ -75,7 +77,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         otherAppsButtonClickCount = 0, deviceListButtonClickCount  = 0,
         scaleButtonClickCount     = 0, scaleReaderButtonClickCount = 0;
 
-    private android.content.Intent intentInstance = null;
+    private android.content.Intent webIntentInstance = null, brAPI1_3IntentInstance;
     // endregion
 
     // region Private Methods
@@ -168,18 +170,26 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         }
     }
 
-    private android.content.Intent intent(
+    private android.content.Intent webIntent(
     final java.lang.String content, final java.lang.String encoding)
     {
-        if (null == this.intentInstance) this.intentInstance = new android.content.Intent(
+        if (null == this.webIntentInstance) this.webIntentInstance = new android.content.Intent(
             this, org.wheatgenetics.androidlibrarybuilder.WebViewActivity.class);
 
-        this.intentInstance.putExtra(
+        this.webIntentInstance.putExtra(
             org.wheatgenetics.androidlibrarybuilder.WebViewActivity.CONTENT, content);
-        this.intentInstance.putExtra(
+        this.webIntentInstance.putExtra(
             org.wheatgenetics.androidlibrarybuilder.WebViewActivity.ENCODING, encoding);
 
-        return this.intentInstance;
+        return this.webIntentInstance;
+    }
+
+    private android.content.Intent brAPI1_3Intent()
+    {
+        if (null == this.brAPI1_3IntentInstance) this.brAPI1_3IntentInstance =
+            new android.content.Intent(this,
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.class);
+        return this.brAPI1_3IntentInstance;
     }
 
     private void showChangeLog()
@@ -327,28 +337,33 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                 if (null == response)
                     this.setTextViewText("response is null");
                 else
-                    this.startActivity(this.intent(response.content(), response.contentEncoding()));
+                    this.startActivity(this.webIntent(
+                        response.content(), response.contentEncoding()));
                 break;
 
-            case 7: this.showChangeLog(); break;
+            case 7: this.startActivity(this.brAPI1_3Intent()); break;
+
+            case 8: this.showChangeLog(); break;
         }
 
         switch (this.buttonClickCount)
         {
-            case 0: case 1: case 2: case 3: case 4: case 5: case 6: this.buttonClickCount++; break;
-            default: this.buttonClickCount = 0                                             ; break;
+            case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7:
+                this.buttonClickCount++; break;
+            default: this.buttonClickCount = 0; break;
         }
 
         switch (this.buttonClickCount)
         {
-            case 0 : this.resetButtonText()                        ; break;
-            case 1 : this.setButtonText("Long Toast"              ); break;
-            case 2 : this.setButtonText("permissionDir.list()"    ); break;
-            case 3 : this.setButtonText("requestDir.list() 1 of 3"); break;
-            case 4 : this.setButtonText("requestDir.list() 2 of 3"); break;
-            case 5 : this.setButtonText("requestDir.list() 3 of 3"); break;
-            case 6 : this.setButtonText("http://www.example.org/" ); break;
-            case 7 : this.setButtonText("ChangeLog"               ); break;
+            case 0: this.resetButtonText()                        ; break;
+            case 1: this.setButtonText("Long Toast"              ); break;
+            case 2: this.setButtonText("permissionDir.list()"    ); break;
+            case 3: this.setButtonText("requestDir.list() 1 of 3"); break;
+            case 4: this.setButtonText("requestDir.list() 2 of 3"); break;
+            case 5: this.setButtonText("requestDir.list() 3 of 3"); break;
+            case 6: this.setButtonText("http://www.example.org/" ); break;
+            case 7: this.setButtonText("BrAPI 1.3"               ); break;
+            case 8: this.setButtonText("ChangeLog"               ); break;
         }
     }
 

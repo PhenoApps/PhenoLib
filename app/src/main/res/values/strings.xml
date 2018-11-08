@@ -1,3 +1,31 @@
+<!DOCTYPE resources[<!ENTITY brapi1_3_activity_title "BrAPI 1.3">]>
 <resources>
     <string name="app_name">Android Library Builder</string>
+
+    <!-- BrAPI 1.3 Activity -->
+    <string name="title_activity_brapi1_3">&brapi1_3_activity_title;</string>
+    <string name="title_toolbar_brapi1_3">&brapi1_3_activity_title;: %1$s</string>
+
+    <string name="CallsResourceName">Calls</string>
+    <string name="CropsResourceName">Crops</string>
+    <string name="ProgramsResourceName">Programs</string>
+    <string name="LocationsResourceName">Locations</string>
+    <string name="TrialsResourceName">Trials</string>
+    <string name="StudiesResourceName">Studies</string>
+    <string name="ObservationsResourceName">Observations</string>
+    <string name="ObservationVariablesResourceName">ObservationVariables</string>
+    <string name="PhenotypesResourceName">Phenotypes</string>
+    <string name="GermplasmResourceName">Germplasm</string>
+    <string name="GermplasmAttributesResourceName">GermplasmAttributes</string>
+    <string name="MarkersResourceName">Markers</string>
+    <string name="MarkerProfilesResourceName">MarkerProfiles</string>
+    <string name="GenomeMapsResourceName">GenomeMaps</string>
+    <string name="SamplesResourceName">Samples</string>
+    <string name="VendorResourceName">Vendor</string>
+    <string name="ListsResourceName">Lists</string>
+    <string name="ImagesResourceName">Images</string>
+    <string name="PeopleResourceName">People</string>
+    <string name="SearchServicesResourceName">SearchServices</string>
+
+    <string name="stubTextViewFormatString">Hello World from page: %1$s</string>
 </resources>

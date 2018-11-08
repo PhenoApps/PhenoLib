@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="resourceNames">
+        <item>@string/CallsResourceName</item>
+        <item>@string/CropsResourceName</item>
+        <item>@string/ProgramsResourceName</item>
+        <item>@string/LocationsResourceName</item>
+        <item>@string/TrialsResourceName</item>
+        <item>@string/StudiesResourceName</item>
+        <item>@string/ObservationsResourceName</item>
+        <item>@string/ObservationVariablesResourceName</item>
+        <item>@string/PhenotypesResourceName</item>
+        <item>@string/GermplasmResourceName</item>
+        <item>@string/GermplasmAttributesResourceName</item>
+        <item>@string/MarkersResourceName</item>
+        <item>@string/MarkerProfilesResourceName</item>
+        <item>@string/GenomeMapsResourceName</item>
+        <item>@string/SamplesResourceName</item>
+        <item>@string/VendorResourceName</item>
+        <item>@string/ListsResourceName</item>
+        <item>@string/ImagesResourceName</item>
+        <item>@string/PeopleResourceName</item>
+        <item>@string/SearchServicesResourceName</item>
+    </string-array>
+</resources>
