@@ -52,4 +52,8 @@
     <string name="scaleExceptionAlertDialogMessage">No scale detected.  Please connect scale with an OTG cable and turn the scale on.</string>
     <string name="scaleExceptionAlertDialogPositiveButtonText">Try Again</string>
     <string name="scaleExceptionAlertDialogNegativeButtonText">Ignore</string>
+
+
+    <!-- DataTypeAlertDialog -->
+    <string name="DataTypeAlertDialogTitle">Data Type</string>
 </resources>
