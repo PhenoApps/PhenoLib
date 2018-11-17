@@ -2,6 +2,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
 
 /**
  * Uses:
+ * android.app.Activity
  * android.os.Bundle
  * android.support.annotation.IdRes
  * android.support.annotation.LayoutRes
@@ -22,12 +23,10 @@ abstract class Fragment extends android.support.v4.app.Fragment
     private static final java.lang.String ARGUMENT_KEY = "base_path";
 
     // region Fields
-    private java.lang.String                          basePath              = null;
-    private android.widget.TextView                   responseTextView      = null;
-    //private com.android.volley.Response.ErrorListener errorListenerInstance = null;
+    private java.lang.String        basePath         = null;
+    private android.widget.TextView responseTextView = null;
     // endregion
 
-    // region Private Methods
     private void initializeBasePath()
     {
         final android.os.Bundle arguments = this.getArguments();
@@ -41,24 +40,6 @@ abstract class Fragment extends android.support.v4.app.Fragment
                 arguments.containsKey(ARGUMENT_KEY) ? arguments.getString(ARGUMENT_KEY) : null;
         }
     }
-
-    // region setResponseTextViewText() Private Methods
-    private void setResponseTextViewText(final java.lang.Exception exception,
-    final java.lang.String nameIfNull)
-    {
-        if (null == exception)
-            this.setResponseTextViewText(nameIfNull + " is null.");
-        else
-        {
-            final java.lang.String message = exception.getMessage();
-            this.setResponseTextViewText(null == message ? exception.toString() : message);
-        }
-    }
-
-    //private void setResponseTextViewText(final com.android.volley.VolleyError volleyError)
-    //{ this.setResponseTextViewText(volleyError,"volleyError"); }
-    // endregion
-    // endregion
 
     // region Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -87,8 +68,14 @@ abstract class Fragment extends android.support.v4.app.Fragment
             return null;
         else
         {
-            final java.lang.String text = editText.getText().toString();
-            return text.equals("") ? null : text;
+            final android.text.Editable text = editText.getText();
+            if (null == text)
+                return null;
+            else
+            {
+                final java.lang.String string = text.toString();
+                return string.equals("") ? null : string;
+            }
         }
     }
 
@@ -98,24 +85,44 @@ abstract class Fragment extends android.support.v4.app.Fragment
     { if (null != this.responseTextView) this.responseTextView.setText(text); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void setResponseTextViewText(final java.lang.Exception exception)
-    { this.setResponseTextViewText(exception,"exception"); }
-    // endregion
-
-    /*@android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    com.android.volley.Response.ErrorListener errorListener()
+    void setResponseTextViewTextFromThread(final java.lang.String text)
     {
-        if (null == this.errorListenerInstance) this.errorListenerInstance =
-            new com.android.volley.Response.ErrorListener()
+        final android.app.Activity activity = this.getActivity();
+        if (null != activity) activity.runOnUiThread(new java.lang.Runnable()
+             {
+                 @java.lang.Override public void run()
+                 {
+                     org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                         .Fragment.this.setResponseTextViewText(text);
+                 }
+             });
+    }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void setResponseTextViewText(final java.lang.Throwable throwable)
+    {
+        if (null == throwable)
+            this.setResponseTextViewTextFromThread("throwable is null.");
+        else
+        {
+            final java.lang.String message = throwable.getMessage();
+            this.setResponseTextViewText(null == message ? throwable.toString() : message);
+        }
+    }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void setResponseTextViewTextFromThread(final java.lang.Throwable throwable)
+    {
+        final android.app.Activity activity = this.getActivity();
+        if (null != activity) activity.runOnUiThread(new java.lang.Runnable()
+        {
+            @java.lang.Override public void run()
             {
-                @java.lang.Override
-                public void onErrorResponse(final com.android.volley.VolleyError error)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
-                        .this.setResponseTextViewText(error);
-                }
-            };
-        return this.errorListenerInstance;
-    }*/
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                    .Fragment.this.setResponseTextViewText(throwable);
+            }
+        });
+    }
+    // endregion
     // endregion
 }
