@@ -106,7 +106,7 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
                     responseHeaders)
                 {
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                        .CallsFragment.this.setResponseTextViewText(result);
+                        .CallsFragment.this.setResponseTextViewTextFromThread(result.toString());
                 }
 
                 @java.lang.Override public void onUploadProgress(

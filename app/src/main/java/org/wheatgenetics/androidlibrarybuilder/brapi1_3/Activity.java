@@ -21,7 +21,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment
- * _org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
  * _org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
  * _org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment
@@ -42,11 +42,7 @@ public class Activity extends android.support.v7.app.AppCompatActivity
             switch (position)
             {
                 case 0: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment();
-
-                case 1: return
-                    //new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment();
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Crops");
+                case 1: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment();
 
                 case 2: return
                     //new org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment();

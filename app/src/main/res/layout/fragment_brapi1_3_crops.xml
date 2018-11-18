@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".brapi1_3.CropsFragment">
+
+
+
+    <TextView
+        android:id="@+id/cropsPageTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/cropsPageEditText"
+        android:text="page:"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/cropsPageEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="default 0"
+        android:inputType="number"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cropsPageTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/cropsPageSizeTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/cropsPageSizeEditText"
+        android:text="pageSize:"
+
+        app:layout_constraintLeft_toRightOf="@id/cropsPageEditText"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/cropsPageSizeEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="default 1000"
+        android:inputType="number"
+
+        app:layout_constraintLeft_toRightOf="@id/cropsPageEditText"
+        app:layout_constraintTop_toBottomOf="@id/cropsPageSizeTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/commoncropnamesGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="commoncropnamesGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/cropsPageEditText"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@id/cropsPageSizeEditText"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/cropsResponseTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="@dimen/responseTextView_bottom_padding"
+
+            app:fontFamily="monospace" />
+
+    </ScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>
