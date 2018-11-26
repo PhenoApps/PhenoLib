@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/programsSearchRequestAbbreviationsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/ProgramsSearchRequestAlertDialogAbbreviationsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/programsSearchRequestCommonCropNamesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/ProgramsSearchRequestAlertDialogCommonCropNamesEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/programsSearchRequestLeadPersonDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ProgramsSearchRequestAlertDialogLeadPersonDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/programsSearchRequestLeadPersonNamesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ProgramsSearchRequestAlertDialogLeadPersonNamesEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/programsSearchRequestObjectivesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ProgramsSearchRequestAlertDialogObjectivesEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/programsSearchRequestPageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pageEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/programsSearchRequestPageSizeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pageSizeEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/programsSearchRequestProgramDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ProgramsSearchRequestAlertDialogProgramDbIdsEditTextHint"
+        android:inputType="text"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/programsSearchRequestProgramNamesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ProgramsSearchRequestAlertDialogProgramNamesEditTextHint"
+        android:inputType="text"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

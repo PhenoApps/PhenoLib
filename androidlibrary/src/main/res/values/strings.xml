@@ -54,6 +54,23 @@
     <string name="scaleExceptionAlertDialogNegativeButtonText">Ignore</string>
 
 
+
+    <!-- BrAPI AlertDialog -->
+    <string name="pageEditTextHint">page</string>
+    <string name="pageSizeEditTextHint">page size</string>
+
+
     <!-- DataTypeAlertDialog -->
     <string name="DataTypeAlertDialogTitle">DataType</string>
+
+
+    <!-- ProgramsSearchRequestAlertDialog -->
+    <string name="ProgramsSearchRequestAlertDialogTitle">Programs Search Request</string>
+    <string name="ProgramsSearchRequestAlertDialogAbbreviationsEditTextHint">abbreviations</string>
+    <string name="ProgramsSearchRequestAlertDialogCommonCropNamesEditTextHint">commonCropNames</string>
+    <string name="ProgramsSearchRequestAlertDialogLeadPersonDbIdsEditTextHint">leadPersonDbIds</string>
+    <string name="ProgramsSearchRequestAlertDialogLeadPersonNamesEditTextHint">leadPersonNames</string>
+    <string name="ProgramsSearchRequestAlertDialogObjectivesEditTextHint">objectives</string>
+    <string name="ProgramsSearchRequestAlertDialogProgramDbIdsEditTextHint">programDbIds</string>
+    <string name="ProgramsSearchRequestAlertDialogProgramNamesEditTextHint">programNames</string>
 </resources>
