@@ -16,6 +16,8 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.view.ViewGroup
  * android.widget.EditText
  * android.widget.TextView
+ *
+ * io.swagger.client.ApiException
  */
 @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
 abstract class Fragment extends android.support.v4.app.Fragment
@@ -105,8 +107,22 @@ abstract class Fragment extends android.support.v4.app.Fragment
             this.setResponseTextViewTextFromThread("throwable is null.");
         else
         {
-            final java.lang.String message = throwable.getMessage();
-            this.setResponseTextViewText(null == message ? throwable.toString() : message);
+            final java.lang.String message, throwableAsString;
+            if (throwable instanceof io.swagger.client.ApiException)
+            {
+                final io.swagger.client.ApiException apiException =
+                    (io.swagger.client.ApiException) throwable;
+                message           = apiException.getResponseBody();
+                throwableAsString = apiException.toString       ();
+            }
+            else
+                { message = throwable.getMessage(); throwableAsString = throwable.toString(); }
+
+            if (null == message)
+                this.setResponseTextViewText(throwableAsString);
+            else
+                this.setResponseTextViewText(
+                    message.trim().equals("") ? throwableAsString : message);
         }
     }
 

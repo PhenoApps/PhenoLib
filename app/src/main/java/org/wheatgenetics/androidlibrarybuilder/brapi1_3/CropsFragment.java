@@ -37,6 +37,13 @@ implements android.view.View.OnClickListener
         return this.cropsApiInstance;
     }
 
+    private void setResponseTextViewText(final io.swagger.client.model.CommonCropNamesResponse
+        commonCropNamesResponse)
+    {
+        this.setResponseTextViewTextFromThread(
+            null == commonCropNamesResponse ? "null" : commonCropNamesResponse.toString());
+    }
+
     private io.swagger.client.ApiCallback<io.swagger.client.model.CommonCropNamesResponse>
     callback()
     {
@@ -58,7 +65,7 @@ implements android.view.View.OnClickListener
                 final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map  )
                 {
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
-                        .this.setResponseTextViewTextFromThread(commonCropNamesResponse.toString());
+                        .this.setResponseTextViewText(commonCropNamesResponse);
                 }
 
                 @java.lang.Override public void onUploadProgress(

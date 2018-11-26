@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".brapi1_3.ProgramsFragment">
+
+
+
+    <TextView
+        android:id="@+id/programsCommonCropNameTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/programsCommonCropNameEditText"
+        android:text="commonCropName:"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/programsCommonCropNameEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="commonCropName"
+        android:inputType="text"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/programsCommonCropNameTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/programsProgramNameTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/programsProgramNameEditText"
+        android:text="programName:"
+
+        app:layout_constraintLeft_toRightOf="@id/programsCommonCropNameEditText"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/programsProgramNameEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="programName"
+        android:inputType="text"
+
+        app:layout_constraintLeft_toRightOf="@id/programsCommonCropNameEditText"
+        app:layout_constraintTop_toBottomOf="@id/programsProgramNameTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/programsAbbreviationTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/programsAbbreviationEditText"
+        android:text="abbreviation:"
+
+        app:layout_constraintLeft_toRightOf="@id/programsProgramNameEditText"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/programsAbbreviationEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="abbreviation"
+        android:inputType="text"
+
+        app:layout_constraintLeft_toRightOf="@id/programsProgramNameEditText"
+        app:layout_constraintTop_toBottomOf="@id/programsAbbreviationTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/programsGetPageTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/programsGetPageEditText"
+        android:text="page:"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/programsCommonCropNameEditText"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/programsGetPageEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="default 0"
+        android:inputType="number"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/programsGetPageTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/programsGetPageSizeTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/programsGetPageSizeEditText"
+        android:text="pageSize:"
+
+        app:layout_constraintLeft_toRightOf="@id/programsGetPageEditText"
+        app:layout_constraintTop_toBottomOf="@id/programsCommonCropNameEditText"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/programsGetPageSizeEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="default 1000"
+        android:inputType="number"
+
+        app:layout_constraintLeft_toRightOf="@id/programsGetPageEditText"
+        app:layout_constraintTop_toBottomOf="@id/programsGetPageSizeTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/programsGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="programsGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/programsGetPageEditText"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/searchProgramsPostButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="searchProgramsPost()"
+        android:textAllCaps="false"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/programsGetButton"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/programsSearchResultsDbIdTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/programsSearchResultsDbIdEditText"
+        android:text="searchResultsDbId:"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchProgramsPostButton"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/programsSearchResultsDbIdEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="searchResultsDbId"
+        android:inputType="text"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/programsSearchResultsDbIdTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/searchProgramsSearchResultsDbIdGetPageTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/searchProgramsSearchResultsDbIdGetPageEditText"
+        android:text="page:"
+
+        app:layout_constraintLeft_toRightOf="@id/programsSearchResultsDbIdEditText"
+        app:layout_constraintTop_toBottomOf="@id/searchProgramsPostButton"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/searchProgramsSearchResultsDbIdGetPageEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="default 0"
+        android:inputType="number"
+
+        app:layout_constraintLeft_toRightOf="@id/programsSearchResultsDbIdEditText"
+        app:layout_constraintTop_toBottomOf="@id/searchProgramsSearchResultsDbIdGetPageTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <TextView
+        android:id="@+id/searchProgramsSearchResultsDbIdGetPageSizeTextView"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:labelFor="@id/searchProgramsSearchResultsDbIdGetPageSizeEditText"
+        android:text="pageSize:"
+
+        app:layout_constraintLeft_toRightOf="@id/searchProgramsSearchResultsDbIdGetPageEditText"
+        app:layout_constraintTop_toBottomOf="@id/searchProgramsPostButton"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/searchProgramsSearchResultsDbIdGetPageSizeEditText"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:ems="8"
+        android:hint="default 1000"
+        android:inputType="number"
+
+        app:layout_constraintLeft_toRightOf="@id/searchProgramsSearchResultsDbIdGetPageEditText"
+        app:layout_constraintTop_toBottomOf="@id/searchProgramsSearchResultsDbIdGetPageSizeTextView"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/searchProgramsSearchResultsDbIdGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="searchProgramsSearchResultsDbIdGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/programsSearchResultsDbIdEditText"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@id/searchProgramsSearchResultsDbIdGetButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/programsResponseTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="@dimen/responseTextView_bottom_padding"
+
+            app:fontFamily="monospace" />
+
+    </ScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>
