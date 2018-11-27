@@ -32,12 +32,12 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
 {
     // region Fields
     private io.swagger.client.api.ProgramsApi programsApiInstance = null;
+    private io.swagger.client.ApiCallback<io.swagger.client.model.ProgramsResponse>
+        programsResponseCallbackInstance = null;
 
     // region programsGet() Fields
     private android.widget.EditText commonCropNameEditText,
         programNameEditText, abbreviationEditText;
-    private io.swagger.client.ApiCallback<io.swagger.client.model.ProgramsResponse>
-        programsGetCallbackInstance = null;
     // endregion
 
     // region searchProgramsPost() Fields
@@ -45,7 +45,7 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
     private org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog
         programsSearchRequestAlertDialogInstance = null;
     private io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>
-        searchProgramsPostCallbackInstance = null;
+        successfulSearchResponseCallbackInstance = null;
     // endregion
 
     // region searchProgramsSearchResultsDbIdGet() Fields
@@ -71,9 +71,9 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
     }
 
     private io.swagger.client.ApiCallback<io.swagger.client.model.ProgramsResponse>
-    programsGetCallback()
+    programsResponseCallback()
     {
-        if (null == this.programsGetCallbackInstance) this.programsGetCallbackInstance =
+        if (null == this.programsResponseCallbackInstance) this.programsResponseCallbackInstance =
             new io.swagger.client.ApiCallback<io.swagger.client.model.ProgramsResponse>()
             {
                 @java.lang.Override public void onFailure(
@@ -98,7 +98,7 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
                 @java.lang.Override public void onDownloadProgress(
                 final long l, final long l1, final boolean b) {}
             };
-        return this.programsGetCallbackInstance;
+        return this.programsResponseCallbackInstance;
     }
 
     // region programsGet() Private Method
@@ -119,9 +119,9 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
                 /* page          => */ this.getPageEditTextIntText    (),
                 /* pageSize      => */ this.getPageSizeEditTextIntText(),
                 /* authorization => */null,
-                /* callback      => */ this.programsGetCallback());
+                /* callback      => */ this.programsResponseCallback());
         }
-        catch (final java.lang.Throwable e) { this.setResponseTextViewText(e); }
+        catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }
     }
     // endregion
 
@@ -154,10 +154,10 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
     }
 
     private io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>
-    searchProgramsPostCallback()
+    successfulSearchResponseCallback()
     {
-        if (null == this.searchProgramsPostCallbackInstance)
-            this.searchProgramsPostCallbackInstance = new
+        if (null == this.successfulSearchResponseCallbackInstance)
+            this.successfulSearchResponseCallbackInstance = new
                 io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>()
                 {
                     @java.lang.Override public void onFailure(
@@ -183,7 +183,7 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
                     @java.lang.Override public void onDownloadProgress(
                     final long l, final long l1, final boolean b) {}
                 };
-        return this.searchProgramsPostCallbackInstance;
+        return this.successfulSearchResponseCallbackInstance;
     }
     // endregion
 
@@ -203,7 +203,7 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment.getInteger(
                         this.searchProgramsSearchResultsDbIdGetPageSizeEditText),
                 /* authorization => */null,
-                /* callback      => */ this.programsGetCallback());
+                /* callback      => */ this.programsResponseCallback());
         }
         catch (final java.lang.Throwable e) { this.setResponseTextViewText(e); }
     }
@@ -301,7 +301,7 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
             this.programsApi().searchProgramsPostAsync(
                 /* body          => */ this.programsSearchRequestInstance,
                 /* authorization => */null,
-                /* callback      => */ this.searchProgramsPostCallback());
+                /* callback      => */ this.successfulSearchResponseCallback());
         }
         catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }
     }

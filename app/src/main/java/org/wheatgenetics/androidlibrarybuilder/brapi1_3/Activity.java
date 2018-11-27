@@ -22,7 +22,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
- * _org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment
  * _org.wheatgenetics.androidlibrarybuilder.brapi1_3.StudiesFragment
@@ -47,10 +47,8 @@ public class Activity extends android.support.v7.app.AppCompatActivity
                 case 2:
                     return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment();
 
-                case 3: return
-                    //new org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment();
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Locations");
+                case 3:
+                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment();
 
                 case 4: return
                     //new org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment();
