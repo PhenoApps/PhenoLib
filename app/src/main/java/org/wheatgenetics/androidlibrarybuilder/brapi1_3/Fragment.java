@@ -20,7 +20,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * io.swagger.client.ApiException
  */
 @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-abstract class Fragment extends android.support.v4.app.Fragment
+public abstract class Fragment extends android.support.v4.app.Fragment
 {
     private static final java.lang.String ARGUMENT_KEY = "base_path";
 
@@ -45,22 +45,6 @@ abstract class Fragment extends android.support.v4.app.Fragment
 
     // region Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.Nullable  android.view.View inflate(
-    @android.support.annotation.NonNull   final android.view.LayoutInflater inflater        ,
-    @android.support.annotation.Nullable  final android.view.ViewGroup      container       ,
-    @android.support.annotation.LayoutRes final int                         layoutResourceId)
-    {
-        this.initializeBasePath();
-        return inflater.inflate(layoutResourceId, container,false);
-    }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void findResponseTextViewById(
-    @android.support.annotation.NonNull final android.view.View rootView,
-    @android.support.annotation.IdRes   final int               id      )
-    { this.responseTextView = rootView.findViewById(id); }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     java.lang.String getBasePath() { return this.basePath; }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -81,27 +65,45 @@ abstract class Fragment extends android.support.v4.app.Fragment
         }
     }
 
-    // region setResponseTextViewText() Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     void setResponseTextViewText(final java.lang.String text)
     { if (null != this.responseTextView) this.responseTextView.setText(text); }
+    // endregion
 
+    // region Public Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void setResponseTextViewTextFromThread(final java.lang.String text)
+    @android.support.annotation.Nullable  public android.view.View inflate(
+    @android.support.annotation.NonNull   final android.view.LayoutInflater inflater        ,
+    @android.support.annotation.Nullable  final android.view.ViewGroup      container       ,
+    @android.support.annotation.LayoutRes final int                         layoutResourceId)
     {
-        final android.app.Activity activity = this.getActivity();
-        if (null != activity) activity.runOnUiThread(new java.lang.Runnable()
-             {
-                 @java.lang.Override public void run()
-                 {
-                     org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                         .Fragment.this.setResponseTextViewText(text);
-                 }
-             });
+        this.initializeBasePath();
+        return inflater.inflate(layoutResourceId, container,false);
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void setResponseTextViewText(final java.lang.Throwable throwable)
+    public void findResponseTextViewById(
+    @android.support.annotation.NonNull final android.view.View rootView,
+    @android.support.annotation.IdRes   final int               id      )
+    { this.responseTextView = rootView.findViewById(id); }
+
+    // region setResponseTextViewText() Public Methods
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    public void setResponseTextViewTextFromThread(final java.lang.String text)
+    {
+        final android.app.Activity activity = this.getActivity();
+        if (null != activity) activity.runOnUiThread(new java.lang.Runnable()
+            {
+                @java.lang.Override public void run()
+                {
+                    org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                        .Fragment.this.setResponseTextViewText(text);
+                }
+            });
+    }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    public void setResponseTextViewText(final java.lang.Throwable throwable)
     {
         if (null == throwable)
             this.setResponseTextViewTextFromThread("throwable is null.");
@@ -127,7 +129,7 @@ abstract class Fragment extends android.support.v4.app.Fragment
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void setResponseTextViewTextFromThread(final java.lang.Throwable throwable)
+    public void setResponseTextViewTextFromThread(final java.lang.Throwable throwable)
     {
         final android.app.Activity activity = this.getActivity();
         if (null != activity) activity.runOnUiThread(new java.lang.Runnable()

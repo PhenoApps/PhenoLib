@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".brapi1_3.studies.Fragment">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/middleGuideline"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.50" />
+
+    <Button
+        android:id="@+id/searchStudiesPostButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="searchStudiesPost()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/searchStudiesSearchResultsDbIdGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="searchStudiesSearchResultsDbIdGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/leftGuideline"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.33" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/rightGuideline"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+
+        app:layout_constraintGuide_percent="0.67" />
+
+    <Button
+        android:id="@+id/seasonsGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="seasonsGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/searchStudiesPostButton"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/studiesGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/searchStudiesPostButton"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/studiesStudyDbIdGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/rightGuideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchStudiesPostButton"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/studiesStudyDbIdGermplasmGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdGermplasmGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/seasonsGetButton"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/studiesStudyDbIdLayoutsGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdLayoutsGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/seasonsGetButton"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/studiesStudyDbIdLayoutsPutButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdLayoutsPut()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/rightGuideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seasonsGetButton"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/studiesStudyDbIdObservationsGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdObservationsGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/studiesStudyDbIdObservationsPutButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdObservationsPut()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/studiesStudyDbIdObservationunitsGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdObservationunitsGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationsGetButton"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/studiesStudyDbIdObservationunitsPutButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdObservationunitsPut()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationsGetButton"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/studiesStudyDbIdObservationunitsZipPostButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdObservationunitsZipPost()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsGetButton"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/studiesStudyDbIdObservationvariablesGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdObservationvariablesGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsGetButton"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <Button
+        android:id="@+id/studiesStudyDbIdTableGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdTableGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/studiesStudyDbIdTablePostButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studiesStudyDbIdTablePost()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/studytypesGetButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+
+        android:text="studytypesGet()"
+        android:textAllCaps="false"
+
+        app:layout_constraintLeft_toRightOf="@id/rightGuideline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdTableGetButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/studiesResponseTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="@dimen/responseTextView_bottom_padding"
+
+            app:fontFamily="monospace" />
+
+    </ScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>
