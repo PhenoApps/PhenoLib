@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/studiesStudiesGetCommonCropNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="commonCropName"
+        android:inputType="text"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetStudyTypeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="studyType"
+        android:inputType="text"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetStudyTypeDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="studyTypeDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetProgramDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="programDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetLocationDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="locationDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetSeasonDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="seasonDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetTrialDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="trialDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetStudyDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="studyDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <EditText
+        android:id="@+id/studiesStudiesGetGermplasmDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="germplasmDbIds"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetObservationVariableDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="observationVariableDbIds"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+
+            android:labelFor="@id/studiesStudiesGetActiveRadioGroup"
+            android:text="active:"
+            android:textSize="18sp"
+
+            tools:ignore="HardcodedText" />
+
+        <RadioGroup
+            android:id="@+id/studiesStudiesGetActiveRadioGroup"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+
+            android:checkedButton="@id/studiesStudiesGetNullActiveRadioButton">
+
+            <RadioButton
+                android:id="@+id/studiesStudiesGetNullActiveRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="null"
+
+                tools:ignore="HardcodedText" />
+
+            <RadioButton
+                android:id="@+id/studiesStudiesGetFalseActiveRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="false"
+
+                tools:ignore="HardcodedText" />
+
+            <RadioButton
+                android:id="@+id/studiesStudiesGetTrueActiveRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="true"
+
+                tools:ignore="HardcodedText" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/studiesStudiesGetSortByEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="sortBy"
+        android:inputType="text"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetSortOrderEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="sortOrder"
+        android:inputType="text"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+
+
+    <EditText
+        android:id="@+id/studiesStudiesGetPageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="page"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesStudiesGetPageSizeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="pageSize"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>
