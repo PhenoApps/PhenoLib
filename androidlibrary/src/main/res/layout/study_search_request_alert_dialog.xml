@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+
+            android:labelFor="@id/studySearchRequestActiveRadioGroup"
+            android:text="@string/activeRadioGroupLabelText"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/studySearchRequestActiveRadioGroup"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+
+            android:checkedButton="@id/studySearchRequestNullActiveRadioButton">
+
+            <RadioButton
+                android:id="@+id/studySearchRequestNullActiveRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/nullRadioButtonText" />
+
+            <RadioButton
+                android:id="@+id/studySearchRequestFalseActiveRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/falseRadioButtonText" />
+
+            <RadioButton
+                android:id="@+id/studySearchRequestTrueActiveRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/trueRadioButtonText" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/studySearchRequestCommonCropNamesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogCommonCropNamesEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestGermplasmDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogGermplasmDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestLocationDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogLocationDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestObservationVariableDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogObservationVariableDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+
+
+    <EditText
+        android:id="@+id/studySearchRequestPageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pageEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/studySearchRequestPageSizeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/pageSizeEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+
+
+    <EditText
+        android:id="@+id/studySearchRequestProgramDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogProgramDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestProgramNamesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogProgramNamesEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestSeasonDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogSeasonDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/studySearchRequestSortByLabelTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+
+            android:labelFor="@id/studySearchRequestSortByValueTextView"
+            android:text="@string/StudySearchRequestAlertDialogSortByLabelTextViewText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/studySearchRequestSortByValueTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/studySearchRequestSortByLabelTextView"
+            android:layout_toEndOf="@id/studySearchRequestSortByLabelTextView"
+
+            android:layout_marginTop="10dp"
+
+            android:text="@string/nullValueTextViewText"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/studySearchRequestChangeSortByButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            android:text="@string/changeButtonText"
+            android:textAllCaps="false"
+
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+
+            android:labelFor="@id/studySearchRequestSortOrderRadioGroup"
+            android:text="@string/StudySearchRequestAlertDialogSortOrderLabelTextViewText"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/studySearchRequestSortOrderRadioGroup"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+
+            android:checkedButton="@id/studySearchRequestNullSortOrderRadioButton">
+
+            <RadioButton
+                android:id="@+id/studySearchRequestNullSortOrderRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/nullRadioButtonText" />
+
+            <RadioButton
+                android:id="@+id/studySearchRequestAscSortOrderRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/ascRadioButtonText" />
+
+            <RadioButton
+                android:id="@+id/studySearchRequestDescSortOrderRadioButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/descRadioButtonText" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/studySearchRequestStudyDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogStudyDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestStudyNamesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogStudyNamesEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestStudyTypeDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogStudyTypeDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestStudyTypeNamesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogStudyTypeNamesEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <EditText
+        android:id="@+id/studySearchRequestTrialDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/StudySearchRequestAlertDialogTrialDbIdsEditTextHint"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

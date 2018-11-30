@@ -2,13 +2,16 @@
     <string name="app_name">Android Library</string>
 
 
+
     <!-- Utils -->
     <string name="sendingFile">Sending File&#8230;</string>
+
 
 
     <!-- AlertDialog -->
     <string name="okButtonText">OK</string>
     <string name="cancelButtonText">Cancel</string>
+
 
 
     <!-- GetExportFileNameAlertDialog -->
@@ -17,12 +20,15 @@
     <string name="getExportFileNameAlertDialogHint">Enter export filename</string>
 
 
+
     <!-- ChangeLogAlertDialog -->
     <string name="changeLogAlertDialogTitle">ChangeLog</string>
 
 
+
     <!-- Camera Options Menu -->
     <string name="cameraOptionsMenuItemTitle">Camera scanner</string>
+
 
 
     <!-- OtherAppsAlertDialog -->
@@ -47,6 +53,7 @@
     <string name="aboutPeteEMail">peterrosario@ksu.edu\n</string>
 
 
+
     <!-- ScaleExceptionAlertDialog -->
     <string name="scaleExceptionAlertDialogTitle">Scale Issue</string>
     <string name="scaleExceptionAlertDialogMessage">No scale detected.  Please connect scale with an OTG cable and turn the scale on.</string>
@@ -56,8 +63,20 @@
 
 
     <!-- BrAPI AlertDialog -->
+    <string name="activeRadioGroupLabelText">active:</string>
+
+    <string name="nullRadioButtonText">null</string>
+    <string name="falseRadioButtonText">false</string>
+    <string name="trueRadioButtonText">true</string>
+
+    <string name="ascRadioButtonText">ASC</string>
+    <string name="descRadioButtonText">DESC</string>
+
     <string name="pageEditTextHint">page</string>
     <string name="pageSizeEditTextHint">page size</string>
+
+    <string name="nullValueTextViewText">null</string>
+    <string name="changeButtonText">change</string>
 
 
     <!-- DataTypeAlertDialog -->
@@ -73,4 +92,22 @@
     <string name="ProgramsSearchRequestAlertDialogObjectivesEditTextHint">objectives</string>
     <string name="ProgramsSearchRequestAlertDialogProgramDbIdsEditTextHint">programDbIds</string>
     <string name="ProgramsSearchRequestAlertDialogProgramNamesEditTextHint">programNames</string>
+
+
+    <!-- StudySearchRequestAlertDialog -->
+    <string name="StudySearchRequestAlertDialogTitle">Study Search Request</string>
+    <string name="StudySearchRequestAlertDialogCommonCropNamesEditTextHint">commonCropNames</string>
+    <string name="StudySearchRequestAlertDialogGermplasmDbIdsEditTextHint">germplasmDbIds</string>
+    <string name="StudySearchRequestAlertDialogLocationDbIdsEditTextHint">locationDbIds</string>
+    <string name="StudySearchRequestAlertDialogObservationVariableDbIdsEditTextHint">observationVariableDbIds</string>
+    <string name="StudySearchRequestAlertDialogProgramDbIdsEditTextHint">programDbIds</string>
+    <string name="StudySearchRequestAlertDialogProgramNamesEditTextHint">programNames</string>
+    <string name="StudySearchRequestAlertDialogSeasonDbIdsEditTextHint">seasonDbIds</string>
+    <string name="StudySearchRequestAlertDialogSortByLabelTextViewText">sortBy:</string>
+    <string name="StudySearchRequestAlertDialogSortOrderLabelTextViewText">sortOrder:</string>
+    <string name="StudySearchRequestAlertDialogStudyDbIdsEditTextHint">studyDbIds</string>
+    <string name="StudySearchRequestAlertDialogStudyNamesEditTextHint">studyNames</string>
+    <string name="StudySearchRequestAlertDialogStudyTypeDbIdsEditTextHint">studyTypeDbIds</string>
+    <string name="StudySearchRequestAlertDialogStudyTypeNamesEditTextHint">studyTypeNames</string>
+    <string name="StudySearchRequestAlertDialogTrialDbIdsEditTextHint">trialDbIds</string>
 </resources>
