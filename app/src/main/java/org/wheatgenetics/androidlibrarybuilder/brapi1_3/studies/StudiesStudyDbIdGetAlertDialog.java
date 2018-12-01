@@ -13,7 +13,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  */
 class StudiesStudyDbIdGetAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
-    static class StudyDbIdGetParameters
+    static class Parameters
     {
         private java.lang.String studyDbId;
 
@@ -23,7 +23,7 @@ class StudiesStudyDbIdGetAlertDialog extends org.wheatgenetics.brapi1_3.AlertDia
     // region Fields
     private android.widget.EditText studyDbIdEditText;
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesStudyDbIdGetAlertDialog.StudyDbIdGetParameters studyDbIdGetParameters = null;
+        .StudiesStudyDbIdGetAlertDialog.Parameters parameters = null;
     // endregion
 
     StudiesStudyDbIdGetAlertDialog(final android.app.Activity activity,
@@ -49,11 +49,10 @@ class StudiesStudyDbIdGetAlertDialog extends org.wheatgenetics.brapi1_3.AlertDia
 
     @java.lang.Override protected void handlePositiveButtonClick()
     {
-        if (null != this.studyDbIdGetParameters)
+        if (null != this.parameters)
         {
-            this.studyDbIdGetParameters.studyDbId = org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                .studies.StudiesStudyDbIdGetAlertDialog.getEditTextStringText(
-                    this.studyDbIdEditText);
+            this.parameters.studyDbId = org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                .StudiesStudyDbIdGetAlertDialog.getEditTextStringText(this.studyDbIdEditText);
 
             super.handlePositiveButtonClick();
         }
@@ -61,15 +60,14 @@ class StudiesStudyDbIdGetAlertDialog extends org.wheatgenetics.brapi1_3.AlertDia
     // endregion
 
     void show(final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-    .StudiesStudyDbIdGetAlertDialog.StudyDbIdGetParameters studyDbIdGetParameters)
+        .StudiesStudyDbIdGetAlertDialog.Parameters parameters)
     {
-        if (null != studyDbIdGetParameters)
+        if (null != parameters)
         {
-            this.studyDbIdGetParameters = studyDbIdGetParameters;
+            this.parameters = parameters;
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdGetAlertDialog
-                .setEditTextText(this.studyDbIdEditText,
-                    this.studyDbIdGetParameters.getStudyDbId());
+                .setEditTextText(this.studyDbIdEditText, this.parameters.getStudyDbId());
 
             this.show();
         }

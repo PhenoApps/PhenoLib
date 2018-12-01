@@ -15,7 +15,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  */
 class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
-    static class StudiesGetParameters
+    static class Parameters
     {
         // region Fields
         private java.lang.String commonCropName, studyType, studyTypeDbId, programDbId,
@@ -59,8 +59,9 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
     private android.widget.RadioGroup activeRadioGroup                 ;
     private android.widget.EditText   sortByEditText, sortOrderEditText;
 
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesGetAlertDialog.StudiesGetParameters studiesGetParameters;
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog.Parameters
+            parameters = null;
     // endregion
 
     // region Private Methods
@@ -159,103 +160,97 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 
     @java.lang.Override protected void handlePositiveButtonClick()
     {
-        if (null != this.studiesGetParameters)
+        if (null != this.parameters)
         {
-            this.studiesGetParameters.commonCropName = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.commonCropName = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.commonCropNameEditText);
-            this.studiesGetParameters.studyType = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.studyType = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.studyTypeEditText);
-            this.studiesGetParameters.studyTypeDbId = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.studyTypeDbId = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.studyTypeDbIdEditText);
-            this.studiesGetParameters.programDbId = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.programDbId = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.programDbIdEditText);
-            this.studiesGetParameters.locationDbId = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.locationDbId = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.locationDbIdEditText);
-            this.studiesGetParameters.seasonDbId = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.seasonDbId = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.seasonDbIdEditText);
-            this.studiesGetParameters.trialDbId = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.trialDbId = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.trialDbIdEditText);
-            this.studiesGetParameters.studyDbId = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.studyDbId = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.studyDbIdEditText);
 
-            this.studiesGetParameters.germplasmDbIds = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.germplasmDbIds = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringListText(
                     this.germplasmDbIdsEditText);
-            this.studiesGetParameters.observationVariableDbIds =
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                    .getEditTextStringListText(this.observationVariableDbIdsEditText);
+            this.parameters.observationVariableDbIds = org.wheatgenetics.androidlibrarybuilder
+                .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringListText(
+                    this.observationVariableDbIdsEditText);
 
-            this.studiesGetParameters.active =
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                    .getRadioGroupChecked(this.activeRadioGroup);
+            this.parameters.active = org.wheatgenetics.androidlibrarybuilder
+                .brapi1_3.studies.StudiesGetAlertDialog.getRadioGroupChecked(this.activeRadioGroup);
 
-            this.studiesGetParameters.sortBy = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.sortBy = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(this.sortByEditText);
-            this.studiesGetParameters.sortOrder = org.wheatgenetics.androidlibrarybuilder
+            this.parameters.sortOrder = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.sortOrderEditText);
 
-            this.studiesGetParameters.page     = this.getPageEditTextIntText    ();
-            this.studiesGetParameters.pageSize = this.getPageSizeEditTextIntText();
+            this.parameters.page     = this.getPageEditTextIntText    ();
+            this.parameters.pageSize = this.getPageSizeEditTextIntText();
 
             super.handlePositiveButtonClick();
         }
     }
     // endregion
 
-    void show(final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-    .StudiesGetAlertDialog.StudiesGetParameters studiesGetParameters)
+    void show(
+    final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog.Parameters
+        parameters)
     {
-        if (null != studiesGetParameters)
+        if (null != parameters)
         {
-            this.studiesGetParameters = studiesGetParameters;
+            this.parameters = parameters;
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.commonCropNameEditText,
-                    this.studiesGetParameters.getCommonCropName());
+                .setEditTextText(this.commonCropNameEditText, this.parameters.getCommonCropName());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.studyTypeEditText, this.studiesGetParameters.getStudyType());
+                .setEditTextText(this.studyTypeEditText, this.parameters.getStudyType());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.studyTypeDbIdEditText,
-                    this.studiesGetParameters.getStudyTypeDbId());
+                .setEditTextText(this.studyTypeDbIdEditText, this.parameters.getStudyTypeDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.programDbIdEditText,
-                    this.studiesGetParameters.getProgramDbId());
+                .setEditTextText(this.programDbIdEditText, this.parameters.getProgramDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.locationDbIdEditText,
-                    this.studiesGetParameters.getLocationDbId());
+                .setEditTextText(this.locationDbIdEditText, this.parameters.getLocationDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.seasonDbIdEditText,
-                    this.studiesGetParameters.getSeasonDbId());
+                .setEditTextText(this.seasonDbIdEditText, this.parameters.getSeasonDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.trialDbIdEditText, this.studiesGetParameters.getTrialDbId());
+                .setEditTextText(this.trialDbIdEditText, this.parameters.getTrialDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.studyDbIdEditText, this.studiesGetParameters.getStudyDbId());
+                .setEditTextText(this.studyDbIdEditText, this.parameters.getStudyDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.germplasmDbIdsEditText,
-                    this.studiesGetParameters.getGermplasmDbIds());
+                .setEditTextText(this.germplasmDbIdsEditText, this.parameters.getGermplasmDbIds());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
                 .setEditTextText(this.observationVariableDbIdsEditText,
-                    this.studiesGetParameters.getObservationVariableDbIds());
+                    this.parameters.getObservationVariableDbIds());
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setRadioGroup(this.activeRadioGroup, this.studiesGetParameters.getActive());
+                .setRadioGroup(this.activeRadioGroup, this.parameters.getActive());
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.sortByEditText, this.studiesGetParameters.getSortBy());
+                .setEditTextText(this.sortByEditText, this.parameters.getSortBy());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.sortOrderEditText, this.studiesGetParameters.getSortOrder());
+                .setEditTextText(this.sortOrderEditText, this.parameters.getSortOrder());
 
-            this.setPageEditTextText    (this.studiesGetParameters.getPage    ());
-            this.setPageSizeEditTextText(this.studiesGetParameters.getPageSize());
+            this.setPageEditTextText    (this.parameters.getPage    ());
+            this.setPageSizeEditTextText(this.parameters.getPageSize());
 
             this.show();
         }

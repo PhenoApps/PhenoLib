@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/studiesSearchStudiesSearchResultsDbIdGetSearchResultsDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="searchResultsDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesSearchStudiesSearchResultsDbIdGetPageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="page"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/studiesSearchStudiesSearchResultsDbIdGetPageSizeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="pageSize"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

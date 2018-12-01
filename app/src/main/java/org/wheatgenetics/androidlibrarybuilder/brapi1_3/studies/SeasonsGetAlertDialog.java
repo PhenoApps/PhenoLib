@@ -13,7 +13,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  */
 class SeasonsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
-    static class SeasonsGetParameters
+    static class Parameters
     {
         // region Fields
         private java.lang.String  seasonDbId, season, year;
@@ -31,8 +31,9 @@ class SeasonsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 
     // region Fields
     private android.widget.EditText seasonDbIdEditText, seasonEditText, yearEditText;
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .SeasonsGetAlertDialog.SeasonsGetParameters seasonsGetParameters = null;
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Parameters
+            parameters = null;
     // endregion
 
     SeasonsGetAlertDialog(final android.app.Activity activity,
@@ -65,38 +66,38 @@ class SeasonsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 
     @java.lang.Override protected void handlePositiveButtonClick()
     {
-        if (null != this.seasonsGetParameters)
+        if (null != this.parameters)
         {
-            this.seasonsGetParameters.seasonDbId = org.wheatgenetics.androidlibrarybuilder.brapi1_3
+            this.parameters.seasonDbId = org.wheatgenetics.androidlibrarybuilder.brapi1_3
                 .studies.SeasonsGetAlertDialog.getEditTextStringText(this.seasonDbIdEditText);
-            this.seasonsGetParameters.season = org.wheatgenetics.androidlibrarybuilder.brapi1_3
+            this.parameters.season = org.wheatgenetics.androidlibrarybuilder.brapi1_3
                 .studies.SeasonsGetAlertDialog.getEditTextStringText(this.seasonEditText);
-            this.seasonsGetParameters.year = org.wheatgenetics.androidlibrarybuilder.brapi1_3
+            this.parameters.year = org.wheatgenetics.androidlibrarybuilder.brapi1_3
                 .studies.SeasonsGetAlertDialog.getEditTextStringText(this.yearEditText);
-            this.seasonsGetParameters.page     = this.getPageEditTextIntText    ();
-            this.seasonsGetParameters.pageSize = this.getPageSizeEditTextIntText();
+            this.parameters.page     = this.getPageEditTextIntText    ();
+            this.parameters.pageSize = this.getPageSizeEditTextIntText();
 
             super.handlePositiveButtonClick();
         }
     }
     // endregion
 
-    void show(final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-    .SeasonsGetAlertDialog.SeasonsGetParameters seasonsGetParameters)
+    void show(
+    final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Parameters
+        parameters)
     {
-        if (null != seasonsGetParameters)
+        if (null != parameters)
         {
-            this.seasonsGetParameters = seasonsGetParameters;
+            this.parameters = parameters;
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog
-                .setEditTextText(this.seasonDbIdEditText,
-                    this.seasonsGetParameters.getSeasonDbId());
+                .setEditTextText(this.seasonDbIdEditText, this.parameters.getSeasonDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog
-                .setEditTextText(this.seasonEditText, this.seasonsGetParameters.getSeason());
+                .setEditTextText(this.seasonEditText, this.parameters.getSeason());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog
-                .setEditTextText(this.yearEditText, this.seasonsGetParameters.getYear());
-            this.setPageEditTextText    (this.seasonsGetParameters.getPage()    );
-            this.setPageSizeEditTextText(this.seasonsGetParameters.getPageSize());
+                .setEditTextText(this.yearEditText, this.parameters.getYear());
+            this.setPageEditTextText    (this.parameters.getPage()    );
+            this.setPageSizeEditTextText(this.parameters.getPageSize());
 
             this.show();
         }
