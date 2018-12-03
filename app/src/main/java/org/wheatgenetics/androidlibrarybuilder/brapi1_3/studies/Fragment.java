@@ -14,13 +14,13 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * io.swagger.client.ApiCallback
  * io.swagger.client.ApiException
  * io.swagger.client.api.StudiesApi
+ * io.swagger.client.model.SeasonsResponse
  * io.swagger.client.model.StudiesResponse
  * io.swagger.client.model.StudySearchRequest
  * io.swagger.client.model.SuccessfulSearchResponse
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
- * org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
@@ -29,6 +29,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  *     .SearchStudiesSearchResultsDbIdGetAlertDialog
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
  *     .SearchStudiesSearchResultsDbIdGetAlertDialog.Parameters
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog
  */
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
@@ -52,6 +53,16 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             searchStudiesSearchResultsDbIdGetParametersInstance = null;
     private io.swagger.client.ApiCallback<io.swagger.client.model.StudiesResponse>
         studiesResponseCallbackInstance = null;
+    // endregion
+
+    // region seasonsGet() Fields
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog
+        seasonsGetAlertDialogInstance = null;
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Parameters
+            seasonsGetAlertDialogParametersInstance = null;
+    private io.swagger.client.ApiCallback<io.swagger.client.model.SeasonsResponse>
+        seasonsResponseCallbackInstance = null;
     // endregion
     // endregion
 
@@ -122,7 +133,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         if (null == this.studySearchRequestAlertDialogInstance)
             this.studySearchRequestAlertDialogInstance =
                 new org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog(this.getActivity(),
-                    new org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler()
+                    new org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.Handler()
                     {
                         @java.lang.Override public void handleDone()
                         {
@@ -145,8 +156,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region searchStudiesSearchResultsDbIdGet() Private Methods
-    private void setResponseTextViewText(final io.swagger.client.model.StudiesResponse
-    studiesResponse)
+    private void setResponseTextViewText(
+    final io.swagger.client.model.StudiesResponse studiesResponse)
     {
         this.setResponseTextViewTextFromThread(
             null == studiesResponse ? "null" : studiesResponse.toString());
@@ -207,15 +218,17 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     {
         if (null == this.searchStudiesSearchResultsDbIdGetAlertDialogInstance)
             this.searchStudiesSearchResultsDbIdGetAlertDialogInstance =
-                new SearchStudiesSearchResultsDbIdGetAlertDialog(this.getActivity(),
-                    new org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler()
-                    {
-                        @java.lang.Override public void handleDone()
-                        {
-                            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                                .Fragment.this.searchStudiesSearchResultsDbIdGet();
-                        }
-                    });
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                    .studies.SearchStudiesSearchResultsDbIdGetAlertDialog(this.getActivity(),
+                        new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                            .SearchStudiesSearchResultsDbIdGetAlertDialog.Handler()
+                            {
+                                @java.lang.Override public void handleDone()
+                                {
+                                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                                        .Fragment.this.searchStudiesSearchResultsDbIdGet();
+                                }
+                            });
         return this.searchStudiesSearchResultsDbIdGetAlertDialogInstance;
     }
 
@@ -235,6 +248,94 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         this.searchStudiesSearchResultsDbIdGetAlertDialog().show(
             this.searchStudiesSearchResultsDbIdGetParameters());
     }
+    // endregion
+
+    // region seasonsGet() Private Methods
+    private void setResponseTextViewText(
+    final io.swagger.client.model.SeasonsResponse studiesResponse)
+    {
+        this.setResponseTextViewTextFromThread(
+            null == studiesResponse ? "null" : studiesResponse.toString());
+    }
+
+    private io.swagger.client.ApiCallback<io.swagger.client.model.SeasonsResponse>
+    seasonsResponseCallback()
+    {
+        if (null == this.seasonsResponseCallbackInstance) this.seasonsResponseCallbackInstance =
+            new io.swagger.client.ApiCallback<io.swagger.client.model.SeasonsResponse>()
+            {
+                @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
+                final int                                                               i  ,
+                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
+                {
+                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                        .Fragment.this.setResponseTextViewTextFromThread(e);
+                }
+
+                @java.lang.Override public void onSuccess(
+                final io.swagger.client.model.SeasonsResponse seasonsResponse, final int i,
+                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
+                {
+                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                        .Fragment.this.setResponseTextViewText(seasonsResponse);
+                }
+
+                @java.lang.Override public void onUploadProgress(
+                final long l, final long l1, final boolean b) {}
+
+                @java.lang.Override public void onDownloadProgress(
+                final long l, final long l1, final boolean b) {}
+            };
+        return this.seasonsResponseCallbackInstance;
+    }
+
+    private void seasonsGet()
+    {
+        if (null != this.seasonsGetAlertDialogParametersInstance)
+            try
+            {
+                this.studiesApi().seasonsGetAsync(
+                    /* seasonDbId => */
+                        this.seasonsGetAlertDialogParametersInstance.getSeasonDbId(),
+                    /* season   => */ this.seasonsGetAlertDialogParametersInstance.getSeason()  ,
+                    /* year     => */ this.seasonsGetAlertDialogParametersInstance.getYear()    ,
+                    /* page     => */ this.seasonsGetAlertDialogParametersInstance.getPage()    ,
+                    /* pageSize => */ this.seasonsGetAlertDialogParametersInstance.getPageSize(),
+                    /* authorization => */null,
+                    /* callback      => */ this.seasonsResponseCallback());
+            }
+            catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
+    }
+
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog
+    seasonsGetAlertDialog()
+    {
+        if (null == this.seasonsGetAlertDialogInstance) this.seasonsGetAlertDialogInstance =
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog(
+                this.getActivity(), new org.wheatgenetics.androidlibrarybuilder
+                    .brapi1_3.studies.SeasonsGetAlertDialog.Handler()
+                    {
+                        @java.lang.Override public void handleDone()
+                        {
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                                .Fragment.this.seasonsGet();
+                        }
+                    });
+        return this.seasonsGetAlertDialogInstance;
+    }
+
+    private
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Parameters
+    seasonsGetAlertDialogParameters()
+    {
+        if (null == this.seasonsGetAlertDialogParametersInstance)
+            this.seasonsGetAlertDialogParametersInstance = new org.wheatgenetics
+                .androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Parameters();
+        return this.seasonsGetAlertDialogParametersInstance;
+    }
+
+    private void showSeasonsGetAlertDialog()
+    { this.seasonsGetAlertDialog().show(this.seasonsGetAlertDialogParameters()); }
     // endregion
     // endregion
 
@@ -283,7 +384,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 org.wheatgenetics.androidlibrarybuilder.R.id.seasonsGetButton);
             if (null != seasonsGetButton) seasonsGetButton.setOnClickListener(
                 new android.view.View.OnClickListener()
-                { @java.lang.Override public void onClick(final android.view.View v) {} });
+                {
+                    @java.lang.Override public void onClick(final android.view.View v)
+                    {
+                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+                            .this.showSeasonsGetAlertDialog();
+                    }
+                });
         }
         {
             final android.widget.Button studiesGetButton = rootView.findViewById(
