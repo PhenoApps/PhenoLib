@@ -18,28 +18,21 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
     static class Parameters
     {
         // region Fields
-        private java.lang.String commonCropName, studyType, studyTypeDbId, programDbId,
-            locationDbId, seasonDbId, trialDbId, studyDbId;
-        private java.util.ArrayList<java.lang.String> germplasmDbIds, observationVariableDbIds;
-        private java.lang.Boolean                     active                                  ;
-        private java.lang.String                      sortBy        , sortOrder               ;
-        private java.lang.Integer                     page          , pageSize                ;
+        private java.lang.String commonCropName, studyTypeDbId,
+            programDbId, locationDbId, seasonDbId, trialDbId, studyDbId;
+        private java.lang.Boolean                     active           ;
+        private java.lang.String                      sortBy, sortOrder;
+        private java.lang.Integer                     page  , pageSize ;
         // endregion
 
         // region Getter Package Methods
         java.lang.String getCommonCropName() { return this.commonCropName; }
-        java.lang.String getStudyType     () { return this.studyType     ; }
         java.lang.String getStudyTypeDbId () { return this.studyTypeDbId ; }
         java.lang.String getProgramDbId   () { return this.programDbId   ; }
         java.lang.String getLocationDbId  () { return this.locationDbId  ; }
         java.lang.String getSeasonDbId    () { return this.seasonDbId    ; }
         java.lang.String getTrialDbId     () { return this.trialDbId     ; }
         java.lang.String getStudyDbId     () { return this.studyDbId     ; }
-
-        java.util.List<java.lang.String> getGermplasmDbIds() { return this.germplasmDbIds; }
-
-        java.util.List<java.lang.String> getObservationVariableDbIds()
-        { return this.observationVariableDbIds; }
 
         java.lang.Boolean getActive() { return this.active; }
 
@@ -52,10 +45,9 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
     }
 
     // region Fields
-    private android.widget.EditText commonCropNameEditText, studyTypeEditText,
-        studyTypeDbIdEditText, programDbIdEditText, locationDbIdEditText, seasonDbIdEditText,
-        trialDbIdEditText, studyDbIdEditText, germplasmDbIdsEditText,
-        observationVariableDbIdsEditText;
+    private android.widget.EditText commonCropNameEditText, studyTypeDbIdEditText,
+        programDbIdEditText, locationDbIdEditText, seasonDbIdEditText, trialDbIdEditText,
+        studyDbIdEditText;
     private android.widget.RadioGroup activeRadioGroup                 ;
     private android.widget.EditText   sortByEditText, sortOrderEditText;
 
@@ -118,8 +110,6 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
             if (null == this.commonCropNameEditText)
                 this.commonCropNameEditText = view.findViewById(org.wheatgenetics
                     .androidlibrarybuilder.R.id.studiesStudiesGetCommonCropNameEditText);
-            if (null == this.studyTypeEditText) this.studyTypeEditText = view.findViewById(org
-                .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetStudyTypeEditText);
             if (null == this.studyTypeDbIdEditText) this.studyTypeDbIdEditText = view.findViewById(
                 org.wheatgenetics.androidlibrarybuilder
                     .R.id.studiesStudiesGetStudyTypeDbIdEditText);
@@ -133,12 +123,6 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
                 .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetTrialDbIdEditText);
             if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(org
                 .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetStudyDbIdEditText);
-            if (null == this.germplasmDbIdsEditText)
-                this.germplasmDbIdsEditText = view.findViewById(org.wheatgenetics
-                    .androidlibrarybuilder.R.id.studiesStudiesGetGermplasmDbIdsEditText);
-            if (null == this.observationVariableDbIdsEditText)
-                this.observationVariableDbIdsEditText = view.findViewById(org.wheatgenetics
-                    .androidlibrarybuilder.R.id.studiesStudiesGetObservationVariableDbIdsEditText);
 
             if (null == this.activeRadioGroup) this.activeRadioGroup = view.findViewById(org
                 .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetActiveRadioGroup);
@@ -165,9 +149,6 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
             this.parameters.commonCropName = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.commonCropNameEditText);
-            this.parameters.studyType = org.wheatgenetics.androidlibrarybuilder
-                .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
-                    this.studyTypeEditText);
             this.parameters.studyTypeDbId = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.studyTypeDbIdEditText);
@@ -186,13 +167,6 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
             this.parameters.studyDbId = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringText(
                     this.studyDbIdEditText);
-
-            this.parameters.germplasmDbIds = org.wheatgenetics.androidlibrarybuilder
-                .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringListText(
-                    this.germplasmDbIdsEditText);
-            this.parameters.observationVariableDbIds = org.wheatgenetics.androidlibrarybuilder
-                .brapi1_3.studies.StudiesGetAlertDialog.getEditTextStringListText(
-                    this.observationVariableDbIdsEditText);
 
             this.parameters.active = org.wheatgenetics.androidlibrarybuilder
                 .brapi1_3.studies.StudiesGetAlertDialog.getRadioGroupChecked(this.activeRadioGroup);
@@ -222,8 +196,6 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
                 .setEditTextText(this.commonCropNameEditText, this.parameters.getCommonCropName());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.studyTypeEditText, this.parameters.getStudyType());
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
                 .setEditTextText(this.studyTypeDbIdEditText, this.parameters.getStudyTypeDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
                 .setEditTextText(this.programDbIdEditText, this.parameters.getProgramDbId());
@@ -235,11 +207,6 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
                 .setEditTextText(this.trialDbIdEditText, this.parameters.getTrialDbId());
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
                 .setEditTextText(this.studyDbIdEditText, this.parameters.getStudyDbId());
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.germplasmDbIdsEditText, this.parameters.getGermplasmDbIds());
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
-                .setEditTextText(this.observationVariableDbIdsEditText,
-                    this.parameters.getObservationVariableDbIds());
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesGetAlertDialog
                 .setRadioGroup(this.activeRadioGroup, this.parameters.getActive());

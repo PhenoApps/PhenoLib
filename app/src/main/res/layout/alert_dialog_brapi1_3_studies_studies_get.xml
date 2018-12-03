@@ -19,16 +19,6 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/studiesStudiesGetStudyTypeEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="studyType"
-        android:inputType="text"
-        android:maxLines="1"
-
-        tools:ignore="HardcodedText" />
-
-    <EditText
         android:id="@+id/studiesStudiesGetStudyTypeDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -85,28 +75,6 @@
         android:hint="studyDbId"
         android:inputType="number"
         android:maxLines="1"
-
-        tools:ignore="HardcodedText" />
-
-
-
-    <EditText
-        android:id="@+id/studiesStudiesGetGermplasmDbIdsEditText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="germplasmDbIds"
-        android:inputType="textMultiLine"
-        android:scrollbars="vertical"
-
-        tools:ignore="HardcodedText" />
-
-    <EditText
-        android:id="@+id/studiesStudiesGetObservationVariableDbIdsEditText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="observationVariableDbIds"
-        android:inputType="textMultiLine"
-        android:scrollbars="vertical"
 
         tools:ignore="HardcodedText" />
 
