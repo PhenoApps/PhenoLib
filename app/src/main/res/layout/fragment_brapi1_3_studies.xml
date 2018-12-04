@@ -146,7 +146,7 @@
         android:textAllCaps="false"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/leftGuideline"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seasonsGetButton"
 
         tools:ignore="HardcodedText" />
@@ -163,9 +163,9 @@
         android:text="studiesStudyDbIdLayoutsGet()"
         android:textAllCaps="false"
 
-        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
-        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
-        app:layout_constraintTop_toBottomOf="@id/seasonsGetButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
 
         tools:ignore="HardcodedText" />
 
@@ -181,9 +181,9 @@
         android:text="studiesStudyDbIdLayoutsPut()"
         android:textAllCaps="false"
 
-        app:layout_constraintLeft_toRightOf="@id/rightGuideline"
+        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seasonsGetButton"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
 
         tools:ignore="HardcodedText" />
 
@@ -206,8 +206,6 @@
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
 
         tools:ignore="HardcodedText" />
-
-
 
     <Button
         android:id="@+id/studiesStudyDbIdObservationsPutButton"
