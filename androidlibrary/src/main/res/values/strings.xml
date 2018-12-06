@@ -110,4 +110,15 @@
     <string name="StudySearchRequestAlertDialogStudyTypeDbIdsEditTextHint">studyTypeDbIds</string>
     <string name="StudySearchRequestAlertDialogStudyTypeNamesEditTextHint">studyTypeNames</string>
     <string name="StudySearchRequestAlertDialogTrialDbIdsEditTextHint">trialDbIds</string>
+
+    <!-- StudyLayoutRequestLayoutAlertDialog -->
+    <string name="StudyLayoutRequestLayoutAlertDialogTitle">Study Layout Request Layout</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogBlockNumberEditTextHint">blockNumber</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogEntryTypeLabelTextViewText">entryType:</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogPositionCoordinateXEditTextHint">positionCoordinateX</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogPositionCoordinateXTypeLabelTextViewText">positionCoordinateXType:</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogPositionCoordinateYEditTextHint">positionCoordinateY</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogPositionCoordinateYTypeLabelTextViewText">positionCoordinateYType:</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogReplicateEditTextHint">replicate</string>
 </resources>

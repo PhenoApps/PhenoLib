@@ -84,8 +84,8 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     private android.widget.EditText   studyDbIdsEditText, studyNamesEditText,
         studyTypeDbIdsEditText, studyTypeNamesEditText, trialDbIdsEditText;
 
-    private io.swagger.client.model.StudySearchRequest            studySearchRequest  ;
-    private io.swagger.client.model.StudySearchRequest.SortByEnum sortByEnum    = null;
+    private io.swagger.client.model.StudySearchRequest            studySearchRequest = null;
+    private io.swagger.client.model.StudySearchRequest.SortByEnum sortByEnum         = null;
 
     private org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.SortByAlertDialog
         sortByAlertDialogInstance = null;
@@ -146,7 +146,10 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     // region sortBy set() Private Methods
     private void setSortByTextView(
     final io.swagger.client.model.StudySearchRequest.SortByEnum sortByEnum)
-    { this.sortByTextView.setText(null == sortByEnum ? "null" : sortByEnum.toString()); }
+    {
+        if (null != this.sortByTextView) this.sortByTextView.setText(
+            null == sortByEnum ? "null" : sortByEnum.toString());
+    }
 
     private void setSortByEnum(final io.swagger.client.model.StudySearchRequest.SortByEnum
     sortByEnum) { this.sortByEnum = sortByEnum; this.setSortByTextView(this.sortByEnum); }

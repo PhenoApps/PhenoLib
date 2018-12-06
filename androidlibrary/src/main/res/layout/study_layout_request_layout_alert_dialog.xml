@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/studiesStudyLayoutRequestLayoutBlockNumberEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/StudyLayoutRequestLayoutAlertDialogBlockNumberEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/studiesStudyLayoutRequestLayoutEntryTypeLabelTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+
+            android:labelFor="@id/studiesStudyLayoutRequestLayoutEntryTypeValueTextView"
+            android:text="@string/StudyLayoutRequestLayoutAlertDialogEntryTypeLabelTextViewText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/studiesStudyLayoutRequestLayoutEntryTypeValueTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@id/studiesStudyLayoutRequestLayoutEntryTypeLabelTextView"
+            android:layout_toEndOf="@id/studiesStudyLayoutRequestLayoutEntryTypeLabelTextView"
+
+            android:layout_marginTop="10dp"
+
+            android:text="@string/nullValueTextViewText"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/studiesStudyLayoutRequestLayoutChangeEntryTypeButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            android:text="@string/changeButtonText"
+            android:textAllCaps="false"
+
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+
+
+    <EditText
+        android:id="@+id/studiesStudyLayoutRequestLayoutObservationUnitDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/StudyLayoutRequestLayoutAlertDialogObservationUnitDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/studiesStudyLayoutRequestLayoutPositionCoordinateXEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/StudyLayoutRequestLayoutAlertDialogPositionCoordinateXEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/studiesStudyLayoutRequestLayoutPositionCoordinateXTypeLabelTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+
+            android:labelFor="@id/studiesStudyLayoutRequestLayoutPositionCoordinateXTypeValueTextView"
+            android:text="@string/StudyLayoutRequestLayoutAlertDialogPositionCoordinateXTypeLabelTextViewText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/studiesStudyLayoutRequestLayoutPositionCoordinateXTypeValueTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@id/studiesStudyLayoutRequestLayoutPositionCoordinateXTypeLabelTextView"
+            android:layout_toEndOf="@id/studiesStudyLayoutRequestLayoutPositionCoordinateXTypeLabelTextView"
+
+            android:layout_marginTop="10dp"
+
+            android:text="@string/nullValueTextViewText"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/studiesStudyLayoutRequestLayoutChangePositionCoordinateXTypeButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            android:text="@string/changeButtonText"
+            android:textAllCaps="false"
+
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+
+
+    <EditText
+        android:id="@+id/studiesStudyLayoutRequestLayoutPositionCoordinateYEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/StudyLayoutRequestLayoutAlertDialogPositionCoordinateYEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/studiesStudyLayoutRequestLayoutPositionCoordinateYTypeLabelTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+
+            android:labelFor="@id/studiesStudyLayoutRequestLayoutPositionCoordinateYTypeValueTextView"
+            android:text="@string/StudyLayoutRequestLayoutAlertDialogPositionCoordinateYTypeLabelTextViewText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/studiesStudyLayoutRequestLayoutPositionCoordinateYTypeValueTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@id/studiesStudyLayoutRequestLayoutPositionCoordinateYTypeLabelTextView"
+            android:layout_toEndOf="@id/studiesStudyLayoutRequestLayoutPositionCoordinateYTypeLabelTextView"
+
+            android:layout_marginTop="10dp"
+
+            android:text="@string/nullValueTextViewText"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/studiesStudyLayoutRequestLayoutChangePositionCoordinateYTypeButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            android:text="@string/changeButtonText"
+            android:textAllCaps="false"
+
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/studiesStudyLayoutRequestLayoutReplicateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/StudyLayoutRequestLayoutAlertDialogReplicateEditTextHint"
+        android:inputType="number"
+        android:maxLines="1" />
+
+</LinearLayout>
