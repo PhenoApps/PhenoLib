@@ -151,6 +151,8 @@
 
         tools:ignore="HardcodedText" />
 
+
+
     <Button
         android:id="@+id/studiesStudyDbIdLayoutsGetButton"
 
@@ -203,7 +205,7 @@
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/middleGuideline"
-        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdLayoutsGetButton"
 
         tools:ignore="HardcodedText" />
 
@@ -221,7 +223,7 @@
 
         app:layout_constraintLeft_toRightOf="@id/middleGuideline"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdLayoutsGetButton"
 
         tools:ignore="HardcodedText" />
 
