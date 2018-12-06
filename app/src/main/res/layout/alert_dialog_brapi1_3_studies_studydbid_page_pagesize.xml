@@ -9,7 +9,7 @@
     android:padding="10dp">
 
     <EditText
-        android:id="@+id/studiesStudiesStudyDbIdGermplasmGetStudyDbIdEditText"
+        android:id="@+id/studiesStudyDbIdPagePageSizeStudyDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="studyDbId"
@@ -19,7 +19,7 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/studiesStudiesStudyDbIdGermplasmGetPageEditText"
+        android:id="@+id/studiesStudyDbIdPagePageSizePageEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="page"
@@ -29,7 +29,7 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/studiesStudiesStudyDbIdGermplasmGetPageSizeEditText"
+        android:id="@+id/studiesStudyDbIdPagePageSizePageSizeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="pageSize"

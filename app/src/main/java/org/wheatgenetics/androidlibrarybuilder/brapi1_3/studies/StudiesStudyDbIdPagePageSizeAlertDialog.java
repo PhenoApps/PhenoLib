@@ -11,7 +11,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  */
-class StudiesStudyDbIdGermplasmGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
+class StudiesStudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
     static class Parameters
     {
@@ -29,30 +29,32 @@ class StudiesStudyDbIdGermplasmGetAlertDialog extends org.wheatgenetics.brapi1_3
     }
 
     // region Fields
+    private java.lang.String        title            ;
     private android.widget.EditText studyDbIdEditText;
 
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesStudyDbIdGermplasmGetAlertDialog.Parameters parameters = null;
+        .StudiesStudyDbIdPagePageSizeAlertDialog.Parameters parameters = null;
     // endregion
 
-    StudiesStudyDbIdGermplasmGetAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler handler) { super(activity, handler); }
+    StudiesStudyDbIdPagePageSizeAlertDialog(final android.app.Activity activity,
+    final org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler handler, final java.lang.String title)
+    { super(activity, handler); this.title = title; }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
     {
-        this.setTitle("StudiesApi.studiesStudyDbIdGermplasmGet()");
+        this.setTitle(this.title);
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrarybuilder
-                .R.layout.alert_dialog_brapi1_3_studies_studies_studydbid_germplasm_get);
+                .R.layout.alert_dialog_brapi1_3_studies_studydbid_page_pagesize);
 
             assert null != view; if (null == this.studyDbIdEditText) this.studyDbIdEditText =
                 view.findViewById(org.wheatgenetics.androidlibrarybuilder
-                    .R.id.studiesStudiesStudyDbIdGermplasmGetStudyDbIdEditText);
+                    .R.id.studiesStudyDbIdPagePageSizeStudyDbIdEditText);
             this.findPageEditTextById(view, org.wheatgenetics.androidlibrarybuilder
-                .R.id.studiesStudiesStudyDbIdGermplasmGetPageEditText);
+                .R.id.studiesStudyDbIdPagePageSizePageEditText);
             this.findPageSizeEditTextById(view, org.wheatgenetics.androidlibrarybuilder
-                .R.id.studiesStudiesStudyDbIdGermplasmGetPageSizeEditText);
+                .R.id.studiesStudyDbIdPagePageSizePageSizeEditText);
 
             this.setView(view);
         }
@@ -63,8 +65,8 @@ class StudiesStudyDbIdGermplasmGetAlertDialog extends org.wheatgenetics.brapi1_3
     {
         if (null != this.parameters)
         {
-            this.parameters.studyDbId = org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                .studies.StudiesStudyDbIdGermplasmGetAlertDialog.getEditTextStringText(
+            this.parameters.studyDbId = org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                .StudiesStudyDbIdPagePageSizeAlertDialog.getEditTextStringText(
                     this.studyDbIdEditText);
             this.parameters.page     = this.getPageEditTextIntText    ();
             this.parameters.pageSize = this.getPageSizeEditTextIntText();
@@ -75,14 +77,14 @@ class StudiesStudyDbIdGermplasmGetAlertDialog extends org.wheatgenetics.brapi1_3
     // endregion
 
     void show(final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-    .StudiesStudyDbIdGermplasmGetAlertDialog.Parameters parameters)
+    .StudiesStudyDbIdPagePageSizeAlertDialog.Parameters parameters)
     {
         if (null != parameters)
         {
             this.parameters = parameters;
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                .StudiesStudyDbIdGermplasmGetAlertDialog.setEditTextText(
+                .StudiesStudyDbIdPagePageSizeAlertDialog.setEditTextText(
                     this.studyDbIdEditText, this.parameters.getStudyDbId());
             this.setPageEditTextText    (this.parameters.getPage    ());
             this.setPageSizeEditTextText(this.parameters.getPageSize());
