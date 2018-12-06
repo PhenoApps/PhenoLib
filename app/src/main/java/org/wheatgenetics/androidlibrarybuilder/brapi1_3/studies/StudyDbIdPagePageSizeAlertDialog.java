@@ -11,7 +11,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  */
-class StudiesStudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
+class StudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
     static class Parameters
     {
@@ -33,10 +33,10 @@ class StudiesStudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3
     private android.widget.EditText studyDbIdEditText;
 
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesStudyDbIdPagePageSizeAlertDialog.Parameters parameters = null;
+        .StudyDbIdPagePageSizeAlertDialog.Parameters parameters = null;
     // endregion
 
-    StudiesStudyDbIdPagePageSizeAlertDialog(final android.app.Activity activity,
+    StudyDbIdPagePageSizeAlertDialog(final android.app.Activity activity,
     final org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler handler, final java.lang.String title)
     { super(activity, handler); this.title = title; }
 
@@ -66,7 +66,7 @@ class StudiesStudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3
         if (null != this.parameters)
         {
             this.parameters.studyDbId = org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                .StudiesStudyDbIdPagePageSizeAlertDialog.getEditTextStringText(
+                .StudyDbIdPagePageSizeAlertDialog.getEditTextStringText(
                     this.studyDbIdEditText);
             this.parameters.page     = this.getPageEditTextIntText    ();
             this.parameters.pageSize = this.getPageSizeEditTextIntText();
@@ -77,14 +77,14 @@ class StudiesStudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3
     // endregion
 
     void show(final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-    .StudiesStudyDbIdPagePageSizeAlertDialog.Parameters parameters)
+    .StudyDbIdPagePageSizeAlertDialog.Parameters parameters)
     {
         if (null != parameters)
         {
             this.parameters = parameters;
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                .StudiesStudyDbIdPagePageSizeAlertDialog.setEditTextText(
+                .StudyDbIdPagePageSizeAlertDialog.setEditTextText(
                     this.studyDbIdEditText, this.parameters.getStudyDbId());
             this.setPageEditTextText    (this.parameters.getPage    ());
             this.setPageSizeEditTextText(this.parameters.getPageSize());

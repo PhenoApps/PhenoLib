@@ -48,11 +48,10 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
  *     .StudiesStudyDbIdGetAlertDialog.Parameters
  *
- * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdPagePageSizeAlertDialog
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog.Handler
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
- *     .StudiesStudyDbIdPagePageSizeAlertDialog.Handler
- * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
- *     .StudiesStudyDbIdPagePageSizeAlertDialog.Parameters
+ *     .StudyDbIdPagePageSizeAlertDialog.Parameters
  */
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
@@ -110,21 +109,20 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
 
     // region studiesStudyDbIdGermplasmGet() and studiesStudyDbIdLayoutsGet() Field
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesStudyDbIdPagePageSizeAlertDialog.Parameters
-            studiesStudyDbIdPagePageSizeParametersInstance = null;
+        .StudyDbIdPagePageSizeAlertDialog.Parameters studyDbIdPagePageSizeParametersInstance = null;
     // endregion
 
     // region studiesStudyDbIdGermplasmGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesStudyDbIdPagePageSizeAlertDialog
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
             studiesStudyDbIdGermplasmGetAlertDialogInstance = null;
     private io.swagger.client.ApiCallback<io.swagger.client.model.GermplasmSummaryListResponse>
         germplasmSummaryListResponseCallbackInstance = null;
     // endregion
     
     // region studiesStudyDbIdLayoutsGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesStudyDbIdPagePageSizeAlertDialog
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
             studiesStudyDbIdLayoutsGetAlertDialogInstance = null;
     private io.swagger.client.ApiCallback<io.swagger.client.model.ObservationUnitPositionsResponse>
         observationUnitPositionsResponseCallbackInstance = null;
@@ -552,13 +550,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
 
     // region studiesStudyDbIdGermplasmGet() and studiesStudyDbIdLayoutsGet() Private Method
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-    .StudiesStudyDbIdPagePageSizeAlertDialog.Parameters studiesStudyDbIdPagePageSizeParameters()
+    .StudyDbIdPagePageSizeAlertDialog.Parameters studyDbIdPagePageSizeParameters()
     {
-        if (null == this.studiesStudyDbIdPagePageSizeParametersInstance)
-            this.studiesStudyDbIdPagePageSizeParametersInstance =
+        if (null == this.studyDbIdPagePageSizeParametersInstance)
+            this.studyDbIdPagePageSizeParametersInstance =
                 new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                    .StudiesStudyDbIdPagePageSizeAlertDialog.Parameters();
-        return this.studiesStudyDbIdPagePageSizeParametersInstance;
+                    .StudyDbIdPagePageSizeAlertDialog.Parameters();
+        return this.studyDbIdPagePageSizeParametersInstance;
     }
     // endregion
 
@@ -606,15 +604,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
 
     private void studiesStudyDbIdGermplasmGet()
     {
-        if (null != this.studiesStudyDbIdPagePageSizeParametersInstance)
+        if (null != this.studyDbIdPagePageSizeParametersInstance)
             try
             {
                 this.studiesApi().studiesStudyDbIdGermplasmGetAsync(
-                    /* studyDbId => */
-                        this.studiesStudyDbIdPagePageSizeParametersInstance.getStudyDbId(),
-                    /* page     => */ this.studiesStudyDbIdPagePageSizeParametersInstance.getPage(),
-                    /* pageSize => */
-                        this.studiesStudyDbIdPagePageSizeParametersInstance.getPageSize(),
+                    /* studyDbId => */ this.studyDbIdPagePageSizeParametersInstance.getStudyDbId(),
+                    /* page      => */ this.studyDbIdPagePageSizeParametersInstance.getPage     (),
+                    /* pageSize  => */ this.studyDbIdPagePageSizeParametersInstance.getPageSize (),
                     /* authorization => */null,
                     /* callback      => */this.germplasmSummaryListCallback());
             }
@@ -622,14 +618,14 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private
-    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdPagePageSizeAlertDialog
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
     studiesStudyDbIdGermplasmGetAlertDialog()
     {
         if (null == this.studiesStudyDbIdGermplasmGetAlertDialogInstance)
             this.studiesStudyDbIdGermplasmGetAlertDialogInstance = new org.wheatgenetics
-                .androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdPagePageSizeAlertDialog(
+                .androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog(
                     this.getActivity(), new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                        .StudiesStudyDbIdPagePageSizeAlertDialog.Handler()
+                        .StudyDbIdPagePageSizeAlertDialog.Handler()
                         {
                             @java.lang.Override public void handleDone()
                             {
@@ -641,10 +637,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private void showStudiesStudyDbIdGermplasmGetAlertDialog()
-    {
-        this.studiesStudyDbIdGermplasmGetAlertDialog().show(
-            this.studiesStudyDbIdPagePageSizeParameters());
-    }
+    { this.studiesStudyDbIdGermplasmGetAlertDialog().show(this.studyDbIdPagePageSizeParameters()); }
     // endregion
 
     // region studiesStudyDbIdLayoutsGet() Private Methods
@@ -692,15 +685,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
 
     private void studiesStudyDbIdLayoutsGet()
     {
-        if (null != this.studiesStudyDbIdPagePageSizeParametersInstance)
+        if (null != this.studyDbIdPagePageSizeParametersInstance)
             try
             {
                 this.studiesApi().studiesStudyDbIdLayoutsGetAsync(
-                    /* studyDbId => */
-                        this.studiesStudyDbIdPagePageSizeParametersInstance.getStudyDbId(),
-                    /* page     => */ this.studiesStudyDbIdPagePageSizeParametersInstance.getPage(),
-                    /* pageSize => */
-                        this.studiesStudyDbIdPagePageSizeParametersInstance.getPageSize(),
+                    /* studyDbId => */ this.studyDbIdPagePageSizeParametersInstance.getStudyDbId(),
+                    /* page      => */ this.studyDbIdPagePageSizeParametersInstance.getPage     (),
+                    /* pageSize  => */ this.studyDbIdPagePageSizeParametersInstance.getPageSize (),
                     /* authorization => */null,
                     /* callback      => */this.observationUnitPositionsResponseCallback());
             }
@@ -708,12 +699,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private
-    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdPagePageSizeAlertDialog
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
     studiesStudyDbIdLayoutsGetAlertDialog()
     {
         if (null == this.studiesStudyDbIdLayoutsGetAlertDialogInstance)
             this.studiesStudyDbIdLayoutsGetAlertDialogInstance = new org.wheatgenetics
-                .androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdPagePageSizeAlertDialog(
+                .androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog(
                     this.getActivity(), new org.wheatgenetics.brapi1_3.AlertDialog.Handler()
                     {
                         @java.lang.Override public void handleDone()
@@ -726,10 +717,11 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private void showStudiesStudyDbIdLayoutsGetAlertDialog()
-    {
-        this.studiesStudyDbIdLayoutsGetAlertDialog().show(
-            this.studiesStudyDbIdPagePageSizeParameters());
-    }
+    { this.studiesStudyDbIdLayoutsGetAlertDialog().show(this.studyDbIdPagePageSizeParameters()); }
+    // endregion
+
+    // region studiesStudyDbIdLayoutsPut() Private Methods
+    // private void showStudiesStudyDbIdLayoutsPut() {}
     // endregion
     // endregion
 
@@ -846,7 +838,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             if (null != studiesStudyDbIdLayoutsPutButton)
                 studiesStudyDbIdLayoutsPutButton.setOnClickListener(
                     new android.view.View.OnClickListener()
-                    { @java.lang.Override public void onClick(final android.view.View v) {} });
+                    {
+                        @java.lang.Override public void onClick(final android.view.View v)
+                        {
+                            //org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                            //    .Fragment.this.showStudiesStudyDbIdLayoutsPut();
+                        }
+                    });
         }
         {
             final android.widget.Button studiesStudyDbIdObservationsGetButton =
