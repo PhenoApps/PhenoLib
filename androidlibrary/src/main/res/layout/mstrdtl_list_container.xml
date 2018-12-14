@@ -13,5 +13,5 @@
 
     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
 
-    tools:context="org.wheatgenetics.androidlibrarybuilder.MasterDetailActivity"
+    tools:context="org.wheatgenetics.androidlibrary.mstrdtl.MasterDetailActivity"
     tools:listitem="@layout/mstrdtl_list_item" />
