@@ -2,7 +2,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 
 /**
  * A fragment representing item content.  This fragment is contained in either a
- * {@link MasterDetailActivity} in two-pane mode or in an {@link ItemActivity} in one-pane mode.
+ * {@link ListActivity} in two-pane mode or in an {@link ItemActivity} in one-pane mode.
  *
  * Uses:
  * android.app.Activity
@@ -23,8 +23,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  */
 public class ItemFragment extends android.support.v4.app.Fragment
 {
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
-    interface Getter
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface Getter
     {
         public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
             from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
