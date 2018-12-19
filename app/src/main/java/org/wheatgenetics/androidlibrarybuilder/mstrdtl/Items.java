@@ -14,8 +14,11 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
-    private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>
-        itemsInstance = null;                                                           // lazy load
+    // region Fields
+    private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>            // lazy
+        itemsInstance = null;                                                               //  load
+    private static org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items ITEMS_INSTANCE = null;
+    // endregion
 
     @android.support.annotation.NonNull @java.lang.SuppressWarnings({"Convert2Diamond"})
     private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item> items()
@@ -45,4 +48,11 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
         return null == this.itemsInstance ? null : this.itemsInstance.get(position);
     }
     // endregion
+
+    static org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items ITEMS()
+    {
+        if (null == ITEMS_INSTANCE)
+            ITEMS_INSTANCE = new org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items();
+        return ITEMS_INSTANCE;
+    }
 }
