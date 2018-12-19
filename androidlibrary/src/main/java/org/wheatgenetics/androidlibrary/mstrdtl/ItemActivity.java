@@ -23,7 +23,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 public abstract class ItemActivity extends android.support.v7.app.AppCompatActivity
 {
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected abstract java.lang.Class upActivityClass();
+    protected abstract java.lang.Class listActivityClass();
 
     // region Overridden Methods
     @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
@@ -88,7 +88,7 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
             // application structure.  For more details, see the Navigation pattern on Android
             // Design (http://developer.android.com/design/patterns/navigation.html#up-vs-back).
              android.support.v4.app.NavUtils.navigateUpTo(this,
-                 new android.content.Intent(this, this.upActivityClass()));
+                 new android.content.Intent(this, this.listActivityClass()));
             return true;
         }
         else return super.onOptionsItemSelected(menuItem);

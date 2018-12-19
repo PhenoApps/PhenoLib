@@ -8,7 +8,7 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * org.wheatgenetics.javalib.mstrdtl.Item
  */
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
-class DummyItem extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Item
+class Item extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Item
 {
     // region Fields
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
@@ -20,8 +20,9 @@ class DummyItem extends java.lang.Object implements org.wheatgenetics.javalib.ms
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
     private int getPosition() { return this.position; }
 
-    @java.lang.SuppressWarnings({"DefaultLocale"}) DummyItem(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    @java.lang.SuppressWarnings({"DefaultLocale"}) Item(
+    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+        final int position)
     {
         super();
 

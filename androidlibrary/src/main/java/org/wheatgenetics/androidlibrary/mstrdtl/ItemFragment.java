@@ -23,7 +23,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  */
 public class ItemFragment extends android.support.v4.app.Fragment
 {
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface Getter
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Getter
     {
         public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
             from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);

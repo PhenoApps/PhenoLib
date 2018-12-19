@@ -9,31 +9,30 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
- * org.wheatgenetics.androidlibrarybuilder.mstrdtl.DummyItem
+ * org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item
  */
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
-public class DummyItems extends java.lang.Object
-implements org.wheatgenetics.javalib.mstrdtl.Items
+class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
-    private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.DummyItem>
-        dummyItems = null;                                                              // lazy load
+    private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>
+        itemsInstance = null;                                                           // lazy load
 
     @android.support.annotation.NonNull @java.lang.SuppressWarnings({"Convert2Diamond"})
-    private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.DummyItem> dummyItems()
+    private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item> items()
     {
-        if (null == this.dummyItems) this.dummyItems =
-            new java.util.ArrayList<org.wheatgenetics.androidlibrarybuilder.mstrdtl.DummyItem>();
-        return this.dummyItems;
+        if (null == this.itemsInstance) this.itemsInstance =
+            new java.util.ArrayList<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>();
+        return this.itemsInstance;
     }
 
     // region Overridden Methods
     @java.lang.Override
     public void add(@android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.dummyItems().add((org.wheatgenetics.androidlibrarybuilder.mstrdtl.DummyItem) item); }
+    { this.items().add((org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item) item); }
 
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
     @java.lang.Override public int size()
-    { return null == this.dummyItems ? 0 : this.dummyItems.size(); }
+    { return null == this.itemsInstance ? 0 : this.itemsInstance.size(); }
 
     @android.support.annotation.Nullable @java.lang.Override
     public org.wheatgenetics.javalib.mstrdtl.Item get(
@@ -43,7 +42,7 @@ implements org.wheatgenetics.javalib.mstrdtl.Items
         if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
             throw new java.lang.IllegalArgumentException(
                 org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        return null == this.dummyItems ? null : this.dummyItems.get(position);
+        return null == this.itemsInstance ? null : this.itemsInstance.get(position);
     }
     // endregion
 }

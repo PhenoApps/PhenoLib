@@ -59,8 +59,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
             final boolean twoPane = null != this.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.content_container);    // From layout-w900dp-
             adapter = twoPane ?                                              //  list_container.xml.
-                new org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter(
-                    org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.items(),
+                new org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter(this.items(),
                     new org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter.Helper()
                     {
                         @java.lang.Override public void replace(
@@ -82,8 +81,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Method
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
-    { return org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.items().get(position); }
+        final int position) { return this.items().get(position); }
     // endregion
     // endregion
 }
