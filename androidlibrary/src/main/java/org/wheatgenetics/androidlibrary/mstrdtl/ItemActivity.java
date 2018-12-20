@@ -13,7 +13,6 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.v4.app.NavUtils
  * android.support.v7.app.ActionBar
  * android.support.v7.app.AppCompatActivity
- * android.support.v7.widget.Toolbar
  * android.view.MenuItem
  *
  * org.wheatgenetics.androidlibrary.R
@@ -30,12 +29,6 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
     {
         super.onCreate(savedInstanceState);
         this.setContentView(org.wheatgenetics.androidlibrary.R.layout.mstrdtl_item_activity);
-
-        {
-            final android.support.v7.widget.Toolbar toolbar = this.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.masterDetailItemToolbar);
-            this.setSupportActionBar(toolbar);
-        }
 
         {
             // Show the Up button in the action bar.

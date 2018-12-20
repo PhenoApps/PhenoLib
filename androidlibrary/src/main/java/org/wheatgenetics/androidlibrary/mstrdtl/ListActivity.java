@@ -13,7 +13,6 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.RestrictTo.Scope
  * android.support.v7.app.AppCompatActivity
  * android.support.v7.widget.RecyclerView
- * android.support.v7.widget.Toolbar
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -43,13 +42,6 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     {
         super.onCreate(savedInstanceState);
         this.setContentView(org.wheatgenetics.androidlibrary.R.layout.mstrdtl_list_activity);
-
-        {
-            final android.support.v7.widget.Toolbar toolbar = this.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.masterDetailListToolbar);    // From mstrdtl_-
-            this.setSupportActionBar(toolbar);                                     //  list_activi-
-            assert null != toolbar; toolbar.setTitle(this.getTitle());             //  ty.xml.
-        }
 
         final org.wheatgenetics.androidlibrary.mstrdtl.Adapter adapter;
         {
