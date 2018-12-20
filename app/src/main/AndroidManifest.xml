@@ -34,13 +34,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".WebViewActivity" />
+        <activity android:name=".WebViewActivity"      />
+        <activity android:name=".mstrdtl.ItemActivity" />
+        <activity android:name=".mstrdtl.ListActivity" />
 
         <activity
             android:name=".brapi1_3.Activity"
             android:label="@string/title_activity_brapi1_3"
             android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>
