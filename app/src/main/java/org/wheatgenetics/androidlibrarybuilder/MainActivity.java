@@ -46,6 +46,8 @@ package org.wheatgenetics.androidlibrarybuilder;
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
  *
+ * org.wheatgenetics.androidlibrarybuilder.mstrdtl.ListActivity
+ *
  * org.wheatgenetics.androidlibrarybuilder.BuildConfig
  * org.wheatgenetics.androidlibrarybuilder.R
  * org.wheatgenetics.androidlibrarybuilder.WebViewActivity
@@ -77,7 +79,8 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         otherAppsButtonClickCount = 0, deviceListButtonClickCount  = 0,
         scaleButtonClickCount     = 0, scaleReaderButtonClickCount = 0;
 
-    private android.content.Intent webIntentInstance = null, brAPI1_3IntentInstance;
+    private android.content.Intent webIntentInstance = null,
+        listIntentInstance = null, brAPI1_3IntentInstance = null;
     // endregion
 
     // region Private Methods
@@ -170,6 +173,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         }
     }
 
+    // region Intent Private Methods
     private android.content.Intent webIntent(
     final java.lang.String content, final java.lang.String encoding)
     {
@@ -184,6 +188,14 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         return this.webIntentInstance;
     }
 
+    private android.content.Intent listIntent()
+    {
+        if (null == this.listIntentInstance) this.listIntentInstance =
+            new android.content.Intent(this,
+                org.wheatgenetics.androidlibrarybuilder.mstrdtl.ListActivity.class);
+        return this.listIntentInstance;
+    }
+
     private android.content.Intent brAPI1_3Intent()
     {
         if (null == this.brAPI1_3IntentInstance) this.brAPI1_3IntentInstance =
@@ -191,6 +203,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                 org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.class);
         return this.brAPI1_3IntentInstance;
     }
+    // endregion
 
     private void showChangeLog()
     {
@@ -314,7 +327,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                 break;
 
             case 1:
-                org.wheatgenetics.androidlibrary.Utils.showLongToast (this,"long" );
+                org.wheatgenetics.androidlibrary.Utils.showLongToast(this,"long" );
                 break;
 
             case 2:                 this.listAll(this.permissionDir); break;
@@ -341,9 +354,9 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                         response.content(), response.contentEncoding()));
                 break;
 
-            case 7: this.startActivity(this.brAPI1_3Intent()); break;
-
-            case 8: this.showChangeLog(); break;
+            case 7: this.startActivity(this.listIntent    ()); break;
+            case 8: this.startActivity(this.brAPI1_3Intent()); break;
+            case 9: this.showChangeLog()                     ; break;
         }
 
         switch (this.buttonClickCount)
@@ -362,8 +375,9 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
             case 4: this.setButtonText("requestDir.list() 2 of 3"); break;
             case 5: this.setButtonText("requestDir.list() 3 of 3"); break;
             case 6: this.setButtonText("http://www.example.org/" ); break;
-            case 7: this.setButtonText("BrAPI 1.3"               ); break;
-            case 8: this.setButtonText("ChangeLog"               ); break;
+            case 7: this.setButtonText("Master-Detail Flow"      ); break;
+            case 8: this.setButtonText("BrAPI 1.3"               ); break;
+            case 9: this.setButtonText("ChangeLog"               ); break;
         }
     }
 

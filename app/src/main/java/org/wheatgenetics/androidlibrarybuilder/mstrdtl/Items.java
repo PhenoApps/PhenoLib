@@ -17,7 +17,8 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
     // region Fields
     private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>            // lazy
         itemsInstance = null;                                                               //  load
-    private static org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items ITEMS_INSTANCE = null;
+    private static org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items                    // lazy
+        ITEMS_INSTANCE = null;                                                              //  load
     // endregion
 
     @android.support.annotation.NonNull @java.lang.SuppressWarnings({"Convert2Diamond"})
@@ -52,7 +53,15 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
     static org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items ITEMS()
     {
         if (null == ITEMS_INSTANCE)
+        {
             ITEMS_INSTANCE = new org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items();
+
+            final int MAX_POSITION = 24;
+            for (int position = org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item.MIN_POSITION;
+            position <= MAX_POSITION; position++)
+                ITEMS_INSTANCE.add(
+                    new org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item(position));
+        }
         return ITEMS_INSTANCE;
     }
 }
