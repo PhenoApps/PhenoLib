@@ -48,7 +48,6 @@
 
         tools:ignore="HardcodedText" />
 
-
     <EditText
         android:id="@+id/studiesSeasonsGetPageSizeEditText"
         android:layout_width="match_parent"
@@ -58,4 +57,5 @@
         android:maxLines="1"
 
         tools:ignore="HardcodedText" />
+
 </LinearLayout>
