@@ -382,6 +382,8 @@
 
             android:paddingBottom="@dimen/responseTextView_bottom_padding"
 
+            android:textIsSelectable="true"
+
             app:fontFamily="monospace" />
 
     </ScrollView>

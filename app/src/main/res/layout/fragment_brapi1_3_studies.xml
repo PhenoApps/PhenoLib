@@ -183,6 +183,8 @@
         android:text="studiesStudyDbIdLayoutsPut()"
         android:textAllCaps="false"
 
+        android:enabled="false"
+
         app:layout_constraintLeft_toRightOf="@id/middleGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
@@ -203,6 +205,8 @@
         android:text="studiesStudyDbIdObservationsGet()"
         android:textAllCaps="false"
 
+        android:enabled="false"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/middleGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdLayoutsGetButton"
@@ -220,6 +224,8 @@
 
         android:text="studiesStudyDbIdObservationsPut()"
         android:textAllCaps="false"
+
+        android:enabled="false"
 
         app:layout_constraintLeft_toRightOf="@id/middleGuideline"
         app:layout_constraintRight_toRightOf="parent"
@@ -241,6 +247,8 @@
         android:text="studiesStudyDbIdObservationunitsGet()"
         android:textAllCaps="false"
 
+        android:enabled="false"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/middleGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationsGetButton"
@@ -258,6 +266,8 @@
 
         android:text="studiesStudyDbIdObservationunitsPut()"
         android:textAllCaps="false"
+
+        android:enabled="false"
 
         app:layout_constraintLeft_toRightOf="@id/middleGuideline"
         app:layout_constraintRight_toRightOf="parent"
@@ -279,6 +289,8 @@
         android:text="studiesStudyDbIdObservationunitsZipPost()"
         android:textAllCaps="false"
 
+        android:enabled="false"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/middleGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsGetButton"
@@ -296,6 +308,8 @@
 
         android:text="studiesStudyDbIdObservationvariablesGet()"
         android:textAllCaps="false"
+
+        android:enabled="false"
 
         app:layout_constraintLeft_toRightOf="@id/middleGuideline"
         app:layout_constraintRight_toRightOf="parent"
@@ -317,6 +331,8 @@
         android:text="studiesStudyDbIdTableGet()"
         android:textAllCaps="false"
 
+        android:enabled="false"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
@@ -335,6 +351,8 @@
         android:text="studiesStudyDbIdTablePost()"
         android:textAllCaps="false"
 
+        android:enabled="false"
+
         app:layout_constraintLeft_toRightOf="@id/leftGuideline"
         app:layout_constraintRight_toLeftOf="@id/rightGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
@@ -352,6 +370,8 @@
 
         android:text="studytypesGet()"
         android:textAllCaps="false"
+
+        android:enabled="false"
 
         app:layout_constraintLeft_toRightOf="@id/rightGuideline"
         app:layout_constraintRight_toRightOf="parent"
@@ -378,6 +398,8 @@
             android:layout_height="wrap_content"
 
             android:paddingBottom="@dimen/responseTextView_bottom_padding"
+
+            android:textIsSelectable="true"
 
             app:fontFamily="monospace" />
 
