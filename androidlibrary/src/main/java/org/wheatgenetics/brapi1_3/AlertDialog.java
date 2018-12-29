@@ -122,12 +122,16 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
         else
         {
             @java.lang.SuppressWarnings({"Convert2Diamond"})
-            final java.util.ArrayList<java.lang.String> arrayList = null;
+            java.util.ArrayList<java.lang.String> arrayList = null;
             {
                       int endIndex      = stringText.indexOf('\n');
                 final int notFoundIndex = -1                      ;
                 if (endIndex == notFoundIndex)
-                    org.wheatgenetics.brapi1_3.AlertDialog.arrayList(arrayList).add(stringText);
+                {
+                    // noinspection ConstantConditions
+                    arrayList = org.wheatgenetics.brapi1_3.AlertDialog.arrayList(arrayList);
+                    arrayList.add(stringText);
+                }
                 else
                 {
                     int beginIndex = 0;
@@ -137,8 +141,10 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         try { substring = stringText.substring(beginIndex, endIndex); }
                         catch (final java.lang.IndexOutOfBoundsException e) { break; }
                         if (substring.length() > 0)
-                            org.wheatgenetics.brapi1_3.AlertDialog.arrayList(arrayList).add(
-                                substring);
+                        {
+                            arrayList = org.wheatgenetics.brapi1_3.AlertDialog.arrayList(arrayList);
+                            arrayList.add(substring);
+                        }
                         beginIndex = endIndex + 1                            ;
                         endIndex   = stringText.indexOf('\n', beginIndex);
                         if (endIndex == notFoundIndex) endIndex = stringText.length();
