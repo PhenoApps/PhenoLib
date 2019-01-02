@@ -70,7 +70,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
         @android.support.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null :
-                io.swagger.client.model.StudySearchRequest.SortByEnum.valueOf(this.items()[i]);
+                io.swagger.client.model.StudySearchRequest.SortByEnum.fromValue(this.items()[i]);
         }
     }
 
