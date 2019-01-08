@@ -9,5 +9,5 @@
         android:id="@+id/cameraOptionsMenuItem"
         android:icon="@drawable/ic_camera"
         android:showAsAction="always"
-        android:title="@string/cameraOptionsMenuItemTitle"/>
+        android:title="@string/cameraOptionsMenuItemTitle" />
 </menu>
