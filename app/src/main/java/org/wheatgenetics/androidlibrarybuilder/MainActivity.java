@@ -343,8 +343,8 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                         response.content(), response.contentEncoding()));
                 break;
 
-            case 7: this.startActivity(this.listIntent    ()); break;
-            case 8: this.showChangeLog()                     ; break;
+            case 7: this.startActivity(this.listIntent()); break;
+            case 8: this.showChangeLog()                 ; break;
         }
 
         switch (this.buttonClickCount)
