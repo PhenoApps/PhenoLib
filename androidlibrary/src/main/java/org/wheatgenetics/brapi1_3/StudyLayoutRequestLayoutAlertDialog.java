@@ -18,6 +18,7 @@ package org.wheatgenetics.brapi1_3;
  * io.swagger.client.model.StudyLayoutRequestLayout
  * io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum
  * io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum
+ * io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum
  *
  * org.wheatgenetics.androidlibrary.ItemsAlertDialog
  * org.wheatgenetics.androidlibrary.R
@@ -198,7 +199,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
         // endregion
 
         private io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum item(
-            @android.support.annotation.IntRange(from = 0) final int i)
+        @android.support.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null : io.swagger.client.model.StudyLayoutRequestLayout
                 .PositionCoordinateYTypeEnum.valueOf(this.items()[i]);

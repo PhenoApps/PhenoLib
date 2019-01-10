@@ -721,7 +721,14 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdLayoutsPut() Private Methods
-    // private void showStudiesStudyDbIdLayoutsPut() {}
+    private void studiesStudyDbIdLayoutsPut()
+    {
+        //this.studiesApi().studiesStudyDbIdLayoutsPutAsync(
+        //
+        //);
+    }
+
+     private void showStudiesStudyDbIdLayoutsPutAlertDialog() {}
     // endregion
     // endregion
 
@@ -841,8 +848,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                     {
                         @java.lang.Override public void onClick(final android.view.View v)
                         {
-                            //org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                            //    .Fragment.this.showStudiesStudyDbIdLayoutsPut();
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                                .Fragment.this.showStudiesStudyDbIdLayoutsPutAlertDialog();
                         }
                     });
         }
