@@ -29,7 +29,7 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
     { super(); this.items = items; }
 
     // region Overridden Methods
-    @java.lang.Override @android.support.annotation.NonNull
+    @android.support.annotation.NonNull @java.lang.Override
     public org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder onCreateViewHolder(
     @android.support.annotation.NonNull final android.view.ViewGroup parent, final int viewType)
     {

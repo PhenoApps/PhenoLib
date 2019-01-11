@@ -14,7 +14,9 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.v4.app.Fragment
  * android.view.LayoutInflater
  * android.view.View
+ * android.view.View.OnClickListener
  * android.view.ViewGroup
+ * android.widget.Button
  * android.widget.TextView
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
@@ -23,11 +25,20 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  */
 public class ItemFragment extends android.support.v4.app.Fragment
 {
+    // region Types
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Getter
     {
         public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
             from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
+
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface GetterChanger
+    extends org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
+    {
+        public void change(
+        @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item);
+    }
+    // endregion
 
     // region Constants
     /**
@@ -39,13 +50,39 @@ public class ItemFragment extends android.support.v4.app.Fragment
     // endregion
 
     // region Fields
-    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter = null;
-    private org.wheatgenetics.javalib.mstrdtl.Item                       item   = null;
+    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter        getter = null;
+    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+        getterChanger = null;
+
+    private org.wheatgenetics.javalib.mstrdtl.Item item = null;
+
+    private android.widget.TextView contentTextView = null;
     // endregion
 
+    // region private Methods
     private org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    { assert null != this.getter; return this.getter.get(position); }
+    {
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
+            null != this.getter ? this.getter : this.getterChanger;
+        assert null != getter; return getter.get(position);
+    }
+
+    private void setContentTextViewText()
+    {
+        if (null != this.item) if (null != this.contentTextView)
+            this.contentTextView.setText(this.item.getContent());
+    }
+
+    private void changeItem()
+    {
+        if (null != this.item) if (null == this.getter && null != this.getterChanger)
+        {
+            this.getterChanger.change(this.item);
+            this.setContentTextViewText();
+        }
+    }
+    // endregion
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the fragment (e.g., upon
@@ -59,7 +96,13 @@ public class ItemFragment extends android.support.v4.app.Fragment
         super.onAttach(context);
 
         if (context instanceof org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter)
-            this.getter = (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter) context;
+            if (context instanceof
+            org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger)
+                this.getterChanger =
+                    (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger) context;
+            else
+                this.getter =
+                    (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter) context;
         else
         {
             assert null != context;
@@ -110,13 +153,21 @@ public class ItemFragment extends android.support.v4.app.Fragment
             org.wheatgenetics.androidlibrary.R.layout.mstrdtl_item_fragment,
             container, /* attachToRoot => */false);
 
-        if (null != this.item)
-        {
-            assert null != rootView;
-            final android.widget.TextView contentTextView = rootView.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.masterDetailItemContentTextView);
+        assert null != rootView; this.contentTextView = rootView.findViewById(
+            org.wheatgenetics.androidlibrary.R.id.masterDetailItemContentTextView);
+        this.setContentTextViewText();
 
-            assert null != contentTextView; contentTextView.setText(this.item.getContent());
+        if (null == this.getter && null != this.getterChanger)
+        {
+            final android.widget.Button changeItemButton = rootView.findViewById(
+                org.wheatgenetics.androidlibrary.R.id.changeItemButton);
+            assert null != changeItemButton;
+            changeItemButton.setEnabled(true);
+            changeItemButton.setOnClickListener(new android.view.View.OnClickListener()
+                {
+                    @java.lang.Override public void onClick(final android.view.View v)
+                    { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.changeItem(); }
+                });
         }
 
         return rootView;
