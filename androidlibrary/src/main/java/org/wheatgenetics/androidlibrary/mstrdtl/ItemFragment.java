@@ -36,7 +36,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     extends org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     {
         public void change(
-        @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item);
+        @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item);
     }
     // endregion
 
@@ -74,13 +74,13 @@ public class ItemFragment extends android.support.v4.app.Fragment
             this.contentTextView.setText(this.item.getContent());
     }
 
+    private boolean changerIsImplemented()
+    { return null == this.getter && null != this.getterChanger; }
+
     private void changeItem()
     {
-        if (null != this.item) if (null == this.getter && null != this.getterChanger)
-        {
-            this.getterChanger.change(this.item);
-            this.setContentTextViewText();
-        }
+        if (null != this.item) if (this.changerIsImplemented())
+            { this.getterChanger.change(this.item); this.setContentTextViewText(); }
     }
     // endregion
 
@@ -157,7 +157,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
             org.wheatgenetics.androidlibrary.R.id.masterDetailItemContentTextView);
         this.setContentTextViewText();
 
-        if (null == this.getter && null != this.getterChanger)
+        if (this.changerIsImplemented())
         {
             final android.widget.Button changeItemButton = rootView.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.changeItemButton);

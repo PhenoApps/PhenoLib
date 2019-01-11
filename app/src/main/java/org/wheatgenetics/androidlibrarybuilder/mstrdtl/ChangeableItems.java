@@ -2,10 +2,6 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 
 /**
  * Uses:
- * _android.support.annotation.IntRange
- * _android.support.annotation.RestrictTo
- * _android.support.annotation.RestrictTo.Scope
- *
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeableItem
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items
  */
@@ -13,6 +9,9 @@ class ChangeableItems extends org.wheatgenetics.androidlibrarybuilder.mstrdtl.It
 {
     private static org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeableItems          // lazy
         ITEMS_INSTANCE = null;                                                              //  load
+
+    @java.lang.Override public void append()
+    { this.add(new org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeableItem(this.size())); }
 
     static org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeableItems ITEMS()
     {
