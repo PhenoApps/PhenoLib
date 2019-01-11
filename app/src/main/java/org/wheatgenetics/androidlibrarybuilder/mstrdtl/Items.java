@@ -5,6 +5,8 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.Nullable
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -14,6 +16,9 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    static final int MAX_POSITION = 24;
+
     // region Fields
     private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>            // lazy
         itemsInstance = null;                                                               //  load
@@ -21,11 +26,13 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
         ITEMS_INSTANCE = null;                                                              //  load
     // endregion
 
-    @android.support.annotation.NonNull @java.lang.SuppressWarnings({"Convert2Diamond"})
+    @android.support.annotation.NonNull
     private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item> items()
     {
-        if (null == this.itemsInstance) this.itemsInstance =
-            new java.util.ArrayList<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>();
+        if (null == this.itemsInstance)
+            // noinspection Convert2Diamond
+            this.itemsInstance =
+                new java.util.ArrayList<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>();
         return this.itemsInstance;
     }
 
@@ -56,9 +63,9 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
         {
             ITEMS_INSTANCE = new org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items();
 
-            final int MAX_POSITION = 24;
             for (int position = org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item.MIN_POSITION;
-            position <= MAX_POSITION; position++)
+            position <= org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items.MAX_POSITION;
+            position++)
                 ITEMS_INSTANCE.add(
                     new org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item(position));
         }
