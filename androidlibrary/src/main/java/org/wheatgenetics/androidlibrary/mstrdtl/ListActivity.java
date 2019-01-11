@@ -13,6 +13,9 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.RestrictTo.Scope
  * android.support.v7.app.AppCompatActivity
  * android.support.v7.widget.RecyclerView
+ * android.view.View
+ * android.view.View.OnClickListener
+ * android.widget.Button
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -29,6 +32,11 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 public abstract class ListActivity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
 {
+    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter adapter;
+
+    private void addItem()
+    { this.items().append(); assert null != this.adapter; this.adapter.notifyDataSetChanged(); }
+
     // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
@@ -43,31 +51,41 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
         super.onCreate(savedInstanceState);
         this.setContentView(org.wheatgenetics.androidlibrary.R.layout.mstrdtl_list_activity);
 
-        final org.wheatgenetics.androidlibrary.mstrdtl.Adapter adapter;
         {
             // The item content container view will be present only in the wide-screen layouts
-            // (res/values-w900dp).  If this view is present then the activity should be in
-            // two-pane mode.
+            // (res/values-w900dp).  If this view is present then the activity should be in two-pane
+            // mode.
             final boolean twoPane = null != this.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.content_container);    // From layout-w900dp-
-            adapter = twoPane ?                                              //  list_container.xml.
+            this.adapter = twoPane ?                                         //  list_container.xml.
                 new org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter(this.items(),
                     new org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter.Helper()
                     {
-                        @java.lang.Override public void replace(
-                        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
+                        @java.lang.Override public void replace(final
+                        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
                         {
                             org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this
                                 .getSupportFragmentManager().beginTransaction().replace(
-                                    org.wheatgenetics.androidlibrary.R.id.content_container,
-                                    itemFragment).commit();
+                                org.wheatgenetics.androidlibrary.R.id.content_container,
+                                itemFragment).commit();
                         }
                     }) :
                 this.makeOnePaneAdapter();
         }
-        final android.support.v7.widget.RecyclerView recyclerView = this.findViewById(
-            org.wheatgenetics.androidlibrary.R.id.masterDetailRecyclerView);
-        assert null != recyclerView; recyclerView.setAdapter(adapter);
+        {
+            final android.support.v7.widget.RecyclerView recyclerView = this.findViewById(
+                org.wheatgenetics.androidlibrary.R.id.masterDetailRecyclerView);
+            assert null != recyclerView; recyclerView.setAdapter(this.adapter);
+        }
+
+        final android.widget.Button addItemButton = this.findViewById(
+            org.wheatgenetics.androidlibrary.R.id.addItemButton);
+        assert null != addItemButton; addItemButton.setEnabled(true);
+        addItemButton.setOnClickListener(new android.view.View.OnClickListener()
+            {
+                @java.lang.Override public void onClick(final android.view.View v)
+                { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.addItem(); }
+            });
     }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Method
