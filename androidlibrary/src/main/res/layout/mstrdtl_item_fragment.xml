@@ -1,13 +1,36 @@
-<TextView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
-    style="?android:attr/textAppearanceLarge"
-
-    android:id="@+id/masterDetailItemContentTextView"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:textIsSelectable="true"
+    android:layout_width="match_parent">
 
-    tools:context="org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment" />
+    <TextView
+        style="?android:attr/textAppearanceLarge"
+
+        android:id="@+id/masterDetailItemContentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+
+        tools:context="org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment" />
+
+    <Button
+        android:id="@+id/changeItemButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="12dp"
+
+        android:text="@string/changeButtonText"
+        android:textAllCaps="false"
+
+        android:enabled="false" />
+
+</RelativeLayout>

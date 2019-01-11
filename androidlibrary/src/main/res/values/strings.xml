@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Android Library</string>
+    <string name="changeButtonText">change</string>
 
 
 
@@ -76,7 +77,6 @@
     <string name="pageSizeEditTextHint">page size</string>
 
     <string name="nullValueTextViewText">null</string>
-    <string name="changeButtonText">change</string>
 
 
     <!-- DataTypeAlertDialog -->
