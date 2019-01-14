@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3;
+package org.wheatgenetics.brapi1_3.studies;
 
 /**
  * Uses:
@@ -87,19 +87,19 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     private io.swagger.client.model.StudySearchRequest            studySearchRequest = null;
     private io.swagger.client.model.StudySearchRequest.SortByEnum sortByEnum         = null;
 
-    private org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.SortByAlertDialog
+    private org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.SortByAlertDialog
         sortByAlertDialogInstance = null;
     // endregion
 
     // region Private Methods
     // region sortByAlertDialog Private Methods
-    private org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.SortByAlertDialog
+    private org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.SortByAlertDialog
     sortByAlertDialog()
     {
         if (null == this.sortByAlertDialogInstance)
         {
-            this.sortByAlertDialogInstance =
-                new org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.SortByAlertDialog(
+            this.sortByAlertDialogInstance = new
+                org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.SortByAlertDialog(
                     this.activity());
             this.sortByAlertDialogInstance.setOnClickListener(
                 new android.content.DialogInterface.OnClickListener()
@@ -107,7 +107,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
                     @java.lang.Override public void onClick(
                     final android.content.DialogInterface dialog, final int which)
                     {
-                        org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog
+                        org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
                             .this.setSortByEnum(which);
                     }
                 });
@@ -138,7 +138,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
 
     private void setActiveRadioGroup(final java.lang.Boolean active)
     {
-        org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setActiveRadioGroup(
+        org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setActiveRadioGroup(
             this.activeRadioGroup, active);
     }
     // endregion
@@ -190,7 +190,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     private void setSortOrderRadioGroup(
     final io.swagger.client.model.StudySearchRequest.SortOrderEnum sortOrderEnum)
     {
-        org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setSortOrderRadioGroup(
+        org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setSortOrderRadioGroup(
             this.sortOrderRadioGroup, sortOrderEnum);
     }
     // endregion
@@ -220,7 +220,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
 
     private java.lang.Boolean getActive()
     {
-        return org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getActive(
+        return org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.getActive(
             this.activeRadioGroup);
     }
     // endregion
@@ -249,7 +249,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
 
     private io.swagger.client.model.StudySearchRequest.SortOrderEnum getSortOrder()
     {
-        return org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getSortOrder(
+        return org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.getSortOrder(
             this.sortOrderRadioGroup);
     }
     // endregion
@@ -301,7 +301,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
                     {
                         @java.lang.Override public void onClick(final android.view.View v)
                         {
-                            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog
+                            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
                                 .this.showSortByAlertDialog();
                         }
                     });
@@ -333,47 +333,43 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     {
         if (null != this.studySearchRequest)
         {
-            this.studySearchRequest.setActive        (this.getActive());
-            this.studySearchRequest.setCommonCropNames(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
+            this.studySearchRequest.setActive         (this.getActive());
+            this.studySearchRequest.setCommonCropNames(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(
                     this.commonCropNamesEditText));
-            this.studySearchRequest.setGermplasmDbIds(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
+            this.studySearchRequest.setGermplasmDbIds(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(
                     this.germplasmDbIdsEditText));
-            this.studySearchRequest.setLocationDbIds(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
+            this.studySearchRequest.setLocationDbIds(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(
                     this.locationDbIdsEditText));
-            this.studySearchRequest.setObservationVariableDbIds(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
+            this.studySearchRequest.setObservationVariableDbIds(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(
                     this.observationVariableDbIdsEditText));
-            this.studySearchRequest.setPage    (this.getPageEditTextIntText    ());
-            this.studySearchRequest.setPageSize(this.getPageSizeEditTextIntText());
-            this.studySearchRequest.setProgramDbIds(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
+            this.studySearchRequest.setPage        (this.getPageEditTextIntText    ());
+            this.studySearchRequest.setPageSize    (this.getPageSizeEditTextIntText());
+            this.studySearchRequest.setProgramDbIds(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(
                     this.programDbIdsEditText));
-            this.studySearchRequest.setProgramNames(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
+            this.studySearchRequest.setProgramNames(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(
                     this.programNamesEditText));
-            this.studySearchRequest.setSeasonDbIds(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
-                    this.seasonDbIdsEditText));
-            this.studySearchRequest.setSortBy   (this.sortByEnum    );
-            this.studySearchRequest.setSortOrder(this.getSortOrder());
-            this.studySearchRequest.setStudyDbIds(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
-                    this.studyDbIdsEditText));
-            this.studySearchRequest.setStudyNames(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
-                    this.studyNamesEditText));
-            this.studySearchRequest.setStudyTypeDbIds(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
+            this.studySearchRequest.setSeasonDbIds(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(this.seasonDbIdsEditText));
+            this.studySearchRequest.setSortBy    (this.sortByEnum    );
+            this.studySearchRequest.setSortOrder (this.getSortOrder());
+            this.studySearchRequest.setStudyDbIds(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(this.studyDbIdsEditText));
+            this.studySearchRequest.setStudyNames(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(this.studyNamesEditText));
+            this.studySearchRequest.setStudyTypeDbIds(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(
                     this.studyTypeDbIdsEditText));
-            this.studySearchRequest.setStudyTypeNames(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
+            this.studySearchRequest.setStudyTypeNames(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(
                     this.studyTypeNamesEditText));
-            this.studySearchRequest.setTrialDbIds(
-                org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.getEditTextStringListText(
-                    this.trialDbIdsEditText));
+            this.studySearchRequest.setTrialDbIds(org.wheatgenetics.brapi1_3.studies
+                .StudySearchRequestAlertDialog.getEditTextStringListText(this.trialDbIdsEditText));
 
             super.handlePositiveButtonClick();
         }
@@ -387,36 +383,36 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
             this.studySearchRequest = studySearchRequest;
 
             this.setActiveRadioGroup(this.studySearchRequest.isActive());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.commonCropNamesEditText, this.studySearchRequest.getCommonCropNames());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.germplasmDbIdsEditText, this.studySearchRequest.getGermplasmDbIds());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.locationDbIdsEditText, this.studySearchRequest.getLocationDbIds());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.observationVariableDbIdsEditText                ,
                 this.studySearchRequest.getObservationVariableDbIds());
             this.setPageEditTextText    (this.studySearchRequest.getPage    ());
             this.setPageSizeEditTextText(this.studySearchRequest.getPageSize());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.programDbIdsEditText, this.studySearchRequest.getProgramDbIds());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.programNamesEditText, this.studySearchRequest.getProgramNames());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.seasonDbIdsEditText, this.studySearchRequest.getSeasonDbIds());
             this.setSortByEnum         (this.studySearchRequest.getSortBy   ());
             this.setSortOrderRadioGroup(this.studySearchRequest.getSortOrder());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.studyDbIdsEditText, this.studySearchRequest.getStudyDbIds());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.studyDbIdsEditText, this.studySearchRequest.getStudyDbIds());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.studyNamesEditText, this.studySearchRequest.getStudyNames());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.studyTypeDbIdsEditText, this.studySearchRequest.getStudyTypeDbIds());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.studyTypeNamesEditText, this.studySearchRequest.getStudyTypeNames());
-            org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.setEditTextText(
                 this.trialDbIdsEditText, this.studySearchRequest.getTrialDbIds());
 
             this.show();

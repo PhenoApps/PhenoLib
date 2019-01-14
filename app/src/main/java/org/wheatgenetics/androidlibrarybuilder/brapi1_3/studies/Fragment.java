@@ -24,7 +24,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
- * org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog
+ * org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
  *
@@ -59,7 +59,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private io.swagger.client.api.StudiesApi studiesApiInstance = null;
 
     // region searchStudiesPost() Fields
-    private org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog
+    private org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
         studySearchRequestAlertDialogInstance = null;
     private io.swagger.client.model.StudySearchRequest studySearchRequestInstance = null;
     private io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>
@@ -190,13 +190,14 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }
     }
 
-    private org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog
+    private org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
     studySearchRequestAlertDialog()
     {
         if (null == this.studySearchRequestAlertDialogInstance)
             this.studySearchRequestAlertDialogInstance =
-                new org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog(this.getActivity(),
-                    new org.wheatgenetics.brapi1_3.StudySearchRequestAlertDialog.Handler()
+                new org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog(
+                    this.getActivity(),
+                    new org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.Handler()
                     {
                         @java.lang.Override public void handleDone()
                         {
