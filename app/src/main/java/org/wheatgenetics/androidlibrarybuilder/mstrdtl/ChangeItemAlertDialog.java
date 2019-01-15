@@ -45,8 +45,8 @@ class ChangeItemAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
                 null);
             if (null == this.itemEditText)
             {
-                assert null != view; this.itemEditText =
-                    view.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id.itemEditText);
+                assert null != view; this.itemEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.itemEditText);
             }
             this.setView(view);
         }

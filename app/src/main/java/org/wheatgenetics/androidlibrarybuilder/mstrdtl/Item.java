@@ -5,7 +5,7 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  *
- * org.wheatgenetics.javalib.Utils.makeEmptyIfNull
+ * org.wheatgenetics.javalib.Utils
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  */
