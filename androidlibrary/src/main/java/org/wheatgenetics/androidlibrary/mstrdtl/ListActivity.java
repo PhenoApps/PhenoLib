@@ -34,7 +34,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
 {
     private org.wheatgenetics.androidlibrary.mstrdtl.Adapter adapter;
 
-    private void addItem()
+    private void appendItem()
     { this.items().append(); assert null != this.adapter; this.adapter.notifyDataSetChanged(); }
 
     // region Protected Methods
@@ -78,13 +78,13 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
             assert null != recyclerView; recyclerView.setAdapter(this.adapter);
         }
 
-        final android.widget.Button addItemButton = this.findViewById(
-            org.wheatgenetics.androidlibrary.R.id.addItemButton);
-        assert null != addItemButton; addItemButton.setEnabled(true);
-        addItemButton.setOnClickListener(new android.view.View.OnClickListener()
+        final android.widget.Button appendItemButton = this.findViewById(
+            org.wheatgenetics.androidlibrary.R.id.appendItemButton);
+        assert null != appendItemButton; appendItemButton.setEnabled(true);
+        appendItemButton.setOnClickListener(new android.view.View.OnClickListener()
             {
                 @java.lang.Override public void onClick(final android.view.View v)
-                { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.addItem(); }
+                { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.appendItem(); }
             });
     }
 

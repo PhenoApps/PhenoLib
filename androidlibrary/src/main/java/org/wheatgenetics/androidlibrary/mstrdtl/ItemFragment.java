@@ -65,7 +65,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
             null != this.getter ? this.getter : this.getterChanger;
-        assert null != getter; return getter.get(position);
+        return null == getter ? null : getter.get(position);
     }
 
     private void setContentTextViewText()
@@ -173,4 +173,6 @@ public class ItemFragment extends android.support.v4.app.Fragment
         return rootView;
     }
     // endregion
+
+    void refreshSinceItemHasChanged() { this.setContentTextViewText(); }
 }

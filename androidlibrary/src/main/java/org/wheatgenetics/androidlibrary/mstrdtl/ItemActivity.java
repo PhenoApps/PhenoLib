@@ -21,8 +21,16 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  */
 public abstract class ItemActivity extends android.support.v7.app.AppCompatActivity
 {
+    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
+
+    // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class listActivityClass();
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void refreshSinceItemHasChanged()
+    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
+    // endregion
 
     // region Overridden Methods
     @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
@@ -47,8 +55,7 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
         if (null == savedInstanceState)
         {
             // Create the fragment and add it to the activity using a fragment transaction.
-            final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment =
-                new org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment();
+            this.itemFragment = new org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment();
             {
                 final android.os.Bundle arguments = new android.os.Bundle();
                 {
@@ -63,11 +70,11 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
                     arguments.putInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY, org.wheatgenetics
                         .androidlibrary.R.id.masterDetailItemCollapsingToolbarLayout);
                 }
-                itemFragment.setArguments(arguments);
+                this.itemFragment.setArguments(arguments);
             }
             this.getSupportFragmentManager().beginTransaction().add(
                 org.wheatgenetics.androidlibrary.R.id.masterDetailNestedScrollView,
-                itemFragment                                                      ).commit();
+                this.itemFragment                                                 ).commit();
         }
     }
 

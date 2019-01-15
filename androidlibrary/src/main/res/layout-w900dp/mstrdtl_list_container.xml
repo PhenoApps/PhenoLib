@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
 
-            android:layout_above="@id/addItemButton"
+            android:layout_above="@id/appendItemButton"
             android:layout_marginBottom="4dp"
 
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
@@ -42,14 +42,14 @@
             tools:listitem="@org.wheatgenetics.androidlibrary:layout/mstrdtl_list_item" />
 
         <Button
-            android:id="@+id/addItemButton"
+            android:id="@+id/appendItemButton"
 
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
 
             android:layout_alignParentBottom="true"
 
-            android:text="@string/addButtonText"
+            android:text="@string/appendButtonText"
             android:textAllCaps="false"
 
             android:enabled="false" />
