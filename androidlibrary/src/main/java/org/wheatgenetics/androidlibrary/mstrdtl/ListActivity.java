@@ -32,10 +32,23 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 public abstract class ListActivity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
 {
-    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter adapter;
+    // region Fields
+    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter      adapter     ;
+    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
+    // endregion
 
-    private void addItem()
-    { this.items().append(); assert null != this.adapter; this.adapter.notifyDataSetChanged(); }
+    // region Private Methods
+    private void replace(final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
+    {
+        this.itemFragment = itemFragment;
+        this.getSupportFragmentManager().beginTransaction().replace(
+            org.wheatgenetics.androidlibrary.R.id.content_container,
+            this.itemFragment                                      ).commit();
+    }
+
+    private void appendItem()
+    { this.items().append(); if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
+    // endregion
 
     // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -43,6 +56,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter();
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void refreshSinceItemHasChanged()
+    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
     // endregion
 
     // region Overridden Methods
@@ -64,10 +81,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
                         @java.lang.Override public void replace(final
                         org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
                         {
-                            org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this
-                                .getSupportFragmentManager().beginTransaction().replace(
-                                org.wheatgenetics.androidlibrary.R.id.content_container,
-                                itemFragment).commit();
+                            org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.replace(
+                                itemFragment);
                         }
                     }) :
                 this.makeOnePaneAdapter();
@@ -78,13 +93,13 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
             assert null != recyclerView; recyclerView.setAdapter(this.adapter);
         }
 
-        final android.widget.Button addItemButton = this.findViewById(
-            org.wheatgenetics.androidlibrary.R.id.addItemButton);
-        assert null != addItemButton; addItemButton.setEnabled(true);
-        addItemButton.setOnClickListener(new android.view.View.OnClickListener()
+        final android.widget.Button appendItemButton = this.findViewById(
+            org.wheatgenetics.androidlibrary.R.id.appendItemButton);
+        assert null != appendItemButton; appendItemButton.setEnabled(true);
+        appendItemButton.setOnClickListener(new android.view.View.OnClickListener()
             {
                 @java.lang.Override public void onClick(final android.view.View v)
-                { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.addItem(); }
+                { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.appendItem(); }
             });
     }
 

@@ -2,22 +2,18 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 
 /**
  * Uses:
- * org.wheatgenetics.javalib.mstrdtl.Items
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  *
- * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items
+ * org.wheatgenetics.androidlibrarybuilder.mstrdtl.BaseListActivity
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.OnePaneAdapter
  */
-public class ListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+public class ListActivity extends org.wheatgenetics.androidlibrarybuilder.mstrdtl.BaseListActivity
 {
-    // region Overridden Methods
-    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
-    { return org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items.ITEMS(); }
-
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override
     protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
     { return new org.wheatgenetics.androidlibrarybuilder.mstrdtl.OnePaneAdapter(this.items()); }
-    // endregion
 }
