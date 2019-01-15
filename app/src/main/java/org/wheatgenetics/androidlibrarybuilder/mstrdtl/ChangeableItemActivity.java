@@ -25,7 +25,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     changeItemAlertDialog()
     {
         if (null == this.changeItemAlertDialogInstance) this.changeItemAlertDialogInstance =
-            new ChangeItemAlertDialog(this,
+            new org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeItemAlertDialog(this,
                 new org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeItemAlertDialog.Handler()
                 {
                     @java.lang.Override public void handleChangeItemDone()
