@@ -105,7 +105,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
         @android.support.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null :
-                io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum.valueOf(
+                io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum.fromValue(
                     this.items()[i]);
         }
     }
@@ -154,7 +154,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
         @android.support.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null : io.swagger.client.model.StudyLayoutRequestLayout
-                .PositionCoordinateXTypeEnum.valueOf(this.items()[i]);
+                .PositionCoordinateXTypeEnum.fromValue(this.items()[i]);
         }
     }
 
@@ -202,7 +202,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
         @android.support.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null : io.swagger.client.model.StudyLayoutRequestLayout
-                .PositionCoordinateYTypeEnum.valueOf(this.items()[i]);
+                .PositionCoordinateYTypeEnum.fromValue(this.items()[i]);
         }
     }
     // endregion
