@@ -39,7 +39,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     {
                         @java.lang.Override public void handleDone()
                         {
-                            // TODO
+                            org.wheatgenetics.brapi1_3.studies
+                                .ItemActivity.this.refreshSinceItemHasChanged();
                         }
                     });
         return this.studyLayoutRequestLayoutAlertDialogInstance;

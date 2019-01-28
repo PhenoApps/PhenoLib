@@ -4,6 +4,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * Uses:
  * android.app.Activity
  * android.app.Application
+ * android.content.Intent
  * android.os.Bundle
  * android.support.annotation.NonNull
  * android.support.annotation.Nullable
@@ -29,6 +30,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
  * org.wheatgenetics.brapi1_3.studies.Application
+ * org.wheatgenetics.brapi1_3.studies.ListActivity
  * org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
  *
  * org.wheatgenetics.androidlibrarybuilder.R
@@ -138,6 +140,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdLayoutsPut() Field
+    private android.content.Intent listIntentInstance = null;
     // endregion
     // endregion
 
@@ -791,7 +794,14 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         //);
     }
 
-    private void showStudiesStudyDbIdLayoutsPutAlertDialog() {}
+    private android.content.Intent listIntent()
+    {
+        if (null == this.listIntentInstance) this.listIntentInstance = new android.content.Intent(
+            this.getActivity(), org.wheatgenetics.brapi1_3.studies.ListActivity.class);
+        return this.listIntentInstance;
+    }
+
+    private void showListActivity() { this.startActivity(this.listIntent());}
     // endregion
     // endregion
 
@@ -912,7 +922,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                         @java.lang.Override public void onClick(final android.view.View v)
                         {
                             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                                .Fragment.this.showStudiesStudyDbIdLayoutsPutAlertDialog();
+                                .Fragment.this.showListActivity();
                         }
                     });
         }
