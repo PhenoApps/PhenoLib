@@ -22,6 +22,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * io.swagger.client.model.ObservationUnitPositionsResponse
  * io.swagger.client.model.SeasonsResponse
  * io.swagger.client.model.StudiesResponse
+ * io.swagger.client.model.StudyLayoutRequest
  * io.swagger.client.model.StudyResponse
  * io.swagger.client.model.StudySearchRequest
  * io.swagger.client.model.SuccessfulSearchResponse
@@ -64,6 +65,8 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  */
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
+    private static final int LIST_ACTIVITY_REQUEST_CODE = 1000;
+
     // region Fields
     private io.swagger.client.api.StudiesApi studiesApiInstance = null;
 
@@ -656,6 +659,9 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     { this.studiesStudyDbIdGermplasmGetAlertDialog().show(this.studyDbIdPagePageSizeParameters()); }
     // endregion
 
+    // region studiesStudyDbIdLayoutsGet() and studiesStudyDbIdLayoutsPut() Private Methods
+    // endregion
+
     // region studiesStudyDbIdLayoutsGet() Private Methods
     private org.wheatgenetics.brapi1_3.studies.Application application()
     {
@@ -787,11 +793,20 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdLayoutsPut() Private Methods
-    private void studiesStudyDbIdLayoutsPut()
+
+    private void studiesStudyDbIdLayoutsPut(
+    final io.swagger.client.model.StudyLayoutRequest studyLayoutRequest)
     {
-        //this.studiesApi().studiesStudyDbIdLayoutsPutAsync(
-        //
-        //);
+        if (null != studyLayoutRequest)
+            try
+            {
+                this.studiesApi().studiesStudyDbIdLayoutsPutAsync(
+                    /* studyDbId => */ this.studyDbIdPagePageSizeParametersInstance.getStudyDbId(),
+                    /* StudyLayoutRequest => */ studyLayoutRequest,
+                    /* authorization      => */ null,
+                    /* callback           => */ null);
+            }
+            catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }
     }
 
     private android.content.Intent listIntent()
@@ -801,12 +816,17 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         return this.listIntentInstance;
     }
 
-    private void showListActivity() { this.startActivity(this.listIntent());}
+    private void showListActivity()
+    {
+        this.startActivityForResult(this.listIntent(), org.wheatgenetics
+            .androidlibrarybuilder.brapi1_3.studies.Fragment.LIST_ACTIVITY_REQUEST_CODE);
+    }
     // endregion
     // endregion
 
     public Fragment() {}
 
+    // region Overridden Method
     @android.support.annotation.Nullable @java.lang.Override public android.view.View onCreateView(
     @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
     @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
@@ -1008,4 +1028,24 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
 
         return rootView;
     }
+
+    @java.lang.Override public void onActivityResult(final int requestCode,
+    final int resultCode, final android.content.Intent data)
+    {
+        if (
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.LIST_ACTIVITY_REQUEST_CODE
+        == requestCode)
+        {
+            final org.wheatgenetics.javalib.mstrdtl.Items items;
+            {
+                final org.wheatgenetics.brapi1_3.studies.Application application =
+                    this.application();
+                items = null == application ? null : application.mstrdtlItems();
+            }
+            if (null != items)
+                this.studiesStudyDbIdLayoutsPut((io.swagger.client.model.StudyLayoutRequest) items);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+    // endregion
 }
