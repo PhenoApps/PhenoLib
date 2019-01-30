@@ -141,14 +141,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoLink="web"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/aboutMsg2TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autoLink="web"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/aboutMsg3TextView"
@@ -157,7 +159,8 @@
         android:layout_marginStart="15dip"
         android:layout_marginLeft="15dip"
         android:autoLink="web"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="wrap_content"

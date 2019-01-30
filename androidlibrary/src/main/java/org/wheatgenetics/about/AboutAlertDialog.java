@@ -94,7 +94,9 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
                                 }
                                 msgTextView = this.aboutView.findViewById(msgTextViewId);
                             }
-                            assert null != msgTextView; msgTextView.setText(msg);
+                            assert null != msgTextView;
+                            msgTextView.setText      (msg                      );
+                            msgTextView.setVisibility(android.view.View.VISIBLE);
                         }
                     }
                 }
