@@ -7,8 +7,8 @@ package org.wheatgenetics.androidlibrary;
  * android.Manifest.permission
  * android.net.Uri
  * android.os.Environment
+ * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
- * android.support.annotation.RestrictTo.Scope.SUBCLASSES
  * android.support.v4.content.ContextCompat
  * android.util.Log
  *
@@ -22,6 +22,14 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
 {
     private final android.app.Activity activity;
 
+    private static android.app.Activity nonNullActivity(final android.app.Activity activity)
+    {
+        if (null == activity)
+            throw new java.lang.IllegalArgumentException("activity must not be null");
+        else
+            return activity;
+    }
+
     @java.lang.SuppressWarnings({"WeakerAccess"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected android.app.Activity getActivity() { return this.activity; }
@@ -34,10 +42,7 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
             /* parent              => */ android.os.Environment.getExternalStorageDirectory(),
             /* child               => */ name                                                ,
             /* blankHiddenFileName => */ blankHiddenFileName                                 );
-        if (null == activity)
-            throw new java.lang.IllegalArgumentException("activity must not be null");
-        else
-            this.activity = activity;
+        this.activity = org.wheatgenetics.androidlibrary.PermissionDir.nonNullActivity(activity);
     }
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
@@ -45,10 +50,7 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
     final org.wheatgenetics.javalib.Dir parent, final java.lang.String name)
     {
         super(/* parent => */ parent, /* child => */ name);
-        if (null == activity)
-            throw new java.lang.IllegalArgumentException("activity must not be null");
-        else
-            this.activity = activity;
+        this.activity = org.wheatgenetics.androidlibrary.PermissionDir.nonNullActivity(activity);
     }
     // endregion
 
@@ -80,10 +82,10 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
     public android.net.Uri parse(final java.lang.String fileName)
     {
         final java.io.File path = this.getPath();
-        assert null != path; return android.net.Uri.parse(path.toString() + "/" + fileName);
+        return null == path ? null : android.net.Uri.parse(path.toString() + "/" + fileName);
     }
 
     @java.lang.SuppressWarnings({"unused"}) public android.net.Uri parse(final java.io.File file)
-    { assert null != file; return this.parse(file.getName()); }
+    { return null == file ? null : this.parse(file.getName()); }
     // endregion
 }

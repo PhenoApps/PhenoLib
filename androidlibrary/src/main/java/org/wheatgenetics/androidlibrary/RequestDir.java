@@ -6,6 +6,7 @@ package org.wheatgenetics.androidlibrary;
  * android.Manifest.permission
  * android.support.v4.app.ActivityCompat
  *
+ * org.wheatgenetics.javalib.Dir
  * org.wheatgenetics.javalib.Utils
  *
  * org.wheatgenetics.androidlibrary.PermissionDir
