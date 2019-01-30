@@ -20,8 +20,7 @@ package org.wheatgenetics.about;
  */
 public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
-    @android.annotation.SuppressLint({"SetTextI18n"})
-    public AboutAlertDialog(
+    @android.annotation.SuppressLint({"SetTextI18n"}) public AboutAlertDialog(
     @android.support.annotation.NonNull final android.app.Activity activity   ,
     @android.support.annotation.NonNull final java.lang.String     title      ,
     @android.support.annotation.NonNull final java.lang.String     versionName,
@@ -33,10 +32,11 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
     {
         super(activity);
 
-        final android.view.View aboutView = android.view.LayoutInflater.from(activity).inflate(
-            /* resource     => */ org.wheatgenetics.androidlibrary.R.layout.about_alert_dialog,
-            /* root         => */ new android.widget.LinearLayout(activity)                   ,
-            /* attachToRoot => */false);
+        final android.view.View aboutView =
+            android.view.LayoutInflater.from(this.activity()).inflate(
+                /* resource     => */ org.wheatgenetics.androidlibrary.R.layout.about_alert_dialog,
+                /* root         => */ new android.widget.LinearLayout(activity)                   ,
+                /* attachToRoot => */false);
         {
             assert null != aboutView;
             final android.widget.TextView versionTextView =
@@ -94,7 +94,9 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
                                 }
                                 msgTextView = this.aboutView.findViewById(msgTextViewId);
                             }
-                            assert null != msgTextView; msgTextView.setText(msg);
+                            assert null != msgTextView;
+                            msgTextView.setText      (msg                      );
+                            msgTextView.setVisibility(android.view.View.VISIBLE);
                         }
                     }
                 }
