@@ -4,14 +4,13 @@ package org.wheatgenetics.sharedpreferences;
  * Uses:
  * android.content.SharedPreferences
  * android.content.SharedPreferences.Editor
- * android.support.annotation.CallSuper
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.Utils
  */
-@java.lang.SuppressWarnings({"WeakerAccess", "ClassExplicitlyExtendsObject"})
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public abstract class BaseSharedPreferences extends java.lang.Object
 {
     private final android.content.SharedPreferences sharedPreferences;
@@ -28,13 +27,11 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.CallSuper
     protected void validateStringKey(@android.support.annotation.NonNull final java.lang.String key)
     { throw new java.lang.AssertionError(key + " is not a valid key."); }
 
-    @java.lang.SuppressWarnings({"WeakerAccess", "Unused"})
-    public BaseSharedPreferences(@android.support.annotation.NonNull
-    final android.content.SharedPreferences sharedPreferences)
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public BaseSharedPreferences(
+    @android.support.annotation.NonNull final android.content.SharedPreferences sharedPreferences)
     { super(); this.sharedPreferences = sharedPreferences; }
 
     // region Public Methods

@@ -30,14 +30,14 @@ public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
     { return this.scale().formattedRead(); }
     // endregion
 
-    public ScaleReader(@android.support.annotation.NonNull final android.app.Activity activity,
-    @android.support.annotation.NonNull final org.wheatgenetics.usb.DeviceReader.Handler handler)
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public ScaleReader(
+    @android.support.annotation.NonNull final android.app.Activity                       activity,
+    @android.support.annotation.NonNull final org.wheatgenetics.usb.DeviceReader.Handler handler )
     {
         super(handler); this.activity = activity;
         this.setDataSource(new org.wheatgenetics.usb.DeviceReader.DataSource()
             {
-                @java.lang.Override
-                public java.lang.String formattedRead()
+                @java.lang.Override public java.lang.String formattedRead()
                 throws org.wheatgenetics.usb.Device.Exception
                 { return org.wheatgenetics.usb.ScaleReader.this.formattedRead(); }
             });

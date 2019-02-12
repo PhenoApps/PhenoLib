@@ -15,7 +15,7 @@ package org.wheatgenetics.usb;
  */
 class Scale extends org.wheatgenetics.usb.ExtraDevice
 {
-    // region Exceptions
+    // region Types
     private static abstract class Exception extends org.wheatgenetics.usb.Device.Exception
     { private Exception(final java.lang.String message) { super(message); } }
 
@@ -64,15 +64,17 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     private static void sendDebugLogMsg(final java.lang.String label, final int unsignedByte)
     {
         org.wheatgenetics.usb.Scale.sendDebugLogMsg(java.lang.String.format(label + ":%8s|%3d",
-            java.lang.Integer.toBinaryString(unsignedByte), unsignedByte).replace(' ', '0'));
+            java.lang.Integer.toBinaryString(unsignedByte), unsignedByte).replace(
+                ' ','0'));
     }
 
     private static void sendDebugLogMsg(final byte MSB, final byte LSB)
     {
         {
             final int unsignedMSB = org.wheatgenetics.javalib.Utils.interpretAsUnsigned(MSB);
-            org.wheatgenetics.usb.Scale.sendDebugLogMsg("MSB===>", unsignedMSB      );
-            org.wheatgenetics.usb.Scale.sendDebugLogMsg("MSB*256", unsignedMSB * 256);
+            org.wheatgenetics.usb.Scale.sendDebugLogMsg("MSB===>", unsignedMSB);
+            org.wheatgenetics.usb.Scale.sendDebugLogMsg("MSB*256",
+                unsignedMSB * 256);
         }
         org.wheatgenetics.usb.Scale.sendDebugLogMsg("LSB===>",
             org.wheatgenetics.javalib.Utils.interpretAsUnsigned(LSB));

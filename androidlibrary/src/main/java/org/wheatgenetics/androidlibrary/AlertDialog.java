@@ -17,6 +17,7 @@ package org.wheatgenetics.androidlibrary;
  * android.view.WindowManager.LayoutParams
  * android.widget.LinearLayout
  *
+ * org.wheatgenetics.androidlibrary.BuildConfig
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
  */
@@ -54,16 +55,16 @@ public abstract class AlertDialog extends java.lang.Object
     }
     // endregion
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     public AlertDialog(final android.app.Activity activity)
     { super(); this.activityInstance = activity; this.configure(); }
 
     // region Public Methods
-    @java.lang.SuppressWarnings({"WeakerAccess"}) public abstract void configure();
+    public abstract void configure();
 
     public android.app.Activity activity()
     { assert null != this.activityInstance; return this.activityInstance; }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public java.lang.String getString(@android.support.annotation.StringRes final int resId)
     { return this.activity().getString(resId); }
 
@@ -81,6 +82,7 @@ public abstract class AlertDialog extends java.lang.Object
     public org.wheatgenetics.androidlibrary.AlertDialog setCancelableToTrue()
     { this.builder().setCancelable(true); return this; }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public org.wheatgenetics.androidlibrary.AlertDialog setMessage(final java.lang.String message)
     { this.builder().setMessage(message); return this; }
 
@@ -108,7 +110,8 @@ public abstract class AlertDialog extends java.lang.Object
                 @java.lang.SuppressWarnings({"Convert2Diamond"})
                 final java.util.ArrayList<java.lang.String> arrayList =
                     new java.util.ArrayList<java.lang.String>(itemIdsLength);
-                for (final java.lang.Integer itemId: itemIds) arrayList.add(this.getString(itemId));
+                for (@android.support.annotation.StringRes final java.lang.Integer itemId: itemIds)
+                    arrayList.add(this.getString(itemId));
 
                 final java.lang.String items[] = new java.lang.String[arrayList.size()];
                 this.setItems(arrayList.toArray(items), onClickListener);
@@ -119,20 +122,19 @@ public abstract class AlertDialog extends java.lang.Object
 
     @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
     public org.wheatgenetics.androidlibrary.AlertDialog setMultiChoiceItems(
-    @android.support.annotation.Size(min = 1) final java.lang.CharSequence items[]       ,
+    @android.support.annotation.Size(min = 1) final java.lang.CharSequence items       [],
                                               final boolean                checkedItems[],
     final android.content.DialogInterface.OnMultiChoiceClickListener       listener      )
     {
         if (null != items)
         {
-            // noinspection RedundantIfStatement
-            if (null != checkedItems) assert checkedItems.length == items.length;
+            if (org.wheatgenetics.androidlibrary.BuildConfig.DEBUG) if (null != checkedItems)
+                if (checkedItems.length != items.length) { throw new java.lang.AssertionError(); }
             this.builder().setMultiChoiceItems(items, checkedItems, listener);
         }
         return this;
     }
 
-    @java.lang.SuppressWarnings({"UnusedReturnValue"})
     public org.wheatgenetics.androidlibrary.AlertDialog setView(final android.view.View view)
     { this.builder().setView(view); return this; }
 
@@ -173,7 +175,7 @@ public abstract class AlertDialog extends java.lang.Object
             onClickListener);
     }
 
-    @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
+    @java.lang.SuppressWarnings({"UnusedReturnValue"})
     public org.wheatgenetics.androidlibrary.AlertDialog setCancelNegativeButton()
     {
         return this.setCancelNegativeButton(
@@ -247,7 +249,7 @@ public abstract class AlertDialog extends java.lang.Object
     // endregion
 
     // region Public Methods Used To Keep Alert Dialog From Dismissing
-    @java.lang.SuppressWarnings({"WeakerAccess"})
+    @java.lang.SuppressWarnings({"WeakerAccess", "BooleanMethodIsAlwaysInverted"})
     public boolean positiveOnClickListenerHasBeenReplaced()
     { return this.positiveOnClickListenerReplaced; }
 

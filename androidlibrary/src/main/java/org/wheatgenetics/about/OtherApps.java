@@ -2,6 +2,8 @@ package org.wheatgenetics.about;
 
 /**
  * Uses:
+ * android.support.annotation.IntRange
+ *
  * org.wheatgenetics.androidlibrary.R
  */
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
@@ -11,8 +13,11 @@ public class OtherApps extends java.lang.Object
     public enum Index
     {
         NONE(-1), FIELD_BOOK(0), INVENTORY(1), COORDINATE(2), ONE_KK(3);
-        private final int position;
-        private Index(final int position) { this.position = position; }
+
+        @android.support.annotation.IntRange(from = -1, to = 3) private final int position;
+
+        private Index(@android.support.annotation.IntRange(from = -1, to = 3) final int position)
+        { this.position = position; }
     }
 
     // region Constants
@@ -42,7 +47,7 @@ public class OtherApps extends java.lang.Object
             return null;
         else
         {
-            final T result[] = java.util.Arrays.copyOf(allTs, allTs.length - 1);
+            final T result[] = java.util.Arrays.copyOf(allTs,allTs.length - 1);
             {
                 int i = 0;
                 for (final org.wheatgenetics.about.OtherApps.Index index:

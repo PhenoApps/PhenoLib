@@ -2,6 +2,7 @@ package org.wheatgenetics.androidlibrary;
 
 /**
  * Uses:
+ * android.annotation.SuppressLint
  * android.app.Activity
  * android.view.View
  * android.view.View.OnClickListener
@@ -11,10 +12,10 @@ package org.wheatgenetics.androidlibrary;
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
  */
+@java.lang.SuppressWarnings({"unused"})
 public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier", "WeakerAccess"})
-    public interface Handler
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Handler
     { public abstract void handleGetFileNameDone(java.lang.String fileName); }
 
     // region Fields
@@ -36,24 +37,24 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
         }
     }
 
-    @java.lang.SuppressWarnings({"unused"}) public GetExportFileNameAlertDialog(
-    final android.app.Activity                                                  activity,
+    public GetExportFileNameAlertDialog(final android.app.Activity              activity,
     final org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog.Handler handler )
     { super(activity); this.handler = handler; }
 
-    @java.lang.SuppressWarnings({"unused"}) @java.lang.Override public void configure()
+    @java.lang.Override public void configure()
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.getExportFileNameAlertDialogTitle);
 
         {
+            @android.annotation.SuppressLint({"InflateParams"})
             final android.view.View view = this.layoutInflater().inflate(
                 org.wheatgenetics.androidlibrary.R.layout.get_export_file_name_alert_dialog,
                 null);
 
             if (null == this.editText)
             {
-                assert null != view; this.editText =
-                    view.findViewById(org.wheatgenetics.androidlibrary.R.id.editText);
+                assert null != view; this.editText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.editText);
             }
 
             this.setView(view);
@@ -62,7 +63,7 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
         this.setOKPositiveButton(null).setCancelNegativeButton();
     }
 
-    @java.lang.SuppressWarnings({"unused"}) public void show(final java.lang.String initialFileName)
+    public void show(final java.lang.String initialFileName)
     {
         assert null != this.editText;
         this.editText.setText(initialFileName); this.editText.selectAll();

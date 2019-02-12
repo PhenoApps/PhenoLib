@@ -7,7 +7,7 @@ package org.wheatgenetics.androidlibrary;
  * android.content.DialogInterface.OnCancelListener
  * android.support.annotation.StringRes
  */
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject", "WeakerAccess"})
+@java.lang.SuppressWarnings({"unused", "ClassExplicitlyExtendsObject"})
 public class ProgressDialog extends java.lang.Object
 {
     // region Fields
@@ -32,18 +32,17 @@ public class ProgressDialog extends java.lang.Object
     }
 
     // region Constructors
-    @java.lang.SuppressWarnings({"unused"}) private ProgressDialog(
+    private ProgressDialog(
     final android.content.Context                          context         ,
     final android.content.DialogInterface.OnCancelListener onCancelListener)
     { super(); this.context = context; this.onCancelListener = onCancelListener; }
 
-    @java.lang.SuppressWarnings({"unused"}) public ProgressDialog(
-    final android.content.Context context, final java.lang.CharSequence title,
+    public ProgressDialog(final android.content.Context context, final java.lang.CharSequence title,
     final java.lang.CharSequence initialMessage,
     final android.content.DialogInterface.OnCancelListener onCancelListener)
     { this(context, onCancelListener); this.title = title; this.initialMessage = initialMessage; }
 
-    @java.lang.SuppressWarnings({"unused"}) public ProgressDialog(
+    public ProgressDialog(
                                           final android.content.Context context         ,
     @android.support.annotation.StringRes final int                     title           ,
     @android.support.annotation.StringRes final int                     initialMessage  ,
@@ -58,17 +57,16 @@ public class ProgressDialog extends java.lang.Object
     // endregion
 
     // region Public Methods
-    @java.lang.SuppressWarnings({"unused"}) public void show() { this.progressDialog().show(); }
+    public void show() { this.progressDialog().show(); }
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
     public void setMessage(final java.lang.CharSequence message)
     { this.progressDialog().setMessage(message); }
 
-    @java.lang.SuppressWarnings({"unused"})
     public void setMessage(@android.support.annotation.StringRes final int message)
     { assert null != this.context; this.setMessage(this.context.getString(message)); }
 
-    @java.lang.SuppressWarnings({"unused"}) public void dismiss()
+    public void dismiss()
     {
         if (null != this.progressDialogInstance)
             if (this.progressDialogInstance.isShowing()) this.progressDialogInstance.dismiss();

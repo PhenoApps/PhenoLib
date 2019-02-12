@@ -12,12 +12,15 @@ package org.wheatgenetics.zxing;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class BarcodeScanner extends java.lang.Object
 {
+    // region Fields
     private final android.app.Activity                                  activity               ;
     private       com.google.zxing.integration.android.IntentIntegrator intentIntegrator = null;
+    // endregion
 
     public BarcodeScanner(final android.app.Activity activity)
     { super(); this.activity = activity; }
 
+    // region Public Methods
     @java.lang.SuppressWarnings({"UnusedReturnValue"}) public android.app.AlertDialog scan()
     {
         if (null == this.intentIntegrator) this.intentIntegrator =
@@ -32,5 +35,7 @@ public class BarcodeScanner extends java.lang.Object
             com.google.zxing.integration.android.IntentIntegrator.parseActivityResult(
                 requestCode, resultCode, data);
         return null == intentResult ? null : intentResult.getContents();
+
     }
+    // endregion
 }

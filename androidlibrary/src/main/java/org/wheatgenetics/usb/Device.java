@@ -14,7 +14,7 @@ package org.wheatgenetics.usb;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class Device extends java.lang.Object
 {
-    // region Exceptions
+    // region Types
     public abstract static class Exception extends java.lang.Exception
     { Exception(final java.lang.String message) { super(message); } }
 
@@ -87,20 +87,19 @@ public class Device extends java.lang.Object
     { super(); this.usbDevice = usbDevice; this.usbManager = usbManager; }
 
     // region Overridden Methods
-    @java.lang.Override public java.lang.String toString()
+    @android.support.annotation.NonNull @java.lang.Override public java.lang.String toString()
     {
         return org.wheatgenetics.javalib.Utils.replaceIfNull(
             this.getDeviceName(), super.toString());
     }
 
-    @java.lang.Override
-    protected void finalize() throws java.lang.Throwable { this.close(); super.finalize(); }
+    @java.lang.Override protected void finalize() throws java.lang.Throwable
+    { this.close(); super.finalize(); }
     // endregion
 
     // region Package Methods
     // region DeviceList Package Methods
-    @java.lang.SuppressWarnings({"DefaultLocale"})
-    java.lang.String information()
+    @java.lang.SuppressWarnings({"DefaultLocale"}) java.lang.String information()
     {
         return this.usbDeviceIsNull() ? null : java.lang.String.format("name=%s id=%d " +
                 "productId=%d vendorId=%d class=%d subClass=%d protocol=%d interfaceCount=%d",
@@ -110,12 +109,12 @@ public class Device extends java.lang.Object
             this.usbDevice.getDeviceProtocol(), this.usbDevice.getInterfaceCount());
     }
 
-    @java.lang.SuppressWarnings({"SimplifiableIfStatement", "SimplifiableConditionalExpression"})
     boolean idsAreEqual(final int vendorId, final int productId)
     {
         if (this.usbDeviceIsNull())
             return false;
         else
+            // noinspection SimplifiableConditionalExpression
             return 0 == vendorId || 0 == productId ? false :
                 this.getVendorId() == vendorId && this.getProductId() == productId;
     }
@@ -139,6 +138,7 @@ public class Device extends java.lang.Object
                 if (null == this.usbInterface)                                         // Lazy load.
                 {
                     this.usbInterface = this.usbDevice.getInterface(0);
+                    // noinspection ConstantConditions
                     if (null == this.usbInterface)
                         throw new org.wheatgenetics.usb.Device.GetInterfaceFailed();
                 }
@@ -159,11 +159,14 @@ public class Device extends java.lang.Object
                             throw new org.wheatgenetics.usb.Device.OpenDeviceLacksPermission();
                     else
                         this.usbDeviceConnection.claimInterface(
-                            this.usbInterface, /* force => */ true);
+                            this.usbInterface, /* force => */true);
                 }
 
-                return this.usbDeviceConnection.bulkTransfer(this.usbEndpoint, buffer,
-                    null == buffer ? 0 : buffer.length, /* timeout => */ 2000 /* milliseconds */);
+                return this.usbDeviceConnection.bulkTransfer(
+                    /* endpoint => */ this.usbEndpoint                  ,
+                    /* buffer   => */ buffer                            ,
+                    /* length   => */ null == buffer ? 0 : buffer.length,
+                    /* timeout  => */2000 /* milliseconds */);
             }
         }
         catch (final org.wheatgenetics.usb.Device.Exception e) { this.close(); throw e; }
@@ -176,7 +179,7 @@ public class Device extends java.lang.Object
         {
             final byte buffer[] = new byte[128];
             length = this.read(buffer);             // throws org.wheatgenetics.usb.Device.Exception
-            data = org.wheatgenetics.javalib.Utils.convert(buffer, length);
+            data   = org.wheatgenetics.javalib.Utils.convert(buffer, length);
         }
         return java.lang.String.format("length: %d, data: %s", length, data);
     }
