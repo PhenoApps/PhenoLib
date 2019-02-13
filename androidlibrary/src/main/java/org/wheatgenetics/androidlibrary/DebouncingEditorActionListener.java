@@ -10,7 +10,6 @@ package org.wheatgenetics.androidlibrary;
  * android.support.annotation.IntRange
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
- * android.util.Log
  * android.widget.EditText
  *
  * org.wheatgenetics.androidlibrary.EditorActionListener
@@ -38,13 +37,13 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
         private final java.util.ArrayList<java.lang.String> arrayList =
             new java.util.ArrayList<java.lang.String>();
         private final java.lang.Runnable runnable = new java.lang.Runnable()
-        {
-            @java.lang.Override public void run()
             {
-                org.wheatgenetics.androidlibrary.DebouncingEditorActionListener
-                    .TextAccumulator.this.stop();
-            }
-        };
+                @java.lang.Override public void run()
+                {
+                    org.wheatgenetics.androidlibrary.DebouncingEditorActionListener
+                        .TextAccumulator.this.stop();
+                }
+            };
         private final android.os.Handler handler = new android.os.Handler();
         // endregion
 

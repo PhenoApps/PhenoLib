@@ -12,22 +12,20 @@ package org.wheatgenetics.usb;
 class DeviceReader extends java.lang.Object
 {
     // region Types
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
-    public interface Handler
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Handler
     {
         public abstract void publish        (java.lang.String                       data);
         public abstract void reportException(org.wheatgenetics.usb.Device.Exception e   );
     }
 
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
-    interface DataSource
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface DataSource
     {
         public abstract java.lang.String formattedRead()
             throws org.wheatgenetics.usb.Device.Exception;
     }
 
     private static class Cancelled extends org.wheatgenetics.usb.Device.Exception
-    { private Cancelled() { super("Cancelled."); }}
+    { private Cancelled() { super("Cancelled."); } }
 
     private static class AsyncTask extends android.os.AsyncTask<
     java.lang.Void, java.lang.String, org.wheatgenetics.usb.Device.Exception>
@@ -46,8 +44,7 @@ class DeviceReader extends java.lang.Object
         { super(); this.handler = handler; this.dataSource = dataSource; }
 
         // region Overridden Methods
-        @java.lang.Override
-        protected org.wheatgenetics.usb.Device.Exception doInBackground(
+        @java.lang.Override protected org.wheatgenetics.usb.Device.Exception doInBackground(
         final java.lang.Void... params)
         {
             assert null != this.dataSource; while (!this.isCancelled())
@@ -56,7 +53,7 @@ class DeviceReader extends java.lang.Object
                 try { newData = this.dataSource.formattedRead(); }
                 catch (final org.wheatgenetics.usb.Device.Exception e) { return e; }
                 if (!this.oldData.equals(newData)) this.publishProgress(newData);
-                android.os.SystemClock.sleep(/* ms => */ 500);
+                android.os.SystemClock.sleep(/* ms => */500);
             }
             return null;
         }
@@ -106,7 +103,7 @@ class DeviceReader extends java.lang.Object
     { this.dataSource = dataSource; }
 
     // region Public Methods
-    public void execute()
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public void execute()
     {
         if (null == this.asyncTask) if (null != this.handler && null != this.dataSource)
         {
@@ -124,7 +121,8 @@ class DeviceReader extends java.lang.Object
             cancelled = false;
         else
         {
-            cancelled = this.asyncTask.cancel(/* mayInterruptIfRunning => */ true);
+            cancelled = this.asyncTask.cancel(
+                /* mayInterruptIfRunning => */true);
             this.asyncTask = null;
         }
 

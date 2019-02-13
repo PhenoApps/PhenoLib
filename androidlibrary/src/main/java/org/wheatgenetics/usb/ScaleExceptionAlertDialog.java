@@ -16,8 +16,7 @@ package org.wheatgenetics.usb;
 @java.lang.SuppressWarnings({"unused"})
 public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
-    public interface Handler
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Handler
     {
                                                      public abstract void tryAgain();
         @java.lang.SuppressWarnings({"EmptyMethod"}) public abstract void ignore ();
@@ -44,24 +43,22 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
                     R.string.scaleExceptionAlertDialogPositiveButtonText,
                 new android.content.DialogInterface.OnClickListener()
                 {
-                    @java.lang.Override
-                    public void onClick(final android.content.DialogInterface dialog,
-                    final int which)
+                    @java.lang.Override public void onClick(
+                    final android.content.DialogInterface dialog, final int which)
                     { org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.tryAgain(); }
                 })
             .setNegativeButton(org.wheatgenetics.androidlibrary.
                     R.string.scaleExceptionAlertDialogNegativeButtonText,
                 new android.content.DialogInterface.OnClickListener()
                 {
-                    @java.lang.Override
-                    public void onClick(final android.content.DialogInterface dialog,
-                    final int which)
+                    @java.lang.Override public void onClick(
+                    final android.content.DialogInterface dialog, final int which)
                     { org.wheatgenetics.usb.ScaleExceptionAlertDialog.this.ignore(); }
                 });
     }
 
     // region Public Methods
-    public void testingShow(
+    @java.lang.SuppressWarnings({"WeakerAccess"}) public void testingShow(
         @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     { this.setMessage(e.getMessage()); this.createShow(); }
 

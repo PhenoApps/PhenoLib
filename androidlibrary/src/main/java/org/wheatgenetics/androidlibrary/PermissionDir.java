@@ -30,7 +30,6 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
             return activity;
     }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected android.app.Activity getActivity() { return this.activity; }
 
@@ -58,8 +57,7 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
     @java.lang.Override protected void log(final java.lang.String msg)
     { android.util.Log.d("Dir",this.label() + msg); }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"}) @java.lang.Override
-    protected boolean permissionGranted()
+    @java.lang.Override protected boolean permissionGranted()
     {
         return android.support.v4.content.ContextCompat.checkSelfPermission(
                 /* context    => */ this.getActivity()                                ,

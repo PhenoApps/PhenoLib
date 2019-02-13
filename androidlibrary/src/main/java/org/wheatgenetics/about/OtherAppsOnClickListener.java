@@ -20,8 +20,8 @@ implements android.view.View.OnClickListener
     private org.wheatgenetics.about.OtherAppsAlertDialog otherAppsAlertDialog = null;
     // endregion
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
-    public OtherAppsOnClickListener(final android.app.Activity activity,
+    public OtherAppsOnClickListener(
+    final android.app.Activity                    activity     ,
     final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     { super(); this.activity = activity; this.suppressIndex = suppressIndex; }
 

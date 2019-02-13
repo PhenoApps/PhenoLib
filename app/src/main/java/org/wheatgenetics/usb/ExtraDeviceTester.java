@@ -19,6 +19,10 @@ public class ExtraDeviceTester extends java.lang.Object
                   org.wheatgenetics.usb.ExtraDevice extraDeviceInstance = null;
     // endregion
 
+    public ExtraDeviceTester(
+        @android.support.annotation.NonNull final android.app.Activity activity)
+    { super(); this.activity = activity; }
+
     // region Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     android.app.Activity getActivity() { return this.activity; }
@@ -35,17 +39,13 @@ public class ExtraDeviceTester extends java.lang.Object
     }
     // endregion
 
-    public ExtraDeviceTester(
-    @android.support.annotation.NonNull final android.app.Activity activity)
-    { super(); this.activity = activity; }
-
     // region Public Methods
     public java.lang.String information()
     { return "information: " + this.extraDevice().information(); }
 
     public java.lang.String handlingFormattedRead()
     {
-        try { return this.extraDevice().formattedRead(); /* throws */ }
+        try { return this.extraDevice().formattedRead() /* throws */; }
         catch (final org.wheatgenetics.usb.Device.Exception e) { return e.getMessage(); }
     }
     // endregion

@@ -39,11 +39,11 @@ class DeviceList extends java.lang.Object
                 this.arrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
     }
 
-    @java.lang.Override public java.lang.String toString()
+    @android.support.annotation.NonNull @java.lang.Override public java.lang.String toString()
     {
         final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
         {
-            java.lang.Boolean firstDevice = true;
+            boolean firstDevice = true;
             assert null != this.arrayList;
             for (final org.wheatgenetics.usb.Device device: this.arrayList)
             {
@@ -62,7 +62,7 @@ class DeviceList extends java.lang.Object
     {
         final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
         {
-            java.lang.Boolean firstDevice = true;
+            boolean firstDevice = true;
             assert null != this.arrayList;
             for (final org.wheatgenetics.usb.Device device: this.arrayList)
             {

@@ -62,6 +62,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                             this.addAll(this.otherApps.getTexts());
                         }
 
+                        @android.annotation.SuppressLint({"InflateParams", "ViewHolder"})
                         @java.lang.Override
                         public @android.support.annotation.NonNull android.view.View
                         getView(final int position, final android.view.View convertView,
@@ -76,7 +77,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                                 assert null != layoutInflater;
                                 result = layoutInflater.inflate(org.wheatgenetics.
                                         androidlibrary.R.layout.other_apps_alert_dialog,
-                                    null, true);
+                                    null,true);
                             }
                             assert null != result;
                             {
@@ -112,9 +113,9 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         final org.wheatgenetics.about.OtherApps otherApps)
                     { super(); this.context = context; this.otherApps = otherApps; }
 
-                    @java.lang.Override
-                    public void onItemClick(final android.widget.AdapterView<?> parent,
-                    final android.view.View view, final int position, final long id)
+                    @java.lang.Override public void onItemClick(
+                    final android.widget.AdapterView<?> parent, final android.view.View view,
+                    final int position, final long id)
                     {
                         assert null != this.otherApps; assert null != this.context;
                         this.context.startActivity(new android.content.Intent(
@@ -130,8 +131,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
 
     @java.lang.Override public void configure()
     {
-        this.setCancelableToTrue()
-            .setTitle(org.wheatgenetics.androidlibrary.R.string.otherAppsAlertDialogTitle)
-            .setOKNegativeButton();
+        this.setTitle(org.wheatgenetics.androidlibrary.R.string.otherAppsAlertDialogTitle)
+            .setCancelableToTrue().setOKNegativeButton();
     }
 }

@@ -13,12 +13,12 @@ package org.wheatgenetics.changelog;
  * android.widget.ScrollView
  * android.widget.TextView
  *
+ * org.wheatgenetics.changelog.ChangeLog
+ * org.wheatgenetics.changelog.ChangeLog.LineHandler
+ *
  * org.wheatgenetics.androidlibrary.AlertDialog
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
- *
- * org.wheatgenetics.changelog.ChangeLog
- * org.wheatgenetics.changelog.ChangeLog.LineHandler
  */
 public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
@@ -90,8 +90,10 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                                     /* height => */
                                         android.widget.LinearLayout.LayoutParams.MATCH_PARENT);
                                 this.layoutParams.setMargins(
-                                    /* left  => */ 20, /* top    => */ 5,
-                                    /* right => */ 20, /* bottom => */ 0);
+                                    /* left   => */20,
+                                    /* top    => */5,
+                                    /* right  => */20,
+                                    /* bottom => */0);
                             }
 
                             final android.widget.TextView result =
@@ -112,6 +114,18 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                             assert null != this.linearLayout; this.linearLayout.addView(textView);
                         }
                         // endregion
+
+                        private LineHandler(
+                        @android.support.annotation.NonNull final android.app.Activity activity,
+                        @android.support.annotation.NonNull
+                            final android.widget.LinearLayout linearLayout)
+                        {
+                            super();
+
+                            this.activity           = activity                             ;
+                            this.applicationContext = this.activity.getApplicationContext();
+                            this.linearLayout       = linearLayout                         ;
+                        }
 
                         // region org.wheatgenetics.changelog.ChangeLog.LineHandler Overridden Methods
                         @java.lang.Override public void handleBlankLine()
@@ -138,26 +152,13 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                                 R.style.changeLogAlertDialogContentLine, content);
                         }
                         // endregion
-
-                        private LineHandler(
-                        @android.support.annotation.NonNull final android.app.Activity activity,
-                        @android.support.annotation.NonNull
-                            final android.widget.LinearLayout linearLayout)
-                        {
-                            super();
-
-                            this.activity           = activity                             ;
-                            this.applicationContext = this.activity.getApplicationContext();
-                            this.linearLayout       = linearLayout                         ;
-                        }
                     }
 
                     this.changeLog = new org.wheatgenetics.changelog.ChangeLog(
                         /* inputStreamReader => */ inputStreamReader,
-                        /* lineHandler       => */
-                            new LineHandler(this.activity, this.linearLayout));
+                        /* lineHandler => */ new LineHandler(this.activity, this.linearLayout));
                 }
-                try { this.changeLog.iterate(); /* throws java.io.IOException */ }
+                try { this.changeLog.iterate() /* throws java.io.IOException */; }
                 catch (final java.io.IOException e) { return null; }
 
                 if (null == this.scrollView)

@@ -30,22 +30,23 @@ public class Utils extends java.lang.Object
             org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListenerInstance =
                 new android.content.DialogInterface.OnClickListener()
                 {
-                    @java.lang.Override
-                    public void onClick(final android.content.DialogInterface dialog,
-                    final int which) { assert null != dialog; dialog.dismiss(); }
+                    @java.lang.Override public void onClick(
+                    final android.content.DialogInterface dialog, final int which)
+                    { assert null != dialog; dialog.dismiss(); }
                 };
         return org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListenerInstance;
     }
 
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     public static android.content.DialogInterface.OnClickListener cancellingOnClickListener()
     {
         if (null == org.wheatgenetics.androidlibrary.Utils.cancellingOnClickListenerInstance)
             org.wheatgenetics.androidlibrary.Utils.cancellingOnClickListenerInstance =
                 new android.content.DialogInterface.OnClickListener()
                 {
-                    @java.lang.Override
-                    public void onClick(final android.content.DialogInterface dialog,
-                    final int which) { assert null != dialog; dialog.cancel(); }
+                    @java.lang.Override public void onClick(
+                    final android.content.DialogInterface dialog, final int which)
+                    { assert null != dialog; dialog.cancel(); }
                 };
         return org.wheatgenetics.androidlibrary.Utils.cancellingOnClickListenerInstance;
     }
@@ -72,7 +73,7 @@ public class Utils extends java.lang.Object
     // endregion
 
     // region File Methods
-    @java.lang.SuppressWarnings({"UnusedReturnValue"})
+    @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
     public static java.io.File makeFileDiscoverable(final android.content.Context context,
     final java.io.File file)
     {
