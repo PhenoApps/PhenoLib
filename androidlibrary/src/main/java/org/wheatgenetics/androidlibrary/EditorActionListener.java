@@ -58,6 +58,7 @@ extends java.lang.Object implements android.widget.TextView.OnEditorActionListen
     { this.handler.postDelayed(this.runnable, /* delayMillis => */100); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected void sendText(final java.lang.String text)
     {
         if (this.debug) org.wheatgenetics.androidlibrary.EditorActionListener.log(text);
@@ -65,6 +66,7 @@ extends java.lang.Object implements android.widget.TextView.OnEditorActionListen
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected void process(final java.lang.String text)
     {
         if (!org.wheatgenetics.androidlibrary.EditorActionListener.isEmpty(text))
