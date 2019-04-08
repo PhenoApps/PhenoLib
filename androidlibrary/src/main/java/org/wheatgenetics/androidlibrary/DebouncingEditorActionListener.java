@@ -8,12 +8,13 @@ package org.wheatgenetics.androidlibrary;
  * Uses:
  * android.os.Handler
  * android.support.annotation.IntRange
+ * android.support.annotation.NonNull
+ * android.support.annotation.Nullable
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.widget.EditText
  *
  * org.wheatgenetics.androidlibrary.EditorActionListener
- * org.wheatgenetics.androidlibrary.EditorActionListener.Receiver
  */
 public class DebouncingEditorActionListener
 extends org.wheatgenetics.androidlibrary.EditorActionListener
@@ -25,10 +26,11 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
         private interface Logger { public void log(java.lang.String msg); }
 
         // region Fields
-        private final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver   ;
+        @android.support.annotation.Nullable private final
+            org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver receiver   ;
         private final boolean                                                        debug      ;
-        private final long                                                           delayMillis;
-        private final
+        @android.support.annotation.IntRange(from = 0) private final long delayMillis;
+        @android.support.annotation.NonNull private final
             org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator.Logger
             logger;
 
@@ -62,15 +64,15 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
                         stringBuilder.append(text);
                     }
                 }
-                assert null != this.logger; this.logger.log(stringBuilder.toString());
+                this.logger.log(stringBuilder.toString());
             }
 
             if (null != this.receiver)
             {
                 int longest;
                 {
-                    final int first     = 0, last = this.arrayList.size() - 1;
-                          int maxLength = 0                                  ;
+                    final int first = 0, last = this.arrayList.size() - 1;
+                    @android.support.annotation.IntRange(from = 0) int maxLength = 0;
 
                     longest = first;
                     for (int i = first; i <= last; i++)
@@ -83,10 +85,11 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
             }
         }
 
-        private TextAccumulator(
-        final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver,
-        final boolean debug, final long delayMillis,
-        final org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator.Logger
+        private TextAccumulator(@android.support.annotation.Nullable
+            final org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver receiver,
+        final boolean debug, @android.support.annotation.IntRange(from = 0) final long delayMillis,
+        @android.support.annotation.NonNull final
+            org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator.Logger
             logger)
         {
             super();
@@ -110,8 +113,10 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
     private final org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator
         textAccumulator;
 
-    public DebouncingEditorActionListener(final android.widget.EditText editText,
-    final org.wheatgenetics.androidlibrary.EditorActionListener.Receiver receiver,
+    public DebouncingEditorActionListener(
+    @android.support.annotation.NonNull  final android.widget.EditText editText,
+    @android.support.annotation.Nullable final
+        org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver receiver,
     final boolean debug, @android.support.annotation.IntRange(from = 0) final long delayMillis)
     {
         super(editText, receiver, debug);
@@ -121,11 +126,11 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
                 .DebouncingEditorActionListener.TextAccumulator.Logger()
                 {
                     @java.lang.Override public void log(final java.lang.String msg)
-                    { org.wheatgenetics.androidlibrary.EditorActionListener.log(msg); }
+                    { org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.log(msg); }
                 });
     }
 
-    @java.lang.Override
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override
     protected void sendText(final java.lang.String text) { this.textAccumulator.accumulate(text); }
 }
