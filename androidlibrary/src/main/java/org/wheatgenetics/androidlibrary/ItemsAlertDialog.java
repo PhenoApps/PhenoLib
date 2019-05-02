@@ -8,7 +8,7 @@ package org.wheatgenetics.androidlibrary;
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  */
-@java.lang.SuppressWarnings({"WeakerAccess"})
+@java.lang.SuppressWarnings({"unused"})
 public abstract class ItemsAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     private android.content.DialogInterface.OnClickListener onClickListener;
@@ -22,11 +22,13 @@ public abstract class ItemsAlertDialog extends org.wheatgenetics.androidlibrary.
     { this.onClickListener = onClickListener; }
 
     @java.lang.SuppressWarnings({"unused"})
-    public void show(@android.support.annotation.Size(min = 1) final java.lang.String items[])
+    public void show(@java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+    @android.support.annotation.Size(min = 1) final java.lang.String items[])
     { if (null != items) { this.setItems(items, this.onClickListener); this.createShow(); } }
 
     @java.lang.SuppressWarnings({"unused"})
-    public void show(@android.support.annotation.Size(min = 1) final int items[])
+    public void show(@java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+    @android.support.annotation.Size(min = 1) final int items[])
     { if (null != items) { this.setItems(items, this.onClickListener); this.createShow(); } }
     // endregion
 }

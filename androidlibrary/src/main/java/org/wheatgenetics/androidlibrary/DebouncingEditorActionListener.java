@@ -29,7 +29,7 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
         @android.support.annotation.Nullable private final
             org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver receiver   ;
         private final boolean                                                        debug      ;
-        @android.support.annotation.IntRange(from = 0) private final long delayMillis;
+        @android.support.annotation.IntRange(from = 0) private final long            delayMillis;
         @android.support.annotation.NonNull private final
             org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator.Logger
             logger;

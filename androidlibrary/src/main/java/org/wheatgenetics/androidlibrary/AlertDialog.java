@@ -93,13 +93,17 @@ public abstract class AlertDialog extends java.lang.Object
 
     @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
     public org.wheatgenetics.androidlibrary.AlertDialog setItems(
-    @android.support.annotation.Size(min = 1) final java.lang.String items[],
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+        @android.support.annotation.Size(min = 1) final java.lang.String items[],
+
     final android.content.DialogInterface.OnClickListener onClickListener)
     { this.builder().setItems(items, onClickListener); return this; }
 
     @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
     public org.wheatgenetics.androidlibrary.AlertDialog setItems(
-    @android.support.annotation.Size(min = 1) final int itemIds[],
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+        @android.support.annotation.Size(min = 1) final int itemIds[],
+
     final android.content.DialogInterface.OnClickListener onClickListener)
     {
         if (null != itemIds)
@@ -113,7 +117,8 @@ public abstract class AlertDialog extends java.lang.Object
                 for (@android.support.annotation.StringRes final java.lang.Integer itemId: itemIds)
                     arrayList.add(this.getString(itemId));
 
-                final java.lang.String items[] = new java.lang.String[arrayList.size()];
+                @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+                    final java.lang.String items[] = new java.lang.String[arrayList.size()];
                 this.setItems(arrayList.toArray(items), onClickListener);
             }
         }
@@ -122,9 +127,12 @@ public abstract class AlertDialog extends java.lang.Object
 
     @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
     public org.wheatgenetics.androidlibrary.AlertDialog setMultiChoiceItems(
-    @android.support.annotation.Size(min = 1) final java.lang.CharSequence items       [],
-                                              final boolean                checkedItems[],
-    final android.content.DialogInterface.OnMultiChoiceClickListener       listener      )
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+        @android.support.annotation.Size(min = 1) final java.lang.CharSequence items[],
+
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final boolean checkedItems[],
+
+    final android.content.DialogInterface.OnMultiChoiceClickListener listener)
     {
         if (null != items)
         {

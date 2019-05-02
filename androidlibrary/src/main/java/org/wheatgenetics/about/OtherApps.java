@@ -12,7 +12,8 @@ public class OtherApps extends java.lang.Object
     @java.lang.SuppressWarnings({"UnnecessaryEnumModifier"})
     public enum Index
     {
-        NONE(-1), FIELD_BOOK(0), INVENTORY(1), COORDINATE(2), ONE_KK(3);
+        NONE(-1), FIELD_BOOK(0), INVENTORY(1),
+            COORDINATE(2), ONE_KK(3);
 
         @android.support.annotation.IntRange(from = -1, to = 3) private final int position;
 
@@ -21,33 +22,39 @@ public class OtherApps extends java.lang.Object
     }
 
     // region Constants
-    private static final java.lang.String ALL_TEXTS[] =
-        {"Field Book", "Inventory", "Coordinate", "1KK"};
-    private static final java.lang.Integer ALL_RES_IDS[] = {
-        org.wheatgenetics.androidlibrary.R.drawable.ic_field_book,
-        org.wheatgenetics.androidlibrary.R.drawable.ic_inventory ,
-        org.wheatgenetics.androidlibrary.R.drawable.ic_coordinate,
-        org.wheatgenetics.androidlibrary.R.drawable.ic_1kk       };
-    private static final java.lang.String ALL_URIS[] = {
-        "https://play.google.com/store/apps/details?id=com.fieldbook.tracker"       ,
-        "https://play.google.com/store/apps/details?id=org.wheatgenetics.inventory" ,
-        "https://play.google.com/store/apps/details?id=org.wheatgenetics.coordinate",
-        "https://play.google.com/store/apps/details?id=org.wheatgenetics.onekk"     };
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) private static final java.lang.String
+        ALL_TEXTS[] = {"Field Book", "Inventory", "Coordinate", "1KK"};
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) private static final java.lang.Integer
+        ALL_RES_IDS[] = {
+            org.wheatgenetics.androidlibrary.R.drawable.ic_field_book,
+            org.wheatgenetics.androidlibrary.R.drawable.ic_inventory ,
+            org.wheatgenetics.androidlibrary.R.drawable.ic_coordinate,
+            org.wheatgenetics.androidlibrary.R.drawable.ic_1kk       };
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) private static final java.lang.String
+        ALL_URIS[] = {
+            "https://play.google.com/store/apps/details?id=com.fieldbook.tracker"       ,
+            "https://play.google.com/store/apps/details?id=org.wheatgenetics.inventory" ,
+            "https://play.google.com/store/apps/details?id=org.wheatgenetics.coordinate",
+            "https://play.google.com/store/apps/details?id=org.wheatgenetics.onekk"     };
     // endregion
 
     // region Fields
-    private final java.lang.String  texts[], uris[];
-    private final java.lang.Integer resIds[]       ;
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) private final java.lang.String texts[];
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) private final java.lang.String uris [];
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+        private final java.lang.Integer resIds[];
     // endregion
 
-    private static <T> T[] removeElement(final T allTs[],
+    private static <T> T[] removeElement(
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final T allTs[],
     final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     {
         if (null == allTs)
             return null;
         else
         {
-            final T result[] = java.util.Arrays.copyOf(allTs,allTs.length - 1);
+            @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final T result[] =
+                java.util.Arrays.copyOf(allTs,allTs.length - 1);
             {
                 int i = 0;
                 for (final org.wheatgenetics.about.OtherApps.Index index:

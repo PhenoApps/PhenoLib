@@ -24,7 +24,8 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
     @android.support.annotation.NonNull final android.app.Activity activity   ,
     @android.support.annotation.NonNull final java.lang.String     title      ,
     @android.support.annotation.NonNull final java.lang.String     versionName,
-    @android.support.annotation.NonNull final java.lang.String     msgs[]     ,
+    @android.support.annotation.NonNull @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+        final java.lang.String msgs[],
     @android.support.annotation.NonNull
         final org.wheatgenetics.about.OtherApps.Index suppressIndex,
     @android.support.annotation.NonNull
@@ -57,10 +58,13 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
             {
                 // region Fields
                 private final android.view.View aboutView;
-                private final java.lang.String  msgs[]   ;
+                @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+                    private final java.lang.String  msgs[];
                 // endregion
 
-                private MsgSetter(final android.view.View aboutView, final java.lang.String msgs[])
+                private MsgSetter(final android.view.View aboutView,
+                @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+                    final java.lang.String msgs[])
                 { super(); this.aboutView = aboutView; this.msgs = msgs; }
 
                 private void execute()

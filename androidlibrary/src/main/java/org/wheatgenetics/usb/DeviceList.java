@@ -74,7 +74,9 @@ class DeviceList extends java.lang.Object
     }
 
     org.wheatgenetics.usb.Device get(final int vendorId,
-    @android.support.annotation.Size(min = 1) final int productIds[])
+
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+        @android.support.annotation.Size(min = 1) final int productIds[])
     {
         if (null == this.arrayList || null == productIds)
             return null;

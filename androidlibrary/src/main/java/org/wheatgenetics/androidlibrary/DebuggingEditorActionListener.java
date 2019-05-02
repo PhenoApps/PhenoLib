@@ -31,7 +31,24 @@ implements android.widget.TextView.OnEditorActionListener
     private final boolean debug;
     // endregion
 
-    private void clearEditTextTextAfterDelay() { this.editText.setText(""); }
+    // region Package Methods
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void preprocess() {}
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void sendText(final java.lang.String text)
+    {
+        if (this.debug) org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.log(text);
+        if (null != this.receiver) this.receiver.receiveText(text);
+    }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void process(final java.lang.String text)
+    {
+        if (!org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.isEmpty(text))
+            { this.preprocess(); this.sendText(text); }
+    }
+    // endregion
 
     // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -43,25 +60,6 @@ implements android.widget.TextView.OnEditorActionListener
     @java.lang.SuppressWarnings({"WeakerAccess", "SimplifiableConditionalExpression"})
     protected static boolean isEmpty(final java.lang.String text)
     { return null == text ? true : text.length() <= 0; }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void preprocess() {}
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
-    protected void sendText(final java.lang.String text)
-    {
-        if (this.debug) org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.log(text);
-        if (null != this.receiver) this.receiver.receiveText(text);
-    }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
-    protected void process(final java.lang.String text)
-    {
-        if (!org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.isEmpty(text))
-            { this.preprocess(); this.sendText(text); }
-    }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.SuppressWarnings({"WeakerAccess"}) protected void clearEditText()

@@ -13,8 +13,7 @@ package org.wheatgenetics.androidlibrary;
  *
  * org.wheatgenetics.androidlibrary.DebuggingEditorActionListener
  */
-public class EditorActionListener
-extends org.wheatgenetics.androidlibrary.DebuggingEditorActionListener
+class EditorActionListener extends org.wheatgenetics.androidlibrary.DebuggingEditorActionListener
 {
     // region Fields
     private final java.lang.Runnable runnable = new java.lang.Runnable()

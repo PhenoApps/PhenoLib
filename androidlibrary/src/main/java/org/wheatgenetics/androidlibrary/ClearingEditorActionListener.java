@@ -36,7 +36,7 @@ extends org.wheatgenetics.androidlibrary.DebuggingEditorActionListener
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void process(final java.lang.String text)
     {
-        if (org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.isEmpty(text))
+        if (org.wheatgenetics.androidlibrary.ClearingEditorActionListener.isEmpty(text))
             this.clearText();
         else
             this.sendText(text);
