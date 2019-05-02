@@ -130,10 +130,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     { assert null != this.textView; this.textView.setText(text); }
 
     private void setAndInvalidateTextViewText(final java.lang.String text)
-    {
-        this.setTextViewText(text);
-        assert null != this.textView; this.textView.invalidate();
-    }
+    { this.setTextViewText(text); assert null != this.textView; this.textView.invalidate(); }
     // endregion
 
     private void listAll(final org.wheatgenetics.javalib.Dir dir)
@@ -145,6 +142,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
             try
             {
                 dir.createIfMissing();                    // throws IOException, PermissionException
+                // noinspection CStyleArrayDeclaration
                 final java.lang.String lines[] = dir.list();           // throws PermissionException
 
                 if (null == lines)
@@ -299,10 +297,11 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
             "null"));
     }
 
-    @java.lang.Override public void onRequestPermissionsResult(
-                                        final int              requestCode   ,
-    @android.support.annotation.NonNull final java.lang.String permissions [],
-    @android.support.annotation.NonNull final int              grantResults[])
+    @java.lang.Override public void onRequestPermissionsResult(final int requestCode,
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @android.support.annotation.NonNull
+        final java.lang.String permissions[],
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @android.support.annotation.NonNull
+        final int grantResults[])
     {
         if (org.wheatgenetics.androidlibrarybuilder.MainActivity.REQUEST_CODE == requestCode)
         {
@@ -458,6 +457,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
             case 1: this.setTextViewText(this.deviceListTester.information()); break;
         }
 
+        // noinspection SwitchStatementWithTooFewBranches
         switch (this.deviceListButtonClickCount)
         {
             case 0:

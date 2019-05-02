@@ -31,7 +31,6 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected android.app.Activity getActivity() { return this.activity; }
 
     // region Constructors

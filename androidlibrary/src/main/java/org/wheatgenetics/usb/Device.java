@@ -127,7 +127,8 @@ public class Device extends java.lang.Object
     { if (null != device) this.usbDevice = device.usbDevice; }
     // endregion
 
-    int read(final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception
+    int read(@java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final byte buffer[])
+    throws org.wheatgenetics.usb.Device.Exception
     {
         try
         {
@@ -177,6 +178,7 @@ public class Device extends java.lang.Object
     {
         final int length; final java.lang.String data;
         {
+            @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
             final byte buffer[] = new byte[128];
             length = this.read(buffer);             // throws org.wheatgenetics.usb.Device.Exception
             data   = org.wheatgenetics.javalib.Utils.convert(buffer, length);
