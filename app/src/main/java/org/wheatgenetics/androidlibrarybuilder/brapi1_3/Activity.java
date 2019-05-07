@@ -141,7 +141,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
         if (null != this.resourceNames && null != this.toolbar)
             this.toolbar.setTitle(this.getString(
                 org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
-                this.resourceNames[i]                                                  ));
+                this.apiClient().getBasePath(), this.resourceNames[i]      ));
     }
 
     private void setPage(@android.support.annotation.NonNull
