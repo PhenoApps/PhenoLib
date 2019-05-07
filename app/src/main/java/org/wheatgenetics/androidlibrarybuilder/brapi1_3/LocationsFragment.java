@@ -40,7 +40,7 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
     private io.swagger.client.api.LocationsApi locationsApi()
     {
         if (null == this.locationsApiInstance)
-            this.locationsApiInstance = new io.swagger.client.api.LocationsApi();
+            this.locationsApiInstance = new io.swagger.client.api.LocationsApi(this.apiClient());
         return this.locationsApiInstance;
     }
 

@@ -33,7 +33,7 @@ implements android.view.View.OnClickListener
     private io.swagger.client.api.CropsApi cropsApi()
     {
         if (null == this.cropsApiInstance)
-            this.cropsApiInstance = new io.swagger.client.api.CropsApi();
+            this.cropsApiInstance = new io.swagger.client.api.CropsApi(this.apiClient());
         return this.cropsApiInstance;
     }
 

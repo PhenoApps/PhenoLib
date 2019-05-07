@@ -59,7 +59,7 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
     private io.swagger.client.api.ProgramsApi programsApi()
     {
         if (null == this.programsApiInstance)
-            this.programsApiInstance = new io.swagger.client.api.ProgramsApi();
+            this.programsApiInstance = new io.swagger.client.api.ProgramsApi(this.apiClient());
         return this.programsApiInstance;
     }
 

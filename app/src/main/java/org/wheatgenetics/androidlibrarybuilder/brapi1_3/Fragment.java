@@ -3,7 +3,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
 /**
  * Uses:
  * android.app.Activity
- * android.os.Bundle
+ * android.content.Context
  * android.support.annotation.IdRes
  * android.support.annotation.LayoutRes
  * android.support.annotation.NonNull
@@ -19,33 +19,21 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.widget.TextView
  *
  * io.swagger.client.ApiException
+ * io.swagger.client.ApiClient
  */
 public abstract class Fragment extends android.support.v4.app.Fragment
 {
-    private static final java.lang.String ARGUMENT_KEY = "base_path";
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface Supplier
+    { @android.support.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient(); }
 
     // region Fields
-    private java.lang.String        basePath         = null;
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier;
     private android.widget.TextView responseTextView = null;
     // endregion
 
-    private void initializeBasePath()
-    {
-        final android.os.Bundle arguments = this.getArguments();
-        if (null == arguments)
-            this.basePath = null;
-        else
-        {
-            final java.lang.String ARGUMENT_KEY =
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.ARGUMENT_KEY;
-            this.basePath =
-                arguments.containsKey(ARGUMENT_KEY) ? arguments.getString(ARGUMENT_KEY) : null;
-        }
-    }
-
     // region Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    java.lang.String getBasePath() { return this.basePath; }
+    @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient() { return this.supplier.apiClient(); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     static java.lang.String getString(final android.widget.EditText editText)
@@ -70,16 +58,25 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     { if (null != this.responseTextView) this.responseTextView.setText(text); }
     // endregion
 
+    @java.lang.Override public void onAttach(final android.content.Context context)
+    {
+        super.onAttach(context);
+
+        if (context instanceof org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier)
+            this.supplier =
+                (org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier) context;
+        else
+            throw new java.lang.RuntimeException(null == context ?
+                "context" : context.toString() + " must implement Supplier");
+    }
+
     // region Public Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @android.support.annotation.Nullable  public android.view.View inflate(
     @android.support.annotation.NonNull   final android.view.LayoutInflater inflater        ,
     @android.support.annotation.Nullable  final android.view.ViewGroup      container       ,
     @android.support.annotation.LayoutRes final int                         layoutResourceId)
-    {
-        this.initializeBasePath();
-        return inflater.inflate(layoutResourceId, container,false);
-    }
+    { return inflater.inflate(layoutResourceId, container,false); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     public void findResponseTextViewById(

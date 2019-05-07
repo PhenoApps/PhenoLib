@@ -18,18 +18,22 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.view.Menu
  * android.view.MenuItem
  *
+ * io.swagger.client.ApiClient
+ *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
-
+ *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment
  */
 public class Activity extends android.support.v7.app.AppCompatActivity
+implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
 {
     private static class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter
     {
@@ -127,6 +131,8 @@ public class Activity extends android.support.v7.app.AppCompatActivity
 
     private android.support.v7.widget.Toolbar toolbar   = null;
     private android.support.v4.view.ViewPager viewPager = null;
+
+    private io.swagger.client.ApiClient apiClientInstance = null;                       // lazy load
     // endregion
 
     // region Private Methods
@@ -208,39 +214,50 @@ public class Activity extends android.support.v7.app.AppCompatActivity
     {
         // Handle action bar menuItem clicks here.  The action bar will automatically handle clicks
         // on the Home/Up button so long as you specify a parent activity in AndroidManifest.xml.
-        assert null != menuItem;
-        @android.support.annotation.MenuRes final int id = menuItem.getItemId();
-
-        // The id values in the following switch statement are from menu/menu_brapi1_3.xml.
-        switch (id)
+        if (null != menuItem)
         {
-            case org.wheatgenetics.androidlibrarybuilder.R.id.CallsMenuItemId               :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.CropsMenuItemId               :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.ProgramsMenuItemId            :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.LocationsMenuItemId           :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.TrialsMenuItemId              :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.StudiesMenuItemId             :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.ObservationsMenuItemId        :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.ObservationVariablesMenuItemId:
-            case org.wheatgenetics.androidlibrarybuilder.R.id.PhenotypesMenuItemId          :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.GermplasmMenuItemId           :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.GermplasmAttributesMenuItemId :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.MarkersMenuItemId             :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.MarkerProfilesMenuItemId      :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.GenomeMapsMenuItemId          :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.SamplesMenuItemId             :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.VendorMenuItemId              :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.ListsMenuItemId               :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.ImagesMenuItemId              :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.PeopleMenuItemId              :
-            case org.wheatgenetics.androidlibrarybuilder.R.id.SearchServicesMenuItemId      :
-                this.setPage(menuItem.getTitle()); return true;
+            @android.support.annotation.MenuRes final int id = menuItem.getItemId();
 
-            default: return super.onOptionsItemSelected(menuItem);
+            // The id values in the following switch statement are from menu/menu_brapi1_3.xml.
+            switch (id)
+            {
+                case org.wheatgenetics.androidlibrarybuilder.R.id.CallsMenuItemId               :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.CropsMenuItemId               :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.ProgramsMenuItemId            :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.LocationsMenuItemId           :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.TrialsMenuItemId              :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.StudiesMenuItemId             :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.ObservationsMenuItemId        :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.ObservationVariablesMenuItemId:
+                case org.wheatgenetics.androidlibrarybuilder.R.id.PhenotypesMenuItemId          :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.GermplasmMenuItemId           :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.GermplasmAttributesMenuItemId :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.MarkersMenuItemId             :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.MarkerProfilesMenuItemId      :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.GenomeMapsMenuItemId          :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.SamplesMenuItemId             :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.VendorMenuItemId              :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.ListsMenuItemId               :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.ImagesMenuItemId              :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.PeopleMenuItemId              :
+                case org.wheatgenetics.androidlibrarybuilder.R.id.SearchServicesMenuItemId      :
+                    this.setPage(menuItem.getTitle()); return true;
+            }
         }
+        return super.onOptionsItemSelected(menuItem);
     }
 
     @java.lang.Override protected void onDestroy()
     { if (null != this.viewPager) this.viewPager.clearOnPageChangeListeners(); super.onDestroy(); }
+
+    // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier Overridden Method
+    @java.lang.Override @android.support.annotation.NonNull
+    public io.swagger.client.ApiClient apiClient()
+    {
+        if (null == this.apiClientInstance)
+            this.apiClientInstance = new io.swagger.client.ApiClient();
+        return this.apiClientInstance;
+    }
+    // endregion
     // endregion
 }

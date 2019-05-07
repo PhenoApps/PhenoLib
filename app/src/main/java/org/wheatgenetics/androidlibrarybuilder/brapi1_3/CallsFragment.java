@@ -77,7 +77,7 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
     private io.swagger.client.api.CallsApi callsApi()
     {
         if (null == this.callsApiInstance)
-            this.callsApiInstance = new io.swagger.client.api.CallsApi();
+            this.callsApiInstance = new io.swagger.client.api.CallsApi(this.apiClient());
         return this.callsApiInstance;
     }
 

@@ -42,7 +42,7 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
     private io.swagger.client.api.TrialsApi trialsApi()
     {
         if (null == this.trialsApiInstance)
-            this.trialsApiInstance = new io.swagger.client.api.TrialsApi();
+            this.trialsApiInstance = new io.swagger.client.api.TrialsApi(this.apiClient());
         return this.trialsApiInstance;
     }
 

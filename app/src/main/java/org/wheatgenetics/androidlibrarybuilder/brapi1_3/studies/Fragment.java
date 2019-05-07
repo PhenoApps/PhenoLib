@@ -233,7 +233,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private io.swagger.client.api.StudiesApi studiesApi()
     {
         if (null == this.studiesApiInstance)
-            this.studiesApiInstance = new io.swagger.client.api.StudiesApi();
+            this.studiesApiInstance = new io.swagger.client.api.StudiesApi(this.apiClient());
         return this.studiesApiInstance;
     }
 
