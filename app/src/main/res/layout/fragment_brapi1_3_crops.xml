@@ -44,7 +44,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cropsPageTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -81,7 +81,7 @@
         app:layout_constraintLeft_toRightOf="@id/cropsPageEditText"
         app:layout_constraintTop_toBottomOf="@id/cropsPageSizeTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 

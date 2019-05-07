@@ -25,9 +25,9 @@ public class ListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListA
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
     // region Fields
-    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;
+    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
-        studyLayoutRequestLayoutAlertDialogInstance = null;
+        studyLayoutRequestLayoutAlertDialogInstance = null;                             // lazy load
     // endregion
 
     private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog

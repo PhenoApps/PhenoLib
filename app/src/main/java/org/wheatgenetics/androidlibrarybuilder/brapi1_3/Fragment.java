@@ -11,6 +11,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.support.v4.app.Fragment
+ * android.text.Editable
  * android.view.LayoutInflater
  * android.view.View
  * android.view.ViewGroup
@@ -19,7 +20,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  *
  * io.swagger.client.ApiException
  */
-@android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
 public abstract class Fragment extends android.support.v4.app.Fragment
 {
     private static final java.lang.String ARGUMENT_KEY = "base_path";

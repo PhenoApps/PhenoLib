@@ -30,12 +30,12 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
         locationDbIdEditText, sortByEditText, sortOrderEditText, trialDbIdEditText;
     private android.widget.RadioGroup activeRadioGroup;
 
-    private io.swagger.client.api.TrialsApi trialsApiInstance = null;
+    private io.swagger.client.api.TrialsApi trialsApiInstance = null;                   // lazy load
 
     private io.swagger.client.ApiCallback<io.swagger.client.model.TrialsResponse>
-        trialsResponseCallbackInstance = null;
+        trialsResponseCallbackInstance = null;                                          // lazy load
     private io.swagger.client.ApiCallback<io.swagger.client.model.TrialResponse>
-        trialResponseCallbackInstance = null;
+        trialResponseCallbackInstance = null;                                           // lazy load
     // endregion
 
     // region Private Methods
@@ -191,7 +191,7 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
 
     public TrialsFragment() {}
 
-    @android.support.annotation.Nullable @java.lang.Override public android.view.View onCreateView(
+    @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
     @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
     @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
     @android.support.annotation.Nullable final android.os.Bundle           savedInstanceState)
@@ -199,57 +199,58 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_trials);
 
-
-        // The following twelve ids are from fragment_brapi1_3_trials.xml.
-        assert null != rootView; this.commonCropNameEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsCommonCropNameEditText);
-        this.programDbIdEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsProgramDbIdEditText);
-        this.locationDbIdEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsLocationDbIdEditText);
-        this.activeRadioGroup = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsActiveRadioGroup);
-        this.sortByEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsSortByEditText);
-        this.sortOrderEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsSortOrderEditText);
-        this.findPageEditTextById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsPageEditText);
-        this.findPageSizeEditTextById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsPageSizeEditText);
+        if (null != rootView)
         {
-            final android.widget.Button trialsGetButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.trialsGetButton);
-            if (null != trialsGetButton) trialsGetButton.setOnClickListener(
-                new android.view.View.OnClickListener()
-                {
-                    @java.lang.Override public void onClick(final android.view.View v)
+            // The following twelve ids are from fragment_brapi1_3_trials.xml.
+            this.commonCropNameEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsCommonCropNameEditText);
+            this.programDbIdEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsProgramDbIdEditText);
+            this.locationDbIdEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsLocationDbIdEditText);
+            this.activeRadioGroup = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsActiveRadioGroup);
+            this.sortByEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsSortByEditText);
+            this.sortOrderEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsSortOrderEditText);
+            this.findPageEditTextById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsPageEditText);
+            this.findPageSizeEditTextById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsPageSizeEditText);
+            {
+                final android.widget.Button trialsGetButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.trialsGetButton);
+                if (null != trialsGetButton) trialsGetButton.setOnClickListener(
+                    new android.view.View.OnClickListener()
                     {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                            .TrialsFragment.this.trialsGet();
-                    }
-                });
-        }
+                        @java.lang.Override public void onClick(final android.view.View v)
+                        {
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                                .TrialsFragment.this.trialsGet();
+                        }
+                    });
+            }
 
-        this.trialDbIdEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsTrialDbIdEditText);
-        {
-            final android.widget.Button trialsTrialDbIdGetButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.trialsTrialDbIdGetButton);
-            if (null != trialsTrialDbIdGetButton) trialsTrialDbIdGetButton.setOnClickListener(
-                new android.view.View.OnClickListener()
-                {
-                    @java.lang.Override public void onClick(final android.view.View v)
+            this.trialDbIdEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsTrialDbIdEditText);
+            {
+                final android.widget.Button trialsTrialDbIdGetButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.trialsTrialDbIdGetButton);
+                if (null != trialsTrialDbIdGetButton) trialsTrialDbIdGetButton.setOnClickListener(
+                    new android.view.View.OnClickListener()
                     {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                            .TrialsFragment.this.trialsTrialDbIdGet();
-                    }
-                });
+                        @java.lang.Override public void onClick(final android.view.View v)
+                        {
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                                .TrialsFragment.this.trialsTrialDbIdGet();
+                        }
+                    });
+            }
+
+            this.findResponseTextViewById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.trialsResponseTextView);
         }
-
-        this.findResponseTextViewById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.trialsResponseTextView);
-
 
         return rootView;
     }

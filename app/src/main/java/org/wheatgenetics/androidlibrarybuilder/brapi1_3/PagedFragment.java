@@ -11,7 +11,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.IntegerFragment
  */
-@android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
 abstract class PagedFragment
 extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.IntegerFragment
 {

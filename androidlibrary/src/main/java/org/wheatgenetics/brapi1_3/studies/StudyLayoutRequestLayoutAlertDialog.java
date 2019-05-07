@@ -24,7 +24,6 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
- * org.wheatgenetics.brapi1_3.AlertDialog.Handler
  */
 public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
@@ -32,12 +31,13 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
     private abstract static class TypeAlertDialog
     extends org.wheatgenetics.androidlibrary.ItemsAlertDialog
     {
+        @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
         private java.lang.String itemsInstance[] = null;
 
         // region Package Methods
         @android.support.annotation.RestrictTo(
             android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-        boolean itemsIsNull() { return null == this.itemsInstance; }
+        boolean itemsIsNull() { return null == this.items(); }
 
         @android.support.annotation.RestrictTo(
             android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -87,6 +87,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
 
                 arrayList.add("null");
                 {
+                    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
                     final io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum
                         entryTypeEnums[] =
                             io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum.values();
@@ -134,7 +135,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
 
                 arrayList.add("null");
                 {
-                    final
+                    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final
                        io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum
                             positionCoordinateXTypeEnums[] = io.swagger.client.model
                                 .StudyLayoutRequestLayout.PositionCoordinateXTypeEnum.values();
@@ -182,7 +183,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
 
                 arrayList.add("null");
                 {
-                    final
+                    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final
                         io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum
                             positionCoordinateYTypeEnums[] = io.swagger.client.model
                                 .StudyLayoutRequestLayout.PositionCoordinateYTypeEnum.values();
@@ -225,11 +226,11 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
 
     private
         org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.EntryTypeAlertDialog
-            entryTypeAlertDialogInstance = null;
+            entryTypeAlertDialogInstance = null;                                        // lazy load
     private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
-        .PositionCoordinateXTypeAlertDialog positionCoordinateXTypeAlertDialogInstance = null;
+        .PositionCoordinateXTypeAlertDialog positionCoordinateXTypeAlertDialogInstance = null; // ll
     private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
-        .PositionCoordinateYTypeAlertDialog positionCoordinateYTypeAlertDialogInstance = null;
+        .PositionCoordinateYTypeAlertDialog positionCoordinateYTypeAlertDialogInstance = null; // ll
     // endregion
 
     // region Private Methods
@@ -381,7 +382,8 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
     // endregion
 
     public StudyLayoutRequestLayoutAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler) { super(activity, handler); }
+    final org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.Handler handler)
+    { super(activity, handler); }
 
     // region Overridden methods
     @java.lang.Override public void configure()
@@ -392,86 +394,89 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
             final android.view.View view = this.inflate(
                 org.wheatgenetics.androidlibrary.R.layout.study_layout_request_layout_alert_dialog);
 
-
-            assert null != view;
-            if (null == this.blockNumberEditText) this.blockNumberEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary
-                    .R.id.studiesStudyLayoutRequestLayoutBlockNumberEditText);
-
-            if (null == this.entryTypeTextView) this.entryTypeTextView = view.findViewById(
-                org.wheatgenetics.androidlibrary
-                    .R.id.studiesStudyLayoutRequestLayoutEntryTypeValueTextView);
+            if (null != view)
             {
-                final android.widget.Button changeEntryTypeButton = view.findViewById(
+                if (null == this.blockNumberEditText) this.blockNumberEditText = view.findViewById(
                     org.wheatgenetics.androidlibrary
-                        .R.id.studiesStudyLayoutRequestLayoutChangeEntryTypeButton);
-                if (null != changeEntryTypeButton) changeEntryTypeButton.setOnClickListener(
-                    new android.view.View.OnClickListener()
-                    {
-                        @java.lang.Override public void onClick(final android.view.View v)
-                        {
-                            org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
-                                .this.showEntryTypeAlertDialog();
-                        }
-                    });
-            }
+                        .R.id.studiesStudyLayoutRequestLayoutBlockNumberEditText);
 
-            if (null == this.observationUnitDbIdEditText) this.observationUnitDbIdEditText =
-                view.findViewById(org.wheatgenetics.androidlibrary
-                    .R.id.studiesStudyLayoutRequestLayoutObservationUnitDbIdEditText);
-
-            if (null == this.positionCoordinateXEditText) this.positionCoordinateXEditText =
-                view.findViewById(org.wheatgenetics.androidlibrary
-                    .R.id.studiesStudyLayoutRequestLayoutPositionCoordinateXEditText);
-
-            if (null == this.positionCoordinateXTypeTextView) this.positionCoordinateXTypeTextView =
-                view.findViewById(org.wheatgenetics.androidlibrary
-                    .R.id.studiesStudyLayoutRequestLayoutPositionCoordinateXTypeValueTextView);
-            {
-                final android.widget.Button changePositionCoordinateXTypeButton = view.findViewById(
+                if (null == this.entryTypeTextView) this.entryTypeTextView = view.findViewById(
                     org.wheatgenetics.androidlibrary
-                        .R.id.studiesStudyLayoutRequestLayoutChangePositionCoordinateXTypeButton);
-                if (null != changePositionCoordinateXTypeButton)
-                    changePositionCoordinateXTypeButton.setOnClickListener(
+                        .R.id.studiesStudyLayoutRequestLayoutEntryTypeValueTextView);
+                {
+                    final android.widget.Button changeEntryTypeButton = view.findViewById(
+                        org.wheatgenetics.androidlibrary
+                            .R.id.studiesStudyLayoutRequestLayoutChangeEntryTypeButton);
+                    if (null != changeEntryTypeButton) changeEntryTypeButton.setOnClickListener(
                         new android.view.View.OnClickListener()
                         {
                             @java.lang.Override public void onClick(final android.view.View v)
                             {
                                 org.wheatgenetics.brapi1_3.studies
-                                    .StudyLayoutRequestLayoutAlertDialog.this
-                                    .showPositionCoordinateXTypeAlertDialog();
+                                    .StudyLayoutRequestLayoutAlertDialog
+                                    .this.showEntryTypeAlertDialog();
                             }
                         });
-            }
+                }
 
-            if (null == this.positionCoordinateYEditText) this.positionCoordinateYEditText =
-                view.findViewById(org.wheatgenetics.androidlibrary
-                    .R.id.studiesStudyLayoutRequestLayoutPositionCoordinateYEditText);
+                if (null == this.observationUnitDbIdEditText) this.observationUnitDbIdEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studiesStudyLayoutRequestLayoutObservationUnitDbIdEditText);
 
-            if (null == this.positionCoordinateYTypeTextView) this.positionCoordinateYTypeTextView =
-                view.findViewById(org.wheatgenetics.androidlibrary
-                    .R.id.studiesStudyLayoutRequestLayoutPositionCoordinateYTypeValueTextView);
-            {
-                final android.widget.Button changePositionCoordinateYTypeButton = view.findViewById(
-                    org.wheatgenetics.androidlibrary
-                        .R.id.studiesStudyLayoutRequestLayoutChangePositionCoordinateYTypeButton);
-                if (null != changePositionCoordinateYTypeButton)
-                    changePositionCoordinateYTypeButton.setOnClickListener(
-                        new android.view.View.OnClickListener()
-                        {
-                            @java.lang.Override public void onClick(final android.view.View v)
+                if (null == this.positionCoordinateXEditText) this.positionCoordinateXEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studiesStudyLayoutRequestLayoutPositionCoordinateXEditText);
+
+                if (null == this.positionCoordinateXTypeTextView)
+                    this.positionCoordinateXTypeTextView = view.findViewById(
+                        org.wheatgenetics.androidlibrary.R.id
+                            .studiesStudyLayoutRequestLayoutPositionCoordinateXTypeValueTextView);
+                {
+                    final android.widget.Button changePositionCoordinateXTypeButton =
+                        view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                            .studiesStudyLayoutRequestLayoutChangePositionCoordinateXTypeButton);
+                    if (null != changePositionCoordinateXTypeButton)
+                        changePositionCoordinateXTypeButton.setOnClickListener(
+                            new android.view.View.OnClickListener()
                             {
-                                org.wheatgenetics.brapi1_3.studies
-                                    .StudyLayoutRequestLayoutAlertDialog.this
-                                    .showPositionCoordinateYTypeAlertDialog();
-                            }
-                        });
+                                @java.lang.Override public void onClick(final android.view.View v)
+                                {
+                                    org.wheatgenetics.brapi1_3.studies
+                                        .StudyLayoutRequestLayoutAlertDialog.this
+                                        .showPositionCoordinateXTypeAlertDialog();
+                                }
+                            });
+                }
+
+                if (null == this.positionCoordinateYEditText) this.positionCoordinateYEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studiesStudyLayoutRequestLayoutPositionCoordinateYEditText);
+
+                if (null == this.positionCoordinateYTypeTextView)
+                    this.positionCoordinateYTypeTextView = view.findViewById(
+                        org.wheatgenetics.androidlibrary.R.id
+                            .studiesStudyLayoutRequestLayoutPositionCoordinateYTypeValueTextView);
+                {
+                    final android.widget.Button changePositionCoordinateYTypeButton =
+                        view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                            .studiesStudyLayoutRequestLayoutChangePositionCoordinateYTypeButton);
+                    if (null != changePositionCoordinateYTypeButton)
+                        changePositionCoordinateYTypeButton.setOnClickListener(
+                            new android.view.View.OnClickListener()
+                            {
+                                @java.lang.Override public void onClick(final android.view.View v)
+                                {
+                                    org.wheatgenetics.brapi1_3.studies
+                                        .StudyLayoutRequestLayoutAlertDialog.this
+                                        .showPositionCoordinateYTypeAlertDialog();
+                                }
+                            });
+                }
+
+                if (null == this.replicateEditText) this.replicateEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary
+                        .R.id.studiesStudyLayoutRequestLayoutReplicateEditText);
             }
-
-            if (null == this.replicateEditText) this.replicateEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary
-                    .R.id.studiesStudyLayoutRequestLayoutReplicateEditText);
-
 
             this.setView(view);
         }

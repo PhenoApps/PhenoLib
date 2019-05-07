@@ -29,8 +29,8 @@ class StudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedA
     }
 
     // region Fields
-    private java.lang.String        title            ;
-    private android.widget.EditText studyDbIdEditText;
+    private final java.lang.String        title            ;
+    private       android.widget.EditText studyDbIdEditText;
 
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudyDbIdPagePageSizeAlertDialog.Parameters parameters = null;

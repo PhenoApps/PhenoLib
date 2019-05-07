@@ -30,7 +30,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     final java.lang.String text) { if (null != editText) editText.setText(text); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"}) protected static void setEditTextText(
+    protected static void setEditTextText(
     final android.widget.EditText editText, final java.lang.Integer text)
     {
         org.wheatgenetics.brapi1_3.AlertDialog.setEditTextText(
@@ -102,7 +102,6 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected static java.lang.Integer getEditTextIntText(final android.widget.EditText editText)
     {
         final java.lang.String stringText =
@@ -111,7 +110,6 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected static java.util.ArrayList<java.lang.String> getEditTextStringListText(
     final android.widget.EditText editText)
     {
@@ -121,14 +119,12 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
             return null;
         else
         {
-            @java.lang.SuppressWarnings({"Convert2Diamond"})
             java.util.ArrayList<java.lang.String> arrayList = null;
             {
                       int endIndex      = stringText.indexOf('\n');
                 final int notFoundIndex = -1                      ;
                 if (endIndex == notFoundIndex)
                 {
-                    // noinspection ConstantConditions
                     arrayList = org.wheatgenetics.brapi1_3.AlertDialog.arrayList(arrayList);
                     arrayList.add(stringText);
                 }
@@ -162,9 +158,8 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     { if (null != this.handler) this.handler.handleDone(); }
     // endregion
 
-    @java.lang.SuppressWarnings({"WeakerAccess"}) public AlertDialog(
-    final android.app.Activity                           activity,
-    final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler )
+    public AlertDialog(final android.app.Activity activity,
+    final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler)
     { super(activity); this.handler = handler; }
 
     @java.lang.Override public void configure()

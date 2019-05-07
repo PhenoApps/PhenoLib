@@ -20,12 +20,13 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment
- * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment
  */
 public class Activity extends android.support.v7.app.AppCompatActivity
@@ -121,17 +122,20 @@ public class Activity extends android.support.v7.app.AppCompatActivity
     }
 
     // region Fields
-    private java.lang.String                  resourceNames[] = null;
-    private android.support.v7.widget.Toolbar toolbar         = null;
-    private android.support.v4.view.ViewPager viewPager       = null;
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+    private java.lang.String resourceNames[] = null;
+
+    private android.support.v7.widget.Toolbar toolbar   = null;
+    private android.support.v4.view.ViewPager viewPager = null;
     // endregion
 
     // region Private Methods
     private void setToolBarTitle(@android.support.annotation.IntRange(from = 0) final int i)
     {
-        if (null != this.toolbar) this.toolbar.setTitle(this.getString(
-            org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
-            this.resourceNames[i]                                                  ));
+        if (null != this.resourceNames && null != this.toolbar)
+            this.toolbar.setTitle(this.getString(
+                org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
+                this.resourceNames[i]                                                  ));
     }
 
     private void setPage(@android.support.annotation.NonNull

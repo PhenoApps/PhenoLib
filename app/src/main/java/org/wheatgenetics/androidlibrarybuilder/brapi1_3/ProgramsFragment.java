@@ -31,9 +31,9 @@ extends    org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
 implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
 {
     // region Fields
-    private io.swagger.client.api.ProgramsApi programsApiInstance = null;
+    private io.swagger.client.api.ProgramsApi programsApiInstance = null;               // lazy load
     private io.swagger.client.ApiCallback<io.swagger.client.model.ProgramsResponse>
-        programsResponseCallbackInstance = null;
+        programsResponseCallbackInstance = null;                                        // lazy load
 
     // region programsGet() Fields
     private android.widget.EditText commonCropNameEditText,
@@ -41,11 +41,11 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
     // endregion
 
     // region searchProgramsPost() Fields
-    private io.swagger.client.model.ProgramsSearchRequest programsSearchRequestInstance = null;
+    private io.swagger.client.model.ProgramsSearchRequest programsSearchRequestInstance = null;// ll
     private org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog
-        programsSearchRequestAlertDialogInstance = null;
+        programsSearchRequestAlertDialogInstance = null;                                // lazy load
     private io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>
-        successfulSearchResponseCallbackInstance = null;
+        successfulSearchResponseCallbackInstance = null;                                // lazy load
     // endregion
 
     // region searchProgramsSearchResultsDbIdGet() Fields
@@ -213,7 +213,7 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
     public ProgramsFragment() {}
 
     // region Overridden Methods
-    @android.support.annotation.Nullable @java.lang.Override public android.view.View onCreateView(
+    @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
     @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
     @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
     @android.support.annotation.Nullable final android.os.Bundle           savedInstanceState)
@@ -221,74 +221,75 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_programs);
 
-
-        // The following twelve ids are from fragment_brapi1_3_programs.xml.
-        assert null != rootView; this.commonCropNameEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.programsCommonCropNameEditText);
-        this.programNameEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.programsProgramNameEditText);
-        this.abbreviationEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.programsAbbreviationEditText);
-        this.findPageEditTextById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.programsGetPageEditText);
-        this.findPageSizeEditTextById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.programsGetPageSizeEditText);
+        if (null != rootView)
         {
-            final android.widget.Button programsGetButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.programsGetButton);
-            if (null != programsGetButton) programsGetButton.setOnClickListener(
-                new android.view.View.OnClickListener()
-                {
-                    @java.lang.Override public void onClick(final android.view.View v)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
-                            .this.programsGet();
-                    }
-                });
-        }
-
-        {
-            final android.widget.Button searchProgramsPostButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.searchProgramsPostButton);
-            if (null != searchProgramsPostButton) searchProgramsPostButton.setOnClickListener(
-                new android.view.View.OnClickListener()
-                {
-                    @java.lang.Override public void onClick(final android.view.View v)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
-                            .this.showProgramsSearchRequestAlertDialog();
-                    }
-                }
-            );
-        }
-
-        this.searchResultsDbIdEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.programsSearchResultsDbIdEditText);
-        this.searchProgramsSearchResultsDbIdGetPageEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder
-                .R.id.searchProgramsSearchResultsDbIdGetPageEditText);
-        this.searchProgramsSearchResultsDbIdGetPageSizeEditText = rootView.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.
-                R.id.searchProgramsSearchResultsDbIdGetPageSizeEditText);
-        {
-            final android.widget.Button searchProgramsSearchResultsDbIdGetButton =
-                rootView.findViewById(org.wheatgenetics.androidlibrarybuilder
-                    .R.id.searchProgramsSearchResultsDbIdGetButton);
-            if (null != searchProgramsSearchResultsDbIdGetButton)
-                searchProgramsSearchResultsDbIdGetButton.setOnClickListener(
+            // The following twelve ids are from fragment_brapi1_3_programs.xml.
+            this.commonCropNameEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.programsCommonCropNameEditText);
+            this.programNameEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.programsProgramNameEditText);
+            this.abbreviationEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.programsAbbreviationEditText);
+            this.findPageEditTextById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.programsGetPageEditText);
+            this.findPageSizeEditTextById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.programsGetPageSizeEditText);
+            {
+                final android.widget.Button programsGetButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.programsGetButton);
+                if (null != programsGetButton) programsGetButton.setOnClickListener(
                     new android.view.View.OnClickListener()
                     {
                         @java.lang.Override public void onClick(final android.view.View v)
                         {
                             org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
-                                .this.searchProgramsSearchResultsDbIdGet();
+                                .this.programsGet();
                         }
                     });
+            }
+
+            {
+                final android.widget.Button searchProgramsPostButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.searchProgramsPostButton);
+                if (null != searchProgramsPostButton) searchProgramsPostButton.setOnClickListener(
+                    new android.view.View.OnClickListener()
+                    {
+                        @java.lang.Override public void onClick(final android.view.View v)
+                        {
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
+                                .this.showProgramsSearchRequestAlertDialog();
+                        }
+                    }
+                );
+            }
+
+            this.searchResultsDbIdEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.R.id.programsSearchResultsDbIdEditText);
+            this.searchProgramsSearchResultsDbIdGetPageEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder
+                    .R.id.searchProgramsSearchResultsDbIdGetPageEditText);
+            this.searchProgramsSearchResultsDbIdGetPageSizeEditText = rootView.findViewById(
+                org.wheatgenetics.androidlibrarybuilder.
+                    R.id.searchProgramsSearchResultsDbIdGetPageSizeEditText);
+            {
+                final android.widget.Button searchProgramsSearchResultsDbIdGetButton =
+                    rootView.findViewById(org.wheatgenetics.androidlibrarybuilder
+                        .R.id.searchProgramsSearchResultsDbIdGetButton);
+                if (null != searchProgramsSearchResultsDbIdGetButton)
+                    searchProgramsSearchResultsDbIdGetButton.setOnClickListener(
+                        new android.view.View.OnClickListener()
+                        {
+                            @java.lang.Override public void onClick(final android.view.View v)
+                            {
+                                org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
+                                    .this.searchProgramsSearchResultsDbIdGet();
+                            }
+                        });
+            }
+
+            this.findResponseTextViewById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.programsResponseTextView);
         }
-
-        this.findResponseTextViewById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.programsResponseTextView);
-
 
         return rootView;
     }

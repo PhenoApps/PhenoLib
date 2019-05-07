@@ -24,9 +24,9 @@ public class CropsFragment extends org.wheatgenetics.androidlibrarybuilder.brapi
 implements android.view.View.OnClickListener
 {
     // region Fields
-    private io.swagger.client.api.CropsApi cropsApiInstance = null;
+    private io.swagger.client.api.CropsApi cropsApiInstance = null;                     // lazy load
     private io.swagger.client.ApiCallback<io.swagger.client.model.CommonCropNamesResponse>
-        callbackInstance = null;
+        callbackInstance = null;                                                        // lazy load
     // endregion
 
     // region Private Methods
@@ -81,30 +81,33 @@ implements android.view.View.OnClickListener
     public CropsFragment() {}
 
     // region Overridden Methods
-    @android.support.annotation.Nullable @java.lang.Override public android.view.View onCreateView(
+    @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
     @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
     @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
     @android.support.annotation.Nullable final android.os.Bundle           savedInstanceState)
     {
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_crops);
-
-        // The following four ids are from fragment_brapi1_3_crops.xml.
-        assert null != rootView; this.findPageEditTextById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.cropsPageEditText);
-        this.findPageSizeEditTextById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.cropsPageSizeEditText);
+        if (null != rootView)
         {
-            final android.widget.Button commoncropnamesGetButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.commoncropnamesGetButton);
-            if (null != commoncropnamesGetButton) commoncropnamesGetButton.setOnClickListener(this);
+            // The following four ids are from fragment_brapi1_3_crops.xml.
+            this.findPageEditTextById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.cropsPageEditText);
+            this.findPageSizeEditTextById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.cropsPageSizeEditText);
+            {
+                final android.widget.Button commoncropnamesGetButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.commoncropnamesGetButton);
+                if (null != commoncropnamesGetButton)
+                    commoncropnamesGetButton.setOnClickListener(this);
+            }
+            this.findResponseTextViewById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.cropsResponseTextView);
         }
-        this.findResponseTextViewById(rootView,
-            org.wheatgenetics.androidlibrarybuilder.R.id.cropsResponseTextView);
-
         return rootView;
     }
 
+    // region android.view.View.OnClickListener Overridden Method
     @java.lang.Override public void onClick(final android.view.View v)
     {
         try
@@ -117,5 +120,6 @@ implements android.view.View.OnClickListener
         }
         catch (final java.lang.Throwable e) { this.setResponseTextViewText(e); }
     }
+    // endregion
     // endregion
 }

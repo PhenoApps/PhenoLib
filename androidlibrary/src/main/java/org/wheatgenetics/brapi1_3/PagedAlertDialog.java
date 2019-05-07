@@ -11,7 +11,6 @@ package org.wheatgenetics.brapi1_3;
  * android.widget.EditText
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
- * org.wheatgenetics.brapi1_3.AlertDialog.Handler
  */
 public abstract class PagedAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
@@ -20,12 +19,10 @@ public abstract class PagedAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
     // region Protected Methods
     // region setEditTextText() Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected void setPageEditTextText(final java.lang.Integer page)
     { org.wheatgenetics.brapi1_3.PagedAlertDialog.setEditTextText(this.pageEditText, page); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected void setPageSizeEditTextText(final java.lang.Integer pageSize)
     {
         org.wheatgenetics.brapi1_3.PagedAlertDialog.setEditTextText(
@@ -35,12 +32,10 @@ public abstract class PagedAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
 
     // region getEditTextText() Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected java.lang.Integer getPageEditTextIntText()
     { return org.wheatgenetics.brapi1_3.PagedAlertDialog.getEditTextIntText(this.pageEditText); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected java.lang.Integer getPageSizeEditTextIntText()
     {
         return org.wheatgenetics.brapi1_3.PagedAlertDialog.getEditTextIntText(
@@ -48,20 +43,21 @@ public abstract class PagedAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
     }
     // endregion
 
+    // region findEditTextById() Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"}) protected void findPageEditTextById(
+    protected void findPageEditTextById(
     @android.support.annotation.NonNull final android.view.View view,
     @android.support.annotation.IdRes   final int               id  )
     { if (null == this.pageEditText) this.pageEditText = view.findViewById(id); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"}) protected void findPageSizeEditTextById(
+    protected void findPageSizeEditTextById(
     @android.support.annotation.NonNull final android.view.View view,
     @android.support.annotation.IdRes   final int               id  )
     { if (null == this.pageSizeEditText) this.pageSizeEditText = view.findViewById(id); }
     // endregion
+    // endregion
 
-    @java.lang.SuppressWarnings({"WeakerAccess"}) public PagedAlertDialog(
-    final android.app.Activity                           activity,
-    final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler ) { super(activity, handler); }
+    public PagedAlertDialog(final android.app.Activity activity,
+    final org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler handler) { super(activity, handler); }
 }

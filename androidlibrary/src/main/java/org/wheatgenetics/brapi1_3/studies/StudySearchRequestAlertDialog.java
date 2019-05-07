@@ -24,13 +24,13 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.PagedAlertDialog
- * org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler
  */
 public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
     private static class SortByAlertDialog extends org.wheatgenetics.androidlibrary.ItemsAlertDialog
     {
-        private java.lang.String itemsInstance[] = null;
+        @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+        private java.lang.String itemsInstance[] = null;                                // lazy load
 
         private java.lang.String[] items()
         {
@@ -41,6 +41,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
                     new java.util.ArrayList<java.lang.String>();
                 arrayList.add("null");
                 {
+                    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
                     final io.swagger.client.model.StudySearchRequest.SortByEnum sortByEnums[] =
                         io.swagger.client.model.StudySearchRequest.SortByEnum.values();
                     for (final io.swagger.client.model.StudySearchRequest.SortByEnum sortByEnum:
@@ -88,7 +89,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     private io.swagger.client.model.StudySearchRequest.SortByEnum sortByEnum         = null;
 
     private org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.SortByAlertDialog
-        sortByAlertDialogInstance = null;
+        sortByAlertDialogInstance = null;                                               // lazy load
     // endregion
 
     // region Private Methods
@@ -125,7 +126,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     {
         if (null != radioGroup)
         {
-            final @android.support.annotation.IdRes int id;
+            @android.support.annotation.IdRes final int id;
             if (null == active)
                 id = org.wheatgenetics.androidlibrary.R.id.studySearchRequestNullActiveRadioButton;
             else
@@ -164,11 +165,11 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     {
         if (null != radioGroup)
         {
-            final @android.support.annotation.IdRes int id;
+            @android.support.annotation.IdRes final int id;
             {
-                @android.support.annotation.IdRes
-                final int nullSortOrderRadioButton = org.wheatgenetics.androidlibrary
-                    .R.id.studySearchRequestNullSortOrderRadioButton;
+                @android.support.annotation.IdRes final int nullSortOrderRadioButton =
+                    org.wheatgenetics.androidlibrary
+                        .R.id.studySearchRequestNullSortOrderRadioButton;
                 if (null == sortOrderEnum)
                     id = nullSortOrderRadioButton;
                 else
@@ -257,7 +258,8 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     // endregion
 
     public StudySearchRequestAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler handler) { super(activity, handler); }
+    final org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.Handler handler)
+    { super(activity, handler); }
 
     // region Overridden methods
     @java.lang.Override public void configure()
@@ -267,62 +269,66 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
             final android.view.View view = this.inflate(
                 org.wheatgenetics.androidlibrary.R.layout.study_search_request_alert_dialog);
 
-            assert null != view;
-            if (null == this.activeRadioGroup) this.activeRadioGroup = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestActiveRadioGroup);
-            if (null == this.commonCropNamesEditText)
-                this.commonCropNamesEditText = view.findViewById(org.wheatgenetics.androidlibrary
-                    .R.id.studySearchRequestCommonCropNamesEditText);
-            if (null == this.germplasmDbIdsEditText) this.germplasmDbIdsEditText =
-                view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestGermplasmDbIdsEditText);
-            if (null == this.locationDbIdsEditText) this.locationDbIdsEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestLocationDbIdsEditText);
-            if (null == this.observationVariableDbIdsEditText)
-                this.observationVariableDbIdsEditText = view.findViewById(org.wheatgenetics
-                    .androidlibrary.R.id.studySearchRequestObservationVariableDbIdsEditText);
-            this.findPageEditTextById(view,
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestPageEditText);
-            this.findPageSizeEditTextById(view,
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestPageSizeEditText);
-            if (null == this.programDbIdsEditText) this.programDbIdsEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestProgramDbIdsEditText);
-            if (null == this.programNamesEditText) this.programNamesEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestProgramNamesEditText);
-            if (null == this.seasonDbIdsEditText) this.seasonDbIdsEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestSeasonDbIdsEditText);
-            if (null == this.sortByTextView) this.sortByTextView = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestSortByValueTextView);
+            if (null != view)
             {
-                final android.widget.Button changeSortByButton = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestChangeSortByButton);
-                if (null != changeSortByButton) changeSortByButton.setOnClickListener(
-                    new android.view.View.OnClickListener()
-                    {
-                        @java.lang.Override public void onClick(final android.view.View v)
+                if (null == this.activeRadioGroup) this.activeRadioGroup = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestActiveRadioGroup);
+                if (null == this.commonCropNamesEditText) this.commonCropNamesEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studySearchRequestCommonCropNamesEditText);
+                if (null == this.germplasmDbIdsEditText) this.germplasmDbIdsEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studySearchRequestGermplasmDbIdsEditText);
+                if (null == this.locationDbIdsEditText) this.locationDbIdsEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studySearchRequestLocationDbIdsEditText);
+                if (null == this.observationVariableDbIdsEditText)
+                    this.observationVariableDbIdsEditText = view.findViewById(org.wheatgenetics
+                        .androidlibrary.R.id.studySearchRequestObservationVariableDbIdsEditText);
+                this.findPageEditTextById(view,
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestPageEditText);
+                this.findPageSizeEditTextById(view,
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestPageSizeEditText);
+                if (null == this.programDbIdsEditText) this.programDbIdsEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studySearchRequestProgramDbIdsEditText);
+                if (null == this.programNamesEditText) this.programNamesEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studySearchRequestProgramNamesEditText);
+                if (null == this.seasonDbIdsEditText) this.seasonDbIdsEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestSeasonDbIdsEditText);
+                if (null == this.sortByTextView) this.sortByTextView = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestSortByValueTextView);
+                {
+                    final android.widget.Button changeSortByButton = view.findViewById(
+                        org.wheatgenetics.androidlibrary.R.id.studySearchRequestChangeSortByButton);
+                    if (null != changeSortByButton) changeSortByButton.setOnClickListener(
+                        new android.view.View.OnClickListener()
                         {
-                            org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
-                                .this.showSortByAlertDialog();
-                        }
-                    });
-            }
-            if (null == this.sortOrderRadioGroup) this.sortOrderRadioGroup = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestSortOrderRadioGroup);
-            if (null == this.studyDbIdsEditText) this.studyDbIdsEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestStudyDbIdsEditText);
-            if (null == this.studyNamesEditText) this.studyNamesEditText = view.findViewById(
+                            @java.lang.Override public void onClick(final android.view.View v)
+                            {
+                                org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
+                                    .this.showSortByAlertDialog();
+                            }
+                        });
+                }
+                if (null == this.sortOrderRadioGroup) this.sortOrderRadioGroup = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestSortOrderRadioGroup);
+                if (null == this.studyDbIdsEditText) this.studyDbIdsEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestStudyDbIdsEditText);
+                if (null == this.studyNamesEditText) this.studyNamesEditText = view.findViewById(
                     org.wheatgenetics.androidlibrary.R.id.studySearchRequestStudyNamesEditText);
-            if (null == this.studyNamesEditText) this.studyNamesEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestStudyNamesEditText);
-            if (null == this.studyTypeDbIdsEditText)
-                this.studyTypeDbIdsEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestStudyTypeDbIdsEditText);
-            if (null == this.studyTypeNamesEditText)
-                this.studyTypeNamesEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestStudyTypeNamesEditText);
-            if (null == this.trialDbIdsEditText) this.trialDbIdsEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.studySearchRequestTrialDbIdsEditText);
-
+                if (null == this.studyNamesEditText) this.studyNamesEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestStudyNamesEditText);
+                if (null == this.studyTypeDbIdsEditText) this.studyTypeDbIdsEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studySearchRequestStudyTypeDbIdsEditText);
+                if (null == this.studyTypeNamesEditText) this.studyTypeNamesEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.studySearchRequestStudyTypeNamesEditText);
+                if (null == this.trialDbIdsEditText) this.trialDbIdsEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.studySearchRequestTrialDbIdsEditText);
+            }
             this.setView(view);
         }
         super.configure();

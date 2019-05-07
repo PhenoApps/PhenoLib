@@ -8,7 +8,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
  */
-@android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
 abstract class IntegerFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)

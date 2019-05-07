@@ -13,7 +13,6 @@ package org.wheatgenetics.brapi1_3;
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.PagedAlertDialog
- * org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler
  */
 public class ProgramsSearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
@@ -25,7 +24,8 @@ public class ProgramsSearchRequestAlertDialog extends org.wheatgenetics.brapi1_3
     // endregion
 
     public ProgramsSearchRequestAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler handler) { super(activity, handler); }
+    final org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler handler)
+    { super(activity, handler); }
 
     // region Overridden methods
     @java.lang.Override public void configure()
@@ -36,28 +36,33 @@ public class ProgramsSearchRequestAlertDialog extends org.wheatgenetics.brapi1_3
             final android.view.View view = this.inflate(
                 org.wheatgenetics.androidlibrary.R.layout.programs_search_request_alert_dialog);
 
-            assert null != view;
-            if (null == this.abbreviationsEditText) this.abbreviationsEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.programsSearchRequestAbbreviationsEditText);
-            if (null == this.commonCropNamesEditText)
-                this.commonCropNamesEditText = view.findViewById(org.wheatgenetics
-                    .androidlibrary.R.id.programsSearchRequestCommonCropNamesEditText);
-            if (null == this.leadPersonDbIdsEditText)
-                this.leadPersonDbIdsEditText = view.findViewById(org.wheatgenetics
-                    .androidlibrary.R.id.programsSearchRequestLeadPersonDbIdsEditText);
-            if (null == this.leadPersonNamesEditText)
-                this.leadPersonNamesEditText = view.findViewById(org.wheatgenetics
-                    .androidlibrary.R.id.programsSearchRequestLeadPersonNamesEditText);
-            if (null == this.objectivesEditText) this.objectivesEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.programsSearchRequestObjectivesEditText);
-            this.findPageEditTextById(view,
-                org.wheatgenetics.androidlibrary.R.id.programsSearchRequestPageEditText);
-            this.findPageSizeEditTextById(view,
-                org.wheatgenetics.androidlibrary.R.id.programsSearchRequestPageSizeEditText);
-            if (null == this.programDbIdsEditText) this.programDbIdsEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.programsSearchRequestProgramDbIdsEditText);
-            if (null == this.programNamesEditText) this.programNamesEditText = view.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.programsSearchRequestProgramNamesEditText);
+            if (null != view)
+            {
+                if (null == this.abbreviationsEditText) this.abbreviationsEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary.R
+                        .id.programsSearchRequestAbbreviationsEditText);
+                if (null == this.commonCropNamesEditText)
+                    this.commonCropNamesEditText = view.findViewById(org.wheatgenetics
+                        .androidlibrary.R.id.programsSearchRequestCommonCropNamesEditText);
+                if (null == this.leadPersonDbIdsEditText)
+                    this.leadPersonDbIdsEditText = view.findViewById(org.wheatgenetics
+                        .androidlibrary.R.id.programsSearchRequestLeadPersonDbIdsEditText);
+                if (null == this.leadPersonNamesEditText)
+                    this.leadPersonNamesEditText = view.findViewById(org.wheatgenetics
+                        .androidlibrary.R.id.programsSearchRequestLeadPersonNamesEditText);
+                if (null == this.objectivesEditText) this.objectivesEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.programsSearchRequestObjectivesEditText);
+                this.findPageEditTextById(view,
+                    org.wheatgenetics.androidlibrary.R.id.programsSearchRequestPageEditText);
+                this.findPageSizeEditTextById(view,
+                    org.wheatgenetics.androidlibrary.R.id.programsSearchRequestPageSizeEditText);
+                if (null == this.programDbIdsEditText) this.programDbIdsEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.programsSearchRequestProgramDbIdsEditText);
+                if (null == this.programNamesEditText) this.programNamesEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary
+                        .R.id.programsSearchRequestProgramNamesEditText);
+            }
 
             this.setView(view);
         }

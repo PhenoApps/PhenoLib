@@ -71,7 +71,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogCommonCropNamesEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestGermplasmDbIdsEditText"
@@ -79,7 +80,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogGermplasmDbIdsEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestLocationDbIdsEditText"
@@ -87,7 +89,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogLocationDbIdsEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestObservationVariableDbIdsEditText"
@@ -95,7 +98,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogObservationVariableDbIdsEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
 
 
@@ -105,7 +109,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/pageEditTextHint"
         android:inputType="number"
-        android:maxLines="1" />
+        android:maxLines="1"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestPageSizeEditText"
@@ -113,7 +118,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/pageSizeEditTextHint"
         android:inputType="number"
-        android:maxLines="1" />
+        android:maxLines="1"
+        tools:ignore="Autofill" />
 
 
 
@@ -123,7 +129,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogProgramDbIdsEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestProgramNamesEditText"
@@ -131,7 +138,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogProgramNamesEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestSeasonDbIdsEditText"
@@ -139,7 +147,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogSeasonDbIdsEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
 
 
@@ -256,7 +265,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogStudyDbIdsEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestStudyNamesEditText"
@@ -264,7 +274,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogStudyNamesEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestStudyTypeDbIdsEditText"
@@ -272,7 +283,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogStudyTypeDbIdsEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestStudyTypeNamesEditText"
@@ -280,7 +292,8 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogStudyTypeNamesEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/studySearchRequestTrialDbIdsEditText"
@@ -288,6 +301,7 @@
         android:layout_height="48dp"
         android:hint="@string/StudySearchRequestAlertDialogTrialDbIdsEditTextHint"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
 
 </LinearLayout>

@@ -44,7 +44,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/locationTypeTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -81,7 +81,7 @@
         app:layout_constraintLeft_toRightOf="@id/locationTypeEditText"
         app:layout_constraintTop_toBottomOf="@id/locationsPageTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -118,7 +118,7 @@
         app:layout_constraintLeft_toRightOf="@id/locationsPageEditText"
         app:layout_constraintTop_toBottomOf="@id/locationsPageSizeTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -174,7 +174,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/locationsLocationDbIdTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 

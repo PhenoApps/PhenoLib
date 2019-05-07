@@ -12,16 +12,19 @@ package org.wheatgenetics.brapi1_3;
  */
 public class DataTypeAlertDialog extends org.wheatgenetics.androidlibrary.ItemsAlertDialog
 {
-    private java.lang.String itemsInstance[] = null;
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+    private java.lang.String itemsInstance[] = null;                                    // lazy load
 
     private java.lang.String[] items()
     {
         if (null == this.itemsInstance)
         {
+            // noinspection Convert2Diamond
             final java.util.ArrayList<java.lang.String> arrayList =
                 new java.util.ArrayList<java.lang.String>();
             arrayList.add("null");
             {
+                @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
                 final io.swagger.client.model.WSMIMEDataTypes dataTypes[] =
                     io.swagger.client.model.WSMIMEDataTypes.values();
                 for (final io.swagger.client.model.WSMIMEDataTypes dataType: dataTypes)

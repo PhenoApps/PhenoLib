@@ -44,7 +44,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trialsCommonCropNameTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -81,7 +81,7 @@
         app:layout_constraintLeft_toRightOf="@id/trialsCommonCropNameEditText"
         app:layout_constraintTop_toBottomOf="@id/trialsProgramDbIdTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -118,7 +118,7 @@
         app:layout_constraintLeft_toRightOf="@id/trialsProgramDbIdEditText"
         app:layout_constraintTop_toBottomOf="@id/trialsLocationDbIdTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -222,7 +222,7 @@
         app:layout_constraintLeft_toRightOf="@id/trialsActiveRadioGroup"
         app:layout_constraintTop_toBottomOf="@id/trialsSortByTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -259,7 +259,7 @@
         app:layout_constraintLeft_toRightOf="@id/trialsSortByEditText"
         app:layout_constraintTop_toBottomOf="@id/trialsSortOrderTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -296,7 +296,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trialsPageTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -333,7 +333,7 @@
         app:layout_constraintLeft_toRightOf="@id/trialsPageEditText"
         app:layout_constraintTop_toBottomOf="@id/trialsPageSizeTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -389,7 +389,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trialsTrialDbIdTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 

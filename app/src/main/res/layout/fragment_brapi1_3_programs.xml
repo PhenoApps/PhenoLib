@@ -44,7 +44,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/programsCommonCropNameTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -81,7 +81,7 @@
         app:layout_constraintLeft_toRightOf="@id/programsCommonCropNameEditText"
         app:layout_constraintTop_toBottomOf="@id/programsProgramNameTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -118,7 +118,7 @@
         app:layout_constraintLeft_toRightOf="@id/programsProgramNameEditText"
         app:layout_constraintTop_toBottomOf="@id/programsAbbreviationTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -155,7 +155,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/programsGetPageTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -192,7 +192,7 @@
         app:layout_constraintLeft_toRightOf="@id/programsGetPageEditText"
         app:layout_constraintTop_toBottomOf="@id/programsGetPageSizeTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -267,7 +267,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/programsSearchResultsDbIdTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -304,7 +304,7 @@
         app:layout_constraintLeft_toRightOf="@id/programsSearchResultsDbIdEditText"
         app:layout_constraintTop_toBottomOf="@id/searchProgramsSearchResultsDbIdGetPageTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
@@ -341,7 +341,7 @@
         app:layout_constraintLeft_toRightOf="@id/searchProgramsSearchResultsDbIdGetPageEditText"
         app:layout_constraintTop_toBottomOf="@id/searchProgramsSearchResultsDbIdGetPageSizeTextView"
 
-        tools:ignore="HardcodedText" />
+        tools:ignore="Autofill, HardcodedText" />
 
 
 
