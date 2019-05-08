@@ -127,7 +127,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
 
     // region Fields
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-    private java.lang.String resourceNames[] = null;
+    private java.lang.String fragmentNames[] = null;
 
     private android.support.v7.widget.Toolbar toolbar   = null;
     private android.support.v4.view.ViewPager viewPager = null;
@@ -138,21 +138,21 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
     // region Private Methods
     private void setToolBarTitle(@android.support.annotation.IntRange(from = 0) final int i)
     {
-        if (null != this.resourceNames && null != this.toolbar)
+        if (null != this.fragmentNames && null != this.toolbar)
             this.toolbar.setTitle(this.getString(
                 org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
-                this.apiClient().getBasePath(), this.resourceNames[i]      ));
+                this.apiClient().getBasePath(), this.fragmentNames[i]      ));
     }
 
     private void setPage(@android.support.annotation.NonNull
-    @android.support.annotation.Size(min = 1) final java.lang.CharSequence selectedResourceName)
+    @android.support.annotation.Size(min = 1) final java.lang.CharSequence selectedFragmentName)
     {
-        if (null != this.viewPager)
+        if (null != this.fragmentNames && null != this.viewPager)
         {
             int i = 0;
-            for (final java.lang.String resourceName: this.resourceNames)
+            for (final java.lang.String fragmentName: this.fragmentNames)
             {
-                if (selectedResourceName.equals(resourceName))
+                if (selectedFragmentName.equals(fragmentName))
                     { this.viewPager.setCurrentItem(i); break; }
                 i++;
             }
@@ -168,14 +168,14 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
 
         {
             final android.content.res.Resources resources = this.getResources();
-            if (null != resources) this.resourceNames = resources.getStringArray(
-                org.wheatgenetics.androidlibrarybuilder.R.array.resourceNames);
+            if (null != resources) this.fragmentNames = resources.getStringArray(
+                org.wheatgenetics.androidlibrarybuilder.R.array.fragmentNames);
         }
 
         this.toolbar = this.findViewById(
             org.wheatgenetics.androidlibrarybuilder.R.id.toolbar);            // From layout/acti-
         this.setSupportActionBar(this.toolbar);                               //  vity_brapi1_3.xml.
-        { final int firstResourceName = 0; this.setToolBarTitle(firstResourceName); }
+        { final int firstFragmentName = 0; this.setToolBarTitle(firstFragmentName); }
 
         this.viewPager = this.findViewById(
             org.wheatgenetics.androidlibrarybuilder.R.id.view_pager);         // From layout/acti-
