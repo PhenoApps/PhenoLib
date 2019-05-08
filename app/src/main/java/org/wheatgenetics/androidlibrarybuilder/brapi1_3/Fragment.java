@@ -27,13 +27,42 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     { @android.support.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient(); }
 
     // region Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier;
-    private android.widget.TextView responseTextView = null;
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier       ;
+    private android.widget.TextView                                    responseTextView = null;
     // endregion
 
     // region Package Methods
+    // region Supplier Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient() { return this.supplier.apiClient(); }
+    void setSupplier(
+    final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier)
+    { this.supplier = supplier; }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier getSupplier()
+    { return this.supplier; }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void failSupplier(final android.content.Context context)
+    {
+        this.setSupplier(null);
+        throw new java.lang.RuntimeException(null == context ?
+            "context" : context.toString() + " must implement Supplier");
+    }
+    // endregion
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void setResponseTextViewText(final java.lang.String text)
+    { if (null != this.responseTextView) this.responseTextView.setText(text); }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient()
+    {
+        final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
+            this.getSupplier();
+        // noinspection ConstantConditions
+        return null == supplier ? null : supplier.apiClient();
+    }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     static java.lang.String getString(final android.widget.EditText editText)
@@ -52,23 +81,22 @@ public abstract class Fragment extends android.support.v4.app.Fragment
             }
         }
     }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void setResponseTextViewText(final java.lang.String text)
-    { if (null != this.responseTextView) this.responseTextView.setText(text); }
     // endregion
 
+    // region Overridden Methods
     @java.lang.Override public void onAttach(final android.content.Context context)
     {
         super.onAttach(context);
 
         if (context instanceof org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier)
-            this.supplier =
-                (org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier) context;
+            this.setSupplier(
+                (org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier) context);
         else
-            throw new java.lang.RuntimeException(null == context ?
-                "context" : context.toString() + " must implement Supplier");
+            this.failSupplier(context);
     }
+
+    @java.lang.Override public void onDetach() { this.setSupplier(null); super.onDetach(); }
+    // endregion
 
     // region Public Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)

@@ -31,16 +31,21 @@ public class StubFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1
         {
             final java.lang.String resourceName;
             {
-                final java.lang.String ARGUMENT_KEY =
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.ARGUMENT_KEY;
                 final android.os.Bundle arguments = this.getArguments();
-                resourceName = null == arguments ? "ERROR" : arguments.containsKey(ARGUMENT_KEY) ?
-                    arguments.getString(ARGUMENT_KEY) : "ERROR";
+                if (null == arguments)
+                    resourceName = "ERROR";
+                else
+                {
+                    final java.lang.String ARGUMENT_KEY =
+                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.ARGUMENT_KEY;
+                    resourceName = arguments.containsKey(ARGUMENT_KEY) ?
+                        arguments.getString(ARGUMENT_KEY) : "ERROR";
+                }
             }
 
             final android.widget.TextView textView = rootView.findViewById(
                 org.wheatgenetics.androidlibrarybuilder.R.id.stubTextView);      // From fragment_-
-            if (null != textView) textView.setText(this.getString(            //  brapi_stub.xml.
+            if (null != textView) textView.setText(this.getString(               //  brapi_stub.xml.
                 org.wheatgenetics.androidlibrarybuilder.R.string.stubTextViewFormatString,
                 resourceName                                                             ));
         }

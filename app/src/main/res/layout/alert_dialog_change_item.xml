@@ -15,4 +15,4 @@
     android:selectAllOnFocus="true"
     android:autofillHints="auto"
 
-    tools:ignore="LabelFor,UnusedAttribute" />
+    tools:ignore="LabelFor, UnusedAttribute" />
