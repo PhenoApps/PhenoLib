@@ -128,8 +128,8 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
                 /* dataType      => */ this.dataType                    ,
                 /* page          => */ this.getPageEditTextIntText    (),
                 /* pageSize      => */ this.getPageSizeEditTextIntText(),
-                /* authorization => */null,
-                /* callback      => */ this.callback());
+                /* authorization => */ this.authorization             (),
+                /* callback      => */ this.callback                  ());
         }
         catch (final java.lang.Throwable e) { this.setResponseTextViewText(e); }
     }

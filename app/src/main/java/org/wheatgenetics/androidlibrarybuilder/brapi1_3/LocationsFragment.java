@@ -93,8 +93,8 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
                         this.locationTypeEditText),
                 /* page          => */ this.getPageEditTextIntText    (),
                 /* pageSize      => */ this.getPageSizeEditTextIntText(),
-                /* authorization => */null,
-                /* callback      => */ this.locationsResponseCallback());
+                /* authorization => */ this.authorization             (),
+                /* callback      => */ this.locationsResponseCallback ());
         }
         catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }
     }
@@ -147,7 +147,7 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
                 /* locationDbId => */
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment.getString(
                         this.locationDbIdEditText),
-                /* authorization => */null,
+                /* authorization => */ this.authorization           (),
                 /* callback      => */ this.locationResponseCallback());
         }
         catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }

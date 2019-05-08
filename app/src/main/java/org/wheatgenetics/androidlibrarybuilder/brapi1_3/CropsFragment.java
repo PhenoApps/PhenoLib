@@ -115,8 +115,8 @@ implements android.view.View.OnClickListener
             this.cropsApi().commoncropnamesGetAsync(
                 /* page          => */ this.getPageEditTextIntText    (),
                 /* pageSize      => */ this.getPageSizeEditTextIntText(),
-                /* authorization => */null,
-                /* callback      => */ this.callback());
+                /* authorization => */ this.authorization             (),
+                /* callback      => */ this.callback                  ());
         }
         catch (final java.lang.Throwable e) { this.setResponseTextViewText(e); }
     }

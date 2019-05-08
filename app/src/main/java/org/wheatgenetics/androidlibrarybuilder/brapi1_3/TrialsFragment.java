@@ -127,8 +127,8 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
                         this.sortOrderEditText),
                 /* page          => */ this.getPageEditTextIntText    (),
                 /* pageSize      => */ this.getPageSizeEditTextIntText(),
-                /* authorization => */null,
-                /* callback      => */ this.trialsResponseCallback());
+                /* authorization => */ this.authorization             (),
+                /* callback      => */ this.trialsResponseCallback    ());
         }
         catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }
     }
@@ -181,7 +181,7 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
                 /* trialDbId => */
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment.getString(
                         this.trialDbIdEditText),
-                /* authorization => */null,
+                /* authorization => */ this.authorization        (),
                 /* callback      => */ this.trialResponseCallback());
         }
         catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }

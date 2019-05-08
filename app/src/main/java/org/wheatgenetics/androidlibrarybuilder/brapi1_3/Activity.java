@@ -136,7 +136,8 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     private android.support.v7.widget.Toolbar toolbar   = null;
     private android.support.v4.view.ViewPager viewPager = null;
 
-    private io.swagger.client.ApiClient apiClientInstance = new io.swagger.client.ApiClient();
+    private java.lang.String            authorizationInstance = null                             ;
+    private io.swagger.client.ApiClient apiClientInstance     = new io.swagger.client.ApiClient();
     private java.lang.CharSequence      testServerBasePathInstance =
         this.apiClientInstance.getBasePath();
     // endregion
@@ -259,6 +260,9 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     { if (null != this.viewPager) this.viewPager.clearOnPageChangeListeners(); super.onDestroy(); }
 
     // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier Overridden Methods
+    @java.lang.Override public java.lang.String authorization()
+    { return this.authorizationInstance; }
+
     @java.lang.Override @android.support.annotation.NonNull
     public io.swagger.client.ApiClient apiClient() { return this.apiClientInstance; }
 

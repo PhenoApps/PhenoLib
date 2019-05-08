@@ -24,12 +24,18 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
 public abstract class Fragment extends android.support.v4.app.Fragment
 {
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface Supplier
-    { @android.support.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient(); }
+    {
+                                            public abstract java.lang.String        authorization();
+        @android.support.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient();
+    }
 
     // region Fields
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier       ;
     private android.widget.TextView                                    responseTextView = null;
     // endregion
+
+    private void setResponseTextViewText(final java.lang.String text)
+    { if (null != this.responseTextView) this.responseTextView.setText(text); }
 
     // region Package Methods
     // region Supplier Package Methods
@@ -52,16 +58,11 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     // endregion
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void setResponseTextViewText(final java.lang.String text)
-    { if (null != this.responseTextView) this.responseTextView.setText(text); }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient()
+    java.lang.String authorization()
     {
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
             this.getSupplier();
-        // noinspection ConstantConditions
-        return null == supplier ? null : supplier.apiClient();
+        return null == supplier ? null : supplier.authorization();
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -82,6 +83,15 @@ public abstract class Fragment extends android.support.v4.app.Fragment
         }
     }
     // endregion
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient()
+    {
+        final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
+            this.getSupplier();
+        // noinspection ConstantConditions
+        return null == supplier ? null : supplier.apiClient();
+    }
 
     // region Overridden Methods
     @java.lang.Override public void onAttach(final android.content.Context context)

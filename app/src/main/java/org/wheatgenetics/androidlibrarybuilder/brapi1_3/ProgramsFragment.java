@@ -118,8 +118,8 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
                         this.abbreviationEditText),
                 /* page          => */ this.getPageEditTextIntText    (),
                 /* pageSize      => */ this.getPageSizeEditTextIntText(),
-                /* authorization => */null,
-                /* callback      => */ this.programsResponseCallback());
+                /* authorization => */ this.authorization             (),
+                /* callback      => */ this.programsResponseCallback  ());
         }
         catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }
     }
@@ -202,7 +202,7 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
                 /* pageSize => */
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment.getInteger(
                         this.searchProgramsSearchResultsDbIdGetPageSizeEditText),
-                /* authorization => */null,
+                /* authorization => */ this.authorization           (),
                 /* callback      => */ this.programsResponseCallback());
         }
         catch (final java.lang.Throwable e) { this.setResponseTextViewText(e); }
@@ -300,8 +300,8 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
         try
         {
             this.programsApi().searchProgramsPostAsync(
-                /* body          => */ this.programsSearchRequestInstance,
-                /* authorization => */null,
+                /* body          => */ this.programsSearchRequestInstance     ,
+                /* authorization => */ this.authorization                   (),
                 /* callback      => */ this.successfulSearchResponseCallback());
         }
         catch (final java.lang.Throwable t) { this.setResponseTextViewText(t); }
