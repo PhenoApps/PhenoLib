@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+
+    tools:context=".brapi1_3.ConnectionFragment">
+
+
+    <TextView
+        android:id="@+id/basePathTextView"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:text="base path:"
+        android:labelFor="@id/basePathEditText"
+
+        tools:ignore="HardcodedText" />
+
+
+    <EditText
+        android:id="@+id/basePathEditText"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/basePathTextView"
+
+        android:inputType="textUri"
+
+        tools:ignore="Autofill, HardcodedText, LabelFor" />
+
+
+    <Button
+        android:id="@+id/testServerAutofillButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/basePathEditText"
+
+        android:text="autofill test server"
+        android:textAllCaps="false"
+
+        tools:ignore="HardcodedText" />
+
+
+    <Button
+        android:id="@+id/setBasePathButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/basePathEditText"
+
+        android:text="set base path"
+        android:textAllCaps="false"
+
+        tools:ignore="HardcodedText" />
+
+
+</android.support.constraint.ConstraintLayout>

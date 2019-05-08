@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="fragmentNames">
+        <item>@string/ConnectionFragmentName</item>
         <item>@string/CallsResourceName</item>
         <item>@string/CropsResourceName</item>
         <item>@string/ProgramsResourceName</item>

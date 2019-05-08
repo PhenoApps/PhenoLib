@@ -6,6 +6,11 @@
     tools:context="org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity">
 
     <item
+        android:id="@+id/ConnectionMenuItemId"
+        android:title="@string/ConnectionFragmentName"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/CallsMenuItemId"
         android:title="@string/CallsResourceName"
         app:showAsAction="never" />

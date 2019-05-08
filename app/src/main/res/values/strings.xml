@@ -6,6 +6,8 @@
     <string name="title_activity_brapi1_3">&brapi1_3_activity_title;</string>
     <string name="title_toolbar_brapi1_3">&brapi1_3_activity_title;: %1$s: %2$s</string>
 
+    <string name="ConnectionFragmentName">Connection</string>
+
     <string name="CallsResourceName">Calls</string>
     <string name="CropsResourceName">Crops</string>
     <string name="ProgramsResourceName">Programs</string>

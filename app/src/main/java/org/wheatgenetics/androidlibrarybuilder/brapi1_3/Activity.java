@@ -25,15 +25,16 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
- * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment
  */
 public class Activity extends android.support.v7.app.AppCompatActivity
-implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
+implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier
 {
     private static class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter
     {
@@ -46,74 +47,77 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
         {
             switch (position)
             {
-                case 0: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment();
-                case 1: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment();
+                case 0: return
+                    new org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment();
 
-                case 2:
-                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment();
+                case 1: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment();
+                case 2: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment();
 
                 case 3:
-                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment();
+                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment();
 
                 case 4:
-                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment();
+                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment();
 
                 case 5:
-                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment();
+                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment();
 
-                case 6: return
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Observations");
+                case 6:
+                    return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment();
 
                 case 7: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "ObservationVariables");
+                        "Observations");
 
                 case 8: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Phenotypes");
+                        "ObservationVariables");
 
                 case 9: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Germplasm");
+                        "Phenotypes");
 
                 case 10: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "GermplasmAttributes");
+                        "Germplasm");
 
                 case 11: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Markers");
+                        "GermplasmAttributes");
 
                 case 12: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "MarkerProfiles");
+                        "Markers");
 
                 case 13: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "GenomeMaps");
+                        "MarkerProfiles");
 
                 case 14: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Samples");
+                        "GenomeMaps");
 
                 case 15: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Vendor");
+                        "Samples");
 
                 case 16: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Lists");
+                        "Vendor");
 
                 case 17: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "Images");
+                        "Lists");
 
                 case 18: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "People");
+                        "Images");
 
                 case 19: return
+                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
+                        "People");
+
+                case 20: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
                         "SearchServices");
 
@@ -121,7 +125,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
             }
         }
 
-        @java.lang.Override public int getCount() { return 20; }
+        @java.lang.Override public int getCount() { return 21; }
         // endregion
     }
 
@@ -132,11 +136,14 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
     private android.support.v7.widget.Toolbar toolbar   = null;
     private android.support.v4.view.ViewPager viewPager = null;
 
-    private io.swagger.client.ApiClient apiClientInstance = null;                       // lazy load
+    private io.swagger.client.ApiClient apiClientInstance = new io.swagger.client.ApiClient();
+    private java.lang.CharSequence      testServerBasePathInstance =
+        this.apiClientInstance.getBasePath();
     // endregion
 
     // region Private Methods
-    private void setToolBarTitle(@android.support.annotation.IntRange(from = 0) final int i)
+    private void setToolBarTitle(
+    @android.support.annotation.IntRange(from = 0, to = 20) final int i)
     {
         if (null != this.fragmentNames && null != this.toolbar)
             this.toolbar.setTitle(this.getString(
@@ -149,7 +156,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
     {
         if (null != this.fragmentNames && null != this.viewPager)
         {
-            int i = 0;
+            @android.support.annotation.IntRange(from = 0, to = 20) int i = 0;
             for (final java.lang.String fragmentName: this.fragmentNames)
             {
                 if (selectedFragmentName.equals(fragmentName))
@@ -221,6 +228,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
             // The id values in the following switch statement are from menu/menu_brapi1_3.xml.
             switch (id)
             {
+                case org.wheatgenetics.androidlibrarybuilder.R.id.ConnectionMenuItemId          :
                 case org.wheatgenetics.androidlibrarybuilder.R.id.CallsMenuItemId               :
                 case org.wheatgenetics.androidlibrarybuilder.R.id.CropsMenuItemId               :
                 case org.wheatgenetics.androidlibrarybuilder.R.id.ProgramsMenuItemId            :
@@ -250,14 +258,15 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier
     @java.lang.Override protected void onDestroy()
     { if (null != this.viewPager) this.viewPager.clearOnPageChangeListeners(); super.onDestroy(); }
 
-    // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier Overridden Method
+    // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier Overridden Methods
     @java.lang.Override @android.support.annotation.NonNull
-    public io.swagger.client.ApiClient apiClient()
-    {
-        if (null == this.apiClientInstance)
-            this.apiClientInstance = new io.swagger.client.ApiClient();
-        return this.apiClientInstance;
-    }
+    public io.swagger.client.ApiClient apiClient() { return this.apiClientInstance; }
+
+    @java.lang.Override public java.lang.CharSequence testServerBasePath()
+    { return this.testServerBasePathInstance; }
+
+    @java.lang.Override public void setBasePath(final java.lang.String basePath)
+    { this.apiClient().setBasePath(basePath); }
     // endregion
     // endregion
 }
