@@ -271,6 +271,9 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
 
     @java.lang.Override public void setBasePath(final java.lang.String basePath)
     { this.apiClient().setBasePath(basePath); }
+
+    @java.lang.Override public void setAuthorization(final java.lang.String authorization)
+    { this.authorizationInstance = authorization; }
     // endregion
     // endregion
 }
