@@ -149,8 +149,11 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
         if (null != this.fragmentNames && null != this.toolbar)
             this.toolbar.setTitle(this.getString(
                 org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
-                this.apiClient().getBasePath(), this.fragmentNames[i]      ));
+                this.apiClient().getBasePath(), this.fragmentNames[i]                  ));
     }
+
+    private void setToolbarTitleToFirst()
+    { final int firstFragmentName = 0; this.setToolBarTitle(firstFragmentName); }
 
     private void setPage(@android.support.annotation.NonNull
     @android.support.annotation.Size(min = 1) final java.lang.CharSequence selectedFragmentName)
@@ -183,7 +186,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
         this.toolbar = this.findViewById(
             org.wheatgenetics.androidlibrarybuilder.R.id.toolbar);            // From layout/acti-
         this.setSupportActionBar(this.toolbar);                               //  vity_brapi1_3.xml.
-        { final int firstFragmentName = 0; this.setToolBarTitle(firstFragmentName); }
+        this.setToolbarTitleToFirst();
 
         this.viewPager = this.findViewById(
             org.wheatgenetics.androidlibrarybuilder.R.id.view_pager);         // From layout/acti-
@@ -270,7 +273,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     { return this.testServerBasePathInstance; }
 
     @java.lang.Override public void setBasePath(final java.lang.String basePath)
-    { this.apiClient().setBasePath(basePath); }
+    { this.apiClient().setBasePath(basePath); this.setToolbarTitleToFirst(); }
 
     @java.lang.Override public void setAuthorization(final java.lang.String authorization)
     { this.authorizationInstance = authorization; }

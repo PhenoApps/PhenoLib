@@ -58,14 +58,6 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     // endregion
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    java.lang.String authorization()
-    {
-        final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
-            this.getSupplier();
-        return null == supplier ? null : supplier.authorization();
-    }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     static java.lang.String getString(final android.widget.EditText editText)
     {
         if (null == editText)
@@ -84,6 +76,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     }
     // endregion
 
+    // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient()
     {
@@ -92,6 +85,15 @@ public abstract class Fragment extends android.support.v4.app.Fragment
         // noinspection ConstantConditions
         return null == supplier ? null : supplier.apiClient();
     }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected java.lang.String authorization()
+    {
+        final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
+            this.getSupplier();
+        return null == supplier ? null : supplier.authorization();
+    }
+    // endregion
 
     // region Overridden Methods
     @java.lang.Override public void onAttach(final android.content.Context context)

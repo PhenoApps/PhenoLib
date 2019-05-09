@@ -283,8 +283,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         try
         {
             this.studiesApi().searchStudiesPostAsync(
-                /* body          => */ this.studySearchRequestInstance,
-                /* authorization => */null,
+                /* body          => */ this.studySearchRequestInstance        ,
+                /* authorization => */ this.authorization                   (),
                 /* callback      => */ this.successfulSearchResponseCallback());
         }
         catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
@@ -372,7 +372,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                         this.searchStudiesSearchResultsDbIdGetParametersInstance.getPage(),
                     /* pageSize => */
                         this.searchStudiesSearchResultsDbIdGetParametersInstance.getPageSize(),
-                    /* authorization => */null,
+                    /* authorization => */ this.authorization          (),
                     /* callback      => */ this.studiesResponseCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
@@ -466,7 +466,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                     /* year     => */ this.seasonsGetAlertDialogParametersInstance.getYear    (),
                     /* page     => */ this.seasonsGetAlertDialogParametersInstance.getPage    (),
                     /* pageSize => */ this.seasonsGetAlertDialogParametersInstance.getPageSize(),
-                    /* authorization => */null,
+                    /* authorization => */ this.authorization          (),
                     /* callback      => */ this.seasonsResponseCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
@@ -530,7 +530,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                     /* sortOrder => */ this.studiesGetAlertDialogParametersInstance.getSortOrder(),
                     /* page      => */ this.studiesGetAlertDialogParametersInstance.getPage     (),
                     /* pageSize  => */ this.studiesGetAlertDialogParametersInstance.getPageSize (),
-                    /* authorization => */null,
+                    /* authorization => */ this.authorization          (),
                     /* callback      => */ this.studiesResponseCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
@@ -612,7 +612,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             {
                 this.studiesApi().studiesStudyDbIdGetAsync(
                     /* studyDbId => */ this.studiesStudyDbIdGetParametersInstance.getStudyDbId(),
-                    /* authorization => */null,
+                    /* authorization => */ this.authorization        (),
                     /* callback      => */ this.studyResponseCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
@@ -712,8 +712,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                     /* studyDbId => */ this.studyDbIdPagePageSizeParametersInstance.getStudyDbId(),
                     /* page      => */ this.studyDbIdPagePageSizeParametersInstance.getPage     (),
                     /* pageSize  => */ this.studyDbIdPagePageSizeParametersInstance.getPageSize (),
-                    /* authorization => */null,
-                    /* callback      => */this.germplasmSummaryListCallback());
+                    /* authorization => */ this.authorization               (),
+                    /* callback      => */ this.germplasmSummaryListCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
     }
@@ -794,7 +794,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                     /* studyDbId => */ this.studyDbIdPagePageSizeParametersInstance.getStudyDbId(),
                     /* page      => */ this.studyDbIdPagePageSizeParametersInstance.getPage     (),
                     /* pageSize  => */ this.studyDbIdPagePageSizeParametersInstance.getPageSize (),
-                    /* authorization => */null,
+                    /* authorization => */ this.authorization                     (),
                     /* callback      => */ this.studiesStudyDbIdLayoutsGetCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
@@ -842,8 +842,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             {
                 this.studiesApi().studiesStudyDbIdLayoutsPutAsync(
                     /* studyDbId => */ this.studyDbIdPagePageSizeParametersInstance.getStudyDbId(),
-                    /* StudyLayoutRequest => */ studyLayoutRequest,
-                    /* authorization      => */null,
+                    /* StudyLayoutRequest => */ studyLayoutRequest                       ,
+                    /* authorization      => */ this.authorization                     (),
                     /* callback           => */ this.studiesStudyDbIdLayoutsPutCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
@@ -874,7 +874,6 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     {
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_studies);
-
         if (null != rootView)
         {
             // The following eighteen ids are from fragment_brapi1_3_studies.xml.
