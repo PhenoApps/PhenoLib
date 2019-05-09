@@ -29,8 +29,7 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
         public abstract void setAuthorization(java.lang.String authorization);
     }
 
-    private static final java.lang.String
-        BEARER_XXXX_AUTHORIZATION = "Bearer XXXX", BEARER_YYYY_AUTHORIZATION = "Bearer YYYY";
+    private static final java.lang.String BEARER_XXXX_AUTHORIZATION = "Bearer XXXX";
 
     private android.widget.EditText basePathEditText, authorizationEditText;
 
@@ -61,8 +60,14 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
             connectionFragmentSupplier.testServerBasePath();
     }
 
+    private void autofillBasePath(final java.lang.String text)
+    { if (null != this.basePathEditText) this.basePathEditText.setText(text); }
+
     private void autofillWithTestServer()
-    { if (null != this.basePathEditText) this.basePathEditText.setText(this.testServerBasePath()); }
+    { this.autofillBasePath((java.lang.String) this.testServerBasePath()); }
+
+    private void autofillWithCasavaBase()
+    { this.autofillBasePath("https://cassava-test.sgn.cornell.edu"); }
 
     private void setBasePath()
     {
@@ -75,20 +80,17 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
     // endregion
 
     // region authorization Private Methods
-    private void autofillWithBearer(@android.support.annotation.NonNull final java.lang.String text)
+    private void autofillAuthorization(
+    @android.support.annotation.NonNull final java.lang.String text)
     { if (null != this.authorizationEditText) this.authorizationEditText.setText(text); }
 
     private void autofillWithBearerXXXX()
     {
-        this.autofillWithBearer(org.wheatgenetics.androidlibrarybuilder
+        this.autofillAuthorization(org.wheatgenetics.androidlibrarybuilder
             .brapi1_3.ConnectionFragment.BEARER_XXXX_AUTHORIZATION);
     }
 
-    private void autofillWithBearerYYYY()
-    {
-        this.autofillWithBearer(org.wheatgenetics.androidlibrarybuilder
-            .brapi1_3.ConnectionFragment.BEARER_YYYY_AUTHORIZATION);
-    }
+    private void autofillWithBearerYYYY() { this.autofillAuthorization("Bearer YYYY"); }
 
     private void setAuthorization()
     {
@@ -142,6 +144,20 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
                         {
                             org.wheatgenetics.androidlibrarybuilder.brapi1_3
                                 .ConnectionFragment.this.autofillWithTestServer();
+                        }
+                    });
+            }
+
+            {
+                final android.widget.Button casavaBaseAutofillButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.cassavaBaseAutofillButton);
+                if (null != casavaBaseAutofillButton) casavaBaseAutofillButton.setOnClickListener(
+                    new android.view.View.OnClickListener()
+                    {
+                        @java.lang.Override public void onClick(final android.view.View v)
+                        {
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                                .ConnectionFragment.this.autofillWithCasavaBase();
                         }
                     });
             }
