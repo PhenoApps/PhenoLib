@@ -9,7 +9,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
- * org.wheatgenetics.brapi1_3.AlertDialog.Handler
  */
 class StudiesStudyDbIdGetAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
@@ -26,8 +25,9 @@ class StudiesStudyDbIdGetAlertDialog extends org.wheatgenetics.brapi1_3.AlertDia
         .StudiesStudyDbIdGetAlertDialog.Parameters parameters = null;
     // endregion
 
-    StudiesStudyDbIdGetAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler) { super(activity, handler); }
+    StudiesStudyDbIdGetAlertDialog(final android.app.Activity activity, final
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdGetAlertDialog.Handler
+    handler) { super(activity, handler); }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
@@ -36,12 +36,9 @@ class StudiesStudyDbIdGetAlertDialog extends org.wheatgenetics.brapi1_3.AlertDia
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrarybuilder
                 .R.layout.alert_dialog_brapi1_3_studies_studies_studydbid_get);
-
-            assert null != view;
-            if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder
-                    .R.id.studiesStudiesStudyDbIdGetStudyDbIdEditText);
-
+            if (null != view) if (null == this.studyDbIdEditText)
+                this.studyDbIdEditText = view.findViewById(org.wheatgenetics
+                    .androidlibrarybuilder.R.id.studiesStudiesStudyDbIdGetStudyDbIdEditText);
             this.setView(view);
         }
         super.configure();

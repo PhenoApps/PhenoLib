@@ -222,7 +222,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         .StudiesStudyDbIdLayoutsGetCallback studiesStudyDbIdLayoutsGetCallbackInstance = null; // ll
     // endregion
 
-    // region studiesStudyDbIdLayoutsPut() Field
+    // region studiesStudyDbIdLayoutsPut() Fields
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
         .StudiesStudyDbIdLayoutsPutCallback studiesStudyDbIdLayoutsPutCallbackInstance = null; // ll
     private android.content.Intent listIntentInstance = null;                           // lazy load

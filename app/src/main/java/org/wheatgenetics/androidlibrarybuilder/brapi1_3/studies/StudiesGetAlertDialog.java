@@ -9,7 +9,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * android.widget.RadioGroup
  *
  * org.wheatgenetics.brapi1_3.PagedAlertDialog
- * org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  */
@@ -62,7 +61,7 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
     {
         if (null != radioGroup)
         {
-            final @android.support.annotation.IdRes int id;
+            @android.support.annotation.IdRes final int id;
             if (null == active)
                 id = org.wheatgenetics.androidlibrarybuilder
                     .R.id.studiesStudiesGetNullActiveRadioButton;
@@ -95,8 +94,9 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
     }
     // endregion
 
-    StudiesGetAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler handler) { super(activity, handler); }
+    StudiesGetAlertDialog(final android.app.Activity activity, final
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Handler handler)
+    { super(activity, handler); }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
@@ -105,38 +105,40 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrarybuilder
                 .R.layout.alert_dialog_brapi1_3_studies_studies_get);
+            if (null != view)
+            {
+                if (null == this.commonCropNameEditText)
+                    this.commonCropNameEditText = view.findViewById(org.wheatgenetics
+                        .androidlibrarybuilder.R.id.studiesStudiesGetCommonCropNameEditText);
+                if (null == this.studyTypeDbIdEditText)
+                    this.studyTypeDbIdEditText = view.findViewById(org.wheatgenetics
+                        .androidlibrarybuilder.R.id.studiesStudiesGetStudyTypeDbIdEditText);
+                if (null == this.programDbIdEditText)
+                    this.programDbIdEditText = view.findViewById(org.wheatgenetics
+                        .androidlibrarybuilder.R.id.studiesStudiesGetProgramDbIdEditText);
+                if (null == this.locationDbIdEditText)
+                    this.locationDbIdEditText = view.findViewById(org.wheatgenetics
+                        .androidlibrarybuilder.R.id.studiesStudiesGetLocationDbIdEditText);
+                if (null == this.seasonDbIdEditText) this.seasonDbIdEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetSeasonDbIdEditText);
+                if (null == this.trialDbIdEditText) this.trialDbIdEditText = view.findViewById(org
+                    .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetTrialDbIdEditText);
+                if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(org
+                    .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetStudyDbIdEditText);
 
-            assert null != view;
-            if (null == this.commonCropNameEditText)
-                this.commonCropNameEditText = view.findViewById(org.wheatgenetics
-                    .androidlibrarybuilder.R.id.studiesStudiesGetCommonCropNameEditText);
-            if (null == this.studyTypeDbIdEditText) this.studyTypeDbIdEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder
-                    .R.id.studiesStudiesGetStudyTypeDbIdEditText);
-            if (null == this.programDbIdEditText) this.programDbIdEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetProgramDbIdEditText);
-            if (null == this.locationDbIdEditText) this.locationDbIdEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetLocationDbIdEditText);
-            if (null == this.seasonDbIdEditText) this.seasonDbIdEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetSeasonDbIdEditText);
-            if (null == this.trialDbIdEditText) this.trialDbIdEditText = view.findViewById(org
-                .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetTrialDbIdEditText);
-            if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(org
-                .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetStudyDbIdEditText);
+                if (null == this.activeRadioGroup) this.activeRadioGroup = view.findViewById(org
+                    .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetActiveRadioGroup);
 
-            if (null == this.activeRadioGroup) this.activeRadioGroup = view.findViewById(org
-                .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetActiveRadioGroup);
+                if (null == this.sortByEditText) this.sortByEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetSortByEditText);
+                if (null == this.sortOrderEditText) this.sortOrderEditText = view.findViewById(org
+                    .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetSortOrderEditText);
 
-            if (null == this.sortByEditText) this.sortByEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetSortByEditText);
-            if (null == this.sortOrderEditText) this.sortOrderEditText = view.findViewById(org
-                .wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetSortOrderEditText);
-
-            this.findPageEditTextById(view,
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetPageEditText);
-            this.findPageSizeEditTextById(view, org.wheatgenetics.androidlibrarybuilder
-                .R.id.studiesStudiesGetPageSizeEditText);
-
+                this.findPageEditTextById(view,
+                    org.wheatgenetics.androidlibrarybuilder.R.id.studiesStudiesGetPageEditText);
+                this.findPageSizeEditTextById(view, org.wheatgenetics.androidlibrarybuilder
+                    .R.id.studiesStudiesGetPageSizeEditText);
+                }
             this.setView(view);
         }
         super.configure();

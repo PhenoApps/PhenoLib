@@ -9,7 +9,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.brapi1_3.PagedAlertDialog
- * org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler
  */
 class SeasonsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
@@ -36,8 +35,9 @@ class SeasonsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
             parameters = null;
     // endregion
 
-    SeasonsGetAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.PagedAlertDialog.Handler handler) { super(activity, handler); }
+    SeasonsGetAlertDialog(final android.app.Activity activity, final
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Handler handler)
+    { super(activity, handler); }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
@@ -46,19 +46,20 @@ class SeasonsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrarybuilder
                 .R.layout.alert_dialog_brapi1_3_studies_seasons_get);
-
-            assert null != view;
-            if (null == this.seasonDbIdEditText) this.seasonDbIdEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetSeasonDbIdEditText);
-            if (null == this.seasonEditText) this.seasonEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetSeasonEditText);
-            if (null == this.yearEditText) this.yearEditText = view.findViewById(
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetYearEditText);
-            this.findPageEditTextById(view,
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetPageEditText);
-            this.findPageSizeEditTextById(view,
-                org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetPageSizeEditText);
-
+            if (null != view)
+            {
+                if (null == this.seasonDbIdEditText) this.seasonDbIdEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder
+                        .R.id.studiesSeasonsGetSeasonDbIdEditText);
+                if (null == this.seasonEditText) this.seasonEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetSeasonEditText);
+                if (null == this.yearEditText) this.yearEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetYearEditText);
+                this.findPageEditTextById(view,
+                    org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetPageEditText);
+                this.findPageSizeEditTextById(view,
+                    org.wheatgenetics.androidlibrarybuilder.R.id.studiesSeasonsGetPageSizeEditText);
+            }
             this.setView(view);
         }
         super.configure();
