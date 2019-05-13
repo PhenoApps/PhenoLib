@@ -21,7 +21,7 @@ class TwoPaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl.Adapter
     private final org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter.Helper helper;
 
     private void replace(final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
-    { assert null != this.helper; this.helper.replace(itemFragment); }
+    { if (null != this.helper) this.helper.replace(itemFragment); }
 
     TwoPaneAdapter(final org.wheatgenetics.javalib.mstrdtl.Items items,
     final org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter.Helper helper)

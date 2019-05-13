@@ -36,8 +36,8 @@ class ViewHolder extends android.support.v7.widget.RecyclerView.ViewHolder
             else
                 { position = item.getPositionAsString(); title = item.getTitle(); }
 
-            assert null != this.positionTextView; this.positionTextView.setText(position);
-            assert null != this.titleTextView   ; this.titleTextView.setText   (title   );
+            if (null != this.positionTextView) this.positionTextView.setText(position);
+            if (null != this.titleTextView   ) this.titleTextView.setText   (title   );
         }
 
         this.itemView.setOnClickListener(onClickListener);

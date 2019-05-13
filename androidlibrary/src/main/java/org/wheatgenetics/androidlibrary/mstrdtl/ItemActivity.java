@@ -80,8 +80,7 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
 
     @java.lang.Override public boolean onOptionsItemSelected(final android.view.MenuItem menuItem)
     {
-        assert null != menuItem;
-        if (menuItem.getItemId() == android.R.id.home)
+        if (null != menuItem && menuItem.getItemId() == android.R.id.home)
         {
             // This id represents the Home or Up button.  In the case of this activity, the Up
             // button is shown.  Use NavUtils to allow users to navigate up one level in the

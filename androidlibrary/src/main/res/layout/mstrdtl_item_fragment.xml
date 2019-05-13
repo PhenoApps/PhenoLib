@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+
+    tools:context="org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment">
 
     <TextView
         style="?android:attr/textAppearanceLarge"
@@ -12,9 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:textIsSelectable="true"
-
-        tools:context="org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment" />
+        android:textIsSelectable="true" />
 
     <Button
         android:id="@+id/changeItemButton"

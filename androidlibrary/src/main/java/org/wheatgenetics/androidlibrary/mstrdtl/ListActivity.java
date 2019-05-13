@@ -90,17 +90,20 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
         {
             final android.support.v7.widget.RecyclerView recyclerView = this.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.masterDetailRecyclerView);
-            assert null != recyclerView; recyclerView.setAdapter(this.adapter);
+            if (null != recyclerView) recyclerView.setAdapter(this.adapter);
         }
 
         final android.widget.Button appendItemButton = this.findViewById(
             org.wheatgenetics.androidlibrary.R.id.appendItemButton);
-        assert null != appendItemButton; appendItemButton.setEnabled(true);
-        appendItemButton.setOnClickListener(new android.view.View.OnClickListener()
-            {
-                @java.lang.Override public void onClick(final android.view.View v)
-                { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.appendItem(); }
-            });
+        if (null != appendItemButton)
+        {
+            appendItemButton.setEnabled(true);
+            appendItemButton.setOnClickListener(new android.view.View.OnClickListener()
+                {
+                    @java.lang.Override public void onClick(final android.view.View v)
+                    { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.appendItem(); }
+                });
+            }
     }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Method

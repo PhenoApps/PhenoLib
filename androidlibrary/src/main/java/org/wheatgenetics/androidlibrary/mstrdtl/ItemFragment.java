@@ -64,7 +64,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
-            null != this.getter ? this.getter : this.getterChanger;
+            null == this.getter ? this.getterChanger : this.getter;
         return null == getter ? null : getter.get(position);
     }
 
@@ -104,10 +104,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
                 this.getter =
                     (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter) context;
         else
-        {
-            assert null != context;
-            throw new java.lang.RuntimeException(context.toString() + " must implement Getter");
-        }
+            throw new java.lang.RuntimeException(null == context ? "context" :
+                context.toString() + " must implement Getter");
     }
 
     @java.lang.Override public void onCreate(final android.os.Bundle savedInstanceState)
@@ -135,8 +133,11 @@ public class ItemFragment extends android.support.v4.app.Fragment
                         collapsingToolbarLayout;
                     {
                         final android.app.Activity activity = this.getActivity();
-                        assert null != activity; collapsingToolbarLayout = activity.findViewById(
-                            arguments.getInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY));
+                        if (null == activity)
+                            collapsingToolbarLayout = null;
+                        else
+                            collapsingToolbarLayout = activity.findViewById(
+                                arguments.getInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY));
                     }
                     if (collapsingToolbarLayout != null)
                         collapsingToolbarLayout.setTitle(this.item.getTitle());
@@ -152,26 +153,32 @@ public class ItemFragment extends android.support.v4.app.Fragment
         final android.view.View rootView = inflater.inflate(
             org.wheatgenetics.androidlibrary.R.layout.mstrdtl_item_fragment,
             container, /* attachToRoot => */false);
-
-        assert null != rootView; this.contentTextView = rootView.findViewById(
-            org.wheatgenetics.androidlibrary.R.id.masterDetailItemContentTextView);
-        this.setContentTextViewText();
-
-        if (this.changerIsImplemented())
+        if (null != rootView)
         {
-            final android.widget.Button changeItemButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.changeItemButton);
-            assert null != changeItemButton;
-            changeItemButton.setEnabled(true);
-            changeItemButton.setOnClickListener(new android.view.View.OnClickListener()
-                {
-                    @java.lang.Override public void onClick(final android.view.View v)
-                    { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.changeItem(); }
-                });
-        }
+            this.contentTextView = rootView.findViewById(
+                org.wheatgenetics.androidlibrary.R.id.masterDetailItemContentTextView);
+            this.setContentTextViewText();
 
+            if (this.changerIsImplemented())
+            {
+                final android.widget.Button changeItemButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.changeItemButton);
+                if (null != changeItemButton)
+                {
+                    changeItemButton.setEnabled(true);
+                    changeItemButton.setOnClickListener(new android.view.View.OnClickListener()
+                        {
+                            @java.lang.Override public void onClick(final android.view.View v)
+                            { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.changeItem(); }
+                        });
+                }
+            }
+        }
         return rootView;
     }
+
+    @java.lang.Override public void onDetach()
+    { this.getter = this.getterChanger = null; super.onDetach(); }
     // endregion
 
     void refreshSinceItemHasChanged() { this.setContentTextViewText(); }

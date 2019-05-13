@@ -31,15 +31,19 @@ public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.ms
         {
             @java.lang.Override public void onClick(final android.view.View view)
             {
-                assert null != view; final android.content.Context context = view.getContext();
+                if (null != view)
+                {
+                    final android.content.Context context = view.getContext();
 
-                final android.content.Intent intent = new android.content.Intent(context,
-                    org.wheatgenetics.androidlibrary.mstrdtl
-                        .OnePaneAdapter.this.concreteItemActivityClass());
-                intent.putExtra(
-                    org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY, position);
+                    final android.content.Intent intent = new android.content.Intent(context,
+                        org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
+                            .this.concreteItemActivityClass() /* polymorphism */);
+                    intent.putExtra(
+                        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY,
+                        position                                                          );
 
-                assert null != context; context.startActivity(intent);
+                    if (null != context) context.startActivity(intent);
+                }
             }
         };
     }
