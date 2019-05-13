@@ -6,7 +6,6 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.NonNull
  * android.support.v7.widget.RecyclerView.Adapter
  * android.view.LayoutInflater
- * android.view.View
  * android.view.View.OnClickListener
  * android.view.ViewGroup
  *
@@ -29,7 +28,7 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
     { super(); this.items = items; }
 
     // region Overridden Methods
-    @android.support.annotation.NonNull @java.lang.Override
+    @java.lang.Override @android.support.annotation.NonNull
     public org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder onCreateViewHolder(
     @android.support.annotation.NonNull final android.view.ViewGroup parent, final int viewType)
     {
@@ -43,8 +42,7 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
     final org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder viewHolder,
     final int                             position                      )
     {
-        assert null != this.items;
-        viewHolder.bind(
+        if (null != this.items) viewHolder.bind(
             /* item            => */ this.items.get(position)                             ,
             /* onClickListener => */ this.makeOnClickListener(position) /* polymorphism */);
     }
