@@ -31,8 +31,9 @@ public abstract class Fragment extends android.support.v4.app.Fragment
         @android.support.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient();
     }
 
-    @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) abstract class ApiCallback<T>
-    extends java.lang.Object implements io.swagger.client.ApiCallback<T>
+    @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
+    protected abstract class ApiCallback<T> extends java.lang.Object
+    implements io.swagger.client.ApiCallback<T>
     {
         void setResponseTextViewText(final T result)
         {

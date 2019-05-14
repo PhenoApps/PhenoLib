@@ -17,14 +17,13 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
- * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class CropsFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
 implements android.view.View.OnClickListener
 {
     // region Fields
     private io.swagger.client.api.CropsApi cropsApiInstance = null;                     // lazy load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment.ApiCallback<
         io.swagger.client.model.CommonCropNamesResponse> callbackInstance = null;       // lazy load
     // endregion
 
@@ -36,11 +35,11 @@ implements android.view.View.OnClickListener
         return this.cropsApiInstance;
     }
 
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment.ApiCallback<
     io.swagger.client.model.CommonCropNamesResponse> callback()
     {
         if (null == this.callbackInstance) this.callbackInstance =
-            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment.ApiCallback<
                 io.swagger.client.model.CommonCropNamesResponse>() {};
         return this.callbackInstance;
     }

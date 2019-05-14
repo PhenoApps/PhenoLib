@@ -20,7 +20,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
- * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
 {
@@ -31,9 +30,9 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
 
     private io.swagger.client.api.TrialsApi trialsApiInstance = null;                   // lazy load
 
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment.ApiCallback<
         io.swagger.client.model.TrialsResponse> trialsResponseCallbackInstance = null;  // lazy load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment.ApiCallback<
         io.swagger.client.model.TrialResponse> trialResponseCallbackInstance = null;    // lazy load
     // endregion
 
@@ -63,11 +62,11 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
             }
     }
 
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment.ApiCallback<
     io.swagger.client.model.TrialsResponse> trialsResponseCallback()
     {
         if (null == this.trialsResponseCallbackInstance) this.trialsResponseCallbackInstance =
-            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment.ApiCallback<
                 io.swagger.client.model.TrialsResponse>() {};
         return this.trialsResponseCallbackInstance;
     }
@@ -105,11 +104,11 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
     // endregion
 
     // region trialsTrialDbIdGet() Private Methods
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment.ApiCallback<
     io.swagger.client.model.TrialResponse> trialResponseCallback()
     {
         if (null == this.trialResponseCallbackInstance) this.trialResponseCallbackInstance =
-            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment.ApiCallback<
                 io.swagger.client.model.TrialResponse>() {};
         return this.trialResponseCallbackInstance;
     }

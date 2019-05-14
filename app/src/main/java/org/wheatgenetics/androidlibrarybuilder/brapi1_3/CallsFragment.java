@@ -24,7 +24,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
- * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class CallsFragment
 extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
@@ -36,7 +35,7 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
     private org.wheatgenetics.brapi1_3.DataTypeAlertDialog dataTypeAlertDialogInstance = null; // ll
 
     private io.swagger.client.api.CallsApi callsApiInstance = null;                     // lazy load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment.ApiCallback<
         io.swagger.client.model.CallsResponse> callbackInstance = null;                 // lazy load
     // endregion
 
@@ -80,11 +79,11 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
         return this.callsApiInstance;
     }
 
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment.ApiCallback<
     io.swagger.client.model.CallsResponse> callback()
     {
         if (null == this.callbackInstance) this.callbackInstance =
-            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment.ApiCallback<
                 io.swagger.client.model.CallsResponse>() {};
         return this.callbackInstance;
     }

@@ -19,7 +19,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
- * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class LocationsFragment
 extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
@@ -29,10 +28,10 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
 
     private io.swagger.client.api.LocationsApi locationsApiInstance = null;             // lazy load
 
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback< // lazy load
-        io.swagger.client.model.LocationsResponse> locationsResponseCallbackInstance = null;
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback< // lazy load
-        io.swagger.client.model.LocationResponse> locationResponseCallbackInstance = null;
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment.ApiCallback< // lazy
+        io.swagger.client.model.LocationsResponse> locationsResponseCallbackInstance = null;//  load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment.ApiCallback< // lazy
+        io.swagger.client.model.LocationResponse> locationResponseCallbackInstance = null;  //  load
     // endregion
 
     // region Private Methods
@@ -44,11 +43,11 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
     }
 
     // region locationsGet() Private Methods
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment.ApiCallback<
     io.swagger.client.model.LocationsResponse> locationsResponseCallback()
     {
         if (null == this.locationsResponseCallbackInstance) this.locationsResponseCallbackInstance =
-            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment.ApiCallback<
                 io.swagger.client.model.LocationsResponse>() {};
         return this.locationsResponseCallbackInstance;
     }
@@ -71,11 +70,11 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
     // endregion
 
     // region locationsLocationDbIdGet() Private Methods
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment.ApiCallback<
     io.swagger.client.model.LocationResponse> locationResponseCallback()
     {
         if (null == this.locationResponseCallbackInstance) this.locationResponseCallbackInstance =
-            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment.ApiCallback<
                 io.swagger.client.model.LocationResponse>() {};
         return this.locationResponseCallbackInstance;
     }
