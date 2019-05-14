@@ -5,26 +5,37 @@ package org.wheatgenetics.brapi1_3.studies;
  * android.app.Application
  *
  * io.swagger.client.model.ObservationUnitPositionsResponse
+ * io.swagger.client.model.ObservationsResponse
  *
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
+ * org.wheatgenetics.brapi1_3.studies.NewObservationsRequest
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequest
  */
 public class Application extends android.app.Application
 implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
 {
-    private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequest studyLayoutRequest = null;
+    private org.wheatgenetics.javalib.mstrdtl.Items items = null;
 
     // region org.wheatgenetics.javalib.mstrdtl.ItemsProvider Overridden Method
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Items mstrdtlItems()
-    { return this.studyLayoutRequest; }
+    { return this.items; }
     // endregion
 
+    // region Public Methods
     public void makeStudyLayoutRequest(
     final io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
     {
-        this.studyLayoutRequest = new
+        this.items = new
             org.wheatgenetics.brapi1_3.studies.StudyLayoutRequest(observationUnitPositionsResponse);
     }
+
+    public void makeNewObservationsRequest(
+    final io.swagger.client.model.ObservationsResponse observationsResponse)
+    {
+        this.items =
+            new org.wheatgenetics.brapi1_3.studies.NewObservationsRequest(observationsResponse);
+    }
+    // endregion
 }
