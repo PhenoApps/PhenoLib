@@ -32,7 +32,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
  * org.wheatgenetics.brapi1_3.studies.Application
- * org.wheatgenetics.brapi1_3.studies.ListActivity
+ * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity
  * org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
  * org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.Handler
  *
@@ -115,7 +115,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
     // endregion
 
-    private static final int LIST_ACTIVITY_REQUEST_CODE = 1000;
+    private static final int STUDY_LAYOUT_REQUEST_LIST_ACTIVITY_REQUEST_CODE = 1000;
 
     // region Fields
     private io.swagger.client.api.StudiesApi               studiesApiInstance  = null;  // lazy load
@@ -197,7 +197,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // region studiesStudyDbIdLayoutsPut() Fields
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
         .StudiesStudyDbIdLayoutsPutCallback studiesStudyDbIdLayoutsPutCallbackInstance = null; // ll
-    private android.content.Intent listIntentInstance = null;                           // lazy load
+    private android.content.Intent studyLayoutRequestListIntentInstance = null;         // lazy load
     // endregion
 
     // region studiesStudyDbIdObservationsGet() Fields
@@ -693,17 +693,20 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
     }
 
-    private android.content.Intent listIntent()
+    private android.content.Intent studyLayoutRequestListIntent()
     {
-        if (null == this.listIntentInstance) this.listIntentInstance = new android.content.Intent(
-            this.getActivity(), org.wheatgenetics.brapi1_3.studies.ListActivity.class);
-        return this.listIntentInstance;
+        if (null == this.studyLayoutRequestListIntentInstance)
+            this.studyLayoutRequestListIntentInstance = new android.content.Intent(
+                this.getActivity()                                                     ,
+                org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity.class);
+        return this.studyLayoutRequestListIntentInstance;
     }
 
-    private void showListActivity()
+    private void showStudyLayoutRequestListActivity()
     {
-        this.startActivityForResult(this.listIntent(), org.wheatgenetics
-            .androidlibrarybuilder.brapi1_3.studies.Fragment.LIST_ACTIVITY_REQUEST_CODE);
+        this.startActivityForResult(this.studyLayoutRequestListIntent(),
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+                .STUDY_LAYOUT_REQUEST_LIST_ACTIVITY_REQUEST_CODE);
     }
     // endregion
 
@@ -934,7 +937,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                             @java.lang.Override public void onClick(final android.view.View v)
                             {
                                 org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                                    .Fragment.this.showListActivity();
+                                    .Fragment.this.showStudyLayoutRequestListActivity();
                             }
                         });
             }
@@ -1030,9 +1033,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     @java.lang.Override public void onActivityResult(final int requestCode,
     final int resultCode, final android.content.Intent data)
     {
-        if (
-        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.LIST_ACTIVITY_REQUEST_CODE
-        == requestCode)
+        if (org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+        .STUDY_LAYOUT_REQUEST_LIST_ACTIVITY_REQUEST_CODE == requestCode)
         {
             final org.wheatgenetics.javalib.mstrdtl.Items items;
             {

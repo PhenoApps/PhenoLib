@@ -15,11 +15,12 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
  *
- * org.wheatgenetics.brapi1_3.studies.ListActivity
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.Handler
+ * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity
  */
-public class ItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
+public class StudyLayoutRequestLayoutItemActivity
+extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
     // region Fields
@@ -39,8 +40,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     {
                         @java.lang.Override public void handleDone()
                         {
-                            org.wheatgenetics.brapi1_3.studies
-                                .ItemActivity.this.refreshSinceItemHasChanged();
+                            org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutItemActivity
+                                .this.refreshSinceItemHasChanged();
                         }
                     });
         return this.studyLayoutRequestLayoutAlertDialogInstance;
@@ -48,7 +49,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 
     // region Overridden Methods
     @java.lang.Override protected java.lang.Class listActivityClass()
-    { return org.wheatgenetics.brapi1_3.studies.ListActivity.class; }
+    { return org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity.class; }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(

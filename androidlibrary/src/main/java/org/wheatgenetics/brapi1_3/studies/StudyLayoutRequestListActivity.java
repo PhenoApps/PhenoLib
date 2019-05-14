@@ -17,11 +17,12 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.OnePaneAdapter
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.Handler
+ * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutOnePaneAdapter
  */
-public class ListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+public class StudyLayoutRequestListActivity
+extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
     // region Fields
@@ -41,8 +42,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     {
                         @java.lang.Override public void handleDone()
                         {
-                            org.wheatgenetics.brapi1_3.studies
-                                .ListActivity.this.refreshSinceItemHasChanged();
+                            org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity
+                                .this.refreshSinceItemHasChanged();
                         }
                     });
         return this.studyLayoutRequestLayoutAlertDialogInstance;
@@ -65,7 +66,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override
     protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
-    { return new org.wheatgenetics.brapi1_3.studies.OnePaneAdapter(this.items()); }
+    {
+        return new org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutOnePaneAdapter(
+            this.items());
+    }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
     @java.lang.Override public void change(
