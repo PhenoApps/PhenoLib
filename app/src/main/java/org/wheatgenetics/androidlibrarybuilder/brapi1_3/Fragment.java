@@ -35,11 +35,15 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     protected abstract class ApiCallback<T> extends java.lang.Object
     implements io.swagger.client.ApiCallback<T>
     {
-        void setResponseTextViewText(final T result)
+        private void setResponseTextViewText(final T result)
         {
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.this
                 .setResponseTextViewTextFromThread(null == result ? "null" : result.toString());
         }
+
+        @android.support.annotation.RestrictTo(
+            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        protected void handleSuccess(final T result) { this.setResponseTextViewText(result); }
 
         // region Overridden Methods
         @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
@@ -52,7 +56,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment
 
         @java.lang.Override public void onSuccess(final T result, final int statusCode,
         final java.util.Map<java.lang.String, java.util.List<java.lang.String>> responseHeaders)
-        { this.setResponseTextViewText(result); }
+        { this.handleSuccess(result) /* polymorphism */; }
 
         @java.lang.Override public void onUploadProgress(
         final long bytesWritten, final long contentLength, final boolean done) {}

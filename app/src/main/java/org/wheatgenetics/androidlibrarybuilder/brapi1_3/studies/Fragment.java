@@ -17,8 +17,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * android.view.ViewGroup
  * android.widget.Button
  *
- * io.swagger.client.ApiCallback
- * io.swagger.client.ApiException
  * io.swagger.client.api.StudiesApi
  * io.swagger.client.model.GermplasmSummaryListResponse
  * io.swagger.client.model.ObservationUnitPositionsResponse
@@ -77,53 +75,17 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
     // region Types
-    @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
-    private class StudiesStudyDbIdLayoutsPutCallback extends java.lang.Object implements
-    io.swagger.client.ApiCallback<io.swagger.client.model.ObservationUnitPositionsResponse>
-    {
-        // region Private Methods
-        private void setResponseTextViewText(final
-        io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
-        {
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.this
-                .setResponseTextViewTextFromThread(null == observationUnitPositionsResponse ?
-                    "null" : observationUnitPositionsResponse.toString());
-        }
-
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-        void handleSuccess(final
-        io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
-        { this.setResponseTextViewText(observationUnitPositionsResponse); }
-        // endregion
-
-        // region Overridden Methods
-        @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
-        final int i, final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-        {
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                .Fragment.this.setResponseTextViewTextFromThread(e);
-        }
-
-        @java.lang.Override public void onSuccess(
-        final io.swagger.client.model.ObservationUnitPositionsResponse
-            observationUnitPositionsResponse,
-        final int i, final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-        { this.handleSuccess(observationUnitPositionsResponse) /* polymorphism */; }
-
-        @java.lang.Override public void onUploadProgress(
-        final long l, final long l1, final boolean b) {}
-
-        @java.lang.Override public void onDownloadProgress(
-        final long l, final long l1, final boolean b) {}
-        // endregion
-    }
+    private class StudiesStudyDbIdLayoutsPutCallback
+    extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.ObservationUnitPositionsResponse> {}
 
     private class StudiesStudyDbIdLayoutsGetCallback extends org.wheatgenetics
     .androidlibrarybuilder.brapi1_3.studies.Fragment.StudiesStudyDbIdLayoutsPutCallback
     {
-        @java.lang.Override void handleSuccess(final
-        io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
+        @java.lang.Override @android.support.annotation.RestrictTo(
+            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        protected void handleSuccess(final io.swagger.client.model.ObservationUnitPositionsResponse
+            observationUnitPositionsResponse)
         {
             {
                 final boolean enableStudiesStudyDbIdLayoutsPutButton;
@@ -156,19 +118,21 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private static final int LIST_ACTIVITY_REQUEST_CODE = 1000;
 
     // region Fields
-    private io.swagger.client.api.StudiesApi studiesApiInstance = null;                 // lazy load
+    private io.swagger.client.api.StudiesApi               studiesApiInstance  = null;  // lazy load
+    private org.wheatgenetics.brapi1_3.studies.Application applicationInstance = null;  // lazy load
 
     // region searchStudiesPost() Fields
     private org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
         studySearchRequestAlertDialogInstance = null;                                   // lazy load
     private io.swagger.client.model.StudySearchRequest studySearchRequestInstance = null;      // ll
-    private io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>
-        successfulSearchResponseCallbackInstance = null;                                // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.SuccessfulSearchResponse>
+            successfulSearchResponseCallbackInstance = null;                            // lazy load
     // endregion
 
     // region searchStudiesSearchResultsDbIdGet() and studiesGet() Field
-    private io.swagger.client.ApiCallback<io.swagger.client.model.StudiesResponse>
-        studiesResponseCallbackInstance = null;                                         // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.StudiesResponse> studiesResponseCallbackInstance = null;// lazy load
     // endregion
 
     // region searchStudiesSearchResultsDbIdGet() Fields
@@ -186,8 +150,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private
         org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Parameters
             seasonsGetAlertDialogParametersInstance = null;                             // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.SeasonsResponse>
-        seasonsResponseCallbackInstance = null;                                         // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.SeasonsResponse> seasonsResponseCallbackInstance = null;// lazy load
     // endregion
 
     // region studiesGet() Fields
@@ -203,8 +167,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         studiesStudyDbIdGetAlertDialogInstance = null;                                  // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdGetAlertDialog.Parameters studiesStudyDbIdGetParametersInstance = null;//ll
-    private io.swagger.client.ApiCallback<io.swagger.client.model.StudyResponse>
-        studyResponseCallbackInstance = null;                                           // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.StudyResponse> studyResponseCallbackInstance = null;    // lazy load
     // endregion
 
     // region studiesStudyDbIdGermplasmGet() and studiesStudyDbIdLayoutsGet() Field
@@ -216,13 +180,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private
         org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
             studiesStudyDbIdGermplasmGetAlertDialogInstance = null;                     // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.GermplasmSummaryListResponse>
-        germplasmSummaryListResponseCallbackInstance = null;                            // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.GermplasmSummaryListResponse>
+            germplasmSummaryListResponseCallbackInstance = null;                        // lazy load
     // endregion
-    
+
     // region studiesStudyDbIdLayoutsGet() Fields
-    private android.widget.Button                          studiesStudyDbIdLayoutsPutButton;
-    private org.wheatgenetics.brapi1_3.studies.Application applicationInstance = null      ;   // ll
+    private android.widget.Button studiesStudyDbIdLayoutsPutButton;
     private
         org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
             studiesStudyDbIdLayoutsGetAlertDialogInstance = null;                       // lazy load
@@ -243,8 +207,9 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdObservationsGetAlertDialog.Parameters
             studiesStudyDbIdObservationsGetParametersInstance = null;                   // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.ObservationsResponse>
-        observationsResponseCallbackInstance = null;                                    // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.ObservationsResponse>
+            observationsResponseCallbackInstance = null;                                // lazy load
     // endregion
     // endregion
 
@@ -257,43 +222,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     // region searchStudiesPost() Private Methods
-    private void setResponseTextViewText(
-    final io.swagger.client.model.SuccessfulSearchResponse successfulSearchResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == successfulSearchResponse ? "null" : successfulSearchResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>
-    successfulSearchResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.SuccessfulSearchResponse> successfulSearchResponseCallback()
     {
         if (null == this.successfulSearchResponseCallbackInstance)
-            this.successfulSearchResponseCallbackInstance = new
-                io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>()
-                {
-                    @java.lang.Override public void onFailure(
-                    final io.swagger.client.ApiException e, final int i,
-                    final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                            .Fragment.this.setResponseTextViewTextFromThread(e);
-                    }
-
-                    @java.lang.Override public void onSuccess(
-                    final io.swagger.client.model.SuccessfulSearchResponse successfulSearchResponse,
-                    final int                                                               i  ,
-                    final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                            .Fragment.this.setResponseTextViewText(successfulSearchResponse);
-                    }
-
-                    @java.lang.Override public void onUploadProgress(
-                    final long l, final long l1, final boolean b) {}
-
-                    @java.lang.Override public void onDownloadProgress(
-                    final long l, final long l1, final boolean b) {}
-                };
+            this.successfulSearchResponseCallbackInstance =
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+                    io.swagger.client.model.SuccessfulSearchResponse>() {};
         return this.successfulSearchResponseCallbackInstance;
     }
 
@@ -338,42 +273,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     { this.studySearchRequestAlertDialog().show(this.studySearchRequest()); }
     // endregion
 
-    // region searchStudiesSearchResultsDbIdGet() and studiesGet() Private Methods
-    private void setResponseTextViewText(
-    final io.swagger.client.model.StudiesResponse studiesResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == studiesResponse ? "null" : studiesResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.StudiesResponse>
-    studiesResponseCallback()
+    // region searchStudiesSearchResultsDbIdGet() and studiesGet() Private Method
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.StudiesResponse> studiesResponseCallback()
     {
         if (null == this.studiesResponseCallbackInstance) this.studiesResponseCallbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.StudiesResponse>()
-            {
-                @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
-                final int                                                               i  ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                        .Fragment.this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.StudiesResponse studiesResponse, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                        .Fragment.this.setResponseTextViewText(studiesResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+                io.swagger.client.model.StudiesResponse>() {};
         return this.studiesResponseCallbackInstance;
     }
     // endregion
@@ -435,41 +341,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region seasonsGet() Private Methods
-    private void setResponseTextViewText(
-    final io.swagger.client.model.SeasonsResponse studiesResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == studiesResponse ? "null" : studiesResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.SeasonsResponse>
-    seasonsResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.SeasonsResponse> seasonsResponseCallback()
     {
         if (null == this.seasonsResponseCallbackInstance) this.seasonsResponseCallbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.SeasonsResponse>()
-            {
-                @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
-                final int                                                               i  ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                        .Fragment.this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.SeasonsResponse seasonsResponse, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                        .Fragment.this.setResponseTextViewText(seasonsResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+                io.swagger.client.model.SeasonsResponse>() {};
         return this.seasonsResponseCallbackInstance;
     }
 
@@ -587,40 +464,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdGet() Private Methods
-    private void setResponseTextViewText(final io.swagger.client.model.StudyResponse studyResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == studyResponse ? "null" : studyResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.StudyResponse>
-    studyResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.StudyResponse> studyResponseCallback()
     {
         if (null == this.studyResponseCallbackInstance) this.studyResponseCallbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.StudyResponse>()
-            {
-                @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
-                final int                                                               i  ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                        .Fragment.this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.StudyResponse studyResponse, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                        .Fragment.this.setResponseTextViewText(studyResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+                io.swagger.client.model.StudyResponse>() {};
         return this.studyResponseCallbackInstance;
     }
 
@@ -681,44 +530,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdGermplasmGet() Private Methods
-    private void setResponseTextViewText(
-    final io.swagger.client.model.GermplasmSummaryListResponse germplasmSummaryListResponse)
-    {
-        this.setResponseTextViewTextFromThread(null == germplasmSummaryListResponse ?
-            "null" : germplasmSummaryListResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.GermplasmSummaryListResponse>
-    germplasmSummaryListCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.GermplasmSummaryListResponse> germplasmSummaryListCallback()
     {
         if (null == this.germplasmSummaryListResponseCallbackInstance)
-            this.germplasmSummaryListResponseCallbackInstance = new io.swagger.client.ApiCallback<
-                io.swagger.client.model.GermplasmSummaryListResponse>()
-                {
-                    @java.lang.Override public void onFailure(
-                    final io.swagger.client.ApiException e, final int i,
-                    final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                            .Fragment.this.setResponseTextViewTextFromThread(e);
-                    }
-
-                    @java.lang.Override public void onSuccess(
-                    final io.swagger.client.model.GermplasmSummaryListResponse
-                        germplasmSummaryListResponse,
-                    final int                                                               i  ,
-                    final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                            .Fragment.this.setResponseTextViewText(germplasmSummaryListResponse);
-                    }
-
-                    @java.lang.Override public void onUploadProgress(
-                    final long l, final long l1, final boolean b) {}
-
-                    @java.lang.Override public void onDownloadProgress(
-                    final long l, final long l1, final boolean b) {}
-                };
+            this.germplasmSummaryListResponseCallbackInstance =
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+                    io.swagger.client.model.GermplasmSummaryListResponse>() {};
         return this.germplasmSummaryListResponseCallbackInstance;
     }
 
@@ -794,8 +612,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         }
     }
 
-    private io.swagger.client.ApiCallback<io.swagger.client.model.ObservationUnitPositionsResponse>
-    studiesStudyDbIdLayoutsGetCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.ObservationUnitPositionsResponse> studiesStudyDbIdLayoutsGetCallback()
     {
         if (null == this.studiesStudyDbIdLayoutsGetCallbackInstance)
             this.studiesStudyDbIdLayoutsGetCallbackInstance =
@@ -843,13 +661,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdLayoutsPut() Private Methods
-    private io.swagger.client.ApiCallback<io.swagger.client.model.ObservationUnitPositionsResponse>
-    studiesStudyDbIdLayoutsPutCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+    .Fragment.StudiesStudyDbIdLayoutsPutCallback studiesStudyDbIdLayoutsPutCallback()
     {
         if (null == this.studiesStudyDbIdLayoutsPutCallbackInstance)
             this.studiesStudyDbIdLayoutsPutCallbackInstance =
-                new org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                    .studies.Fragment.StudiesStudyDbIdLayoutsPutCallback();
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                    .Fragment.StudiesStudyDbIdLayoutsPutCallback();
         return this.studiesStudyDbIdLayoutsPutCallbackInstance;
     }
 
@@ -883,44 +701,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdObservationsGet() Private Methods
-    private void setResponseTextViewText(
-    final io.swagger.client.model.ObservationsResponse observationsResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == observationsResponse ? "null" : observationsResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.ObservationsResponse>
-    observationsResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.ObservationsResponse> observationsResponseCallback()
     {
         if (null == this.observationsResponseCallbackInstance)
             this.observationsResponseCallbackInstance =
-                new io.swagger.client.ApiCallback<io.swagger.client.model.ObservationsResponse>()
-                {
-                    @java.lang.Override
-                    public void onFailure(final io.swagger.client.ApiException e,
-                    final int                                                               i  ,
-                    final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                            .Fragment.this.setResponseTextViewTextFromThread(e);
-                    }
-
-                    @java.lang.Override public void onSuccess(
-                    final io.swagger.client.model.ObservationsResponse observationsResponse,
-                    final int                                                               i  ,
-                    final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                            .Fragment.this.setResponseTextViewText(observationsResponse);
-                    }
-
-                    @java.lang.Override public void onUploadProgress(
-                    final long l, final long l1, final boolean b) {}
-
-                    @java.lang.Override public void onDownloadProgress(
-                    final long l, final long l1, final boolean b) {}
-                };
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+                    io.swagger.client.model.ObservationsResponse>() {};
         return this.observationsResponseCallbackInstance;
     }
 
