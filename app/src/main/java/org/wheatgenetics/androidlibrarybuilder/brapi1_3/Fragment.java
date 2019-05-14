@@ -78,69 +78,35 @@ public abstract class Fragment extends android.support.v4.app.Fragment
 
     // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient()
-    {
-        final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
-            this.getSupplier();
-        // noinspection ConstantConditions
-        return null == supplier ? null : supplier.apiClient();
-    }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected java.lang.String authorization()
-    {
-        final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
-            this.getSupplier();
-        return null == supplier ? null : supplier.authorization();
-    }
-    // endregion
-
-    // region Overridden Methods
-    @java.lang.Override public void onAttach(final android.content.Context context)
-    {
-        super.onAttach(context);
-
-        if (context instanceof org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier)
-            this.setSupplier(
-                (org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier) context);
-        else
-            this.failSupplier(context);
-    }
-
-    @java.lang.Override public void onDetach() { this.setSupplier(null); super.onDetach(); }
-    // endregion
-
-    // region Public Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.Nullable  public android.view.View inflate(
+    @android.support.annotation.Nullable  protected android.view.View inflate(
     @android.support.annotation.NonNull   final android.view.LayoutInflater inflater        ,
     @android.support.annotation.Nullable  final android.view.ViewGroup      container       ,
     @android.support.annotation.LayoutRes final int                         layoutResourceId)
     { return inflater.inflate(layoutResourceId, container,false); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    public void findResponseTextViewById(
+    protected void findResponseTextViewById(
     @android.support.annotation.NonNull final android.view.View rootView,
     @android.support.annotation.IdRes   final int               id      )
     { this.responseTextView = rootView.findViewById(id); }
 
-    // region setResponseTextViewText() Public Methods
+    // region setResponseTextViewText() Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    public void setResponseTextViewTextFromThread(final java.lang.String text)
+    protected void setResponseTextViewTextFromThread(final java.lang.String text)
     {
         final android.app.Activity activity = this.getActivity();
         if (null != activity) activity.runOnUiThread(new java.lang.Runnable()
+        {
+            @java.lang.Override public void run()
             {
-                @java.lang.Override public void run()
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                        .Fragment.this.setResponseTextViewText(text);
-                }
-            });
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                    .Fragment.this.setResponseTextViewText(text);
+            }
+        });
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    public void setResponseTextViewText(final java.lang.Throwable throwable)
+    protected void setResponseTextViewText(final java.lang.Throwable throwable)
     {
         if (null == throwable)
             this.setResponseTextViewTextFromThread("throwable is null.");
@@ -166,7 +132,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    public void setResponseTextViewTextFromThread(final java.lang.Throwable throwable)
+    protected void setResponseTextViewTextFromThread(final java.lang.Throwable throwable)
     {
         final android.app.Activity activity = this.getActivity();
         if (null != activity) activity.runOnUiThread(new java.lang.Runnable()
@@ -179,5 +145,39 @@ public abstract class Fragment extends android.support.v4.app.Fragment
         });
     }
     // endregion
+
+    // region Supplier Protected Methods
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient()
+    {
+        final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
+            this.getSupplier();
+        // noinspection ConstantConditions
+        return null == supplier ? null : supplier.apiClient();
+    }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected java.lang.String authorization()
+    {
+        final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
+            this.getSupplier();
+        return null == supplier ? null : supplier.authorization();
+    }
+    // endregion
+    // endregion
+
+    // region Overridden Methods
+    @java.lang.Override public void onAttach(final android.content.Context context)
+    {
+        super.onAttach(context);
+
+        if (context instanceof org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier)
+            this.setSupplier(
+                (org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier) context);
+        else
+            this.failSupplier(context);
+    }
+
+    @java.lang.Override public void onDetach() { this.setSupplier(null); super.onDetach(); }
     // endregion
 }
