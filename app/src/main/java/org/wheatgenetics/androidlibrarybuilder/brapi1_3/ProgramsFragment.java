@@ -12,8 +12,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.widget.Button
  * android.widget.EditText
  *
- * io.swagger.client.ApiCallback
- * io.swagger.client.ApiException
  * io.swagger.client.api.ProgramsApi
  * io.swagger.client.model.ProgramsResponse
  * io.swagger.client.model.ProgramsSearchRequest
@@ -25,6 +23,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class ProgramsFragment
 extends    org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
@@ -32,8 +31,8 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
 {
     // region Fields
     private io.swagger.client.api.ProgramsApi programsApiInstance = null;               // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.ProgramsResponse>
-        programsResponseCallbackInstance = null;                                        // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback< // lazy load
+        io.swagger.client.model.ProgramsResponse> programsResponseCallbackInstance = null;
 
     // region programsGet() Fields
     private android.widget.EditText commonCropNameEditText,
@@ -44,8 +43,9 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
     private io.swagger.client.model.ProgramsSearchRequest programsSearchRequestInstance = null;// ll
     private org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog
         programsSearchRequestAlertDialogInstance = null;                                // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>
-        successfulSearchResponseCallbackInstance = null;                                // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+        io.swagger.client.model.SuccessfulSearchResponse>
+            successfulSearchResponseCallbackInstance = null;                            // lazy load
     // endregion
 
     // region searchProgramsSearchResultsDbIdGet() Fields
@@ -63,41 +63,12 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
         return this.programsApiInstance;
     }
 
-    private void setResponseTextViewText(
-    final io.swagger.client.model.ProgramsResponse programsResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == programsResponse ? "null" : programsResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.ProgramsResponse>
-    programsResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    io.swagger.client.model.ProgramsResponse> programsResponseCallback()
     {
         if (null == this.programsResponseCallbackInstance) this.programsResponseCallbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.ProgramsResponse>()
-            {
-                @java.lang.Override public void onFailure(
-                final io.swagger.client.ApiException e, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
-                        .this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.ProgramsResponse programsResponse, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
-                        .this.setResponseTextViewText(programsResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+                io.swagger.client.model.ProgramsResponse>() {};
         return this.programsResponseCallbackInstance;
     }
 
@@ -146,43 +117,13 @@ implements org.wheatgenetics.brapi1_3.ProgramsSearchRequestAlertDialog.Handler
     private void showProgramsSearchRequestAlertDialog()
     { this.programsSearchRequestAlertDialog().show(this.programsSearchRequest()); }
 
-    private void setResponseTextViewText(
-    final io.swagger.client.model.SuccessfulSearchResponse successfulSearchResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == successfulSearchResponse ? "null" : successfulSearchResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>
-    successfulSearchResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    io.swagger.client.model.SuccessfulSearchResponse> successfulSearchResponseCallback()
     {
         if (null == this.successfulSearchResponseCallbackInstance)
-            this.successfulSearchResponseCallbackInstance = new
-                io.swagger.client.ApiCallback<io.swagger.client.model.SuccessfulSearchResponse>()
-                {
-                    @java.lang.Override public void onFailure(
-                    final io.swagger.client.ApiException e, final int i,
-                    final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
-                            .this.setResponseTextViewTextFromThread(e);
-                    }
-
-                    @java.lang.Override public void onSuccess(
-                    final io.swagger.client.model.SuccessfulSearchResponse successfulSearchResponse,
-                    final int                                              i                       ,
-                    final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map    )
-                    {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.ProgramsFragment
-                            .this.setResponseTextViewText(successfulSearchResponse);
-                    }
-
-                    @java.lang.Override public void onUploadProgress(
-                    final long l, final long l1, final boolean b) {}
-
-                    @java.lang.Override public void onDownloadProgress(
-                    final long l, final long l1, final boolean b) {}
-                };
+            this.successfulSearchResponseCallbackInstance =
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+                    io.swagger.client.model.SuccessfulSearchResponse>() {};
         return this.successfulSearchResponseCallbackInstance;
     }
     // endregion

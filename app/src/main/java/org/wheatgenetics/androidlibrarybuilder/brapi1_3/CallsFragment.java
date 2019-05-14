@@ -15,8 +15,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.widget.Button
  * android.widget.TextView
  *
- * io.swagger.client.ApiCallback
- * io.swagger.client.ApiException
  * io.swagger.client.api.CallsApi
  * io.swagger.client.model.CallsResponse
  * io.swagger.client.model.WSMIMEDataTypes
@@ -26,6 +24,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class CallsFragment
 extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
@@ -37,8 +36,8 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
     private org.wheatgenetics.brapi1_3.DataTypeAlertDialog dataTypeAlertDialogInstance = null; // ll
 
     private io.swagger.client.api.CallsApi callsApiInstance = null;                     // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.CallsResponse>
-        callbackInstance = null;                                                        // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+        io.swagger.client.model.CallsResponse> callbackInstance = null;                 // lazy load
     // endregion
 
     // region Private Methods
@@ -81,41 +80,12 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
         return this.callsApiInstance;
     }
 
-    private void setResponseTextViewText(final io.swagger.client.model.CallsResponse callsResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == callsResponse ? "null" : callsResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.CallsResponse> callback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    io.swagger.client.model.CallsResponse> callback()
     {
         if (null == this.callbackInstance) this.callbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.CallsResponse>()
-            {
-                @java.lang.Override public void onFailure(
-                final io.swagger.client.ApiException e, final int statusCode,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>>
-                    responseHeaders)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                        .CallsFragment.this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.CallsResponse result, final int statusCode,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>>
-                    responseHeaders)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                        .CallsFragment.this.setResponseTextViewText(result);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long bytesWritten, final long contentLength, final boolean done) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long bytesRead, final long contentLength, final boolean done) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+                io.swagger.client.model.CallsResponse>() {};
         return this.callbackInstance;
     }
 

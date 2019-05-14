@@ -19,15 +19,48 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.widget.TextView
  *
  * io.swagger.client.ApiException
+ * io.swagger.client.ApiCallback
  * io.swagger.client.ApiClient
  */
 public abstract class Fragment extends android.support.v4.app.Fragment
 {
+    // region Types
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface Supplier
     {
                                             public abstract java.lang.String        authorization();
         @android.support.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient();
     }
+
+    @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) abstract class ApiCallback<T>
+    extends java.lang.Object implements io.swagger.client.ApiCallback<T>
+    {
+        void setResponseTextViewText(final T result)
+        {
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.this
+                .setResponseTextViewTextFromThread(null == result ? "null" : result.toString());
+        }
+
+        // region Overridden Methods
+        @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
+        final int                                                               statusCode     ,
+        final java.util.Map<java.lang.String, java.util.List<java.lang.String>> responseHeaders)
+        {
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.this
+                .setResponseTextViewTextFromThread(e);
+        }
+
+        @java.lang.Override public void onSuccess(final T result, final int statusCode,
+        final java.util.Map<java.lang.String, java.util.List<java.lang.String>> responseHeaders)
+        { this.setResponseTextViewText(result); }
+
+        @java.lang.Override public void onUploadProgress(
+        final long bytesWritten, final long contentLength, final boolean done) {}
+
+        @java.lang.Override public void onDownloadProgress(
+        final long bytesRead, final long contentLength, final boolean done) {}
+        // endregion
+    }
+    // endregion
 
     // region Fields
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier       ;

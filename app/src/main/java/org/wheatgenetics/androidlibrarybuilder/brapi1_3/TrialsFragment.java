@@ -13,8 +13,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.widget.EditText
  * android.widget.RadioGroup
  *
- * io.swagger.client.ApiCallback
- * io.swagger.client.ApiException
  * io.swagger.client.api.TrialsApi
  * io.swagger.client.model.TrialResponse
  * io.swagger.client.model.TrialsResponse
@@ -22,6 +20,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
 {
@@ -32,10 +31,10 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
 
     private io.swagger.client.api.TrialsApi trialsApiInstance = null;                   // lazy load
 
-    private io.swagger.client.ApiCallback<io.swagger.client.model.TrialsResponse>
-        trialsResponseCallbackInstance = null;                                          // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.TrialResponse>
-        trialResponseCallbackInstance = null;                                           // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+        io.swagger.client.model.TrialsResponse> trialsResponseCallbackInstance = null;  // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+        io.swagger.client.model.TrialResponse> trialResponseCallbackInstance = null;    // lazy load
     // endregion
 
     // region Private Methods
@@ -64,41 +63,12 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
             }
     }
 
-    private void setResponseTextViewTextFromThread(
-    final io.swagger.client.model.TrialsResponse trialsResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == trialsResponse ? "null" : trialsResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.TrialsResponse>
-    trialsResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    io.swagger.client.model.TrialsResponse> trialsResponseCallback()
     {
         if (null == this.trialsResponseCallbackInstance) this.trialsResponseCallbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.TrialsResponse>()
-            {
-                @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
-                final int                                                               i  ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment
-                        .this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.TrialsResponse trialsResponse, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment
-                        .this.setResponseTextViewTextFromThread(trialsResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+                io.swagger.client.model.TrialsResponse>() {};
         return this.trialsResponseCallbackInstance;
     }
 
@@ -135,41 +105,12 @@ public class TrialsFragment extends org.wheatgenetics.androidlibrarybuilder.brap
     // endregion
 
     // region trialsTrialDbIdGet() Private Methods
-    private void setResponseTextViewTextFromThread(
-    final io.swagger.client.model.TrialResponse trialResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == trialResponse ? "null" : trialResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.TrialResponse>
-    trialResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    io.swagger.client.model.TrialResponse> trialResponseCallback()
     {
         if (null == this.trialResponseCallbackInstance) this.trialResponseCallbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.TrialResponse>()
-            {
-                @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
-                final int                                                               i  ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment
-                        .this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.TrialResponse trialResponse, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment
-                        .this.setResponseTextViewTextFromThread(trialResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+                io.swagger.client.model.TrialResponse>() {};
         return this.trialResponseCallbackInstance;
     }
 

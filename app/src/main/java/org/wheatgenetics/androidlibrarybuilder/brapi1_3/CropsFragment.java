@@ -11,22 +11,21 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.view.ViewGroup
  * android.widget.Button
  *
- * io.swagger.client.ApiCallback
- * io.swagger.client.ApiException
  * io.swagger.client.api.CropsApi
  * io.swagger.client.model.CommonCropNamesResponse
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class CropsFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
 implements android.view.View.OnClickListener
 {
     // region Fields
     private io.swagger.client.api.CropsApi cropsApiInstance = null;                     // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.CommonCropNamesResponse>
-        callbackInstance = null;                                                        // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+        io.swagger.client.model.CommonCropNamesResponse> callbackInstance = null;       // lazy load
     // endregion
 
     // region Private Methods
@@ -37,43 +36,12 @@ implements android.view.View.OnClickListener
         return this.cropsApiInstance;
     }
 
-    private void setResponseTextViewText(final io.swagger.client.model.CommonCropNamesResponse
-        commonCropNamesResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == commonCropNamesResponse ? "null" : commonCropNamesResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.CommonCropNamesResponse>
-    callback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    io.swagger.client.model.CommonCropNamesResponse> callback()
     {
         if (null == this.callbackInstance) this.callbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.CommonCropNamesResponse>()
-            {
-                @java.lang.Override public void onFailure(
-                final io.swagger.client.ApiException                                    e  ,
-                final int                                                               i  ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
-                        .this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.CommonCropNamesResponse commonCropNamesResponse,
-                final int                                                               i    ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map  )
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment
-                        .this.setResponseTextViewText(commonCropNamesResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+                io.swagger.client.model.CommonCropNamesResponse>() {};
         return this.callbackInstance;
     }
     // endregion

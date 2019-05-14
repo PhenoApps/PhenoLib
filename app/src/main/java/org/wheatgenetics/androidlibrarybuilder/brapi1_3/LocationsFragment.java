@@ -12,8 +12,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.widget.Button
  * android.widget.EditText
  *
- * io.swagger.client.ApiCallback
- * io.swagger.client.ApiException
  * io.swagger.client.api.LocationsApi
  * io.swagger.client.model.LocationResponse
  * io.swagger.client.model.LocationsResponse
@@ -21,6 +19,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback
  */
 public class LocationsFragment
 extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
@@ -30,10 +29,10 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
 
     private io.swagger.client.api.LocationsApi locationsApiInstance = null;             // lazy load
 
-    private io.swagger.client.ApiCallback<io.swagger.client.model.LocationsResponse>
-        locationsResponseCallbackInstance = null;                                       // lazy load
-    private io.swagger.client.ApiCallback<io.swagger.client.model.LocationResponse>
-        locationResponseCallbackInstance = null;                                        // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback< // lazy load
+        io.swagger.client.model.LocationsResponse> locationsResponseCallbackInstance = null;
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback< // lazy load
+        io.swagger.client.model.LocationResponse> locationResponseCallbackInstance = null;
     // endregion
 
     // region Private Methods
@@ -45,41 +44,12 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
     }
 
     // region locationsGet() Private Methods
-    private void setResponseTextViewTextFromThread(
-    final io.swagger.client.model.LocationsResponse locationsResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == locationsResponse ? "null" : locationsResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.LocationsResponse>
-    locationsResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    io.swagger.client.model.LocationsResponse> locationsResponseCallback()
     {
         if (null == this.locationsResponseCallbackInstance) this.locationsResponseCallbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.LocationsResponse>()
-            {
-                @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
-                final int                                                               i  ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
-                        .this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.LocationsResponse locationsResponse, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
-                        .this.setResponseTextViewTextFromThread(locationsResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+                io.swagger.client.model.LocationsResponse>() {};
         return this.locationsResponseCallbackInstance;
     }
 
@@ -101,41 +71,12 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
     // endregion
 
     // region locationsLocationDbIdGet() Private Methods
-    private void setResponseTextViewTextFromThread(
-    final io.swagger.client.model.LocationResponse locationResponse)
-    {
-        this.setResponseTextViewTextFromThread(
-            null == locationResponse ? "null" : locationResponse.toString());
-    }
-
-    private io.swagger.client.ApiCallback<io.swagger.client.model.LocationResponse>
-    locationResponseCallback()
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+    io.swagger.client.model.LocationResponse> locationResponseCallback()
     {
         if (null == this.locationResponseCallbackInstance) this.locationResponseCallbackInstance =
-            new io.swagger.client.ApiCallback<io.swagger.client.model.LocationResponse>()
-            {
-                @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
-                final int                                                               i  ,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
-                        .this.setResponseTextViewTextFromThread(e);
-                }
-
-                @java.lang.Override public void onSuccess(
-                final io.swagger.client.model.LocationResponse locationResponse, final int i,
-                final java.util.Map<java.lang.String, java.util.List<java.lang.String>> map)
-                {
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.LocationsFragment
-                        .this.setResponseTextViewTextFromThread(locationResponse);
-                }
-
-                @java.lang.Override public void onUploadProgress(
-                final long l, final long l1, final boolean b) {}
-
-                @java.lang.Override public void onDownloadProgress(
-                final long l, final long l1, final boolean b) {}
-            };
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment.ApiCallback<
+                io.swagger.client.model.LocationResponse>() {};
         return this.locationResponseCallbackInstance;
     }
 
