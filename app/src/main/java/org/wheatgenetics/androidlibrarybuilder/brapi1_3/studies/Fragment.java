@@ -239,6 +239,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         return this.applicationInstance;
     }
 
+    private org.wheatgenetics.javalib.mstrdtl.Items items()
+    {
+        final org.wheatgenetics.brapi1_3.studies.Application application = this.application();
+        return null == application ? null : application.mstrdtlItems();
+    }
+
     private void setPutButtonEnabled(
     @android.support.annotation.Nullable final android.widget.Button putButton,
                                          final boolean               enabled  )
@@ -565,7 +571,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
 
     // region studiesStudyDbIdGermplasmGet() Private Methods
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
-    io.swagger.client.model.GermplasmSummaryListResponse> germplasmSummaryListCallback()
+    io.swagger.client.model.GermplasmSummaryListResponse> germplasmSummaryListResponseCallback()
     {
         if (null == this.germplasmSummaryListResponseCallbackInstance)
             this.germplasmSummaryListResponseCallbackInstance =
@@ -583,8 +589,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                     /* studyDbId => */ this.studyDbIdPagePageSizeParametersInstance.getStudyDbId(),
                     /* page      => */ this.studyDbIdPagePageSizeParametersInstance.getPage     (),
                     /* pageSize  => */ this.studyDbIdPagePageSizeParametersInstance.getPageSize (),
-                    /* authorization => */ this.authorization               (),
-                    /* callback      => */ this.germplasmSummaryListCallback());
+                    /* authorization => */ this.authorization                       (),
+                    /* callback      => */ this.germplasmSummaryListResponseCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
     }
@@ -1033,17 +1039,15 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     @java.lang.Override public void onActivityResult(final int requestCode,
     final int resultCode, final android.content.Intent data)
     {
-        if (org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
-        .STUDY_LAYOUT_REQUEST_LIST_ACTIVITY_REQUEST_CODE == requestCode)
+        switch (requestCode)
         {
-            final org.wheatgenetics.javalib.mstrdtl.Items items;
-            {
-                final org.wheatgenetics.brapi1_3.studies.Application application =
-                    this.application();
-                items = null == application ? null : application.mstrdtlItems();
-            }
-            if (null != items)
-                this.studiesStudyDbIdLayoutsPut((io.swagger.client.model.StudyLayoutRequest) items);
+            case org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+            .STUDY_LAYOUT_REQUEST_LIST_ACTIVITY_REQUEST_CODE:
+                {
+                    final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+                    if (null != items) this.studiesStudyDbIdLayoutsPut(
+                        (io.swagger.client.model.StudyLayoutRequest) items);
+                } break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

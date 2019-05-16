@@ -35,10 +35,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".WebViewActivity"                />
-        <activity android:name=".mstrdtl.ItemActivity"           />
+        <activity android:name=".WebViewActivity" />
+
+        <activity android:name=".mstrdtl.ItemActivity" />
+        <activity android:name=".mstrdtl.ListActivity" />
+
         <activity android:name=".mstrdtl.ChangeableItemActivity" />
-        <activity android:name=".mstrdtl.ListActivity"           />
         <activity android:name=".mstrdtl.ChangeableListActivity" />
 
         <activity android:name="org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutItemActivity" />

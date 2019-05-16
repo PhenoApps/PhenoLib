@@ -87,7 +87,7 @@
 
 
     <!-- ProgramsSearchRequestAlertDialog -->
-    <string name="ProgramsSearchRequestAlertDialogTitle">Programs Search Request</string>
+    <string name="ProgramsSearchRequestAlertDialogTitle">ProgramsSearchRequest</string>
     <string name="ProgramsSearchRequestAlertDialogAbbreviationsEditTextHint">abbreviations</string>
     <string name="ProgramsSearchRequestAlertDialogCommonCropNamesEditTextHint">commonCropNames</string>
     <string name="ProgramsSearchRequestAlertDialogLeadPersonDbIdsEditTextHint">leadPersonDbIds</string>
@@ -98,7 +98,7 @@
 
 
     <!-- StudySearchRequestAlertDialog -->
-    <string name="StudySearchRequestAlertDialogTitle">Study Search Request</string>
+    <string name="StudySearchRequestAlertDialogTitle">StudySearchRequest</string>
     <string name="StudySearchRequestAlertDialogCommonCropNamesEditTextHint">commonCropNames</string>
     <string name="StudySearchRequestAlertDialogGermplasmDbIdsEditTextHint">germplasmDbIds</string>
     <string name="StudySearchRequestAlertDialogLocationDbIdsEditTextHint">locationDbIds</string>
@@ -115,7 +115,7 @@
     <string name="StudySearchRequestAlertDialogTrialDbIdsEditTextHint">trialDbIds</string>
 
     <!-- StudyLayoutRequestLayoutAlertDialog -->
-    <string name="StudyLayoutRequestLayoutAlertDialogTitle">Study Layout Request Layout</string>
+    <string name="StudyLayoutRequestLayoutAlertDialogTitle">StudyLayoutRequestLayout</string>
     <string name="StudyLayoutRequestLayoutAlertDialogBlockNumberEditTextHint">blockNumber</string>
     <string name="StudyLayoutRequestLayoutAlertDialogEntryTypeLabelTextViewText">entryType:</string>
     <string name="StudyLayoutRequestLayoutAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>

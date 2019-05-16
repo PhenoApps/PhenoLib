@@ -141,7 +141,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
                             arrayList = org.wheatgenetics.brapi1_3.AlertDialog.arrayList(arrayList);
                             arrayList.add(substring);
                         }
-                        beginIndex = endIndex + 1                            ;
+                        beginIndex = endIndex + 1;
                         endIndex   = stringText.indexOf('\n', beginIndex);
                         if (endIndex == notFoundIndex) endIndex = stringText.length();
                     }
