@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/studiesNewObservationsRequestObservationsCollectorEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsRequestObservationsAlertDialogCollectorEditTextHint"
+        android:inputType="text"
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationsRequestObservationsObservationDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsRequestObservationsAlertDialogObservationDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationsRequestObservationsObservationTimeStampEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsRequestObservationsAlertDialogObservationTimeStampEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationsRequestObservationsObservationUnitDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsRequestObservationsAlertDialogObservationUnitDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationsRequestObservationsObservationVariableDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsRequestObservationsAlertDialogObservationVariableDbIdEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationsRequestObservationsValueEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsRequestObservationsAlertDialogValueEditTextHint"
+        android:inputType="number"
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
+
+</LinearLayout>

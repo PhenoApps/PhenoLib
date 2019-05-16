@@ -8,7 +8,12 @@ package org.wheatgenetics.brapi1_3;
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.text.Editable
+ * android.util.Log
  * android.widget.EditText
+ *
+ * org.threeten.bp.Instant
+ * org.threeten.bp.OffsetDateTime
+ * org.threeten.bp.ZoneOffset
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  */
@@ -19,9 +24,14 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
 
     private final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler;
 
+    // region Private Methods
+    private static void log(final java.lang.String msg)
+    { android.util.Log.i("brapi1_3.AlertDialog", msg); }
+
     private static java.util.ArrayList<java.lang.String> arrayList(
     final java.util.ArrayList<java.lang.String> arrayList)
     { return null == arrayList ? new java.util.ArrayList<java.lang.String>() : arrayList; }
+    // endregion
 
     // region Protected Methods
     // region setEditTextText() Protected Methods
@@ -35,6 +45,15 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     {
         org.wheatgenetics.brapi1_3.AlertDialog.setEditTextText(
             editText, null == text ? null : text.toString());
+    }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected static void setEditTextText(
+    final android.widget.EditText editText, final org.threeten.bp.OffsetDateTime text)
+    {
+        final java.lang.String offsetDateTimeText = null == text ? null : text.toString();
+        org.wheatgenetics.brapi1_3.AlertDialog.log            (          offsetDateTimeText);
+        org.wheatgenetics.brapi1_3.AlertDialog.setEditTextText(editText, offsetDateTimeText);
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -107,6 +126,21 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
         final java.lang.String stringText =
             org.wheatgenetics.brapi1_3.AlertDialog.getEditTextStringText(editText);
         return null == stringText ? null : java.lang.Integer.valueOf(stringText);
+    }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected static org.threeten.bp.OffsetDateTime getEditTextTimeStampText
+    (final android.widget.EditText editText)
+    {
+        final org.threeten.bp.OffsetDateTime result;
+        {
+            final java.lang.String stringText =
+                org.wheatgenetics.brapi1_3.AlertDialog.getEditTextStringText(editText);
+            result = null == stringText ? null : org.threeten.bp.OffsetDateTime.ofInstant(
+                org.threeten.bp.Instant.parse(stringText), org.threeten.bp.ZoneOffset.UTC);
+        }
+        org.wheatgenetics.brapi1_3.AlertDialog.log(null == result ? null : result.toString());
+        return result;
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)

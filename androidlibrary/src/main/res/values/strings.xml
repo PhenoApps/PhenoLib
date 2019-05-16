@@ -114,6 +114,7 @@
     <string name="StudySearchRequestAlertDialogStudyTypeNamesEditTextHint">studyTypeNames</string>
     <string name="StudySearchRequestAlertDialogTrialDbIdsEditTextHint">trialDbIds</string>
 
+
     <!-- StudyLayoutRequestLayoutAlertDialog -->
     <string name="StudyLayoutRequestLayoutAlertDialogTitle">StudyLayoutRequestLayout</string>
     <string name="StudyLayoutRequestLayoutAlertDialogBlockNumberEditTextHint">blockNumber</string>
@@ -124,4 +125,14 @@
     <string name="StudyLayoutRequestLayoutAlertDialogPositionCoordinateYEditTextHint">positionCoordinateY</string>
     <string name="StudyLayoutRequestLayoutAlertDialogPositionCoordinateYTypeLabelTextViewText">positionCoordinateYType:</string>
     <string name="StudyLayoutRequestLayoutAlertDialogReplicateEditTextHint">replicate</string>
+
+
+    <!-- NewObservationsRequestObservationsAlertDialog -->
+    <string name="NewObservationsRequestObservationsAlertDialogTitle">NewObservationsRequestObservations</string>
+    <string name="NewObservationsRequestObservationsAlertDialogCollectorEditTextHint">collector</string>
+    <string name="NewObservationsRequestObservationsAlertDialogObservationDbIdEditTextHint">observationDbId</string>
+    <string name="NewObservationsRequestObservationsAlertDialogObservationTimeStampEditTextHint">observationTimeStamp</string>
+    <string name="NewObservationsRequestObservationsAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
+    <string name="NewObservationsRequestObservationsAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
+    <string name="NewObservationsRequestObservationsAlertDialogValueEditTextHint">value</string>
 </resources>

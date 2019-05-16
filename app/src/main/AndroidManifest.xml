@@ -45,6 +45,10 @@
 
         <activity android:name="org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutItemActivity" />
         <activity android:name="org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity"       />
+
+        <activity android:name="org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsItemActivity" />
+        <activity android:name="org.wheatgenetics.brapi1_3.studies.NewObservationsRequestListActivity"             />
+
         <activity
             android:name=".brapi1_3.Activity"
             android:label="@string/title_activity_brapi1_3"
