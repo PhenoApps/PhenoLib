@@ -233,6 +233,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdObservationunitsGet() Fields
+    private android.widget.Button studiesStudyDbIdObservationunitsPutButton;
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdObservationunitsGetAlertDialog
             studiesStudyDbIdObservationunitsGetAlertDialogInstance = null;              // lazy load
@@ -653,7 +654,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private void setStudiesStudyDbIdLayoutsPutButtonEnabled(final boolean enabled)
     {
         this.setPutButtonEnabled(this.studiesStudyDbIdLayoutsPutButton, enabled);
-        this.disablePutButton   (this.studiesStudyDbIdObservationsPutButton     );
+        this.disablePutButton   (this.studiesStudyDbIdObservationsPutButton    );
+        this.disablePutButton   (this.studiesStudyDbIdObservationunitsPutButton);
     }
 
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
@@ -752,6 +754,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     {
         this.disablePutButton   (this.studiesStudyDbIdLayoutsPutButton              );
         this.setPutButtonEnabled(this.studiesStudyDbIdObservationsPutButton, enabled);
+        this.disablePutButton   (this.studiesStudyDbIdObservationunitsPutButton     );
     }
 
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
@@ -898,13 +901,52 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdObservationunitsGet() Private Methods
+    private void setStudiesStudyDbIdObservationunitsPutButtonEnabled(final boolean enabled)
+    {
+        this.disablePutButton   (this.studiesStudyDbIdLayoutsPutButton                  );
+        this.disablePutButton   (this.studiesStudyDbIdObservationsPutButton             );
+        this.setPutButtonEnabled(this.studiesStudyDbIdObservationunitsPutButton, enabled);
+    }
+
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
     io.swagger.client.model.ObservationUnitsResponse1> observationUnitsResponse1Callback()
     {
         if (null == this.observationUnitsResponse1CallbackInstance)
             this.observationUnitsResponse1CallbackInstance =
                 new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
-                    io.swagger.client.model.ObservationUnitsResponse1>() {};
+                    io.swagger.client.model.ObservationUnitsResponse1>()
+                {
+                    @java.lang.Override @android.support.annotation.RestrictTo(
+                        android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+                    protected void handleSuccess(
+                        final io.swagger.client.model.ObservationUnitsResponse1 result)
+                    {
+                        {
+                            final boolean enableStudiesStudyDbIdObservationunitsPutButton;
+                            {
+                                final org.wheatgenetics.brapi1_3.studies.Application
+                                    application = org.wheatgenetics.androidlibrarybuilder
+                                        .brapi1_3.studies.Fragment.this.application();
+                                if (null == application)
+                                    enableStudiesStudyDbIdObservationunitsPutButton = false;
+                                else
+                                {
+                                    // TODO application.makeNewObservationUnitRequests(result);
+
+                                    final org.wheatgenetics.javalib.mstrdtl.Items items =
+                                        application.mstrdtlItems();
+                                    // noinspection SimplifiableConditionalExpression
+                                    enableStudiesStudyDbIdObservationunitsPutButton =
+                                        null == items ? false : items.size() > 0;
+                                }
+                            }
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.
+                                Fragment.this.setStudiesStudyDbIdObservationunitsPutButtonEnabled(
+                                    enableStudiesStudyDbIdObservationunitsPutButton);
+                        }
+                        super.handleSuccess(result);
+                    }
+                };
         return this.observationUnitsResponse1CallbackInstance;
     }
 
@@ -1136,11 +1178,11 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                         });
             }
             {
-                final android.widget.Button studiesStudyDbIdObservationunitsPutButton =
-                    rootView.findViewById(org.wheatgenetics.androidlibrarybuilder
+                this.studiesStudyDbIdObservationunitsPutButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrarybuilder
                         .R.id.studiesStudyDbIdObservationunitsPutButton);
-                if (null != studiesStudyDbIdObservationunitsPutButton)
-                    studiesStudyDbIdObservationunitsPutButton.setOnClickListener(
+                if (null != this.studiesStudyDbIdObservationunitsPutButton)
+                    this.studiesStudyDbIdObservationunitsPutButton.setOnClickListener(
                         new android.view.View.OnClickListener()
                         { @java.lang.Override public void onClick(final android.view.View v) {} });
             }
