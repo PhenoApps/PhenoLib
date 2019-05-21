@@ -6,7 +6,7 @@ package org.wheatgenetics.brapi1_3.studies;
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  *
- * _io.swagger.client.model.NewObservationsRequestObservations
+ * io.swagger.client.model.NewObservationsRequestObservations
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
