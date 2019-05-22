@@ -9,7 +9,7 @@
     android:padding="10dp">
 
     <EditText
-        android:id="@+id/studiesStudiesStudyDbIdObservationunitsGetAlertStudyDbIdEditText"
+        android:id="@+id/studiesStudiesStudyDbIdObservationunitsGetStudyDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="studyDbId"
@@ -19,7 +19,7 @@
         tools:ignore="Autofill, HardcodedText" />
 
     <EditText
-        android:id="@+id/studiesStudiesStudyDbIdObservationunitsGetAlertObservationLevelEditText"
+        android:id="@+id/studiesStudiesStudyDbIdObservationunitsGetObservationLevelEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="observationLevel"

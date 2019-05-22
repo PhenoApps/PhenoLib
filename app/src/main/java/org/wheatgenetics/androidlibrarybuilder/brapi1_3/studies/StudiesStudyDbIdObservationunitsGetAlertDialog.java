@@ -51,10 +51,10 @@ extends org.wheatgenetics.brapi1_3.PagedAlertDialog
             {
                 if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(
                     org.wheatgenetics.androidlibrarybuilder.R.id
-                        .studiesStudiesStudyDbIdObservationunitsGetAlertStudyDbIdEditText);
+                        .studiesStudiesStudyDbIdObservationunitsGetStudyDbIdEditText);
                 if (null == this.observationLevelEditText) this.observationLevelEditText =
                     view.findViewById(org.wheatgenetics.androidlibrarybuilder.R.id
-                        .studiesStudiesStudyDbIdObservationunitsGetAlertObservationLevelEditText);
+                        .studiesStudiesStudyDbIdObservationunitsGetObservationLevelEditText);
                 this.findPageEditTextById(view, org.wheatgenetics.androidlibrarybuilder
                     .R.id.studiesStudiesStudyDbIdObservationunitsGetPageEditText);
                 this.findPageSizeEditTextById(view, org.wheatgenetics.androidlibrarybuilder
