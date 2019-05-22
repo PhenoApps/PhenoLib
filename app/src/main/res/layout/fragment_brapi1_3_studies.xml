@@ -367,8 +367,6 @@
         android:text="studytypesGet()"
         android:textAllCaps="false"
 
-        android:enabled="false"
-
         app:layout_constraintLeft_toRightOf="@id/rightGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"

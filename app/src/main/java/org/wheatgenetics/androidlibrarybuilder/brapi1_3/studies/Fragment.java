@@ -28,6 +28,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * io.swagger.client.model.StudyLayoutRequest
  * io.swagger.client.model.StudyResponse
  * io.swagger.client.model.StudySearchRequest
+ * io.swagger.client.model.StudyTypesResponse
  * io.swagger.client.model.SuccessfulSearchResponse
  *
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -81,6 +82,10 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog.Handler
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
  *     .StudyDbIdPagePageSizeAlertDialog.Parameters
+ *
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog.Handler
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog.Parameters
  */
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
@@ -243,6 +248,16 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
         io.swagger.client.model.ObservationUnitsResponse1>
             observationUnitsResponse1CallbackInstance = null;                           // lazy load
+    // endregion
+
+    // region studytypesGet() Fields
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog
+        studytypesGetAlertDialogInstance = null;                                        // lazy load
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog.Parameters
+            studytypesGetParametersInstance = null;                                     // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.StudyTypesResponse> studyTypesResponseCallbackInstance = null; // ll
     // endregion
     // endregion
 
@@ -972,7 +987,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-    .StudiesStudyDbIdObservationunitsGetAlertDialog studiesStudyDbIdObservationunitsGetAlertDialog()
+    .StudiesStudyDbIdObservationunitsGetAlertDialog
+    studiesStudyDbIdObservationunitsGetAlertDialog()
     {
         if (null == this.studiesStudyDbIdObservationunitsGetAlertDialogInstance)
             this.studiesStudyDbIdObservationunitsGetAlertDialogInstance =
@@ -1005,6 +1021,64 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         this.studiesStudyDbIdObservationunitsGetAlertDialog().show(
             this.studiesStudyDbIdObservationunitsGetParameters());
     }
+    // endregion
+
+    // region studytypesGet() Private Methods
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.StudyTypesResponse> studyTypesResponseCallback()
+    {
+        if (null == this.studyTypesResponseCallbackInstance)
+            this.studyTypesResponseCallbackInstance =
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+                    io.swagger.client.model.StudyTypesResponse>() {};
+        return this.studyTypesResponseCallbackInstance;
+    }
+
+    private void studytypesGet()
+    {
+        if (null != this.studytypesGetParametersInstance)
+            try
+            {
+                this.studiesApi().studytypesGetAsync(
+                    /* studyTypeDbId => */ this.studytypesGetParametersInstance.getStudyTypeDbId(),
+                    /* page          => */ this.studytypesGetParametersInstance.getPage         (),
+                    /* pageSize      => */ this.studytypesGetParametersInstance.getPageSize     (),
+                    /* authorization => */ this.authorization                                   (),
+                    /* callback      => */ this.studyTypesResponseCallback                      ());
+            }
+            catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
+    }
+
+    private
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog
+    studytypesGetAlertDialog()
+    {
+        if (null == this.studytypesGetAlertDialogInstance) this.studytypesGetAlertDialogInstance =
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog(
+                this.getActivity(), new org.wheatgenetics.androidlibrarybuilder
+                .brapi1_3.studies.StudytypesGetAlertDialog.Handler()
+                {
+                    @java.lang.Override public void handleDone()
+                    {
+                        org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                            .studies.Fragment.this.studytypesGet();
+                    }
+                });
+        return this.studytypesGetAlertDialogInstance;
+    }
+
+    private
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog.Parameters
+    studytypesGetParameters()
+    {
+        if (null == this.studytypesGetParametersInstance) this.studytypesGetParametersInstance =
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                .studies.StudytypesGetAlertDialog.Parameters();
+        return this.studytypesGetParametersInstance;
+    }
+
+    private void showStudytypesGetAlertDialog()
+    { this.studytypesGetAlertDialog().show(this.studytypesGetParameters()); }
     // endregion
     // endregion
 
@@ -1225,7 +1299,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                     org.wheatgenetics.androidlibrarybuilder.R.id.studytypesGetButton);
                 if (null != studytypesGetButton) studytypesGetButton.setOnClickListener(
                     new android.view.View.OnClickListener()
-                    { @java.lang.Override public void onClick(final android.view.View v) {} });
+                    {
+                        @java.lang.Override public void onClick(final android.view.View v)
+                        {
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+                                .this.showStudytypesGetAlertDialog();
+                        }
+                    });
             }
             this.findResponseTextViewById(rootView,
                 org.wheatgenetics.androidlibrarybuilder.R.id.studiesResponseTextView);
