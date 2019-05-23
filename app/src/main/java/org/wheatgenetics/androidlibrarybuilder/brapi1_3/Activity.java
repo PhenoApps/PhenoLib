@@ -36,6 +36,8 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
 public class Activity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier
 {
+    private static final int FIRST_FRAGMENT_NAME_INDEX = 0, LAST_FRAGMENT_NAME_INDEX = 20;
+
     private static class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter
     {
         private FragmentPagerAdapter(@android.support.annotation.NonNull
@@ -47,8 +49,9 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
         {
             switch (position)
             {
-                case 0: return
-                    new org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment();
+                case org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                    .Activity.FIRST_FRAGMENT_NAME_INDEX: return
+                        new org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment();
 
                 case 1: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment();
                 case 2: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CropsFragment();
@@ -117,15 +120,21 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
                         "People");
 
-                case 20: return
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "SearchServices");
+                case org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
+                    .LAST_FRAGMENT_NAME_INDEX: return org.wheatgenetics.androidlibrarybuilder
+                        .brapi1_3.StubFragment.instantiate("SearchServices");
 
                 default: return null;
             }
         }
 
-        @java.lang.Override public int getCount() { return 21; }
+        @java.lang.Override public int getCount()
+        {
+            return
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX -
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX
+                + 1;
+        }
         // endregion
     }
 
@@ -136,31 +145,42 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     private android.support.v7.widget.Toolbar toolbar   = null;
     private android.support.v4.view.ViewPager viewPager = null;
 
-    private java.lang.String            authorizationInstance = null                             ;
-    private io.swagger.client.ApiClient apiClientInstance     = new io.swagger.client.ApiClient();
-    private java.lang.CharSequence      testServerBasePathInstance =
+    private       java.lang.String            authorizationInstance = null                         ;
+    private final io.swagger.client.ApiClient apiClientInstance = new io.swagger.client.ApiClient();
+    private final java.lang.CharSequence      testServerBasePathInstance =
         this.apiClientInstance.getBasePath();
     // endregion
 
     // region Private Methods
-    private void setToolBarTitle(
-    @android.support.annotation.IntRange(from = 0, to = 20) final int i)
+    private void setToolBarTitle(@android.support.annotation.IntRange(
+    from = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX,
+    to   = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX )
+    final int i)
     {
         if (null != this.fragmentNames && null != this.toolbar)
             this.toolbar.setTitle(this.getString(
-                org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
-                this.apiClient().getBasePath(), this.fragmentNames[i]                  ));
+                /* resId => */
+                    org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
+                /* formatArgs => */ this.apiClient().getBasePath(), this.fragmentNames[i]));
     }
 
     private void setToolbarTitleToFirst()
-    { final int firstFragmentName = 0; this.setToolBarTitle(firstFragmentName); }
+    {
+        this.setToolBarTitle(
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX);
+    }
 
     private void setPage(@android.support.annotation.NonNull
     @android.support.annotation.Size(min = 1) final java.lang.CharSequence selectedFragmentName)
     {
         if (null != this.fragmentNames && null != this.viewPager)
         {
-            @android.support.annotation.IntRange(from = 0, to = 20) int i = 0;
+            @android.support.annotation.IntRange(
+            from =
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX,
+            to = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX)
+            int i =
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX;
             for (final java.lang.String fragmentName: this.fragmentNames)
             {
                 if (selectedFragmentName.equals(fragmentName))
@@ -200,15 +220,15 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
                 new android.support.v4.view.ViewPager.OnPageChangeListener()
                 {
                     @java.lang.Override
-                    public void onPageScrolled(final int i, final float v, final int i1) {}
+                    public void onPageScrolled(final int var1, final float var2, final int var3) {}
 
-                    @java.lang.Override public void onPageSelected(final int i)
+                    @java.lang.Override public void onPageSelected(final int var1)
                     {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
-                            .this.setToolBarTitle(i);
+                        org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                            .Activity.this.setToolBarTitle(var1);
                     }
 
-                    @java.lang.Override public void onPageScrollStateChanged(final int i) {}
+                    @java.lang.Override public void onPageScrollStateChanged(final int var1) {}
                 });
         }
     }

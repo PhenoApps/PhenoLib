@@ -10,7 +10,7 @@
     tools:context=".brapi1_3.studies.Fragment">
 
     <android.support.constraint.Guideline
-        android:id="@+id/middleGuideline"
+        android:id="@+id/studiesMiddleGuideline"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:textAllCaps="false"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesMiddleGuideline"
         app:layout_constraintTop_toTopOf="parent"
 
         tools:ignore="HardcodedText" />
@@ -49,7 +49,7 @@
         android:text="searchStudiesSearchResultsDbIdGet()"
         android:textAllCaps="false"
 
-        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesMiddleGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
@@ -58,7 +58,7 @@
 
 
     <android.support.constraint.Guideline
-        android:id="@+id/leftGuideline"
+        android:id="@+id/studiesLeftGuideline"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         app:layout_constraintGuide_percent="0.33" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/rightGuideline"
+        android:id="@+id/studiesRightGuideline"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
         android:textAllCaps="false"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesLeftGuideline"
         app:layout_constraintTop_toBottomOf="@id/searchStudiesPostButton"
 
         tools:ignore="HardcodedText" />
@@ -107,8 +107,8 @@
         android:text="studiesGet()"
         android:textAllCaps="false"
 
-        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
-        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesLeftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesRightGuideline"
         app:layout_constraintTop_toBottomOf="@id/searchStudiesPostButton"
 
         tools:ignore="HardcodedText" />
@@ -125,7 +125,7 @@
         android:text="studiesStudyDbIdGet()"
         android:textAllCaps="false"
 
-        app:layout_constraintLeft_toRightOf="@id/rightGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesRightGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchStudiesPostButton"
 
@@ -166,7 +166,7 @@
         android:textAllCaps="false"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesMiddleGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
 
         tools:ignore="HardcodedText" />
@@ -185,7 +185,7 @@
 
         android:enabled="false"
 
-        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesMiddleGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdGermplasmGetButton"
 
@@ -206,7 +206,7 @@
         android:textAllCaps="false"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesMiddleGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdLayoutsGetButton"
 
         tools:ignore="HardcodedText" />
@@ -225,7 +225,7 @@
 
         android:enabled="false"
 
-        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesMiddleGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdLayoutsGetButton"
 
@@ -246,7 +246,7 @@
         android:textAllCaps="false"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesMiddleGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationsGetButton"
 
         tools:ignore="HardcodedText" />
@@ -265,7 +265,7 @@
 
         android:enabled="false"
 
-        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesMiddleGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationsGetButton"
 
@@ -288,7 +288,7 @@
         android:enabled="false"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/middleGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesMiddleGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsGetButton"
 
         tools:ignore="HardcodedText" />
@@ -305,9 +305,7 @@
         android:text="studiesStudyDbIdObservationvariablesGet()"
         android:textAllCaps="false"
 
-        android:enabled="false"
-
-        app:layout_constraintLeft_toRightOf="@id/middleGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesMiddleGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsGetButton"
 
@@ -327,10 +325,8 @@
         android:text="studiesStudyDbIdTableGet()"
         android:textAllCaps="false"
 
-        android:enabled="false"
-
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/leftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesLeftGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
 
         tools:ignore="HardcodedText" />
@@ -349,8 +345,8 @@
 
         android:enabled="false"
 
-        app:layout_constraintLeft_toRightOf="@id/leftGuideline"
-        app:layout_constraintRight_toLeftOf="@id/rightGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesLeftGuideline"
+        app:layout_constraintRight_toLeftOf="@id/studiesRightGuideline"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
 
         tools:ignore="HardcodedText" />
@@ -367,7 +363,7 @@
         android:text="studytypesGet()"
         android:textAllCaps="false"
 
-        app:layout_constraintLeft_toRightOf="@id/rightGuideline"
+        app:layout_constraintLeft_toRightOf="@id/studiesRightGuideline"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
 

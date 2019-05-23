@@ -112,9 +112,7 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
 
         if (context instanceof
         org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier)
-            this.setSupplier(
-                (org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier)
-                    context);
+            this.setSupplier(context);
         else
             this.failSupplier(context);
     }
