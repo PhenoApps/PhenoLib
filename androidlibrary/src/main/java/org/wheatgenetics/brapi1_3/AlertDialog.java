@@ -26,7 +26,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
 
     // region Private Methods
     private static void log(final java.lang.String msg)
-    { android.util.Log.i("brapi1_3.AlertDialog", msg); }
+    { android.util.Log.i("brapi1_3.AlertDialog", null == msg ? "null" : msg); }
 
     private static java.util.ArrayList<java.lang.String> arrayList(
     final java.util.ArrayList<java.lang.String> arrayList)

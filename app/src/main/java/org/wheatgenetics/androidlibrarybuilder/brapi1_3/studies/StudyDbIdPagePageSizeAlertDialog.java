@@ -43,7 +43,6 @@ class StudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedA
     // region Overridden Methods
     @java.lang.Override public void configure()
     {
-        this.setTitle(this.title);
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrarybuilder
                 .R.layout.alert_dialog_brapi1_3_studies_studydbid_page_pagesize);
@@ -52,6 +51,7 @@ class StudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedA
                 if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(
                     org.wheatgenetics.androidlibrarybuilder
                         .R.id.studiesStudyDbIdPagePageSizeStudyDbIdEditText);
+
                 this.findPageEditTextById(view, org.wheatgenetics.androidlibrarybuilder
                     .R.id.studiesStudyDbIdPagePageSizePageEditText);
                 this.findPageSizeEditTextById(view, org.wheatgenetics.androidlibrarybuilder
@@ -69,6 +69,7 @@ class StudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedA
             this.parameters.studyDbId = org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
                 .StudyDbIdPagePageSizeAlertDialog.getEditTextStringText(
                     this.studyDbIdEditText);
+
             this.parameters.page     = this.getPageEditTextIntText    ();
             this.parameters.pageSize = this.getPageSizeEditTextIntText();
 
@@ -82,11 +83,14 @@ class StudyDbIdPagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedA
     {
         if (null != parameters)
         {
+            this.setTitle(this.title);
+
             this.parameters = parameters;
 
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
                 .StudyDbIdPagePageSizeAlertDialog.setEditTextText(
                     this.studyDbIdEditText, this.parameters.getStudyDbId());
+
             this.setPageEditTextText    (this.parameters.getPage    ());
             this.setPageSizeEditTextText(this.parameters.getPageSize());
 
