@@ -56,7 +56,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                             super(
                                 /* context  => */ context,
                                 /* resource => */ org.wheatgenetics.androidlibrary
-                                    .R.layout.other_apps_alert_dialog);
+                                    .R.layout.alert_dialog_other_apps);
 
                             this.otherApps = otherApps;
                             this.addAll(this.otherApps.getTexts());
@@ -76,7 +76,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                                             android.content.Context.LAYOUT_INFLATER_SERVICE);
                                 assert null != layoutInflater;
                                 result = layoutInflater.inflate(org.wheatgenetics.
-                                        androidlibrary.R.layout.other_apps_alert_dialog,
+                                        androidlibrary.R.layout.alert_dialog_other_apps,
                                     null,true);
                             }
                             assert null != result;
