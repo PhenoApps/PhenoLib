@@ -135,4 +135,13 @@
     <string name="NewObservationsRequestObservationsAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
     <string name="NewObservationsRequestObservationsAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
     <string name="NewObservationsRequestObservationsAlertDialogValueEditTextHint">value</string>
+
+
+    <!-- NewObservationUnitRequestAlertDialog -->
+    <string name="NewObservationUnitRequestAlertDialogTitle">NewObservationUnitRequest</string>
+    <string name="NewObservationUnitRequestAlertDialogBlockNumberEditTextHint">blockNumber</string>
+    <string name="NewObservationUnitRequestAlertDialogEntryNumberEditTextHint">entryNumber</string>
+    <string name="NewObservationUnitRequestAlertDialogEntryTypeEditTextHint">entryType</string>
+    <string name="NewObservationUnitRequestAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
+    <string name="NewObservationUnitRequestAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
 </resources>
