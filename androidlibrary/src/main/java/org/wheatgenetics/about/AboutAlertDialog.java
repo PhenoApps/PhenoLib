@@ -35,7 +35,7 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
 
         final android.view.View aboutView =
             android.view.LayoutInflater.from(this.activity()).inflate(
-                /* resource     => */ org.wheatgenetics.androidlibrary.R.layout.about_alert_dialog,
+                /* resource     => */ org.wheatgenetics.androidlibrary.R.layout.alert_dialog_about,
                 /* root         => */ new android.widget.LinearLayout(activity)                   ,
                 /* attachToRoot => */false);
         {
