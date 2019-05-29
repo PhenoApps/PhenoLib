@@ -48,7 +48,7 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
         {
             @android.annotation.SuppressLint({"InflateParams"})
             final android.view.View view = this.layoutInflater().inflate(
-                org.wheatgenetics.androidlibrary.R.layout.get_export_file_name_alert_dialog,
+                org.wheatgenetics.androidlibrary.R.layout.alert_dialog_get_export_file_name,
                 null);
 
             if (null == this.editText)
