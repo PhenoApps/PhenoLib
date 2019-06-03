@@ -83,7 +83,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                                     org.wheatgenetics.androidlibrarybuilder.brapi1_3
                                         .observations.Fragment.this.observationlevelsGet();
                                 }
-                            });
+                            },"ObservationsApi.observationlevelsGet()");
         return this.observationlevelsGetAlertDialogInstance;
     }
 
