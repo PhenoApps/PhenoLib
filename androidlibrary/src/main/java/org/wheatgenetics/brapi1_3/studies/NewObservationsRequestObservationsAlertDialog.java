@@ -36,7 +36,7 @@ extends org.wheatgenetics.brapi1_3.AlertDialog
             .R.string.NewObservationsRequestObservationsAlertDialogTitle);
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrary
-                .R.layout.new_observations_request_observations_alert_dialog);
+                .R.layout.alert_dialog_new_observations_request_observations);
             if (null != view)
             {
                 if (null == this.collectorEditText) this.collectorEditText = view.findViewById(
