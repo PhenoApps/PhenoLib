@@ -1,4 +1,4 @@
-package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
+package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
 
 /**
  * Uses:
@@ -9,26 +9,26 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  */
-class PagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
+public class PagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
-    static class Parameters
+    public static class Parameters
     {
         private java.lang.Integer page, pageSize;
 
-        // region Getter Package Methods
-        java.lang.Integer getPage    () { return this.page    ; }
-        java.lang.Integer getPageSize() { return this.pageSize; }
+        // region Getter Public Methods
+        public java.lang.Integer getPage    () { return this.page    ; }
+        public java.lang.Integer getPageSize() { return this.pageSize; }
         // endregion
     }
 
     // region Fields
     private final java.lang.String title;
     private       org.wheatgenetics.androidlibrarybuilder.brapi1_3
-        .observations.PagePageSizeAlertDialog.Parameters parameters = null;
+        .PagePageSizeAlertDialog.Parameters parameters = null;
     // endregion
 
-    PagePageSizeAlertDialog(final android.app.Activity activity, final org.wheatgenetics
-    .androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog.Handler handler,
+    public PagePageSizeAlertDialog(final android.app.Activity activity, final org.wheatgenetics
+    .androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Handler handler,
     final java.lang.String title) { super(activity, handler); this.title = title; }
 
     // region Overridden Methods
@@ -61,9 +61,8 @@ class PagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialo
     }
     // endregion
 
-    void show(final
-    org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog.Parameters
-    parameters)
+    public void show(final
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Parameters parameters)
     {
         if (null != parameters)
         {
