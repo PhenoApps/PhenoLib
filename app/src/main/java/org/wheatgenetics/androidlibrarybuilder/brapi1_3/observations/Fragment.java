@@ -17,6 +17,10 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
+ *
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog.Handler
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog.Parameters
  */
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
@@ -24,10 +28,10 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private io.swagger.client.api.ObservationsApi observationsApiInstance = null;       // lazy load
 
     // region observationlevelsGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations                   // lazy
-        .ObservationlevelsGetAlertDialog observationlevelsGetAlertDialogInstance = null;    //  load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations               // lazy load
-        .ObservationlevelsGetAlertDialog.Parameters observationlevelsGetParametersInstance = null;
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog
+        observationlevelsGetAlertDialogInstance = null;                                 // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog
+        .Parameters observationlevelsGetParametersInstance = null;                      // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.ApiCallback<
         io.swagger.client.model.ObservationLevelsResponse>
             observationLevelsResponseCallbackInstance = null;                           // lazy load
@@ -67,33 +71,32 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
     }
 
-    private
-    org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.ObservationlevelsGetAlertDialog
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog
     observationlevelsGetAlertDialog()
     {
         if (null == this.observationlevelsGetAlertDialogInstance)
-            this.observationlevelsGetAlertDialogInstance =
-                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
-                    .ObservationlevelsGetAlertDialog(this.getActivity(),
-                        new org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
-                            .ObservationlevelsGetAlertDialog.Handler()
+            this.observationlevelsGetAlertDialogInstance = new org.wheatgenetics
+                .androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog(
+                    this.getActivity(), new org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                        .observations.PagePageSizeAlertDialog.Handler()
+                        {
+                            @java.lang.Override public void handleDone()
                             {
-                                @java.lang.Override public void handleDone()
-                                {
-                                    org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                                        .observations.Fragment.this.observationlevelsGet();
-                                }
-                            },"ObservationsApi.observationlevelsGet()");
+                                org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                                    .observations.Fragment.this.observationlevelsGet();
+                            }
+                        },"ObservationsApi.observationlevelsGet()");
         return this.observationlevelsGetAlertDialogInstance;
     }
 
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
-    .ObservationlevelsGetAlertDialog.Parameters observationlevelsGetParameters()
+    private
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog.Parameters
+    observationlevelsGetParameters()
     {
         if (null == this.observationlevelsGetParametersInstance)
             this.observationlevelsGetParametersInstance =
-                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
-                    .ObservationlevelsGetAlertDialog.Parameters();
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                    .observations.PagePageSizeAlertDialog.Parameters();
         return this.observationlevelsGetParametersInstance;
     }
 

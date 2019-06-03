@@ -9,7 +9,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  */
-class ObservationlevelsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
+class PagePageSizeAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
     static class Parameters
     {
@@ -23,12 +23,12 @@ class ObservationlevelsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAl
 
     // region Fields
     private final java.lang.String title;
-    private       org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
-        .ObservationlevelsGetAlertDialog.Parameters parameters = null;
+    private       org.wheatgenetics.androidlibrarybuilder.brapi1_3
+        .observations.PagePageSizeAlertDialog.Parameters parameters = null;
     // endregion
 
-    ObservationlevelsGetAlertDialog(final android.app.Activity activity, final org.wheatgenetics
-    .androidlibrarybuilder.brapi1_3.observations.ObservationlevelsGetAlertDialog.Handler handler,
+    PagePageSizeAlertDialog(final android.app.Activity activity, final org.wheatgenetics
+    .androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog.Handler handler,
     final java.lang.String title) { super(activity, handler); this.title = title; }
 
     // region Overridden Methods
@@ -61,8 +61,9 @@ class ObservationlevelsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAl
     }
     // endregion
 
-    void show(final org.wheatgenetics.androidlibrarybuilder.brapi1_3
-    .observations.ObservationlevelsGetAlertDialog.Parameters parameters)
+    void show(final
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PagePageSizeAlertDialog.Parameters
+    parameters)
     {
         if (null != parameters)
         {
