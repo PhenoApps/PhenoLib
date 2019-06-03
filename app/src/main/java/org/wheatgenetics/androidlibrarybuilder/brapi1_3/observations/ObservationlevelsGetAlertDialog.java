@@ -33,14 +33,14 @@ class ObservationlevelsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAl
     {
         this.setTitle("ObservationsApi.observationlevelsGet()");
         {
-            final android.view.View view = this.inflate(org.wheatgenetics.androidlibrarybuilder
-                .R.layout.alert_dialog_brapi1_3_observations_observationlevels_get);
+            final android.view.View view = this.inflate(org.wheatgenetics
+                .androidlibrarybuilder.R.layout.alert_dialog_brapi1_3_page_pagesize);
             if (null != view)
             {
-                this.findPageEditTextById(view, org.wheatgenetics.androidlibrarybuilder
-                    .R.id.observationsObservationlevelsGetPageEditText);
-                this.findPageSizeEditTextById(view, org.wheatgenetics.androidlibrarybuilder
-                    .R.id.observationsObservationlevelsGetPageSizeEditText);
+                this.findPageEditTextById(view,
+                    org.wheatgenetics.androidlibrarybuilder.R.id.pagePageSizePageEditText);
+                this.findPageSizeEditTextById(view,
+                    org.wheatgenetics.androidlibrarybuilder.R.id.pagePageSizePageSizeEditText);
             }
             this.setView(view);
         }
@@ -59,8 +59,8 @@ class ObservationlevelsGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAl
     }
     // endregion
 
-    void show(final org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
-    .ObservationlevelsGetAlertDialog.Parameters parameters)
+    void show(final org.wheatgenetics.androidlibrarybuilder.brapi1_3
+    .observations.ObservationlevelsGetAlertDialog.Parameters parameters)
     {
         if (null != parameters)
         {
