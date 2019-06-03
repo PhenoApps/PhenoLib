@@ -9,7 +9,7 @@
     android:padding="10dp">
 
     <EditText
-        android:id="@+id/observationsObservationlevelsGetPageEditText"
+        android:id="@+id/pagePageSizePageEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="page"
@@ -19,7 +19,7 @@
         tools:ignore="Autofill, HardcodedText" />
 
     <EditText
-        android:id="@+id/observationsObservationlevelsGetPageSizeEditText"
+        android:id="@+id/pagePageSizePageSizeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="pageSize"
