@@ -11,13 +11,94 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observationvariables;
  * android.view.ViewGroup
  * android.widget.Button
  *
+ * io.swagger.client.api.ObservationVariablesApi
+ * io.swagger.client.model.MethodsResponse
+ *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Handler
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Parameters
  */
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
-    private void showMethodsGetAlertDialog() {}
+    // region Fields
+    private io.swagger.client.api.ObservationVariablesApi
+        observationVariablesApiInstance = null;                                         // lazy load
+
+    // region methodsGet() Fields
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog
+        methodsGetAlertDialogInstance = null;                                           // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Parameters
+        methodsGetParametersInstance = null;                                            // lazy load
+    private                                                                             // lazy load
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.observationvariables.Fragment.ApiCallback<
+            io.swagger.client.model.MethodsResponse> methodsResponseCallbackInstance = null;
+    // endregion
+    // endregion
+
+    // region Private Methods
+    private io.swagger.client.api.ObservationVariablesApi observationVariablesApi()
+    {
+        if (null == this.observationVariablesApiInstance) this.observationVariablesApiInstance =
+            new io.swagger.client.api.ObservationVariablesApi();
+        return this.observationVariablesApiInstance;
+    }
+
+    // region methodsGet() Private Methods
+    private
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.observationvariables.Fragment.ApiCallback<
+    io.swagger.client.model.MethodsResponse> methodsResponseCallback()
+    {
+        if (null == this.methodsResponseCallbackInstance) this.methodsResponseCallbackInstance =
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.observationvariables
+                .Fragment.ApiCallback<io.swagger.client.model.MethodsResponse>() {};
+        return this.methodsResponseCallbackInstance;
+    }
+
+    private void methodsGet()
+    {
+        if (null != this.methodsGetParametersInstance)
+            try
+            {
+                this.observationVariablesApi().methodsGetAsync(
+                    /* page          => */ this.methodsGetParametersInstance.getPage    (),
+                    /* pageSize      => */ this.methodsGetParametersInstance.getPageSize(),
+                    /* authorization => */ this.authorization                           (),
+                    /* callback      => */ this.methodsResponseCallback                 ());
+            }
+            catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
+    }
+
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog
+    methodsGetAlertDialog()
+    {
+        if (null == this.methodsGetAlertDialogInstance) this.methodsGetAlertDialogInstance =
+            new org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog(
+                this.getActivity(), new org.wheatgenetics.brapi1_3.AlertDialog.Handler()
+                {
+                    @java.lang.Override public void handleDone()
+                    {
+                        org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                            .observationvariables.Fragment.this.methodsGet();
+                    }
+                },"ObservationVariablesApi.methodsGet()");
+        return this.methodsGetAlertDialogInstance;
+    }
+
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Parameters
+    methodsGetParameters()
+    {
+        if (null == this.methodsGetParametersInstance) this.methodsGetParametersInstance = new
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Parameters();
+        return this.methodsGetParametersInstance;
+    }
+
+    private void showMethodsGetAlertDialog()
+    { this.methodsGetAlertDialog().show(this.methodsGetParameters()); }
+    // endregion
+    // endregion
 
     @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
     @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
@@ -42,6 +123,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                         }
                     });
             }
+            this.findResponseTextViewById(rootView,
+                org.wheatgenetics.androidlibrarybuilder.R.id.observationVariablesResponseTextView);
         }
         return rootView;
     }

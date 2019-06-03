@@ -23,6 +23,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.observationvariables.Fragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment
@@ -72,9 +73,8 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
                 case 7: return
                     new org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment();
 
-                case 8: return
-                    org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
-                        "ObservationVariables");
+                case 8: return new org.wheatgenetics
+                    .androidlibrarybuilder.brapi1_3.observationvariables.Fragment();
 
                 case 9: return
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
