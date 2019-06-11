@@ -26,6 +26,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * io.swagger.client.model.SeasonsResponse
  * io.swagger.client.model.StudiesResponse
  * io.swagger.client.model.StudyLayoutRequest
+ * io.swagger.client.model.StudyObservationVariablesResponse
  * io.swagger.client.model.StudyResponse
  * io.swagger.client.model.StudySearchRequest
  * io.swagger.client.model.StudyTypesResponse
@@ -254,6 +255,15 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
         io.swagger.client.model.ObservationUnitsResponse1>
             observationUnitsResponse1CallbackInstance = null;                           // lazy load
+    // endregion
+
+    // region studiesStudyDbIdObservationvariablesGet() Fields
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
+            studiesStudyDbIdObservationvariablesGetAlertDialogInstance = null;          // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.StudyObservationVariablesResponse>
+            studyObservationVariablesResponseCallbackInstance = null;                   // lazy load
     // endregion
 
     // region studiesStudyDbIdTableGet() Fields
@@ -621,7 +631,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     { this.studiesStudyDbIdGetAlertDialog().show(this.studiesStudyDbIdGetParameters()); }
     // endregion
 
-    // region studiesStudyDbIdGermplasmGet() and studiesStudyDbIdLayoutsGet() Private Method
+    // region studiesStudyDbIdGermplasmGet(), studiesStudyDbIdLayoutsGet() and studiesStudyDbIdObservationvariablesGet() Private Method
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
     .StudyDbIdPagePageSizeAlertDialog.Parameters studyDbIdPagePageSizeParameters()
     {
@@ -1040,6 +1050,59 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
     // endregion
 
+    // region studiesStudyDbIdObservationvariablesGet() Private Methods
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+    io.swagger.client.model.StudyObservationVariablesResponse>
+    studyObservationVariablesResponseCallback()
+    {
+        if (null == this.studyObservationVariablesResponseCallbackInstance)
+            this.studyObservationVariablesResponseCallbackInstance =
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+                    io.swagger.client.model.StudyObservationVariablesResponse>() {};
+        return this.studyObservationVariablesResponseCallbackInstance;
+    }
+
+    private void studiesStudyDbIdObservationvariablesGet()
+    {
+        if (null != this.studyDbIdPagePageSizeParametersInstance)
+            try
+            {
+                this.studiesApi().studiesStudyDbIdObservationvariablesGetAsync(
+                    /* studyDbId => */ this.studyDbIdPagePageSizeParametersInstance.getStudyDbId(),
+                    /* page      => */ this.studyDbIdPagePageSizeParametersInstance.getPage     (),
+                    /* pageSize  => */ this.studyDbIdPagePageSizeParametersInstance.getPageSize (),
+                    /* authorization => */ this.authorization                            (),
+                    /* callback      => */ this.studyObservationVariablesResponseCallback());
+            }
+            catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
+    }
+
+    private
+    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
+    studiesStudyDbIdObservationvariablesGetAlertDialog()
+    {
+        if (null == this.studiesStudyDbIdObservationvariablesGetAlertDialogInstance)
+            this.studiesStudyDbIdObservationvariablesGetAlertDialogInstance = new org.wheatgenetics
+                .androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog(
+                    this.getActivity(), new org.wheatgenetics.androidlibrarybuilder
+                    .brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog.Handler()
+                    {
+                        @java.lang.Override public void handleDone()
+                        {
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                                .Fragment.this.studiesStudyDbIdObservationvariablesGet();
+                        }
+                    },"StudiesApi.studiesStudyDbIdObservationvariablesGet()");
+        return this.studiesStudyDbIdObservationvariablesGetAlertDialogInstance;
+    }
+
+    private void showStudiesStudyDbIdObservationvariablesGetAlertDialog()
+    {
+        this.studiesStudyDbIdObservationvariablesGetAlertDialog().show(
+            this.studyDbIdPagePageSizeParameters());
+    }
+    // endregion
+
     // region studiesStudyDbIdTableGet() Private Methods
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
     java.lang.String> stringCallback()
@@ -1352,7 +1415,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 if (null != studiesStudyDbIdObservationvariablesGetButton)
                     studiesStudyDbIdObservationvariablesGetButton.setOnClickListener(
                         new android.view.View.OnClickListener()
-                        { @java.lang.Override public void onClick(final android.view.View v) {} });
+                        {
+                            @java.lang.Override public void onClick(final android.view.View v)
+                            {
+                                org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+                                    .this.showStudiesStudyDbIdObservationvariablesGetAlertDialog();
+                            }
+                        });
             }
             {
                 final android.widget.Button studiesStudyDbIdTableGetButton = rootView.findViewById(
