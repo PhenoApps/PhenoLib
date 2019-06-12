@@ -1097,6 +1097,23 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
     }
 
+    private android.content.Intent newObservationUnitRequestsListIntent()
+    {
+        if (null == this.newObservationUnitRequestsListIntentInstance)
+            this.newObservationUnitRequestsListIntentInstance = new android.content.Intent(
+                this.getActivity()                                                             ,
+                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestsListActivity.class);
+        return this.newObservationUnitRequestsListIntentInstance;
+    }
+
+    private void showNewObservationUnitRequestsListActivity()
+    {
+        this.startActivityForResult(this.newObservationUnitRequestsListIntent(),
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+                .NEW_OBSERVATION_UNIT_REQUESTS_LIST_ACTIVITY_REQUEST_CODE);
+    }
+    // endregion
+
     // region studiesStudyDbIdObservationvariablesGet() Private Methods
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
     io.swagger.client.model.StudyObservationVariablesResponse>
@@ -1174,23 +1191,6 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
     }
-
-    private android.content.Intent newObservationUnitRequestsListIntent()
-    {
-        if (null == this.newObservationUnitRequestsListIntentInstance)
-            this.newObservationUnitRequestsListIntentInstance = new android.content.Intent(
-                this.getActivity()                                                             ,
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestsListActivity.class);
-        return this.newObservationUnitRequestsListIntentInstance;
-    }
-
-    private void showNewObservationUnitRequestsListActivity()
-    {
-        this.startActivityForResult(this.newObservationUnitRequestsListIntent(),
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
-                .NEW_OBSERVATION_UNIT_REQUESTS_LIST_ACTIVITY_REQUEST_CODE);
-    }
-    // endregion
 
     private
     org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdTableGetAlertDialog
