@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetGermplasmDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="germplasmDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetObservationVariableDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="observationVariable"
+        android:inputType="text"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetStudyDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="studyDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetLocationDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="locationDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetTrialDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="trialDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetProgramDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="programDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetSeasonDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="seasonDbId"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetObservationLevelEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="observationLevel"
+        android:inputType="text"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetObservationTimeStampRangeStartEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="observationTimeStampRangeStart"
+        android:inputType="text"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetObservationTimeStampRangeEndEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="observationTimeStampRangeEnd"
+        android:inputType="text"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetPageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="page"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+    <EditText
+        android:id="@+id/observationsObservationunitsGetPageSizeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="pageSize"
+        android:inputType="number"
+        android:maxLines="1"
+
+        tools:ignore="Autofill, HardcodedText" />
+
+</LinearLayout>
