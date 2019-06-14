@@ -33,8 +33,8 @@ public class ProgramsSearchRequestAlertDialog extends org.wheatgenetics.brapi1_3
         this.setTitle(
             org.wheatgenetics.androidlibrary.R.string.ProgramsSearchRequestAlertDialogTitle);
         {
-            final android.view.View view = this.inflate(
-                org.wheatgenetics.androidlibrary.R.layout.alert_dialog_programs_search_request);
+            final android.view.View view = this.inflate(org.wheatgenetics.androidlibrary
+                .R.layout.alert_dialog_brapi1_3_programs_search_request);
 
             if (null != view)
             {

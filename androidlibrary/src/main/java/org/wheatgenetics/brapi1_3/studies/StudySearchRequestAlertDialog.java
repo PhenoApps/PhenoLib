@@ -266,8 +266,8 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.StudySearchRequestAlertDialogTitle);
         {
-            final android.view.View view = this.inflate(
-                org.wheatgenetics.androidlibrary.R.layout.alert_dialog_study_search_request);
+            final android.view.View view = this.inflate(org.wheatgenetics.androidlibrary
+                .R.layout.alert_dialog_brapi1_3_study_search_request);
 
             if (null != view)
             {
