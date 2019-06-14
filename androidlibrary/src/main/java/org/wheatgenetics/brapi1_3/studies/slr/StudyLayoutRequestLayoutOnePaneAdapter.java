@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;             // TODO: Move to StudyLayoutRequest package.
+package org.wheatgenetics.brapi1_3.studies.slr;                           // slr: StudyLayoutRequest
 
 /**
  * Uses:
@@ -6,7 +6,7 @@ package org.wheatgenetics.brapi1_3.studies;             // TODO: Move to StudyLa
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutItemActivity
+ * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutItemActivity
  */
 class StudyLayoutRequestLayoutOnePaneAdapter
 extends org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
@@ -15,5 +15,5 @@ extends org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
     { super(items); }
 
     @java.lang.Override protected java.lang.Class concreteItemActivityClass()
-    { return org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutItemActivity.class; }
+    { return org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutItemActivity.class; }
 }

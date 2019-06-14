@@ -19,7 +19,7 @@ package org.wheatgenetics.brapi1_3.studies;         // TODO: Move to NewObservat
  * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
  * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog.Handler
  */
-class NewObservationsRequestObservationsItemActivity
+public class NewObservationsRequestObservationsItemActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
