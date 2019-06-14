@@ -5,12 +5,14 @@ package org.wheatgenetics.brapi1_3.studies;
  * android.app.Application
  *
  * io.swagger.client.model.ObservationUnitPositionsResponse
+ * io.swagger.client.model.ObservationUnitsResponse1
  * io.swagger.client.model.ObservationsResponse
  *
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
  * org.wheatgenetics.brapi1_3.studies.NewObservationsRequest
+ * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequest
  */
 public class Application extends android.app.Application
@@ -36,6 +38,13 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     {
         this.items =
             new org.wheatgenetics.brapi1_3.studies.NewObservationsRequest(observationsResponse);
+    }
+
+    public void makeNewObservationUnitRequests(
+    final io.swagger.client.model.ObservationUnitsResponse1 observationUnitsResponse1)
+    {
+        this.items = new org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests(
+            observationUnitsResponse1);
     }
     // endregion
 }

@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies;         // TODO: Move to NewObservationsRequest package.
 
 /**
  * Uses:
@@ -14,8 +14,7 @@ package org.wheatgenetics.brapi1_3.studies;
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
  */
-public class NewObservationsRequestObservationsAlertDialog
-extends org.wheatgenetics.brapi1_3.AlertDialog
+class NewObservationsRequestObservationsAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
     // region Fields
     private android.widget.EditText collectorEditText, observationDbIdEditText,
@@ -25,7 +24,7 @@ extends org.wheatgenetics.brapi1_3.AlertDialog
         newObservationsRequestObservations = null;
     // endregion
 
-    public NewObservationsRequestObservationsAlertDialog(final android.app.Activity activity,
+    NewObservationsRequestObservationsAlertDialog(final android.app.Activity activity,
     final org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog.Handler
         handler) { super(activity, handler); }
 
@@ -93,7 +92,7 @@ extends org.wheatgenetics.brapi1_3.AlertDialog
     }
     // endregion
 
-    public void show(final io.swagger.client.model.NewObservationsRequestObservations
+    void show(final io.swagger.client.model.NewObservationsRequestObservations
         newObservationsRequestObservations)
     {
         if (null != newObservationsRequestObservations)

@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies;             // TODO: Move to StudyLayoutRequest package.
 
 /**
  * Uses:
@@ -25,9 +25,10 @@ package org.wheatgenetics.brapi1_3.studies;
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
  */
-public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
+class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
     // region Types
+    // TODO: Promote to outer class so StudySearchRequestAlertDialog can use.
     private abstract static class TypeAlertDialog
     extends org.wheatgenetics.androidlibrary.ItemsAlertDialog
     {
@@ -35,10 +36,12 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
         private java.lang.String itemsInstance[] = null;
 
         // region Package Methods
+        /** Used by subclasses. */
         @android.support.annotation.RestrictTo(
             android.support.annotation.RestrictTo.Scope.SUBCLASSES)
         boolean itemsIsNull() { return null == this.items(); }
 
+        /** Used by subclasses. */
         @android.support.annotation.RestrictTo(
             android.support.annotation.RestrictTo.Scope.SUBCLASSES)
         void createItems(
@@ -51,6 +54,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
             }
         }
 
+        /** Overridden by subclasses. */
         @android.support.annotation.RestrictTo(
             android.support.annotation.RestrictTo.Scope.SUBCLASSES)
         java.lang.String[] items() { return this.itemsInstance; }
@@ -77,6 +81,8 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
             super.configure();
         }
 
+        @android.support.annotation.RestrictTo(
+            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -125,6 +131,8 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
             super.configure();
         }
 
+        @android.support.annotation.RestrictTo(
+            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -173,6 +181,8 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
             super.configure();
         }
 
+        @android.support.annotation.RestrictTo(
+            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -381,7 +391,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
     // endregion
     // endregion
 
-    public StudyLayoutRequestLayoutAlertDialog(final android.app.Activity activity,
+    StudyLayoutRequestLayoutAlertDialog(final android.app.Activity activity,
     final org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.Handler handler)
     { super(activity, handler); }
 
@@ -512,8 +522,7 @@ public class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi
     }
     // endregion
 
-    public void show(
-    final io.swagger.client.model.StudyLayoutRequestLayout studyLayoutRequestLayout)
+    void show(final io.swagger.client.model.StudyLayoutRequestLayout studyLayoutRequestLayout)
     {
         if (null != studyLayoutRequestLayout)
         {

@@ -329,6 +329,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
                 if (null == this.trialDbIdsEditText) this.trialDbIdsEditText = view.findViewById(
                     org.wheatgenetics.androidlibrary.R.id.studySearchRequestTrialDbIdsEditText);
             }
+
             this.setView(view);
         }
         super.configure();
