@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies;             // TODO: Move to StudyLayoutRequest package.
 
 /**
  * Uses:
@@ -19,7 +19,7 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity
  */
-public class StudyLayoutRequestLayoutItemActivity
+class StudyLayoutRequestLayoutItemActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {

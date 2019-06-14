@@ -37,13 +37,23 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
+ *
  * org.wheatgenetics.brapi1_3.studies.Application
- * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestListActivity
- * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests
- * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestsListActivity
- * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity
+ *
+ * searchStudiesPost():
  * org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
  * org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog.Handler
+ *
+ * studiesStudyDbIdLayoutsPut():
+ * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestListActivity
+ *
+ * studiesStudyDbIdObservationsPut():
+ * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestListActivity
+ *
+ * studiesStudyDbIdObservationunitsPut():
+ * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests
+ * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestsListActivity
+ *
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
@@ -993,7 +1003,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                                     enableStudiesStudyDbIdObservationunitsPutButton = false;
                                 else
                                 {
-                                    // TODO application.makeNewObservationUnitRequests(result);
+                                     application.makeNewObservationUnitRequests(result);
 
                                     final org.wheatgenetics.javalib.mstrdtl.Items items =
                                         application.mstrdtlItems();
@@ -1040,7 +1050,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             this.studiesStudyDbIdObservationunitsGetAlertDialogInstance =
                 new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
                     .StudiesStudyDbIdObservationunitsGetAlertDialog(this.getActivity(),
-                        new org.wheatgenetics.brapi1_3.AlertDialog.Handler()
+                        new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                        .StudiesStudyDbIdObservationunitsGetAlertDialog.Handler()
                         {
                             @java.lang.Override public void handleDone()
                             {
@@ -1084,17 +1095,24 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private void studiesStudyDbIdObservationunitsPut(
     final org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests newObservationUnitRequests)
     {
-        if (null != newObservationUnitRequests)
+        if (null != this.studiesStudyDbIdObservationunitsGetParametersInstance
+        &&  null != newObservationUnitRequests                                )
+        {
+            final org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests
+                populatedNewObservationUnitRequests =
+                    new org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests(
+                        newObservationUnitRequests,"TODO","TODO");       // TODO
             try
             {
                 this.studiesApi().studiesStudyDbIdObservationunitsPutAsync(
                     /* studyDbId => */
                         this.studiesStudyDbIdObservationunitsGetParametersInstance.getStudyDbId(),
-                    /* body          => */ newObservationUnitRequests.list             (),
+                    /* body          => */ populatedNewObservationUnitRequests.list()    ,
                     /* authorization => */ this.authorization                          (),
                     /* callback      => */ this.newObservationUnitDbIdsResponseCallback());
             }
             catch (final java.lang.Throwable t) { this.setResponseTextViewTextFromThread(t); }
+        }
     }
 
     private android.content.Intent newObservationUnitRequestsListIntent()

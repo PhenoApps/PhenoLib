@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3;
+package org.wheatgenetics.brapi1_3;                                // TODO: Inherit from superclass?
 
 /**
  * Uses:

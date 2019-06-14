@@ -142,6 +142,8 @@
     <string name="NewObservationUnitRequestAlertDialogBlockNumberEditTextHint">blockNumber</string>
     <string name="NewObservationUnitRequestAlertDialogEntryNumberEditTextHint">entryNumber</string>
     <string name="NewObservationUnitRequestAlertDialogEntryTypeEditTextHint">entryType</string>
+    <string name="NewObservationUnitRequestAlertDialogGermplasmDbIdEditTextHint">germplasmDbId</string>
+    <string name="NewObservationUnitRequestAlertDialogObservationLevelEditTextHint">observationLevel</string>
     <string name="NewObservationUnitRequestAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
     <string name="NewObservationUnitRequestAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
 </resources>

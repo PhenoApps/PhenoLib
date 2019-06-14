@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/NewObservationUnitRequestAlertDialogBlockNumberEditTextHint"
-        android:inputType="text"
-        android:scrollbars="vertical"
+        android:inputType="number"
+        android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
@@ -31,6 +31,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/NewObservationUnitRequestAlertDialogEntryTypeEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationUnitRequestGermplasmDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationUnitRequestAlertDialogGermplasmDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationUnitRequestObservationLevelEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationUnitRequestAlertDialogObservationLevelEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />

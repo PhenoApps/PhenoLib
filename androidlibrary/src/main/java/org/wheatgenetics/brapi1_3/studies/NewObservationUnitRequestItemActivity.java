@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3.studies;     // TODO: Move to package NewObservationUnitRequests.
 
 /**
  * Uses:
@@ -19,7 +19,7 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestsListActivity
  */
-public class NewObservationUnitRequestItemActivity
+class NewObservationUnitRequestItemActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
