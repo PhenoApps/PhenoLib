@@ -1,27 +1,39 @@
-package org.wheatgenetics.brapi1_3;                                // TODO: Inherit from superclass?
+package org.wheatgenetics.brapi1_3;
 
 /**
  * Uses:
  * android.app.Activity
  * android.support.annotation.IntRange
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.WSMIMEDataTypes
  *
- * org.wheatgenetics.androidlibrary.ItemsAlertDialog
  * org.wheatgenetics.androidlibrary.R
+ *
+ * org.wheatgenetics.brapi1_3.TypeAlertDialog
  */
-public class DataTypeAlertDialog extends org.wheatgenetics.androidlibrary.ItemsAlertDialog
+public class DataTypeAlertDialog extends org.wheatgenetics.brapi1_3.TypeAlertDialog
 {
-    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-    private java.lang.String itemsInstance[] = null;                                    // lazy load
+    public DataTypeAlertDialog(final android.app.Activity activity) { super(activity); }
 
-    private java.lang.String[] items()
+    // region Overridden Methods
+    @java.lang.Override public void configure()
     {
-        if (null == this.itemsInstance)
+        this.setTitle(org.wheatgenetics.androidlibrary.R.string.DataTypeAlertDialogTitle);
+        super.configure();
+    }
+
+    @android.support.annotation.RestrictTo(
+        android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override protected java.lang.String[] items()
+    {
+        if (this.itemsIsNull())
         {
             // noinspection Convert2Diamond
             final java.util.ArrayList<java.lang.String> arrayList =
                 new java.util.ArrayList<java.lang.String>();
+
             arrayList.add("null");
             {
                 @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
@@ -30,22 +42,11 @@ public class DataTypeAlertDialog extends org.wheatgenetics.androidlibrary.ItemsA
                 for (final io.swagger.client.model.WSMIMEDataTypes dataType: dataTypes)
                     arrayList.add(dataType.toString());
             }
-            this.itemsInstance = new java.lang.String[arrayList.size()];
-            this.itemsInstance = arrayList.toArray(this.itemsInstance);
+
+            this.createItems(arrayList);
         }
-        return this.itemsInstance;
+        return super.items();
     }
-
-    public DataTypeAlertDialog(final android.app.Activity activity) { super(activity); }
-
-    // region Overridden Methods
-    @java.lang.Override public void configure()
-    {
-        this.setTitle(org.wheatgenetics.androidlibrary.R.string.DataTypeAlertDialogTitle);
-        this.setCancelNegativeButton();
-    }
-
-    @java.lang.Override public void show() { this.show(this.items()); }
     // endregion
 
     public io.swagger.client.model.WSMIMEDataTypes item(

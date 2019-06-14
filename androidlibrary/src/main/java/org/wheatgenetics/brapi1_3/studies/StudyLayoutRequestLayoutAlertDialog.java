@@ -6,7 +6,6 @@ package org.wheatgenetics.brapi1_3.studies;             // TODO: Move to StudyLa
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
  * android.support.annotation.IntRange
- * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.view.View
@@ -20,56 +19,15 @@ package org.wheatgenetics.brapi1_3.studies;             // TODO: Move to StudyLa
  * io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum
  * io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum
  *
- * org.wheatgenetics.androidlibrary.ItemsAlertDialog
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
+ * org.wheatgenetics.brapi1_3.TypeAlertDialog
  */
 class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
     // region Types
-    // TODO: Promote to outer class so StudySearchRequestAlertDialog can use.
-    private abstract static class TypeAlertDialog
-    extends org.wheatgenetics.androidlibrary.ItemsAlertDialog
-    {
-        @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-        private java.lang.String itemsInstance[] = null;
-
-        // region Package Methods
-        /** Used by subclasses. */
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-        boolean itemsIsNull() { return null == this.items(); }
-
-        /** Used by subclasses. */
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-        void createItems(
-        @android.support.annotation.NonNull final java.util.ArrayList<java.lang.String> arrayList)
-        {
-            if (this.itemsIsNull())
-            {
-                this.itemsInstance = new java.lang.String[arrayList.size()];
-                this.itemsInstance = arrayList.toArray(this.itemsInstance);
-            }
-        }
-
-        /** Overridden by subclasses. */
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-        java.lang.String[] items() { return this.itemsInstance; }
-        // endregion
-
-        private TypeAlertDialog(final android.app.Activity activity) { super(activity); }
-
-        // region Overridden Methods
-        @java.lang.Override public void configure() { this.setCancelNegativeButton(); }
-        @java.lang.Override public void show     () { this.show(this.items())       ; }
-        // endregion
-    }
-
-    private static class EntryTypeAlertDialog
-    extends org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.TypeAlertDialog
+    private static class EntryTypeAlertDialog extends org.wheatgenetics.brapi1_3.TypeAlertDialog
     {
         private EntryTypeAlertDialog(final android.app.Activity activity) { super(activity); }
 
@@ -83,11 +41,11 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
 
         @android.support.annotation.RestrictTo(
             android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-        @java.lang.Override java.lang.String[] items()
+        @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
             {
-                @java.lang.SuppressWarnings({"Convert2Diamond"})
+                // noinspection Convert2Diamond
                 final java.util.ArrayList<java.lang.String> arrayList =
                     new java.util.ArrayList<java.lang.String>();
 
@@ -118,7 +76,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     }
 
     private static class PositionCoordinateXTypeAlertDialog
-    extends org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.TypeAlertDialog
+    extends org.wheatgenetics.brapi1_3.TypeAlertDialog
     {
         private PositionCoordinateXTypeAlertDialog(final android.app.Activity activity)
         { super(activity); }
@@ -133,11 +91,11 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
 
         @android.support.annotation.RestrictTo(
             android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-        @java.lang.Override java.lang.String[] items()
+        @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
             {
-                @java.lang.SuppressWarnings({"Convert2Diamond"})
+                // noinspection Convert2Diamond
                 final java.util.ArrayList<java.lang.String> arrayList =
                     new java.util.ArrayList<java.lang.String>();
 
@@ -168,7 +126,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     }
 
     private static class PositionCoordinateYTypeAlertDialog
-    extends org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.TypeAlertDialog
+    extends org.wheatgenetics.brapi1_3.TypeAlertDialog
     {
         private PositionCoordinateYTypeAlertDialog(final android.app.Activity activity)
         { super(activity); }
@@ -183,11 +141,11 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
 
         @android.support.annotation.RestrictTo(
             android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-        @java.lang.Override java.lang.String[] items()
+        @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
             {
-                @java.lang.SuppressWarnings({"Convert2Diamond"})
+                // noinspection Convert2Diamond
                 final java.util.ArrayList<java.lang.String> arrayList =
                     new java.util.ArrayList<java.lang.String>();
 
