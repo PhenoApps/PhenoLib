@@ -5,6 +5,8 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
  * android.app.Application
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.StudyLayoutRequestLayout
  *
@@ -49,6 +51,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     }
 
     // region Overridden Methods
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.Class listActivityClass()
     { return org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestListActivity.class; }
 
