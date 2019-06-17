@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;     // TODO: Move to package NewObservationUnitRequests.
+package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObservationUnitRequests
 
 /**
  * Uses:
@@ -23,8 +23,8 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     private io.swagger.client.model.NewObservationUnitRequest newObservationUnitRequest = null;
     // endregion
 
-    NewObservationUnitRequestAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog.Handler handler)
+    NewObservationUnitRequestAlertDialog(final android.app.Activity activity, final
+    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler handler)
     { super(activity, handler); }
 
     // region Overridden Methods
@@ -71,25 +71,25 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
         if (null != this.newObservationUnitRequest)
         {
             this.newObservationUnitRequest.setBlockNumber(
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.blockNumberEditText));
             this.newObservationUnitRequest.setEntryNumber(
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.entryNumberEditText));
             this.newObservationUnitRequest.setEntryType(
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.entryTypeEditText));
             this.newObservationUnitRequest.setGermplasmDbId(
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.germplasmDbIdEditText));
             this.newObservationUnitRequest.setObservationLevel(
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.observationLevelEditText));
             this.newObservationUnitRequest.setObservationUnitDbId(
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.observationUnitDbIdEditText));
             this.newObservationUnitRequest.setObservationUnitName(
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.observationUnitNameEditText));
             // TODO
 
@@ -105,25 +105,25 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
         {
             this.newObservationUnitRequest = newObservationUnitRequest;
 
-            org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.blockNumberEditText,
                     this.newObservationUnitRequest.getBlockNumber());
-            org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.entryNumberEditText,
                     this.newObservationUnitRequest.getEntryNumber());
-            org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.entryTypeEditText,
                     this.newObservationUnitRequest.getEntryType());
-            org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.germplasmDbIdEditText,
                     this.newObservationUnitRequest.getGermplasmDbId());
-            org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.observationLevelEditText,
                     this.newObservationUnitRequest.getObservationLevel());
-            org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.observationUnitDbIdEditText,
                     this.newObservationUnitRequest.getObservationUnitDbId());
-            org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.observationUnitNameEditText,
                     this.newObservationUnitRequest.getObservationUnitName());
             // TODO

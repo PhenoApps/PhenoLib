@@ -52,7 +52,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  *
  * studiesStudyDbIdObservationunitsPut():
  * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests
- * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestsListActivity
+ * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
  *
  *
  * org.wheatgenetics.androidlibrarybuilder.R
@@ -1119,8 +1119,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     {
         if (null == this.newObservationUnitRequestsListIntentInstance)
             this.newObservationUnitRequestsListIntentInstance = new android.content.Intent(
-                this.getActivity()                                                             ,
-                org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequestsListActivity.class);
+                this.getActivity(), org.wheatgenetics.brapi1_3.studies
+                    .nour.NewObservationUnitRequestsListActivity.class);
         return this.newObservationUnitRequestsListIntentInstance;
     }
 
