@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;         // TODO: Move to NewObservationsRequest package.
+package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: NewObservationsRequest
 
 /**
  * Uses:
@@ -6,7 +6,7 @@ package org.wheatgenetics.brapi1_3.studies;         // TODO: Move to NewObservat
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsItemActivity
+ * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsItemActivity
  */
 class NewObservationsRequestObservationsOnePaneAdapter
 extends org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
@@ -16,7 +16,7 @@ extends org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
 
     @java.lang.Override protected java.lang.Class concreteItemActivityClass()
     {
-        return org.wheatgenetics.brapi1_3.studies
+        return org.wheatgenetics.brapi1_3.studies.nor
             .NewObservationsRequestObservationsItemActivity.class;
     }
 }
