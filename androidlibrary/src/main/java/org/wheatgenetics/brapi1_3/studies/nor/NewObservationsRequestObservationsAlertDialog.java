@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;         // TODO: Move to NewObservationsRequest package.
+package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: NewObservationsRequest
 
 /**
  * Uses:
@@ -24,8 +24,8 @@ class NewObservationsRequestObservationsAlertDialog extends org.wheatgenetics.br
         newObservationsRequestObservations = null;
     // endregion
 
-    NewObservationsRequestObservationsAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog.Handler
+    NewObservationsRequestObservationsAlertDialog(final android.app.Activity activity, final
+    org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog.Handler
         handler) { super(activity, handler); }
 
     // region Overridden Methods
@@ -69,22 +69,22 @@ class NewObservationsRequestObservationsAlertDialog extends org.wheatgenetics.br
         if (null != this.newObservationsRequestObservations)
         {
             this.newObservationsRequestObservations.setCollector(
-                org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                     .getEditTextStringText(this.collectorEditText));
             this.newObservationsRequestObservations.setObservationDbId(
-                org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                     .getEditTextStringText(this.observationDbIdEditText));
             this.newObservationsRequestObservations.setObservationTimeStamp(
-                org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                     .getEditTextTimeStampText(this.observationTimeStampEditText));
             this.newObservationsRequestObservations.setObservationUnitDbId(
-                org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                     .getEditTextStringText(this.observationUnitDbIdEditText));
             this.newObservationsRequestObservations.setObservationVariableDbId(
-                org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                     .getEditTextStringText(this.observationVariableDbIdEditText));
             this.newObservationsRequestObservations.setValue(
-                org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+                org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                     .getEditTextStringText(this.valueEditText));
 
             super.handlePositiveButtonClick();
@@ -99,22 +99,22 @@ class NewObservationsRequestObservationsAlertDialog extends org.wheatgenetics.br
         {
             this.newObservationsRequestObservations = newObservationsRequestObservations;
 
-            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                 .setEditTextText(this.collectorEditText,
                     this.newObservationsRequestObservations.getCollector());
-            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                 .setEditTextText(this.observationDbIdEditText,
                     this.newObservationsRequestObservations.getObservationDbId());
-            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                 .setEditTextText(this.observationTimeStampEditText,
                     this.newObservationsRequestObservations.getObservationTimeStamp());
-            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                 .setEditTextText(this.observationUnitDbIdEditText,
                     this.newObservationsRequestObservations.getObservationUnitDbId());
-            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                 .setEditTextText(this.observationVariableDbIdEditText,
                     this.newObservationsRequestObservations.getObservationVariableDbId());
-            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
+            org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
                 .setEditTextText(this.valueEditText,
                     this.newObservationsRequestObservations.getValue());
 

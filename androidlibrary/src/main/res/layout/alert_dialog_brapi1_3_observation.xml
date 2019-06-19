@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/studiesObservationsGermplasmDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogGermplasmDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsGermplasmNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogGermplasmNameEditTextHint"
+        android:inputType="text"
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsObservationDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogObservationDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsObservationLevelEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogObservationLevelEditTextHint"
+        android:inputType="text"
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsObservationTimeStampEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogObservationTimeStampEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsObservationUnitDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogObservationUnitDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsObservationUnitNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogObservationUnitNameEditTextHint"
+        android:inputType="text"
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsObservationVariableDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogObservationVariableDbIdEditTextHint"
+        android:inputType="text"
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsObservationVariableNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogObservationVariableNameEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsOperatorEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogOperatorEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <!--Season-->
+
+    <EditText
+        android:id="@+id/studiesObservationsStudyDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogStudyDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsUploadedByEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogUploadedByEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesObservationsValueEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ObservationsAlertDialogValueEditTextHint"
+        android:inputType="number"
+        android:scrollbars="vertical"
+        tools:ignore="Autofill" />
+
+</LinearLayout>

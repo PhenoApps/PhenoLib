@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;         // TODO: Move to NewObservationsRequest package.
+package org.wheatgenetics.brapi1_3.studies.slr;                           // slr: StudyLayoutRequest
 
 /**
  * Uses:
@@ -7,7 +7,7 @@ package org.wheatgenetics.brapi1_3.studies;         // TODO: Move to NewObservat
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  *
- * io.swagger.client.model.NewObservationsRequestObservations
+ * io.swagger.client.model.StudyLayoutRequestLayout
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -17,36 +17,36 @@ package org.wheatgenetics.brapi1_3.studies;         // TODO: Move to NewObservat
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
- * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog.Handler
- * org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsOnePaneAdapter
+ * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+ * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog.Handler
+ * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutOnePaneAdapter
  */
-public class NewObservationsRequestListActivity
+public class StudyLayoutRequestListActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
     // region Fields
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
-    private org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
-        newObservationsRequestObservationsAlertDialogInstance = null;                   // lazy load
+    private org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+        studyLayoutRequestLayoutAlertDialogInstance = null;                             // lazy load
     // endregion
 
-    private org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog
-    newObservationsRequestObservationsAlertDialog()
+    private org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+    studyLayoutRequestLayoutAlertDialog()
     {
-        if (null == this.newObservationsRequestObservationsAlertDialogInstance)
-            this.newObservationsRequestObservationsAlertDialogInstance = new
-                org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsAlertDialog(
+        if (null == this.studyLayoutRequestLayoutAlertDialogInstance)
+            this.studyLayoutRequestLayoutAlertDialogInstance =
+                new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog(
                     this, new org.wheatgenetics.brapi1_3.studies
-                    .NewObservationsRequestObservationsAlertDialog.Handler()
+                    .slr.StudyLayoutRequestLayoutAlertDialog.Handler()
                     {
                         @java.lang.Override public void handleDone()
                         {
-                            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestListActivity
+                            org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestListActivity
                                 .this.refreshSinceItemHasChanged();
                         }
                     });
-        return this.newObservationsRequestObservationsAlertDialogInstance;
+        return this.studyLayoutRequestLayoutAlertDialogInstance;
     }
 
     // region Overridden Methods
@@ -67,17 +67,16 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     @java.lang.Override
     protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
     {
-        return new
-            org.wheatgenetics.brapi1_3.studies.NewObservationsRequestObservationsOnePaneAdapter(
-                this.items());
+        return new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutOnePaneAdapter(
+            this.items());
     }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
     @java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     {
-        this.newObservationsRequestObservationsAlertDialog().show(
-            (io.swagger.client.model.NewObservationsRequestObservations) item);
+        this.studyLayoutRequestLayoutAlertDialog().show(
+            (io.swagger.client.model.StudyLayoutRequestLayout) item);
     }
     // endregion
     // endregion

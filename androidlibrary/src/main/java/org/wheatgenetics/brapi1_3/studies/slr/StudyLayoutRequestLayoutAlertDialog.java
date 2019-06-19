@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;             // TODO: Move to StudyLayoutRequest package.
+package org.wheatgenetics.brapi1_3.studies.slr;                           // slr: StudyLayoutRequest
 
 /**
  * Uses:
@@ -192,12 +192,11 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     private io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum
         positionCoordinateYTypeEnum = null;
 
-    private
-        org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.EntryTypeAlertDialog
-            entryTypeAlertDialogInstance = null;                                        // lazy load
-    private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
+    private org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+        .EntryTypeAlertDialog entryTypeAlertDialogInstance = null;                      // lazy load
+    private org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
         .PositionCoordinateXTypeAlertDialog positionCoordinateXTypeAlertDialogInstance = null; // ll
-    private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
+    private org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
         .PositionCoordinateYTypeAlertDialog positionCoordinateYTypeAlertDialogInstance = null; // ll
     // endregion
 
@@ -205,20 +204,21 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     // region AlertDialog Private Methods
     // region entryTypeAlertDialog Private Methods
     private
-    org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.EntryTypeAlertDialog
+    org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog.EntryTypeAlertDialog
     entryTypeAlertDialog()
     {
         if (null == this.entryTypeAlertDialogInstance)
         {
-            this.entryTypeAlertDialogInstance = new org.wheatgenetics.brapi1_3.studies
-                .StudyLayoutRequestLayoutAlertDialog.EntryTypeAlertDialog(this.activity());
+            this.entryTypeAlertDialogInstance =
+                new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+                    .EntryTypeAlertDialog(this.activity());
             this.entryTypeAlertDialogInstance.setOnClickListener(
                 new android.content.DialogInterface.OnClickListener()
                 {
                     @java.lang.Override public void onClick(
                     final android.content.DialogInterface dialog, final int which)
                     {
-                        org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
+                        org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
                             .this.setEntryTypeEnum(which);
                     }
                 });
@@ -230,21 +230,21 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     // endregion
 
     // region positionCoordinateXTypeAlertDialog Private Methods
-    private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
+    private org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
         .PositionCoordinateXTypeAlertDialog positionCoordinateXTypeAlertDialog()
     {
         if (null == this.positionCoordinateXTypeAlertDialogInstance)
         {
-            this.positionCoordinateXTypeAlertDialogInstance = new org.wheatgenetics.brapi1_3
-                .studies.StudyLayoutRequestLayoutAlertDialog.PositionCoordinateXTypeAlertDialog(
-                    this.activity());
+            this.positionCoordinateXTypeAlertDialogInstance =
+                new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+                    .PositionCoordinateXTypeAlertDialog(this.activity());
             this.positionCoordinateXTypeAlertDialogInstance.setOnClickListener(
                 new android.content.DialogInterface.OnClickListener()
                 {
                     @java.lang.Override public void onClick(
                     final android.content.DialogInterface dialog, final int which)
                     {
-                        org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
+                        org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
                             .this.setPositionCoordinateXTypeEnum(which);
                     }
                 });
@@ -257,21 +257,21 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     // endregion
 
     // region positionCoordinateYTypeAlertDialog Private Methods
-    private org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
+    private org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
         .PositionCoordinateYTypeAlertDialog positionCoordinateYTypeAlertDialog()
     {
         if (null == this.positionCoordinateYTypeAlertDialogInstance)
         {
-            this.positionCoordinateYTypeAlertDialogInstance = new org.wheatgenetics.brapi1_3
-                .studies.StudyLayoutRequestLayoutAlertDialog.PositionCoordinateYTypeAlertDialog(
-                    this.activity());
+            this.positionCoordinateYTypeAlertDialogInstance =
+                new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+                    .PositionCoordinateYTypeAlertDialog(this.activity());
             this.positionCoordinateYTypeAlertDialogInstance.setOnClickListener(
                 new android.content.DialogInterface.OnClickListener()
                 {
                     @java.lang.Override public void onClick(
                     final android.content.DialogInterface dialog, final int which)
                     {
-                        org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog
+                        org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
                             .this.setPositionCoordinateYTypeEnum(which);
                     }
                 });
@@ -350,7 +350,8 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     // endregion
 
     StudyLayoutRequestLayoutAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.Handler handler)
+    final org.wheatgenetics.brapi1_3.studies.slr
+        .StudyLayoutRequestLayoutAlertDialog.Handler handler)
     { super(activity, handler); }
 
     // region Overridden methods
@@ -380,9 +381,9 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
                         {
                             @java.lang.Override public void onClick(final android.view.View v)
                             {
-                                org.wheatgenetics.brapi1_3.studies
-                                    .StudyLayoutRequestLayoutAlertDialog
-                                    .this.showEntryTypeAlertDialog();
+                                org.wheatgenetics.brapi1_3.studies.slr
+                                    .StudyLayoutRequestLayoutAlertDialog.this
+                                    .showEntryTypeAlertDialog();
                             }
                         });
                 }
@@ -409,7 +410,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
                             {
                                 @java.lang.Override public void onClick(final android.view.View v)
                                 {
-                                    org.wheatgenetics.brapi1_3.studies
+                                    org.wheatgenetics.brapi1_3.studies.slr
                                         .StudyLayoutRequestLayoutAlertDialog.this
                                         .showPositionCoordinateXTypeAlertDialog();
                                 }
@@ -434,7 +435,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
                             {
                                 @java.lang.Override public void onClick(final android.view.View v)
                                 {
-                                    org.wheatgenetics.brapi1_3.studies
+                                    org.wheatgenetics.brapi1_3.studies.slr
                                         .StudyLayoutRequestLayoutAlertDialog.this
                                         .showPositionCoordinateYTypeAlertDialog();
                                 }
@@ -456,23 +457,23 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     {
         if (null != this.studyLayoutRequestLayout)
         {
-            this.studyLayoutRequestLayout.setBlockNumber(org.wheatgenetics.brapi1_3.studies
+            this.studyLayoutRequestLayout.setBlockNumber(org.wheatgenetics.brapi1_3.studies.slr
                 .StudyLayoutRequestLayoutAlertDialog.getEditTextIntText(this.blockNumberEditText));
             this.studyLayoutRequestLayout.setEntryType(this.entryTypeEnum);
             this.studyLayoutRequestLayout.setObservationUnitDbId(org.wheatgenetics.brapi1_3.studies
-                .StudyLayoutRequestLayoutAlertDialog.getEditTextStringText(
+                .slr.StudyLayoutRequestLayoutAlertDialog.getEditTextStringText(
                     this.observationUnitDbIdEditText));
             this.studyLayoutRequestLayout.setPositionCoordinateX(org.wheatgenetics.brapi1_3.studies
-                .StudyLayoutRequestLayoutAlertDialog.getEditTextStringText(
+                .slr.StudyLayoutRequestLayoutAlertDialog.getEditTextStringText(
                     this.positionCoordinateXEditText));
             this.studyLayoutRequestLayout.setPositionCoordinateXType(
                 this.positionCoordinateXTypeEnum);
             this.studyLayoutRequestLayout.setPositionCoordinateY(org.wheatgenetics.brapi1_3.studies
-                .StudyLayoutRequestLayoutAlertDialog.getEditTextStringText(
+                .slr.StudyLayoutRequestLayoutAlertDialog.getEditTextStringText(
                     this.positionCoordinateYEditText));
             this.studyLayoutRequestLayout.setPositionCoordinateYType(
                 this.positionCoordinateYTypeEnum);
-            this.studyLayoutRequestLayout.setReplicate(org.wheatgenetics.brapi1_3.studies
+            this.studyLayoutRequestLayout.setReplicate(org.wheatgenetics.brapi1_3.studies.slr
                 .StudyLayoutRequestLayoutAlertDialog.getEditTextIntText(this.replicateEditText));
 
             super.handlePositiveButtonClick();
@@ -486,24 +487,26 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
         {
             this.studyLayoutRequestLayout = studyLayoutRequestLayout;
 
-            org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.setEditTextText(
-                this.blockNumberEditText, this.studyLayoutRequestLayout.getBlockNumber());
+            org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+                .setEditTextText(this.blockNumberEditText,
+                    this.studyLayoutRequestLayout.getBlockNumber());
             this.setEntryTypeEnum(this.studyLayoutRequestLayout.getEntryType());
-            org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.setEditTextText(
-                this.observationUnitDbIdEditText                      ,
-                this.studyLayoutRequestLayout.getObservationUnitDbId());
-            org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.setEditTextText(
-                this.positionCoordinateXEditText                      ,
-                this.studyLayoutRequestLayout.getPositionCoordinateX());
+            org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+                .setEditTextText(this.observationUnitDbIdEditText,
+                    this.studyLayoutRequestLayout.getObservationUnitDbId());
+            org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+                .setEditTextText(this.positionCoordinateXEditText,
+                    this.studyLayoutRequestLayout.getPositionCoordinateX());
             this.setPositionCoordinateXTypeEnum(
                 this.studyLayoutRequestLayout.getPositionCoordinateXType());
-            org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.setEditTextText(
-                this.positionCoordinateYEditText                      ,
-                this.studyLayoutRequestLayout.getPositionCoordinateY());
+            org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+                .setEditTextText(this.positionCoordinateYEditText,
+                    this.studyLayoutRequestLayout.getPositionCoordinateY());
             this.setPositionCoordinateYTypeEnum(
                 this.studyLayoutRequestLayout.getPositionCoordinateYType());
-            org.wheatgenetics.brapi1_3.studies.StudyLayoutRequestLayoutAlertDialog.setEditTextText(
-                this.replicateEditText, this.studyLayoutRequestLayout.getReplicate());
+            org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
+                .setEditTextText(this.replicateEditText,
+                    this.studyLayoutRequestLayout.getReplicate());
 
             this.show();
         }
