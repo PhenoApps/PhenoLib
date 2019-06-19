@@ -51,7 +51,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestListActivity
  *
  * studiesStudyDbIdObservationunitsPut():
- * org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests
+ * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
  *
  *
@@ -1093,14 +1093,14 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private void studiesStudyDbIdObservationunitsPut(
-    final org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests newObservationUnitRequests)
+    final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests newObservationUnitRequests)
     {
         if (null != this.studiesStudyDbIdObservationunitsGetParametersInstance
         &&  null != newObservationUnitRequests                                )
         {
-            final org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests
+            final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
                 populatedNewObservationUnitRequests =
-                    new org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests(
+                    new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests(
                         newObservationUnitRequests,"TODO","TODO");       // TODO
             try
             {
@@ -1578,7 +1578,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 {
                     final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
                     if (null != items) this.studiesStudyDbIdObservationunitsPut(
-                        (org.wheatgenetics.brapi1_3.studies.NewObservationUnitRequests) items);
+                        (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests) items);
                 } break;
         }
         super.onActivityResult(requestCode, resultCode, data);
