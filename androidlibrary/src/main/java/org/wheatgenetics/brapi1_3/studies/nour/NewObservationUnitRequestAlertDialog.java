@@ -2,13 +2,24 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
 
 /**
  * Uses:
+ * android.annotation.SuppressLint
  * android.app.Activity
+ * android.support.annotation.IntRange
+ * android.support.annotation.NonNull
+ * android.support.annotation.Nullable
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.view.View
+ * android.view.View.OnClickListener
+ * android.widget.Button
  * android.widget.EditText
+ * android.widget.TextView
  *
- * io.swagger.client.model.NewObservationUnitRequest
+ * io.swagger.client.model.Observation
+ *
+ * org.wheatgenetics.javalib.mstrdtl.Item
+ *
+ * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
  *
  * org.wheatgenetics.androidlibrary.R
  *
@@ -16,16 +27,57 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  */
 class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface ActivityHandler
+    {
+        public abstract void showObservationsListActivity(@android.support.annotation.IntRange(
+            from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+    }
+
     // region Fields
+    private final
+        org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
+            activityHandler;
+
     private android.widget.EditText blockNumberEditText, entryNumberEditText, entryTypeEditText,
         germplasmDbIdEditText, observationLevelEditText, observationUnitDbIdEditText,
         observationUnitNameEditText;
-    private io.swagger.client.model.NewObservationUnitRequest newObservationUnitRequest = null;
+    private android.widget.TextView observationsTextView;
+
+    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
+        newObservationUnitRequest = null;
+    // endregion
+
+    // region Private Methods
+    @android.annotation.SuppressLint({"DefaultLocale"}) private void setObservationsTextViewText(
+    @android.support.annotation.Nullable final java.util.List<io.swagger.client.model.Observation>
+        observations)
+    {
+        if (null != this.observationsTextView) this.observationsTextView.setText(
+            null == observations ? "null" : java.lang.String.format(
+                "%d observation(s)", observations.size()));
+    }
+
+    private void setObservationsTextViewText()
+    {
+        if (null != this.newObservationUnitRequest)
+            this.setObservationsTextViewText(this.newObservationUnitRequest.getObservations());
+    }
+
+    private void showObservationsListActivity()
+    {
+        if (null != this.newObservationUnitRequest)
+            this.activityHandler.showObservationsListActivity(
+                this.newObservationUnitRequest.getPosition());
+    }
     // endregion
 
     NewObservationUnitRequestAlertDialog(final android.app.Activity activity, final
-    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler handler)
-    { super(activity, handler); }
+        org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler
+            handler,
+    final @android.support.annotation.NonNull
+        org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
+            activityHandler)
+    { super(activity, handler); this.activityHandler = activityHandler; }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
@@ -58,6 +110,27 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
                 if (null == this.observationUnitNameEditText) this.observationUnitNameEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
                         .studiesNewObservationUnitRequestObservationUnitNameEditText);
+
+                if (null == this.observationsTextView) this.observationsTextView =
+                    view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                        .studiesNewObservationUnitRequestObservationsValueTextView);
+                {
+                    final android.widget.Button changeObservationsButton = view.findViewById(
+                        org.wheatgenetics.androidlibrary.R.id
+                            .studiesNewObservationUnitRequestChangeObservationsButton);
+                    if (null != changeObservationsButton)
+                        changeObservationsButton.setOnClickListener(
+                            new android.view.View.OnClickListener()
+                        {
+                            @java.lang.Override public void onClick(final android.view.View v)
+                            {
+                                org.wheatgenetics.brapi1_3.studies.nour
+                                    .NewObservationUnitRequestAlertDialog
+                                    .this.showObservationsListActivity();
+                            }
+                        });
+                }
+
                 // TODO
             }
             this.setView(view);
@@ -98,8 +171,9 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     }
     // endregion
 
-    public void show(
-    final io.swagger.client.model.NewObservationUnitRequest newObservationUnitRequest)
+    // region Package Methods
+    void show(final
+    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest newObservationUnitRequest)
     {
         if (null != newObservationUnitRequest)
         {
@@ -126,9 +200,13 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.observationUnitNameEditText,
                     this.newObservationUnitRequest.getObservationUnitName());
+            this.setObservationsTextViewText();
             // TODO
 
             this.show();
         }
     }
+
+    void updateObservations() { this.setObservationsTextViewText(); }
+    // endregion
 }

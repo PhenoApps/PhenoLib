@@ -146,4 +146,21 @@
     <string name="NewObservationUnitRequestAlertDialogObservationLevelEditTextHint">observationLevel</string>
     <string name="NewObservationUnitRequestAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
     <string name="NewObservationUnitRequestAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
+    <string name="NewObservationUnitRequestAlertDialogObservationsLabelTextViewText">observations:</string>
+
+    <string name="ObservationAlertDialogTitle">Observation</string>
+    <string name="ObservationsAlertDialogGermplasmDbIdEditTextHint">germplasmDbId</string>
+    <string name="ObservationsAlertDialogGermplasmNameEditTextHint">germplasmName</string>
+    <string name="ObservationsAlertDialogObservationDbIdEditTextHint">observationDbId</string>
+    <string name="ObservationsAlertDialogObservationLevelEditTextHint">observationLevel</string>
+    <string name="ObservationsAlertDialogObservationTimeStampEditTextHint">observationTimeStamp</string>
+    <string name="ObservationsAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
+    <string name="ObservationsAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
+    <string name="ObservationsAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
+    <string name="ObservationsAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
+    <string name="ObservationsAlertDialogOperatorEditTextHint">operator</string>
+    <!--Season-->
+    <string name="ObservationsAlertDialogStudyDbIdEditTextHint">studyDbId</string>
+    <string name="ObservationsAlertDialogUploadedByEditTextHint">uploadedBy</string>
+    <string name="ObservationsAlertDialogValueEditTextHint">value</string>
 </resources>
