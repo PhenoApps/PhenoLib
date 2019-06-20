@@ -11,9 +11,9 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
- * org.wheatgenetics.brapi1_3.studies.NewObservationsRequest
+ * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
- * org.wheatgenetics.brapi1_3.studies.StudyLayoutRequest
+ * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest
  */
 public class Application extends android.app.Application
 implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
@@ -34,11 +34,11 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
             case NONE: if (null == this.items) return this.items;
 
             case SLR:
-                if (this.items instanceof org.wheatgenetics.brapi1_3.studies.StudyLayoutRequest)
+                if (this.items instanceof org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest)
                     return this.items;
 
-            case NOR:
-                if (this.items instanceof org.wheatgenetics.brapi1_3.studies.NewObservationsRequest)
+            case NOR: if (this.items instanceof
+                org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest)
                     return this.items;
 
             case NOUR: if (this.items instanceof
@@ -54,7 +54,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     public void makeStudyLayoutRequest(
     final io.swagger.client.model.ObservationUnitPositionsResponse observationUnitPositionsResponse)
     {
-        this.items = new org.wheatgenetics.brapi1_3.studies.StudyLayoutRequest(
+        this.items = new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest(
             observationUnitPositionsResponse);
         this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.SLR;
     }
@@ -62,7 +62,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     public void makeNewObservationsRequest(
     final io.swagger.client.model.ObservationsResponse observationsResponse)
     {
-        this.items = new org.wheatgenetics.brapi1_3.studies.NewObservationsRequest(
+        this.items = new org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest(
             observationsResponse);
         this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NOR;
     }
