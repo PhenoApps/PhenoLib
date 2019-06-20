@@ -159,8 +159,13 @@
     <string name="ObservationAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
     <string name="ObservationAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
     <string name="ObservationAlertDialogOperatorEditTextHint">operator</string>
-    <!--Season-->
+    <string name="ObservationAlertDialogSeasonLabelTextViewText">season:</string>
     <string name="ObservationAlertDialogStudyDbIdEditTextHint">studyDbId</string>
     <string name="ObservationAlertDialogUploadedByEditTextHint">uploadedBy</string>
     <string name="ObservationAlertDialogValueEditTextHint">value</string>
+
+    <string name="SeasonAlertDialogTitle">Season</string>
+    <string name="SeasonAlertDialogSeasonEditTextHint">season</string>
+    <string name="SeasonAlertDialogSeasonDbIdEditTextHint">seasonDbId</string>
+    <string name="SeasonAlertDialogYearEditTextHint">year</string>
 </resources>

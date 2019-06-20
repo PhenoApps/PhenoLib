@@ -121,14 +121,14 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
                     if (null != changeObservationsButton)
                         changeObservationsButton.setOnClickListener(
                             new android.view.View.OnClickListener()
-                        {
-                            @java.lang.Override public void onClick(final android.view.View v)
                             {
-                                org.wheatgenetics.brapi1_3.studies.nour
-                                    .NewObservationUnitRequestAlertDialog
-                                    .this.showObservationsListActivity();
-                            }
-                        });
+                                @java.lang.Override public void onClick(final android.view.View v)
+                                {
+                                    org.wheatgenetics.brapi1_3.studies.nour
+                                        .NewObservationUnitRequestAlertDialog
+                                        .this.showObservationsListActivity();
+                                }
+                            });
                 }
 
                 // TODO
