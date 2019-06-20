@@ -8,6 +8,10 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  * android.view.View
  * android.widget.EditText
  *
+ * io.swagger.client.model.Observation
+ *
+ * org.wheatgenetics.androidlibrary.R
+ *
  * org.wheatgenetics.brapi1_3.AlertDialog
  */
 class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
@@ -20,7 +24,7 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     // TODO
     private android.widget.EditText studyDbIdEditText, uploadedByEditText, valueEditText;
 
-    private io.swagger.client.model.Observation observation;
+    private io.swagger.client.model.Observation observation = null;
     // endregion
 
     ObservationAlertDialog(final android.app.Activity activity,
@@ -38,40 +42,40 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
             {
                 if (null == this.germplasmDbIdEditText) this.germplasmDbIdEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsGermplasmDbIdEditText);
+                        .studiesObservationGermplasmDbIdEditText);
                 if (null == this.germplasmNameEditText) this.germplasmNameEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsGermplasmNameEditText);
+                        .studiesObservationGermplasmNameEditText);
                 if (null == this.observationDbIdEditText) this.observationDbIdEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationDbIdEditText);
+                        .studiesObservationObservationDbIdEditText);
                 if (null == this.observationLevelEditText) this.observationLevelEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationLevelEditText);
+                        .studiesObservationObservationLevelEditText);
                 if (null == this.observationTimeStampEditText) this.observationTimeStampEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationTimeStampEditText);
+                        .studiesObservationObservationTimeStampEditText);
                 if (null == this.observationUnitDbIdEditText) this.observationUnitDbIdEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationUnitDbIdEditText);
+                        .studiesObservationObservationUnitDbIdEditText);
                 if (null == this.observationUnitNameEditText) this.observationUnitNameEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationUnitNameEditText);
+                        .studiesObservationObservationUnitNameEditText);
                 if (null == this.observationVariableDbIdEditText)
                     this.observationVariableDbIdEditText = view.findViewById(org.wheatgenetics
-                        .androidlibrary.R.id.studiesObservationsObservationVariableDbIdEditText);
+                        .androidlibrary.R.id.studiesObservationObservationVariableDbIdEditText);
                 if (null == this.observationVariableNameEditText)
                     this.observationVariableNameEditText = view.findViewById(org.wheatgenetics
-                        .androidlibrary.R.id.studiesObservationsObservationVariableNameEditText);
+                        .androidlibrary.R.id.studiesObservationObservationVariableNameEditText);
                 if (null == this.operatorEditText) this.operatorEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesObservationsOperatorEditText);
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationOperatorEditText);
                 // TODO
                 if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesObservationsStudyDbIdEditText);
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationStudyDbIdEditText);
                 if (null == this.uploadedByEditText) this.uploadedByEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesObservationsUploadedByEditText);
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationUploadedByEditText);
                 if (null == this.valueEditText) this.valueEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesObservationsValueEditText);
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationValueEditText);
             }
             this.setView(view);
         }
@@ -92,15 +96,18 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
             this.observation.setObservationLevel(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.observationLevelEditText));
             this.observation.setObservationTimeStamp(org.wheatgenetics.brapi1_3.studies.nour
-                .ObservationAlertDialog.getEditTextTimeStampText(this.observationTimeStampEditText));
+                .ObservationAlertDialog.getEditTextTimeStampText(
+                    this.observationTimeStampEditText));
             this.observation.setObservationUnitDbId(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.observationUnitDbIdEditText));
             this.observation.setObservationUnitName(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.observationUnitNameEditText));
             this.observation.setObservationVariableDbId(org.wheatgenetics.brapi1_3.studies.nour
-                .ObservationAlertDialog.getEditTextStringText(this.observationVariableDbIdEditText));
+                .ObservationAlertDialog.getEditTextStringText(
+                    this.observationVariableDbIdEditText));
             this.observation.setObservationVariableName(org.wheatgenetics.brapi1_3.studies.nour
-                .ObservationAlertDialog.getEditTextStringText(this.observationVariableNameEditText));
+                .ObservationAlertDialog.getEditTextStringText(
+                    this.observationVariableNameEditText));
             this.observation.setOperator(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.operatorEditText));
             // TODO
@@ -116,7 +123,7 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     }
     // endregion
 
-    public void show(final io.swagger.client.model.Observation observation)
+    void show(final io.swagger.client.model.Observation observation)
     {
         if (null != observation)
         {

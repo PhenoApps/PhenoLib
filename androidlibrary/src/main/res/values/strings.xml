@@ -149,18 +149,18 @@
     <string name="NewObservationUnitRequestAlertDialogObservationsLabelTextViewText">observations:</string>
 
     <string name="ObservationAlertDialogTitle">Observation</string>
-    <string name="ObservationsAlertDialogGermplasmDbIdEditTextHint">germplasmDbId</string>
-    <string name="ObservationsAlertDialogGermplasmNameEditTextHint">germplasmName</string>
-    <string name="ObservationsAlertDialogObservationDbIdEditTextHint">observationDbId</string>
-    <string name="ObservationsAlertDialogObservationLevelEditTextHint">observationLevel</string>
-    <string name="ObservationsAlertDialogObservationTimeStampEditTextHint">observationTimeStamp</string>
-    <string name="ObservationsAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
-    <string name="ObservationsAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
-    <string name="ObservationsAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
-    <string name="ObservationsAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
-    <string name="ObservationsAlertDialogOperatorEditTextHint">operator</string>
+    <string name="ObservationAlertDialogGermplasmDbIdEditTextHint">germplasmDbId</string>
+    <string name="ObservationAlertDialogGermplasmNameEditTextHint">germplasmName</string>
+    <string name="ObservationAlertDialogObservationDbIdEditTextHint">observationDbId</string>
+    <string name="ObservationAlertDialogObservationLevelEditTextHint">observationLevel</string>
+    <string name="ObservationAlertDialogObservationTimeStampEditTextHint">observationTimeStamp</string>
+    <string name="ObservationAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
+    <string name="ObservationAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
+    <string name="ObservationAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
+    <string name="ObservationAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
+    <string name="ObservationAlertDialogOperatorEditTextHint">operator</string>
     <!--Season-->
-    <string name="ObservationsAlertDialogStudyDbIdEditTextHint">studyDbId</string>
-    <string name="ObservationsAlertDialogUploadedByEditTextHint">uploadedBy</string>
-    <string name="ObservationsAlertDialogValueEditTextHint">value</string>
+    <string name="ObservationAlertDialogStudyDbIdEditTextHint">studyDbId</string>
+    <string name="ObservationAlertDialogUploadedByEditTextHint">uploadedBy</string>
+    <string name="ObservationAlertDialogValueEditTextHint">value</string>
 </resources>

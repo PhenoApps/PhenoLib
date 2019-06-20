@@ -9,91 +9,91 @@
     android:padding="10dp">
 
     <EditText
-        android:id="@+id/studiesObservationsGermplasmDbIdEditText"
+        android:id="@+id/studiesObservationGermplasmDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogGermplasmDbIdEditTextHint"
+        android:hint="@string/ObservationAlertDialogGermplasmDbIdEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsGermplasmNameEditText"
+        android:id="@+id/studiesObservationGermplasmNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogGermplasmNameEditTextHint"
+        android:hint="@string/ObservationAlertDialogGermplasmNameEditTextHint"
         android:inputType="text"
         android:scrollbars="vertical"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsObservationDbIdEditText"
+        android:id="@+id/studiesObservationObservationDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogObservationDbIdEditTextHint"
+        android:hint="@string/ObservationAlertDialogObservationDbIdEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsObservationLevelEditText"
+        android:id="@+id/studiesObservationObservationLevelEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogObservationLevelEditTextHint"
+        android:hint="@string/ObservationAlertDialogObservationLevelEditTextHint"
         android:inputType="text"
         android:scrollbars="vertical"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsObservationTimeStampEditText"
+        android:id="@+id/studiesObservationObservationTimeStampEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogObservationTimeStampEditTextHint"
+        android:hint="@string/ObservationAlertDialogObservationTimeStampEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsObservationUnitDbIdEditText"
+        android:id="@+id/studiesObservationObservationUnitDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogObservationUnitDbIdEditTextHint"
+        android:hint="@string/ObservationAlertDialogObservationUnitDbIdEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsObservationUnitNameEditText"
+        android:id="@+id/studiesObservationObservationUnitNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogObservationUnitNameEditTextHint"
+        android:hint="@string/ObservationAlertDialogObservationUnitNameEditTextHint"
         android:inputType="text"
         android:scrollbars="vertical"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsObservationVariableDbIdEditText"
+        android:id="@+id/studiesObservationObservationVariableDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogObservationVariableDbIdEditTextHint"
+        android:hint="@string/ObservationAlertDialogObservationVariableDbIdEditTextHint"
         android:inputType="text"
         android:scrollbars="vertical"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsObservationVariableNameEditText"
+        android:id="@+id/studiesObservationObservationVariableNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogObservationVariableNameEditTextHint"
+        android:hint="@string/ObservationAlertDialogObservationVariableNameEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsOperatorEditText"
+        android:id="@+id/studiesObservationOperatorEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogOperatorEditTextHint"
+        android:hint="@string/ObservationAlertDialogOperatorEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -101,28 +101,28 @@
     <!--Season-->
 
     <EditText
-        android:id="@+id/studiesObservationsStudyDbIdEditText"
+        android:id="@+id/studiesObservationStudyDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogStudyDbIdEditTextHint"
+        android:hint="@string/ObservationAlertDialogStudyDbIdEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsUploadedByEditText"
+        android:id="@+id/studiesObservationUploadedByEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogUploadedByEditTextHint"
+        android:hint="@string/ObservationAlertDialogUploadedByEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/studiesObservationsValueEditText"
+        android:id="@+id/studiesObservationValueEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationsAlertDialogValueEditTextHint"
+        android:hint="@string/ObservationAlertDialogValueEditTextHint"
         android:inputType="number"
         android:scrollbars="vertical"
         tools:ignore="Autofill" />
