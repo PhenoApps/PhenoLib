@@ -5,10 +5,21 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  * android.app.Activity
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
+ * android.annotation.SuppressLint
  * android.view.View
+ * android.view.View.OnClickListener
+ * android.widget.Button
  * android.widget.EditText
+ * android.widget.TextView
+ *
+ * io.swagger.client.model.Observation
+ *
+ * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
+ *
+ * org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog
+ * org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.Handler
  */
 class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
@@ -17,10 +28,44 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
         observationDbIdEditText, observationLevelEditText, observationTimeStampEditText,
         observationUnitDbIdEditText, observationUnitNameEditText, observationVariableDbIdEditText,
         observationVariableNameEditText, operatorEditText;
-    // TODO
+    private android.widget.TextView seasonTextView                                      ;
     private android.widget.EditText studyDbIdEditText, uploadedByEditText, valueEditText;
 
-    private io.swagger.client.model.Observation observation;
+    private io.swagger.client.model.Observation observation = null;
+
+    private org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog
+        seasonAlertDialogInstance = null;                                               // lazy load
+    // endregion
+
+    // region Private Methods
+    @android.annotation.SuppressLint({"DefaultLocale"})
+    private void setSeasonTextViewText(final io.swagger.client.model.Season season)
+    {
+        if (null != this.seasonTextView) this.seasonTextView.setText(
+            null == season ? "null" : java.lang.String.format("%s, %s, %s",
+                season.getSeason(), season.getSeasonDbId(), season.getYear()));
+    }
+
+    private void setSeasonTextViewText()
+    { if (null != this.observation) this.setSeasonTextViewText(this.observation.getSeason()); }
+
+    private org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog seasonAlertDialog()
+    {
+        if (null == this.seasonAlertDialogInstance) this.seasonAlertDialogInstance =
+            new org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog(this.activity(),
+                new org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.Handler()
+                {
+                    @java.lang.Override public void handleDone()
+                    {
+                        org.wheatgenetics.brapi1_3.studies.nour
+                            .ObservationAlertDialog.this.setSeasonTextViewText();
+                    }
+                });
+        return this.seasonAlertDialogInstance;
+    }
+
+    private void showSeasonAlertDialog()
+    { if (null != this.observation) this.seasonAlertDialog().show(this.observation.getSeason()); }
     // endregion
 
     ObservationAlertDialog(final android.app.Activity activity,
@@ -38,40 +83,56 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
             {
                 if (null == this.germplasmDbIdEditText) this.germplasmDbIdEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsGermplasmDbIdEditText);
+                        .studiesObservationGermplasmDbIdEditText);
                 if (null == this.germplasmNameEditText) this.germplasmNameEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsGermplasmNameEditText);
+                        .studiesObservationGermplasmNameEditText);
                 if (null == this.observationDbIdEditText) this.observationDbIdEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationDbIdEditText);
+                        .studiesObservationObservationDbIdEditText);
                 if (null == this.observationLevelEditText) this.observationLevelEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationLevelEditText);
+                        .studiesObservationObservationLevelEditText);
                 if (null == this.observationTimeStampEditText) this.observationTimeStampEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationTimeStampEditText);
+                        .studiesObservationObservationTimeStampEditText);
                 if (null == this.observationUnitDbIdEditText) this.observationUnitDbIdEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationUnitDbIdEditText);
+                        .studiesObservationObservationUnitDbIdEditText);
                 if (null == this.observationUnitNameEditText) this.observationUnitNameEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
-                        .studiesObservationsObservationUnitNameEditText);
+                        .studiesObservationObservationUnitNameEditText);
                 if (null == this.observationVariableDbIdEditText)
                     this.observationVariableDbIdEditText = view.findViewById(org.wheatgenetics
-                        .androidlibrary.R.id.studiesObservationsObservationVariableDbIdEditText);
+                        .androidlibrary.R.id.studiesObservationObservationVariableDbIdEditText);
                 if (null == this.observationVariableNameEditText)
                     this.observationVariableNameEditText = view.findViewById(org.wheatgenetics
-                        .androidlibrary.R.id.studiesObservationsObservationVariableNameEditText);
+                        .androidlibrary.R.id.studiesObservationObservationVariableNameEditText);
                 if (null == this.operatorEditText) this.operatorEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesObservationsOperatorEditText);
-                // TODO
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationOperatorEditText);
+
+                if (null == this.seasonTextView) this.seasonTextView = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationSeasonValueTextView);
+                {
+                    final android.widget.Button changeSeasonButton = view.findViewById(
+                        org.wheatgenetics.androidlibrary.R.id.studiesObservationChangeSeasonButton);
+                    if (null != changeSeasonButton) changeSeasonButton.setOnClickListener(
+                        new android.view.View.OnClickListener()
+                        {
+                            @java.lang.Override public void onClick(final android.view.View v)
+                            {
+                                org.wheatgenetics.brapi1_3.studies.nour
+                                    .ObservationAlertDialog.this.showSeasonAlertDialog();
+                            }
+                        });
+                }
+
                 if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesObservationsStudyDbIdEditText);
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationStudyDbIdEditText);
                 if (null == this.uploadedByEditText) this.uploadedByEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesObservationsUploadedByEditText);
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationUploadedByEditText);
                 if (null == this.valueEditText) this.valueEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesObservationsValueEditText);
+                    org.wheatgenetics.androidlibrary.R.id.studiesObservationValueEditText);
             }
             this.setView(view);
         }
@@ -92,15 +153,18 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
             this.observation.setObservationLevel(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.observationLevelEditText));
             this.observation.setObservationTimeStamp(org.wheatgenetics.brapi1_3.studies.nour
-                .ObservationAlertDialog.getEditTextTimeStampText(this.observationTimeStampEditText));
+                .ObservationAlertDialog.getEditTextTimeStampText(
+                    this.observationTimeStampEditText));
             this.observation.setObservationUnitDbId(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.observationUnitDbIdEditText));
             this.observation.setObservationUnitName(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.observationUnitNameEditText));
             this.observation.setObservationVariableDbId(org.wheatgenetics.brapi1_3.studies.nour
-                .ObservationAlertDialog.getEditTextStringText(this.observationVariableDbIdEditText));
+                .ObservationAlertDialog.getEditTextStringText(
+                    this.observationVariableDbIdEditText));
             this.observation.setObservationVariableName(org.wheatgenetics.brapi1_3.studies.nour
-                .ObservationAlertDialog.getEditTextStringText(this.observationVariableNameEditText));
+                .ObservationAlertDialog.getEditTextStringText(
+                    this.observationVariableNameEditText));
             this.observation.setOperator(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.operatorEditText));
             // TODO
@@ -116,7 +180,7 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     }
     // endregion
 
-    public void show(final io.swagger.client.model.Observation observation)
+    void show(final io.swagger.client.model.Observation observation)
     {
         if (null != observation)
         {
@@ -144,7 +208,7 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
                 this.observation.getObservationVariableName());
             org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog.setEditTextText(
                 this.operatorEditText, this.observation.getOperator());
-            // TODO
+            this.setSeasonTextViewText();
             org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog.setEditTextText(
                 this.studyDbIdEditText, this.observation.getStudyDbId());
             org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog.setEditTextText(
