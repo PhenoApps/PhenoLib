@@ -14,7 +14,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  *
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
- * org.wheatgenetics.brapi1_3.studies.nour.Observations
+ * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
  * org.wheatgenetics.brapi1_3.studies.nour.ObservationUnitXrefListActivity
  * org.wheatgenetics.brapi1_3.studies.nour.ObservationsListActivity
  * org.wheatgenetics.brapi1_3.studies.nour.TreatmentsListActivity
@@ -103,7 +103,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;
     }
     // endregion
 
-    static org.wheatgenetics.brapi1_3.studies.nour.Observations getObservationsAsItems(
+    static org.wheatgenetics.brapi1_3.studies.nour.o.Observations getObservationsAsItems(
     final android.app.Application application,
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position)
