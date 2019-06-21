@@ -9,47 +9,25 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  *
- * io.swagger.client.model.Observation
+ * io.swagger.client.model.ObservationTreatment
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog
- * org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog.Handler
- * org.wheatgenetics.brapi1_3.studies.nour.ObservationOnePaneAdapter
  * org.wheatgenetics.brapi1_3.studies.nour.Utils
  */
-public class ObservationsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 {
-    static final int REQUEST_CODE = 2001;
+    static final int REQUEST_CODE = 2002;
 
     // region Fields
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         private int position;
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
-    private org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog
-        observationAlertDialogInstance = null;                                          // lazy load
     // endregion
-
-    private org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog observationAlertDialog()
-    {
-        if (null == this.observationAlertDialogInstance) this.observationAlertDialogInstance =
-            new org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog(this,
-                new org.wheatgenetics.brapi1_3.studies.nour.ObservationAlertDialog.Handler()
-                {
-                    @java.lang.Override public void handleDone()
-                    {
-                        org.wheatgenetics.brapi1_3.studies.nour.ObservationsListActivity
-                            .this.refreshSinceItemHasChanged();
-                    }
-                });
-        return this.observationAlertDialogInstance;
-    }
 
     // region Overridden Methods
     @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
@@ -68,9 +46,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
-        if (null == this.itemsInstance) this.itemsInstance =
-            org.wheatgenetics.brapi1_3.studies.nour.Utils.getObservationsAsItems(
-                this.getApplication(), this.position);
+        /*if (null == this.itemsInstance) this.itemsInstance =
+            org.wheatgenetics.brapi1_3.studies.nour.Utils.getTreatmentAsItems(
+                this.getApplication(), this.position);*/
         return this.itemsInstance;
     }
 
@@ -80,9 +58,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     { return new org.wheatgenetics.brapi1_3.studies.nour.ObservationOnePaneAdapter(this.items()); }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
-    @java.lang.Override public void change(
+    /*@java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.observationAlertDialog().show((io.swagger.client.model.Observation) item); }
+    { this.treatmentAlertDialog().show((io.swagger.client.model.ObservationTreatment) item); }*/
     // endregion
     // endregion
 }

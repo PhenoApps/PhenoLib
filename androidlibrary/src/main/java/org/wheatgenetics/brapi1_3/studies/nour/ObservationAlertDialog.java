@@ -167,7 +167,6 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
                     this.observationVariableNameEditText));
             this.observation.setOperator(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.operatorEditText));
-            // TODO
             this.observation.setStudyDbId(org.wheatgenetics.brapi1_3.studies.nour
                 .ObservationAlertDialog.getEditTextStringText(this.studyDbIdEditText));
             this.observation.setUploadedBy(org.wheatgenetics.brapi1_3.studies.nour
