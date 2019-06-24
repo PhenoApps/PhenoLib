@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies.nour;
+package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObservationUnitRequests
 
 /**
  * Uses:
@@ -6,6 +6,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.view.View
+ * android.widget.EditText
  *
  * io.swagger.client.model.Season
  *
@@ -21,7 +22,7 @@ class SeasonAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     // endregion
 
     SeasonAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.Handler handler)
+    final org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog.Handler handler)
     { super(activity, handler);}
 
     // region Overridden Methods
@@ -51,13 +52,13 @@ class SeasonAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
         if (null != this.season)
         {
             this.season.setSeason(
-                org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.getEditTextStringText(
+                org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog.getEditTextStringText(
                     this.seasonEditText));
             this.season.setSeasonDbId(
-                org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.getEditTextStringText(
+                org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog.getEditTextStringText(
                     this.seasonDbIdEditText));
             this.season.setYear(
-                org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.getEditTextStringText(
+                org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog.getEditTextStringText(
                     this.yearEditText));
 
             super.handlePositiveButtonClick();
@@ -71,11 +72,11 @@ class SeasonAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
         {
             this.season = season;
 
-            org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog.setEditTextText(
                 this.seasonEditText, this.season.getSeason());
-            org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog.setEditTextText(
                 this.seasonDbIdEditText, this.season.getSeasonDbId());
-            org.wheatgenetics.brapi1_3.studies.nour.SeasonAlertDialog.setEditTextText(
+            org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog.setEditTextText(
                 this.yearEditText, this.season.getYear());
 
             this.show();

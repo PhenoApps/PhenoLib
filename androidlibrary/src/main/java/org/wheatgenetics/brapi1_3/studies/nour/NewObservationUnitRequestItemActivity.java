@@ -19,6 +19,8 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
  *
+ * org.wheatgenetics.brapi1_3.studies.nour.o.Utils
+ *
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler
@@ -50,7 +52,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     private void showObservationsListActivity(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position)
     {
-        org.wheatgenetics.brapi1_3.studies.nour.Utils.showObservationsListActivity(
+        org.wheatgenetics.brapi1_3.studies.nour.o.Utils.showObservationsListActivity(
             this, position);
     }
 
@@ -122,7 +124,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                 this.newObservationUnitRequestAlertDialogInstance.updateObservationUnitXref();
                 break;
 
-            case org.wheatgenetics.brapi1_3.studies.nour.ObservationsListActivity.REQUEST_CODE:
+            case org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity.REQUEST_CODE:
                 this.newObservationUnitRequestAlertDialogInstance.updateObservations(); break;
 
             case org.wheatgenetics.brapi1_3.studies.nour.TreatmentsListActivity.REQUEST_CODE:

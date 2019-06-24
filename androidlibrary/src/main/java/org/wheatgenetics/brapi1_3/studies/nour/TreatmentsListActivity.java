@@ -55,7 +55,7 @@ class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.Li
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override
     protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
-    { return new org.wheatgenetics.brapi1_3.studies.nour.ObservationOnePaneAdapter(this.items()); }
+    { return null/*new org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentOnePaneAdapter(this.items())*/; }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method // TODO
     /*@java.lang.Override public void change(
