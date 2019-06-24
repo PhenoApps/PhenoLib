@@ -21,6 +21,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.Utils
+ * org.wheatgenetics.brapi1_3.studies.nour.oux.Utils
  *
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
@@ -46,7 +47,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     private void showObservationUnitXrefListActivity(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
-        org.wheatgenetics.brapi1_3.studies.nour.Utils.showObservationUnitXrefListActivity(
+        org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.showObservationUnitXrefListActivity(
             this, position);
     }
 
@@ -120,7 +121,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     {
         if (null != this.newObservationUnitRequestAlertDialogInstance) switch (requestCode)
         {
-            case org.wheatgenetics.brapi1_3.studies.nour
+            case org.wheatgenetics.brapi1_3.studies.nour.oux
             .ObservationUnitXrefListActivity.REQUEST_CODE:
                 this.newObservationUnitRequestAlertDialogInstance.updateObservationUnitXref();
                 break;

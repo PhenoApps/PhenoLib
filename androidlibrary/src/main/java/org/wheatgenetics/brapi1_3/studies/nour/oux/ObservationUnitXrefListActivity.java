@@ -1,27 +1,28 @@
-package org.wheatgenetics.brapi1_3.studies.nour;
+package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObservationUnitRequests
 
 /**
  * Uses:
  * android.content.Intent
  * android.os.Bundle
  * android.support.annotation.IntRange
- * android.support.annotation.NonNull
+ * _android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  *
- * io.swagger.client.model.ObservationUnitXref
+ * _io.swagger.client.model.ObservationUnitXref
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
- * org.wheatgenetics.javalib.mstrdtl.Item
+ * org.wheatgenetics.javalib.mstrdtl.Items
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
  * org.wheatgenetics.brapi1_3.studies.nour.Utils
  */
-class ObservationUnitXrefListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+public class ObservationUnitXrefListActivity
+extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 {
-    static final int REQUEST_CODE = 2000;
+    public static final int REQUEST_CODE = 2000;
 
     // region Fields
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
