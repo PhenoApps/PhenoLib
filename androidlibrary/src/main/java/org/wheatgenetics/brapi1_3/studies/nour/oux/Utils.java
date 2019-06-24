@@ -27,8 +27,8 @@ public class Utils extends java.lang.Object
                 .OBSERVATIONUNITXREF_LIST_INTENT_INSTANCE = new android.content.Intent(activity,
                     org.wheatgenetics.brapi1_3.studies.nour.oux
                         .ObservationUnitXrefListActivity.class);
-        return
-            org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.OBSERVATIONUNITXREF_LIST_INTENT_INSTANCE;
+        return org.wheatgenetics.brapi1_3.studies.nour.oux
+            .Utils.OBSERVATIONUNITXREF_LIST_INTENT_INSTANCE;
     }
 
     public static void showObservationUnitXrefListActivity(
