@@ -51,8 +51,8 @@
 
         <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestItemActivity"  />
         <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity" />
-        <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.ObservationItemActivity"  />
-        <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.ObservationsListActivity" />
+        <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.o.ObservationItemActivity"  />
+        <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity" />
 
         <activity
             android:name=".brapi1_3.Activity"

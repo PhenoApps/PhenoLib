@@ -1,15 +1,15 @@
-package org.wheatgenetics.brapi1_3.studies.nour;
+package org.wheatgenetics.brapi1_3.studies.nour.ot;                 // nour: NewObservationUnitRequests
 
 /**
  * Uses:
  * android.content.Intent
  * android.os.Bundle
  * android.support.annotation.IntRange
- * android.support.annotation.NonNull
+ * _android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  *
- * io.swagger.client.model.ObservationTreatment
+ * _io.swagger.client.model.ObservationTreatment
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -17,11 +17,11 @@ package org.wheatgenetics.brapi1_3.studies.nour;
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.nour.Utils
+ * org.wheatgenetics.brapi1_3.studies.nour.Consts
  */
-class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+public class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 {
-    static final int REQUEST_CODE = 2002;
+    public static final int REQUEST_CODE = 2002;
 
     // region Fields
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
@@ -39,14 +39,14 @@ class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.Li
         {
             final android.os.Bundle extras = intent.getExtras();
             if (null != extras) this.position = extras.getInt(
-                org.wheatgenetics.brapi1_3.studies.nour.Utils.POSITION_KEY);
+                org.wheatgenetics.brapi1_3.studies.nour.Consts.POSITION_KEY);
         }
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
-        /*if (null == this.itemsInstance) this.itemsInstance =
+        /*if (null == this.itemsInstance) this.itemsInstance =                               // TODO
             org.wheatgenetics.brapi1_3.studies.nour.Utils.getTreatmentAsItems(
                 this.getApplication(), this.position);*/
         return this.itemsInstance;
@@ -55,9 +55,9 @@ class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.Li
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override
     protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
-    { return new org.wheatgenetics.brapi1_3.studies.nour.ObservationOnePaneAdapter(this.items()); }
+    { return null/*new org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentOnePaneAdapter(this.items())*/; }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method // TODO
     /*@java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     { this.treatmentAlertDialog().show((io.swagger.client.model.ObservationTreatment) item); }*/
