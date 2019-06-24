@@ -22,6 +22,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
  *
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog.Handler
+ * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefOnePaneAdapter
  * org.wheatgenetics.brapi1_3.studies.nour.oux.Utils
  */
 public class ObservationUnitXrefListActivity
@@ -83,8 +84,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     @java.lang.Override
     protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
     {
-        return null/*new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXferOnePaneAdapter(
-            this.items())*/;
+        return new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefOnePaneAdapter(
+            this.items());
     }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
