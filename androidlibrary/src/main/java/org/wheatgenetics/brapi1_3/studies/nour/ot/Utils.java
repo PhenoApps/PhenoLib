@@ -9,7 +9,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
- * org.wheatgenetics.brapi1_3.studies.nour.Utils
+ * org.wheatgenetics.brapi1_3.studies.nour.Consts
  *
  * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentsListActivity
  */
@@ -37,7 +37,7 @@ public class Utils extends java.lang.Object
         final android.content.Intent treatmentsListIntent =
             org.wheatgenetics.brapi1_3.studies.nour.ot.Utils.treatmentsListIntent(activity);
         if (null != treatmentsListIntent) treatmentsListIntent.putExtra(
-            org.wheatgenetics.brapi1_3.studies.nour.Utils.POSITION_KEY, position);
+            org.wheatgenetics.brapi1_3.studies.nour.Consts.POSITION_KEY, position);
         activity.startActivityForResult(treatmentsListIntent,
             org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentsListActivity.REQUEST_CODE);
     }

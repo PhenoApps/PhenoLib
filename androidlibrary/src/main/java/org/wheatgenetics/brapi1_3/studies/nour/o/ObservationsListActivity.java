@@ -18,7 +18,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.nour.Utils
+ * org.wheatgenetics.brapi1_3.studies.nour.Consts
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.Handler
@@ -64,7 +64,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
         {
             final android.os.Bundle extras = intent.getExtras();
             if (null != extras) this.position = extras.getInt(
-                org.wheatgenetics.brapi1_3.studies.nour.Utils.POSITION_KEY);
+                org.wheatgenetics.brapi1_3.studies.nour.Consts.POSITION_KEY);
         }
     }
 

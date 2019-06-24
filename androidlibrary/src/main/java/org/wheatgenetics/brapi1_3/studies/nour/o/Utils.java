@@ -12,14 +12,15 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
+ * org.wheatgenetics.brapi1_3.studies.nour.Consts
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
- * org.wheatgenetics.brapi1_3.studies.nour.Utils
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity
  */
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) public class Utils extends java.lang.Object
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
+public class Utils extends java.lang.Object
 {
     private static android.content.Intent OBSERVATIONS_LIST_INTENT_INSTANCE = null;     // lazy load
 
@@ -82,7 +83,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
         final android.content.Intent observationsListIntent =
             org.wheatgenetics.brapi1_3.studies.nour.o.Utils.observationsListIntent(activity);
         if (null != observationsListIntent) observationsListIntent.putExtra(
-            org.wheatgenetics.brapi1_3.studies.nour.Utils.POSITION_KEY, position);
+            org.wheatgenetics.brapi1_3.studies.nour.Consts.POSITION_KEY, position);
         activity.startActivityForResult(observationsListIntent,
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity.REQUEST_CODE);
     }

@@ -17,7 +17,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;                 // nour: New
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.nour.Utils
+ * org.wheatgenetics.brapi1_3.studies.nour.Consts
  */
 public class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 {
@@ -39,7 +39,7 @@ public class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mst
         {
             final android.os.Bundle extras = intent.getExtras();
             if (null != extras) this.position = extras.getInt(
-                org.wheatgenetics.brapi1_3.studies.nour.Utils.POSITION_KEY);
+                org.wheatgenetics.brapi1_3.studies.nour.Consts.POSITION_KEY);
         }
     }
 

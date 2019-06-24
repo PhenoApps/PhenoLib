@@ -9,7 +9,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
- * org.wheatgenetics.brapi1_3.studies.nour.Utils
+ * org.wheatgenetics.brapi1_3.studies.nour.Consts
  *
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity
  */
@@ -40,7 +40,7 @@ public class Utils extends java.lang.Object
             org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.observationUnitXrefListIntent(
                 activity);
         if (null != observationUnitXrefListIntent) observationUnitXrefListIntent.putExtra(
-            org.wheatgenetics.brapi1_3.studies.nour.Utils.POSITION_KEY, position);
+            org.wheatgenetics.brapi1_3.studies.nour.Consts.POSITION_KEY, position);
         activity.startActivityForResult(observationUnitXrefListIntent, org.wheatgenetics
             .brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity.REQUEST_CODE);
     }
