@@ -3,8 +3,6 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
 /**
  * Uses:
  * android.app.Application
- * android.content.Intent
- * android.os.Bundle
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
@@ -15,27 +13,20 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
- * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
- * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
  * org.wheatgenetics.brapi1_3.studies.Application
  *
- * org.wheatgenetics.brapi1_3.studies.nour.Consts
- *
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog.Handler
- * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefOnePaneAdapter
+ * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity
  */
-public class ObservationUnitXrefListActivity
-extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+public class ObservationUnitXrefItemActivity
+extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
-    public static final int REQUEST_CODE = 2000;
-
     // region Fields
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        private int position;
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog
         observationUnitXrefAlertDialogInstance = null;                                  // lazy load
@@ -53,48 +44,32 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                         @java.lang.Override public void handleDone()
                         {
                             org.wheatgenetics.brapi1_3.studies.nour.oux
-                                .ObservationUnitXrefListActivity.this.refreshSinceItemHasChanged();
+                                .ObservationUnitXrefItemActivity.this.refreshSinceItemHasChanged();
                         }
                     });
         return this.observationUnitXrefAlertDialogInstance;
     }
 
     // region Overridden Methods
-    @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-
-        final android.content.Intent intent = this.getIntent();
-        if (null != intent)
-        {
-            final android.os.Bundle extras = intent.getExtras();
-            if (null != extras) this.position = extras.getInt(
-                org.wheatgenetics.brapi1_3.studies.nour.Consts.POSITION_KEY);
-        }
-    }
-
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
+    @java.lang.Override protected java.lang.Class listActivityClass()
+    { return org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity.class; }
+
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
+    @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
+    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+        final int position)
     {
         if (null == this.itemsInstance)
         {
             final android.app.Application application = this.getApplication();
             if (application instanceof org.wheatgenetics.brapi1_3.studies.Application)
                 this.itemsInstance = ((org.wheatgenetics.brapi1_3.studies.Application) application)
-                    .getObservationUnitXrefsAsItems(this.position);
+                    .getObservationsUnitXrefsAsItems();
         }
-        return this.itemsInstance;
+        return null == this.itemsInstance ? null : this.itemsInstance.get(position);
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override
-    protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
-    {
-        return new org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefOnePaneAdapter(
-            this.items());
-    }
-
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
     @java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     {

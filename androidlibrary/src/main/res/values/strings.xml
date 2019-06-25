@@ -150,6 +150,10 @@
     <string name="NewObservationUnitRequestAlertDialogObservationsLabelTextViewText">observations:</string>
     <string name="NewObservationUnitRequestAlertDialogTreatmentsLabelTextViewText">treatments:</string>
 
+    <string name="ObservationUnitXrefAlertDialogTitle">ObservationUnitXref</string>
+    <string name="ObservationUnitXrefAlertDialogIdEditTextHint">id</string>
+    <string name="ObservationUnitXrefAlertDialogSourceEditTextHint">source</string>
+
     <string name="ObservationAlertDialogTitle">Observation</string>
     <string name="ObservationAlertDialogGermplasmDbIdEditTextHint">germplasmDbId</string>
     <string name="ObservationAlertDialogGermplasmNameEditTextHint">germplasmName</string>
@@ -170,4 +174,8 @@
     <string name="SeasonAlertDialogSeasonEditTextHint">season</string>
     <string name="SeasonAlertDialogSeasonDbIdEditTextHint">seasonDbId</string>
     <string name="SeasonAlertDialogYearEditTextHint">year</string>
+
+    <string name="TreatmentAlertDialogTitle">Treatment</string>
+    <string name="TreatmentAlertDialogFactorEditTextHint">factor</string>
+    <string name="TreatmentAlertDialogModalityEditTextHint">modality</string>
 </resources>
