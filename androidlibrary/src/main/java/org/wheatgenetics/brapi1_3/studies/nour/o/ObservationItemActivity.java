@@ -2,6 +2,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
 
 /**
  * Uses:
+ * android.app.Application
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
@@ -15,17 +16,16 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
  *
+ * org.wheatgenetics.brapi1_3.studies.Application
+ *
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity
- * org.wheatgenetics.brapi1_3.studies.nour.o.Utils
  */
 public class ObservationItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
     // region Fields
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        private int position;
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog
         observationAlertDialogInstance = null;                                          // lazy load
@@ -57,9 +57,13 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position)
     {
-        if (null == this.itemsInstance) this.itemsInstance =
-            org.wheatgenetics.brapi1_3.studies.nour.o.Utils.getObservationsAsItems(
-                this.getApplication(), this.position);
+        if (null == this.itemsInstance)
+        {
+            final android.app.Application application = this.getApplication();
+            if (application instanceof org.wheatgenetics.brapi1_3.studies.Application)
+                this.itemsInstance = ((org.wheatgenetics.brapi1_3.studies.Application) application)
+                    .getObservationsAsItems();
+        }
         return null == this.itemsInstance ? null : this.itemsInstance.get(position);
     }
 

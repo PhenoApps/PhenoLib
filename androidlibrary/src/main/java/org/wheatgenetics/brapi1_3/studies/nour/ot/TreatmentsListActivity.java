@@ -2,6 +2,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
 
 /**
  * Uses:
+ * android.app.Application
  * android.content.Intent
  * android.os.Bundle
  * android.support.annotation.IntRange
@@ -18,12 +19,13 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
+ * org.wheatgenetics.brapi1_3.studies.Application
+ *
  * org.wheatgenetics.brapi1_3.studies.nour.Consts
  *
  * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentOnePaneAdapter
- * org.wheatgenetics.brapi1_3.studies.nour.ot.Utils
  */
 public class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
@@ -70,9 +72,13 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
-        if (null == this.itemsInstance) this.itemsInstance =
-            org.wheatgenetics.brapi1_3.studies.nour.ot.Utils.getTreatmentsAsItems(
-                this.getApplication(), this.position);
+        if (null == this.itemsInstance)
+        {
+            final android.app.Application application = this.getApplication();
+            if (application instanceof org.wheatgenetics.brapi1_3.studies.Application)
+                this.itemsInstance = ((org.wheatgenetics.brapi1_3.studies.Application) application)
+                    .getObservationTreatmentsAsItems(this.position);
+        }
         return this.itemsInstance;
     }
 
