@@ -10,7 +10,7 @@ package org.wheatgenetics.sharedpreferences;
  *
  * org.wheatgenetics.javalib.Utils
  */
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject", "WeakerAccess"})
 public abstract class BaseSharedPreferences extends java.lang.Object
 {
     private final android.content.SharedPreferences sharedPreferences;
