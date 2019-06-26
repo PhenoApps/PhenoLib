@@ -3,6 +3,8 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 /**
  * Uses:
  * android.support.annotation.NonNull
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
@@ -38,6 +40,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     }
 
     // region Overridden Methods
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.Class listActivityClass()
     { return org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeableListActivity.class; }
 

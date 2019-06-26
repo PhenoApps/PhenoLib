@@ -40,14 +40,12 @@ public class ItemFragment extends android.support.v4.app.Fragment
     }
     // endregion
 
-    // region Constants
     /**
      * Keys to the bundle arguments that have 1) the position of the item and 2) the id of the
      * CollapsingToolbarLayout.
      */
     static final java.lang.String POSITION_KEY = "position",
         COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = "collapsingToolbarLayoutId";
-    // endregion
 
     // region Fields
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter        getter = null;
@@ -79,8 +77,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     private void changeItem()
     {
-        if (null != this.item) if (this.changerIsImplemented())
-            { this.getterChanger.change(this.item); this.setContentTextViewText(); }
+        if (null != this.item)
+            if (this.changerIsImplemented()) this.getterChanger.change(this.item);
     }
     // endregion
 
@@ -169,7 +167,10 @@ public class ItemFragment extends android.support.v4.app.Fragment
                     changeItemButton.setOnClickListener(new android.view.View.OnClickListener()
                         {
                             @java.lang.Override public void onClick(final android.view.View v)
-                            { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.changeItem(); }
+                            {
+                                org.wheatgenetics.androidlibrary.mstrdtl
+                                    .ItemFragment.this.changeItem();
+                            }
                         });
                 }
             }

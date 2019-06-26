@@ -15,10 +15,10 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl.Items
 {
     // region Fields
-    private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>            // lazy
-        itemsInstance = null;                                                               //  load
-    private static org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items                    // lazy
-        ITEMS_INSTANCE = null;                                                              //  load
+    private java.util.List<org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item>
+        itemsInstance = null;                                                           // lazy load
+    private static org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items
+        ITEMS_INSTANCE = null;                                                // lazy load, singleton
     // endregion
 
     @android.support.annotation.NonNull
@@ -31,9 +31,9 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
         return this.itemsInstance;
     }
 
-    // region Overridden Methods
-    @java.lang.Override
-    public void add(@android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
+    // region org.wheatgenetics.javalib.mstrdtl.Items Overridden Methods
+    @java.lang.Override public void add(
+    @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     { this.items().add((org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item) item); }
 
     @java.lang.Override public void append()
@@ -56,16 +56,17 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
 
     static org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items ITEMS()
     {
-        if (null == ITEMS_INSTANCE)
+        if (null == org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items.ITEMS_INSTANCE)
         {
-            ITEMS_INSTANCE = new org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items();
+            org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items.ITEMS_INSTANCE =
+                new org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items();
 
             final int MAX_POSITION = 24;
             for (int position = org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item.MIN_POSITION;
             position <= MAX_POSITION; position++)
-                ITEMS_INSTANCE.add(
+                org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items.ITEMS_INSTANCE.add(
                     new org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item(position));
         }
-        return ITEMS_INSTANCE;
+        return org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items.ITEMS_INSTANCE;
     }
 }
