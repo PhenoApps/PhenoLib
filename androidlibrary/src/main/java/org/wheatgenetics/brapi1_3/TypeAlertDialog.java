@@ -16,13 +16,11 @@ public abstract class TypeAlertDialog extends org.wheatgenetics.androidlibrary.I
 
     // region Protected Methods
     /** Used by subclasses. */
-    @android.support.annotation.RestrictTo(
-        android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected boolean itemsIsNull() { return null == this.items(); }
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected boolean itemsIsNull() { return null == this.itemsInstance; }
 
     /** Used by subclasses. */
-    @android.support.annotation.RestrictTo(
-        android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void createItems(
     @android.support.annotation.NonNull final java.util.ArrayList<java.lang.String> arrayList)
     {
@@ -34,15 +32,14 @@ public abstract class TypeAlertDialog extends org.wheatgenetics.androidlibrary.I
     }
 
     /** Overridden by subclasses. */
-    @android.support.annotation.RestrictTo(
-        android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected java.lang.String[] items() { return this.itemsInstance; }
     // endregion
 
     public TypeAlertDialog(final android.app.Activity activity) { super(activity); }
 
     // region Overridden Methods
-    @java.lang.Override public void configure() { this.setCancelNegativeButton(); }
-    @java.lang.Override public void show     () { this.show(this.items())       ; }
+    @java.lang.Override public void configure() { this.setCancelNegativeButton()            ; }
+    @java.lang.Override public void show     () { this.show(this.items() /* polymorphism */); }
     // endregion
 }

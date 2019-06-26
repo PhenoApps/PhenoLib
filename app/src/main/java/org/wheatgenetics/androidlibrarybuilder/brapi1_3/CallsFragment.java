@@ -25,8 +25,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
  */
-public class CallsFragment
-extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
+public class CallsFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
 {
     // region Fields
     private android.widget.TextView dataTypeTextView;
@@ -93,7 +92,7 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagedFragment
         try
         {
             this.callsApi().callsGetAsync(
-                /* datatype      => */null,
+                /* datatype      => */null,                                   // deprecated
                 /* dataType      => */ this.dataType                    ,
                 /* page          => */ this.getPageEditTextIntText    (),
                 /* pageSize      => */ this.getPageSizeEditTextIntText(),
