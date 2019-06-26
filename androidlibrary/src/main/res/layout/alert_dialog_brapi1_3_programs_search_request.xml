@@ -76,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/ProgramsSearchRequestAlertDialogProgramDbIdsEditTextHint"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:scrollbars="vertical"
         tools:ignore="Autofill" />
 
@@ -85,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/ProgramsSearchRequestAlertDialogProgramNamesEditTextHint"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         android:scrollbars="vertical"
         tools:ignore="Autofill" />
 

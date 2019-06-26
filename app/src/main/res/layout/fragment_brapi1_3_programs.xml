@@ -40,6 +40,7 @@
         android:ems="8"
         android:hint="commonCropName"
         android:inputType="text"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/programsCommonCropNameTextView"
@@ -77,6 +78,7 @@
         android:ems="8"
         android:hint="programName"
         android:inputType="text"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/programsCommonCropNameEditText"
         app:layout_constraintTop_toBottomOf="@id/programsProgramNameTextView"
@@ -114,6 +116,7 @@
         android:ems="8"
         android:hint="abbreviation"
         android:inputType="text"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/programsProgramNameEditText"
         app:layout_constraintTop_toBottomOf="@id/programsAbbreviationTextView"
@@ -151,6 +154,7 @@
         android:ems="8"
         android:hint="default 0"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/programsGetPageTextView"
@@ -188,6 +192,7 @@
         android:ems="8"
         android:hint="default 1000"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/programsGetPageEditText"
         app:layout_constraintTop_toBottomOf="@id/programsGetPageSizeTextView"
@@ -263,6 +268,7 @@
         android:ems="8"
         android:hint="searchResultsDbId"
         android:inputType="text"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/programsSearchResultsDbIdTextView"
@@ -300,6 +306,7 @@
         android:ems="8"
         android:hint="default 0"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/programsSearchResultsDbIdEditText"
         app:layout_constraintTop_toBottomOf="@id/searchProgramsSearchResultsDbIdGetPageTextView"
@@ -337,6 +344,7 @@
         android:ems="8"
         android:hint="default 1000"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/searchProgramsSearchResultsDbIdGetPageEditText"
         app:layout_constraintTop_toBottomOf="@id/searchProgramsSearchResultsDbIdGetPageSizeTextView"

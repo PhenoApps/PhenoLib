@@ -99,6 +99,7 @@
         android:ems="5"
         android:hint="default 0"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/callsDataTypeConstraintLayout"
         app:layout_constraintTop_toBottomOf="@id/callsPageTextView"
@@ -136,6 +137,7 @@
         android:ems="5"
         android:hint="default 1000"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/callsPageEditText"
         app:layout_constraintTop_toBottomOf="@id/callsPageSizeTextView"
