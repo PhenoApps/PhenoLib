@@ -21,7 +21,7 @@ public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.ms
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class concreteItemActivityClass();
 
-    public OnePaneAdapter(final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
+    protected OnePaneAdapter(final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
 
     @java.lang.Override android.view.View.OnClickListener makeOnClickListener(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
@@ -35,8 +35,8 @@ public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.ms
                 {
                     final android.content.Context context = view.getContext();
 
-                    final android.content.Intent intent = new android.content.Intent(context,
-                        org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
+                    final android.content.Intent intent = new android.content.Intent(
+                        context, org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
                             .this.concreteItemActivityClass() /* polymorphism */);
                     intent.putExtra(
                         org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY,

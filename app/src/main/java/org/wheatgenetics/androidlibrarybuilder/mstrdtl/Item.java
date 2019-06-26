@@ -35,14 +35,14 @@ class Item extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl
         this.position = position;
         this.title    = java.lang.String.format("Item %d", position + 1);
 
-        final java.lang.StringBuilder builder = new java.lang.StringBuilder();
-        builder.append("Content of ").append(this.getTitle()).append(':');
+        final java.lang.StringBuilder builder =
+            new java.lang.StringBuilder("Content of ").append(this.getTitle()).append(':');
         for (int i = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION; i <= position; i++)
             builder.append("\nMore information here.");
         this.content = builder.toString();
     }
 
-    // region Overridden Methods
+    // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
     @android.support.annotation.NonNull @java.lang.Override public java.lang.String getTitle()
     { return this.title; }
 

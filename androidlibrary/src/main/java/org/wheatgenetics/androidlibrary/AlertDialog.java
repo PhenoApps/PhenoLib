@@ -55,10 +55,12 @@ public abstract class AlertDialog extends java.lang.Object
     }
     // endregion
 
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     public AlertDialog(final android.app.Activity activity)
     { super(); this.activityInstance = activity; this.configure(); }
 
     // region Public Methods
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     public abstract void configure();
 
     public android.app.Activity activity()
@@ -143,6 +145,7 @@ public abstract class AlertDialog extends java.lang.Object
         return this;
     }
 
+    @java.lang.SuppressWarnings({"UnusedReturnValue"})
     public org.wheatgenetics.androidlibrary.AlertDialog setView(final android.view.View view)
     { this.builder().setView(view); return this; }
 
