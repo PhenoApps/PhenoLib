@@ -66,7 +66,7 @@ public abstract class AlertDialog extends java.lang.Object
     public android.app.Activity activity()
     { assert null != this.activityInstance; return this.activityInstance; }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     public java.lang.String getString(@android.support.annotation.StringRes final int resId)
     { return this.activity().getString(resId); }
 

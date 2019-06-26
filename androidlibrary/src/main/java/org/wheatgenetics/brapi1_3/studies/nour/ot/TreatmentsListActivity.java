@@ -89,7 +89,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
     @java.lang.Override public void change(
-    @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
+    @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     { this.treatmentAlertDialog().show((io.swagger.client.model.ObservationTreatment) item); }
     // endregion
     // endregion
