@@ -152,7 +152,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
         final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
             newObservationUnitRequest = this.newObservationUnitRequest(position);
         this.observationTreatmentsAsItemsInstance = null == newObservationUnitRequest ?
-            null : newObservationUnitRequest.getTreatmentsAsItems();
+            null : newObservationUnitRequest.getObservationTreatmentsAsItems();
         return this.observationTreatmentsAsItemsInstance;
     }
 

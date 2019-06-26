@@ -50,7 +50,8 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
         if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
             throw new java.lang.IllegalArgumentException(
                 org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        return null == this.itemsInstance ? null : this.itemsInstance.get(position);
+        else
+            return null == this.itemsInstance ? null : this.itemsInstance.get(position);
     }
     // endregion
 
