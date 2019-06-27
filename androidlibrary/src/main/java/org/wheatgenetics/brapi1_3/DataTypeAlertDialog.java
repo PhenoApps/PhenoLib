@@ -24,8 +24,7 @@ public class DataTypeAlertDialog extends org.wheatgenetics.brapi1_3.TypeAlertDia
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(
-        android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.String[] items()
     {
         if (this.itemsIsNull())

@@ -32,7 +32,7 @@ class ObservationUnitXrefAlertDialog extends org.wheatgenetics.brapi1_3.AlertDia
             org.wheatgenetics.androidlibrary.R.string.ObservationUnitXrefAlertDialogTitle);
         {
             final android.view.View view = this.inflate(org.wheatgenetics
-                .androidlibrary.R.layout.alert_dialog_brapi1_3_observationunitxref);
+                .androidlibrary.R.layout.alert_dialog_brapi1_3_studies_observationunitxref);
             if (null != view)
             {
                 if (null == this.idEditText) this.idEditText = view.findViewById(
