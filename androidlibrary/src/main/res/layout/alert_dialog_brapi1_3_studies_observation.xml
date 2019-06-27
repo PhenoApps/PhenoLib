@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/ObservationAlertDialogGermplasmNameEditTextHint"
         android:inputType="text"
-        android:scrollbars="vertical"
+        android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/ObservationAlertDialogObservationLevelEditTextHint"
         android:inputType="text"
-        android:scrollbars="vertical"
+        android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/ObservationAlertDialogObservationUnitNameEditTextHint"
         android:inputType="text"
-        android:scrollbars="vertical"
+        android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/ObservationAlertDialogObservationVariableDbIdEditTextHint"
         android:inputType="text"
-        android:scrollbars="vertical"
+        android:maxLines="1"
         tools:ignore="Autofill" />
 
     <EditText
@@ -177,7 +177,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/ObservationAlertDialogValueEditTextHint"
         android:inputType="number"
-        android:scrollbars="vertical"
+        android:maxLines="1"
         tools:ignore="Autofill" />
 
 </LinearLayout>

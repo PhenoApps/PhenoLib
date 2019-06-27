@@ -361,7 +361,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
             org.wheatgenetics.androidlibrary.R.string.StudyLayoutRequestLayoutAlertDialogTitle);
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrary
-                .R.layout.alert_dialog_brapi1_3_study_layout_request_layout);
+                .R.layout.alert_dialog_brapi1_3_studies_study_layout_request_layout);
 
             if (null != view)
             {

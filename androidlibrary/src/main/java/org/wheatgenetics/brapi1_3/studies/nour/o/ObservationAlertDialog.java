@@ -78,8 +78,8 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.ObservationAlertDialogTitle);
         {
-            final android.view.View view = this.inflate(
-                org.wheatgenetics.androidlibrary.R.layout.alert_dialog_brapi1_3_observation);
+            final android.view.View view = this.inflate(org.wheatgenetics
+                .androidlibrary.R.layout.alert_dialog_brapi1_3_studies_observation);
             if (null != view)
             {
                 if (null == this.germplasmDbIdEditText) this.germplasmDbIdEditText =

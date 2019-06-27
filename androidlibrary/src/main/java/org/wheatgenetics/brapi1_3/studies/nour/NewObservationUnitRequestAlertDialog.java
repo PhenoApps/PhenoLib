@@ -144,7 +144,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             .R.string.NewObservationUnitRequestAlertDialogTitle);
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrary
-                .R.layout.alert_dialog_brapi1_3_new_observation_unit_request);
+                .R.layout.alert_dialog_brapi1_3_studies_new_observation_unit_request);
             if (null != view)
             {
                 if (null == this.blockNumberEditText) this.blockNumberEditText = view.findViewById(
