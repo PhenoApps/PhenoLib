@@ -45,7 +45,7 @@ class StudytypesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDial
         this.setTitle("StudiesApi.studytypesGet()");
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrarybuilder
-                .R.layout.alert_dialog_brapi1_3_studytypes_get);
+                .R.layout.alert_dialog_brapi1_3_studies_studytypes_get);
             if (null != view)
             {
                 if (null == this.studyTypeDbIdEditText) this.studyTypeDbIdEditText =

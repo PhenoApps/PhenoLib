@@ -38,8 +38,8 @@ class StudiesStudyDbIdObservationsGetAlertDialog extends org.wheatgenetics.brapi
         .StudiesStudyDbIdObservationsGetAlertDialog.Parameters parameters = null;
     // endregion
 
-    StudiesStudyDbIdObservationsGetAlertDialog(final android.app.Activity activity, final
-    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+    StudiesStudyDbIdObservationsGetAlertDialog(final android.app.Activity activity,
+    final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdObservationsGetAlertDialog.Handler handler)
     { super(activity, handler); }
 
