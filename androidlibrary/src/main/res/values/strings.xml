@@ -148,7 +148,15 @@
     <string name="NewObservationUnitRequestAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
     <string name="NewObservationUnitRequestAlertDialogObservationUnitXrefLabelTextViewText">observationUnitXref:</string>
     <string name="NewObservationUnitRequestAlertDialogObservationsLabelTextViewText">observations:</string>
+    <string name="NewObservationUnitRequestAlertDialogPlantNumberEditTextHint">plantNumber</string>
+    <string name="NewObservationUnitRequestAlertDialogPlotNumberEditTextHint">plotNumber</string>
+    <string name="NewObservationUnitRequestAlertDialogPositionCoordinateXEditTextHint">positionCoordinateX</string>
+    <string name="NewObservationUnitRequestAlertDialogPositionCoordinateXTypeLabelTextViewText">positionCoordinateXType:</string>
+    <string name="NewObservationUnitRequestAlertDialogPositionCoordinateYEditTextHint">positionCoordinateY</string>
+    <string name="NewObservationUnitRequestAlertDialogPositionCoordinateYTypeLabelTextViewText">positionCoordinateYType:</string>
     <string name="NewObservationUnitRequestAlertDialogObservationTreatmentsLabelTextViewText">treatments:</string>
+    <string name="NewObservationUnitRequestAlertDialogReplicateEditTextHint">replicate</string>
+    <string name="NewObservationUnitRequestAlertDialogStudyDbIdEditTextHint">studyDbId</string>
 
     <string name="ObservationUnitXrefAlertDialogTitle">ObservationUnitXref</string>
     <string name="ObservationUnitXrefAlertDialogIdEditTextHint">id</string>
