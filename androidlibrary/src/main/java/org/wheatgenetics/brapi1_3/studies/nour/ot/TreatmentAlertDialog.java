@@ -30,8 +30,8 @@ class TreatmentAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.TreatmentAlertDialogTitle);
         {
-            final android.view.View view = this.inflate(
-                org.wheatgenetics.androidlibrary.R.layout.alert_dialog_brapi1_3_studies_treatment);
+            final android.view.View view = this.inflate(org.wheatgenetics.androidlibrary
+                .R.layout.alert_dialog_brapi1_3_studies_observationtreatment);
             if (null != view)
             {
                 if (null == this.factorEditText) this.factorEditText = view.findViewById(
