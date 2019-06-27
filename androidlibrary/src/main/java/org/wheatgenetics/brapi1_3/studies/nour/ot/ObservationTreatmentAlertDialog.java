@@ -14,30 +14,33 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
  */
-class TreatmentAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
+class ObservationTreatmentAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
     // region Fields
     private android.widget.EditText                      factorEditText, modalityEditText;
     private io.swagger.client.model.ObservationTreatment observationTreatment = null     ;
     // endregion
 
-    TreatmentAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentAlertDialog.Handler handler)
+    ObservationTreatmentAlertDialog(final android.app.Activity activity, final
+    org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog.Handler handler)
     { super(activity, handler); }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
     {
-        this.setTitle(org.wheatgenetics.androidlibrary.R.string.TreatmentAlertDialogTitle);
+        this.setTitle(
+            org.wheatgenetics.androidlibrary.R.string.ObservationTreatmentAlertDialogTitle);
         {
-            final android.view.View view = this.inflate(
-                org.wheatgenetics.androidlibrary.R.layout.alert_dialog_brapi1_3_studies_treatment);
+            final android.view.View view = this.inflate(org.wheatgenetics.androidlibrary
+                .R.layout.alert_dialog_brapi1_3_studies_observationtreatment);
             if (null != view)
             {
                 if (null == this.factorEditText) this.factorEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesTreatmentFactorEditText);
+                    org.wheatgenetics.androidlibrary.R.id
+                        .studiesObservationTreatmentFactorEditText);
                 if (null == this.modalityEditText) this.modalityEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesTreatmentModalityEditText);
+                    org.wheatgenetics.androidlibrary.R.id
+                        .studiesObservationTreatmentModalityEditText);
 
             }
             this.setView(view);
@@ -51,9 +54,9 @@ class TreatmentAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
         if (null != this.observationTreatment)
         {
             this.observationTreatment.setFactor(org.wheatgenetics.brapi1_3.studies.nour.ot
-                .TreatmentAlertDialog.getEditTextStringText(this.factorEditText));
+                .ObservationTreatmentAlertDialog.getEditTextStringText(this.factorEditText));
             this.observationTreatment.setModality(org.wheatgenetics.brapi1_3.studies.nour.ot
-                .TreatmentAlertDialog.getEditTextStringText(this.modalityEditText));
+                .ObservationTreatmentAlertDialog.getEditTextStringText(this.modalityEditText));
 
             super.handlePositiveButtonClick();
         }
@@ -66,10 +69,10 @@ class TreatmentAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
         {
             this.observationTreatment = observationTreatment;
 
-            org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentAlertDialog.setEditTextText(
-                this.factorEditText, this.observationTreatment.getFactor());
-            org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentAlertDialog.setEditTextText(
-                this.modalityEditText, this.observationTreatment.getModality());
+            org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog
+                .setEditTextText(this.factorEditText, this.observationTreatment.getFactor());
+            org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog
+                .setEditTextText(this.modalityEditText, this.observationTreatment.getModality());
 
             this.show();
         }
