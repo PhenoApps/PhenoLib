@@ -40,6 +40,7 @@
         android:ems="8"
         android:hint="commonCropName"
         android:inputType="text"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trialsCommonCropNameTextView"
@@ -77,6 +78,7 @@
         android:ems="8"
         android:hint="programDbId"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/trialsCommonCropNameEditText"
         app:layout_constraintTop_toBottomOf="@id/trialsProgramDbIdTextView"
@@ -114,6 +116,7 @@
         android:ems="8"
         android:hint="locationDbId"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/trialsProgramDbIdEditText"
         app:layout_constraintTop_toBottomOf="@id/trialsLocationDbIdTextView"
@@ -218,6 +221,7 @@
         android:ems="8"
         android:hint="sortBy"
         android:inputType="text"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/trialsActiveRadioGroup"
         app:layout_constraintTop_toBottomOf="@id/trialsSortByTextView"
@@ -255,6 +259,7 @@
         android:ems="8"
         android:hint="sortOrder"
         android:inputType="text"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/trialsSortByEditText"
         app:layout_constraintTop_toBottomOf="@id/trialsSortOrderTextView"
@@ -292,6 +297,7 @@
         android:ems="8"
         android:hint="default 0"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trialsPageTextView"
@@ -329,6 +335,7 @@
         android:ems="8"
         android:hint="default 1000"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toRightOf="@id/trialsPageEditText"
         app:layout_constraintTop_toBottomOf="@id/trialsPageSizeTextView"
@@ -385,6 +392,7 @@
         android:ems="12"
         android:hint="required trialDbId"
         android:inputType="number"
+        android:maxLines="1"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/trialsTrialDbIdTextView"
