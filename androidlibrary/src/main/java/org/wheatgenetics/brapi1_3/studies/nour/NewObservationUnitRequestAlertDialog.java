@@ -36,7 +36,8 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
         public abstract void showObservationsListActivity(@android.support.annotation.IntRange(
             from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
-        public abstract void showTreatmentsListActivity(@android.support.annotation.IntRange(
+        public abstract void showObservationTreatmentsListActivity(
+        @android.support.annotation.IntRange(
             from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
 
@@ -50,7 +51,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
         observationUnitNameEditText;
     private android.widget.TextView observationUnitXrefTextView, observationsTextView;
     // TODO
-    private android.widget.TextView treatmentsTextView;
+    private android.widget.TextView observationTreatmentsTextView;
 
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
         newObservationUnitRequest = null;
@@ -105,26 +106,27 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     }
     // endregion
 
-    // region treatments Private Methods
+    // region observationTreatments Private Methods
     @android.annotation.SuppressLint({"DefaultLocale"})
-    private void setTreatmentsTextViewText(@android.support.annotation.Nullable
-    final java.util.List<io.swagger.client.model.ObservationTreatment> treatments)
+    private void setObservationTreatmentsTextViewText(@android.support.annotation.Nullable
+    final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
     {
-        if (null != this.treatmentsTextView) this.treatmentsTextView.setText(
-            null == treatments ? "null" : java.lang.String.format(
-                "%d treatment(s)", treatments.size()));
+        if (null != this.observationTreatmentsTextView) this.observationTreatmentsTextView.setText(
+            null == observationTreatments ? "null" : java.lang.String.format(
+                "%d observationTreatment(s)", observationTreatments.size()));
     }
 
-    private void setTreatmentsTextViewText()
+    private void setObservationTreatmentsTextViewText()
     {
-        if (null != this.newObservationUnitRequest) this.setTreatmentsTextViewText(
+        if (null != this.newObservationUnitRequest) this.setObservationTreatmentsTextViewText(
             this.newObservationUnitRequest.getTreatments());
     }
 
-    private void showTreatmentsListActivity()
+    private void showObservationTreatmentsListActivity()
     {
-        if (null != this.newObservationUnitRequest) this.activityHandler.showTreatmentsListActivity(
-            this.newObservationUnitRequest.getPosition());
+        if (null != this.newObservationUnitRequest)
+            this.activityHandler.showObservationTreatmentsListActivity(
+                this.newObservationUnitRequest.getPosition());
     }
     // endregion
     // endregion
@@ -211,21 +213,22 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
 
                 // TODO
 
-                if (null == this.treatmentsTextView) this.treatmentsTextView = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id
-                        .studiesNewObservationUnitRequestTreatmentsValueTextView);
+                if (null == this.observationTreatmentsTextView) this.observationTreatmentsTextView =
+                    view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                        .studiesNewObservationUnitRequestObservationTreatmentsValueTextView);
                 {
-                    final android.widget.Button changeTreatmentsButton = view.findViewById(
-                        org.wheatgenetics.androidlibrary.R.id
-                            .studiesNewObservationUnitRequestChangeTreatmentsButton);
-                    if (null != changeTreatmentsButton) changeTreatmentsButton.setOnClickListener(
+                    final android.widget.Button changeObservationTreatmentsButton =
+                        view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                            .studiesNewObservationUnitRequestChangeObservationTreatmentsButton);
+                    if (null != changeObservationTreatmentsButton)
+                        changeObservationTreatmentsButton.setOnClickListener(
                         new android.view.View.OnClickListener()
                         {
                             @java.lang.Override public void onClick(final android.view.View v)
                             {
                                 org.wheatgenetics.brapi1_3.studies.nour
                                     .NewObservationUnitRequestAlertDialog
-                                    .this.showTreatmentsListActivity();
+                                    .this.showObservationTreatmentsListActivity();
                             }
                         });
                 }
@@ -300,16 +303,16 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             this.setObservationUnitXrefTextViewText();
             this.setObservationsTextViewText       ();
             // TODO
-            this.setTreatmentsTextViewText();
+            this.setObservationTreatmentsTextViewText();
 
             this.show();
         }
     }
 
     // region update() Package Methods
-    void updateObservationUnitXref() { this.setObservationUnitXrefTextViewText(); }
-    void updateObservations       () { this.setObservationsTextViewText       (); }
-    void updateTreatments         () { this.setTreatmentsTextViewText         (); }
+    void updateObservationUnitXref  () { this.setObservationUnitXrefTextViewText  (); }
+    void updateObservations         () { this.setObservationsTextViewText         (); }
+    void updateObservationTreatments() { this.setObservationTreatmentsTextViewText(); }
     // endregion
     // endregion
 }

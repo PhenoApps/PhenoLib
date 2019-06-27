@@ -148,7 +148,7 @@
     <string name="NewObservationUnitRequestAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
     <string name="NewObservationUnitRequestAlertDialogObservationUnitXrefLabelTextViewText">observationUnitXref:</string>
     <string name="NewObservationUnitRequestAlertDialogObservationsLabelTextViewText">observations:</string>
-    <string name="NewObservationUnitRequestAlertDialogTreatmentsLabelTextViewText">treatments:</string>
+    <string name="NewObservationUnitRequestAlertDialogObservationTreatmentsLabelTextViewText">treatments:</string>
 
     <string name="ObservationUnitXrefAlertDialogTitle">ObservationUnitXref</string>
     <string name="ObservationUnitXrefAlertDialogIdEditTextHint">id</string>
@@ -175,7 +175,7 @@
     <string name="SeasonAlertDialogSeasonDbIdEditTextHint">seasonDbId</string>
     <string name="SeasonAlertDialogYearEditTextHint">year</string>
 
-    <string name="TreatmentAlertDialogTitle">Treatment</string>
-    <string name="TreatmentAlertDialogFactorEditTextHint">factor</string>
-    <string name="TreatmentAlertDialogModalityEditTextHint">modality</string>
+    <string name="ObservationTreatmentAlertDialogTitle">Treatment</string>
+    <string name="ObservationTreatmentAlertDialogFactorEditTextHint">factor</string>
+    <string name="ObservationTreatmentAlertDialogModalityEditTextHint">modality</string>
 </resources>

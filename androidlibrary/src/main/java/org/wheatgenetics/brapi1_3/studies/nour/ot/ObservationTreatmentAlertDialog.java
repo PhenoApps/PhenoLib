@@ -28,16 +28,19 @@ class ObservationTreatmentAlertDialog extends org.wheatgenetics.brapi1_3.AlertDi
     // region Overridden Methods
     @java.lang.Override public void configure()
     {
-        this.setTitle(org.wheatgenetics.androidlibrary.R.string.TreatmentAlertDialogTitle);
+        this.setTitle(
+            org.wheatgenetics.androidlibrary.R.string.ObservationTreatmentAlertDialogTitle);
         {
             final android.view.View view = this.inflate(org.wheatgenetics.androidlibrary
                 .R.layout.alert_dialog_brapi1_3_studies_observationtreatment);
             if (null != view)
             {
                 if (null == this.factorEditText) this.factorEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesTreatmentFactorEditText);
+                    org.wheatgenetics.androidlibrary.R.id
+                        .studiesObservationTreatmentFactorEditText);
                 if (null == this.modalityEditText) this.modalityEditText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.studiesTreatmentModalityEditText);
+                    org.wheatgenetics.androidlibrary.R.id
+                        .studiesObservationTreatmentModalityEditText);
 
             }
             this.setView(view);

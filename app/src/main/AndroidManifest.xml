@@ -56,7 +56,7 @@
         <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.o.ObservationItemActivity"              />
         <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity"             />
         <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentItemActivity"    />
-        <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentsListActivity"              />
+        <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity"   />
 
         <activity
             android:name=".brapi1_3.Activity"

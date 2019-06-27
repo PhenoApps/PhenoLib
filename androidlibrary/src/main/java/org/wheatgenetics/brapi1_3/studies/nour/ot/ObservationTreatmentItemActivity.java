@@ -20,7 +20,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  *
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog.Handler
- * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentsListActivity
+ * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity
  */
 public class ObservationTreatmentItemActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
@@ -52,7 +52,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     // region Overridden Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.Class listActivityClass()
-    { return org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentsListActivity.class; }
+    { return org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity.class; }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(

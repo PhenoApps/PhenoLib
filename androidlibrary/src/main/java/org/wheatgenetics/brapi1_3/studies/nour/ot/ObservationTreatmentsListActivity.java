@@ -27,7 +27,8 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentOnePaneAdapter
  */
-public class TreatmentsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+public class ObservationTreatmentsListActivity
+extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
     public static final int REQUEST_CODE = 2002;
@@ -51,7 +52,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     @java.lang.Override public void handleDone()
                     {
                         org.wheatgenetics.brapi1_3.studies.nour.ot
-                            .TreatmentsListActivity.this.refreshSinceItemHasChanged();
+                            .ObservationTreatmentsListActivity.this.refreshSinceItemHasChanged();
                     }
                 });
         return this.treatmentAlertDialogInstance;

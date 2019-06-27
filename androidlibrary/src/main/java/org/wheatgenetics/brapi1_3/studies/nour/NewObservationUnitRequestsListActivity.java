@@ -23,7 +23,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity
  * org.wheatgenetics.brapi1_3.studies.nour.o.Utils
  *
- * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentsListActivity
+ * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity
  * org.wheatgenetics.brapi1_3.studies.nour.ot.Utils
  *
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity
@@ -61,10 +61,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
             this, position);
     }
 
-    private void showTreatmentsListActivity(@android.support.annotation.IntRange(
+    private void showObservationTreatmentsListActivity(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position)
     {
-        org.wheatgenetics.brapi1_3.studies.nour.ot.Utils.showTreatmentsListActivity(
+        org.wheatgenetics.brapi1_3.studies.nour.ot.Utils.showObservationTreatmentsListActivity(
             this, position);
     }
     // endregion
@@ -105,13 +105,13 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                                 .this.showObservationsListActivity(position);
                         }
 
-                        @java.lang.Override public void showTreatmentsListActivity(
+                        @java.lang.Override public void showObservationTreatmentsListActivity(
                         @android.support.annotation.IntRange(from =
                             org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
                         {
                             org.wheatgenetics.brapi1_3.studies.nour
                                 .NewObservationUnitRequestsListActivity
-                                .this.showTreatmentsListActivity(position);
+                                .this.showObservationTreatmentsListActivity(position);
                         }
                     });
         return this.newObservationUnitRequestAlertDialogInstance;
@@ -132,8 +132,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
             case org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity.REQUEST_CODE:
                 this.newObservationUnitRequestAlertDialogInstance.updateObservations(); break;
 
-            case org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentsListActivity.REQUEST_CODE:
-                this.newObservationUnitRequestAlertDialogInstance.updateTreatments(); break;
+            case org.wheatgenetics.brapi1_3.studies.nour.ot
+            .ObservationTreatmentsListActivity.REQUEST_CODE:
+                this.newObservationUnitRequestAlertDialogInstance.updateObservationTreatments();
+                break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
