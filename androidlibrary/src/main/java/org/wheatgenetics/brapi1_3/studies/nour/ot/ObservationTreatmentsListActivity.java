@@ -25,7 +25,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  *
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog.Handler
- * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentOnePaneAdapter
+ * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentOnePaneAdapter
  */
 public class ObservationTreatmentsListActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
@@ -88,7 +88,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override
     protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
-    { return new org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentOnePaneAdapter(this.items()); }
+    {
+        return new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentOnePaneAdapter(
+            this.items());
+    }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
     @java.lang.Override public void change(
