@@ -4,6 +4,8 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * Uses:
  * android.annotation.SuppressLint
  * android.app.Activity
+ * android.content.DialogInterface
+ * android.content.DialogInterface.OnClickListener
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.Nullable
@@ -15,6 +17,8 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * android.widget.EditText
  * android.widget.TextView
  *
+ * io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
+ * io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
  * io.swagger.client.model.Observation
  * io.swagger.client.model.ObservationTreatment
  * io.swagger.client.model.ObservationUnitXref
@@ -26,9 +30,11 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
+ * org.wheatgenetics.brapi1_3.TypeAlertDialog
  */
 class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
+    // region Types
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface ActivityHandler
     {
         public abstract void showObservationUnitXrefListActivity(
@@ -41,6 +47,107 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
 
+    private static class PositionCoordinateXTypeAlertDialog
+    extends org.wheatgenetics.brapi1_3.TypeAlertDialog
+    {
+        private PositionCoordinateXTypeAlertDialog(final android.app.Activity activity)
+        { super(activity); }
+
+        // region Overridden Methods
+        @java.lang.Override public void configure()
+        {
+            this.setTitle(org.wheatgenetics.androidlibrary.R.string
+                .NewObservationUnitRequestAlertDialogPositionCoordinateXTypeLabelTextViewText);
+            super.configure();
+        }
+
+        @android.support.annotation.RestrictTo(
+            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @java.lang.Override protected java.lang.String[] items()
+        {
+            if (this.itemsIsNull())
+            {
+                // noinspection Convert2Diamond
+                final java.util.ArrayList<java.lang.String> arrayList =
+                    new java.util.ArrayList<java.lang.String>();
+
+                arrayList.add("null");
+                {
+                    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final
+                    io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
+                        positionCoordinateXTypeEnums[] = io.swagger.client.model
+                        .NewObservationUnitRequest.PositionCoordinateXTypeEnum.values();
+                    for (final
+                    io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
+                    positionCoordinateXTypeEnum: positionCoordinateXTypeEnums)
+                        arrayList.add(positionCoordinateXTypeEnum.toString());
+                }
+
+                this.createItems(arrayList);
+            }
+            return super.items();
+        }
+        // endregion
+
+        private io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum item(
+        @android.support.annotation.IntRange(from = 0) final int i)
+        {
+            return 0 == i ? null : io.swagger.client.model.NewObservationUnitRequest
+                .PositionCoordinateXTypeEnum.fromValue(this.items()[i]);
+        }
+    }
+
+    private static class PositionCoordinateYTypeAlertDialog
+    extends org.wheatgenetics.brapi1_3.TypeAlertDialog
+    {
+        private PositionCoordinateYTypeAlertDialog(final android.app.Activity activity)
+        { super(activity); }
+
+        // region Overridden Methods
+        @java.lang.Override public void configure()
+        {
+            this.setTitle(org.wheatgenetics.androidlibrary.R.string
+                .NewObservationUnitRequestAlertDialogPositionCoordinateYTypeLabelTextViewText);
+            super.configure();
+        }
+
+        @android.support.annotation.RestrictTo(
+            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @java.lang.Override protected java.lang.String[] items()
+        {
+            if (this.itemsIsNull())
+            {
+                // noinspection Convert2Diamond
+                final java.util.ArrayList<java.lang.String> arrayList =
+                    new java.util.ArrayList<java.lang.String>();
+
+                arrayList.add("null");
+                {
+                    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final
+                    io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
+                        positionCoordinateYTypeEnums[] = io.swagger.client.model
+                        .NewObservationUnitRequest.PositionCoordinateYTypeEnum.values();
+                    for (final
+                    io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
+                    positionCoordinateYTypeEnum: positionCoordinateYTypeEnums)
+                        arrayList.add(positionCoordinateYTypeEnum.toString());
+                }
+
+                this.createItems(arrayList);
+            }
+            return super.items();
+        }
+        // endregion
+
+        private io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum item(
+        @android.support.annotation.IntRange(from = 0) final int i)
+        {
+            return 0 == i ? null : io.swagger.client.model.NewObservationUnitRequest
+                .PositionCoordinateYTypeEnum.fromValue(this.items()[i]);
+        }
+    }
+    // endregion
+
     // region Fields
     private final
         org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
@@ -52,14 +159,23 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     private android.widget.TextView observationUnitXrefTextView, observationsTextView;
     private android.widget.EditText plantNumberEditText, plotNumberEditText,
         positionCoordinateXEditText;
-    // TODO
-    private android.widget.EditText positionCoordinateYEditText;
-    // TODO
+    private android.widget.TextView positionCoordinateXTypeTextView     ;
+    private android.widget.EditText positionCoordinateYEditText         ;
+    private android.widget.TextView positionCoordinateYTypeTextView     ;
     private android.widget.EditText replicateEditText, studyDbIdEditText;
     private android.widget.TextView observationTreatmentsTextView       ;
 
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
         newObservationUnitRequest = null;
+    private io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
+        positionCoordinateXTypeEnum = null;
+    private io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
+        positionCoordinateYTypeEnum = null;
+
+    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+        .PositionCoordinateXTypeAlertDialog positionCoordinateXTypeAlertDialogInstance = null; // ll
+    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+        .PositionCoordinateYTypeAlertDialog positionCoordinateYTypeAlertDialogInstance = null; // ll
     // endregion
 
     // region Private Methods
@@ -109,6 +225,104 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             this.activityHandler.showObservationsListActivity(
                 this.newObservationUnitRequest.getPosition());
     }
+    // endregion
+
+    // region positionCoordinateXType Private Methods
+    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+    .PositionCoordinateXTypeAlertDialog positionCoordinateXTypeAlertDialog()
+    {
+        if (null == this.positionCoordinateXTypeAlertDialogInstance)
+        {
+            this.positionCoordinateXTypeAlertDialogInstance = new org.wheatgenetics.brapi1_3.studies
+                .nour.NewObservationUnitRequestAlertDialog.PositionCoordinateXTypeAlertDialog(
+                    this.activity());
+            this.positionCoordinateXTypeAlertDialogInstance.setOnClickListener(
+                new android.content.DialogInterface.OnClickListener()
+                {
+                    @java.lang.Override public void onClick(
+                    final android.content.DialogInterface dialog, final int which)
+                    {
+                        org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                            .this.setPositionCoordinateXTypeEnum(which);
+                    }
+                }
+            );
+        }
+        return this.positionCoordinateXTypeAlertDialogInstance;
+    }
+
+    private void showPositionCoordinateXTypeAlertDialog()
+    { this.positionCoordinateXTypeAlertDialog().show(); }
+
+    private void setPositionCoordinateXTypeTextViewText(
+    final io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
+        positionCoordinateXTypeEnum)
+    {
+        if (null != this.positionCoordinateXTypeTextView)
+            this.positionCoordinateXTypeTextView.setText(null == positionCoordinateXTypeEnum ?
+                "null" : positionCoordinateXTypeEnum.toString());
+    }
+
+    private void setPositionCoordinateXTypeEnum(
+    final io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
+        positionCoordinateXTypeEnum)
+    {
+        this.setPositionCoordinateXTypeTextViewText(
+            this.positionCoordinateXTypeEnum = positionCoordinateXTypeEnum);
+    }
+
+    private void setPositionCoordinateXTypeEnum(
+    @android.support.annotation.IntRange(from = 0) final int i)
+    { this.setPositionCoordinateXTypeEnum(this.positionCoordinateXTypeAlertDialog().item(i)); }
+    // endregion
+
+    // region positionCoordinateYType Private Methods
+    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+    .PositionCoordinateYTypeAlertDialog positionCoordinateYTypeAlertDialog()
+    {
+        if (null == this.positionCoordinateYTypeAlertDialogInstance)
+        {
+            this.positionCoordinateYTypeAlertDialogInstance = new org.wheatgenetics.brapi1_3.studies
+                .nour.NewObservationUnitRequestAlertDialog.PositionCoordinateYTypeAlertDialog(
+                this.activity());
+            this.positionCoordinateYTypeAlertDialogInstance.setOnClickListener(
+                new android.content.DialogInterface.OnClickListener()
+                {
+                    @java.lang.Override public void onClick(
+                        final android.content.DialogInterface dialog, final int which)
+                    {
+                        org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                            .this.setPositionCoordinateYTypeEnum(which);
+                    }
+                }
+            );
+        }
+        return this.positionCoordinateYTypeAlertDialogInstance;
+    }
+
+    private void showPositionCoordinateYTypeAlertDialog()
+    { this.positionCoordinateYTypeAlertDialog().show(); }
+
+    private void setPositionCoordinateYTypeTextViewText(
+    final io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
+        positionCoordinateYTypeEnum)
+    {
+        if (null != this.positionCoordinateYTypeTextView)
+            this.positionCoordinateYTypeTextView.setText(null == positionCoordinateYTypeEnum ?
+                "null" : positionCoordinateYTypeEnum.toString());
+    }
+
+    private void setPositionCoordinateYTypeEnum(
+    final io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
+        positionCoordinateYTypeEnum)
+    {
+        this.setPositionCoordinateYTypeTextViewText(
+            this.positionCoordinateYTypeEnum = positionCoordinateYTypeEnum);
+    }
+
+    private void setPositionCoordinateYTypeEnum(
+    @android.support.annotation.IntRange(from = 0) final int i)
+    { this.setPositionCoordinateYTypeEnum(this.positionCoordinateYTypeAlertDialog().item(i)); }
     // endregion
 
     // region observationTreatments Private Methods
@@ -225,13 +439,53 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
                         .studiesNewObservationUnitRequestPositionCoordinateXEditText);
 
-                // TODO
+                if (null == this.positionCoordinateXTypeTextView)
+                    this.positionCoordinateXTypeTextView = view.findViewById(
+                        org.wheatgenetics.androidlibrary.R.id
+                            .studiesNewObservationUnitRequestPositionCoordinateXTypeValueTextView);
+                {
+                    final android.widget.Button changePositionCoordinateXTypeButton =
+                        view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                            .studiesNewObservationUnitRequestChangePositionCoordinateXTypeButton);
+                    if (null != changePositionCoordinateXTypeButton)
+                        changePositionCoordinateXTypeButton.setOnClickListener(
+                            new android.view.View.OnClickListener()
+                            {
+                                @java.lang.Override public void onClick(final android.view.View v)
+                                {
+                                    org.wheatgenetics.brapi1_3.studies.nour
+                                        .NewObservationUnitRequestAlertDialog.this
+                                        .showPositionCoordinateXTypeAlertDialog();
+                                }
+                            }
+                        );
+                }
 
                 if (null == this.positionCoordinateYEditText) this.positionCoordinateYEditText =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
                         .studiesNewObservationUnitRequestPositionCoordinateYEditText);
 
-                // TODO
+                if (null == this.positionCoordinateYTypeTextView)
+                    this.positionCoordinateYTypeTextView = view.findViewById(
+                        org.wheatgenetics.androidlibrary.R.id
+                            .studiesNewObservationUnitRequestPositionCoordinateYTypeValueTextView);
+                {
+                    final android.widget.Button changePositionCoordinateYTypeButton =
+                        view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                            .studiesNewObservationUnitRequestChangePositionCoordinateYTypeButton);
+                    if (null != changePositionCoordinateYTypeButton)
+                        changePositionCoordinateYTypeButton.setOnClickListener(
+                            new android.view.View.OnClickListener()
+                            {
+                                @java.lang.Override public void onClick(final android.view.View v)
+                                {
+                                    org.wheatgenetics.brapi1_3.studies.nour
+                                        .NewObservationUnitRequestAlertDialog.this
+                                        .showPositionCoordinateYTypeAlertDialog();
+                                }
+                            }
+                        );
+                }
 
                 if (null == this.replicateEditText) this.replicateEditText = view.findViewById(
                     org.wheatgenetics.androidlibrary.R.id
@@ -300,11 +554,13 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             this.newObservationUnitRequest.setPositionCoordinateX(
                 org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.positionCoordinateXEditText));
-            // TODO
+            this.newObservationUnitRequest.setPositionCoordinateXType(
+                this.positionCoordinateXTypeEnum);
             this.newObservationUnitRequest.setPositionCoordinateY(
                 org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.positionCoordinateYEditText));
-            // TODO
+            this.newObservationUnitRequest.setPositionCoordinateYType(
+                this.positionCoordinateYTypeEnum);
             this.newObservationUnitRequest.setReplicate(
                 org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.replicateEditText));
@@ -357,11 +613,13 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.positionCoordinateXEditText,
                     this.newObservationUnitRequest.getPositionCoordinateX());
-            // TODO
+            this.setPositionCoordinateXTypeEnum(
+                this.newObservationUnitRequest.getPositionCoordinateXType());
             org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.positionCoordinateYEditText,
                     this.newObservationUnitRequest.getPositionCoordinateY());
-            // TODO
+            this.setPositionCoordinateYTypeEnum(
+                this.newObservationUnitRequest.getPositionCoordinateYType());
             org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                 .setEditTextText(this.replicateEditText,
                     this.newObservationUnitRequest.getReplicate());

@@ -151,9 +151,9 @@
     <string name="NewObservationUnitRequestAlertDialogPlantNumberEditTextHint">plantNumber</string>
     <string name="NewObservationUnitRequestAlertDialogPlotNumberEditTextHint">plotNumber</string>
     <string name="NewObservationUnitRequestAlertDialogPositionCoordinateXEditTextHint">positionCoordinateX</string>
-    <!--TODO-->
+    <string name="NewObservationUnitRequestAlertDialogPositionCoordinateXTypeLabelTextViewText">positionCoordinateXType:</string>
     <string name="NewObservationUnitRequestAlertDialogPositionCoordinateYEditTextHint">positionCoordinateY</string>
-    <!--TODO-->
+    <string name="NewObservationUnitRequestAlertDialogPositionCoordinateYTypeLabelTextViewText">positionCoordinateYType:</string>
     <string name="NewObservationUnitRequestAlertDialogObservationTreatmentsLabelTextViewText">treatments:</string>
     <string name="NewObservationUnitRequestAlertDialogReplicateEditTextHint">replicate</string>
     <string name="NewObservationUnitRequestAlertDialogStudyDbIdEditTextHint">studyDbId</string>

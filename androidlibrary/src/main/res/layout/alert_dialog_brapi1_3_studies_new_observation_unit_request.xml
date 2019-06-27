@@ -1,293 +1,405 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestBlockNumberEditText"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogBlockNumberEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
+        android:padding="10dp">
 
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestEntryNumberEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogEntryNumberEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestEntryTypeEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogEntryTypeEditTextHint"
-        android:inputType="text"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestGermplasmDbIdEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogGermplasmDbIdEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestObservationLevelEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogObservationLevelEditTextHint"
-        android:inputType="text"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestObservationUnitDbIdEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogObservationUnitDbIdEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestObservationUnitNameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogObservationUnitNameEditTextHint"
-        android:inputType="text"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/studiesNewObservationUnitRequestObservationUnitXrefLabelTextView"
-
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestBlockNumberEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogBlockNumberEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-
-            android:labelFor="@id/studiesNewObservationUnitRequestObservationUnitXrefValueTextView"
-            android:text="@string/NewObservationUnitRequestAlertDialogObservationUnitXrefLabelTextViewText"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/studiesNewObservationUnitRequestObservationUnitXrefValueTextView"
-
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestEntryNumberEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogEntryNumberEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_toRightOf="@id/studiesNewObservationUnitRequestObservationUnitXrefLabelTextView"
-            android:layout_toEndOf="@id/studiesNewObservationUnitRequestObservationUnitXrefLabelTextView"
-
-            android:layout_marginTop="10dp"
-
-            android:text="@string/nullValueTextViewText"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/studiesNewObservationUnitRequestChangeObservationUnitXrefButton"
-
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestEntryTypeEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogEntryTypeEditTextHint"
+            android:inputType="text"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-
-            android:text="@string/changeButtonText"
-            android:textAllCaps="false"
-
-            tools:ignore="RelativeOverlap" />
-
-    </RelativeLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/studiesNewObservationUnitRequestObservationsLabelTextView"
-
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestGermplasmDbIdEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogGermplasmDbIdEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-
-            android:labelFor="@id/studiesNewObservationUnitRequestObservationsValueTextView"
-            android:text="@string/NewObservationUnitRequestAlertDialogObservationsLabelTextViewText"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/studiesNewObservationUnitRequestObservationsValueTextView"
-
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestObservationLevelEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogObservationLevelEditTextHint"
+            android:inputType="text"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_toRightOf="@id/studiesNewObservationUnitRequestObservationsLabelTextView"
-            android:layout_toEndOf="@id/studiesNewObservationUnitRequestObservationsLabelTextView"
-
-            android:layout_marginTop="10dp"
-
-            android:text="@string/nullValueTextViewText"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/studiesNewObservationUnitRequestChangeObservationsButton"
-
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestObservationUnitDbIdEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogObservationUnitDbIdEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-
-            android:text="@string/changeButtonText"
-            android:textAllCaps="false"
-
-            tools:ignore="RelativeOverlap" />
-
-    </RelativeLayout>
-
-
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestPlantNumberEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogPlantNumberEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestPlotNumberEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogPlotNumberEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateXEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogPositionCoordinateXEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <!--TODO-->
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateYEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogPositionCoordinateYEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <!--TODO-->
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestReplicateEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogReplicateEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-    <EditText
-        android:id="@+id/studiesNewObservationUnitRequestStudyDbIdEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/NewObservationUnitRequestAlertDialogStudyDbIdEditTextHint"
-        android:inputType="number"
-        android:maxLines="1"
-        tools:ignore="Autofill" />
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/studiesNewObservationUnitRequestObservationTreatmentsLabelTextView"
-
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestObservationUnitNameEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogObservationUnitNameEditTextHint"
+            android:inputType="text"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
 
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
 
-            android:labelFor="@id/studiesNewObservationUnitRequestObservationTreatmentsValueTextView"
-            android:text="@string/NewObservationUnitRequestAlertDialogObservationTreatmentsLabelTextViewText"
-            android:textSize="18sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/studiesNewObservationUnitRequestObservationTreatmentsValueTextView"
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestObservationUnitXrefLabelTextView"
 
-            android:layout_width="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+
+                android:labelFor="@id/studiesNewObservationUnitRequestObservationUnitXrefValueTextView"
+                android:text="@string/NewObservationUnitRequestAlertDialogObservationUnitXrefLabelTextViewText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestObservationUnitXrefValueTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_toRightOf="@id/studiesNewObservationUnitRequestObservationUnitXrefLabelTextView"
+                android:layout_toEndOf="@id/studiesNewObservationUnitRequestObservationUnitXrefLabelTextView"
+
+                android:layout_marginTop="10dp"
+
+                android:text="@string/nullValueTextViewText"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/studiesNewObservationUnitRequestChangeObservationUnitXrefButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                android:text="@string/changeButtonText"
+                android:textAllCaps="false"
+
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestObservationsLabelTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+
+                android:labelFor="@id/studiesNewObservationUnitRequestObservationsValueTextView"
+                android:text="@string/NewObservationUnitRequestAlertDialogObservationsLabelTextViewText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestObservationsValueTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_toRightOf="@id/studiesNewObservationUnitRequestObservationsLabelTextView"
+                android:layout_toEndOf="@id/studiesNewObservationUnitRequestObservationsLabelTextView"
+
+                android:layout_marginTop="10dp"
+
+                android:text="@string/nullValueTextViewText"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/studiesNewObservationUnitRequestChangeObservationsButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                android:text="@string/changeButtonText"
+                android:textAllCaps="false"
+
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+
+
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestPlantNumberEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogPlantNumberEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_toRightOf="@id/studiesNewObservationUnitRequestObservationTreatmentsLabelTextView"
-            android:layout_toEndOf="@id/studiesNewObservationUnitRequestObservationTreatmentsLabelTextView"
-
-            android:layout_marginTop="10dp"
-
-            android:text="@string/nullValueTextViewText"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/studiesNewObservationUnitRequestChangeObservationTreatmentsButton"
-
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestPlotNumberEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogPlotNumberEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateXEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogPositionCoordinateXEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
 
-            android:text="@string/changeButtonText"
-            android:textAllCaps="false"
 
-            tools:ignore="RelativeOverlap" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateXTypeLabelTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+
+                android:labelFor="@id/studiesNewObservationUnitRequestPositionCoordinateXTypeValueTextView"
+                android:text="@string/NewObservationUnitRequestAlertDialogPositionCoordinateXTypeLabelTextViewText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateXTypeValueTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_toRightOf="@id/studiesNewObservationUnitRequestPositionCoordinateXTypeLabelTextView"
+                android:layout_toEndOf="@id/studiesNewObservationUnitRequestPositionCoordinateXTypeLabelTextView"
+
+                android:layout_marginTop="10dp"
+
+                android:text="@string/nullValueTextViewText"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/studiesNewObservationUnitRequestChangePositionCoordinateXTypeButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                android:text="@string/changeButtonText"
+                android:textAllCaps="false"
+
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+
+
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateYEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogPositionCoordinateYEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateYTypeLabelTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+
+                android:labelFor="@id/studiesNewObservationUnitRequestPositionCoordinateYTypeValueTextView"
+                android:text="@string/NewObservationUnitRequestAlertDialogPositionCoordinateYTypeLabelTextViewText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateYTypeValueTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_toRightOf="@id/studiesNewObservationUnitRequestPositionCoordinateYTypeLabelTextView"
+                android:layout_toEndOf="@id/studiesNewObservationUnitRequestPositionCoordinateYTypeLabelTextView"
+
+                android:layout_marginTop="10dp"
+
+                android:text="@string/nullValueTextViewText"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/studiesNewObservationUnitRequestChangePositionCoordinateYTypeButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                android:text="@string/changeButtonText"
+                android:textAllCaps="false"
+
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+
+
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestReplicateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogReplicateEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
+
+        <EditText
+            android:id="@+id/studiesNewObservationUnitRequestStudyDbIdEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/NewObservationUnitRequestAlertDialogStudyDbIdEditTextHint"
+            android:inputType="number"
+            android:maxLines="1"
+            tools:ignore="Autofill" />
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestObservationTreatmentsLabelTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+
+                android:labelFor="@id/studiesNewObservationUnitRequestObservationTreatmentsValueTextView"
+                android:text="@string/NewObservationUnitRequestAlertDialogObservationTreatmentsLabelTextViewText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/studiesNewObservationUnitRequestObservationTreatmentsValueTextView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_toRightOf="@id/studiesNewObservationUnitRequestObservationTreatmentsLabelTextView"
+                android:layout_toEndOf="@id/studiesNewObservationUnitRequestObservationTreatmentsLabelTextView"
+
+                android:layout_marginTop="10dp"
+
+                android:text="@string/nullValueTextViewText"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/studiesNewObservationUnitRequestChangeObservationTreatmentsButton"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                android:text="@string/changeButtonText"
+                android:textAllCaps="false"
+
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

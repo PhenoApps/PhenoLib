@@ -315,8 +315,8 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     final io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum
         positionCoordinateXTypeEnum)
     {
-        this.positionCoordinateXTypeEnum = positionCoordinateXTypeEnum;
-        this.setPositionCoordinateXTypeTextViewText(this.positionCoordinateXTypeEnum);
+        this.setPositionCoordinateXTypeTextViewText(
+            this.positionCoordinateXTypeEnum = positionCoordinateXTypeEnum);
     }
 
     private void setPositionCoordinateXTypeEnum(
@@ -338,8 +338,8 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     final io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum
         positionCoordinateYTypeEnum)
     {
-        this.positionCoordinateYTypeEnum = positionCoordinateYTypeEnum;
-        this.setPositionCoordinateYTypeTextViewText(this.positionCoordinateYTypeEnum);
+        this.setPositionCoordinateYTypeTextViewText(
+            this.positionCoordinateYTypeEnum = positionCoordinateYTypeEnum);
     }
 
     private void setPositionCoordinateYTypeEnum(
