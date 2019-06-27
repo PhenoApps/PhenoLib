@@ -22,7 +22,8 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentsListActivity
  */
-public class TreatmentItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
+public class ObservationTreatmentItemActivity
+extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 {
     // region Fields
@@ -42,7 +43,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     @java.lang.Override public void handleDone()
                     {
                         org.wheatgenetics.brapi1_3.studies.nour.ot
-                            .TreatmentItemActivity.this.refreshSinceItemHasChanged();
+                            .ObservationTreatmentItemActivity.this.refreshSinceItemHasChanged();
                     }
                 });
         return this.treatmentAlertDialogInstance;

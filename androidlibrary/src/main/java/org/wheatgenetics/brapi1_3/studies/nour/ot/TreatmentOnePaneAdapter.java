@@ -9,7 +9,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentItemActivity
+ * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog
  */
 class TreatmentOnePaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
 {
@@ -17,5 +17,5 @@ class TreatmentOnePaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl.O
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.Class concreteItemActivityClass()
-    { return org.wheatgenetics.brapi1_3.studies.nour.ot.TreatmentItemActivity.class; }
+    { return org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentItemActivity.class; }
 }
