@@ -50,8 +50,13 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
         germplasmDbIdEditText, observationLevelEditText, observationUnitDbIdEditText,
         observationUnitNameEditText;
     private android.widget.TextView observationUnitXrefTextView, observationsTextView;
+    private android.widget.EditText plantNumberEditText, plotNumberEditText,
+        positionCoordinateXEditText;
     // TODO
-    private android.widget.TextView observationTreatmentsTextView;
+    private android.widget.EditText positionCoordinateYEditText;
+    // TODO
+    private android.widget.EditText replicateEditText, studyDbIdEditText;
+    private android.widget.TextView observationTreatmentsTextView       ;
 
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
         newObservationUnitRequest = null;
@@ -136,8 +141,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             handler,
     final @android.support.annotation.NonNull
         org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
-            activityHandler)
-    { super(activity, handler); this.activityHandler = activityHandler; }
+            activityHandler) { super(activity, handler); this.activityHandler = activityHandler; }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
@@ -211,7 +215,30 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
                             });
                 }
 
+                if (null == this.plantNumberEditText) this.plantNumberEditText = view.findViewById
+                    (org.wheatgenetics.androidlibrary.R.id
+                        .studiesNewObservationUnitRequestPlantNumberEditText);
+                if (null == this.plotNumberEditText) this.plotNumberEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id
+                        .studiesNewObservationUnitRequestPlotNumberEditText);
+                if (null == this.positionCoordinateXEditText) this.positionCoordinateXEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                        .studiesNewObservationUnitRequestPositionCoordinateXEditText);
+
                 // TODO
+
+                if (null == this.positionCoordinateYEditText) this.positionCoordinateYEditText =
+                    view.findViewById(org.wheatgenetics.androidlibrary.R.id
+                        .studiesNewObservationUnitRequestPositionCoordinateYEditText);
+
+                // TODO
+
+                if (null == this.replicateEditText) this.replicateEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id
+                        .studiesNewObservationUnitRequestReplicateEditText);
+                if (null == this.studyDbIdEditText) this.studyDbIdEditText = view.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id
+                        .studiesNewObservationUnitRequestStudyDbIdEditText);
 
                 if (null == this.observationTreatmentsTextView) this.observationTreatmentsTextView =
                     view.findViewById(org.wheatgenetics.androidlibrary.R.id
@@ -264,7 +291,26 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             this.newObservationUnitRequest.setObservationUnitName(
                 org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
                     .getEditTextStringText(this.observationUnitNameEditText));
+            this.newObservationUnitRequest.setPlantNumber(
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                    .getEditTextStringText(this.plantNumberEditText));
+            this.newObservationUnitRequest.setPlotNumber(
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                    .getEditTextStringText(this.plotNumberEditText));
+            this.newObservationUnitRequest.setPositionCoordinateX(
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                    .getEditTextStringText(this.positionCoordinateXEditText));
             // TODO
+            this.newObservationUnitRequest.setPositionCoordinateY(
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                    .getEditTextStringText(this.positionCoordinateYEditText));
+            // TODO
+            this.newObservationUnitRequest.setReplicate(
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                    .getEditTextStringText(this.replicateEditText));
+            this.newObservationUnitRequest.setStudyDbId(
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                    .getEditTextStringText(this.studyDbIdEditText));
 
             super.handlePositiveButtonClick();
         }
@@ -302,7 +348,26 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
                     this.newObservationUnitRequest.getObservationUnitName());
             this.setObservationUnitXrefTextViewText();
             this.setObservationsTextViewText       ();
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                .setEditTextText(this.plantNumberEditText,
+                    this.newObservationUnitRequest.getPlantNumber());
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                .setEditTextText(this.plotNumberEditText,
+                    this.newObservationUnitRequest.getPlotNumber());
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                .setEditTextText(this.positionCoordinateXEditText,
+                    this.newObservationUnitRequest.getPositionCoordinateX());
             // TODO
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                .setEditTextText(this.positionCoordinateYEditText,
+                    this.newObservationUnitRequest.getPositionCoordinateY());
+            // TODO
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                .setEditTextText(this.replicateEditText,
+                    this.newObservationUnitRequest.getReplicate());
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
+                .setEditTextText(this.studyDbIdEditText,
+                    this.newObservationUnitRequest.getStudyDbId());
             this.setObservationTreatmentsTextViewText();
 
             this.show();

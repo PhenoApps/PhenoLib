@@ -179,6 +179,66 @@
 
 
 
+    <EditText
+        android:id="@+id/studiesNewObservationUnitRequestPlantNumberEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationUnitRequestAlertDialogPlantNumberEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationUnitRequestPlotNumberEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationUnitRequestAlertDialogPlotNumberEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateXEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationUnitRequestAlertDialogPositionCoordinateXEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <!--TODO-->
+
+    <EditText
+        android:id="@+id/studiesNewObservationUnitRequestPositionCoordinateYEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationUnitRequestAlertDialogPositionCoordinateYEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <!--TODO-->
+
+    <EditText
+        android:id="@+id/studiesNewObservationUnitRequestReplicateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationUnitRequestAlertDialogReplicateEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/studiesNewObservationUnitRequestStudyDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationUnitRequestAlertDialogStudyDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
