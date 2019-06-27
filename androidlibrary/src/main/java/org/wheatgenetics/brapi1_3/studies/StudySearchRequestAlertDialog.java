@@ -20,25 +20,25 @@ package org.wheatgenetics.brapi1_3.studies;
  * io.swagger.client.model.StudySearchRequest.SortByEnum
  * io.swagger.client.model.StudySearchRequest.SortOrderEnum
  *
- * org.wheatgenetics.androidlibrary.ItemsAlertDialog
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.PagedAlertDialog
+ * org.wheatgenetics.brapi1_3.TypeAlertDialog
  */
 public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
 {
-    private static class SortByAlertDialog extends org.wheatgenetics.androidlibrary.ItemsAlertDialog
+    private static class SortByAlertDialog extends org.wheatgenetics.brapi1_3.TypeAlertDialog
     {
-        @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-        private java.lang.String itemsInstance[] = null;                                // lazy load
-
-        private java.lang.String[] items()
+        @android.support.annotation.RestrictTo(
+            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @java.lang.Override protected java.lang.String[] items()
         {
-            if (null == this.itemsInstance)
+            if (this.itemsIsNull())
             {
-                @java.lang.SuppressWarnings({"Convert2Diamond"})
+                // noinspection Convert2Diamond
                 final java.util.ArrayList<java.lang.String> arrayList =
                     new java.util.ArrayList<java.lang.String>();
+
                 arrayList.add("null");
                 {
                     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
@@ -48,24 +48,20 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
                     sortByEnums)
                         arrayList.add(sortByEnum.toString());
                 }
-                this.itemsInstance = new java.lang.String[arrayList.size()];
-                this.itemsInstance = arrayList.toArray(this.itemsInstance);
+
+                this.createItems(arrayList);
             }
-            return this.itemsInstance;
+            return super.items();
         }
 
         private SortByAlertDialog(final android.app.Activity activity) { super(activity); }
 
-        // region Overridden Methods
         @java.lang.Override public void configure()
         {
             this.setTitle(org.wheatgenetics.androidlibrary
                 .R.string.StudySearchRequestAlertDialogSortByLabelTextViewText);
-            this.setCancelNegativeButton();
+            super.configure();
         }
-
-        @java.lang.Override public void show() { super.show(this.items()); }
-        // endregion
 
         private io.swagger.client.model.StudySearchRequest.SortByEnum item(
         @android.support.annotation.IntRange(from = 0) final int i)
