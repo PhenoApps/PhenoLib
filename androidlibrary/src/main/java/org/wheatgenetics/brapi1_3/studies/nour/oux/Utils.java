@@ -4,12 +4,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
  * Uses:
  * android.app.Activity
  * android.content.Intent
- * android.support.annotation.IntRange
  * android.support.annotation.NonNull
- *
- * org.wheatgenetics.javalib.mstrdtl.Item
- *
- * org.wheatgenetics.brapi1_3.studies.nour.Consts
  *
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity
  */
@@ -32,16 +27,12 @@ public class Utils extends java.lang.Object
     }
 
     public static void showObservationUnitXrefListActivity(
-    @android.support.annotation.NonNull final android.app.Activity activity,
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
+    @android.support.annotation.NonNull final android.app.Activity activity)
     {
-        final android.content.Intent observationUnitXrefListIntent =
+        activity.startActivityForResult(
             org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.observationUnitXrefListIntent(
-                activity);
-        if (null != observationUnitXrefListIntent) observationUnitXrefListIntent.putExtra(
-            org.wheatgenetics.brapi1_3.studies.nour.Consts.POSITION_KEY, position);
-        activity.startActivityForResult(observationUnitXrefListIntent, org.wheatgenetics
-            .brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity.REQUEST_CODE);
+                activity),
+            org.wheatgenetics.brapi1_3.studies.nour.oux
+                .ObservationUnitXrefListActivity.REQUEST_CODE);
     }
 }

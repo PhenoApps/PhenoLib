@@ -33,18 +33,12 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
         org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NONE;
     private org.wheatgenetics.javalib.mstrdtl.Items items = null;
 
-    private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
-        observationUnitXrefsAsItemsInstance = null;
-    private org.wheatgenetics.brapi1_3.studies.nour.o.Observations
-        observationsAsItemsInstance = null;
-    private org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
-        observationTreatmentsAsItemsInstance = null;
+    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+        private int newObservationUnitRequestPosition;
     // endregion
 
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
-    newObservationUnitRequest(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
+    newObservationUnitRequest()
     {
         final org.wheatgenetics.javalib.mstrdtl.Item item;
         {
@@ -52,7 +46,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
                 newObservationUnitRequests =
                     (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests)
                         this.mstrdtlItems();                    // throws java.lang.RuntimeException
-            item = newObservationUnitRequests.get(position);
+            item = newObservationUnitRequests.get(this.newObservationUnitRequestPosition);
         }
         if (item instanceof org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
             return (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item;
@@ -110,55 +104,36 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
         this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NOUR;
     }
 
-    // region nour.oux Public Methods
-    public org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
-    getObservationUnitXrefsAsItems(
+    public void setNewObservationUnitRequestPosition(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
-    {
-        final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
-            newObservationUnitRequest = this.newObservationUnitRequest(position);
-        this.observationUnitXrefsAsItemsInstance = null == newObservationUnitRequest ?
-            null : newObservationUnitRequest.getObservationUnitXrefsAsItems();
-        return this.observationUnitXrefsAsItemsInstance;
-    }
+        final int newObservationUnitRequestPosition)
+    { this.newObservationUnitRequestPosition = newObservationUnitRequestPosition; }
 
     public org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
-    getObservationsUnitXrefsAsItems() { return this.observationUnitXrefsAsItemsInstance; }
-    // endregion
-
-    // region nour.o Public Methods
-    public org.wheatgenetics.brapi1_3.studies.nour.o.Observations getObservationsAsItems(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
+    getObservationUnitXrefsAsItems()
     {
         final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
-            newObservationUnitRequest = this.newObservationUnitRequest(position);
-        this.observationsAsItemsInstance = null == newObservationUnitRequest ?
-            null : newObservationUnitRequest.getObservationsAsItems();
-        return this.observationsAsItemsInstance;
+            newObservationUnitRequest = this.newObservationUnitRequest();
+        return null == newObservationUnitRequest ? null :
+            newObservationUnitRequest.getObservationUnitXrefsAsItems();
     }
 
     public org.wheatgenetics.brapi1_3.studies.nour.o.Observations getObservationsAsItems()
-    { return this.observationsAsItemsInstance; }
-    // endregion
-
-    // region nour.o Public Methods
-    public org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
-    getObservationTreatmentsAsItems(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
     {
         final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
-            newObservationUnitRequest = this.newObservationUnitRequest(position);
-        this.observationTreatmentsAsItemsInstance = null == newObservationUnitRequest ?
-            null : newObservationUnitRequest.getObservationTreatmentsAsItems();
-        return this.observationTreatmentsAsItemsInstance;
+            newObservationUnitRequest = this.newObservationUnitRequest();
+        return null == newObservationUnitRequest ? null :
+            newObservationUnitRequest.getObservationsAsItems();
     }
 
     public org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
-    getObservationTreatmentsAsItems() { return this.observationTreatmentsAsItemsInstance; }
-    // endregion
+    getObservationTreatmentsAsItems()
+    {
+        final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
+            newObservationUnitRequest = this.newObservationUnitRequest();
+        return null == newObservationUnitRequest ? null :
+            newObservationUnitRequest.getObservationTreatmentsAsItems();
+    }
     // endregion
     // endregion
 }
