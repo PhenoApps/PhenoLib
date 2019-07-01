@@ -1092,8 +1092,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         return this.newObservationUnitDbIdsResponseCallbackInstance;
     }
 
-    private void studiesStudyDbIdObservationunitsPut(
-    final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests newObservationUnitRequests)
+    private void studiesStudyDbIdObservationunitsPut(final
+    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests newObservationUnitRequests)
     {
         if (null != this.studiesStudyDbIdObservationunitsGetParametersInstance
         &&  null != newObservationUnitRequests                                )

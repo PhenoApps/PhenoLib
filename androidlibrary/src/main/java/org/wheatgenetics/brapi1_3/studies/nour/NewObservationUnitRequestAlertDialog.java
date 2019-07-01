@@ -23,28 +23,23 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * io.swagger.client.model.ObservationTreatment
  * io.swagger.client.model.ObservationUnitXref
  *
- * org.wheatgenetics.javalib.mstrdtl.Item
- *
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
  *
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
  * org.wheatgenetics.brapi1_3.TypeAlertDialog
+ *
+ * org.wheatgenetics.brapi1_3.studies.nour.Utils
  */
 class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
     // region Types
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface ActivityHandler
     {
-        public abstract void showObservationUnitXrefListActivity(
-        @android.support.annotation.IntRange(
-            from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
-        public abstract void showObservationsListActivity(@android.support.annotation.IntRange(
-            from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
-        public abstract void showObservationTreatmentsListActivity(
-        @android.support.annotation.IntRange(
-            from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+        public abstract void showObservationUnitXrefListActivity  ();
+        public abstract void showObservationsListActivity         ();
+        public abstract void showObservationTreatmentsListActivity();
     }
 
     private static class PositionCoordinateXTypeAlertDialog
@@ -198,8 +193,11 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     private void showObservationUnitXrefListActivity()
     {
         if (null != this.newObservationUnitRequest)
-            this.activityHandler.showObservationUnitXrefListActivity(
-                this.newObservationUnitRequest.getPosition());
+        {
+            org.wheatgenetics.brapi1_3.studies.nour.Utils.setNewObservationUnitRequestPosition(
+                this.activity(), this.newObservationUnitRequest);
+            this.activityHandler.showObservationUnitXrefListActivity();
+        }
     }
     // endregion
 
@@ -222,8 +220,11 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     private void showObservationsListActivity()
     {
         if (null != this.newObservationUnitRequest)
-            this.activityHandler.showObservationsListActivity(
-                this.newObservationUnitRequest.getPosition());
+        {
+            org.wheatgenetics.brapi1_3.studies.nour.Utils.setNewObservationUnitRequestPosition(
+                this.activity(), this.newObservationUnitRequest);
+            this.activityHandler.showObservationsListActivity();
+        }
     }
     // endregion
 
@@ -344,8 +345,11 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     private void showObservationTreatmentsListActivity()
     {
         if (null != this.newObservationUnitRequest)
-            this.activityHandler.showObservationTreatmentsListActivity(
-                this.newObservationUnitRequest.getPosition());
+        {
+            org.wheatgenetics.brapi1_3.studies.nour.Utils.setNewObservationUnitRequestPosition(
+                this.activity(), this.newObservationUnitRequest);
+            this.activityHandler.showObservationTreatmentsListActivity();
+        }
     }
     // endregion
     // endregion

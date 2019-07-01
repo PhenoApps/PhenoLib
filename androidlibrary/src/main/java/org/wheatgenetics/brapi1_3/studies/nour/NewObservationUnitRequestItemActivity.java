@@ -46,25 +46,16 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 
     // region Private Methods
     // region showListActivity() Private Methods
-    private void showObservationUnitXrefListActivity(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.showObservationUnitXrefListActivity(
-            this, position);
-    }
+    private void showObservationUnitXrefListActivity()
+    { org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.showObservationUnitXrefListActivity(this); }
 
-    private void showObservationsListActivity(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position)
-    {
-        org.wheatgenetics.brapi1_3.studies.nour.o.Utils.showObservationsListActivity(
-            this, position);
-    }
+    private void showObservationsListActivity()
+    { org.wheatgenetics.brapi1_3.studies.nour.o.Utils.showObservationsListActivity(this); }
 
-    private void showObservationTreatmentsListActivity(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position)
+    private void showObservationTreatmentsListActivity()
     {
         org.wheatgenetics.brapi1_3.studies.nour.ot.Utils.showObservationTreatmentsListActivity(
-            this, position);
+            this);
     }
     // endregion
 
@@ -86,31 +77,25 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     }, new org.wheatgenetics.brapi1_3.studies.nour
                     .NewObservationUnitRequestAlertDialog.ActivityHandler()
                     {
-                        @java.lang.Override public void showObservationUnitXrefListActivity(
-                        @android.support.annotation.IntRange(from =
-                            org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+                        @java.lang.Override public void showObservationUnitXrefListActivity()
                         {
                             org.wheatgenetics.brapi1_3.studies.nour
                                 .NewObservationUnitRequestItemActivity
-                                .this.showObservationUnitXrefListActivity(position);
+                                .this.showObservationUnitXrefListActivity();
                         }
 
-                        @java.lang.Override public void showObservationsListActivity(
-                        @android.support.annotation.IntRange(from =
-                            org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+                        @java.lang.Override public void showObservationsListActivity()
                         {
                             org.wheatgenetics.brapi1_3.studies.nour
                                 .NewObservationUnitRequestItemActivity
-                                .this.showObservationsListActivity(position);
+                                .this.showObservationsListActivity();
                         }
 
-                        @java.lang.Override public void showObservationTreatmentsListActivity(
-                        @android.support.annotation.IntRange(from =
-                            org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+                        @java.lang.Override public void showObservationTreatmentsListActivity()
                         {
                             org.wheatgenetics.brapi1_3.studies.nour
                                 .NewObservationUnitRequestItemActivity
-                                .this.showObservationTreatmentsListActivity(position);
+                                .this.showObservationTreatmentsListActivity();
                         }
                     });
         return this.newObservationUnitRequestAlertDialogInstance;
