@@ -32,7 +32,8 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     private android.widget.TextView seasonTextView                                      ;
     private android.widget.EditText studyDbIdEditText, uploadedByEditText, valueEditText;
 
-    private io.swagger.client.model.Observation observation = null;
+    private io.swagger.client.model.Observation                   outsideObservation = null;
+    private org.wheatgenetics.brapi1_3.studies.nour.o.Observation insideObservation  = null;
 
     private org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog
         seasonAlertDialogInstance = null;                                               // lazy load
@@ -48,7 +49,10 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     }
 
     private void setSeasonTextViewText()
-    { if (null != this.observation) this.setSeasonTextViewText(this.observation.getSeason()); }
+    {
+        if (null != this.insideObservation)
+            this.setSeasonTextViewText(this.insideObservation.getSeason());
+    }
 
     private org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog seasonAlertDialog()
     {
@@ -66,7 +70,10 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     }
 
     private void showSeasonAlertDialog()
-    { if (null != this.observation) this.seasonAlertDialog().show(this.observation.getSeason()); }
+    {
+        if (null != this.insideObservation)
+            this.seasonAlertDialog().show(this.insideObservation.getSeason());
+    }
     // endregion
 
     ObservationAlertDialog(final android.app.Activity activity,
@@ -143,36 +150,36 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
-        if (null != this.observation)
+        if (null != this.outsideObservation)
         {
-            this.observation.setGermplasmDbId(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setGermplasmDbId(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.germplasmDbIdEditText));
-            this.observation.setGermplasmName(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setGermplasmName(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.germplasmNameEditText));
-            this.observation.setObservationDbId(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setObservationDbId(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.observationDbIdEditText));
-            this.observation.setObservationLevel(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setObservationLevel(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.observationLevelEditText));
-            this.observation.setObservationTimeStamp(org.wheatgenetics.brapi1_3.studies.nour.o
-                .ObservationAlertDialog.getEditTextTimeStampText(
+            this.outsideObservation.setObservationTimeStamp(org.wheatgenetics.brapi1_3
+                .studies.nour.o.ObservationAlertDialog.getEditTextTimeStampText(
                     this.observationTimeStampEditText));
-            this.observation.setObservationUnitDbId(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setObservationUnitDbId(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.observationUnitDbIdEditText));
-            this.observation.setObservationUnitName(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setObservationUnitName(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.observationUnitNameEditText));
-            this.observation.setObservationVariableDbId(org.wheatgenetics.brapi1_3.studies.nour.o
-                .ObservationAlertDialog.getEditTextStringText(
+            this.outsideObservation.setObservationVariableDbId(org.wheatgenetics.brapi1_3
+                .studies.nour.o.ObservationAlertDialog.getEditTextStringText(
                     this.observationVariableDbIdEditText));
-            this.observation.setObservationVariableName(org.wheatgenetics.brapi1_3.studies.nour.o
-                .ObservationAlertDialog.getEditTextStringText(
+            this.outsideObservation.setObservationVariableName(org.wheatgenetics.brapi1_3
+                .studies.nour.o.ObservationAlertDialog.getEditTextStringText(
                     this.observationVariableNameEditText));
-            this.observation.setOperator(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setOperator(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.operatorEditText));
-            this.observation.setStudyDbId(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setStudyDbId(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.studyDbIdEditText));
-            this.observation.setUploadedBy(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setUploadedBy(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.uploadedByEditText));
-            this.observation.setValue(org.wheatgenetics.brapi1_3.studies.nour.o
+            this.outsideObservation.setValue(org.wheatgenetics.brapi1_3.studies.nour.o
                 .ObservationAlertDialog.getEditTextStringText(this.valueEditText));
 
             super.handlePositiveButtonClick();
@@ -180,41 +187,44 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     }
     // endregion
 
-    void show(final io.swagger.client.model.Observation observation)
+    void show(final io.swagger.client.model.Observation outsideObservation)
     {
-        if (null != observation)
+        if (null != outsideObservation)
         {
-            this.observation = observation;
+            this.outsideObservation = outsideObservation;
+            this.insideObservation  = new org.wheatgenetics.brapi1_3.studies.nour.o.Observation(
+                this.outsideObservation);
 
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.germplasmDbIdEditText, this.observation.getGermplasmDbId());
+                this.germplasmDbIdEditText, this.insideObservation.getGermplasmDbId());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.germplasmNameEditText, this.observation.getGermplasmName());
+                this.germplasmNameEditText, this.insideObservation.getGermplasmName());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.observationDbIdEditText, this.observation.getObservationDbId());
+                this.observationDbIdEditText, this.insideObservation.getObservationDbId());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.observationLevelEditText, this.observation.getObservationLevel());
+                this.observationLevelEditText, this.insideObservation.getObservationLevel());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.observationTimeStampEditText, this.observation.getObservationTimeStamp());
+                this.observationTimeStampEditText               ,
+                this.insideObservation.getObservationTimeStamp());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.observationUnitDbIdEditText, this.observation.getObservationUnitDbId());
+                this.observationUnitDbIdEditText, this.insideObservation.getObservationUnitDbId());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.observationUnitNameEditText, this.observation.getObservationUnitName());
+                this.observationUnitNameEditText, this.insideObservation.getObservationUnitName());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
                 this.observationVariableDbIdEditText         ,
-                this.observation.getObservationVariableDbId());
+                this.insideObservation.getObservationVariableDbId());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
                 this.observationVariableNameEditText         ,
-                this.observation.getObservationVariableName());
+                this.insideObservation.getObservationVariableName());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.operatorEditText, this.observation.getOperator());
+                this.operatorEditText, this.insideObservation.getOperator());
             this.setSeasonTextViewText();
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.studyDbIdEditText, this.observation.getStudyDbId());
+                this.studyDbIdEditText, this.insideObservation.getStudyDbId());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.uploadedByEditText, this.observation.getUploadedBy());
+                this.uploadedByEditText, this.insideObservation.getUploadedBy());
             org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.setEditTextText(
-                this.valueEditText, this.observation.getValue());
+                this.valueEditText, this.insideObservation.getValue());
 
             this.show();
         }
