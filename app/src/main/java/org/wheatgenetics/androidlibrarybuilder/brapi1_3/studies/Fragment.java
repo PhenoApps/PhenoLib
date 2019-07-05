@@ -1132,6 +1132,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         }
     }
 
+    private java.lang.String getNewObservationUnitRequestsAsString()
+    {
+        return null == this.newObservationUnitRequests ?
+            "null" : this.newObservationUnitRequests.toString();
+    }
+
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
     .StudiesStudyDbIdObservationunitsPutAlertDialog.Parameters
     studiesStudyDbIdObservationunitsPutParameters()
@@ -1157,6 +1163,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                         {
                             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
                                 .Fragment.this.studiesStudyDbIdObservationunitsPut();
+                        }
+
+                        @java.lang.Override
+                        public java.lang.String getNewObservationUnitRequestsAsString()
+                        {
+                            return org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                                .Fragment.this.getNewObservationUnitRequestsAsString();
                         }
                     });
         return this.studiesStudyDbIdObservationunitsPutAlertDialogInstance;
