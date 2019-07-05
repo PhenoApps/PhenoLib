@@ -35,8 +35,8 @@ extends org.wheatgenetics.brapi1_3.PagedAlertDialog
         .StudiesStudyDbIdObservationunitsGetAlertDialog.Parameters parameters = null;
     // endregion
 
-    StudiesStudyDbIdObservationunitsGetAlertDialog(final android.app.Activity activity, final
-    org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+    StudiesStudyDbIdObservationunitsGetAlertDialog(final android.app.Activity activity,
+    final org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdObservationunitsGetAlertDialog.Handler handler)
     { super(activity, handler); }
 

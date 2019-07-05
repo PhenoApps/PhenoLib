@@ -188,8 +188,14 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     // endregion
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected org.wheatgenetics.brapi1_3.AlertDialog.Handler getHandler() { return this.handler; }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void handlePositiveButtonClick()
-    { if (null != this.handler) this.handler.handleDone(); }
+    {
+        final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler = this.getHandler();
+        if (null != handler) handler.handleDone();
+    }
     // endregion
 
     public AlertDialog(final android.app.Activity activity,
