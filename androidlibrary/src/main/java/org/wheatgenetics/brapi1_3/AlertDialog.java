@@ -129,8 +129,8 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected static org.threeten.bp.OffsetDateTime getEditTextTimeStampText
-    (final android.widget.EditText editText)
+    protected static org.threeten.bp.OffsetDateTime getEditTextTimeStampText(
+    final android.widget.EditText editText)
     {
         final org.threeten.bp.OffsetDateTime result;
         {

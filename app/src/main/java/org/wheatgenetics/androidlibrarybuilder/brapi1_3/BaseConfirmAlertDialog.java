@@ -59,15 +59,14 @@ public abstract class BaseConfirmAlertDialog extends org.wheatgenetics.brapi1_3.
     protected void configure(         final android.view.View view      ,
     @android.support.annotation.IdRes final int               textViewId)
     {
-        this.setTitle(this.title);
         if (null != view) if (null == this.textView) this.textView = view.findViewById(textViewId);
-        this.setView(view);
-        super.configure();
+        this.setView(view); super.configure();
     }
 
     public BaseConfirmAlertDialog(final android.app.Activity activity,
     final org.wheatgenetics.androidlibrarybuilder.brapi1_3.BaseConfirmAlertDialog.Handler handler,
     final java.lang.String title) { super(activity, handler); this.title = title; }
 
-    @java.lang.Override public void show() { this.setTextViewText(); super.show(); }
+    @java.lang.Override public void show()
+    { this.setTitle(this.title); this.setTextViewText(); super.show(); }
 }
