@@ -1202,8 +1202,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                                 .Fragment.this.studiesStudyDbIdObservationunitsPut();
                         }
 
-                        @java.lang.Override
-                        public java.lang.String getNewObservationUnitRequestsAsString()
+                        @java.lang.Override public java.lang.String getConfirmTextViewText()
                         {
                             return org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
                                 .Fragment.this.getNewObservationUnitRequestsAsString();

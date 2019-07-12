@@ -30,7 +30,7 @@
         tools:ignore="Autofill, HardcodedText" />
 
     <TextView
-        android:id="@+id/studiesStudiesStudyDbIdObservationunitsPutDebugTextView"
+        android:id="@+id/studiesStudiesStudyDbIdObservationunitsPutConfirmTextView"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
