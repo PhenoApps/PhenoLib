@@ -241,11 +241,11 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
         return true;
     }
 
-    @java.lang.Override public boolean onOptionsItemSelected(final android.view.MenuItem menuItem)
+    @java.lang.Override public boolean onOptionsItemSelected(
+    @android.support.annotation.NonNull final android.view.MenuItem menuItem)
     {
         // Handle action bar menuItem clicks here.  The action bar will automatically handle clicks
         // on the Home/Up button so long as you specify a parent activity in AndroidManifest.xml.
-        if (null != menuItem)
         {
             @android.support.annotation.MenuRes final int id = menuItem.getItemId();
 
@@ -283,11 +283,11 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     { if (null != this.viewPager) this.viewPager.clearOnPageChangeListeners(); super.onDestroy(); }
 
     // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier Overridden Methods
-    @java.lang.Override public java.lang.String authorization()
-    { return this.authorizationInstance; }
-
     @java.lang.Override @android.support.annotation.NonNull
     public io.swagger.client.ApiClient apiClient() { return this.apiClientInstance; }
+
+    @java.lang.Override public java.lang.String authorization()
+    { return this.authorizationInstance; }
 
     @java.lang.Override public java.lang.CharSequence testServerBasePath()
     { return this.testServerBasePathInstance; }
