@@ -163,7 +163,8 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
             this.toolBarTextView.setText(this.getString(
                 /* resId => */
                     org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
-                /* formatArgs => */ this.fragmentNames[i], this.apiClient().getBasePath()));
+                /* formatArgs => */ this.fragmentNames[i], this.apiClient().getBasePath(),
+                    this.authorization()));
     }
 
     private void setToolbarTitleToFirstFragmentName()
@@ -304,7 +305,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     { this.apiClient().setBasePath(basePath); this.setToolbarTitleToFirstFragmentName(); }
 
     @java.lang.Override public void setAuthorization(final java.lang.String authorization)
-    { this.authorizationInstance = authorization; }
+    { this.authorizationInstance = authorization; this.setToolbarTitleToFirstFragmentName(); }
     // endregion
     // endregion
 }
