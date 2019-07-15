@@ -13,10 +13,12 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.support.v4.app.FragmentPagerAdapter
  * android.support.v4.view.ViewPager
  * android.support.v4.view.ViewPager.OnPageChangeListener
+ * android.support.v7.app.ActionBar
  * android.support.v7.app.AppCompatActivity
  * android.support.v7.widget.Toolbar
  * android.view.Menu
  * android.view.MenuItem
+ * android.widget.TextView
  *
  * io.swagger.client.ApiClient
  *
@@ -142,8 +144,8 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
     private java.lang.String fragmentNames[] = null;
 
-    private android.support.v7.widget.Toolbar toolbar   = null;
-    private android.support.v4.view.ViewPager viewPager = null;
+    private android.widget.TextView           toolBarTextView = null;
+    private android.support.v4.view.ViewPager viewPager       = null;
 
     private       java.lang.String            authorizationInstance = null                         ;
     private final io.swagger.client.ApiClient apiClientInstance = new io.swagger.client.ApiClient();
@@ -157,14 +159,15 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     to   = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX )
     final int i)
     {
-        if (null != this.fragmentNames && null != this.toolbar)
-            this.toolbar.setTitle(this.getString(
+        if (null != this.fragmentNames && null != this.toolBarTextView)
+            this.toolBarTextView.setText(this.getString(
                 /* resId => */
                     org.wheatgenetics.androidlibrarybuilder.R.string.title_toolbar_brapi1_3,
-                /* formatArgs => */ this.apiClient().getBasePath(), this.fragmentNames[i]));
+                /* formatArgs => */ this.fragmentNames[i], this.apiClient().getBasePath(),
+                    this.authorization()));
     }
 
-    private void setToolbarTitleToFirst()
+    private void setToolbarTitleToFirstFragmentName()
     {
         this.setToolBarTitle(
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX);
@@ -203,10 +206,16 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
                 org.wheatgenetics.androidlibrarybuilder.R.array.fragmentNames);
         }
 
-        this.toolbar = this.findViewById(
-            org.wheatgenetics.androidlibrarybuilder.R.id.toolbar);            // From layout/acti-
-        this.setSupportActionBar(this.toolbar);                               //  vity_brapi1_3.xml.
-        this.setToolbarTitleToFirst();
+        this.setSupportActionBar((android.support.v7.widget.Toolbar) this.findViewById(
+            org.wheatgenetics.androidlibrarybuilder.R.id.toolbar));           // From layout/acti-
+        {                                                                     //  vity_brapi1_3.xml.
+            final android.support.v7.app.ActionBar supportActionBar = this.getSupportActionBar();
+            if (null != supportActionBar) supportActionBar.setDisplayShowTitleEnabled(false);
+        }
+
+        this.toolBarTextView = this.findViewById(
+            org.wheatgenetics.androidlibrarybuilder.R.id.toolBarTextView);
+        this.setToolbarTitleToFirstFragmentName();
 
         this.viewPager = this.findViewById(
             org.wheatgenetics.androidlibrarybuilder.R.id.view_pager);         // From layout/acti-
@@ -241,11 +250,11 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
         return true;
     }
 
-    @java.lang.Override public boolean onOptionsItemSelected(final android.view.MenuItem menuItem)
+    @java.lang.Override public boolean onOptionsItemSelected(
+    @android.support.annotation.NonNull final android.view.MenuItem menuItem)
     {
         // Handle action bar menuItem clicks here.  The action bar will automatically handle clicks
         // on the Home/Up button so long as you specify a parent activity in AndroidManifest.xml.
-        if (null != menuItem)
         {
             @android.support.annotation.MenuRes final int id = menuItem.getItemId();
 
@@ -283,20 +292,20 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     { if (null != this.viewPager) this.viewPager.clearOnPageChangeListeners(); super.onDestroy(); }
 
     // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier Overridden Methods
-    @java.lang.Override public java.lang.String authorization()
-    { return this.authorizationInstance; }
-
     @java.lang.Override @android.support.annotation.NonNull
     public io.swagger.client.ApiClient apiClient() { return this.apiClientInstance; }
+
+    @java.lang.Override public java.lang.String authorization()
+    { return this.authorizationInstance; }
 
     @java.lang.Override public java.lang.CharSequence testServerBasePath()
     { return this.testServerBasePathInstance; }
 
     @java.lang.Override public void setBasePath(final java.lang.String basePath)
-    { this.apiClient().setBasePath(basePath); this.setToolbarTitleToFirst(); }
+    { this.apiClient().setBasePath(basePath); this.setToolbarTitleToFirstFragmentName(); }
 
     @java.lang.Override public void setAuthorization(final java.lang.String authorization)
-    { this.authorizationInstance = authorization; }
+    { this.authorizationInstance = authorization; this.setToolbarTitleToFirstFragmentName(); }
     // endregion
     // endregion
 }

@@ -27,8 +27,8 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     // region Types
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface Supplier
     {
-                                            public abstract java.lang.String        authorization();
         @android.support.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient();
+                                            public abstract java.lang.String        authorization();
     }
 
     @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
@@ -82,13 +82,13 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     {
         final android.app.Activity activity = this.getActivity();
         if (null != activity) activity.runOnUiThread(new java.lang.Runnable()
-        {
-            @java.lang.Override public void run()
             {
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                    .Fragment.this.setResponseTextViewText(text);
-            }
-        });
+                @java.lang.Override public void run()
+                {
+                    org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                        .Fragment.this.setResponseTextViewText(text);
+                }
+            });
     }
     // endregion
 
@@ -182,28 +182,27 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     {
         final android.app.Activity activity = this.getActivity();
         if (null != activity) activity.runOnUiThread(new java.lang.Runnable()
-        {
-            @java.lang.Override public void run()
             {
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                    .Fragment.this.setResponseTextViewText(throwable);
-            }
-        });
+                @java.lang.Override public void run()
+                {
+                    org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                        .Fragment.this.setResponseTextViewText(throwable);
+                }
+            });
     }
     // endregion
 
     // region Supplier Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.NonNull protected io.swagger.client.ApiClient apiClient()
+    @android.support.annotation.Nullable protected io.swagger.client.ApiClient apiClient()
     {
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
             this.getSupplier();
-        // noinspection ConstantConditions
         return null == supplier ? null : supplier.apiClient();
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected java.lang.String authorization()
+    @android.support.annotation.Nullable protected java.lang.String authorization()
     {
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
             this.getSupplier();
