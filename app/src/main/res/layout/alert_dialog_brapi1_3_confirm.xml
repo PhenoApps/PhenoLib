@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
 
         android:textIsSelectable="true"
+
         app:fontFamily="monospace" />
 
 </LinearLayout>
