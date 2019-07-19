@@ -186,4 +186,11 @@
     <string name="ObservationTreatmentAlertDialogTitle">Treatment</string>
     <string name="ObservationTreatmentAlertDialogFactorEditTextHint">factor</string>
     <string name="ObservationTreatmentAlertDialogModalityEditTextHint">modality</string>
+
+
+    <!-- NewObservationsTableRequestAlertDialog -->
+    <string name="NewObservationsTableRequestAlertDialogTitle">NewObservationsTableRequest</string>
+    <string name="NewObservationsTableRequestAlertDialogHeaderRowEditTextHint">headerRow</string>
+    <string name="NewObservationsTableRequestAlertDialogObservationVariableDbIdsEditTextHint">observationVariableDbIds</string>
+    <string name="NewObservationsTableRequestAlertDialogDataEditTextHint">data</string>
 </resources>

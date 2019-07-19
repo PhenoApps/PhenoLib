@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/newObservationsTableRequestHeaderRowEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsTableRequestAlertDialogHeaderRowEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+
+        app:fontFamily="monospace"
+
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/newObservationsTableRequestObservationVariableDbIdsEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsTableRequestAlertDialogObservationVariableDbIdsEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+
+        app:fontFamily="monospace"
+
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/newObservationsTableRequestDataEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NewObservationsTableRequestAlertDialogDataEditTextHint"
+        android:inputType="textMultiLine"
+        android:lines="25"
+        android:scrollbars="vertical"
+
+        app:fontFamily="monospace"
+
+        tools:ignore="Autofill" />
+
+</LinearLayout>
