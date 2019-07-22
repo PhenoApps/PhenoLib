@@ -16,7 +16,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
  *
- * org.wheatgenetics.brapi1_3.studies.Application
+ * org.wheatgenetics.brapi1_3.Application
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.Handler
@@ -60,8 +60,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
         if (null == this.itemsInstance)
         {
             final android.app.Application application = this.getApplication();
-            if (application instanceof org.wheatgenetics.brapi1_3.studies.Application)
-                this.itemsInstance = ((org.wheatgenetics.brapi1_3.studies.Application) application)
+            if (application instanceof org.wheatgenetics.brapi1_3.Application)
+                this.itemsInstance = ((org.wheatgenetics.brapi1_3.Application) application)
                     .getObservationsAsItems();
         }
         return null == this.itemsInstance ? null : this.itemsInstance.get(position);

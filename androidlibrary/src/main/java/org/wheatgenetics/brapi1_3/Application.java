@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3;
 
 /**
  * Uses:
@@ -29,8 +29,8 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     private enum LastMadeItems { NONE, SLR, NOR, NOUR }
 
     // region Fields
-    private org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems lastMadeItems =
-        org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NONE;
+    private org.wheatgenetics.brapi1_3.Application.LastMadeItems lastMadeItems =
+        org.wheatgenetics.brapi1_3.Application.LastMadeItems.NONE;
     private org.wheatgenetics.javalib.mstrdtl.Items items = null;
 
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
@@ -84,7 +84,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     {
         this.items = new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest(
             observationUnitPositionsResponse);
-        this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.SLR;
+        this.lastMadeItems = org.wheatgenetics.brapi1_3.Application.LastMadeItems.SLR;
     }
 
     public void makeNewObservationsRequest(
@@ -92,7 +92,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     {
         this.items = new org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest(
             observationsResponse);
-        this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NOR;
+        this.lastMadeItems = org.wheatgenetics.brapi1_3.Application.LastMadeItems.NOR;
     }
 
     // region nour Public Methods
@@ -101,7 +101,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     {
         this.items = new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests(
             observationUnitsResponse1);
-        this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NOUR;
+        this.lastMadeItems = org.wheatgenetics.brapi1_3.Application.LastMadeItems.NOUR;
     }
 
     public void setNewObservationUnitRequestPosition(
