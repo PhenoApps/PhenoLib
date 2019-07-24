@@ -62,7 +62,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
             final android.app.Application application = this.getApplication();
             if (application instanceof org.wheatgenetics.brapi1_3.Application)
                 this.itemsInstance = ((org.wheatgenetics.brapi1_3.Application) application)
-                    .getObservationsAsItems();
+                    .getNOURObservationsAsItems();
         }
         return null == this.itemsInstance ? null : this.itemsInstance.get(position);
     }

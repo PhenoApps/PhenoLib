@@ -355,9 +355,8 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     // endregion
 
     NewObservationUnitRequestAlertDialog(final android.app.Activity activity, final
-        org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler
-            handler,
-    final @android.support.annotation.NonNull
+    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler handler,
+    @android.support.annotation.NonNull final
         org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
             activityHandler) { super(activity, handler); this.activityHandler = activityHandler; }
 

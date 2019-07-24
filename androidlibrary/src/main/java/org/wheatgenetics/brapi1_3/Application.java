@@ -95,7 +95,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
         this.lastMadeItems = org.wheatgenetics.brapi1_3.Application.LastMadeItems.NOR;
     }
 
-    // region nour Public Methods
+    // region studies.nour Public Methods
     public void makeNewObservationUnitRequests(
     final io.swagger.client.model.ObservationUnitsResponse1 observationUnitsResponse1)
     {
@@ -118,7 +118,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
             newObservationUnitRequest.getObservationUnitXrefsAsItems();
     }
 
-    public org.wheatgenetics.brapi1_3.studies.nour.o.Observations getObservationsAsItems()
+    public org.wheatgenetics.brapi1_3.studies.nour.o.Observations getNOURObservationsAsItems()
     {
         final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
             newObservationUnitRequest = this.newObservationUnitRequest();
