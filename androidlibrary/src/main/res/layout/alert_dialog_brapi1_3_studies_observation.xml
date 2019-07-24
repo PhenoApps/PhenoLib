@@ -12,7 +12,7 @@
         android:id="@+id/studiesObservationGermplasmDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogGermplasmDbIdEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogGermplasmDbIdEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -21,7 +21,7 @@
         android:id="@+id/studiesObservationGermplasmNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogGermplasmNameEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogGermplasmNameEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -30,7 +30,7 @@
         android:id="@+id/studiesObservationObservationDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogObservationDbIdEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogObservationDbIdEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -39,7 +39,7 @@
         android:id="@+id/studiesObservationObservationLevelEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogObservationLevelEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogObservationLevelEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -48,7 +48,7 @@
         android:id="@+id/studiesObservationObservationTimeStampEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogObservationTimeStampEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogObservationTimeStampEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -57,7 +57,7 @@
         android:id="@+id/studiesObservationObservationUnitDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogObservationUnitDbIdEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogObservationUnitDbIdEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -66,7 +66,7 @@
         android:id="@+id/studiesObservationObservationUnitNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogObservationUnitNameEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogObservationUnitNameEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -75,7 +75,7 @@
         android:id="@+id/studiesObservationObservationVariableDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogObservationVariableDbIdEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogObservationVariableDbIdEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -84,7 +84,7 @@
         android:id="@+id/studiesObservationObservationVariableNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogObservationVariableNameEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogObservationVariableNameEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -93,7 +93,7 @@
         android:id="@+id/studiesObservationOperatorEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogOperatorEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogOperatorEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -118,7 +118,7 @@
             android:layout_marginEnd="4dp"
 
             android:labelFor="@id/studiesObservationSeasonValueTextView"
-            android:text="@string/ObservationAlertDialogSeasonLabelTextViewText"
+            android:text="@string/NOURObservationAlertDialogSeasonLabelTextViewText"
             android:textSize="18sp" />
 
         <TextView
@@ -157,7 +157,7 @@
         android:id="@+id/studiesObservationStudyDbIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogStudyDbIdEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogStudyDbIdEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -166,7 +166,7 @@
         android:id="@+id/studiesObservationUploadedByEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogUploadedByEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogUploadedByEditTextHint"
         android:inputType="text"
         android:maxLines="1"
         tools:ignore="Autofill" />
@@ -175,7 +175,7 @@
         android:id="@+id/studiesObservationValueEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ObservationAlertDialogValueEditTextHint"
+        android:hint="@string/NOURObservationAlertDialogValueEditTextHint"
         android:inputType="number"
         android:maxLines="1"
         tools:ignore="Autofill" />
