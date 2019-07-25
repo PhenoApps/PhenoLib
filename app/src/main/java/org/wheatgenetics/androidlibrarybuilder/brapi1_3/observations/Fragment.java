@@ -34,20 +34,20 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private io.swagger.client.api.ObservationsApi observationsApiInstance = null;       // lazy load
 
     // region observationlevelsGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog
-        observationlevelsGetAlertDialogInstance = null;                                 // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Parameters
         observationlevelsGetParametersInstance = null;                                  // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog
+        observationlevelsGetAlertDialogInstance = null;                                 // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.ApiCallback<
         io.swagger.client.model.ObservationLevelsResponse>
             observationLevelsResponseCallbackInstance = null;                           // lazy load
     // endregion
 
     // region observationunitsGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
-        .ObservationunitsGetAlertDialog observationunitsGetAlertDialogInstance = null;  // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations               // lazy load
         .ObservationunitsGetAlertDialog.Parameters observationunitsGetParametersInstance = null;
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
+        .ObservationunitsGetAlertDialog observationunitsGetAlertDialogInstance = null;  // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.ApiCallback<
         io.swagger.client.model.ObservationUnitsResponse>
             observationUnitsResponseCallbackInstance = null;                            // lazy load
@@ -210,12 +210,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             // The following ? ids are from fragment_brapi1_3_observations.xml.              // TODO
             {
                 final android.widget.Button observationlevelsGetButton = rootView.findViewById(
-                    org.wheatgenetics.androidlibrarybuilder.R.id.observationlevelsGetButton);
+                    org.wheatgenetics.androidlibrarybuilder.R.id
+                        .observationsObservationlevelsGetButton);
                 if (null != observationlevelsGetButton)
                     observationlevelsGetButton.setOnClickListener(
                         new android.view.View.OnClickListener()
                         {
-                            @java.lang.Override public void onClick(final android.view.View v)
+                            @java.lang.Override public void onClick(final android.view.View view)
                             {
                                 org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
                                     .Fragment.this.showObservationlevelsGetAlertDialog();
@@ -224,11 +225,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             }
             {
                 final android.widget.Button observationunitsGetButton = rootView.findViewById(
-                    org.wheatgenetics.androidlibrarybuilder.R.id.observationunitsGetButton);
+                    org.wheatgenetics.androidlibrarybuilder.R.id
+                        .observationsObservationunitsGetButton);
                 if (null != observationunitsGetButton) observationunitsGetButton.setOnClickListener(
                     new android.view.View.OnClickListener()
                     {
-                        @java.lang.Override public void onClick(final android.view.View v)
+                        @java.lang.Override public void onClick(final android.view.View view)
                         {
                             org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
                                 .Fragment.this.showObservationunitsGetAlertDialog();
