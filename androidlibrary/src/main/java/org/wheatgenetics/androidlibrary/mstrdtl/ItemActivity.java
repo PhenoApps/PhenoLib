@@ -8,6 +8,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.content.Intent
  * android.os.Bundle
  * android.R
+ * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.support.v4.app.NavUtils
@@ -78,9 +79,10 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
         }
     }
 
-    @java.lang.Override public boolean onOptionsItemSelected(final android.view.MenuItem menuItem)
+    @java.lang.Override public boolean onOptionsItemSelected(
+    @android.support.annotation.NonNull android.view.MenuItem menuItem)
     {
-        if (null != menuItem && menuItem.getItemId() == android.R.id.home)
+        if (menuItem.getItemId() == android.R.id.home)
         {
             // This id represents the Home or Up button.  In the case of this activity, the Up
             // button is shown.  Use NavUtils to allow users to navigate up one level in the
