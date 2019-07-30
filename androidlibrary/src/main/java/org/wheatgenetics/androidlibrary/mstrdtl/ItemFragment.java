@@ -54,7 +54,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     private org.wheatgenetics.javalib.mstrdtl.Item item = null;
 
-    private android.widget.TextView contentTextView = null;
+    private android.support.design.widget.CollapsingToolbarLayout collapsingToolbarLayout = null;
+    private android.widget.TextView                               contentTextView         = null;
     // endregion
 
     // region private Methods
@@ -64,6 +65,12 @@ public class ItemFragment extends android.support.v4.app.Fragment
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
             null == this.getter ? this.getterChanger : this.getter;
         return null == getter ? null : getter.get(position);
+    }
+
+    private void setToolbarTitle()
+    {
+        if (null != this.item && null != this.collapsingToolbarLayout)
+            this.collapsingToolbarLayout.setTitle(this.item.getTitle());
     }
 
     private void setContentTextViewText()
@@ -121,25 +128,16 @@ public class ItemFragment extends android.support.v4.app.Fragment
                     catch (final java.lang.IndexOutOfBoundsException e) { this.item = null; }
             }
 
-            if (null != this.item)
+            final java.lang.String COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = org.wheatgenetics
+                .androidlibrary.mstrdtl.ItemFragment.COLLAPSING_TOOLBAR_LAYOUT_ID_KEY;
+            if (arguments.containsKey(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY))
             {
-                final java.lang.String COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = org.wheatgenetics
-                    .androidlibrary.mstrdtl.ItemFragment.COLLAPSING_TOOLBAR_LAYOUT_ID_KEY;
-                if (arguments.containsKey(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY))
                 {
-                    final android.support.design.widget.CollapsingToolbarLayout
-                        collapsingToolbarLayout;
-                    {
-                        final android.app.Activity activity = this.getActivity();
-                        if (null == activity)
-                            collapsingToolbarLayout = null;
-                        else
-                            collapsingToolbarLayout = activity.findViewById(
-                                arguments.getInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY));
-                    }
-                    if (collapsingToolbarLayout != null)
-                        collapsingToolbarLayout.setTitle(this.item.getTitle());
+                    final android.app.Activity activity = this.getActivity();
+                    if (null != activity) this.collapsingToolbarLayout = activity.findViewById(
+                        arguments.getInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY));
                 }
+                this.setToolbarTitle();
             }
         }
     }
@@ -182,5 +180,5 @@ public class ItemFragment extends android.support.v4.app.Fragment
     { this.getter = this.getterChanger = null; super.onDetach(); }
     // endregion
 
-    void refreshSinceItemHasChanged() { this.setContentTextViewText(); }
+    void refreshSinceItemHasChanged() { this.setToolbarTitle(); this.setContentTextViewText(); }
 }
