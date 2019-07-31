@@ -4,6 +4,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * Uses:
  * android.annotation.SuppressLint
  * android.app.Activity
+ * android.app.Application
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
  * android.support.annotation.IntRange
@@ -28,9 +29,8 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
+ * org.wheatgenetics.brapi1_3.Application
  * org.wheatgenetics.brapi1_3.TypeAlertDialog
- *
- * org.wheatgenetics.brapi1_3.studies.nour.Utils
  */
 class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
@@ -174,6 +174,35 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     // endregion
 
     // region Private Methods
+    private boolean setNewObservationUnitRequestPosition()
+    {
+        final boolean success;
+        {
+            final android.app.Activity activity = this.activity();
+            if (null == activity)
+                success = false;
+            else
+            {
+                final android.app.Application androidApplication = activity.getApplication();
+                if (androidApplication instanceof org.wheatgenetics.brapi1_3.Application)
+                {
+                    final org.wheatgenetics.brapi1_3.Application brapi1_3Application =
+                        (org.wheatgenetics.brapi1_3.Application) androidApplication;
+                    if (null == this.newObservationUnitRequest)
+                        success = false;
+                    else
+                    {
+                        brapi1_3Application.setNewObservationUnitRequestPosition(
+                            this.newObservationUnitRequest.getPosition());
+                        success = true;
+                    }
+                }
+                else success = false;
+            }
+        }
+        return success;
+    }
+
     // region observationUnitXref Private Methods
     @android.annotation.SuppressLint({"DefaultLocale"})
     private void setObservationUnitXrefTextViewText(@android.support.annotation.Nullable
@@ -192,12 +221,8 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
 
     private void showObservationUnitXrefListActivity()
     {
-        if (null != this.newObservationUnitRequest)
-        {
-            org.wheatgenetics.brapi1_3.studies.nour.Utils.setNewObservationUnitRequestPosition(
-                this.activity(), this.newObservationUnitRequest);
+        if (this.setNewObservationUnitRequestPosition())
             this.activityHandler.showObservationUnitXrefListActivity();
-        }
     }
     // endregion
 
@@ -219,12 +244,8 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
 
     private void showObservationsListActivity()
     {
-        if (null != this.newObservationUnitRequest)
-        {
-            org.wheatgenetics.brapi1_3.studies.nour.Utils.setNewObservationUnitRequestPosition(
-                this.activity(), this.newObservationUnitRequest);
+        if (this.setNewObservationUnitRequestPosition())
             this.activityHandler.showObservationsListActivity();
-        }
     }
     // endregion
 
@@ -344,12 +365,8 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
 
     private void showObservationTreatmentsListActivity()
     {
-        if (null != this.newObservationUnitRequest)
-        {
-            org.wheatgenetics.brapi1_3.studies.nour.Utils.setNewObservationUnitRequestPosition(
-                this.activity(), this.newObservationUnitRequest);
+        if (this.setNewObservationUnitRequestPosition())
             this.activityHandler.showObservationTreatmentsListActivity();
-        }
     }
     // endregion
     // endregion

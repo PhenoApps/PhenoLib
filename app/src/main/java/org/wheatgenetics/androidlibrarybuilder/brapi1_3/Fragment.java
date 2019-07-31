@@ -31,9 +31,8 @@ public abstract class Fragment extends android.support.v4.app.Fragment
                                             public abstract java.lang.String        authorization();
     }
 
-    @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
-    protected abstract class ApiCallback<T> extends java.lang.Object
-    implements io.swagger.client.ApiCallback<T>
+    @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) protected abstract class
+    ApiCallback<T> extends java.lang.Object implements io.swagger.client.ApiCallback<T>
     {
         private void setResponseTextViewText(final T result)
         {
@@ -68,8 +67,8 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     // endregion
 
     // region Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier       ;
-    private android.widget.TextView                                    responseTextView = null;
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier            ;
+    private android.widget.TextView                                         responseTextView = null;
     // endregion
 
     // region Private Methods

@@ -351,8 +351,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
 
     StudyLayoutRequestLayoutAlertDialog(final android.app.Activity activity,
     final org.wheatgenetics.brapi1_3.studies.slr
-        .StudyLayoutRequestLayoutAlertDialog.Handler handler)
-    { super(activity, handler); }
+        .StudyLayoutRequestLayoutAlertDialog.Handler handler) { super(activity, handler); }
 
     // region Overridden methods
     @java.lang.Override public void configure()
