@@ -80,7 +80,7 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
     }
 
     @java.lang.Override public boolean onOptionsItemSelected(
-    @android.support.annotation.NonNull android.view.MenuItem menuItem)
+    @android.support.annotation.NonNull final android.view.MenuItem menuItem)
     {
         if (menuItem.getItemId() == android.R.id.home)
         {

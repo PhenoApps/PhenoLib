@@ -19,9 +19,8 @@ class ExtraDevice extends org.wheatgenetics.usb.Device
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final int                  productIds[])
     {
         super(
-            /* usbDevice => */ (android.hardware.usb.UsbDevice)
-                activity.getIntent().getParcelableExtra(
-                    android.hardware.usb.UsbManager.EXTRA_DEVICE),
+            /* usbDevice => */ (android.hardware.usb.UsbDevice) activity.getIntent()
+                .getParcelableExtra(android.hardware.usb.UsbManager.EXTRA_DEVICE),
             /* usbManager => */ (android.hardware.usb.UsbManager) activity.getSystemService(
                 android.content.Context.USB_SERVICE));
 

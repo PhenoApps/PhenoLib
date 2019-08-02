@@ -51,9 +51,9 @@ public class Device extends java.lang.Object
     private       android.hardware.usb.UsbDevice  usbDevice ;
     private final android.hardware.usb.UsbManager usbManager;
 
-    private android.hardware.usb.UsbInterface        usbInterface        = null;
-    private android.hardware.usb.UsbEndpoint         usbEndpoint         = null;
-    private android.hardware.usb.UsbDeviceConnection usbDeviceConnection = null;
+    private android.hardware.usb.UsbInterface        usbInterface        = null;        // lazy load
+    private android.hardware.usb.UsbEndpoint         usbEndpoint         = null;        // lazy load
+    private android.hardware.usb.UsbDeviceConnection usbDeviceConnection = null;        // lazy load
     // endregion
 
     // region Private Methods
@@ -82,12 +82,12 @@ public class Device extends java.lang.Object
     // endregion
 
     Device(
-                                        final android.hardware.usb.UsbDevice  usbDevice ,
-    @android.support.annotation.NonNull final android.hardware.usb.UsbManager usbManager)
+    final android.hardware.usb.UsbDevice  usbDevice ,
+    final android.hardware.usb.UsbManager usbManager)
     { super(); this.usbDevice = usbDevice; this.usbManager = usbManager; }
 
     // region Overridden Methods
-    @android.support.annotation.NonNull @java.lang.Override public java.lang.String toString()
+    @java.lang.Override @android.support.annotation.NonNull public java.lang.String toString()
     {
         return org.wheatgenetics.javalib.Utils.replaceIfNull(
             this.getDeviceName(), super.toString());
@@ -136,7 +136,7 @@ public class Device extends java.lang.Object
                 throw new org.wheatgenetics.usb.Device.UsbDeviceIsNull();
             else
             {
-                if (null == this.usbInterface)                                         // Lazy load.
+                if (null == this.usbInterface)
                 {
                     this.usbInterface = this.usbDevice.getInterface(0);
                     // noinspection ConstantConditions
@@ -144,10 +144,10 @@ public class Device extends java.lang.Object
                         throw new org.wheatgenetics.usb.Device.GetInterfaceFailed();
                 }
 
-                if (null == this.usbEndpoint)                                          // Lazy load.
+                if (null == this.usbEndpoint)
                     this.usbEndpoint = this.usbInterface.getEndpoint(0);
 
-                if (null == this.usbDeviceConnection)                                  // Lazy load.
+                if (null == this.usbDeviceConnection)
                 {
                     if (null == this.usbManager)
                         throw new org.wheatgenetics.usb.Device.UsbManagerIsNull();
