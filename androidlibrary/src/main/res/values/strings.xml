@@ -193,4 +193,20 @@
     <string name="NewObservationsTableRequestAlertDialogHeaderRowEditTextHint">headerRow</string>
     <string name="NewObservationsTableRequestAlertDialogObservationVariableDbIdsEditTextHint">observationVariableDbIds</string>
     <string name="NewObservationsTableRequestAlertDialogDataEditTextHint">data</string>
+
+
+    <!-- PhenotypesRequestDataAlertDialog -->
+    <string name="PhenotypesRequestDataAlertDialogTitle">PhenotypesRequestData</string>
+    <string name="PhenotypesRequestDataAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
+    <string name="PhenotypesRequestDataAlertDialogObservationsLabelTextViewText">observations</string>
+    <string name="PhenotypesRequestDataAlertDialogStudyDbIdEditTextHint">studyDbId</string>
+
+    <string name="PRObservationAlertDialogTitle">Observation</string>
+    <string name="PRObservationAlertDialogCollectorEditTextHint">collector</string>
+    <string name="PRObservationAlertDialogObservationDbIdEditTextHint">observationDbId</string>
+    <string name="PRObservationAlertDialogObservationTimeStampEditTextHint">observationTimeStamp</string>
+    <string name="PRObservationAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
+    <string name="PRObservationAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
+    <string name="PRObservationAlertDialogSeasonEditTextHint">season</string>
+    <string name="PRObservationAlertDialogValueEditTextHint">value</string>
 </resources>

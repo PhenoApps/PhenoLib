@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/observationsObservationCollectorEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PRObservationAlertDialogCollectorEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/observationsObservationObservationDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PRObservationAlertDialogObservationDbIdEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/observationsObservationObservationTimeStampEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PRObservationAlertDialogObservationTimeStampEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/observationsObservationObservationVariableDbIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PRObservationAlertDialogObservationVariableDbIdEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/observationsObservationObservationVariableNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PRObservationAlertDialogObservationVariableNameEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/observationsObservationSeasonEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PRObservationAlertDialogSeasonEditTextHint"
+        android:inputType="text"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/observationsObservationValueEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PRObservationAlertDialogValueEditTextHint"
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Autofill" />
+
+</LinearLayout>
