@@ -46,8 +46,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
             this.itemFragment                                      ).commit();
     }
 
-    private void appendItem()
-    { this.items().append(); if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
+    private void notifyDataSetChanged()
+    { if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
+
+    private void appendItem() { this.items().append(); this.notifyDataSetChanged(); }
     // endregion
 
     // region Protected Methods
@@ -105,6 +107,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
                 });
             }
     }
+
+    @java.lang.Override protected void onStart() { super.onStart(); this.notifyDataSetChanged(); }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Method
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(

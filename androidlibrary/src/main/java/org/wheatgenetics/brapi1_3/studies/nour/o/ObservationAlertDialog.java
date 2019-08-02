@@ -83,10 +83,10 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     // region Overridden Methods
     @java.lang.Override public void configure()
     {
-        this.setTitle(org.wheatgenetics.androidlibrary.R.string.ObservationAlertDialogTitle);
+        this.setTitle(org.wheatgenetics.androidlibrary.R.string.NOURObservationAlertDialogTitle);
         {
             final android.view.View view = this.inflate(org.wheatgenetics
-                .androidlibrary.R.layout.alert_dialog_brapi1_3_studies_observation);
+                .androidlibrary.R.layout.alert_dialog_brapi1_3_studies_nourobservation);
             if (null != view)
             {
                 if (null == this.germplasmDbIdEditText) this.germplasmDbIdEditText =

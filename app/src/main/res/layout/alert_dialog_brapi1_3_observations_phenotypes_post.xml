@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/observationsPhenotypesPostFormatLabelTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+
+            android:labelFor="@id/observationsPhenotypesPostFormatValueTextView"
+            android:text="format:"
+            android:textSize="18sp"
+
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/observationsPhenotypesPostFormatValueTextView"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@id/observationsPhenotypesPostFormatLabelTextView"
+            android:layout_toEndOf="@id/observationsPhenotypesPostFormatLabelTextView"
+
+            android:layout_marginTop="10dp"
+
+            android:text="@string/nullValueTextViewText"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/observationsPhenotypesPostChangeFormatButton"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+
+            android:text="@string/changeButtonText"
+            android:textAllCaps="false"
+
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/observationsPhenotypesPostConfirmTextView"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textIsSelectable="true"
+        app:fontFamily="monospace" />
+
+</LinearLayout>

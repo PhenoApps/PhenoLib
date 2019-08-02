@@ -13,7 +13,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name="org.wheatgenetics.brapi1_3.studies.Application"
+        android:name="org.wheatgenetics.brapi1_3.Application"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -57,6 +57,11 @@
         <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity"             />
         <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentItemActivity"    />
         <activity android:name="org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity"   />
+
+        <activity android:name="org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataItemActivity" />
+        <activity android:name="org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity"     />
+        <activity android:name="org.wheatgenetics.brapi1_3.observations.pr.o.ObservationItemActivity"         />
+        <activity android:name="org.wheatgenetics.brapi1_3.observations.pr.o.ObservationsListActivity"        />
 
         <activity
             android:name=".brapi1_3.Activity"

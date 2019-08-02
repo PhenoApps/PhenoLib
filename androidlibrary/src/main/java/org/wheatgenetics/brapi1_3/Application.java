@@ -1,4 +1,4 @@
-package org.wheatgenetics.brapi1_3.studies;
+package org.wheatgenetics.brapi1_3;
 
 /**
  * Uses:
@@ -13,6 +13,10 @@ package org.wheatgenetics.brapi1_3.studies;
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
+ * org.wheatgenetics.brapi1_3.observations.pr.o.Observations
+ * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
+ * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
+ *
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest
  *
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
@@ -26,17 +30,18 @@ package org.wheatgenetics.brapi1_3.studies;
 public class Application extends android.app.Application
 implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
 {
-    private enum LastMadeItems { NONE, SLR, NOR, NOUR }
+    private enum LastMadeItems { NONE, SLR, NOR, NOUR, PR }
 
     // region Fields
-    private org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems lastMadeItems =
-        org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NONE;
+    private org.wheatgenetics.brapi1_3.Application.LastMadeItems lastMadeItems =
+        org.wheatgenetics.brapi1_3.Application.LastMadeItems.NONE;
     private org.wheatgenetics.javalib.mstrdtl.Items items = null;
 
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        private int newObservationUnitRequestPosition;
+        private int newObservationUnitRequestPosition, phenotypesRequestDataPosition;
     // endregion
 
+    // region Private Methods
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
     newObservationUnitRequest()
     {
@@ -53,6 +58,22 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
         else
             return null;
     }
+
+    private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData phenotypesRequestData()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Item item;
+        {
+            final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest =
+                (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest)
+                    this.mstrdtlItems();                        // throws java.lang.RuntimeException
+            item = phenotypesRequest.get(this.phenotypesRequestDataPosition);
+        }
+        if (item instanceof org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData)
+            return (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData) item;
+        else
+            return null;
+    }
+    // endregion
 
     // region org.wheatgenetics.javalib.mstrdtl.ItemsProvider Overridden Method
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Items mstrdtlItems()
@@ -72,6 +93,10 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
             case NOUR: if (this.items instanceof
                 org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests)
                     return this.items;
+
+            case PR: if (this.items instanceof
+                org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest)
+                    return this.items;
         }
         throw new java.lang.RuntimeException(
             "Proper make*() was not called before mstrdtlItems() was called");
@@ -84,7 +109,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     {
         this.items = new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest(
             observationUnitPositionsResponse);
-        this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.SLR;
+        this.lastMadeItems = org.wheatgenetics.brapi1_3.Application.LastMadeItems.SLR;
     }
 
     public void makeNewObservationsRequest(
@@ -92,16 +117,16 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
     {
         this.items = new org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest(
             observationsResponse);
-        this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NOR;
+        this.lastMadeItems = org.wheatgenetics.brapi1_3.Application.LastMadeItems.NOR;
     }
 
-    // region nour Public Methods
+    // region studies.nour Public Methods
     public void makeNewObservationUnitRequests(
     final io.swagger.client.model.ObservationUnitsResponse1 observationUnitsResponse1)
     {
         this.items = new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests(
             observationUnitsResponse1);
-        this.lastMadeItems = org.wheatgenetics.brapi1_3.studies.Application.LastMadeItems.NOUR;
+        this.lastMadeItems = org.wheatgenetics.brapi1_3.Application.LastMadeItems.NOUR;
     }
 
     public void setNewObservationUnitRequestPosition(
@@ -118,7 +143,7 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
             newObservationUnitRequest.getObservationUnitXrefsAsItems();
     }
 
-    public org.wheatgenetics.brapi1_3.studies.nour.o.Observations getObservationsAsItems()
+    public org.wheatgenetics.brapi1_3.studies.nour.o.Observations getNOURObservationsAsItems()
     {
         final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
             newObservationUnitRequest = this.newObservationUnitRequest();
@@ -133,6 +158,31 @@ implements org.wheatgenetics.javalib.mstrdtl.ItemsProvider
             newObservationUnitRequest = this.newObservationUnitRequest();
         return null == newObservationUnitRequest ? null :
             newObservationUnitRequest.getObservationTreatmentsAsItems();
+    }
+    // endregion
+
+    // region observations.pr Public Methods
+    public void makePhenotypesRequest(
+    final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest)
+    {
+        if (null == phenotypesRequest)
+            this.items = new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest();
+        else
+            this.items = phenotypesRequest;
+        this.lastMadeItems = org.wheatgenetics.brapi1_3.Application.LastMadeItems.PR;
+    }
+
+    public void setPhenotypesRequestDataPosition(
+    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+        final int phenotypesRequestDataPosition)
+    { this.phenotypesRequestDataPosition = phenotypesRequestDataPosition; }
+
+    public org.wheatgenetics.brapi1_3.observations.pr.o.Observations getPRObservationsAsItems()
+    {
+        final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
+            phenotypesRequestData = this.phenotypesRequestData();
+        return null == phenotypesRequestData ? null :
+            phenotypesRequestData.getObservationsAsItems();
     }
     // endregion
     // endregion

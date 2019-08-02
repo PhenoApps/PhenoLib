@@ -162,21 +162,21 @@
     <string name="ObservationUnitXrefAlertDialogIdEditTextHint">id</string>
     <string name="ObservationUnitXrefAlertDialogSourceEditTextHint">source</string>
 
-    <string name="ObservationAlertDialogTitle">Observation</string>
-    <string name="ObservationAlertDialogGermplasmDbIdEditTextHint">germplasmDbId</string>
-    <string name="ObservationAlertDialogGermplasmNameEditTextHint">germplasmName</string>
-    <string name="ObservationAlertDialogObservationDbIdEditTextHint">observationDbId</string>
-    <string name="ObservationAlertDialogObservationLevelEditTextHint">observationLevel</string>
-    <string name="ObservationAlertDialogObservationTimeStampEditTextHint">observationTimeStamp</string>
-    <string name="ObservationAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
-    <string name="ObservationAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
-    <string name="ObservationAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
-    <string name="ObservationAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
-    <string name="ObservationAlertDialogOperatorEditTextHint">operator</string>
-    <string name="ObservationAlertDialogSeasonLabelTextViewText">season:</string>
-    <string name="ObservationAlertDialogStudyDbIdEditTextHint">studyDbId</string>
-    <string name="ObservationAlertDialogUploadedByEditTextHint">uploadedBy</string>
-    <string name="ObservationAlertDialogValueEditTextHint">value</string>
+    <string name="NOURObservationAlertDialogTitle">Observation</string>
+    <string name="NOURObservationAlertDialogGermplasmDbIdEditTextHint">germplasmDbId</string>
+    <string name="NOURObservationAlertDialogGermplasmNameEditTextHint">germplasmName</string>
+    <string name="NOURObservationAlertDialogObservationDbIdEditTextHint">observationDbId</string>
+    <string name="NOURObservationAlertDialogObservationLevelEditTextHint">observationLevel</string>
+    <string name="NOURObservationAlertDialogObservationTimeStampEditTextHint">observationTimeStamp</string>
+    <string name="NOURObservationAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
+    <string name="NOURObservationAlertDialogObservationUnitNameEditTextHint">observationUnitName</string>
+    <string name="NOURObservationAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
+    <string name="NOURObservationAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
+    <string name="NOURObservationAlertDialogOperatorEditTextHint">operator</string>
+    <string name="NOURObservationAlertDialogSeasonLabelTextViewText">season:</string>
+    <string name="NOURObservationAlertDialogStudyDbIdEditTextHint">studyDbId</string>
+    <string name="NOURObservationAlertDialogUploadedByEditTextHint">uploadedBy</string>
+    <string name="NOURObservationAlertDialogValueEditTextHint">value</string>
 
     <string name="SeasonAlertDialogTitle">Season</string>
     <string name="SeasonAlertDialogSeasonEditTextHint">season</string>
@@ -193,4 +193,20 @@
     <string name="NewObservationsTableRequestAlertDialogHeaderRowEditTextHint">headerRow</string>
     <string name="NewObservationsTableRequestAlertDialogObservationVariableDbIdsEditTextHint">observationVariableDbIds</string>
     <string name="NewObservationsTableRequestAlertDialogDataEditTextHint">data</string>
+
+
+    <!-- PhenotypesRequestDataAlertDialog -->
+    <string name="PhenotypesRequestDataAlertDialogTitle">PhenotypesRequestData</string>
+    <string name="PhenotypesRequestDataAlertDialogObservationUnitDbIdEditTextHint">observationUnitDbId</string>
+    <string name="PhenotypesRequestDataAlertDialogObservationsLabelTextViewText">observations</string>
+    <string name="PhenotypesRequestDataAlertDialogStudyDbIdEditTextHint">studyDbId</string>
+
+    <string name="PRObservationAlertDialogTitle">Observation</string>
+    <string name="PRObservationAlertDialogCollectorEditTextHint">collector</string>
+    <string name="PRObservationAlertDialogObservationDbIdEditTextHint">observationDbId</string>
+    <string name="PRObservationAlertDialogObservationTimeStampEditTextHint">observationTimeStamp</string>
+    <string name="PRObservationAlertDialogObservationVariableDbIdEditTextHint">observationVariableDbId</string>
+    <string name="PRObservationAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
+    <string name="PRObservationAlertDialogSeasonEditTextHint">season</string>
+    <string name="PRObservationAlertDialogValueEditTextHint">value</string>
 </resources>
