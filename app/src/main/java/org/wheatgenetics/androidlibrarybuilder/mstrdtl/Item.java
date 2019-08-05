@@ -32,24 +32,28 @@ class Item extends java.lang.Object implements org.wheatgenetics.javalib.mstrdtl
         if (position < org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
             throw new java.lang.IllegalArgumentException(
                 org.wheatgenetics.javalib.mstrdtl.Item.TOO_SMALL_POSITION_MESSAGE);
-        this.position = position;
-        this.title    = java.lang.String.format("Item %d", position + 1);
+        else
+        {
+            this.position = position;
+            this.title    = java.lang.String.format("Item %d", this.position + 1);
 
-        final java.lang.StringBuilder builder =
-            new java.lang.StringBuilder("Content of ").append(this.getTitle()).append(':');
-        for (int i = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION; i <= position; i++)
-            builder.append("\nMore information here.");
-        this.content = builder.toString();
+            final java.lang.StringBuilder builder =
+                new java.lang.StringBuilder("Content of ").append(this.getTitle()).append(':');
+            for (int i = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION;
+            i <= this.position; i++)
+                builder.append("\nMore information here.");
+            this.content = builder.toString();
+        }
     }
 
     // region org.wheatgenetics.javalib.mstrdtl.Item Overridden Methods
-    @android.support.annotation.NonNull @java.lang.Override public java.lang.String getTitle()
+    @java.lang.Override @android.support.annotation.NonNull public java.lang.String getTitle()
     { return this.title; }
 
-    @android.support.annotation.NonNull @java.lang.Override public java.lang.String getContent()
+    @java.lang.Override @android.support.annotation.NonNull public java.lang.String getContent()
     { return this.content; }
 
-    @android.support.annotation.NonNull @java.lang.Override
+    @java.lang.Override @android.support.annotation.NonNull
     public java.lang.String getPositionAsString()
     { return java.lang.String.valueOf(this.getPosition()); }
     // endregion

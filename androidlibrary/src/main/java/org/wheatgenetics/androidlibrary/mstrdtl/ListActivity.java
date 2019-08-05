@@ -33,8 +33,8 @@ public abstract class ListActivity extends android.support.v7.app.AppCompatActiv
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
 {
     // region Fields
-    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter      adapter     ;
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
+    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter      adapter     ;
     // endregion
 
     // region Private Methods
@@ -46,8 +46,12 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
             this.itemFragment                                      ).commit();
     }
 
-    private void appendItem()
-    { this.items().append(); if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
+    private void append()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items)
+            { items.append(); if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
+    }
     // endregion
 
     // region Protected Methods
@@ -100,8 +104,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
             appendItemButton.setEnabled(true);
             appendItemButton.setOnClickListener(new android.view.View.OnClickListener()
                 {
-                    @java.lang.Override public void onClick(final android.view.View v)
-                    { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.appendItem(); }
+                    @java.lang.Override public void onClick(final android.view.View view)
+                    { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.append(); }
                 });
             }
     }
@@ -109,7 +113,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Method
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position) { return this.items().get(position); }
+        final int position)
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        return null == items ? null : items.get(position);
+    }
     // endregion
     // endregion
 }

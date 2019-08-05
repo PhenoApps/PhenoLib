@@ -42,7 +42,7 @@ class Items extends java.lang.Object implements org.wheatgenetics.javalib.mstrdt
     @java.lang.Override public int size()
     { return null == this.itemsInstance ? 0 : this.itemsInstance.size(); }
 
-    @android.support.annotation.Nullable @java.lang.Override
+    @java.lang.Override @android.support.annotation.Nullable
     public org.wheatgenetics.javalib.mstrdtl.Item get(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position)
