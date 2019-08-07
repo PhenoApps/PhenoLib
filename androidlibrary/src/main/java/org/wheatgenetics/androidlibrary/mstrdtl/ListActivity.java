@@ -50,7 +50,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     {
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
         if (null != items)
-            { items.append(); if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
+        {
+            items.append();
+            if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged();
+            if (null != this.adapter     ) this.adapter.notifyDataSetChanged             ();
+        }
     }
     // endregion
 

@@ -17,7 +17,44 @@
         android:textIsSelectable="true" />
 
     <Button
+        android:id="@+id/upItemButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_toLeftOf="@id/changeItemButton"
+        android:layout_toStartOf="@id/changeItemButton"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="12dp"
+
+        android:text="▲"
+        android:textSize="22sp"
+        android:hint="up"
+
+        android:enabled="false"
+
+        tools:ignore="HardcodedText" />
+
+    <Button
         android:id="@+id/changeItemButton"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_toLeftOf="@id/downItemButton"
+        android:layout_toStartOf="@id/downItemButton"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="12dp"
+
+        android:text="@string/changeButtonText"
+        android:textAllCaps="false"
+
+        android:enabled="false" />
+
+    <Button
+        android:id="@+id/downItemButton"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,9 +65,12 @@
 
         android:layout_marginBottom="12dp"
 
-        android:text="@string/changeButtonText"
-        android:textAllCaps="false"
+        android:text="▼"
+        android:textSize="22sp"
+        android:hint="down"
 
-        android:enabled="false" />
+        android:enabled="false"
+
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>
