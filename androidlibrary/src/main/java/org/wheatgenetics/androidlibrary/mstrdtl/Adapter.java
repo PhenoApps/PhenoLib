@@ -25,8 +25,8 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     abstract android.view.View.OnClickListener makeOnClickListener(
-    @android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position);
+    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+        final int position);
 
     Adapter(@android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Items items)
     { super(); this.items = items; }
@@ -47,7 +47,7 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
     final int                             position                      )
     {
         if (null != this.items) viewHolder.bind(
-            /* item            => */ this.items.get(position)                             ,
+            /* item            => */ this.items.get          (position)                    ,
             /* onClickListener => */ this.makeOnClickListener(position) /* polymorphism */);
     }
 

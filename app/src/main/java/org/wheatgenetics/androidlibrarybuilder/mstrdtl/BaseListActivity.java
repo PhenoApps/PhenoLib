@@ -9,11 +9,11 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  *
- * org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items
+ * org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems
  */
 abstract class BaseListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 {
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
-    { return org.wheatgenetics.androidlibrarybuilder.mstrdtl.Items.ITEMS(); }
+    { return org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems.TEST_ITEMS(); }
 }

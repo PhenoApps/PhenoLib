@@ -7,6 +7,7 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * android.support.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
+ * org.wheatgenetics.javalib.mstrdtl.TestItem
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
  *
@@ -14,7 +15,6 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeItemAlertDialog
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeItemAlertDialog.Handler
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeableListActivity
- * org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item
  */
 public class ChangeableItemActivity
 extends    org.wheatgenetics.androidlibrarybuilder.mstrdtl.BaseItemActivity
@@ -47,10 +47,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
     @java.lang.Override public void change(
     @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
-    {
-        this.changeItemAlertDialog().show(
-            (org.wheatgenetics.androidlibrarybuilder.mstrdtl.Item) item);
-    }
+    { this.changeItemAlertDialog().show((org.wheatgenetics.javalib.mstrdtl.TestItem) item); }
     // endregion
     // endregion
 }
