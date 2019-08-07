@@ -29,7 +29,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Getter
     {
         public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
-            from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
 
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface GetterChanger
@@ -60,7 +60,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     // region private Methods
     private org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
             null == this.getter ? this.getterChanger : this.getter;
@@ -109,8 +109,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
                 this.getter =
                     (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter) context;
         else
-            throw new java.lang.RuntimeException(null == context ? "context" :
-                context.toString() + " must implement Getter");
+            throw new java.lang.RuntimeException(null == context ?
+                "context" : context.toString() + " must implement Getter");
     }
 
     @java.lang.Override public void onCreate(final android.os.Bundle savedInstanceState)
@@ -164,7 +164,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
                     changeItemButton.setEnabled(true);
                     changeItemButton.setOnClickListener(new android.view.View.OnClickListener()
                         {
-                            @java.lang.Override public void onClick(final android.view.View v)
+                            @java.lang.Override public void onClick(final android.view.View view)
                             {
                                 org.wheatgenetics.androidlibrary.mstrdtl
                                     .ItemFragment.this.changeItem();
