@@ -56,6 +56,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     private android.support.design.widget.CollapsingToolbarLayout collapsingToolbarLayout = null;
     private android.widget.TextView                               contentTextView         = null;
+    private android.widget.Button                             upButton = null, downButton = null;
     // endregion
 
     // region private Methods
@@ -77,6 +78,15 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         if (null != this.item) if (null != this.contentTextView)
             this.contentTextView.setText(this.item.getContent());
+    }
+
+    private void enableOrDisableMoveButtons()
+    {
+        if (null != this.item)
+        {
+            if (null != this.upButton  ) this.upButton.setEnabled  (this.item.canMoveUp  ());
+            if (null != this.downButton) this.downButton.setEnabled(this.item.canMoveDown());
+        }
     }
 
     private boolean changerIsImplemented()
@@ -155,6 +165,13 @@ public class ItemFragment extends android.support.v4.app.Fragment
                 org.wheatgenetics.androidlibrary.R.id.masterDetailItemContentTextView);
             this.setContentTextViewText();
 
+            if (null == this.upButton) this.upButton = rootView.findViewById(
+                org.wheatgenetics.androidlibrary.R.id.upItemButton);
+            if (null == this.downButton) this.downButton = rootView.findViewById(
+                org.wheatgenetics.androidlibrary.R.id.downItemButton);
+
+            this.enableOrDisableMoveButtons();
+
             if (this.changerIsImplemented())
             {
                 final android.widget.Button changeItemButton = rootView.findViewById(
@@ -180,5 +197,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
     { this.getter = this.getterChanger = null; super.onDetach(); }
     // endregion
 
+    // region Package Methods
     void refreshSinceItemHasChanged() { this.setToolbarTitle(); this.setContentTextViewText(); }
+    void refreshSinceItemsHaveChanged() { this.enableOrDisableMoveButtons(); }
+    // endregion
 }

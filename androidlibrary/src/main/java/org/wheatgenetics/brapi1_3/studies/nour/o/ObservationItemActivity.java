@@ -8,8 +8,6 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  *
- * io.swagger.client.model.Observation
- *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
@@ -18,6 +16,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  *
  * org.wheatgenetics.brapi1_3.Application
  *
+ * org.wheatgenetics.brapi1_3.studies.nour.o.Observation
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity
@@ -69,7 +68,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
 
     @java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
-    { this.observationAlertDialog().show((io.swagger.client.model.Observation) item); }
+    {
+        this.observationAlertDialog().show(
+            (org.wheatgenetics.brapi1_3.studies.nour.o.Observation) item);
+    }
     // endregion
     // endregion
 }
