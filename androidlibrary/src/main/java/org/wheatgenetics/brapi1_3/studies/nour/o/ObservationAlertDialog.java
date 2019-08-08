@@ -12,13 +12,13 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * android.widget.EditText
  * android.widget.TextView
  *
- * io.swagger.client.model.Observation
  * io.swagger.client.model.Season
  *
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
  *
+ * org.wheatgenetics.brapi1_3.studies.nour.o.Observation
  * org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog.Handler
  */
@@ -32,8 +32,8 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     private android.widget.TextView seasonTextView                                      ;
     private android.widget.EditText studyDbIdEditText, uploadedByEditText, valueEditText;
 
-    private io.swagger.client.model.Observation                   outsideObservation = null;
-    private org.wheatgenetics.brapi1_3.studies.nour.o.Observation insideObservation  = null;
+    private org.wheatgenetics.brapi1_3.studies.nour.o.Observation
+        outsideObservation = null, insideObservation  = null;
 
     private org.wheatgenetics.brapi1_3.studies.nour.o.SeasonAlertDialog
         seasonAlertDialogInstance = null;                                               // lazy load
@@ -187,7 +187,7 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     }
     // endregion
 
-    void show(final io.swagger.client.model.Observation outsideObservation)
+    void show(final org.wheatgenetics.brapi1_3.studies.nour.o.Observation outsideObservation)
     {
         if (null != outsideObservation)
         {
