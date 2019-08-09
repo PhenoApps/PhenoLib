@@ -198,7 +198,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     // endregion
 
     // region Package Methods
-    void refreshSinceItemHasChanged() { this.setToolbarTitle(); this.setContentTextViewText(); }
-    void refreshSinceItemsHaveChanged() { this.enableOrDisableMoveButtons(); }
+    void refreshSinceItemHasChanged  () { this.setToolbarTitle(); this.setContentTextViewText(); }
+    void refreshSinceItemsHaveChanged() { this.enableOrDisableMoveButtons();                     }
     // endregion
 }
