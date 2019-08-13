@@ -30,6 +30,11 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+
+        public void moveUp(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+        public void moveDown(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
 
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface GetterChanger
@@ -52,7 +57,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
         getterChanger = null;
 
-    private org.wheatgenetics.javalib.mstrdtl.Item item = null;
+    private int                                    position =   -1;
+    private org.wheatgenetics.javalib.mstrdtl.Item item     = null;
 
     private android.widget.TextView contentTextView = null            ;
     private android.widget.Button   upButton = null, downButton = null;
@@ -60,7 +66,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     // region private Methods
     private org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position)
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
             null == this.getter ? this.getterChanger : this.getter;
@@ -73,10 +79,25 @@ public class ItemFragment extends android.support.v4.app.Fragment
             this.contentTextView.setText(this.item.getContent());
     }
 
-    private void enableOrDisableMoveButtons()
+    private void moveUp()
+    {
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
+            null == this.getter ? this.getterChanger : this.getter;
+        if (null != getter) getter.moveUp(this.position);
+    }
+
+    private void moveDown()
+    {
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
+            null == this.getter ? this.getterChanger : this.getter;
+        if (null != getter) getter.moveDown(this.position);
+    }
+
+    private void setPositionEnableOrDisableMoveButtons()
     {
         if (null != this.item)
         {
+            this.position = this.item.getPosition();
             if (null != this.upButton  ) this.upButton.setEnabled  (this.item.canMoveUp  ());
             if (null != this.downButton) this.downButton.setEnabled(this.item.canMoveDown());
         }
@@ -169,10 +190,23 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
             if (null == this.upButton) this.upButton = rootView.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.upItemButton);
+            if (null != this.upButton) this.upButton.setOnClickListener(
+                new android.view.View.OnClickListener()
+                {
+                    @java.lang.Override public void onClick(final android.view.View view)
+                    { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.moveUp(); }
+                });
+
             if (null == this.downButton) this.downButton = rootView.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.downItemButton);
+            if (null != this.downButton) this.downButton.setOnClickListener(
+                new android.view.View.OnClickListener()
+                {
+                    @java.lang.Override public void onClick(final android.view.View view)
+                    { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.moveDown(); }
+                });
 
-            this.enableOrDisableMoveButtons();
+            this.setPositionEnableOrDisableMoveButtons();
 
             if (this.changerIsImplemented())
             {
@@ -201,6 +235,6 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     // region Package Methods
     void refreshSinceItemHasChanged  () { this.setContentTextViewText    (); }
-    void refreshSinceItemsHaveChanged() { this.enableOrDisableMoveButtons(); }
+    void refreshSinceItemsHaveChanged() { this.setPositionEnableOrDisableMoveButtons(); }
     // endregion
 }

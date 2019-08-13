@@ -31,6 +31,10 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void refreshSinceItemHasChanged()
     { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void refreshSinceItemsHaveChanged()
+    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged(); }
     // endregion
 
     // region Overridden Methods

@@ -49,12 +49,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     private void append()
     {
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items)
-        {
-            items.append();
-            if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged();
-            if (null != this.adapter     ) this.adapter.notifyDataSetChanged             ();
-        }
+        if (null != items) { items.append(); this.refreshSinceItemsHaveChanged(); }
     }
     // endregion
 
@@ -68,6 +63,13 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void refreshSinceItemHasChanged()
     { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void refreshSinceItemsHaveChanged()
+    {
+        if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged();
+        if (null != this.adapter     ) this.adapter.notifyDataSetChanged             ();
+    }
     // endregion
 
     // region Overridden Methods
