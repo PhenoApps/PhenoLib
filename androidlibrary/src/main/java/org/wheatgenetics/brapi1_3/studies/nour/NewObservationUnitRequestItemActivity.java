@@ -28,6 +28,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.oux.Utils
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity
  *
+ * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler
@@ -141,6 +142,28 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     ((org.wheatgenetics.javalib.mstrdtl.ItemsProvider) application).mstrdtlItems();
         }
         return null == this.itemsInstance ? null : this.itemsInstance.get(position);
+    }
+
+    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
+            newObservationUnitRequests =
+                (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests)
+                    this.itemsInstance;
+        if (null != newObservationUnitRequests)
+            { newObservationUnitRequests.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
+            newObservationUnitRequests =
+                (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests)
+                    this.itemsInstance;
+        if (null != newObservationUnitRequests)
+            { newObservationUnitRequests.moveDown(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void change(

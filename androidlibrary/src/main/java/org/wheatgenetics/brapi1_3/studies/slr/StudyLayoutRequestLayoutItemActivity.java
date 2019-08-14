@@ -17,6 +17,7 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
  *
+ * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest
  * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog
  * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestListActivity
@@ -68,6 +69,24 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     ((org.wheatgenetics.javalib.mstrdtl.ItemsProvider) application).mstrdtlItems();
         }
         return null == this.itemsInstance ? null : this.itemsInstance.get(position);
+    }
+
+    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest studyLayoutRequest =
+            (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest) this.itemsInstance;
+        if (null != studyLayoutRequest)
+            { studyLayoutRequest.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest studyLayoutRequest =
+            (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest) this.itemsInstance;
+        if (null != studyLayoutRequest)
+            { studyLayoutRequest.moveDown(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void change(

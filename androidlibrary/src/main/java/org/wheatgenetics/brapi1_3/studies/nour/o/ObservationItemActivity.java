@@ -17,6 +17,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * org.wheatgenetics.brapi1_3.Application
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.Observation
+ * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity
@@ -64,6 +65,24 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     .getNOURObservationsAsItems();
         }
         return null == this.itemsInstance ? null : this.itemsInstance.get(position);
+    }
+
+    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations =
+            (org.wheatgenetics.brapi1_3.studies.nour.o.Observations) this.itemsInstance;
+        if (null != observations)
+            { observations.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations =
+            (org.wheatgenetics.brapi1_3.studies.nour.o.Observations) this.itemsInstance;
+        if (null != observations)
+            { observations.moveDown(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void change(
