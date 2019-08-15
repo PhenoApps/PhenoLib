@@ -3,6 +3,7 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
 /**
  * Uses:
  * android.app.Application
+ * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
@@ -17,6 +18,7 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
  * org.wheatgenetics.brapi1_3.Application
  *
  * org.wheatgenetics.brapi1_3.observations.pr.o.Observation
+ * org.wheatgenetics.brapi1_3.observations.pr.o.Observations
  * org.wheatgenetics.brapi1_3.observations.pr.o.ObservationAlertDialog
  * org.wheatgenetics.brapi1_3.observations.pr.o.ObservationAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.observations.pr.o.ObservationOnePaneAdapter
@@ -70,7 +72,25 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
             this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
+    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observations =
+            (org.wheatgenetics.brapi1_3.observations.pr.o.Observations) this.items();
+        if (null != observations)
+            { observations.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observations =
+            (org.wheatgenetics.brapi1_3.observations.pr.o.Observations) this.items();
+        if (null != observations)
+            { observations.moveDown(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
     @java.lang.Override public void change(
     @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     {

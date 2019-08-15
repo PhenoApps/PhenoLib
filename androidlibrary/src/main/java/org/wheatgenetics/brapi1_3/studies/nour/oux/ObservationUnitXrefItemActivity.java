@@ -18,6 +18,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
  *
  * org.wheatgenetics.brapi1_3.Application
  *
+ * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity
@@ -68,6 +69,28 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                     .getObservationUnitXrefsAsItems();
         }
         return null == this.itemsInstance ? null : this.itemsInstance.get(position);
+    }
+
+    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
+            observationUnitXrefs =
+                (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs)
+                    this.itemsInstance;
+        if (null != observationUnitXrefs)
+            { observationUnitXrefs.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
+            observationUnitXrefs =
+                (org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs)
+                    this.itemsInstance;
+        if (null != observationUnitXrefs)
+            { observationUnitXrefs.moveDown(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void change(

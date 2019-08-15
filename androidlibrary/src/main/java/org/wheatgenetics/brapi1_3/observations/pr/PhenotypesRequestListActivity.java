@@ -4,6 +4,7 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * Uses:
  * android.app.Application
  * android.content.Intent
+ * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.Nullable
  * android.support.annotation.RestrictTo
@@ -18,6 +19,7 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  *
  * org.wheatgenetics.brapi1_3.observations.pr.o.Utils
  *
+ * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.ActivityHandler
@@ -97,7 +99,25 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
             this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Method
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
+    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest =
+            (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest) this.items();
+        if (null != phenotypesRequest)
+            { phenotypesRequest.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest =
+            (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest) this.items();
+        if (null != phenotypesRequest)
+            { phenotypesRequest.moveDown(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
     @java.lang.Override public void change(
     @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
