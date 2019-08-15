@@ -46,9 +46,6 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
             this.itemFragment                                      ).commit();
     }
 
-    private void notifyDataSetChanged()
-    { if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
-
     private void append()
     {
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
@@ -64,15 +61,15 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     protected abstract org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter();
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void refreshSinceItemHasChanged()
-    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void refreshSinceItemsHaveChanged()
     {
         if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged();
         if (null != this.adapter     ) this.adapter.notifyDataSetChanged             ();
     }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void refreshSinceItemHasChanged()
+    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
     // endregion
 
     // region Overridden Methods
@@ -119,7 +116,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
             }
     }
 
-    @java.lang.Override protected void onStart() { super.onStart(); this.notifyDataSetChanged(); }
+    @java.lang.Override protected void onStart()
+    { super.onStart(); this.refreshSinceItemsHaveChanged(); }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Method
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(

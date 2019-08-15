@@ -72,7 +72,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     }
 
     @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
         final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest studyLayoutRequest =
             (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest) this.itemsInstance;
@@ -81,7 +81,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     }
 
     @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
         final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest studyLayoutRequest =
             (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest) this.itemsInstance;

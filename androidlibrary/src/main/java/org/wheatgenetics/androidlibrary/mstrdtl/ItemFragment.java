@@ -67,7 +67,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     // region private Methods
     private org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position)
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
             null == this.getter ? this.getterChanger : this.getter;
