@@ -33,6 +33,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
         public void moveUp(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+
         public void moveDown(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
@@ -66,7 +67,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     // region private Methods
     private org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position)
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
             null == this.getter ? this.getterChanger : this.getter;
@@ -93,7 +94,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
         if (null != getter) getter.moveDown(this.position);
     }
 
-    private void setPositionEnableOrDisableMoveButtons()
+    private void setPositionAndEnableOrDisableMoveButtons()
     {
         if (null != this.item)
         {
@@ -206,7 +207,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
                     { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.moveDown(); }
                 });
 
-            this.setPositionEnableOrDisableMoveButtons();
+            this.setPositionAndEnableOrDisableMoveButtons();
 
             if (this.changerIsImplemented())
             {
@@ -234,7 +235,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     // endregion
 
     // region Package Methods
-    void refreshSinceItemHasChanged  () { this.setContentTextViewText    (); }
-    void refreshSinceItemsHaveChanged() { this.setPositionEnableOrDisableMoveButtons(); }
+    void refreshSinceItemHasChanged  () { this.setContentTextViewText                  (); }
+    void refreshSinceItemsHaveChanged() { this.setPositionAndEnableOrDisableMoveButtons(); }
     // endregion
 }

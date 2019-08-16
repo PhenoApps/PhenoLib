@@ -33,8 +33,8 @@ public abstract class ListActivity extends android.support.v7.app.AppCompatActiv
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
 {
     // region Fields
-    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
-    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter      adapter     ;
+    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment = null;
+    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter      adapter            ;
     // endregion
 
     // region Private Methods
@@ -61,15 +61,15 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
     protected abstract org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter();
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void refreshSinceItemHasChanged()
-    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void refreshSinceItemsHaveChanged()
     {
         if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged();
         if (null != this.adapter     ) this.adapter.notifyDataSetChanged             ();
     }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void refreshSinceItemHasChanged()
+    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
     // endregion
 
     // region Overridden Methods
@@ -113,7 +113,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
                     @java.lang.Override public void onClick(final android.view.View view)
                     { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.append(); }
                 });
-            }
+        }
     }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Method
