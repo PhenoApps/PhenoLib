@@ -33,8 +33,8 @@ public abstract class ListActivity extends android.support.v7.app.AppCompatActiv
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
 {
     // region Fields
-    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
-    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter      adapter     ;
+    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment = null;
+    private org.wheatgenetics.androidlibrary.mstrdtl.Adapter      adapter            ;
     // endregion
 
     // region Private Methods
@@ -113,7 +113,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
                     @java.lang.Override public void onClick(final android.view.View view)
                     { org.wheatgenetics.androidlibrary.mstrdtl.ListActivity.this.append(); }
                 });
-            }
+        }
     }
 
     @java.lang.Override protected void onStart()
