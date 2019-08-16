@@ -1220,7 +1220,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 this.studiesApi().studiesStudyDbIdObservationunitsPutAsync(
                     /* studyDbId => */
                         this.studiesStudyDbIdObservationunitsGetParametersInstance.getStudyDbId(),
-                    /* body          => */ populatedNewObservationUnitRequests.list()    ,
+                    /* body          => */ populatedNewObservationUnitRequests.getList (),
                     /* authorization => */ this.authorization                          (),
                     /* callback      => */ this.newObservationUnitDbIdsResponseCallback());
             }
