@@ -16,7 +16,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  *
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
  *
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
@@ -29,21 +29,19 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity
  * org.wheatgenetics.brapi1_3.studies.nour.oux.Utils
  *
- * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestOnePaneAdapter
- * org.wheatgenetics.brapi1_3.studies.nour.Utils
  */
 public class NewObservationUnitRequestsListActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
     // region Fields
-    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
         newObservationUnitRequestAlertDialogInstance = null;                            // lazy load
+    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     // endregion
 
     // region Private Methods
@@ -147,25 +145,19 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
             this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Methods
     @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
-            newObservationUnitRequests =
-                (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests) this.items();
-        if (null != newObservationUnitRequests)
-            { newObservationUnitRequests.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {                                                                   // TODO: Move to superclass.
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
-            newObservationUnitRequests =
-                (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests) this.items();
-        if (null != newObservationUnitRequests)
-            { newObservationUnitRequests.moveDown(position); this.refreshSinceItemsHaveChanged(); }
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {                                                                   // TODO: Move to superclass.
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void change(

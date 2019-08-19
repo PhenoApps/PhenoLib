@@ -14,18 +14,17 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsOnePaneAdapter
  */
 public class NewObservationsRequestListActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
     // region Fields
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
@@ -75,23 +74,19 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                 this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Methods
     @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest newObservationsRequest =
-            (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest) this.items();
-        if (null != newObservationsRequest)
-            { newObservationsRequest.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {                                                                   // TODO: Move to superclass.
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest newObservationsRequest =
-            (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest) this.items();
-        if (null != newObservationsRequest)
-            { newObservationsRequest.moveDown(position); this.refreshSinceItemsHaveChanged(); }
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {                                                                   // TODO: Move to superclass.
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void change(

@@ -14,12 +14,12 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.wheatgenetics.javalib.mstrdtl.Items
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+ * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
  * org.wheatgenetics.brapi1_3.observations.pr.o.Utils
  *
- * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.ActivityHandler
@@ -28,12 +28,12 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  */
 public class PhenotypesRequestListActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
     // region Fields
-    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
         phenotypesRequestDataAlertDialogInstance = null;                                // lazy load
+    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     // endregion
 
     // region Private Methods
@@ -99,23 +99,19 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
             this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Methods
     @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest =
-            (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest) this.items();
-        if (null != phenotypesRequest)
-            { phenotypesRequest.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {                                                                   // TODO: Move to superclass.
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest =
-            (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest) this.items();
-        if (null != phenotypesRequest)
-            { phenotypesRequest.moveDown(position); this.refreshSinceItemsHaveChanged(); }
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {                                                                   // TODO: Move to superclass.
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
     }
 
     @java.lang.Override public void change(

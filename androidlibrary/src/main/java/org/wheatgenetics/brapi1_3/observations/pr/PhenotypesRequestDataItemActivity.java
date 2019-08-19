@@ -4,7 +4,6 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * Uses:
  * android.app.Application
  * android.content.Intent
- * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.Nullable
  * android.support.annotation.RestrictTo
@@ -15,11 +14,10 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  *
  * org.wheatgenetics.brapi1_3.observations.pr.o.Utils
  *
- * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.ActivityHandler
@@ -28,12 +26,12 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  */
 public class PhenotypesRequestDataItemActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
+implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
     // region Fields
-    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
         phenotypesRequestDataAlertDialogInstance = null;                                // lazy load
+    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     // endregion
 
     // region Private Methods
@@ -84,10 +82,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
     @java.lang.Override protected java.lang.Class listActivityClass()
     { return org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity.class; }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger Overridden Methods
-    @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
         if (null == this.itemsInstance)
         {
@@ -96,27 +92,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
                 this.itemsInstance =
                     ((org.wheatgenetics.javalib.mstrdtl.ItemsProvider) application).mstrdtlItems();
         }
-        return null == this.itemsInstance ? null : this.itemsInstance.get(position);
+        return this.itemsInstance;
     }
 
-    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest =
-            (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest) this.itemsInstance;
-        if (null != phenotypesRequest)
-            { phenotypesRequest.moveUp(position); this.refreshSinceItemsHaveChanged(); }
-    }
-
-    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest =
-            (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest) this.itemsInstance;
-        if (null != phenotypesRequest)
-            { phenotypesRequest.moveDown(position); this.refreshSinceItemsHaveChanged(); }
-    }
-
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Method
     @java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     {
