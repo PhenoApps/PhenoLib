@@ -7,14 +7,14 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
  *
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems
  */
 abstract class BaseItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
+implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 {
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Methods
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position)

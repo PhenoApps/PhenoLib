@@ -24,13 +24,13 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.Adapter
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  * org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter
  * org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter.Helper
  */
 public abstract class ListActivity extends android.support.v7.app.AppCompatActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
+implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 {
     // region Fields
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment = null;
@@ -116,7 +116,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
         }
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Method
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Method
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position)

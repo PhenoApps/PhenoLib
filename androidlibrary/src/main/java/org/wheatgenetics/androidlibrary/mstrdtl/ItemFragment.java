@@ -26,7 +26,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 public class ItemFragment extends android.support.v4.app.Fragment
 {
     // region Types
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Getter
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Helper
     {
         public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
@@ -38,8 +38,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
 
-    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface GetterChanger
-    extends org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface HelperChanger
+    extends org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
         public void change(
         @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item);
@@ -54,9 +54,9 @@ public class ItemFragment extends android.support.v4.app.Fragment
         COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = "collapsingToolbarLayoutId";
 
     // region Fields
-    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter        getter = null;
-    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger
-        getterChanger = null;
+    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper        helper = null;
+    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+        helperChanger = null;
 
     private int                                    position =   -1;
     private org.wheatgenetics.javalib.mstrdtl.Item item     = null;
@@ -69,9 +69,9 @@ public class ItemFragment extends android.support.v4.app.Fragment
     private org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
-        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
-            null == this.getter ? this.getterChanger : this.getter;
-        return null == getter ? null : getter.get(position);
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+            null == this.helper ? this.helperChanger : this.helper;
+        return null == helper ? null : helper.get(position);
     }
 
     private void setContentTextViewText()
@@ -82,16 +82,16 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     private void moveUp()
     {
-        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
-            null == this.getter ? this.getterChanger : this.getter;
-        if (null != getter) getter.moveUp(this.position);
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+            null == this.helper ? this.helperChanger : this.helper;
+        if (null != helper) helper.moveUp(this.position);
     }
 
     private void moveDown()
     {
-        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter getter =
-            null == this.getter ? this.getterChanger : this.getter;
-        if (null != getter) getter.moveDown(this.position);
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+            null == this.helper ? this.helperChanger : this.helper;
+        if (null != helper) helper.moveDown(this.position);
     }
 
     private void setPositionAndEnableOrDisableMoveButtons()
@@ -105,12 +105,12 @@ public class ItemFragment extends android.support.v4.app.Fragment
     }
 
     private boolean changerIsImplemented()
-    { return null == this.getter && null != this.getterChanger; }
+    { return null == this.helper && null != this.helperChanger; }
 
     private void changeItem()
     {
         if (null != this.item)
-            if (this.changerIsImplemented()) this.getterChanger.change(this.item);
+            if (this.changerIsImplemented()) this.helperChanger.change(this.item);
     }
     // endregion
 
@@ -125,17 +125,17 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         super.onAttach(context);
 
-        if (context instanceof org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter)
+        if (context instanceof org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper)
             if (context instanceof
-            org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger)
-                this.getterChanger =
-                    (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.GetterChanger) context;
+            org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger)
+                this.helperChanger =
+                    (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger) context;
             else
-                this.getter =
-                    (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter) context;
+                this.helper =
+                    (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper) context;
         else
             throw new java.lang.RuntimeException(null == context ?
-                "context" : context.toString() + " must implement Getter");
+                "context" : context.toString() + " must implement Helper");
     }
 
     @java.lang.Override public void onCreate(final android.os.Bundle savedInstanceState)
@@ -231,7 +231,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     }
 
     @java.lang.Override public void onDetach()
-    { this.getter = this.getterChanger = null; super.onDetach(); }
+    { this.helper = this.helperChanger = null; super.onDetach(); }
     // endregion
 
     // region Package Methods
