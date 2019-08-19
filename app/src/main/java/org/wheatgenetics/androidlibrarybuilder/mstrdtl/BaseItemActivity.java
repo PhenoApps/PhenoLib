@@ -2,36 +2,20 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 
 /**
  * Uses:
- * android.support.annotation.IntRange
+ * android.support.annotation.RestrictTo
+ * android.support.annotation.RestrictTo.Scope
  *
- * org.wheatgenetics.javalib.mstrdtl.Item
+ * org.wheatgenetics.javalib.mstrdtl.Items
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
  *
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems
  */
 abstract class BaseItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter
+implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 {
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Getter Overridden Methods
-    @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
-    { return org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems.TEST_ITEMS().get(position); }
-
-    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems.TEST_ITEMS().moveUp(position);
-        this.refreshSinceItemsHaveChanged();
-    }
-
-    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems.TEST_ITEMS().moveDown(position);
-        this.refreshSinceItemsHaveChanged();
-    }
-    // endregion
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
+    { return org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems.TEST_ITEMS(); }
 }

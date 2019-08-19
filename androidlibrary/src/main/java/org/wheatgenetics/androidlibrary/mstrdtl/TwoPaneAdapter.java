@@ -32,20 +32,21 @@ class TwoPaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl.Adapter
         final int position)
     {
         return new android.view.View.OnClickListener()
-        {
-            @java.lang.Override public void onClick(final android.view.View view)
             {
-                final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment =
-                    new org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment();
+                @java.lang.Override public void onClick(final android.view.View view)
                 {
-                    final android.os.Bundle arguments = new android.os.Bundle();
-                    arguments.putInt(
-                        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY,
-                        position                                                          );
-                    itemFragment.setArguments(arguments);
+                    final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment =
+                        new org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment();
+                    {
+                        final android.os.Bundle arguments = new android.os.Bundle();
+                        arguments.putInt(
+                            org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY,
+                            position                                                          );
+                        itemFragment.setArguments(arguments);
+                    }
+                    org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter.this.replace(
+                        itemFragment);
                 }
-                org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter.this.replace(itemFragment);
-            }
-        };
+            };
     }
 }

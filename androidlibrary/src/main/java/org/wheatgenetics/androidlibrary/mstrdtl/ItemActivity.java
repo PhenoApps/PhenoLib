@@ -8,6 +8,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.content.Intent
  * android.os.Bundle
  * android.R
+ * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
@@ -18,11 +19,19 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  *
  * org.wheatgenetics.androidlibrary.R
  *
+ * org.wheatgenetics.javalib.mstrdtl.Item
+ * org.wheatgenetics.javalib.mstrdtl.Items
+ *
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment
+ * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
  */
 public abstract class ItemActivity extends android.support.v7.app.AppCompatActivity
+implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 {
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
+
+    private void refreshSinceItemsHaveChanged()
+    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged(); }
 
     // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -33,8 +42,7 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
     { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void refreshSinceItemsHaveChanged()
-    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged(); }
+    protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
     // endregion
 
     // region Overridden Methods
@@ -98,5 +106,29 @@ public abstract class ItemActivity extends android.support.v7.app.AppCompatActiv
         }
         else return super.onOptionsItemSelected(menuItem);
     }
+
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
+    @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
+    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+        final int position)
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        return null == items ? null : items.get(position);
+    }
+
+    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
+    }
+    // endregion
     // endregion
 }
