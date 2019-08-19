@@ -46,6 +46,12 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
             this.itemFragment                                      ).commit();
     }
 
+    private void refreshSinceItemsHaveChanged()
+    {
+        if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged();
+        if (null != this.adapter     ) this.adapter.notifyDataSetChanged             ();
+    }
+
     private void append()
     {
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
@@ -59,13 +65,6 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter();
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void refreshSinceItemsHaveChanged()
-    {
-        if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged();
-        if (null != this.adapter     ) this.adapter.notifyDataSetChanged             ();
-    }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void refreshSinceItemHasChanged()
@@ -116,13 +115,27 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         }
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Method
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position)
     {
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
         return null == items ? null : items.get(position);
+    }
+
+    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
     }
     // endregion
     // endregion
