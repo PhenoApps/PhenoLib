@@ -3,7 +3,6 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
 /**
  * Uses:
  * android.app.Application
- * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
@@ -71,21 +70,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
             this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Methods
-    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {                                                                   // TODO: Move to superclass.
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
-    }
-
-    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {                                                                   // TODO: Move to superclass.
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
-    }
-
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Method
     @java.lang.Override public void change(
     @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
