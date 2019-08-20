@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Android Library</string>
     <string name="changeButtonText">change</string>
+    <string name="deleteButtonText">delete</string>
     <string name="appendButtonText">append</string>
 
 

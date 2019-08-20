@@ -36,6 +36,9 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
         public void moveDown(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+
+        public void delete(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
 
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface HelperChanger
@@ -111,6 +114,13 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         if (null != this.item)
             if (this.changerIsImplemented()) this.helperChanger.change(this.item);
+    }
+
+    private void deleteItem()
+    {
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+            null == this.helper ? this.helperChanger : this.helper;
+        if (null != helper) helper.delete(this.position);
     }
     // endregion
 
@@ -226,6 +236,15 @@ public class ItemFragment extends android.support.v4.app.Fragment
                         });
                 }
             }
+
+            final android.widget.Button deleteItemButton = rootView.findViewById(
+                org.wheatgenetics.androidlibrary.R.id.deleteItemButton);
+            if (null != deleteItemButton) deleteItemButton.setOnClickListener(
+                new android.view.View.OnClickListener()
+                {
+                    @java.lang.Override public void onClick(final android.view.View view)
+                    { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.deleteItem(); }
+                });
         }
         return rootView;
     }

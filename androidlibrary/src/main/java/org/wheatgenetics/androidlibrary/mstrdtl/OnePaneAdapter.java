@@ -2,6 +2,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 
 /**
  * Uses:
+ * android.app.Activity
  * android.content.Context
  * android.content.Intent
  * android.support.annotation.IntRange
@@ -18,6 +19,8 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  */
 public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl.Adapter
 {
+    static final int REQUEST_CODE = 1;
+
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class concreteItemActivityClass();
 
@@ -34,15 +37,18 @@ public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.ms
                     if (null != view)
                     {
                         final android.content.Context context = view.getContext();
+                        if (context instanceof android.app.Activity)
+                        {
+                            final android.content.Intent intent = new android.content.Intent(
+                                context, org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
+                                    .this.concreteItemActivityClass() /* polymorphism */);
+                            intent.putExtra(
+                                org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY,
+                                position                                                          );
 
-                        final android.content.Intent intent = new android.content.Intent(
-                            context, org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
-                                .this.concreteItemActivityClass() /* polymorphism */);
-                        intent.putExtra(
-                            org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY,
-                            position                                                          );
-
-                        if (null != context) context.startActivity(intent);
+                            ((android.app.Activity) context).startActivityForResult(intent, org
+                                .wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter.REQUEST_CODE);
+                        }
                     }
                 }
             };
