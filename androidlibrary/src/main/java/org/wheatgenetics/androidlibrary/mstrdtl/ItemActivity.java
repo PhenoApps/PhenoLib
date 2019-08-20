@@ -5,6 +5,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * mode item content is presented side-by-side with a list of items in a {@link ListActivity}.
  *
  * Uses:
+ * android.app.Activity
  * android.content.Intent
  * android.os.Bundle
  * android.R
@@ -128,6 +129,21 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
         if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void delete(
+    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+        final int position)
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items)
+        {
+            items.delete(position);
+
+            this.setResult(android.app.Activity.RESULT_OK, new android.content.Intent().putExtra(
+                android.content.Intent.EXTRA_DATA_REMOVED,true));
+            this.finish();
+        }
     }
     // endregion
     // endregion
