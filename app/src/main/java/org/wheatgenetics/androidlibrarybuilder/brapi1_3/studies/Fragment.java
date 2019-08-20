@@ -166,9 +166,9 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     private static final int
-        STUDY_LAYOUT_REQUEST_LIST_ACTIVITY_REQUEST_CODE          = 1000,
-        NEW_OBSERVATIONS_REQUEST_LIST_ACTIVITY_REQUEST_CODE      = 1010,
-        NEW_OBSERVATION_UNIT_REQUESTS_LIST_ACTIVITY_REQUEST_CODE = 1020;
+        STUDY_LAYOUT_REQUEST_LIST_ACTIVITY_REQUEST_CODE          = 1,
+        NEW_OBSERVATIONS_REQUEST_LIST_ACTIVITY_REQUEST_CODE      = 2,
+        NEW_OBSERVATION_UNIT_REQUESTS_LIST_ACTIVITY_REQUEST_CODE = 3;
 
     // region Fields
     private io.swagger.client.api.StudiesApi       studiesApiInstance  = null;          // lazy load

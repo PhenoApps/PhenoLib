@@ -29,6 +29,8 @@ public class PhenotypesRequestListActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
+    private static final int REQUEST_CODE = 1;
+
     // region Fields
     private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
         phenotypesRequestDataAlertDialogInstance = null;                                // lazy load
@@ -37,7 +39,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 
     // region Private Methods
     private void showObservationsListActivity()
-    { org.wheatgenetics.brapi1_3.observations.pr.o.Utils.showObservationsListActivity(this); }
+    {
+        org.wheatgenetics.brapi1_3.observations.pr.o.Utils.showObservationsListActivity(
+            this, org.wheatgenetics.brapi1_3.observations
+                .pr.PhenotypesRequestListActivity.REQUEST_CODE);
+    }
 
     private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
     phenotypesRequestDataAlertDialog()
@@ -70,8 +76,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     @java.lang.Override protected void onActivityResult(final int requestCode, final int resultCode,
     @android.support.annotation.Nullable final android.content.Intent data)
     {
-        if (requestCode ==
-        org.wheatgenetics.brapi1_3.observations.pr.o.Utils.OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE)
+        if (
+        org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity.REQUEST_CODE
+        == requestCode)
             if (null != this.phenotypesRequestDataAlertDialogInstance)
                 this.phenotypesRequestDataAlertDialogInstance.updateObservations();
         super.onActivityResult(requestCode, resultCode, data);

@@ -27,12 +27,11 @@ public class Utils extends java.lang.Object
     }
 
     public static void showObservationUnitXrefListActivity(
-    @android.support.annotation.NonNull final android.app.Activity activity)
+    @android.support.annotation.NonNull final android.app.Activity activity, final int requestCode)
     {
         activity.startActivityForResult(
             org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.observationUnitXrefListIntent(
                 activity),
-            org.wheatgenetics.brapi1_3.studies.nour.oux
-                .ObservationUnitXrefListActivity.REQUEST_CODE);
+            requestCode);
     }
 }

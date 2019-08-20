@@ -18,13 +18,8 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  *
- * org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity
  * org.wheatgenetics.brapi1_3.studies.nour.o.Utils
- *
- * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity
  * org.wheatgenetics.brapi1_3.studies.nour.ot.Utils
-
- * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity
  * org.wheatgenetics.brapi1_3.studies.nour.oux.Utils
  *
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
@@ -37,6 +32,11 @@ public class NewObservationUnitRequestItemActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
+    private static final int
+        OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE  = 1,
+        OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE           = 2,
+        OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE = 3;
+
     // region Fields
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
         newObservationUnitRequestAlertDialogInstance = null;                            // lazy load
@@ -46,15 +46,26 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     // region Private Methods
     // region showListActivity() Private Methods
     private void showObservationUnitXrefListActivity()
-    { org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.showObservationUnitXrefListActivity(this); }
+    {
+        org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.showObservationUnitXrefListActivity(
+            this,
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestItemActivity
+                .OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE);
+    }
 
     private void showObservationsListActivity()
-    { org.wheatgenetics.brapi1_3.studies.nour.o.Utils.showObservationsListActivity(this); }
+    {
+        org.wheatgenetics.brapi1_3.studies.nour.o.Utils.showObservationsListActivity(this,
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestItemActivity
+                .OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE);
+    }
 
     private void showObservationTreatmentsListActivity()
     {
         org.wheatgenetics.brapi1_3.studies.nour.ot.Utils.showObservationTreatmentsListActivity(
-            this);
+            this,
+            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestItemActivity
+                .OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE);
     }
     // endregion
 
@@ -107,16 +118,17 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     {
         if (null != this.newObservationUnitRequestAlertDialogInstance) switch (requestCode)
         {
-            case org.wheatgenetics.brapi1_3.studies.nour.oux
-            .ObservationUnitXrefListActivity.REQUEST_CODE:
+            case org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestItemActivity
+            .OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE:
                 this.newObservationUnitRequestAlertDialogInstance.updateObservationUnitXref();
                 break;
 
-            case org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity.REQUEST_CODE:
+            case org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestItemActivity
+            .OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE:
                 this.newObservationUnitRequestAlertDialogInstance.updateObservations(); break;
 
-            case org.wheatgenetics.brapi1_3.studies.nour.ot
-            .ObservationTreatmentsListActivity.REQUEST_CODE:
+            case org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestItemActivity
+            .OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE:
                 this.newObservationUnitRequestAlertDialogInstance.updateObservationTreatments();
                 break;
         }

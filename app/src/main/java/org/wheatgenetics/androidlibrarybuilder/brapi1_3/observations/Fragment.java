@@ -47,7 +47,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
  */
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
-    private static final int PHENOTYPES_REQUEST_LIST_ACTIVITY_REQUEST_CODE = 2000;
+    private static final int PHENOTYPES_REQUEST_LIST_ACTIVITY_REQUEST_CODE = 1;
 
     // region Fields
     private io.swagger.client.api.ObservationsApi  observationsApiInstance = null;      // lazy load
