@@ -26,8 +26,6 @@ public class ObservationTreatmentsListActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
-    public static final int REQUEST_CODE = 2002;
-
     // region Fields
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog

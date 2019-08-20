@@ -11,9 +11,6 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class Utils extends java.lang.Object
 {
-    public static final int OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE =
-        org.wheatgenetics.brapi1_3.observations.pr.o.ObservationsListActivity.REQUEST_CODE;
-
     private static android.content.Intent OBSERVATIONS_LIST_INTENT_INSTANCE = null;     // lazy load
 
     private static android.content.Intent observationsListIntent(
@@ -29,10 +26,10 @@ public class Utils extends java.lang.Object
     }
 
     public static void showObservationsListActivity(
-    @android.support.annotation.NonNull final android.app.Activity activity)
+    @android.support.annotation.NonNull final android.app.Activity activity, final int requestCode)
     {
         activity.startActivityForResult(
             org.wheatgenetics.brapi1_3.observations.pr.o.Utils.observationsListIntent(activity),
-            org.wheatgenetics.brapi1_3.observations.pr.o.ObservationsListActivity.REQUEST_CODE);
+            requestCode                                                                        );
     }
 }

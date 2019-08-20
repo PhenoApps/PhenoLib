@@ -26,8 +26,6 @@ public class ObservationUnitXrefListActivity
 extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
-    public static final int REQUEST_CODE = 2000;
-
     // region Fields
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog

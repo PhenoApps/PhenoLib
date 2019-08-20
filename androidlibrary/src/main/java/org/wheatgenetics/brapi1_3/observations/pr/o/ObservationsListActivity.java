@@ -24,8 +24,6 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
 public class ObservationsListActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 {
-    public static final int REQUEST_CODE = 3000;
-
     // region Fields
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     private org.wheatgenetics.brapi1_3.observations.pr.o.ObservationAlertDialog
