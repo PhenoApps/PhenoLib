@@ -56,7 +56,7 @@ package org.wheatgenetics.androidlibrarybuilder;
 public class MainActivity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver
 {
-    private static final int REQUEST_CODE = 100;
+    private static final int REQUEST_CODE = 1;
 
     // region Fields
     private android.widget.TextView textView = null;
