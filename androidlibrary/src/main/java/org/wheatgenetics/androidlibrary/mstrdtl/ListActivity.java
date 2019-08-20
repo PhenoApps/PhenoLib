@@ -7,8 +7,11 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * presents the list of items and item content side-by-side using two vertical panes.
  *
  * Uses:
+ * android.app.Activity
+ * android.content.Intent
  * android.os.Bundle
  * android.support.annotation.IntRange
+ * android.support.annotation.Nullable
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.support.v7.app.AppCompatActivity
@@ -46,10 +49,13 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
             this.itemFragment                                      ).commit();
     }
 
+    private void notifyDataSetChanged()
+    { if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
+
     private void refreshSinceItemsHaveChanged()
     {
         if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged();
-        if (null != this.adapter     ) this.adapter.notifyDataSetChanged             ();
+        this.notifyDataSetChanged();
     }
 
     private void append()
@@ -115,8 +121,20 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         }
     }
 
+
     @java.lang.Override protected void onStart()
     { super.onStart(); this.refreshSinceItemsHaveChanged(); }
+
+    @java.lang.Override protected void onActivityResult(final int requestCode, final int resultCode,
+    @android.support.annotation.Nullable final android.content.Intent data)
+    {
+        if (org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter.REQUEST_CODE == requestCode)
+            if (android.app.Activity.RESULT_OK == resultCode) if (null != data)
+                if (data.getBooleanExtra(
+                android.content.Intent.EXTRA_DATA_REMOVED,false))
+                    this.notifyDataSetChanged();
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
@@ -139,6 +157,21 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
         if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
+    }
+
+    @java.lang.Override public void delete(
+    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+        final int position)
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null != items)
+        {
+            items.delete(position);
+
+            this.getSupportFragmentManager().beginTransaction().remove(this.itemFragment).commit();
+            this.itemFragment = null;
+            this.notifyDataSetChanged();
+        }
     }
     // endregion
     // endregion
