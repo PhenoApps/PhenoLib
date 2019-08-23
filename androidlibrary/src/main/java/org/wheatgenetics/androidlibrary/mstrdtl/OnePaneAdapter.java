@@ -6,6 +6,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.content.Context
  * android.content.Intent
  * android.support.annotation.IntRange
+ * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.view.View
@@ -24,7 +25,8 @@ public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.ms
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class concreteItemActivityClass();
 
-    protected OnePaneAdapter(final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
+    protected OnePaneAdapter(@android.support.annotation.NonNull
+    final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
 
     @java.lang.Override android.view.View.OnClickListener makeOnClickListener(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)

@@ -39,11 +39,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     protected abstract java.lang.Class listActivityClass();
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void refreshSinceItemHasChanged()
-    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
+    protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
+    protected void refreshSinceItemHasChanged()
+    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
     // endregion
 
     // region Overridden Methods

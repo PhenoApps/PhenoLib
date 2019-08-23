@@ -21,7 +21,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 abstract class Adapter extends android.support.v7.widget.RecyclerView.Adapter<
 org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
 {
-    private final org.wheatgenetics.javalib.mstrdtl.Items items;
+    @android.support.annotation.NonNull private final org.wheatgenetics.javalib.mstrdtl.Items items;
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     abstract android.view.View.OnClickListener makeOnClickListener(
@@ -46,12 +46,11 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
     final org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder viewHolder,
     final int                             position                      )
     {
-        if (null != this.items) viewHolder.bind(
+        viewHolder.bind(
             /* item            => */ this.items.get          (position)                    ,
             /* onClickListener => */ this.makeOnClickListener(position) /* polymorphism */);
     }
 
-    @java.lang.Override public int getItemCount()
-    { return null == this.items ? 0 : this.items.size(); }
+    @java.lang.Override public int getItemCount() { return this.items.size(); }
     // endregion
 }

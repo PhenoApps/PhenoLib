@@ -61,8 +61,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
         helperChanger = null;
 
-    private int                                    position =   -1;
     private org.wheatgenetics.javalib.mstrdtl.Item item     = null;
+    private int                                    position =   -1;
 
     private android.widget.TextView contentTextView = null            ;
     private android.widget.Button   upButton = null, downButton = null;
