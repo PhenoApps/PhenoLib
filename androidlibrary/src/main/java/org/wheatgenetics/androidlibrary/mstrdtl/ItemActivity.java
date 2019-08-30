@@ -15,36 +15,19 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.RestrictTo.Scope
  * android.support.v4.app.NavUtils
  * android.support.v7.app.ActionBar
- * android.support.v7.app.AppCompatActivity
  * android.view.MenuItem
  *
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
- * org.wheatgenetics.javalib.mstrdtl.Items
  *
+ * org.wheatgenetics.androidlibrary.mstrdtl.Activity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
  */
-public abstract class ItemActivity extends android.support.v7.app.AppCompatActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
+public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.Activity
 {
-    private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
-
-    private void refreshSinceItemsHaveChanged()
-    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged(); }
-
-    // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class listActivityClass();
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void refreshSinceItemHasChanged()
-    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
-    // endregion
 
     // region Overridden Methods
     @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
@@ -69,7 +52,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         if (null == savedInstanceState)
         {
             // Create the fragment and add it to the activity using a fragment transaction.
-            this.itemFragment = new org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment();
+            final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment =
+                new org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment();
             {
                 final android.os.Bundle arguments = new android.os.Bundle();
                 {
@@ -84,11 +68,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
                     arguments.putInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY, org.wheatgenetics
                         .androidlibrary.R.id.masterDetailItemCollapsingToolbarLayout);
                 }
-                this.itemFragment.setArguments(arguments);
+                itemFragment.setArguments(arguments);
             }
-            this.getSupportFragmentManager().beginTransaction().add(
-                org.wheatgenetics.androidlibrary.R.id.masterDetailNestedScrollView,
-                this.itemFragment                                                 ).commit();
+            this.setAndAddItemFragment(
+                org.wheatgenetics.androidlibrary.R.id.masterDetailNestedScrollView, itemFragment);
         }
     }
 
@@ -108,38 +91,12 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         else return super.onOptionsItemSelected(menuItem);
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
-    @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
-    {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        return null == items ? null : items.get(position);
-    }
-
-    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Method
+    @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
-    }
-
-    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
-    }
-
-    @java.lang.Override public void delete(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
-    {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items)
+        if (this.deleteWasSuccessful(position))
         {
-            items.delete(position);
-
             this.setResult(android.app.Activity.RESULT_OK, new android.content.Intent().putExtra(
                 android.content.Intent.EXTRA_DATA_REMOVED,true));
             this.finish();
