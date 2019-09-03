@@ -11,6 +11,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.RestrictTo.Scope
  * android.support.v7.app.AppCompatActivity
  *
+ * org.wheatgenetics.javalib.mstrdtl.Consts
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
@@ -20,8 +21,6 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 abstract class Activity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 {
-    private static final java.lang.String JSON_KEY = "json";
-
     // region Fields
     private java.lang.String                                      json = null ;
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
@@ -111,7 +110,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
         super.onCreate(savedInstanceState);
         if (null != savedInstanceState) this.json = savedInstanceState.getString(
-            org.wheatgenetics.androidlibrary.mstrdtl.Activity.JSON_KEY);
+            org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY);
     }
 
     @java.lang.Override protected void onSaveInstanceState(final android.os.Bundle outState)
@@ -119,8 +118,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         if (null != outState)
         {
             final java.lang.String json = this.jsonFromItems();
-            if (null != json) outState.putString(
-                org.wheatgenetics.androidlibrary.mstrdtl.Activity.JSON_KEY, json);
+            if (null != json)
+                outState.putString(org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
         }
         super.onSaveInstanceState(outState);
     }
