@@ -11,10 +11,10 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.RestrictTo.Scope
  * android.support.v7.app.AppCompatActivity
  *
- * org.wheatgenetics.javalib.mstrdtl.Consts
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
+ * org.wheatgenetics.androidlibrary.mstrdtl.Consts
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
  */
@@ -38,8 +38,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
                 return null;
             else
             {
-                final java.lang.String trimmedJson = json.trim();
-                return trimmedJson.length() <= 0 ? null : trimmedJson;
+                final java.lang.String result = json.trim();
+                return result.length() <= 0 ? null : result;
             }
         }
     }
