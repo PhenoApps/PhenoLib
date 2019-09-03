@@ -2,9 +2,11 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 
 /**
  * Uses:
+ * android.os.Bundle
  * android.support.annotation.IdRes
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
+ * android.support.annotation.Nullable
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.support.v7.app.AppCompatActivity
@@ -18,7 +20,30 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 abstract class Activity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 {
+    private static final java.lang.String JSON_KEY = "json";
+
+    // region Fields
+    private java.lang.String                                      json = null ;
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
+    // endregion
+
+    private java.lang.String jsonFromItems()
+    {
+        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
+        if (null == items)
+            return null;
+        else
+        {
+            final java.lang.String json = items.toJson();
+            if (null == json)
+                return null;
+            else
+            {
+                final java.lang.String trimmedJson = json.trim();
+                return trimmedJson.length() <= 0 ? null : trimmedJson;
+            }
+        }
+    }
 
     // region Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -70,12 +95,35 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 
     // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected java.lang.String getJson() { return this.json; }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void refreshSinceItemHasChanged()
     { if (null != this.itemFragment) this.itemFragment.refreshSinceItemHasChanged(); }
     // endregion
+
+    // region Overridden Methods
+    @java.lang.Override protected void onCreate(
+    @android.support.annotation.Nullable final android.os.Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        if (null != savedInstanceState) this.json = savedInstanceState.getString(
+            org.wheatgenetics.androidlibrary.mstrdtl.Activity.JSON_KEY);
+    }
+
+    @java.lang.Override protected void onSaveInstanceState(final android.os.Bundle outState)
+    {
+        if (null != outState)
+        {
+            final java.lang.String json = this.jsonFromItems();
+            if (null != json) outState.putString(
+                org.wheatgenetics.androidlibrary.mstrdtl.Activity.JSON_KEY, json);
+        }
+        super.onSaveInstanceState(outState);
+    }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
@@ -99,5 +147,6 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
         if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
     }
+    // endregion
     // endregion
 }
