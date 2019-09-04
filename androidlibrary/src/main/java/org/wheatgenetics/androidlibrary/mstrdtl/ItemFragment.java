@@ -61,8 +61,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
         helperChanger = null;
 
-    private org.wheatgenetics.javalib.mstrdtl.Item item     = null;
-    private int                                    position =   -1;
+    private org.wheatgenetics.javalib.mstrdtl.Item item = null;
 
     private android.widget.TextView contentTextView = null;
     private android.widget.Button   upButton = null, downButton = null,
@@ -80,25 +79,21 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     private void moveUp()
     {
-        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
-            null == this.helper ? this.helperChanger : this.helper;
-        if (null != helper) helper.moveUp(this.position);
+        if (null != this.item)
+        {
+            final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+                null == this.helper ? this.helperChanger : this.helper;
+            if (null != helper) helper.moveUp(this.item.getPosition());
+        }
     }
 
     private void moveDown()
     {
-        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
-            null == this.helper ? this.helperChanger : this.helper;
-        if (null != helper) helper.moveDown(this.position);
-    }
-
-    private void setPositionAndEnableOrDisableMoveButtons()
-    {
         if (null != this.item)
         {
-            this.position = this.item.getPosition();
-            if (null != this.upButton  ) this.upButton.setEnabled  (this.item.canMoveUp  ());
-            if (null != this.downButton) this.downButton.setEnabled(this.item.canMoveDown());
+            final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+                null == this.helper ? this.helperChanger : this.helper;
+            if (null != helper) helper.moveDown(this.item.getPosition());
         }
     }
 
@@ -113,9 +108,12 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     private void deleteItem()
     {
-        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
-            null == this.helper ? this.helperChanger : this.helper;
-        if (null != helper) helper.delete(this.position);
+        if (null != this.item)
+        {
+            final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+                null == this.helper ? this.helperChanger : this.helper;
+            if (null != helper) helper.delete(this.item.getPosition());
+        }
     }
     // endregion
 
@@ -211,7 +209,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
                     { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.moveDown(); }
                 });
 
-            this.setPositionAndEnableOrDisableMoveButtons();
+            this.refreshSinceItemsHaveChanged();
 
             if (this.changerIsImplemented())
             {
@@ -255,6 +253,17 @@ public class ItemFragment extends android.support.v4.app.Fragment
         if (null != this.deleteItemButton) this.deleteItemButton.setEnabled(itemIsNotNull);
     }
 
-    void refreshSinceItemsHaveChanged() { this.setPositionAndEnableOrDisableMoveButtons(); }
+    void refreshSinceItemsHaveChanged()
+    {
+        final boolean canMoveUp, canMoveDown;
+
+        if (null == this.item)
+            { canMoveUp = canMoveDown = false; }
+        else
+            { canMoveUp = this.item.canMoveUp(); canMoveDown = this.item.canMoveDown(); }
+
+        if (null != this.upButton  ) this.upButton.setEnabled  (canMoveUp  );
+        if (null != this.downButton) this.downButton.setEnabled(canMoveDown);
+    }
     // endregion
 }
