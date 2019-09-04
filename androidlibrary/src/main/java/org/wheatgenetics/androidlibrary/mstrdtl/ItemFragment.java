@@ -64,8 +64,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
     private org.wheatgenetics.javalib.mstrdtl.Item item     = null;
     private int                                    position =   -1;
 
-    private android.widget.TextView contentTextView = null            ;
-    private android.widget.Button   upButton = null, downButton = null;
+    private android.widget.TextView contentTextView = null                                     ;
+    private android.widget.Button   upButton = null, downButton = null, deleteItemButton = null;
     // endregion
 
     // region private Methods
@@ -75,12 +75,6 @@ public class ItemFragment extends android.support.v4.app.Fragment
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
             null == this.helper ? this.helperChanger : this.helper;
         return null == helper ? null : helper.get(position);
-    }
-
-    private void setContentTextViewText()
-    {
-        if (null != this.item) if (null != this.contentTextView)
-            this.contentTextView.setText(this.item.getContent());
     }
 
     private void moveUp()
@@ -197,7 +191,6 @@ public class ItemFragment extends android.support.v4.app.Fragment
         {
             this.contentTextView = rootView.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.masterDetailItemContentTextView);
-            this.setContentTextViewText();
 
             if (null == this.upButton) this.upButton = rootView.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.upItemButton);
@@ -237,9 +230,9 @@ public class ItemFragment extends android.support.v4.app.Fragment
                 }
             }
 
-            final android.widget.Button deleteItemButton = rootView.findViewById(
+            this.deleteItemButton = rootView.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.deleteItemButton);
-            if (null != deleteItemButton) deleteItemButton.setOnClickListener(
+            if (null != this.deleteItemButton) this.deleteItemButton.setOnClickListener(
                 new android.view.View.OnClickListener()
                 {
                     @java.lang.Override public void onClick(final android.view.View view)
@@ -249,12 +242,23 @@ public class ItemFragment extends android.support.v4.app.Fragment
         return rootView;
     }
 
+    @java.lang.Override public void onResume()
+    { super.onResume(); this.refreshSinceItemHasChanged(); }
+
     @java.lang.Override public void onDetach()
     { this.helper = this.helperChanger = null; super.onDetach(); }
     // endregion
 
     // region Package Methods
-    void refreshSinceItemHasChanged  () { this.setContentTextViewText                  (); }
+    void refreshSinceItemHasChanged()
+    {
+        final boolean itemIsNull = null == this.item;
+
+        if (null != this.contentTextView)
+            this.contentTextView.setText(itemIsNull ? null : this.item.getContent());
+        if (null != this.deleteItemButton) this.deleteItemButton.setEnabled(!itemIsNull);
+    }
+
     void refreshSinceItemsHaveChanged() { this.setPositionAndEnableOrDisableMoveButtons(); }
     // endregion
 }
