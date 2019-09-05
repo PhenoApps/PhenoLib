@@ -92,12 +92,6 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
     }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
-    @java.lang.Override public void setToolbarTitle(final java.lang.CharSequence title)
-    { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(title); }
-
-    @java.lang.Override public void clearToolbarTitle()
-    {if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(null); }
-
     @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
@@ -108,6 +102,12 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
             this.finish();
         }
     }
+
+    @java.lang.Override public void setToolbarTitle(final java.lang.CharSequence title)
+    { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(title); }
+
+    @java.lang.Override public void clearToolbarTitle()
+    {if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(null); }
     // endregion
     // endregion
 }
