@@ -60,7 +60,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
             containerViewId, this.itemFragment).commit();
     }
 
-    /** Called by ListActivity.onCreate(). */
+    /** Called by ListActivity.setAndReplaceItemFragment(). */
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     void setAndReplaceItemFragment(@android.support.annotation.IdRes final int containerViewId,
     @android.support.annotation.NonNull
@@ -109,8 +109,14 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     @android.support.annotation.Nullable final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (null != savedInstanceState) this.json = savedInstanceState.getString(
-            org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY);
+
+        if (null != savedInstanceState)
+        {
+            final java.lang.String JSON_KEY =
+                org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY;
+            if (savedInstanceState.containsKey(JSON_KEY))
+                this.json = savedInstanceState.getString(JSON_KEY);
+        }
     }
 
     @java.lang.Override protected void onSaveInstanceState(final android.os.Bundle outState)

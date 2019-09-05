@@ -12,6 +12,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.NonNull
  * android.support.design.widget.CollapsingToolbarLayout
  * android.support.v4.app.Fragment
+ * android.util.Log
  * android.view.LayoutInflater
  * android.view.View
  * android.view.View.OnClickListener
@@ -69,6 +70,19 @@ public class ItemFragment extends android.support.v4.app.Fragment
     // endregion
 
     // region private Methods
+    private static void log(@android.support.annotation.NonNull final java.lang.String msg)
+    { android.util.Log.i("ItemFragment", msg); }
+
+    private static void log(
+    @android.support.annotation.NonNull final java.lang.String positionMsg                 ,
+    @android.support.annotation.NonNull final java.lang.String collapsingToolbarLayoutIdMsg)
+    {
+        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.log(
+            "position                 : " + positionMsg);
+        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.log(
+            "collapsingToolbarLayoutId: " + collapsingToolbarLayoutIdMsg);
+    }
+
     private org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
@@ -145,38 +159,64 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         super.onCreate(savedInstanceState);
 
-        final android.os.Bundle arguments = this.getArguments();
-        if (null != arguments)
+        final java.lang.String positionMsg, collapsingToolbarLayoutIdMsg;
         {
+            final android.os.Bundle arguments = this.getArguments();
+            if (null == arguments)
+                positionMsg = collapsingToolbarLayoutIdMsg = "arguments is null";
+            else
             {
-                final java.lang.String POSITION_KEY =
-                    org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
-                if (arguments.containsKey(POSITION_KEY))
-                    try { this.item = this.get(arguments.getInt(POSITION_KEY)); }
-                    catch (final java.lang.IndexOutOfBoundsException e) { this.item = null; }
-            }
+                {
+                    final java.lang.String POSITION_KEY =
+                        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
+                    if (arguments.containsKey(POSITION_KEY))
+                    {
+                        final int position = arguments.getInt(POSITION_KEY);
+                        try { this.item = this.get(position); }
+                        catch (final java.lang.IndexOutOfBoundsException e) { this.item = null; }
+                        positionMsg = java.lang.String.valueOf(position);
+                    }
+                    else positionMsg = "arguments does not contain " + POSITION_KEY;
+                }
 
-            if (null != this.item)
-            {
-                final java.lang.String COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = org.wheatgenetics
-                    .androidlibrary.mstrdtl.ItemFragment.COLLAPSING_TOOLBAR_LAYOUT_ID_KEY;
-                if (arguments.containsKey(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY))
+                if (null == this.item)
+                    collapsingToolbarLayoutIdMsg = "this.item is null";
+                else
                 {
                     final android.support.design.widget.CollapsingToolbarLayout
                         collapsingToolbarLayout;
                     {
-                        final android.app.Activity activity = this.getActivity();
-                        if (null == activity)
-                            collapsingToolbarLayout = null;
+                        final java.lang.String COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = org.wheatgenetics
+                            .androidlibrary.mstrdtl.ItemFragment.COLLAPSING_TOOLBAR_LAYOUT_ID_KEY;
+                        if (arguments.containsKey(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY))
+                        {
+                            final int collapsingToolbarLayoutId =
+                                arguments.getInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY);
+                            {
+                                final android.app.Activity activity = this.getActivity();
+                                if (null == activity)
+                                    collapsingToolbarLayout = null;
+                                else
+                                    collapsingToolbarLayout =
+                                        activity.findViewById(collapsingToolbarLayoutId);
+                            }
+                            collapsingToolbarLayoutIdMsg =
+                                java.lang.String.valueOf(collapsingToolbarLayoutId);
+                        }
                         else
-                            collapsingToolbarLayout = activity.findViewById(
-                                arguments.getInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY));
+                        {
+                            collapsingToolbarLayout      = null;
+                            collapsingToolbarLayoutIdMsg =
+                                "arguments does not contain " + COLLAPSING_TOOLBAR_LAYOUT_ID_KEY;
+                        }
                     }
-                    if (collapsingToolbarLayout != null)
+                    if (null != collapsingToolbarLayout)
                         collapsingToolbarLayout.setTitle(this.item.getTitle());
                 }
             }
         }
+        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.log(
+            positionMsg, collapsingToolbarLayoutIdMsg);
     }
 
     @java.lang.Override public android.view.View onCreateView(
