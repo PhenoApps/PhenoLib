@@ -115,7 +115,10 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
     @java.lang.Override void refreshSinceItemsHaveChanged()
     { super.refreshSinceItemsHaveChanged(); this.notifyDataSetChanged(); }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Method
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
+    @java.lang.Override public void setToolbarTitle  (final java.lang.CharSequence title) {}
+    @java.lang.Override public void clearToolbarTitle()                                   {}
+
     @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {

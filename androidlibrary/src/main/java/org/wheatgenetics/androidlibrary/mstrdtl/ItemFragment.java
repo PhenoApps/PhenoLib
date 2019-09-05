@@ -5,12 +5,10 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * {@link ListActivity} in two-pane mode or in an {@link ItemActivity} in one-pane mode.
  *
  * Uses:
- * android.app.Activity
  * android.content.Context
  * android.os.Bundle
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
- * android.support.design.widget.CollapsingToolbarLayout
  * android.support.v4.app.Fragment
  * android.util.Log
  * android.view.LayoutInflater
@@ -32,6 +30,9 @@ public class ItemFragment extends android.support.v4.app.Fragment
         public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
 
+        public void setToolbarTitle  (final java.lang.CharSequence title);
+        public void clearToolbarTitle()                                  ;
+
         public void moveUp(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
 
@@ -50,12 +51,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
     }
     // endregion
 
-    /**
-     * Keys to the bundle arguments that have 1) the position of the item and 2) the id of the
-     * CollapsingToolbarLayout.
-     */
-    static final java.lang.String POSITION_KEY = "position",
-        COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = "collapsingToolbarLayoutId";
+    /** Key to the bundle argument that has the position of the item. */
+    static final java.lang.String POSITION_KEY = "position";
 
     // region Fields
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper        helper = null;
@@ -73,22 +70,26 @@ public class ItemFragment extends android.support.v4.app.Fragment
     private static void log(@android.support.annotation.NonNull final java.lang.String msg)
     { android.util.Log.i("ItemFragment", msg); }
 
-    private static void log(
-    @android.support.annotation.NonNull final java.lang.String positionMsg                 ,
-    @android.support.annotation.NonNull final java.lang.String collapsingToolbarLayoutIdMsg)
-    {
-        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.log(
-            "position                 : " + positionMsg);
-        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.log(
-            "collapsingToolbarLayoutId: " + collapsingToolbarLayoutIdMsg);
-    }
-
     private org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
             null == this.helper ? this.helperChanger : this.helper;
         return null == helper ? null : helper.get(position);
+    }
+
+    public void setToolbarTitle(final java.lang.CharSequence title)
+    {
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+            null == this.helper ? this.helperChanger : this.helper;
+        if (null != helper) helper.setToolbarTitle(title);
+    }
+
+    public void clearToolbarTitle()
+    {
+        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
+            null == this.helper ? this.helperChanger : this.helper;
+        if (null != helper) helper.clearToolbarTitle();
     }
 
     private void moveUp()
@@ -159,64 +160,26 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         super.onCreate(savedInstanceState);
 
-        final java.lang.String positionMsg, collapsingToolbarLayoutIdMsg;
+        final java.lang.String positionMsg;
         {
             final android.os.Bundle arguments = this.getArguments();
             if (null == arguments)
-                positionMsg = collapsingToolbarLayoutIdMsg = "arguments is null";
+                positionMsg = "arguments is null";
             else
             {
+                final java.lang.String POSITION_KEY =
+                    org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
+                if (arguments.containsKey(POSITION_KEY))
                 {
-                    final java.lang.String POSITION_KEY =
-                        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
-                    if (arguments.containsKey(POSITION_KEY))
-                    {
-                        final int position = arguments.getInt(POSITION_KEY);
-                        try { this.item = this.get(position); }
-                        catch (final java.lang.IndexOutOfBoundsException e) { this.item = null; }
-                        positionMsg = java.lang.String.valueOf(position);
-                    }
-                    else positionMsg = "arguments does not contain " + POSITION_KEY;
+                    final int position = arguments.getInt(POSITION_KEY);
+                    try { this.item = this.get(position); }
+                    catch (final java.lang.IndexOutOfBoundsException e) { this.item = null; }
+                    positionMsg = "position: " + position;
                 }
-
-                if (null == this.item)
-                    collapsingToolbarLayoutIdMsg = "this.item is null";
-                else
-                {
-                    final android.support.design.widget.CollapsingToolbarLayout
-                        collapsingToolbarLayout;
-                    {
-                        final java.lang.String COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = org.wheatgenetics
-                            .androidlibrary.mstrdtl.ItemFragment.COLLAPSING_TOOLBAR_LAYOUT_ID_KEY;
-                        if (arguments.containsKey(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY))
-                        {
-                            final int collapsingToolbarLayoutId =
-                                arguments.getInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY);
-                            {
-                                final android.app.Activity activity = this.getActivity();
-                                if (null == activity)
-                                    collapsingToolbarLayout = null;
-                                else
-                                    collapsingToolbarLayout =
-                                        activity.findViewById(collapsingToolbarLayoutId);
-                            }
-                            collapsingToolbarLayoutIdMsg =
-                                java.lang.String.valueOf(collapsingToolbarLayoutId);
-                        }
-                        else
-                        {
-                            collapsingToolbarLayout      = null;
-                            collapsingToolbarLayoutIdMsg =
-                                "arguments does not contain " + COLLAPSING_TOOLBAR_LAYOUT_ID_KEY;
-                        }
-                    }
-                    if (null != collapsingToolbarLayout)
-                        collapsingToolbarLayout.setTitle(this.item.getTitle());
-                }
+                else positionMsg = "arguments does not contain " + POSITION_KEY;
             }
         }
-        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.log(
-            positionMsg, collapsingToolbarLayoutIdMsg);
+        org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.log(positionMsg);
     }
 
     @java.lang.Override public android.view.View onCreateView(
@@ -287,8 +250,14 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         final boolean itemIsNotNull = null != this.item;
 
+        if (itemIsNotNull)
+            this.setToolbarTitle(this.item.getTitle());
+        else
+            this.clearToolbarTitle();
+
         if (null != this.contentTextView)
             this.contentTextView.setText(itemIsNotNull ? this.item.getContent() : null);
+
         if (null != this.changeItemButton) this.changeItemButton.setEnabled(itemIsNotNull);
         if (null != this.deleteItemButton) this.deleteItemButton.setEnabled(itemIsNotNull);
     }

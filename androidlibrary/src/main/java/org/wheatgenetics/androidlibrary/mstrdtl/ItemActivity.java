@@ -13,6 +13,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
+ * android.support.design.widget.CollapsingToolbarLayout
  * android.support.v4.app.NavUtils
  * android.support.v7.app.ActionBar
  * android.view.MenuItem
@@ -26,6 +27,8 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  */
 public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.Activity
 {
+    private android.support.design.widget.CollapsingToolbarLayout collapsingToolbarLayout = null;
+
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class listActivityClass();
 
@@ -40,6 +43,9 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
             final android.support.v7.app.ActionBar actionBar = this.getSupportActionBar();
             if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        this.collapsingToolbarLayout = this.findViewById(
+            org.wheatgenetics.androidlibrary.R.id.masterDetailItemCollapsingToolbarLayout);
 
         // savedInstanceState is non-null when there is fragment state saved from previous
         // configurations of this activity (e.g., when rotating the screen from portrait to
@@ -61,12 +67,6 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
                         org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
                     arguments.putInt(POSITION_KEY, this.getIntent().getIntExtra(
                         POSITION_KEY, /* defaultValue => */-1));
-                }
-                {
-                    final java.lang.String COLLAPSING_TOOLBAR_LAYOUT_ID_KEY = org.wheatgenetics
-                        .androidlibrary.mstrdtl.ItemFragment.COLLAPSING_TOOLBAR_LAYOUT_ID_KEY;
-                    arguments.putInt(COLLAPSING_TOOLBAR_LAYOUT_ID_KEY, org.wheatgenetics
-                        .androidlibrary.R.id.masterDetailItemCollapsingToolbarLayout);
                 }
                 itemFragment.setArguments(arguments);
             }
@@ -91,7 +91,13 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
         else return super.onOptionsItemSelected(menuItem);
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Method
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
+    @java.lang.Override public void setToolbarTitle(final java.lang.CharSequence title)
+    { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(title); }
+
+    @java.lang.Override public void clearToolbarTitle()
+    {if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(null); }
+
     @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
