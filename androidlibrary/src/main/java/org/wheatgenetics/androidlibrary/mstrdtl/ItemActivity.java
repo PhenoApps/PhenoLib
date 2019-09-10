@@ -107,7 +107,7 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
     { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(title); }
 
     @java.lang.Override public void clearToolbarTitle()
-    {if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(null); }
+    { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(null); }
     // endregion
     // endregion
 }

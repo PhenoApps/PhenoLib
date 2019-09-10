@@ -43,14 +43,14 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
             org.wheatgenetics.androidlibrary.R.id.content_container, itemFragment);
     }
 
-    private void notifyDataSetChanged()
-    { if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
-
     private void append()
     {
         final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
         if (null != items) { items.append(); this.refreshSinceItemsHaveChanged(); }
     }
+
+    private void notifyDataSetChanged()
+    { if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
     // endregion
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -103,11 +103,13 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
     @java.lang.Override protected void onActivityResult(final int requestCode, final int resultCode,
     @android.support.annotation.Nullable final android.content.Intent data)
     {
-        if (org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter.REQUEST_CODE == requestCode)
-            if (android.app.Activity.RESULT_OK == resultCode && null != data)
-                if (data.getBooleanExtra(
-                android.content.Intent.EXTRA_DATA_REMOVED,false))
-                    this.notifyDataSetChanged();
+        if (org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter.REQUEST_CODE == requestCode
+        &&  android.app.Activity.RESULT_OK                                       == resultCode
+        &&  null                                                                 != data       )
+        {
+            if (data.getBooleanExtra(android.content.Intent.EXTRA_DATA_REMOVED,false))
+                this.notifyDataSetChanged();
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 

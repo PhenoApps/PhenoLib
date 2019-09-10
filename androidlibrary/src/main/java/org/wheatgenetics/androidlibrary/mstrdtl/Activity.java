@@ -94,10 +94,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 
     // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected java.lang.String getJson() { return this.json; }
+    protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
+    protected java.lang.String getJson() { return this.json; }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void refreshSinceItemHasChanged()
@@ -114,19 +114,15 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         {
             final java.lang.String JSON_KEY =
                 org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY;
-            if (savedInstanceState.containsKey(JSON_KEY))
-                this.json = savedInstanceState.getString(JSON_KEY);
+            this.json = savedInstanceState.containsKey(JSON_KEY) ?
+                savedInstanceState.getString(JSON_KEY) : null;
         }
     }
 
     @java.lang.Override protected void onSaveInstanceState(final android.os.Bundle outState)
     {
-        if (null != outState)
-        {
-            final java.lang.String json = this.jsonFromItems();
-            if (null != json)
-                outState.putString(org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
-        }
+        if (null != outState) outState.putString(
+            org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, this.jsonFromItems());
         super.onSaveInstanceState(outState);
     }
 
