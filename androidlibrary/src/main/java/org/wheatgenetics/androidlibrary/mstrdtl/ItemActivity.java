@@ -84,8 +84,8 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
             // button is shown.  Use NavUtils to allow users to navigate up one level in the
             // application structure.  For more details, see the Navigation pattern on Android
             // Design (http://developer.android.com/design/patterns/navigation.html#up-vs-back).
-             android.support.v4.app.NavUtils.navigateUpTo(this,
-                 new android.content.Intent(this, this.listActivityClass()));
+             android.support.v4.app.NavUtils.navigateUpTo(this, this.putJsonIntoIntent(
+                 new android.content.Intent(this, this.listActivityClass())));
             return true;
         }
         else return super.onOptionsItemSelected(menuItem);
@@ -95,12 +95,10 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
     @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
-        if (this.deleteWasSuccessful(position))
-        {
-            this.setResult(android.app.Activity.RESULT_OK, new android.content.Intent().putExtra(
-                android.content.Intent.EXTRA_DATA_REMOVED,true));
-            this.finish();
-        }
+        super.delete(position);
+        this.setResult(android.app.Activity.RESULT_OK, new android.content.Intent().putExtra(
+            android.content.Intent.EXTRA_DATA_REMOVED,true));
+        this.finish();
     }
 
     @java.lang.Override public void setToolbarTitle(final java.lang.CharSequence title)

@@ -28,20 +28,15 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 
     private java.lang.String jsonFromItems()
     {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null == items)
-            return null;
-        else
+        final java.lang.String result;
         {
-            final java.lang.String json = items.toJson();
+            final java.lang.String json = this.items().toJson();
             if (null == json)
                 return null;
             else
-            {
-                final java.lang.String result = json.trim();
-                return result.length() <= 0 ? null : result;
-            }
+                result = json.trim();
         }
+        return result.length() <= 0 ? null : result;
     }
 
     // region Package Methods
@@ -78,22 +73,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         this.getSupportFragmentManager().beginTransaction().remove(this.itemFragment).commit();
         this.itemFragment = null;
     }
-
-    /** Called by ItemActivity.delete() and ListActivity.delete(). */
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    boolean deleteWasSuccessful(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null == items)
-            return false;
-        else
-            { items.delete(position); return true; }
-    }
     // endregion
 
     // region Protected Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.NonNull
     protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -129,25 +113,19 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position)
-    {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        return null == items ? null : items.get(position);
-    }
+        final int position) { return this.items().get(position); }
 
     @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items) { items.moveUp(position); this.refreshSinceItemsHaveChanged(); }
-    }
+    { this.items().moveUp(position); this.refreshSinceItemsHaveChanged(); }
 
     @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items) { items.moveDown(position); this.refreshSinceItemsHaveChanged(); }
-    }
+    { this.items().moveDown(position); this.refreshSinceItemsHaveChanged(); }
+
+    @java.lang.Override public void delete(@android.support.annotation.IntRange(
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
+    { this.items().delete(position); }
     // endregion
     // endregion
 }

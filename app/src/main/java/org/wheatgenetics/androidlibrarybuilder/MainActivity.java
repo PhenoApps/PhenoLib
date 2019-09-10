@@ -11,6 +11,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.v7.app.AppCompatActivity
+ * android.util.Log
  * android.view.Menu
  * android.view.MenuInflater
  * android.view.MenuItem
@@ -95,6 +96,9 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     // endregion
 
     // region Private Methods
+    private static void log(@android.support.annotation.NonNull final java.lang.String msg)
+    { android.util.Log.d("MainActivity", msg); }
+
     // region Button Private Methods
     private static void setButtonText(final android.widget.Button button,
     final java.lang.CharSequence text) { if (null != button) button.setText(text); }
@@ -333,15 +337,15 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
             {
                 final java.lang.String TEXT_VIEW_TEXT_KEY =
                     org.wheatgenetics.androidlibrarybuilder.MainActivity.TEXT_VIEW_TEXT_KEY;
-                if (savedInstanceState.containsKey(TEXT_VIEW_TEXT_KEY))
-                    this.setTextViewText(savedInstanceState.getCharSequence(TEXT_VIEW_TEXT_KEY));
+                this.setTextViewText(savedInstanceState.containsKey(TEXT_VIEW_TEXT_KEY) ?
+                    savedInstanceState.getCharSequence(TEXT_VIEW_TEXT_KEY) : null);
             }
 
             {
                 final java.lang.String EDIT_TEXT_TEXT_KEY =
                     org.wheatgenetics.androidlibrarybuilder.MainActivity.EDIT_TEXT_TEXT_KEY;
-                if (savedInstanceState.containsKey(EDIT_TEXT_TEXT_KEY))
-                    this.editText.setText(savedInstanceState.getCharSequence(EDIT_TEXT_TEXT_KEY));
+                this.editText.setText(savedInstanceState.containsKey(EDIT_TEXT_TEXT_KEY) ?
+                    savedInstanceState.getCharSequence(EDIT_TEXT_TEXT_KEY) : null);
             }
 
             {
@@ -363,6 +367,8 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
                             this.scaleReaderButtonState = this.scaleReaderButtonState - 1;
                     }
                 }
+                else this.buttonState = this.otherAppsButtonState = this.deviceListButtonState =
+                    this.scaleButtonState = this.scaleReaderButtonState = 0;
             }
         }
 
@@ -389,10 +395,9 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         {
             if (null == this.barcodeScanner)
                 this.barcodeScanner = new org.wheatgenetics.zxing.BarcodeScanner(this);
-            this.barcodeScanner.scan();
-            return true;
+            this.barcodeScanner.scan(); return true;
         }
-        return super.onOptionsItemSelected(item);
+        else return super.onOptionsItemSelected(item);
     }
 
     @java.lang.Override protected void onActivityResult(final int requestCode,

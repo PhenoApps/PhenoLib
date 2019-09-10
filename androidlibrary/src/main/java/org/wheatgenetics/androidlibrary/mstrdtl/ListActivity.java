@@ -43,11 +43,7 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
             org.wheatgenetics.androidlibrary.R.id.content_container, itemFragment);
     }
 
-    private void append()
-    {
-        final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-        if (null != items) { items.append(); this.refreshSinceItemsHaveChanged(); }
-    }
+    private void append() { this.items().append(); this.refreshSinceItemsHaveChanged(); }
 
     private void notifyDataSetChanged()
     { if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
@@ -103,6 +99,8 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
     @java.lang.Override protected void onActivityResult(final int requestCode, final int resultCode,
     @android.support.annotation.Nullable final android.content.Intent data)
     {
+        super.onActivityResult(requestCode, resultCode, data);
+
         if (org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter.REQUEST_CODE == requestCode
         &&  android.app.Activity.RESULT_OK                                       == resultCode
         &&  null                                                                 != data       )
@@ -110,7 +108,6 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
             if (data.getBooleanExtra(android.content.Intent.EXTRA_DATA_REMOVED,false))
                 this.notifyDataSetChanged();
         }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -120,10 +117,7 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        if (this.deleteWasSuccessful(position))
-            { this.removeAndClearItemFragment(); this.notifyDataSetChanged();/*TODO: refresh also?*/ }
-    }
+    { super.delete(position); this.removeAndClearItemFragment(); this.notifyDataSetChanged();/*TODO: refresh also?*/ }
 
     @java.lang.Override public void setToolbarTitle  (final java.lang.CharSequence title) {}
     @java.lang.Override public void clearToolbarTitle()                                   {}
