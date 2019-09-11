@@ -5,7 +5,6 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * mode item content is presented side-by-side with a list of items in a {@link ListActivity}.
  *
  * Uses:
- * android.app.Activity
  * android.content.Intent
  * android.os.Bundle
  * android.R
@@ -84,8 +83,9 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
             // button is shown.  Use NavUtils to allow users to navigate up one level in the
             // application structure.  For more details, see the Navigation pattern on Android
             // Design (http://developer.android.com/design/patterns/navigation.html#up-vs-back).
-             android.support.v4.app.NavUtils.navigateUpTo(this, this.putJsonIntoIntent(
-                 new android.content.Intent(this, this.listActivityClass())));
+            this.setResultFromJson();
+            android.support.v4.app.NavUtils.navigateUpTo(this,
+                new android.content.Intent(this, this.listActivityClass()));
             return true;
         }
         else return super.onOptionsItemSelected(menuItem);
@@ -94,12 +94,7 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    {
-        super.delete(position);
-        this.setResult(android.app.Activity.RESULT_OK, new android.content.Intent().putExtra(
-            android.content.Intent.EXTRA_DATA_REMOVED,true));
-        this.finish();
-    }
+    { super.delete(position); this.setResultFromJson(); this.finish(); }
 
     @java.lang.Override public void setToolbarTitle(final java.lang.CharSequence title)
     { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(title); }

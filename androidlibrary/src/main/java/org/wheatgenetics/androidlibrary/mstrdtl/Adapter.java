@@ -23,10 +23,16 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
 {
     @android.support.annotation.NonNull private final org.wheatgenetics.javalib.mstrdtl.Items items;
 
+    // region Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     abstract android.view.View.OnClickListener makeOnClickListener(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position);
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Items getItems()
+    { return this.items; }
+    // endregion
 
     Adapter(@android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Items items)
     { super(); this.items = items; }

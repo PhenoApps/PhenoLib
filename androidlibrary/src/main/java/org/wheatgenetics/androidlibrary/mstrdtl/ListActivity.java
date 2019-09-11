@@ -47,6 +47,8 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
 
     private void notifyDataSetChanged()
     { if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
+
+    private void initializeItems() { this.items().fromJson(this.getJson()); }
     // endregion
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -105,8 +107,8 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
         &&  android.app.Activity.RESULT_OK                                       == resultCode
         &&  null                                                                 != data       )
         {
-            if (data.getBooleanExtra(android.content.Intent.EXTRA_DATA_REMOVED,false))
-                this.notifyDataSetChanged();
+            this.setJsonFromIntent("onActivityResult()", data);
+            this.initializeItems(); this.refreshSinceItemsHaveChanged();
         }
     }
 
@@ -117,7 +119,7 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    { super.delete(position); this.removeAndClearItemFragment(); this.notifyDataSetChanged();/*TODO: refresh also?*/ }
+    { super.delete(position); this.removeAndClearItemFragment(); this.notifyDataSetChanged(); }
 
     @java.lang.Override public void setToolbarTitle  (final java.lang.CharSequence title) {}
     @java.lang.Override public void clearToolbarTitle()                                   {}

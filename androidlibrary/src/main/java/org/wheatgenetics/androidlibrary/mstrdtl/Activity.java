@@ -2,6 +2,8 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 
 /**
  * Uses:
+ * android.app.Activity
+ * android.content.Intent
  * android.os.Bundle
  * android.support.annotation.IdRes
  * android.support.annotation.IntRange
@@ -10,6 +12,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.support.v7.app.AppCompatActivity
+ * android.util.Log
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -26,6 +29,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
     // endregion
 
+    // region Private Methods
+    private void log(@android.support.annotation.NonNull final java.lang.String msg)
+    { android.util.Log.d(this.getClass().getName(), msg); }
+
     private java.lang.String jsonFromItems()
     {
         final java.lang.String result;
@@ -39,7 +46,36 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         return result.length() <= 0 ? null : result;
     }
 
+    @android.support.annotation.NonNull android.content.Intent putJsonIntoIntent(
+    @android.support.annotation.NonNull final android.content.Intent intent)
+    {
+        final java.lang.String json = this.jsonFromItems();
+        this.log("setResultFromJson(): putJsonIntoIntent(): " + json);
+        return intent.putExtra(org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
+    }
+    // endregion
+
     // region Package Methods
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void setJsonFromIntent(
+    @android.support.annotation.NonNull final java.lang.String       source,
+    @android.support.annotation.NonNull final android.content.Intent intent)
+    {
+        {
+            final java.lang.String JSON_KEY =
+                org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY;
+            this.json = intent.hasExtra(JSON_KEY) ? intent.getStringExtra(JSON_KEY) : null;
+        }
+        this.log(source + ": setJsonFromIntent(): " + this.json);
+    }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void setResultFromJson()
+    {
+        this.setResult(android.app.Activity.RESULT_OK,
+            this.putJsonIntoIntent(new android.content.Intent()));
+    }
+
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     void refreshSinceItemsHaveChanged()
     { if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged(); }
@@ -94,7 +130,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
         super.onCreate(savedInstanceState);
 
-        if (null != savedInstanceState)
+        if (null == savedInstanceState)
+            this.setJsonFromIntent("onCreate()", this.getIntent());
+        else
         {
             final java.lang.String JSON_KEY =
                 org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY;
@@ -109,6 +147,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
             org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, this.jsonFromItems());
         super.onSaveInstanceState(outState);
     }
+
+    @java.lang.Override public void onBackPressed()
+    { this.setResultFromJson(); super.onBackPressed(); }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
