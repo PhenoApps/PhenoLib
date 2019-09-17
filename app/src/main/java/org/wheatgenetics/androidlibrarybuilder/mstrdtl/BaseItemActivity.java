@@ -2,20 +2,25 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 
 /**
  * Uses:
+ * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.mstrdtl.Items
+ * org.wheatgenetics.javalib.mstrdtl.TestItems
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
- *
- * org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems
  */
 abstract class BaseItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 {
+    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
+
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
-    { return org.wheatgenetics.androidlibrarybuilder.mstrdtl.TestItems.TEST_ITEMS(); }
+    @java.lang.Override @android.support.annotation.NonNull
+    protected org.wheatgenetics.javalib.mstrdtl.Items items()
+    {
+        if (null == this.itemsInstance) this.itemsInstance =
+            new org.wheatgenetics.javalib.mstrdtl.TestItems().fromJson(this.getJson());
+        return this.itemsInstance;
+    }
 }
