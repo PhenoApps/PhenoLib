@@ -20,7 +20,7 @@
 
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
@@ -37,11 +37,11 @@
 
         <activity android:name=".WebViewActivity" />
 
-        <activity android:name=".mstrdtl.ItemActivity" />
-        <activity android:name=".mstrdtl.ListActivity" />
+        <activity android:name=".mstrdtl.ItemActivity"           android:launchMode="singleTask" />
+        <activity android:name=".mstrdtl.ChangeableItemActivity" android:launchMode="singleTask" />
 
-        <activity android:name=".mstrdtl.ChangeableItemActivity" />
-        <activity android:name=".mstrdtl.ChangeableListActivity" />
+        <activity android:name=".mstrdtl.ListActivity"           android:launchMode="singleTask" />
+        <activity android:name=".mstrdtl.ChangeableListActivity" android:launchMode="singleTask" />
 
         <activity android:name="org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutItemActivity" />
         <activity android:name="org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestListActivity"       />

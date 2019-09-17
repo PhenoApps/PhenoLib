@@ -4,6 +4,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * Uses:
  * android.os.Bundle
  * android.support.annotation.IntRange
+ * android.support.annotation.NonNull
  * android.view.View
  * android.view.View.OnClickListener
  *
@@ -23,7 +24,8 @@ class TwoPaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl.Adapter
     private void replace(final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
     { if (null != this.helper) this.helper.replace(itemFragment); }
 
-    TwoPaneAdapter(final org.wheatgenetics.javalib.mstrdtl.Items items,
+    TwoPaneAdapter(@android.support.annotation.NonNull
+    final org.wheatgenetics.javalib.mstrdtl.Items                        items ,
     final org.wheatgenetics.androidlibrary.mstrdtl.TwoPaneAdapter.Helper helper)
     { super(items); this.helper = helper; }
 

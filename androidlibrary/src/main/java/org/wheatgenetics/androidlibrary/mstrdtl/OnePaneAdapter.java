@@ -6,6 +6,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.content.Context
  * android.content.Intent
  * android.support.annotation.IntRange
+ * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.view.View
@@ -15,16 +16,30 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.Adapter
+ * org.wheatgenetics.androidlibrary.mstrdtl.Consts
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment
  */
 public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl.Adapter
 {
     static final int REQUEST_CODE = 1;
 
+    private java.lang.String jsonFromItems()
+    {
+        final java.lang.String json = this.getItems().toJson();
+        if (null == json)
+            return null;
+        else
+        {
+            final java.lang.String result = json.trim();
+            return result.length() <= 0 ? null : result;
+        }
+    }
+
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class concreteItemActivityClass();
 
-    protected OnePaneAdapter(final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
+    protected OnePaneAdapter(@android.support.annotation.NonNull
+    final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
 
     @java.lang.Override android.view.View.OnClickListener makeOnClickListener(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
@@ -45,7 +60,13 @@ public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.ms
                             intent.putExtra(
                                 org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY,
                                 position                                                          );
-
+                            {
+                                final java.lang.String json = org.wheatgenetics
+                                    .androidlibrary.mstrdtl.OnePaneAdapter.this.jsonFromItems();
+                                if (null != json) intent.putExtra(
+                                    org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY,
+                                    json                                                    );
+                            }
                             ((android.app.Activity) context).startActivityForResult(intent, org
                                 .wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter.REQUEST_CODE);
                         }

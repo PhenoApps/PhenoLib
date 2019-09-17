@@ -21,12 +21,18 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 abstract class Adapter extends android.support.v7.widget.RecyclerView.Adapter<
 org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
 {
-    private final org.wheatgenetics.javalib.mstrdtl.Items items;
+    @android.support.annotation.NonNull private final org.wheatgenetics.javalib.mstrdtl.Items items;
 
+    // region Package Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     abstract android.view.View.OnClickListener makeOnClickListener(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position);
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Items getItems()
+    { return this.items; }
+    // endregion
 
     Adapter(@android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Items items)
     { super(); this.items = items; }
@@ -46,12 +52,15 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
     final org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder viewHolder,
     final int                             position                      )
     {
-        if (null != this.items) viewHolder.bind(
+        viewHolder.bind(
             /* item            => */ this.items.get          (position)                    ,
             /* onClickListener => */ this.makeOnClickListener(position) /* polymorphism */);
     }
 
     @java.lang.Override public int getItemCount()
-    { return null == this.items ? 0 : this.items.size(); }
+    {
+        //noinspection ConstantConditions
+        return null == this.items ? 0 : this.items.size();
+    }
     // endregion
 }
