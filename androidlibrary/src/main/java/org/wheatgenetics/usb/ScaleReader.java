@@ -30,7 +30,7 @@ public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
     { return this.scale().formattedRead(); }
     // endregion
 
-    @java.lang.SuppressWarnings({"WeakerAccess"}) public ScaleReader(
+    public ScaleReader(
     @android.support.annotation.NonNull final android.app.Activity                       activity,
     @android.support.annotation.NonNull final org.wheatgenetics.usb.DeviceReader.Handler handler )
     {

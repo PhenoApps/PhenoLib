@@ -56,6 +56,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.androidlibrarybuilder.R
  * org.wheatgenetics.androidlibrarybuilder.WebViewActivity
  */
+@java.lang.SuppressWarnings({"unused"})
 public class MainActivity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver
 {
