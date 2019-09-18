@@ -46,7 +46,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         return result.length() <= 0 ? null : result;
     }
 
-    @android.support.annotation.NonNull android.content.Intent putJsonIntoIntent(
+    @android.support.annotation.NonNull private android.content.Intent putJsonIntoIntent(
     @android.support.annotation.NonNull final android.content.Intent intent)
     {
         final java.lang.String json = this.jsonFromItems();
