@@ -60,7 +60,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
         helperChanger = null;
 
     private int                                    positionArgument =   -1;
-    private org.wheatgenetics.javalib.mstrdtl.Item itemInstance     = null;
+    private org.wheatgenetics.javalib.mstrdtl.Item itemInstance     = null;             // lazy load
 
     private android.widget.TextView contentTextView = null;
     private android.widget.Button   upButton = null, downButton = null,
