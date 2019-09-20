@@ -283,15 +283,16 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         {
             case org.wheatgenetics.androidlibrarybuilder.MainActivity.MIN_BUTTON_STATE:
                 this.resetButtonText(); break;
-            case 1: this.setButtonText("Long Toast"                   ); break;
-            case 2: this.setButtonText("permissionDir.list()"         ); break;
-            case 3: this.setButtonText("requestDir.list() 1 of 3"     ); break;
-            case 4: this.setButtonText("requestDir.list() 2 of 3"     ); break;
-            case 5: this.setButtonText("requestDir.list() 3 of 3"     ); break;
-            case 6: this.setButtonText("http://www.example.org/"      ); break;
-            case 7: this.setButtonText("Master-Detail Flow"           ); break;
-            case 8: this.setButtonText("Changeable Master-Detail Flow"); break;
-            case 9: this.setButtonText("ChangeLog"                    ); break;
+            case  1: this.setButtonText("Long Toast"                   ); break;
+            case  2: this.setButtonText("permissionDir.list()"         ); break;
+            case  3: this.setButtonText("requestDir.list() 1 of 3"     ); break;
+            case  4: this.setButtonText("requestDir.list() 2 of 3"     ); break;
+            case  5: this.setButtonText("requestDir.list() 3 of 3"     ); break;
+            case  6: this.setButtonText("http://www.example.org/"      ); break;
+            case  7: this.setButtonText("Master-Detail Flow"           ); break;
+            case  8: this.setButtonText("Changeable Master-Detail Flow"); break;
+            case  9: this.setButtonText("BrAPI 1.3"                    ); break;
+            case 10: this.setButtonText("ChangeLog"                    ); break;
         }
     }
 
@@ -575,8 +576,8 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
 
         switch (this.buttonState)
         {
-            case org.wheatgenetics.androidlibrarybuilder.MainActivity.MIN_BUTTON_STATE: case 1:
-            case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
+            case org.wheatgenetics.androidlibrarybuilder.MainActivity.MIN_BUTTON_STATE:
+            case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
                 this.buttonState++; break;
 
             default: this.buttonState =
