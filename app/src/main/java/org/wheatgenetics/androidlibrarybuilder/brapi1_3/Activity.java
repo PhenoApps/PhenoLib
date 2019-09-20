@@ -351,7 +351,7 @@ implements org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.S
     { return this.testServerBasePathInstance; }
 
     @java.lang.Override public void setBasePath(final java.lang.String basePath)
-    { this.apiClient().setBasePath(basePath); this.setToolbarTitleToFirstFragmentName(); }
+    { this.setBasePathButNotToolbarTitle(basePath); this.setToolbarTitleToFirstFragmentName(); }
 
     @java.lang.Override public void setAuthorization(final java.lang.String authorization)
     { this.authorizationInstance = authorization; this.setToolbarTitleToFirstFragmentName(); }
