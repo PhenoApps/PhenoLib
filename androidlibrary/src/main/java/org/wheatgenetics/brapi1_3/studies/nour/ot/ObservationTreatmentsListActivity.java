@@ -2,7 +2,6 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
 
 /**
  * Uses:
- * android.app.Application
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
@@ -16,8 +15,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
- * org.wheatgenetics.brapi1_3.Application
- *
+ * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentOnePaneAdapter
@@ -51,15 +49,12 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 
     // region Overridden Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
+    @java.lang.Override @android.support.annotation.NonNull
+    protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
-        if (null == this.itemsInstance)
-        {
-            final android.app.Application application = this.getApplication();
-            if (application instanceof org.wheatgenetics.brapi1_3.Application)
-                this.itemsInstance = ((org.wheatgenetics.brapi1_3.Application) application)
-                    .getObservationTreatmentsAsItems();
-        }
+        if (null == this.itemsInstance) this.itemsInstance =
+            new org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments().fromJson(
+                this.getJson());
         return this.itemsInstance;
     }
 

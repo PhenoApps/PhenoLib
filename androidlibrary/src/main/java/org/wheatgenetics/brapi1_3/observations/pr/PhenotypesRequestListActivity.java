@@ -85,7 +85,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
+    @java.lang.Override @android.support.annotation.NonNull
+    protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
         if (null == this.itemsInstance)
         {

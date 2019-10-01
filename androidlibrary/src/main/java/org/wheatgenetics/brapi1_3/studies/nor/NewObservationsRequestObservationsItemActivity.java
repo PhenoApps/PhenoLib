@@ -2,7 +2,6 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
 
 /**
  * Uses:
- * android.app.Application
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
@@ -11,11 +10,11 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
- * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  *
+ * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestListActivity
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog.Handler
@@ -55,15 +54,12 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     { return org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestListActivity.class; }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
+    @java.lang.Override @android.support.annotation.NonNull
+    protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
-        if (null == this.itemsInstance)
-        {
-            final android.app.Application application = this.getApplication();
-            if (application instanceof org.wheatgenetics.javalib.mstrdtl.ItemsProvider)
-                this.itemsInstance =
-                    ((org.wheatgenetics.javalib.mstrdtl.ItemsProvider) application).mstrdtlItems();
-        }
+        if (null == this.itemsInstance) this.itemsInstance =
+            new org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest().fromJson(
+                this.getJson());
         return this.itemsInstance;
     }
 

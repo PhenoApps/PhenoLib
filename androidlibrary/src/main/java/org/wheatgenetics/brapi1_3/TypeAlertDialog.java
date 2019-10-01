@@ -36,6 +36,7 @@ public abstract class TypeAlertDialog extends org.wheatgenetics.androidlibrary.I
     protected java.lang.String[] items() { return this.itemsInstance; }
     // endregion
 
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     public TypeAlertDialog(final android.app.Activity activity) { super(activity); }
 
     // region Overridden Methods

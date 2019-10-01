@@ -6,6 +6,7 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
  * android.support.annotation.IntRange
+ * android.support.annotation.Nullable
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
  * android.view.View
@@ -285,12 +286,17 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     // endregion
 
     // region set() Private Methods
+    private static void setTextViewText(
+    @android.support.annotation.Nullable final android.widget.TextView textView,
+    @android.support.annotation.Nullable final java.lang.Object        object  )
+    { if (null != textView) textView.setText(null == object ? "null" : object.toString()); }
+
     // region entryType set() Private Methods
     private void setEntryTypeTextViewText(
     final io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum entryTypeEnum)
     {
-        if (null != this.entryTypeTextView) this.entryTypeTextView.setText(
-            null == entryTypeEnum ? "null" : entryTypeEnum.toString());
+        org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog.setTextViewText(
+            this.entryTypeTextView, entryTypeEnum);
     }
 
     private void setEntryTypeEnum(
@@ -306,9 +312,8 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     final io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum
         positionCoordinateXTypeEnum)
     {
-        if (null != this.positionCoordinateXTypeTextView)
-            this.positionCoordinateXTypeTextView.setText(null == positionCoordinateXTypeEnum ?
-                "null" : positionCoordinateXTypeEnum.toString());
+        org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog.setTextViewText(
+            this.positionCoordinateXTypeTextView, positionCoordinateXTypeEnum);
     }
 
     private void setPositionCoordinateXTypeEnum(
@@ -329,9 +334,8 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     final io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum
         positionCoordinateYTypeEnum)
     {
-        if (null != this.positionCoordinateYTypeTextView)
-            this.positionCoordinateYTypeTextView.setText(null == positionCoordinateYTypeEnum ?
-                "null" : positionCoordinateYTypeEnum.toString());
+        org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog.setTextViewText(
+            this.positionCoordinateYTypeTextView, positionCoordinateYTypeEnum);
     }
 
     private void setPositionCoordinateYTypeEnum(
@@ -349,9 +353,9 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     // endregion
     // endregion
 
-    StudyLayoutRequestLayoutAlertDialog(final android.app.Activity activity,
-    final org.wheatgenetics.brapi1_3.studies.slr
-        .StudyLayoutRequestLayoutAlertDialog.Handler handler) { super(activity, handler); }
+    StudyLayoutRequestLayoutAlertDialog(final android.app.Activity activity, final
+    org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutAlertDialog.Handler handler)
+    { super(activity, handler); }
 
     // region Overridden methods
     @java.lang.Override public void configure()

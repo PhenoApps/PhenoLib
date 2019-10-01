@@ -39,6 +39,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.androidlibrary.RequestDir
  * org.wheatgenetics.androidlibrary.Utils
  * org.wheatgenetics.androidlibrary.mstrdtl.Consts
+ * org.wheatgenetics.androidlibrary.mstrdtl.Utils
  * org.wheatgenetics.changelog.ChangeLogAlertDialog
  * org.wheatgenetics.usb.DeviceListTester
  * org.wheatgenetics.usb.DeviceReaderTester
@@ -224,11 +225,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         final java.lang.String json = this.testItems().toJson();
         org.wheatgenetics.androidlibrarybuilder.MainActivity.log(
             source + ": putJsonIntoIntent(): " + json);
-        if (null == json)
-            return listIntent;
-        else
-            return listIntent.putExtra(
-                org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
+        return org.wheatgenetics.androidlibrary.mstrdtl.Utils.putJsonIntoIntent(json, listIntent);
     }
 
     private android.content.Intent listIntent()

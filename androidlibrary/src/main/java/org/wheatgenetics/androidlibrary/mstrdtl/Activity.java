@@ -20,6 +20,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * org.wheatgenetics.androidlibrary.mstrdtl.Consts
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
+ * org.wheatgenetics.androidlibrary.mstrdtl.Utils
  */
 abstract class Activity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
@@ -51,7 +52,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
         final java.lang.String json = this.jsonFromItems();
         this.log("setResultFromJson(): putJsonIntoIntent(): " + json);
-        return intent.putExtra(org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
+        return org.wheatgenetics.androidlibrary.mstrdtl.Utils.putJsonIntoIntent(json, intent);
     }
     // endregion
 
