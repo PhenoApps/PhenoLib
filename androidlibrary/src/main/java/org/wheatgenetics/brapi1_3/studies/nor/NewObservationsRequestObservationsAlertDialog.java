@@ -26,7 +26,7 @@ class NewObservationsRequestObservationsAlertDialog extends org.wheatgenetics.br
 
     NewObservationsRequestObservationsAlertDialog(final android.app.Activity activity, final
     org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsAlertDialog.Handler
-        handler) { super(activity, handler); }
+    handler) { super(activity, handler); }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
@@ -92,8 +92,8 @@ class NewObservationsRequestObservationsAlertDialog extends org.wheatgenetics.br
     }
     // endregion
 
-    void show(final io.swagger.client.model.NewObservationsRequestObservations
-        newObservationsRequestObservations)
+    void show(final
+    io.swagger.client.model.NewObservationsRequestObservations newObservationsRequestObservations)
     {
         if (null != newObservationsRequestObservations)
         {

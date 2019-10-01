@@ -98,7 +98,6 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
         }
     }
 
-
     @java.lang.Override protected void onStart()
     { super.onStart(); this.refreshSinceItemsHaveChanged(); }
 

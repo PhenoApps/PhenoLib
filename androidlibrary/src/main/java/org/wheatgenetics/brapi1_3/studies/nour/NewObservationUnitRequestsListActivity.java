@@ -2,7 +2,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
 
 /**
  * Uses:
- * android.app.Application
+ * android.app.Activity
  * android.content.Intent
  * android.support.annotation.NonNull
  * android.support.annotation.Nullable
@@ -11,18 +11,23 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
- * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
- * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
- *
+ * org.wheatgenetics.androidlibrary.mstrdtl.Consts
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
+ * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
  * org.wheatgenetics.brapi1_3.studies.nour.o.Utils
+ *
+ * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
  * org.wheatgenetics.brapi1_3.studies.nour.ot.Utils
+ *
+ * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
  * org.wheatgenetics.brapi1_3.studies.nour.oux.Utils
  *
+ * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
+ * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler
@@ -40,32 +45,51 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     // region Fields
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
         newObservationUnitRequestAlertDialogInstance = null;                            // lazy load
+    private int                                     position      =   -1;
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     // endregion
 
     // region Private Methods
+    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
+    newObservationUnitRequest()
+    {
+        return this.position >= org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION ?
+            (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
+                this.items().get(this.position) : null;
+    }
+
     // region showListActivity() Private Methods
-    private void showObservationUnitXrefListActivity()
+    private void showObservationUnitXrefListActivity(
+    final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs observationUnitXrefs)
     {
         org.wheatgenetics.brapi1_3.studies.nour.oux.Utils.showObservationUnitXrefListActivity(
-            this,
-            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
-                .OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE);
+            /* activity    => */this,
+            /* items       => */ observationUnitXrefs,
+            /* requestCode => */
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
+                    .OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE);
     }
 
-    private void showObservationsListActivity()
+    private void showObservationsListActivity(
+    final org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations)
     {
-        org.wheatgenetics.brapi1_3.studies.nour.o.Utils.showObservationsListActivity(this,
-            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
-                .OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE);
+        org.wheatgenetics.brapi1_3.studies.nour.o.Utils.showObservationsListActivity(
+            /* activity    => */this,
+            /* items       => */ observations,
+            /* requestCode => */
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
+                    .OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE);
     }
 
-    private void showObservationTreatmentsListActivity()
+    private void showObservationTreatmentsListActivity(
+    final org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments observationTreatments)
     {
         org.wheatgenetics.brapi1_3.studies.nour.ot.Utils.showObservationTreatmentsListActivity(
-            this,
-            org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
-                .OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE);
+            /* activity    => */this,
+            /* items       => */ observationTreatments,
+            /* requestCode => */
+                org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
+                    .OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE);
     }
     // endregion
 
@@ -87,25 +111,30 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
                     }, new org.wheatgenetics.brapi1_3.studies.nour
                     .NewObservationUnitRequestAlertDialog.ActivityHandler()
                     {
-                        @java.lang.Override public void showObservationUnitXrefListActivity()
+                        @java.lang.Override public void showObservationUnitXrefListActivity(final
+                        org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
+                        observationUnitXrefs)
                         {
                             org.wheatgenetics.brapi1_3.studies.nour
-                                .NewObservationUnitRequestsListActivity
-                                .this.showObservationUnitXrefListActivity();
+                                .NewObservationUnitRequestsListActivity.this
+                                .showObservationUnitXrefListActivity(observationUnitXrefs);
                         }
 
-                        @java.lang.Override public void showObservationsListActivity()
+                        @java.lang.Override public void showObservationsListActivity(
+                        final org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations)
                         {
                             org.wheatgenetics.brapi1_3.studies.nour
-                                .NewObservationUnitRequestsListActivity
-                                .this.showObservationsListActivity();
+                                .NewObservationUnitRequestsListActivity.this
+                                .showObservationsListActivity(observations);
                         }
 
-                        @java.lang.Override public void showObservationTreatmentsListActivity()
+                        @java.lang.Override public void showObservationTreatmentsListActivity(final
+                        org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
+                        observationTreatments)
                         {
                             org.wheatgenetics.brapi1_3.studies.nour
-                                .NewObservationUnitRequestsListActivity
-                                .this.showObservationTreatmentsListActivity();
+                                .NewObservationUnitRequestsListActivity.this
+                                .showObservationTreatmentsListActivity(observationTreatments);
                         }
                     });
         return this.newObservationUnitRequestAlertDialogInstance;
@@ -116,35 +145,61 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     @java.lang.Override protected void onActivityResult(final int requestCode, final int resultCode,
     @android.support.annotation.Nullable final android.content.Intent data)
     {
-        if (null != this.newObservationUnitRequestAlertDialogInstance) switch (requestCode)
-        {
-            case org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
-            .OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE:
-                this.newObservationUnitRequestAlertDialogInstance.updateObservationUnitXref();
-                break;
+        if (android.app.Activity.RESULT_OK == resultCode && null != data)
+            if (null != this.newObservationUnitRequestAlertDialogInstance)
+            {
+                final boolean dataHasJson; final java.lang.String json;
+                {
+                    final java.lang.String JSON_KEY =
+                        org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY;
+                    dataHasJson = data.hasExtra(JSON_KEY)                           ;
+                    json        = dataHasJson ? data.getStringExtra(JSON_KEY) : null;
+                }
 
-            case org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
-            .OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE:
-                this.newObservationUnitRequestAlertDialogInstance.updateObservations(); break;
+                switch (requestCode)
+                {
+                    case
+                    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
+                    .OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE:
+                        if (dataHasJson)
+                            this.newObservationUnitRequestAlertDialogInstance
+                                .setObservationUnitXrefs(json);
+                        else
+                            this.newObservationUnitRequestAlertDialogInstance
+                                .clearObservationUnitXrefs();
+                        break;
 
-            case org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
-            .OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE:
-                this.newObservationUnitRequestAlertDialogInstance.updateObservationTreatments();
-                break;
-        }
+                    case
+                    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
+                    .OBSERVATIONS_LIST_ACTIVITY_REQUEST_CODE:
+                        if (dataHasJson)
+                            this.newObservationUnitRequestAlertDialogInstance.setObservations(json);
+                        else
+                            this.newObservationUnitRequestAlertDialogInstance.clearObservations();
+                        break;
+
+                    case
+                    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
+                    .OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE:
+                        if (dataHasJson)
+                            this.newObservationUnitRequestAlertDialogInstance
+                                .setObservationTreatments(json);
+                        else
+                            this.newObservationUnitRequestAlertDialogInstance
+                                .clearObservationTreatments();
+                        break;
+                }
+            }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected org.wheatgenetics.javalib.mstrdtl.Items items()
+    @java.lang.Override @android.support.annotation.NonNull
+    protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
-        if (null == this.itemsInstance)
-        {
-            final android.app.Application application = this.getApplication();
-            if (application instanceof org.wheatgenetics.javalib.mstrdtl.ItemsProvider)
-                this.itemsInstance =
-                    ((org.wheatgenetics.javalib.mstrdtl.ItemsProvider) application).mstrdtlItems();
-        }
+        if (null == this.itemsInstance) this.itemsInstance =
+            new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests().fromJson(
+                this.getJson());
         return this.itemsInstance;
     }
 
@@ -160,8 +215,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     @java.lang.Override public void change(
     @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
-        this.newObservationUnitRequestAlertDialog().show(
-            (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item);
+        final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
+            newObservationUnitRequest =
+                (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item;
+        this.position = newObservationUnitRequest.getPosition();
+        this.newObservationUnitRequestAlertDialog().show(newObservationUnitRequest);
     }
     // endregion
     // endregion
