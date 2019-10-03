@@ -3,7 +3,6 @@ package org.wheatgenetics.brapi1_3.observations.pr;
 /**
  * Uses:
  * android.annotation.SuppressLint
- * android.app.Application
  * android.app.Activity
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
@@ -19,14 +18,17 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.wheatgenetics.androidlibrary.R
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
- * org.wheatgenetics.brapi1_3.Application
  *
+ * org.wheatgenetics.brapi1_3.observations.pr.o.Observations
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
  */
 class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
 {
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface ActivityHandler
-    { public abstract void showObservationsListActivity(); }
+    {
+        public abstract void showObservationsListActivity(
+        org.wheatgenetics.brapi1_3.observations.pr.o.Observations phenotypesRequestData);
+    }
 
     // region Fields
     private final
@@ -37,43 +39,15 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
     private android.widget.TextView observationsTextView                          ;
 
     private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
-        phenotypesRequestData = null;
+        permanentPhenotypesRequestData = null, temporaryPhenotypesRequestData = null;
     // endregion
 
     // region Private Methods
-    private boolean setPhenotypesRequestDataPosition()
-    {
-        final boolean success;
-        {
-            final android.app.Activity activity = this.activity();
-            if (null == activity)
-                success = false;
-            else
-            {
-                final android.app.Application androidApplication = activity.getApplication();
-                if (androidApplication instanceof org.wheatgenetics.brapi1_3.Application)
-                {
-                    final org.wheatgenetics.brapi1_3.Application brapi1_3Application =
-                        (org.wheatgenetics.brapi1_3.Application) androidApplication;
-                    if (null == this.phenotypesRequestData)
-                        success = false;
-                    else
-                    {
-                        brapi1_3Application.setPhenotypesRequestDataPosition(
-                            this.phenotypesRequestData.getPosition());
-                        success = true;
-                    }
-                }
-                else success = false;
-            }
-        }
-        return success;
-    }
-
     private void showObservationsListActivity()
     {
-        if (this.setPhenotypesRequestDataPosition())
-            this.activityHandler.showObservationsListActivity();
+        this.activityHandler.showObservationsListActivity(
+            null == this.temporaryPhenotypesRequestData ? null :
+                this.temporaryPhenotypesRequestData.getObservationsAsItems());
     }
 
     @android.annotation.SuppressLint({"DefaultLocale"}) private void setObservationsTextViewText(
@@ -86,8 +60,8 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
 
     private void setObservationsTextViewText()
     {
-        if (null != this.phenotypesRequestData)
-            this.setObservationsTextViewText(this.phenotypesRequestData.getObservations());
+        this.setObservationsTextViewText(null == this.temporaryPhenotypesRequestData ?
+            null : this.temporaryPhenotypesRequestData.getObservations());
     }
     // endregion
 
@@ -95,7 +69,7 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
     org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.Handler handler,
     @android.support.annotation.NonNull final
         org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.ActivityHandler
-            activityHandler) { super(activity, handler); this.activityHandler = activityHandler; }
+        activityHandler) { super(activity, handler); this.activityHandler = activityHandler; }
 
     // region Overridden Methods
     @java.lang.Override public void configure()
@@ -144,12 +118,14 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
-        if (null != this.phenotypesRequestData)
+        if (null != this.permanentPhenotypesRequestData)
         {
-            this.phenotypesRequestData.setObservatioUnitDbId(org.wheatgenetics.brapi1_3.observations
-                .pr.PhenotypesRequestDataAlertDialog.getEditTextStringText(
+            this.permanentPhenotypesRequestData.setObservatioUnitDbId(org.wheatgenetics.brapi1_3
+                .observations.pr.PhenotypesRequestDataAlertDialog.getEditTextStringText(
                     this.observationUnitDbIdEditText));
-            this.phenotypesRequestData.setStudyDbId(org.wheatgenetics.brapi1_3.observations
+            this.permanentPhenotypesRequestData.setObservationsAsItems(
+                this.temporaryPhenotypesRequestData.getObservationsAsItems());
+            this.permanentPhenotypesRequestData.setStudyDbId(org.wheatgenetics.brapi1_3.observations
                 .pr.PhenotypesRequestDataAlertDialog.getEditTextStringText(this.studyDbIdEditText));
 
             super.handlePositiveButtonClick();
@@ -158,25 +134,40 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
     // endregion
 
     // region Package Methods
-    void show(final
-    org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData phenotypesRequestData)
+    void setObservations(final java.lang.String json)
     {
-        if (null != phenotypesRequestData)
+        if (null != this.temporaryPhenotypesRequestData)
+            this.temporaryPhenotypesRequestData.setObservationsAsItems(json);
+        this.setObservationsTextViewText();
+    }
+
+    void clearObservations()
+    {
+        if (null != this.temporaryPhenotypesRequestData)
+            this.temporaryPhenotypesRequestData.clearObservationsAsItems();
+        this.setObservationsTextViewText();
+    }
+
+    void show(final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
+    permanentPhenotypesRequestData)
+    {
+        if (null != permanentPhenotypesRequestData)
         {
-            this.phenotypesRequestData = phenotypesRequestData;
+            this.permanentPhenotypesRequestData = permanentPhenotypesRequestData;
+            this.temporaryPhenotypesRequestData =
+                new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData(
+                    this.permanentPhenotypesRequestData);
 
             org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
                 .setEditTextText(this.observationUnitDbIdEditText,
-                    this.phenotypesRequestData.getObservatioUnitDbId());
+                    this.temporaryPhenotypesRequestData.getObservatioUnitDbId());
             this.setObservationsTextViewText();
             org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
                 .setEditTextText(this.studyDbIdEditText,
-                    this.phenotypesRequestData.getStudyDbId());
+                    this.temporaryPhenotypesRequestData.getStudyDbId());
 
             this.show();
         }
     }
-
-    void updateObservations() { this.setObservationsTextViewText(); }
     // endregion
 }

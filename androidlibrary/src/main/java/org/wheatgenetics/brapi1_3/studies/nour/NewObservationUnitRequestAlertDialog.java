@@ -39,13 +39,13 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface ActivityHandler
     {
         public abstract void showObservationUnitXrefListActivity(
-            org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs observationUnitXrefs);
+        org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs observationUnitXrefs);
 
         public abstract void showObservationsListActivity(
-            org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations);
+        org.wheatgenetics.brapi1_3.studies.nour.o.Observations observations);
 
         public abstract void showObservationTreatmentsListActivity(
-            org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments observationTreatments);
+        org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments observationTreatments);
     }
 
     private static class PositionCoordinateXTypeAlertDialog
@@ -195,6 +195,13 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     { if (null != textView) textView.setText(null == object ? "null" : object.toString()); }
 
     // region observationUnitXref Private Methods
+    private void showObservationUnitXrefListActivity()
+    {
+        this.activityHandler.showObservationUnitXrefListActivity(
+            null == this.temporaryNewObservationUnitRequest ? null :
+                this.temporaryNewObservationUnitRequest.getObservationUnitXrefsAsItems());
+    }
+
     private void setObservationUnitXrefTextViewText(@android.support.annotation.Nullable
     final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXref)
     {
@@ -208,16 +215,16 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
         this.setObservationUnitXrefTextViewText(null == this.temporaryNewObservationUnitRequest ?
             null : this.temporaryNewObservationUnitRequest.getObservationUnitXref());
     }
-
-    private void showObservationUnitXrefListActivity()
-    {
-        this.activityHandler.showObservationUnitXrefListActivity(
-            null == this.temporaryNewObservationUnitRequest ? null :
-                this.temporaryNewObservationUnitRequest.getObservationUnitXrefsAsItems());
-    }
     // endregion
 
     // region observations Private Methods
+    private void showObservationsListActivity()
+    {
+        this.activityHandler.showObservationsListActivity(
+            null == this.temporaryNewObservationUnitRequest ? null :
+                this.temporaryNewObservationUnitRequest.getObservationsAsItems());
+    }
+
     private void setObservationsTextViewText(@android.support.annotation.Nullable
     final java.util.List<io.swagger.client.model.Observation> observations)
     {
@@ -229,13 +236,6 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     {
         this.setObservationsTextViewText(null == this.temporaryNewObservationUnitRequest ?
             null : this.temporaryNewObservationUnitRequest.getObservations());
-    }
-
-    private void showObservationsListActivity()
-    {
-        this.activityHandler.showObservationsListActivity(
-            null == this.temporaryNewObservationUnitRequest ? null :
-                this.temporaryNewObservationUnitRequest.getObservationsAsItems());
     }
     // endregion
 
@@ -336,6 +336,13 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     // endregion
 
     // region observationTreatments Private Methods
+    private void showObservationTreatmentsListActivity()
+    {
+        this.activityHandler.showObservationTreatmentsListActivity(
+            null == this.temporaryNewObservationUnitRequest ? null :
+                this.temporaryNewObservationUnitRequest.getObservationTreatmentsAsItems());
+    }
+
     private void setObservationTreatmentsTextViewText(@android.support.annotation.Nullable
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
     {
@@ -348,13 +355,6 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
     {
         this.setObservationTreatmentsTextViewText(null == this.temporaryNewObservationUnitRequest ?
             null : this.temporaryNewObservationUnitRequest.getTreatments());
-    }
-
-    private void showObservationTreatmentsListActivity()
-    {
-        this.activityHandler.showObservationTreatmentsListActivity(
-            null == this.temporaryNewObservationUnitRequest ? null :
-                this.temporaryNewObservationUnitRequest.getObservationTreatmentsAsItems());
     }
     // endregion
     // endregion

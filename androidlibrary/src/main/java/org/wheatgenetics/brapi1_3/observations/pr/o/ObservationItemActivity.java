@@ -2,7 +2,6 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
 
 /**
  * Uses:
- * android.app.Application
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
@@ -13,9 +12,8 @@ package org.wheatgenetics.brapi1_3.observations.pr.o;
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  *
- * org.wheatgenetics.brapi1_3.Application
- *
  * org.wheatgenetics.brapi1_3.observations.pr.o.Observation
+ * org.wheatgenetics.brapi1_3.observations.pr.o.Observations
  * org.wheatgenetics.brapi1_3.observations.pr.o.ObservationAlertDialog
  * org.wheatgenetics.brapi1_3.observations.pr.o.ObservationAlertDialog.Handler
  * org.wheatgenetics.brapi1_3.observations.pr.o.ObservationsListActivity
@@ -54,13 +52,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     @java.lang.Override @android.support.annotation.NonNull
     protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
-        if (null == this.itemsInstance)
-        {
-            final android.app.Application application = this.getApplication();
-            if (application instanceof org.wheatgenetics.brapi1_3.Application)
-                this.itemsInstance = ((org.wheatgenetics.brapi1_3.Application) application)
-                    .getPRObservationsAsItems();
-        }
+        if (null == this.itemsInstance) this.itemsInstance =
+            new org.wheatgenetics.brapi1_3.observations.pr.o.Observations().fromJson(
+                this.getJson());
         return this.itemsInstance;
     }
 

@@ -2,7 +2,7 @@ package org.wheatgenetics.brapi1_3.observations.pr;
 
 /**
  * Uses:
- * android.app.Application
+ * android.app.Activity
  * android.content.Intent
  * android.support.annotation.NonNull
  * android.support.annotation.Nullable
@@ -11,8 +11,8 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
- * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
  *
+ * org.wheatgenetics.androidlibrary.mstrdtl.Consts
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
@@ -38,10 +38,13 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     // endregion
 
     // region Private Methods
-    private void showObservationsListActivity()
+    private void showObservationsListActivity(
+    final org.wheatgenetics.brapi1_3.observations.pr.o.Observations observations)
     {
         org.wheatgenetics.brapi1_3.observations.pr.o.Utils.showObservationsListActivity(
-            this, org.wheatgenetics.brapi1_3.observations
+            /* activity    => */this,
+            /* items       => */ observations,
+            /* requestCode => */ org.wheatgenetics.brapi1_3.observations
                 .pr.PhenotypesRequestListActivity.REQUEST_CODE);
     }
 
@@ -62,10 +65,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
                     }, new org.wheatgenetics.brapi1_3.observations.pr
                     .PhenotypesRequestDataAlertDialog.ActivityHandler()
                     {
-                        @java.lang.Override public void showObservationsListActivity()
+                        @java.lang.Override public void showObservationsListActivity(final
+                        org.wheatgenetics.brapi1_3.observations.pr.o.Observations observations)
                         {
                             org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity
-                                .this.showObservationsListActivity();
+                                .this.showObservationsListActivity(observations);
                         }
                     });
         return this.phenotypesRequestDataAlertDialogInstance;
@@ -76,11 +80,29 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     @java.lang.Override protected void onActivityResult(final int requestCode, final int resultCode,
     @android.support.annotation.Nullable final android.content.Intent data)
     {
-        if (
-        org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity.REQUEST_CODE
-        == requestCode)
+        if (android.app.Activity.RESULT_OK == resultCode && null != data)
             if (null != this.phenotypesRequestDataAlertDialogInstance)
-                this.phenotypesRequestDataAlertDialogInstance.updateObservations();
+            {
+                final boolean dataHasJson; final java.lang.String json;
+                {
+                    final java.lang.String JSON_KEY =
+                        org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY;
+                    dataHasJson = data.hasExtra(JSON_KEY)                           ;
+                    json        = dataHasJson ? data.getStringExtra(JSON_KEY) : null;
+                }
+
+                // noinspection SwitchStatementWithTooFewBranches
+                switch (requestCode)
+                {
+                    case org.wheatgenetics.brapi1_3.observations.pr
+                    .PhenotypesRequestListActivity.REQUEST_CODE:
+                        if (dataHasJson)
+                            this.phenotypesRequestDataAlertDialogInstance.setObservations(json);
+                        else
+                            this.phenotypesRequestDataAlertDialogInstance.clearObservations();
+                        break;
+                }
+            }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -88,13 +110,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     @java.lang.Override @android.support.annotation.NonNull
     protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
-        if (null == this.itemsInstance)
-        {
-            final android.app.Application application = this.getApplication();
-            if (application instanceof org.wheatgenetics.javalib.mstrdtl.ItemsProvider)
-                this.itemsInstance =
-                    ((org.wheatgenetics.javalib.mstrdtl.ItemsProvider) application).mstrdtlItems();
-        }
+        if (null == this.itemsInstance) this.itemsInstance =
+            new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest().fromJson(
+                this.getJson());
         return this.itemsInstance;
     }
 

@@ -44,19 +44,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     // region Fields
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
         newObservationUnitRequestAlertDialogInstance = null;                            // lazy load
-    private int                                     position      =   -1;
     private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     // endregion
 
     // region Private Methods
-    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
-    newObservationUnitRequest()
-    {
-        return this.position >= org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION ?
-            (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest)
-                this.items().get(this.position) : null;
-    }
-
     // region showListActivity() Private Methods
     private void showObservationUnitXrefListActivity(
     final org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs observationUnitXrefs)
@@ -210,11 +201,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     @java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     {
-        final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest
-            newObservationUnitRequest =
-                (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item;
-        this.position = newObservationUnitRequest.getPosition();
-        this.newObservationUnitRequestAlertDialog().show(newObservationUnitRequest);
+        this.newObservationUnitRequestAlertDialog().show(
+            (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item);
     }
     // endregion
     // endregion

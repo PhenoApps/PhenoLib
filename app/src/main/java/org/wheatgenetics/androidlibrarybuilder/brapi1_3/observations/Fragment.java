@@ -2,12 +2,12 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
 
 /**
  * Uses:
- * android.app.Application
+ * android.app.Activity
+ * android.content.Context
  * android.content.Intent
  * android.os.Bundle
  * android.support.annotation.NonNull
  * android.support.annotation.Nullable
- * android.support.v4.app.FragmentActivity
  * android.view.LayoutInflater
  * android.view.View
  * android.view.View.OnClickListener
@@ -20,12 +20,10 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
  * io.swagger.client.model.ObservationUnitsResponse
  * io.swagger.client.model.WSMIMEDataTypes
  *
- * org.wheatgenetics.javalib.mstrdtl.Items
- * org.wheatgenetics.javalib.mstrdtl.ItemsProvider
+ * org.wheatgenetics.androidlibrary.mstrdtl.Consts
+ * org.wheatgenetics.androidlibrary.mstrdtl.Utils
  *
  * org.wheatgenetics.androidlibrarybuilder.R
- *
- * org.wheatgenetics.brapi1_3.Application
  *
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity
@@ -47,43 +45,53 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
  */
 public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
+    @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Helper
+    {
+        public abstract org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
+        getPhenotypesRequest();
+
+        public abstract void setPhenotypesRequest(
+        org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest);
+
+        public abstract io.swagger.client.model.WSMIMEDataTypes getFormat();
+        public abstract void setFormat(io.swagger.client.model.WSMIMEDataTypes format);
+    }
+
     private static final int PHENOTYPES_REQUEST_LIST_ACTIVITY_REQUEST_CODE = 1;
 
     // region Fields
-    private io.swagger.client.api.ObservationsApi  observationsApiInstance = null;      // lazy load
-    private org.wheatgenetics.brapi1_3.Application applicationInstance     = null;      // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper helper;
+    private io.swagger.client.api.ObservationsApi       observationsApiInstance = null; // lazy load
 
     // region observationlevelsGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Parameters
-        observationlevelsGetParametersInstance = null;                                  // lazy load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog
-        observationlevelsGetAlertDialogInstance = null;                                 // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.ApiCallback<
         io.swagger.client.model.ObservationLevelsResponse>
             observationLevelsResponseCallbackInstance = null;                           // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog
+        observationlevelsGetAlertDialogInstance = null;                                 // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.PagePageSizeAlertDialog.Parameters
+        observationlevelsGetParametersInstance = null;                                  // lazy load
     // endregion
 
     // region observationunitsGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations               // lazy load
-        .ObservationunitsGetAlertDialog.Parameters observationunitsGetParametersInstance = null;
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
-        .ObservationunitsGetAlertDialog observationunitsGetAlertDialogInstance = null;  // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.ApiCallback<
         io.swagger.client.model.ObservationUnitsResponse>
             observationUnitsResponseCallbackInstance = null;                            // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations
+        .ObservationunitsGetAlertDialog observationunitsGetAlertDialogInstance = null;  // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations               // lazy load
+        .ObservationunitsGetAlertDialog.Parameters observationunitsGetParametersInstance = null;
     // endregion
 
     // region phenotypesPost() Fields
-    private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
-        phenotypesRequest = null;                                                       // lazy load
-    private android.content.Intent phenotypesRequestListIntentInstance = null;          // lazy load
-    private
-        org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PhenotypesPostAlertDialog
-            phenotypesPostAlertDialogInstance = null;                                   // lazy load
-    private io.swagger.client.model.WSMIMEDataTypes format = null;
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.ApiCallback<
         io.swagger.client.model.NewObservationDbIdsResponse>
             observationsPhenotypesPostCallbackInstance = null;                          // lazy load
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.PhenotypesPostAlertDialog
+            phenotypesPostAlertDialogInstance = null;                                   // lazy load
+    private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest;
+    private android.content.Intent          phenotypesRequestListIntentInstance = null; // lazy load
     // endregion
     // endregion
 
@@ -93,28 +101,6 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         if (null == this.observationsApiInstance) this.observationsApiInstance =
             new io.swagger.client.api.ObservationsApi(this.apiClient());
         return this.observationsApiInstance;
-    }
-
-    private org.wheatgenetics.brapi1_3.Application application()
-    {
-        if (null == this.applicationInstance)
-        {
-            final android.app.Application application;
-            {
-                final android.support.v4.app.FragmentActivity fragmentActivity =
-                    this.getActivity();
-                application = null == fragmentActivity ? null : fragmentActivity.getApplication();
-            }
-            if (application instanceof org.wheatgenetics.javalib.mstrdtl.ItemsProvider)
-                this.applicationInstance = (org.wheatgenetics.brapi1_3.Application) application;
-        }
-        return this.applicationInstance;
-    }
-
-    private org.wheatgenetics.javalib.mstrdtl.Items items()
-    {
-        final org.wheatgenetics.brapi1_3.Application application = this.application();
-        return null == application ? null : application.mstrdtlItems();
     }
 
     // region observationlevelsGet() Private Methods
@@ -253,6 +239,19 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region phenotypesPost() Private Methods
+    private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest getPhenotypesRequest()
+    { return null == this.helper ? null : this.helper.getPhenotypesRequest(); }
+
+    private void setPhenotypesRequest(
+    final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest)
+    { if (null != this.helper) this.helper.setPhenotypesRequest(phenotypesRequest); }
+
+    private io.swagger.client.model.WSMIMEDataTypes getFormat()
+    { return null == this.helper ? null : this.helper.getFormat(); }
+
+    private void setFormat(final io.swagger.client.model.WSMIMEDataTypes format)
+    { if (null != this.helper) this.helper.setFormat(format); }
+
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.ApiCallback<
     io.swagger.client.model.NewObservationDbIdsResponse> observationsPhenotypesPostCallback()
     {
@@ -265,11 +264,14 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
 
     private void phenotypesPost()
     {
+        this.setPhenotypesRequest(this.phenotypesRequest);
+        this.setFormat(null == this.phenotypesPostAlertDialogInstance ?
+            null : this.phenotypesPostAlertDialogInstance.getFormat());
         try
         {
             this.observationsApi().phenotypesPostAsync(
-                /* body          => */ this.phenotypesRequest                   ,
-                /* format        => */ this.format                              ,
+                /* body          => */ this.getPhenotypesRequest              (),
+                /* format        => */ this.getFormat                         (),
                 /* authorization => */ this.authorization                     (),
                 /* callback      => */ this.observationsPhenotypesPostCallback());
         }
@@ -287,27 +289,45 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     {
         if (null == this.phenotypesPostAlertDialogInstance) this.phenotypesPostAlertDialogInstance =
             new org.wheatgenetics.androidlibrarybuilder.brapi1_3
-            .observations.PhenotypesPostAlertDialog(
-                this.getActivity(), new org.wheatgenetics.androidlibrarybuilder
-                .brapi1_3.observations.PhenotypesPostAlertDialog.Handler()
-                {
-                    @java.lang.Override public void handleDone()
+                .observations.PhenotypesPostAlertDialog(this.getActivity(), new org.wheatgenetics
+                    .androidlibrarybuilder.brapi1_3.observations.PhenotypesPostAlertDialog.Handler()
                     {
-                        org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                            .observations.Fragment.this.phenotypesPost();
-                    }
+                        @java.lang.Override public void handleDone()
+                        {
+                            org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                                .observations.Fragment.this.phenotypesPost();
+                        }
 
-                    @java.lang.Override public String getConfirmTextViewText()
-                    {
-                        return org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                            .observations.Fragment.this.getPhenotypesRequestAsString();
-                    }
-                });
+                        @java.lang.Override public String getConfirmTextViewText()
+                        {
+                            return org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                                .observations.Fragment.this.getPhenotypesRequestAsString();
+                        }
+                    });
         return this.phenotypesPostAlertDialogInstance;
     }
 
     private void showPhenotypesPostAlertDialog()
-    { if (null != this.phenotypesRequest) this.phenotypesPostAlertDialog().show(this.format); }
+    { this.phenotypesPostAlertDialog().show(this.getFormat()); }
+
+    private void setPhenotypesRequest(
+    @android.support.annotation.Nullable final java.lang.String json)
+    {
+        if (null == json)
+            this.phenotypesRequest = null;
+        else
+        {
+            final java.lang.String trimmedJson = json.trim();
+            if (trimmedJson.length() <= 0)
+                this.phenotypesRequest = null;
+            else
+            {
+                if (null == this.phenotypesRequest) this.phenotypesRequest =
+                    new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest();
+                this.phenotypesRequest.fromJson(trimmedJson);
+            }
+        }
+    }
 
     private android.content.Intent phenotypesRequestListIntent()
     {
@@ -315,24 +335,35 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             this.phenotypesRequestListIntentInstance = new android.content.Intent(
                 this.getActivity()                                                            ,
                 org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity.class);
-        return this.phenotypesRequestListIntentInstance;
+        return org.wheatgenetics.androidlibrary.mstrdtl.Utils.putJsonIntoIntent(
+            this.getPhenotypesRequest(), this.phenotypesRequestListIntentInstance);
     }
 
     private void showPhenotypesRequestListActivity()
     {
-        final org.wheatgenetics.brapi1_3.Application application = this.application();
-        if (null != application)
-        {
-            application.makePhenotypesRequest(this.phenotypesRequest);
-            this.startActivityForResult(this.phenotypesRequestListIntent(),
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment
-                    .PHENOTYPES_REQUEST_LIST_ACTIVITY_REQUEST_CODE);
-        }
+        this.startActivityForResult(
+            /* intent      => */ this.phenotypesRequestListIntent(),
+            /* requestCode => */ org.wheatgenetics.androidlibrarybuilder.brapi1_3
+                .observations.Fragment.PHENOTYPES_REQUEST_LIST_ACTIVITY_REQUEST_CODE);
     }
     // endregion
     // endregion
 
     // region Overridden Methods
+    @java.lang.Override public void onAttach(final android.content.Context context)
+    {
+        super.onAttach(context);
+
+        if (context instanceof
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper)
+            this.helper =
+                (org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper)
+                    context;
+        else
+            throw new java.lang.RuntimeException(null == context ?
+                "context" : context.toString() + " must implement Helper");
+    }
+
     @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
     @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
     @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
@@ -394,22 +425,31 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     @java.lang.Override public void onActivityResult(final int requestCode,
     final int resultCode, final android.content.Intent data)
     {
-        // noinspection SwitchStatementWithTooFewBranches
-        switch (requestCode)
+        if (android.app.Activity.RESULT_OK == resultCode && null != data)
         {
-            case org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment
-            .PHENOTYPES_REQUEST_LIST_ACTIVITY_REQUEST_CODE:
+            final boolean dataHasJson; final java.lang.String json;
             {
-                final org.wheatgenetics.javalib.mstrdtl.Items items = this.items();
-                if (null != items)
-                {
-                    this.phenotypesRequest =
-                        (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest) items;
-                    this.showPhenotypesPostAlertDialog();
-                }
-            } break;
+                final java.lang.String JSON_KEY =
+                    org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY;
+                dataHasJson = data.hasExtra(JSON_KEY)                           ;
+                json        = dataHasJson ? data.getStringExtra(JSON_KEY) : null;
+            }
+
+            // noinspection SwitchStatementWithTooFewBranches
+            switch (requestCode)
+            {
+                case org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment
+                .PHENOTYPES_REQUEST_LIST_ACTIVITY_REQUEST_CODE:
+                    if (dataHasJson)
+                        this.setPhenotypesRequest(json);
+                    else
+                        this.phenotypesRequest = null;
+                    this.showPhenotypesPostAlertDialog(); break;
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    @java.lang.Override public void onDetach() { this.helper = null; super.onDetach(); }
     // endregion
 }
