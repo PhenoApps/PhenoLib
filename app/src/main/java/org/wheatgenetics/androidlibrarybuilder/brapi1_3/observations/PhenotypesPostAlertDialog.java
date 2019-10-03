@@ -64,6 +64,10 @@ extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.BaseConfirmAlertDialog
                 .observationsPhenotypesPostConfirmTextView);
     }
 
+    // region Package Methods
     void show(final io.swagger.client.model.WSMIMEDataTypes format)
     { this.format = format; this.setFormatTextViewText(); this.show(); }
+
+    io.swagger.client.model.WSMIMEDataTypes getFormat() { return this.format; }
+    // endregion
 }

@@ -176,12 +176,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private io.swagger.client.api.StudiesApi                 studiesApiInstance = null; // lazy load
 
     // region searchStudiesPost() Fields
-    private org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
-        studySearchRequestAlertDialogInstance = null;                                   // lazy load
-    private io.swagger.client.model.StudySearchRequest studySearchRequestInstance = null;      // ll
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
         io.swagger.client.model.SuccessfulSearchResponse>
             successfulSearchResponseCallbackInstance = null;                            // lazy load
+    private org.wheatgenetics.brapi1_3.studies.StudySearchRequestAlertDialog
+        studySearchRequestAlertDialogInstance = null;                                   // lazy load
+    private io.swagger.client.model.StudySearchRequest studySearchRequestInstance = null;      // ll
     // endregion
 
     // region searchStudiesSearchResultsDbIdGet() and studiesGet() Field
@@ -199,13 +199,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region seasonsGet() Fields
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.SeasonsResponse> seasonsResponseCallbackInstance = null;// lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog
         seasonsGetAlertDialogInstance = null;                                           // lazy load
     private
         org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.SeasonsGetAlertDialog.Parameters
             seasonsGetAlertDialogParametersInstance = null;                             // lazy load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
-        io.swagger.client.model.SeasonsResponse> seasonsResponseCallbackInstance = null;// lazy load
     // endregion
 
     // region studiesGet() Fields
@@ -217,12 +217,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdGet() Fields
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.StudyResponse> studyResponseCallbackInstance = null;    // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdGetAlertDialog
         studiesStudyDbIdGetAlertDialogInstance = null;                                  // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdGetAlertDialog.Parameters studiesStudyDbIdGetParametersInstance = null;//ll
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
-        io.swagger.client.model.StudyResponse> studyResponseCallbackInstance = null;    // lazy load
     // endregion
 
     // region studiesStudyDbIdGermplasmGet(), studiesStudyDbIdLayoutsGet(), studiesStudyDbIdLayoutsPut() and studiesStudyDbIdObservationvariablesGet() Field
@@ -231,12 +231,12 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdGermplasmGet() Fields
-    private
-        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
-            studiesStudyDbIdGermplasmGetAlertDialogInstance = null;                     // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
         io.swagger.client.model.GermplasmSummaryListResponse>
             germplasmSummaryListResponseCallbackInstance = null;                        // lazy load
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
+            studiesStudyDbIdGermplasmGetAlertDialogInstance = null;                     // lazy load
     // endregion
 
     // region studiesStudyDbIdLayoutsGet() and studiesStudyDbIdLayoutsPut() Field
@@ -244,11 +244,11 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdLayoutsGet() Fields
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
+        .StudiesStudyDbIdLayoutsGetCallback studiesStudyDbIdLayoutsGetCallbackInstance = null; // ll
     private
         org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
             studiesStudyDbIdLayoutsGetAlertDialogInstance = null;                       // lazy load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
-        .StudiesStudyDbIdLayoutsGetCallback studiesStudyDbIdLayoutsGetCallbackInstance = null; // ll
     // endregion
 
     // region studiesStudyDbIdLayoutsPut() Fields
@@ -261,19 +261,19 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdObservationsGet() and studiesStudyDbIdObservationsPut() Fields
-    private android.widget.Button studiesStudyDbIdObservationsPutButton;
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdObservationsGetAlertDialog.Parameters
             studiesStudyDbIdObservationsGetParametersInstance = null;                   // lazy load
+    private android.widget.Button studiesStudyDbIdObservationsPutButton;
     // endregion
 
     // region studiesStudyDbIdObservationsGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesStudyDbIdObservationsGetAlertDialog
-            studiesStudyDbIdObservationsGetAlertDialogInstance = null;                  // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
         io.swagger.client.model.ObservationsResponse>
             observationsResponseCallbackInstance = null;                                // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+        .StudiesStudyDbIdObservationsGetAlertDialog
+            studiesStudyDbIdObservationsGetAlertDialogInstance = null;                  // lazy load
     // endregion
 
     // region studiesStudyDbIdObservationsPut() and studiesStudyDbIdTablePost() Field
@@ -290,19 +290,19 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdObservationunitsGet() and studiesStudyDbIdObservationunitsPut() Fields
-    private android.widget.Button studiesStudyDbIdObservationunitsPutButton;
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdObservationunitsGetAlertDialog.Parameters
             studiesStudyDbIdObservationunitsGetParametersInstance = null;               // lazy load
+    private android.widget.Button studiesStudyDbIdObservationunitsPutButton;
     // endregion
 
     // region studiesStudyDbIdObservationunitsGet() Fields
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-        .StudiesStudyDbIdObservationunitsGetAlertDialog
-            studiesStudyDbIdObservationunitsGetAlertDialogInstance = null;              // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
         io.swagger.client.model.ObservationUnitsResponse1>
             observationUnitsResponse1CallbackInstance = null;                           // lazy load
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+        .StudiesStudyDbIdObservationunitsGetAlertDialog
+            studiesStudyDbIdObservationunitsGetAlertDialogInstance = null;              // lazy load
     // endregion
 
     // region studiesStudyDbIdObservationunitsPut() Fields
@@ -321,27 +321,27 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studiesStudyDbIdObservationvariablesGet() Fields
-    private
-        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
-            studiesStudyDbIdObservationvariablesGetAlertDialogInstance = null;          // lazy load
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
         io.swagger.client.model.StudyObservationVariablesResponse>
             studyObservationVariablesResponseCallbackInstance = null;                   // lazy load
+    private
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudyDbIdPagePageSizeAlertDialog
+            studiesStudyDbIdObservationvariablesGetAlertDialogInstance = null;          // lazy load
     // endregion
 
     // region studiesStudyDbIdTableGet() and studiesStudyDbIdTablePost() Fields
-    private android.widget.Button studiesStudyDbIdTablePostButton;
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
         .StudiesStudyDbIdTableGetAlertDialog.Parameters
             studiesStudyDbIdTableGetParametersInstance = null;                          // lazy load
+    private android.widget.Button studiesStudyDbIdTablePostButton;
     // endregion
 
     // region studiesStudyDbIdTableGet() Fields
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        java.lang.String> stringCallbackInstance = null;                                // lazy load
     private
         org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudiesStudyDbIdTableGetAlertDialog
             studiesStudyDbIdTableGetAlertDialogInstance = null;                         // lazy load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
-        java.lang.String> stringCallbackInstance = null;                                // lazy load
     // endregion
 
     // region studiesStudyDbIdTablePost() Fields
@@ -352,13 +352,13 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region studytypesGet() Fields
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
+        io.swagger.client.model.StudyTypesResponse> studyTypesResponseCallbackInstance = null; // ll
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog
         studytypesGetAlertDialogInstance = null;                                        // lazy load
     private
         org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.StudytypesGetAlertDialog.Parameters
             studytypesGetParametersInstance = null;                                     // lazy load
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
-        io.swagger.client.model.StudyTypesResponse> studyTypesResponseCallbackInstance = null; // ll
     // endregion
     // endregion
 
@@ -882,11 +882,11 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             if (trimmedJson.length() <= 0)
                 this.studyLayoutRequest = null;
             else
+            {
                 if (null == this.studyLayoutRequest) this.studyLayoutRequest =
-                    (org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest)
-                        new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest().fromJson(
-                            trimmedJson);
-                else this.studyLayoutRequest.fromJson(trimmedJson);
+                    new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest();
+                this.studyLayoutRequest.fromJson(trimmedJson);
+            }
         }
     }
 
@@ -1087,11 +1087,11 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             if (trimmedJson.length() <= 0)
                 this.newObservationsRequest = null;
             else
+            {
                 if (null == this.newObservationsRequest) this.newObservationsRequest =
-                    (org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest)
-                        new org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest()
-                            .fromJson(trimmedJson);
-                else this.newObservationsRequest.fromJson(trimmedJson);
+                    new org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest();
+                this.newObservationsRequest.fromJson(trimmedJson);
+            }
         }
     }
 
@@ -1269,17 +1269,6 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-    .StudiesStudyDbIdObservationunitsPutAlertDialog.Parameters
-    studiesStudyDbIdObservationunitsPutParameters()
-    {
-        if (null == this.studiesStudyDbIdObservationunitsPutParametersInstance)
-            this.studiesStudyDbIdObservationunitsPutParametersInstance =
-                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
-                    .StudiesStudyDbIdObservationunitsPutAlertDialog.Parameters();
-        return this.studiesStudyDbIdObservationunitsPutParametersInstance;
-    }
-
-    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
     .StudiesStudyDbIdObservationunitsPutAlertDialog studiesStudyDbIdObservationunitsPutAlertDialog()
     {
         if (null == this.studiesStudyDbIdObservationunitsPutAlertDialogInstance)
@@ -1304,6 +1293,17 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
         return this.studiesStudyDbIdObservationunitsPutAlertDialogInstance;
     }
 
+    private org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+    .StudiesStudyDbIdObservationunitsPutAlertDialog.Parameters
+    studiesStudyDbIdObservationunitsPutParameters()
+    {
+        if (null == this.studiesStudyDbIdObservationunitsPutParametersInstance)
+            this.studiesStudyDbIdObservationunitsPutParametersInstance =
+                new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                    .StudiesStudyDbIdObservationunitsPutAlertDialog.Parameters();
+        return this.studiesStudyDbIdObservationunitsPutParametersInstance;
+    }
+
     private void showStudiesStudyDbIdObservationunitsPutAlertDialog()
     {
         this.studiesStudyDbIdObservationunitsPutAlertDialog().show(
@@ -1321,11 +1321,11 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             if (trimmedJson.length() <= 0)
                 this.newObservationUnitRequests = null;
             else
+            {
                 if (null == this.newObservationUnitRequests) this.newObservationUnitRequests =
-                    (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests)
-                        new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests()
-                            .fromJson(trimmedJson);
-                else this.newObservationUnitRequests.fromJson(trimmedJson);
+                    new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests();
+                this.newObservationUnitRequests.fromJson(trimmedJson);
+            }
         }
     }
 
@@ -1777,8 +1777,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                         {
                             @java.lang.Override public void onClick(final android.view.View v)
                             {
-                                org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
-                                    .this.showNewObservationUnitRequestsListActivity();
+                                org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
+                                    .Fragment.this.showNewObservationUnitRequestsListActivity();
                             }
                         });
             }

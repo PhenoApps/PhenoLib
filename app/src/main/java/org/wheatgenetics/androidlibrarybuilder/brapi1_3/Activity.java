@@ -21,6 +21,9 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.widget.TextView
  *
  * io.swagger.client.ApiClient
+ * io.swagger.client.model.WSMIMEDataTypes
+ *
+ * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
  *
  * org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
@@ -29,6 +32,8 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.R
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment
+ * org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
+ *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper
  *
@@ -43,14 +48,16 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  */
 public class Activity extends android.support.v7.app.AppCompatActivity implements
 org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier,
-org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper
+org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper,
+org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
 {
     // region Constants
     private static final int FIRST_FRAGMENT_NAME_INDEX = 0, LAST_FRAGMENT_NAME_INDEX = 20;
     private static final java.lang.String AUTHORIZATION_KEY = "authorization",
         BASE_PATH_KEY = "basePath", STUDY_LAYOUT_REQUEST_KEY = "studyLayoutRequest",
         NEW_OBSERVATIONS_REQUEST_KEY      = "newObservationsRequest"    ,
-        NEW_OBSERVATION_UNIT_REQUESTS_KEY = "newObservationUnitRequests";
+        NEW_OBSERVATION_UNIT_REQUESTS_KEY = "newObservationUnitRequests",
+        PHENOTYPES_REQUEST_KEY            = "phenotypesRequest"         , FORMAT_KEY = "format";
     // endregion
 
     private static class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter
@@ -170,6 +177,9 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper
         newObservationsRequestInstance = null;
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
         newObservationUnitRequestsInstance = null;
+
+    private org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest = null;
+    private io.swagger.client.model.WSMIMEDataTypes                      format            = null;
     // endregion
 
     // region Private Methods
@@ -194,26 +204,32 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper
     private void setBasePathButNotToolbarTitle(final java.lang.String basePath)
     { this.apiClient().setBasePath(basePath); }
 
-    private org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest studyLayoutRequest()
+    private void setStudyLayoutRequest(final java.lang.String json)
     {
         if (this.getStudyLayoutRequest() == null) this.setStudyLayoutRequest(
             new org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest());
-        return this.getStudyLayoutRequest();
+        this.getStudyLayoutRequest().fromJson(json);
     }
 
-    private org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest newObservationsRequest()
+    private void setNewObservationsRequest(final java.lang.String json)
     {
         if (this.getNewObservationsRequest() == null) this.setNewObservationsRequest(
             new org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest());
-        return this.getNewObservationsRequest();
+        this.getNewObservationsRequest().fromJson(json);
     }
 
-    private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
-    newObservationUnitRequests()
+    private void setNewObservationUnitRequests(final java.lang.String json)
     {
         if (this.getNewObservationUnitRequests() == null) this.setNewObservationUnitRequests(
             new org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests());
-        return this.getNewObservationUnitRequests();
+        this.getNewObservationUnitRequests().fromJson(json);
+    }
+
+    private void setPhenotypesRequest(final java.lang.String json)
+    {
+        if (this.getPhenotypesRequest() == null) this.setPhenotypesRequest(
+            new org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest());
+        this.getPhenotypesRequest().fromJson(json);
     }
 
     private void setPage(@android.support.annotation.IntRange(
@@ -238,6 +254,20 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper
             {
                 if (selectedFragmentName.equals(fragmentName)) { this.setPage(i); break; }
                 i++;
+            }
+        }
+    }
+
+    private static void putJsonIntoBundle(final java.lang.String key,
+    final org.wheatgenetics.javalib.mstrdtl.Items items, final android.os.Bundle bundle)
+    {
+        if (null != items && null != key && null != bundle) if (key.length() > 0)
+        {
+            final java.lang.String json = items.toJson();
+            if (null != json)
+            {
+                final java.lang.String trimmedJson = json.trim();
+                if (trimmedJson.length() > 0) bundle.putString(key, trimmedJson);
             }
         }
     }
@@ -312,21 +342,34 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper
                 final java.lang.String STUDY_LAYOUT_REQUEST_KEY = org.wheatgenetics
                     .androidlibrarybuilder.brapi1_3.Activity.STUDY_LAYOUT_REQUEST_KEY;
                 if (savedInstanceState.containsKey(STUDY_LAYOUT_REQUEST_KEY))
-                    this.studyLayoutRequest().fromJson(
+                    this.setStudyLayoutRequest(
                         savedInstanceState.getString(STUDY_LAYOUT_REQUEST_KEY));
             }
             {
                 final java.lang.String NEW_OBSERVATIONS_REQUEST_KEY = org.wheatgenetics
                     .androidlibrarybuilder.brapi1_3.Activity.NEW_OBSERVATIONS_REQUEST_KEY;
                 if (savedInstanceState.containsKey(NEW_OBSERVATIONS_REQUEST_KEY))
-                    this.newObservationsRequest().fromJson(
+                    this.setNewObservationsRequest(
                         savedInstanceState.getString(NEW_OBSERVATIONS_REQUEST_KEY));
             }
-            final java.lang.String NEW_OBSERVATION_UNIT_REQUESTS_KEY = org.wheatgenetics
-                .androidlibrarybuilder.brapi1_3.Activity.NEW_OBSERVATION_UNIT_REQUESTS_KEY;
-            if (savedInstanceState.containsKey(NEW_OBSERVATION_UNIT_REQUESTS_KEY))
-                this.newObservationUnitRequests().fromJson(
-                    savedInstanceState.getString(NEW_OBSERVATION_UNIT_REQUESTS_KEY));
+            {
+                final java.lang.String NEW_OBSERVATION_UNIT_REQUESTS_KEY = org.wheatgenetics
+                    .androidlibrarybuilder.brapi1_3.Activity.NEW_OBSERVATION_UNIT_REQUESTS_KEY;
+                if (savedInstanceState.containsKey(NEW_OBSERVATION_UNIT_REQUESTS_KEY))
+                    this.setNewObservationUnitRequests(
+                        savedInstanceState.getString(NEW_OBSERVATION_UNIT_REQUESTS_KEY));
+            }
+            {
+                final java.lang.String PHENOTYPES_REQUEST_KEY = org.wheatgenetics
+                    .androidlibrarybuilder.brapi1_3.Activity.PHENOTYPES_REQUEST_KEY;
+                if (savedInstanceState.containsKey(PHENOTYPES_REQUEST_KEY))
+                    this.setPhenotypesRequest(savedInstanceState.getString(PHENOTYPES_REQUEST_KEY));
+            }
+            final java.lang.String FORMAT_KEY =
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FORMAT_KEY;
+            if (savedInstanceState.containsKey(FORMAT_KEY)) this.format =
+                io.swagger.client.model.WSMIMEDataTypes.fromValue(
+                    savedInstanceState.getString(FORMAT_KEY));
         }
         this.setToolbarTitleToFirstFragmentName();
     }
@@ -387,51 +430,23 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper
             outState.putString(
                 org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.BASE_PATH_KEY,
                 this.apiClient().getBasePath()                                         );
-            {
-                final org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest studyLayoutRequest =
-                    this.getStudyLayoutRequest();
-                if (null != studyLayoutRequest)
-                {
-                    final java.lang.String json = studyLayoutRequest.toJson();
-                    if (null != json)
-                    {
-                        final java.lang.String trimmedJson = json.trim();
-                        if (trimmedJson.length() > 0) outState.putString(org.wheatgenetics
-                                .androidlibrarybuilder.brapi1_3.Activity.STUDY_LAYOUT_REQUEST_KEY,
-                            trimmedJson                                                          );
-                    }
-                }
-            }
-            {
-                final org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest
-                    newObservationsRequest = this.getNewObservationsRequest();
-                if (null != newObservationsRequest)
-                {
-                    final java.lang.String json = newObservationsRequest.toJson();
-                    if (null != json)
-                    {
-                        final java.lang.String trimmedJson = json.trim();
-                        if (trimmedJson.length() > 0)
-                            outState.putString(org.wheatgenetics.androidlibrarybuilder
-                                    .brapi1_3.Activity.NEW_OBSERVATIONS_REQUEST_KEY,
-                                trimmedJson                                        );
-                    }
-                }
-            }
-            final org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
-                newObservationUnitRequests = this.getNewObservationUnitRequests();
-            if (null != newObservationUnitRequests)
-            {
-                final java.lang.String json = newObservationUnitRequests.toJson();
-                if (null != json)
-                {
-                    final java.lang.String trimmedJson = json.trim();
-                    if (trimmedJson.length() > 0)
-                        outState.putString(org.wheatgenetics.androidlibrarybuilder
-                                .brapi1_3.Activity.NEW_OBSERVATION_UNIT_REQUESTS_KEY,
-                            trimmedJson                                             );
-                }
-            }
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.STUDY_LAYOUT_REQUEST_KEY,
+                this.getStudyLayoutRequest(), outState                                            );
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
+                    .NEW_OBSERVATIONS_REQUEST_KEY,
+                this.getNewObservationsRequest(), outState);
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
+                    .NEW_OBSERVATION_UNIT_REQUESTS_KEY,
+                this.getNewObservationUnitRequests(), outState);
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.PHENOTYPES_REQUEST_KEY,
+                this.getPhenotypesRequest(), outState                                           );
+            if (null != this.format) outState.putString(
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FORMAT_KEY,
+                this.format.getValue()                                              );
         }
         super.onSaveInstanceState(outState);
     }
@@ -481,6 +496,22 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper
     @java.lang.Override public void setNewObservationUnitRequests(final
     org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests newObservationUnitRequests)
     { this.newObservationUnitRequestsInstance = newObservationUnitRequests; }
+    // endregion
+
+    // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper Overridden Methods
+    @java.lang.Override
+    public org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest getPhenotypesRequest()
+    { return this.phenotypesRequest; }
+
+    @java.lang.Override public void setPhenotypesRequest(
+    final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest)
+    { this.phenotypesRequest = phenotypesRequest; }
+
+    @java.lang.Override
+    public io.swagger.client.model.WSMIMEDataTypes getFormat() { return this.format; }
+
+    @java.lang.Override public void setFormat(final io.swagger.client.model.WSMIMEDataTypes format)
+    { this.format = format; }
     // endregion
     // endregion
 }
