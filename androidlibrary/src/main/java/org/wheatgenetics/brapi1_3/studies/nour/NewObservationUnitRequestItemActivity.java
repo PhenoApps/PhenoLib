@@ -13,8 +13,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.Consts
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+ * org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
  * org.wheatgenetics.brapi1_3.studies.nour.o.Utils
@@ -33,8 +32,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity
  */
 public class NewObservationUnitRequestItemActivity
-extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
 {
     private static final int
         OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE  = 1,
@@ -42,9 +40,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
         OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE = 3;
 
     // region Fields
+    private org.wheatgenetics.javalib.mstrdtl.Items               itemsInstance = null; // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
         newObservationUnitRequestAlertDialogInstance = null;                            // lazy load
-    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     // endregion
 
     // region Private Methods
@@ -184,10 +182,6 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected java.lang.Class listActivityClass()
-    { return org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity.class; }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override @android.support.annotation.NonNull
     protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
@@ -197,13 +191,15 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
         return this.itemsInstance;
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Method
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override protected java.lang.Class listActivityClass()
+    { return org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity.class; }
+
     @java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         this.newObservationUnitRequestAlertDialog().show(
             (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item);
     }
-    // endregion
     // endregion
 }

@@ -13,8 +13,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.Consts
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
- * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+ * org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
  * org.wheatgenetics.brapi1_3.studies.nour.o.Observations
@@ -34,8 +33,7 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestOnePaneAdapter
  */
 public class NewObservationUnitRequestsListActivity
-extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
 {
     private static final int
         OBSERVATION_UNIT_XREF_LIST_ACTIVITY_REQUEST_CODE  = 1,
@@ -43,9 +41,9 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
         OBSERVATION_TREATMENTS_LIST_ACTIVITY_REQUEST_CODE = 3;
 
     // region Fields
+    private org.wheatgenetics.javalib.mstrdtl.Items               itemsInstance = null; // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
         newObservationUnitRequestAlertDialogInstance = null;                            // lazy load
-    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
     // endregion
 
     // region Private Methods
@@ -202,13 +200,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
             this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Method
     @java.lang.Override public void change(
     @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         this.newObservationUnitRequestAlertDialog().show(
             (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item);
     }
-    // endregion
     // endregion
 }

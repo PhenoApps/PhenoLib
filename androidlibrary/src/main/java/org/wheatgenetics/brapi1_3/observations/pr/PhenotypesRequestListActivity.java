@@ -13,12 +13,13 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.Consts
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
- * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+ * org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
+ * org.wheatgenetics.brapi1_3.observations.pr.o.Observations
  * org.wheatgenetics.brapi1_3.observations.pr.o.Utils
  *
+ * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.ActivityHandler
@@ -26,8 +27,7 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataOnePaneAdapter
  */
 public class PhenotypesRequestListActivity
-extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
 {
     private static final int REQUEST_CODE = 1;
 
@@ -124,13 +124,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
             this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Method
     @java.lang.Override public void change(
     @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         this.phenotypesRequestDataAlertDialog().show(
             (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData) item);
     }
-    // endregion
     // endregion
 }

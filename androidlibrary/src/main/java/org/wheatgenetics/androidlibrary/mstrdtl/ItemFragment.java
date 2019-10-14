@@ -30,15 +30,6 @@ public class ItemFragment extends android.support.v4.app.Fragment
         public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
 
-        public void moveUp(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
-
-        public void moveDown(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
-
-        public void delete(@android.support.annotation.IntRange(
-        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
-
         public void setToolbarTitle  (final java.lang.CharSequence title);
         public void clearToolbarTitle()                                  ;
     }
@@ -46,8 +37,17 @@ public class ItemFragment extends android.support.v4.app.Fragment
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface HelperChanger
     extends org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
+        public void moveUp(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+
+        public void moveDown(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
+
         public void change(
         @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item);
+
+        public void delete(@android.support.annotation.IntRange(
+        from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
     // endregion
 
@@ -71,6 +71,9 @@ public class ItemFragment extends android.support.v4.app.Fragment
     private static void log(@android.support.annotation.NonNull final java.lang.String msg)
     { android.util.Log.i("ItemFragment", msg); }
 
+    private boolean changerIsImplemented()
+    { return null == this.helper && null != this.helperChanger; }
+
     private org.wheatgenetics.javalib.mstrdtl.Item get()
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
@@ -88,28 +91,29 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     private void moveUp()
     {
-        final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
-        if (null != item)
+        if (this.changerIsImplemented())
         {
-            final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
-                null == this.helper ? this.helperChanger : this.helper;
-            if (null != helper) helper.moveUp(item.getPosition());
+            final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
+            if (null != item)
+            {
+                this.helperChanger.moveUp(item.getPosition());
+                // TODO: Update this.positionArgument. Rename? Persist?
+            }
         }
     }
 
     private void moveDown()
     {
-        final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
-        if (null != item)
+        if (this.changerIsImplemented())
         {
-            final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
-                null == this.helper ? this.helperChanger : this.helper;
-            if (null != helper) helper.moveDown(item.getPosition());
+            final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
+            if (null != item)
+            {
+                this.helperChanger.moveDown(item.getPosition());
+                // TODO: Update this.positionArgument. Rename? Persist?
+            }
         }
     }
-
-    private boolean changerIsImplemented()
-    { return null == this.helper && null != this.helperChanger; }
 
     private void changeItem()
     {
@@ -122,12 +126,10 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     private void deleteItem()
     {
-        final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
-        if (null != item)
+        if (this.changerIsImplemented())
         {
-            final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
-                null == this.helper ? this.helperChanger : this.helper;
-            if (null != helper) helper.delete(item.getPosition());
+            final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
+            if (null != item) this.helperChanger.delete(item.getPosition());
         }
     }
 
@@ -206,28 +208,26 @@ public class ItemFragment extends android.support.v4.app.Fragment
             this.contentTextView = rootView.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.masterDetailItemContentTextView);
 
-            if (null == this.upButton) this.upButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.upItemButton);
-            if (null != this.upButton) this.upButton.setOnClickListener(
-                new android.view.View.OnClickListener()
-                {
-                    @java.lang.Override public void onClick(final android.view.View view)
-                    { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.moveUp(); }
-                });
-
-            if (null == this.downButton) this.downButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.downItemButton);
-            if (null != this.downButton) this.downButton.setOnClickListener(
-                new android.view.View.OnClickListener()
-                {
-                    @java.lang.Override public void onClick(final android.view.View view)
-                    { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.moveDown(); }
-                });
-
-            this.refreshSinceItemsHaveChanged();
-
             if (this.changerIsImplemented())
             {
+                if (null == this.upButton) this.upButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.upItemButton);
+                if (null != this.upButton) this.upButton.setOnClickListener(
+                    new android.view.View.OnClickListener()
+                    {
+                        @java.lang.Override public void onClick(final android.view.View view)
+                        { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.moveUp(); }
+                    });
+
+                if (null == this.downButton) this.downButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.downItemButton);
+                if (null != this.downButton) this.downButton.setOnClickListener(
+                    new android.view.View.OnClickListener()
+                    {
+                        @java.lang.Override public void onClick(final android.view.View view)
+                        { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.moveDown(); }
+                    });
+
                 this.changeItemButton = rootView.findViewById(
                     org.wheatgenetics.androidlibrary.R.id.changeItemButton);
                 if (null != this.changeItemButton) this.changeItemButton.setOnClickListener(
@@ -236,16 +236,18 @@ public class ItemFragment extends android.support.v4.app.Fragment
                         @java.lang.Override public void onClick(final android.view.View view)
                         { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.changeItem(); }
                     });
+
+                this.deleteItemButton = rootView.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.deleteItemButton);
+                if (null != this.deleteItemButton) this.deleteItemButton.setOnClickListener(
+                    new android.view.View.OnClickListener()
+                    {
+                        @java.lang.Override public void onClick(final android.view.View view)
+                        { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.deleteItem(); }
+                    });
             }
 
-            this.deleteItemButton = rootView.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.deleteItemButton);
-            if (null != this.deleteItemButton) this.deleteItemButton.setOnClickListener(
-                new android.view.View.OnClickListener()
-                {
-                    @java.lang.Override public void onClick(final android.view.View view)
-                    { org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.this.deleteItem(); }
-                });
+            this.refreshSinceItemsHaveChanged();
         }
         return rootView;
     }
@@ -260,21 +262,25 @@ public class ItemFragment extends android.support.v4.app.Fragment
     // region Package Methods
     void refreshSinceItemHasChanged()
     {
-        final boolean itemIsNotNull;
+        final boolean enable;
         {
-            final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
-            itemIsNotNull = null != item;
+            final boolean itemIsNotNull;
+            {
+                final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
+                itemIsNotNull = null != item;
 
-            if (itemIsNotNull)
-                this.setToolbarTitle(item.getTitle());
-            else
-                this.clearToolbarTitle();
+                if (itemIsNotNull)
+                    this.setToolbarTitle(item.getTitle());
+                else
+                    this.clearToolbarTitle();
 
-            if (null != this.contentTextView)
-                this.contentTextView.setText(itemIsNotNull ? item.getContent() : null);
+                if (null != this.contentTextView)
+                    this.contentTextView.setText(itemIsNotNull ? item.getContent() : null);
+            }
+            enable = this.changerIsImplemented() && itemIsNotNull;
         }
-        if (null != this.changeItemButton) this.changeItemButton.setEnabled(itemIsNotNull);
-        if (null != this.deleteItemButton) this.deleteItemButton.setEnabled(itemIsNotNull);
+        if (null != this.changeItemButton) this.changeItemButton.setEnabled(enable);
+        if (null != this.deleteItemButton) this.deleteItemButton.setEnabled(enable);
     }
 
     void refreshSinceItemsHaveChanged()

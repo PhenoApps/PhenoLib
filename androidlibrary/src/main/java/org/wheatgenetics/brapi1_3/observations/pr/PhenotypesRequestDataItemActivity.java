@@ -13,8 +13,7 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.Consts
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+ * org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
  *
  * org.wheatgenetics.brapi1_3.observations.pr.o.Observations
  * org.wheatgenetics.brapi1_3.observations.pr.o.Utils
@@ -27,8 +26,7 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity
  */
 public class PhenotypesRequestDataItemActivity
-extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
 {
     private static final int REQUEST_CODE = 1;
 
@@ -110,10 +108,6 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected java.lang.Class listActivityClass()
-    { return org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity.class; }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override @android.support.annotation.NonNull
     protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
@@ -123,13 +117,15 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
         return this.itemsInstance;
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Method
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override protected java.lang.Class listActivityClass()
+    { return org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity.class; }
+
     @java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         this.phenotypesRequestDataAlertDialog().show(
             (org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestData) item);
     }
-    // endregion
     // endregion
 }

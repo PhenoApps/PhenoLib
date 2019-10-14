@@ -11,8 +11,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
- * org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
+ * org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
  * org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter
  *
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefs
@@ -21,11 +20,10 @@ package org.wheatgenetics.brapi1_3.studies.nour.oux;             // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefOnePaneAdapter
  */
 public class ObservationUnitXrefListActivity
-extends org.wheatgenetics.androidlibrary.mstrdtl.ListActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
 {
     // region Fields
-    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
+    private org.wheatgenetics.javalib.mstrdtl.Items               itemsInstance = null; // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefAlertDialog
         observationUnitXrefAlertDialogInstance = null;                                  // lazy load
     // endregion
@@ -67,13 +65,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
             this.items());
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Method
     @java.lang.Override public void change(
     @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         this.observationUnitXrefAlertDialog().show(
             (io.swagger.client.model.ObservationUnitXref) item);
     }
-    // endregion
     // endregion
 }
