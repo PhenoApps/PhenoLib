@@ -11,8 +11,7 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
- * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+ * org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
  *
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatments
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog
@@ -20,11 +19,10 @@ package org.wheatgenetics.brapi1_3.studies.nour.ot;              // nour: NewObs
  * org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity
  */
 public class ObservationTreatmentItemActivity
-extends org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
-implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
+extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
 {
     // region Fields
-    private org.wheatgenetics.javalib.mstrdtl.Items itemsInstance = null;               // lazy load
+    private org.wheatgenetics.javalib.mstrdtl.Items               itemsInstance = null; // lazy load
     private org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentAlertDialog
         treatmentAlertDialogInstance = null;                                            // lazy load
     // endregion
@@ -48,10 +46,6 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 
     // region Overridden Methods
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override protected java.lang.Class listActivityClass()
-    { return org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity.class; }
-
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override @android.support.annotation.NonNull
     protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
@@ -61,10 +55,12 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
         return this.itemsInstance;
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Method
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override protected java.lang.Class listActivityClass()
+    { return org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity.class; }
+
     @java.lang.Override public void change(
     @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     { this.treatmentAlertDialog().show((io.swagger.client.model.ObservationTreatment) item); }
-    // endregion
     // endregion
 }

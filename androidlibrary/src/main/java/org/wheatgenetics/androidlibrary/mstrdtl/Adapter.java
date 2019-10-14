@@ -53,14 +53,10 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
     final int                             position                      )
     {
         viewHolder.bind(
-            /* item            => */ this.items.get          (position)                    ,
+            /* item            => */ this.getItems().get     (position)                    ,
             /* onClickListener => */ this.makeOnClickListener(position) /* polymorphism */);
     }
 
-    @java.lang.Override public int getItemCount()
-    {
-        //noinspection ConstantConditions
-        return null == this.items ? 0 : this.items.size();
-    }
+    @java.lang.Override public int getItemCount() { return this.getItems().size(); }
     // endregion
 }
