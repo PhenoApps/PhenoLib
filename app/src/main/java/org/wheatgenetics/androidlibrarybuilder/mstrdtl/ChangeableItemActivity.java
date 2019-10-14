@@ -12,7 +12,6 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * org.wheatgenetics.javalib.mstrdtl.TestItems
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
- * _org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
  *
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeItemAlertDialog
  * org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeItemAlertDialog.Handler

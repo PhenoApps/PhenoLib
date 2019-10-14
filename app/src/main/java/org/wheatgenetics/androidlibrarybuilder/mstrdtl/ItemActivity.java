@@ -7,6 +7,7 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * android.support.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.mstrdtl.Items
+ * org.wheatgenetics.javalib.mstrdtl.TestItems
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemActivity
  *
