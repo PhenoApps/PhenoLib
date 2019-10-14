@@ -51,7 +51,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
         final java.lang.String json = this.jsonFromItems();
         this.log("setResultFromJson(): putJsonIntoIntent(): " + json);
-        return intent.putExtra(org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
+        if (null == json)
+            return intent;
+        else
+            return intent.putExtra(org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
     }
     // endregion
 
@@ -76,10 +79,6 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
             this.putJsonIntoIntent(new android.content.Intent()));
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void refreshSinceItemsHaveChanged()
-    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged(); }
-
     /** Called by ItemActivity.onCreate(). */
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     void setAndAddItemFragment(@android.support.annotation.IdRes final int containerViewId,
@@ -102,13 +101,21 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
             containerViewId, this.itemFragment).commit();
     }
 
-    /** Called by ListActivity.delete(). */
+    /** Called by ChangeableListActivity.delete(). */
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     void removeAndClearItemFragment()
     {
         this.getSupportFragmentManager().beginTransaction().remove(this.itemFragment).commit();
         this.itemFragment = null;
     }
+
+    /**
+     * Called by ListActivity.refreshSinceItemsHaveChanged() and
+     * ChangeableItemActivity.refreshSinceItemsHaveChanged().
+     */
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void refreshSinceItemsHaveChanged()
+    { if (null != this.itemFragment) this.itemFragment.refreshSinceItemsHaveChanged(); }
     // endregion
 
     // region Protected Methods
@@ -143,30 +150,22 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 
     @java.lang.Override protected void onSaveInstanceState(final android.os.Bundle outState)
     {
-        if (null != outState) outState.putString(
-            org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, this.jsonFromItems());
+        if (null != outState)
+        {
+            final java.lang.String json = this.jsonFromItems();
+            if (null != json) outState.putString(
+                org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
+        }
         super.onSaveInstanceState(outState);
     }
 
     @java.lang.Override public void onBackPressed()
     { this.setResultFromJson(); super.onBackPressed(); }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
+    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Method
     @java.lang.Override public org.wheatgenetics.javalib.mstrdtl.Item get(
     @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position) { return this.items().get(position); }
-
-    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    { this.items().moveUp(position); this.refreshSinceItemsHaveChanged(); }
-
-    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    { this.items().moveDown(position); this.refreshSinceItemsHaveChanged(); }
-
-    @java.lang.Override public void delete(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    { this.items().delete(position); }
+    final int position) { return this.items().get(position); }
     // endregion
     // endregion
 }

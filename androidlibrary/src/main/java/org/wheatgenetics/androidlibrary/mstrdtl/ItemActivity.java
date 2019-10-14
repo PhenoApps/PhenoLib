@@ -8,7 +8,6 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.content.Intent
  * android.os.Bundle
  * android.R
- * android.support.annotation.IntRange
  * android.support.annotation.NonNull
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
@@ -18,8 +17,6 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.view.MenuItem
  *
  * org.wheatgenetics.androidlibrary.R
- *
- * org.wheatgenetics.javalib.mstrdtl.Item
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.Activity
  * org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment
@@ -92,15 +89,10 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
     }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
-    @java.lang.Override public void delete(@android.support.annotation.IntRange(
-    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    { super.delete(position); this.setResultFromJson(); this.finish(); }
-
     @java.lang.Override public void setToolbarTitle(final java.lang.CharSequence title)
     { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(title); }
 
-    @java.lang.Override public void clearToolbarTitle()
-    { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(null); }
+    @java.lang.Override public void clearToolbarTitle() { this.setToolbarTitle(null); }
     // endregion
     // endregion
 }
