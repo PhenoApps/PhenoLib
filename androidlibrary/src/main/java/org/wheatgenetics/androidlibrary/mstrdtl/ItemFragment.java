@@ -59,8 +59,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
         helperChanger = null;
 
-    private int                                    positionArgument =   -1;
-    private org.wheatgenetics.javalib.mstrdtl.Item itemInstance     = null;             // lazy load
+    private int                                    position     =   -1;
+    private org.wheatgenetics.javalib.mstrdtl.Item itemInstance = null;                 // lazy load
 
     private android.widget.TextView contentTextView = null;
     private android.widget.Button   upButton = null, downButton = null,
@@ -78,7 +78,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
             null == this.helper ? this.helperChanger : this.helper;
-        return null == helper ? null : helper.get(this.positionArgument);
+        return null == helper ? null : helper.get(this.position);
     }
 
     private org.wheatgenetics.javalib.mstrdtl.Item item()
@@ -97,7 +97,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
             if (null != item)
             {
                 this.helperChanger.moveUp(item.getPosition());
-                // TODO: Update this.positionArgument. Rename? Persist?
+                this.position = item.getPosition();
             }
         }
     }
@@ -110,7 +110,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
             if (null != item)
             {
                 this.helperChanger.moveDown(item.getPosition());
-                // TODO: Update this.positionArgument. Rename? Persist?
+                this.position = item.getPosition();
             }
         }
     }
@@ -178,20 +178,30 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
         final java.lang.String positionMsg;
         {
-            final android.os.Bundle arguments = this.getArguments();
-            if (null == arguments)
-                positionMsg = "arguments is null";
-            else
+            final java.lang.String POSITION_KEY =
+                org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
+            if (null == savedInstanceState)
             {
-                final java.lang.String POSITION_KEY =
-                    org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
-                if (arguments.containsKey(POSITION_KEY))
+                final android.os.Bundle arguments = this.getArguments();
+                if (null == arguments)
+                    positionMsg = "arguments is null";
+                else
                 {
-                    this.positionArgument = arguments.getInt(POSITION_KEY);
-                    positionMsg = "positionArgument: " + this.positionArgument;
+                    if (arguments.containsKey(POSITION_KEY))
+                    {
+                        this.position = arguments.getInt(POSITION_KEY);
+                        positionMsg   = "position: " + this.position  ;
+                    }
+                    else positionMsg = "arguments does not contain " + POSITION_KEY;
                 }
-                else positionMsg = "arguments does not contain " + POSITION_KEY;
             }
+            else
+                if (savedInstanceState.containsKey(POSITION_KEY))
+                {
+                    this.position = savedInstanceState.getInt(POSITION_KEY);
+                    positionMsg   = "position: " + this.position           ;
+                }
+                else positionMsg = "savedInstanceState does not contain " + POSITION_KEY;
         }
         org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.log(positionMsg);
     }
@@ -254,6 +264,14 @@ public class ItemFragment extends android.support.v4.app.Fragment
 
     @java.lang.Override public void onResume()
     { super.onResume(); this.refreshSinceItemHasChanged(); }
+
+    @java.lang.Override public void onSaveInstanceState(
+    @android.support.annotation.NonNull final android.os.Bundle outState)
+    {
+        outState.putInt(
+            org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY, this.position);
+        super.onSaveInstanceState(outState);
+    }
 
     @java.lang.Override public void onDetach()
     { this.helper = this.helperChanger = null; super.onDetach(); }
