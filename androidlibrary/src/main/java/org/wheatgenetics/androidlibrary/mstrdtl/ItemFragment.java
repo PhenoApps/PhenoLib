@@ -129,7 +129,11 @@ public class ItemFragment extends android.support.v4.app.Fragment
         if (this.changerIsImplemented())
         {
             final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
-            if (null != item) this.helperChanger.delete(item.getPosition());
+            if (null != item)
+            {
+                this.helperChanger.delete(item.getPosition());
+                this.position = -1; this.itemInstance = null;
+            }
         }
     }
 
@@ -186,14 +190,12 @@ public class ItemFragment extends android.support.v4.app.Fragment
                 if (null == arguments)
                     positionMsg = "arguments is null";
                 else
-                {
                     if (arguments.containsKey(POSITION_KEY))
                     {
                         this.position = arguments.getInt(POSITION_KEY);
                         positionMsg   = "position: " + this.position  ;
                     }
                     else positionMsg = "arguments does not contain " + POSITION_KEY;
-                }
             }
             else
                 if (savedInstanceState.containsKey(POSITION_KEY))

@@ -88,11 +88,9 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
         else return super.onOptionsItemSelected(menuItem);
     }
 
-    // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper Overridden Methods
     @java.lang.Override public void setToolbarTitle(final java.lang.CharSequence title)
     { if (null != this.collapsingToolbarLayout) this.collapsingToolbarLayout.setTitle(title); }
 
     @java.lang.Override public void clearToolbarTitle() { this.setToolbarTitle(null); }
-    // endregion
     // endregion
 }
