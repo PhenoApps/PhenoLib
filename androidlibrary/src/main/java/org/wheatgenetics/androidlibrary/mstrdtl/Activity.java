@@ -35,15 +35,15 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 
     private java.lang.String jsonFromItems()
     {
-        final java.lang.String result;
+        final java.lang.String trimmedJson;
         {
             final java.lang.String json = this.items().toJson();
             if (null == json)
                 return null;
             else
-                result = json.trim();
+                trimmedJson = json.trim();
         }
-        return result.length() <= 0 ? null : result;
+        return trimmedJson.length() <= 0 ? null : trimmedJson;
     }
 
     @android.support.annotation.NonNull private android.content.Intent putJsonIntoIntent(
@@ -69,7 +69,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
                 org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY;
             this.json = intent.hasExtra(JSON_KEY) ? intent.getStringExtra(JSON_KEY) : null;
         }
-        this.log(source + ": setJsonFromIntent(): " + this.json);
+        this.log(source + ": setJsonFromIntent(): " + this.getJson());
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
