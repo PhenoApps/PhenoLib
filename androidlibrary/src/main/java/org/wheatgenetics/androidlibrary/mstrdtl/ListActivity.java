@@ -75,7 +75,8 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
         {
             final android.support.v7.widget.RecyclerView recyclerView = this.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.masterDetailRecyclerView);
-            if (null != recyclerView) recyclerView.setAdapter(this.adapter);
+            if (null != recyclerView)
+                { recyclerView.setHasFixedSize(true); recyclerView.setAdapter(this.adapter); }
         }
     }
 
