@@ -57,14 +57,19 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
             final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment =
                 new org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment();
             {
-                final android.os.Bundle arguments = new android.os.Bundle();
+                final android.content.Intent intent = this.getIntent();
+                if (null != intent)
                 {
                     final java.lang.String POSITION_KEY =
                         org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
-                    arguments.putInt(POSITION_KEY, this.getIntent().getIntExtra(
-                        POSITION_KEY, /* defaultValue => */-1));
+                    if (intent.hasExtra(POSITION_KEY))
+                    {
+                        final android.os.Bundle arguments = new android.os.Bundle();
+                        arguments.putInt(POSITION_KEY, intent.getIntExtra(
+                            POSITION_KEY, /* defaultValue => */-1));
+                        itemFragment.setArguments(arguments);
+                    }
                 }
-                itemFragment.setArguments(arguments);
             }
             this.setAndAddItemFragment(
                 org.wheatgenetics.androidlibrary.R.id.masterDetailNestedScrollView, itemFragment);

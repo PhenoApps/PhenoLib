@@ -11,6 +11,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.support.annotation.Nullable
  * android.support.annotation.RestrictTo
  * android.support.annotation.RestrictTo.Scope
+ * android.support.v4.app.FragmentManager
  * android.support.v7.app.AppCompatActivity
  * android.util.Log
  *
@@ -25,6 +26,8 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 abstract class Activity extends android.support.v7.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 {
+    private static final java.lang.String ITEM_FRAGMENT_TAG = "itemFragmentTag";
+
     // region Fields
     private java.lang.String                                      json = null ;
     private org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment;
@@ -54,6 +57,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         this.log("setResultFromJson(): putJsonIntoIntent(): " + json);
         return org.wheatgenetics.androidlibrary.mstrdtl.Utils.putJsonIntoIntent(json, intent);
     }
+
+    private static void removeFragment(@android.support.annotation.NonNull
+        final android.support.v4.app.FragmentManager fragmentManager,
+    @android.support.annotation.NonNull final android.support.v4.app.Fragment fragment)
+    { fragmentManager.beginTransaction().remove(fragment).commit(); }
     // endregion
 
     // region Package Methods
@@ -71,11 +79,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     }
 
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    void setResultFromJson()
-    {
-        this.setResult(android.app.Activity.RESULT_OK,
-            this.putJsonIntoIntent(new android.content.Intent()));
-    }
+    void setResultFromJson(final int resultCode)
+    { this.setResult(resultCode, this.putJsonIntoIntent(new android.content.Intent())); }
+
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void setResultFromJson() { this.setResultFromJson(android.app.Activity.RESULT_OK); }
 
     /** Called by ItemActivity.onCreate(). */
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
@@ -84,8 +92,11 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
     {
         this.itemFragment = itemFragment;
-        this.getSupportFragmentManager().beginTransaction().add(
-            containerViewId, this.itemFragment).commit();
+
+        final android.support.v4.app.FragmentManager fragmentManager =
+            this.getSupportFragmentManager();
+        if (null != fragmentManager)
+            fragmentManager.beginTransaction().add(containerViewId, this.itemFragment).commit();
     }
 
     /** Called by ListActivity.setAndReplaceItemFragment(). */
@@ -95,16 +106,44 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
     {
         this.itemFragment = itemFragment;
-        this.getSupportFragmentManager().beginTransaction().replace(
-            containerViewId, this.itemFragment).commit();
+
+        final android.support.v4.app.FragmentManager fragmentManager =
+            this.getSupportFragmentManager();
+        if (null != fragmentManager)
+            fragmentManager.beginTransaction().replace(containerViewId, this.itemFragment,
+                org.wheatgenetics.androidlibrary.mstrdtl.Activity.ITEM_FRAGMENT_TAG).commit();
+    }
+
+    /** Called by ListActivity.onActivityResult(). */
+    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    void removeAndClearItemFragmentByTag()
+    {
+        final android.support.v4.app.FragmentManager fragmentManager =
+            this.getSupportFragmentManager();
+        if (null != fragmentManager)
+        {
+            final android.support.v4.app.Fragment fragment = fragmentManager.findFragmentByTag(
+                org.wheatgenetics.androidlibrary.mstrdtl.Activity.ITEM_FRAGMENT_TAG);
+            if (null != fragment) org.wheatgenetics.androidlibrary.mstrdtl.Activity.removeFragment(
+                fragmentManager, fragment);
+        }
     }
 
     /** Called by ChangeableListActivity.delete(). */
     @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     void removeAndClearItemFragment()
     {
-        this.getSupportFragmentManager().beginTransaction().remove(this.itemFragment).commit();
-        this.itemFragment = null;
+        if (null != this.itemFragment)
+        {
+            final android.support.v4.app.FragmentManager fragmentManager =
+                this.getSupportFragmentManager();
+            if (null != fragmentManager)
+            {
+                org.wheatgenetics.androidlibrary.mstrdtl.Activity.removeFragment(
+                    fragmentManager, this.itemFragment);
+                this.itemFragment = null;
+            }
+        }
     }
 
     /**
