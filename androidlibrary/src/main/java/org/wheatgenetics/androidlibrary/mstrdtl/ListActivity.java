@@ -86,11 +86,16 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
         super.onActivityResult(requestCode, resultCode, data);
 
         if (org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter.REQUEST_CODE == requestCode
-        &&  android.app.Activity.RESULT_OK                                       == resultCode
         &&  null                                                                 != data       )
         {
-            this.setJsonFromIntent("onActivityResult()", data);
-            this.initializeItems(); this.refreshSinceItemsHaveChanged();
+            this.setJsonFromIntent("onActivityResult()", data); this.initializeItems();
+            switch (resultCode)
+            {
+                case android.app.Activity.RESULT_OK: this.refreshSinceItemsHaveChanged(); break;
+
+                case android.app.Activity.RESULT_FIRST_USER:
+                    this.removeAndClearItemFragmentByTag(); break;
+            }
         }
     }
 

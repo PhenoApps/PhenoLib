@@ -2,6 +2,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 
 /**
  * Uses:
+ * android.app.Activity
  * android.support.annotation.IntRange
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
@@ -24,6 +25,10 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
 
     @java.lang.Override public void delete(@android.support.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
-    { this.items().delete(position); this.setResultFromJson(); this.finish(); }
+    {
+        this.items().delete(position);
+        this.setResultFromJson(android.app.Activity.RESULT_FIRST_USER);
+        this.finish();
+    }
     // endregion
 }
