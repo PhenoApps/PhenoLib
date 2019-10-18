@@ -1783,15 +1783,6 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                         });
             }
             {
-                final android.widget.Button studiesStudyDbIdObservationunitsZipPostButton =
-                    rootView.findViewById(org.wheatgenetics.androidlibrarybuilder
-                        .R.id.studiesStudyDbIdObservationunitsZipPostButton);
-                if (null != studiesStudyDbIdObservationunitsZipPostButton)
-                    studiesStudyDbIdObservationunitsZipPostButton.setOnClickListener(
-                        new android.view.View.OnClickListener()
-                        { @java.lang.Override public void onClick(final android.view.View v) {} });
-            }
-            {
                 final android.widget.Button studiesStudyDbIdObservationvariablesGetButton =
                     rootView.findViewById(org.wheatgenetics.androidlibrarybuilder
                         .R.id.studiesStudyDbIdObservationvariablesGetButton);

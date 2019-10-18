@@ -274,26 +274,6 @@
 
 
     <Button
-        android:id="@+id/studiesStudyDbIdObservationunitsZipPostButton"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-
-        android:text="studiesStudyDbIdObservationunitsZipPost()"
-        android:textAllCaps="false"
-
-        android:enabled="false"
-
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/studiesMiddleGuideline"
-        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsGetButton"
-
-        tools:ignore="HardcodedText" />
-
-    <Button
         android:id="@+id/studiesStudyDbIdObservationvariablesGetButton"
 
         android:layout_width="wrap_content"
@@ -305,7 +285,7 @@
         android:text="studiesStudyDbIdObservationvariablesGet()"
         android:textAllCaps="false"
 
-        app:layout_constraintLeft_toRightOf="@id/studiesMiddleGuideline"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsGetButton"
 
@@ -327,7 +307,7 @@
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/studiesLeftGuideline"
-        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationvariablesGetButton"
 
         tools:ignore="HardcodedText" />
 
@@ -347,7 +327,7 @@
 
         app:layout_constraintLeft_toRightOf="@id/studiesLeftGuideline"
         app:layout_constraintRight_toLeftOf="@id/studiesRightGuideline"
-        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationvariablesGetButton"
 
         tools:ignore="HardcodedText" />
 
@@ -365,7 +345,7 @@
 
         app:layout_constraintLeft_toRightOf="@id/studiesRightGuideline"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationunitsZipPostButton"
+        app:layout_constraintTop_toBottomOf="@id/studiesStudyDbIdObservationvariablesGetButton"
 
         tools:ignore="HardcodedText" />
 
