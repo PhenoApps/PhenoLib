@@ -1,6 +1,7 @@
 *.iml
 .gradle
 /local.properties
+/.idea/caches
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
@@ -8,7 +9,6 @@
 /build
 /captures
 .externalNativeBuild
-/androidlibrary/build/generated
-/androidlibrary/build/intermediates
-/androidlibrary/build/outputs/logs
-/androidlibrary/build/tmp
+/androidlibrary/build/
+!/androidlibrary/build/outputs/aar/androidlibrary-debug.aar
+!/androidlibrary/build/outputs/aar/androidlibrary-release.aar
