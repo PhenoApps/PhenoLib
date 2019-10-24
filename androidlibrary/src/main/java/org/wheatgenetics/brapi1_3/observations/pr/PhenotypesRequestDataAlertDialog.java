@@ -120,7 +120,7 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
     {
         if (null != this.permanentPhenotypesRequestData)
         {
-            this.permanentPhenotypesRequestData.setObservatioUnitDbId(org.wheatgenetics.brapi1_3
+            this.permanentPhenotypesRequestData.setObservationUnitDbId(org.wheatgenetics.brapi1_3
                 .observations.pr.PhenotypesRequestDataAlertDialog.getEditTextStringText(
                     this.observationUnitDbIdEditText));
             this.permanentPhenotypesRequestData.setObservationsAsItems(
@@ -160,7 +160,7 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
 
             org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
                 .setEditTextText(this.observationUnitDbIdEditText,
-                    this.temporaryPhenotypesRequestData.getObservatioUnitDbId());
+                    this.temporaryPhenotypesRequestData.getObservationUnitDbId());
             this.setObservationsTextViewText();
             org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog
                 .setEditTextText(this.studyDbIdEditText,
