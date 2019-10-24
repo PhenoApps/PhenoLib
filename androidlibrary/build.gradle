@@ -45,9 +45,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api project(':javalib')
 
-    api "com.google.code.gson:gson:$gson_version"
+    api "com.google.code.gson:gson:${gson_version}"
     api "com.android.volley:volley:${volley_version}"
-    api "io.swagger:swagger-annotations:$swagger_annotations_version"
-    api "org.apache.httpcomponents:httpcore:$httpcore_version"
-    api "org.apache.httpcomponents:httpmime:$httpmime_version"
+    api "io.swagger:swagger-annotations:${swagger_annotations_version}"
+    api "org.apache.httpcomponents:httpcore:${httpcore_version}"
+    api "org.apache.httpcomponents:httpmime:${httpmime_version}"
 }
