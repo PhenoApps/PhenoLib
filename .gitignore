@@ -9,7 +9,6 @@
 /build
 /captures
 .externalNativeBuild
-/javalib/build/
 /androidlibrary/build/
 !/androidlibrary/build/outputs/aar/androidlibrary-debug.aar
 !/androidlibrary/build/outputs/aar/androidlibrary-release.aar
