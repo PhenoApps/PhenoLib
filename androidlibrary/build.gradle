@@ -30,8 +30,8 @@ android {
 ext {
     gson_version = "2.8.6"
     volley_version = "1.1.1"
-    swagger_annotations_version = "1.5.21"
-    httpcore_version = "4.4.10"
+    swagger_annotations_version = '1.5.24'
+    httpcore_version = '4.4.12'
     httpmime_version = "4.5.6"
 
     okhttp_version = "2.7.5"
@@ -49,7 +49,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    api project(':javalib')
+    implementation 'org.phenoapps:javalib:1.0.2'
 
     api "com.google.code.gson:gson:${gson_version}"
     api "com.android.volley:volley:${volley_version}"
