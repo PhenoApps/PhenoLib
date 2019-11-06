@@ -1,4 +1,4 @@
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
 
 android {
     compileSdkVersion 29
@@ -6,62 +6,94 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion       16
+        targetSdkVersion    29
+        versionCode          1
+        versionName      "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-    }
+    packagingOptions { exclude "META-INF/DEPENDENCIES" }
 }
 
 ext {
-    gson_version = "2.8.6"
-    volley_version = "1.1.1"
-    swagger_annotations_version = '1.5.24'
-    httpcore_version = '4.4.12'
-    httpmime_version = '4.5.10'
+    volley_version              = "1.1.1"
+    gson_version                = "2.8.6"
+    swagger_annotations_version = "1.5.24"
+    httpcore_version            = "4.4.12"
+    httpmime_version            = "4.5.10"
 
-    okhttp_version = "2.7.5"
-    threetenbp_version = "1.4.0"
-    gsonfire_version = "1.8.3"
-    javax_annotation_version = "1.3.2"
-    v3_swagger_annotations_version = '2.0.10'
+    okhttp_version                 = "2.7.5"
+    gsonfire_version               = "1.8.3"
+    v3_swagger_annotations_version = "2.0.10"
+    javax_annotation_version       = "1.3.2"
+    threetenbp_version             = "1.4.0"
 }
 
 dependencies {
-    api fileTree(include: ['*.jar'], dir: 'libs')
-    api 'com.android.support:appcompat-v7:28.0.0'
-    api 'com.android.support:recyclerview-v7:28.0.0'
-    api 'com.android.support:design:28.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'org.phenoapps:javalib:1.0.2'
+    api fileTree(include: ["*.jar"], dir: "libs")
+    api "com.android.support:appcompat-v7:28.0.0"
+    api "com.android.support:recyclerview-v7:28.0.0"
+    api "com.android.support:design:28.0.0"
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "com.android.support.test:runner:1.0.2"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.2"
+    implementation "org.phenoapps:javalib:1.0.2"
 
-    api "com.google.code.gson:gson:${gson_version}"
     api "com.android.volley:volley:${volley_version}"
+    api "com.google.code.gson:gson:${gson_version}"
     api "io.swagger:swagger-annotations:${swagger_annotations_version}"
     api "org.apache.httpcomponents:httpcore:${httpcore_version}"
     api "org.apache.httpcomponents:httpmime:${httpmime_version}"
 
+    api "com.google.code.gson:gson:${gson_version}"
     api "com.squareup.okhttp:okhttp:${okhttp_version}"
     api "com.squareup.okhttp:logging-interceptor:${okhttp_version}"
-    api "org.threeten:threetenbp:${threetenbp_version}"
-    api "com.google.code.gson:gson:${gson_version}"
     api "io.gsonfire:gson-fire:${gsonfire_version}"
-    api "javax.annotation:javax.annotation-api:${javax_annotation_version}"
     api "io.swagger.core.v3:swagger-annotations:${v3_swagger_annotations_version}"
+    api "javax.annotation:javax.annotation-api:${javax_annotation_version}"
+    api "org.threeten:threetenbp:${threetenbp_version}"
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// USAGE:
+// Run the command
+// 'export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"' if you
+// haven't already.
+//
+// Run the command './gradlew bintrayUpload'
+
+apply plugin: "com.novoda.bintray-release"
+
+ext {
+    bintrayGroupId    = "org.phenoapps"
+    bintrayArtifactId = "androidlibrary"
+    bintrayVersion    = "1.0.0"
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file("secrets.properties").newDataInputStream())
+
+publish {
+    userOrg        = "pheno-apps"
+    repoName       = "pheno-apps-android-library"
+    groupId        = "${bintrayGroupId}"
+    artifactId     = "${bintrayArtifactId}"
+    publishVersion = "${bintrayVersion}"
+    licences       = ["GPL-2.0"]
+    uploadName     = "${bintrayGroupId}:${bintrayArtifactId}"
+    desc           = "${bintrayGroupId}:${bintrayArtifactId}:${bintrayVersion}"
+    website        = "https://github.com/PhenoLibs/AndroidLibraryBuilder"
+    bintrayUser    = properties.getProperty("bintray.username")
+    bintrayKey     = properties.getProperty("bintray.apiKey"  )
+    dryRun         = false
 }
