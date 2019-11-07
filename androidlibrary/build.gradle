@@ -6,9 +6,9 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        minSdkVersion       16
-        targetSdkVersion    29
-        versionCode          1
+        minSdkVersion    16
+        targetSdkVersion 29
+        versionCode       1
         versionName      "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -39,14 +39,14 @@ ext {
 }
 
 dependencies {
-    api fileTree(include: ["*.jar"], dir: "libs")
-    api "com.android.support:appcompat-v7:28.0.0"
-    api "com.android.support:recyclerview-v7:28.0.0"
-    api "com.android.support:design:28.0.0"
-    testImplementation "junit:junit:4.12"
+    api                       fileTree(include: ["*.jar"], dir: "libs")
+    api                       "com.android.support:appcompat-v7:28.0.0"
+    api                       "com.android.support:recyclerview-v7:28.0.0"
+    api                       "com.android.support:design:28.0.0"
+    testImplementation        "junit:junit:4.12"
     androidTestImplementation "com.android.support.test:runner:1.0.2"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.2"
-    implementation "org.phenoapps:javalib:1.0.2"
+    implementation            "org.phenoapps:javalib:1.0.2"
 
     api "com.android.volley:volley:${volley_version}"
     api "com.google.code.gson:gson:${gson_version}"

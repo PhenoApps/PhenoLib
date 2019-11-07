@@ -50,7 +50,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  */
 public class Activity extends android.support.v7.app.AppCompatActivity implements
 org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier,
-org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper,
+org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper    ,
 org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
 {
     // region Constants
