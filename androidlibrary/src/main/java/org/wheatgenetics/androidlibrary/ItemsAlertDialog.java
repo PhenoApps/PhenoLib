@@ -4,7 +4,8 @@ package org.wheatgenetics.androidlibrary;
  * Uses:
  * android.app.Activity
  * android.content.DialogInterface.OnClickListener
- * android.support.annotation.Size
+ *
+ * androidx.annotation.Size
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  */
@@ -23,12 +24,12 @@ public abstract class ItemsAlertDialog extends org.wheatgenetics.androidlibrary.
 
     @java.lang.SuppressWarnings({"unused"})
     public void show(@java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-    @android.support.annotation.Size(min = 1) final java.lang.String items[])
+    @androidx.annotation.Size(min = 1) final java.lang.String items[])
     { if (null != items) { this.setItems(items, this.onClickListener); this.createShow(); } }
 
     @java.lang.SuppressWarnings({"unused"})
     public void show(@java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-    @android.support.annotation.Size(min = 1) final int items[])
+    @androidx.annotation.Size(min = 1) final int items[])
     { if (null != items) { this.setItems(items, this.onClickListener); this.createShow(); } }
     // endregion
 }

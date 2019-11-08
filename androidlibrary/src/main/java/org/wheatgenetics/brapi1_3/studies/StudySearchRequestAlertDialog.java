@@ -5,16 +5,17 @@ package org.wheatgenetics.brapi1_3.studies;
  * android.app.Activity
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
- * android.support.annotation.IdRes
- * android.support.annotation.IntRange
- * android.support.annotation.RestrictTo.Scope
- * android.support.annotation.RestrictTo.Scope.SUBCLASSES
  * android.view.View
  * android.view.View.OnClickListener
  * android.widget.Button
  * android.widget.EditText
  * android.widget.RadioGroup
  * android.widget.TextView
+ *
+ * androidx.annotation.IdRes
+ * androidx.annotation.IntRange
+ * androidx.annotation.RestrictTo.Scope
+ * androidx.annotation.RestrictTo.Scope.SUBCLASSES
  *
  * io.swagger.client.model.StudySearchRequest
  * io.swagger.client.model.StudySearchRequest.SortByEnum
@@ -29,8 +30,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
 {
     private static class SortByAlertDialog extends org.wheatgenetics.brapi1_3.TypeAlertDialog
     {
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -64,7 +64,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
         }
 
         private io.swagger.client.model.StudySearchRequest.SortByEnum item(
-        @android.support.annotation.IntRange(from = 0) final int i)
+        @androidx.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null :
                 io.swagger.client.model.StudySearchRequest.SortByEnum.fromValue(this.items()[i]);
@@ -122,7 +122,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     {
         if (null != radioGroup)
         {
-            @android.support.annotation.IdRes final int id;
+            @androidx.annotation.IdRes final int id;
             if (null == active)
                 id = org.wheatgenetics.androidlibrary.R.id.studySearchRequestNullActiveRadioButton;
             else
@@ -151,7 +151,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     private void setSortByEnum(final io.swagger.client.model.StudySearchRequest.SortByEnum
     sortByEnum) { this.sortByEnum = sortByEnum; this.setSortByTextViewText(this.sortByEnum); }
 
-    private void setSortByEnum(@android.support.annotation.IntRange(from = 0) final int i)
+    private void setSortByEnum(@androidx.annotation.IntRange(from = 0) final int i)
     { this.setSortByEnum(this.sortByAlertDialog().item(i)); }
     // endregion
 
@@ -161,11 +161,10 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
     {
         if (null != radioGroup)
         {
-            @android.support.annotation.IdRes final int id;
+            @androidx.annotation.IdRes final int id;
             {
-                @android.support.annotation.IdRes final int nullSortOrderRadioButton =
-                    org.wheatgenetics.androidlibrary
-                        .R.id.studySearchRequestNullSortOrderRadioButton;
+                @androidx.annotation.IdRes final int nullSortOrderRadioButton = org.wheatgenetics
+                    .androidlibrary.R.id.studySearchRequestNullSortOrderRadioButton;
                 if (null == sortOrderEnum)
                     id = nullSortOrderRadioButton;
                 else
@@ -201,7 +200,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
             return null;
         else
         {
-            @android.support.annotation.IdRes final int checkedRadioButtonId =
+            @androidx.annotation.IdRes final int checkedRadioButtonId =
                 radioGroup.getCheckedRadioButtonId();
             if (org.wheatgenetics.androidlibrary.R.id.studySearchRequestFalseActiveRadioButton
             ==  checkedRadioButtonId)
@@ -230,7 +229,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
             return null;
         else
         {
-            @android.support.annotation.IdRes final int checkedRadioButtonId =
+            @androidx.annotation.IdRes final int checkedRadioButtonId =
                 radioGroup.getCheckedRadioButtonId();
             if (org.wheatgenetics.androidlibrary.R.id.studySearchRequestAscSortOrderRadioButton
             ==  checkedRadioButtonId)
@@ -331,7 +330,7 @@ public class StudySearchRequestAlertDialog extends org.wheatgenetics.brapi1_3.Pa
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.studySearchRequest)

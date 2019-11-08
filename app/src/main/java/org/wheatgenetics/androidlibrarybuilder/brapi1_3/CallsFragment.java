@@ -5,15 +5,16 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
  * android.os.Bundle
- * android.support.annotation.IntRange
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
  * android.view.LayoutInflater
  * android.view.View
  * android.view.View.OnClickListener
  * android.view.ViewGroup
  * android.widget.Button
  * android.widget.TextView
+ *
+ * androidx.annotation.IntRange
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  *
  * io.swagger.client.api.CallsApi
  * io.swagger.client.model.CallsResponse
@@ -40,7 +41,7 @@ public class CallsFragment extends org.wheatgenetics.androidlibrarybuilder.brapi
 
     // region Private Methods
     // region dataType Private Methods
-    private void setDataType(@android.support.annotation.IntRange(from = 0) final int i)
+    private void setDataType(@androidx.annotation.IntRange(from = 0) final int i)
     {
         this.dataType = this.dataTypeAlertDialog().item(i);
         if (null != this.dataTypeTextView) this.dataTypeTextView.setText(
@@ -106,10 +107,10 @@ public class CallsFragment extends org.wheatgenetics.androidlibrarybuilder.brapi
 
     public CallsFragment() {}
 
-    @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
-    @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
-    @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
-    @android.support.annotation.Nullable final android.os.Bundle           savedInstanceState)
+    @java.lang.Override @androidx.annotation.Nullable public android.view.View onCreateView(
+    @androidx.annotation.NonNull  final android.view.LayoutInflater inflater          ,
+    @androidx.annotation.Nullable final android.view.ViewGroup      container         ,
+    @androidx.annotation.Nullable final android.os.Bundle           savedInstanceState)
     {
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_calls);

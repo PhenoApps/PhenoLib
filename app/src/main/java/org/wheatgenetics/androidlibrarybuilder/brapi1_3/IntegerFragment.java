@@ -2,15 +2,16 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
 
 /**
  * Uses:
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.widget.EditText
+ *
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
  */
 abstract class IntegerFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment
 {
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     static java.lang.Integer getInteger(final android.widget.EditText editText)
     {
         final java.lang.String text =

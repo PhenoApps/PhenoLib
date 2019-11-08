@@ -6,16 +6,17 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * android.app.Activity
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
- * android.support.annotation.IntRange
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.View
  * android.view.View.OnClickListener
  * android.widget.Button
  * android.widget.EditText
  * android.widget.TextView
+ *
+ * androidx.annotation.IntRange
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum
  * io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum
@@ -62,8 +63,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             super.configure();
         }
 
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -91,7 +91,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
         // endregion
 
         private io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateXTypeEnum item(
-        @android.support.annotation.IntRange(from = 0) final int i)
+        @androidx.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null : io.swagger.client.model.NewObservationUnitRequest
                 .PositionCoordinateXTypeEnum.fromValue(this.items()[i]);
@@ -112,8 +112,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             super.configure();
         }
 
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -141,7 +140,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
         // endregion
 
         private io.swagger.client.model.NewObservationUnitRequest.PositionCoordinateYTypeEnum item(
-        @android.support.annotation.IntRange(from = 0) final int i)
+        @androidx.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null : io.swagger.client.model.NewObservationUnitRequest
                 .PositionCoordinateYTypeEnum.fromValue(this.items()[i]);
@@ -181,17 +180,17 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
 
     // region Private Methods
     @android.annotation.SuppressLint({"DefaultLocale"}) private static <T> void setTextViewText(
-    @android.support.annotation.Nullable final android.widget.TextView textView,
-    @android.support.annotation.Nullable final java.util.List<T>       list    ,
-    @android.support.annotation.NonNull  final java.lang.String        label   )
+    @androidx.annotation.Nullable final android.widget.TextView textView,
+    @androidx.annotation.Nullable final java.util.List<T>       list    ,
+    @androidx.annotation.NonNull  final java.lang.String        label   )
     {
         if (null != textView) textView.setText(null == list ? "null" :
             java.lang.String.format("%d %s(s)", list.size(), label));
     }
 
     private static void setTextViewText(
-    @android.support.annotation.Nullable final android.widget.TextView textView,
-    @android.support.annotation.Nullable final java.lang.Object        object  )
+    @androidx.annotation.Nullable final android.widget.TextView textView,
+    @androidx.annotation.Nullable final java.lang.Object        object  )
     { if (null != textView) textView.setText(null == object ? "null" : object.toString()); }
 
     // region observationUnitXref Private Methods
@@ -202,7 +201,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
                 this.temporaryNewObservationUnitRequest.getObservationUnitXrefsAsItems());
     }
 
-    private void setObservationUnitXrefTextViewText(@android.support.annotation.Nullable
+    private void setObservationUnitXrefTextViewText(@androidx.annotation.Nullable
     final java.util.List<io.swagger.client.model.ObservationUnitXref> observationUnitXref)
     {
         org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
@@ -225,7 +224,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
                 this.temporaryNewObservationUnitRequest.getObservationsAsItems());
     }
 
-    private void setObservationsTextViewText(@android.support.annotation.Nullable
+    private void setObservationsTextViewText(@androidx.annotation.Nullable
     final java.util.List<io.swagger.client.model.Observation> observations)
     {
         org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
@@ -282,8 +281,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             this.positionCoordinateXTypeEnum = positionCoordinateXTypeEnum);
     }
 
-    private void setPositionCoordinateXTypeEnum(
-    @android.support.annotation.IntRange(from = 0) final int i)
+    private void setPositionCoordinateXTypeEnum(@androidx.annotation.IntRange(from = 0) final int i)
     { this.setPositionCoordinateXTypeEnum(this.positionCoordinateXTypeAlertDialog().item(i)); }
     // endregion
 
@@ -330,8 +328,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
             this.positionCoordinateYTypeEnum = positionCoordinateYTypeEnum);
     }
 
-    private void setPositionCoordinateYTypeEnum(
-    @android.support.annotation.IntRange(from = 0) final int i)
+    private void setPositionCoordinateYTypeEnum(@androidx.annotation.IntRange(from = 0) final int i)
     { this.setPositionCoordinateYTypeEnum(this.positionCoordinateYTypeAlertDialog().item(i)); }
     // endregion
 
@@ -343,7 +340,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
                 this.temporaryNewObservationUnitRequest.getObservationTreatmentsAsItems());
     }
 
-    private void setObservationTreatmentsTextViewText(@android.support.annotation.Nullable
+    private void setObservationTreatmentsTextViewText(@androidx.annotation.Nullable
     final java.util.List<io.swagger.client.model.ObservationTreatment> observationTreatments)
     {
         org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog
@@ -361,7 +358,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
 
     NewObservationUnitRequestAlertDialog(final android.app.Activity activity, final
     org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.Handler handler,
-    @android.support.annotation.NonNull final
+    @androidx.annotation.NonNull final
         org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestAlertDialog.ActivityHandler
         activityHandler) { super(activity, handler); this.activityHandler = activityHandler; }
 
@@ -527,7 +524,7 @@ class NewObservationUnitRequestAlertDialog extends org.wheatgenetics.brapi1_3.Al
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.permanentNewObservationUnitRequest)

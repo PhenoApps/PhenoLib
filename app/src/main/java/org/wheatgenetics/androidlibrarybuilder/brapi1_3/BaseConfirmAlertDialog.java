@@ -3,12 +3,13 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.IdRes
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.View
  * android.widget.TextView
+ *
+ * androidx.annotation.IdRes
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.brapi1_3.AlertDialog
  * org.wheatgenetics.brapi1_3.AlertDialog.Handler
@@ -28,7 +29,7 @@ public abstract class BaseConfirmAlertDialog extends org.wheatgenetics.brapi1_3.
     // endregion
 
     // region Private Methods
-    @android.support.annotation.Nullable
+    @androidx.annotation.Nullable
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.BaseConfirmAlertDialog.Handler
     specificHandler()
     {
@@ -55,9 +56,9 @@ public abstract class BaseConfirmAlertDialog extends org.wheatgenetics.brapi1_3.
     }
     // endregion
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void configure(         final android.view.View view      ,
-    @android.support.annotation.IdRes final int               textViewId)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void configure(  final android.view.View view      ,
+    @androidx.annotation.IdRes final int               textViewId)
     {
         if (null != view) if (null == this.textView) this.textView = view.findViewById(textViewId);
         this.setView(view); super.configure();

@@ -4,22 +4,23 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * Uses:
  * android.content.res.Resources
  * android.os.Bundle
- * android.support.annotation.IntRange
- * android.support.annotation.MenuRes
- * android.support.annotation.NonNull
- * android.support.annotation.Size
- * android.support.v4.app.Fragment
- * android.support.v4.app.FragmentManager
- * android.support.v4.app.FragmentPagerAdapter
- * android.support.v4.view.ViewPager
- * android.support.v4.view.ViewPager.OnPageChangeListener
- * android.support.v7.app.ActionBar
- * android.support.v7.app.AppCompatActivity
- * android.support.v7.widget.Toolbar
  * android.view.Menu
  * android.view.MenuItem
  * android.widget.TextView
  *
+ * androidx.annotation.IntRange
+ * androidx.annotation.MenuRes
+ * androidx.annotation.NonNull
+ * androidx.annotation.Size
+ * androidx.appcompat.app.ActionBar
+ * androidx.appcompat.app.AppCompatActivity
+ * androidx.appcompat.widget.Toolbar
+ * androidx.fragment.app.Fragment
+ * androidx.fragment.app.FragmentManager
+ * androidx.fragment.app.FragmentPagerAdapter
+ * androidx.viewpager.widget.ViewPager
+ * androidx.viewpager.widget.ViewPager.OnPageChangeListener
+ * 
  * io.swagger.client.ApiClient
  * io.swagger.client.model.WSMIMEDataTypes
  *
@@ -48,7 +49,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment
  * org.wheatgenetics.androidlibrarybuilder.brapi1_3.TrialsFragment
  */
-public class Activity extends android.support.v7.app.AppCompatActivity implements
+public class Activity extends androidx.appcompat.app.AppCompatActivity implements
 org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier,
 org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper    ,
 org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
@@ -62,14 +63,15 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
         PHENOTYPES_REQUEST_KEY            = "phenotypesRequest"         , FORMAT_KEY = "format";
     // endregion
 
-    private static class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAdapter
+    private static class FragmentPagerAdapter extends androidx.fragment.app.FragmentPagerAdapter
     {
-        private FragmentPagerAdapter(@android.support.annotation.NonNull
-        final android.support.v4.app.FragmentManager fragmentManager) { super(fragmentManager); }
+        private FragmentPagerAdapter(@androidx.annotation.NonNull
+        final androidx.fragment.app.FragmentManager fragmentManager) { super(fragmentManager); }
 
         // region Overridden Methods
         /** getItem() is called to instantiate the fragment for the given page. */
-        @java.lang.Override public android.support.v4.app.Fragment getItem(final int position)
+        @java.lang.Override @androidx.annotation.NonNull 
+        public androidx.fragment.app.Fragment getItem(final int position)
         {
             switch (position)
             {
@@ -145,8 +147,8 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
                 case org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
                     .LAST_FRAGMENT_NAME_INDEX: return org.wheatgenetics.androidlibrarybuilder
                         .brapi1_3.StubFragment.instantiate("SearchServices");
-
-                default: return null;
+                
+                default: throw new java.lang.IllegalArgumentException("Bad position was passed");
             }
         }
 
@@ -164,8 +166,8 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
     private java.lang.String fragmentNames[] = null;
 
-    private android.widget.TextView           toolBarTextView = null;
-    private android.support.v4.view.ViewPager viewPager       = null;
+    private android.widget.TextView             toolBarTextView = null;
+    private androidx.viewpager.widget.ViewPager viewPager       = null;
 
     private       java.lang.String            authorizationInstance = null                         ;
     private final io.swagger.client.ApiClient apiClientInstance = new io.swagger.client.ApiClient();
@@ -184,7 +186,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     // endregion
 
     // region Private Methods
-    private void setToolBarTitle(@android.support.annotation.IntRange(
+    private void setToolBarTitle(@androidx.annotation.IntRange(
     from = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX,
     to   = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX )
     final int i)
@@ -233,13 +235,13 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
         this.getPhenotypesRequest().fromJson(json);
     }
 
-    private void setPage(@android.support.annotation.IntRange(
+    private void setPage(@androidx.annotation.IntRange(
     from = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX,
     to   = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX )
     final int page) { if (null != this.viewPager) this.viewPager.setCurrentItem(page); }
 
-    private void setPage(@android.support.annotation.NonNull
-    @android.support.annotation.Size(min = 1) final java.lang.CharSequence selectedFragmentName)
+    private void setPage(@androidx.annotation.NonNull
+    @androidx.annotation.Size(min = 1) final java.lang.CharSequence selectedFragmentName)
     {
         if (null != this.fragmentNames)
         {
@@ -247,7 +249,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
             final int FIRST_FRAGMENT_NAME_INDEX =
                 org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX;
 
-            @android.support.annotation.IntRange(from = FIRST_FRAGMENT_NAME_INDEX,
+            @androidx.annotation.IntRange(from = FIRST_FRAGMENT_NAME_INDEX,
             to = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX)
             int i = FIRST_FRAGMENT_NAME_INDEX;
 
@@ -289,10 +291,10 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
         // endregion
 
         // region Initialize widgets.
-        this.setSupportActionBar((android.support.v7.widget.Toolbar) this.findViewById(
+        this.setSupportActionBar((androidx.appcompat.widget.Toolbar) this.findViewById(
             org.wheatgenetics.androidlibrarybuilder.R.id.toolbar));           // From layout/acti-
         {                                                                     //  vity_brapi1_3.xml.
-            final android.support.v7.app.ActionBar supportActionBar = this.getSupportActionBar();
+            final androidx.appcompat.app.ActionBar supportActionBar = this.getSupportActionBar();
             if (null != supportActionBar) supportActionBar.setDisplayShowTitleEnabled(false);
         }
 
@@ -308,10 +310,9 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
                     this.getSupportFragmentManager()));
 
             this.viewPager.addOnPageChangeListener(
-                new android.support.v4.view.ViewPager.OnPageChangeListener()
+                new androidx.viewpager.widget.ViewPager.OnPageChangeListener()
                 {
-                    @java.lang.Override
-                    public void onPageScrolled(final int position,
+                    @java.lang.Override public void onPageScrolled(final int position,
                     final float positionOffset, final int positionOffsetPixels) {}
 
                     @java.lang.Override public void onPageSelected(final int position)
@@ -384,12 +385,12 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     }
 
     @java.lang.Override public boolean onOptionsItemSelected(
-    @android.support.annotation.NonNull final android.view.MenuItem menuItem)
+    @androidx.annotation.NonNull final android.view.MenuItem menuItem)
     {
         // Handle action bar menuItem clicks here.  The action bar will automatically handle clicks
         // on the Home/Up button so long as you specify a parent activity in AndroidManifest.xml.
         {
-            @android.support.annotation.MenuRes final int id = menuItem.getItemId();
+            @androidx.annotation.MenuRes final int id = menuItem.getItemId();
 
             // The id values in the following switch statement are from menu/menu_brapi1_3.xml.
             switch (id)
@@ -421,34 +422,32 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
         return super.onOptionsItemSelected(menuItem);
     }
 
-    @java.lang.Override protected void onSaveInstanceState(final android.os.Bundle outState)
+    @java.lang.Override protected void onSaveInstanceState(
+    @androidx.annotation.NonNull final android.os.Bundle outState)
     {
-        if (null != outState)
-        {
-            outState.putString(
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.AUTHORIZATION_KEY,
-                this.authorizationInstance                                                 );
-            outState.putString(
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.BASE_PATH_KEY,
-                this.apiClient().getBasePath()                                         );
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.STUDY_LAYOUT_REQUEST_KEY,
-                this.getStudyLayoutRequest(), outState                                            );
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
-                    .NEW_OBSERVATIONS_REQUEST_KEY,
-                this.getNewObservationsRequest(), outState);
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
-                    .NEW_OBSERVATION_UNIT_REQUESTS_KEY,
-                this.getNewObservationUnitRequests(), outState);
-            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.PHENOTYPES_REQUEST_KEY,
-                this.getPhenotypesRequest(), outState                                           );
-            if (null != this.format) outState.putString(
-                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FORMAT_KEY,
-                this.format.getValue()                                              );
-        }
+        outState.putString(
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.AUTHORIZATION_KEY,
+            this.authorizationInstance                                                 );
+        outState.putString(
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.BASE_PATH_KEY,
+            this.apiClient().getBasePath()                                         );
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.STUDY_LAYOUT_REQUEST_KEY,
+            this.getStudyLayoutRequest(), outState                                            );
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.NEW_OBSERVATIONS_REQUEST_KEY,
+            this.getNewObservationsRequest(), outState                                            );
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
+                .NEW_OBSERVATION_UNIT_REQUESTS_KEY,
+            this.getNewObservationUnitRequests(), outState);
+        org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.putJsonIntoBundle(
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.PHENOTYPES_REQUEST_KEY,
+            this.getPhenotypesRequest(), outState                                           );
+        if (null != this.format) outState.putString(
+            org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FORMAT_KEY,
+            this.format.getValue()                                              );
+
         super.onSaveInstanceState(outState);
     }
 
@@ -456,8 +455,8 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     { if (null != this.viewPager) this.viewPager.clearOnPageChangeListeners(); super.onDestroy(); }
 
     // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier Overridden Methods
-    @java.lang.Override @android.support.annotation.NonNull
-    public io.swagger.client.ApiClient apiClient() { return this.apiClientInstance; }
+    @java.lang.Override @androidx.annotation.NonNull public io.swagger.client.ApiClient apiClient() 
+    { return this.apiClientInstance; }
 
     @java.lang.Override public java.lang.String authorization()
     { return this.authorizationInstance; }

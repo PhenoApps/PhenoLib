@@ -4,7 +4,8 @@ package org.wheatgenetics.androidlibrary;
  * Uses:
  * android.app.Activity
  * android.Manifest.permission
- * android.support.v4.app.ActivityCompat
+ *
+ * androidx.core.app.ActivityCompat
  *
  * org.wheatgenetics.javalib.Dir
  * org.wheatgenetics.javalib.Utils
@@ -27,7 +28,7 @@ public class RequestDir extends org.wheatgenetics.androidlibrary.PermissionDir
 
     @java.lang.Override protected boolean requestPermission()
     {
-        if (!this.permissionGranted()) android.support.v4.app.ActivityCompat.requestPermissions(
+        if (!this.permissionGranted()) androidx.core.app.ActivityCompat.requestPermissions(
             /* activity    => */ this.getActivity(),
             /* permissions => */ org.wheatgenetics.javalib.Utils.stringArray(
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE),

@@ -3,10 +3,11 @@ package org.wheatgenetics.brapi1_3;
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.View
  * android.widget.EditText
+ *
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.ProgramsSearchRequest
  *
@@ -69,7 +70,7 @@ public class ProgramsSearchRequestAlertDialog extends org.wheatgenetics.brapi1_3
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.programsSearchRequest)

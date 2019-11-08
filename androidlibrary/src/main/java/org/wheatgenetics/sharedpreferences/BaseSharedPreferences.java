@@ -4,9 +4,10 @@ package org.wheatgenetics.sharedpreferences;
  * Uses:
  * android.content.SharedPreferences
  * android.content.SharedPreferences.Editor
- * android.support.annotation.NonNull
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.Utils
  */
@@ -15,7 +16,7 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 {
     private final android.content.SharedPreferences sharedPreferences;
 
-    private void setBoolean(@android.support.annotation.NonNull final java.lang.String key,
+    private void setBoolean(@androidx.annotation.NonNull final java.lang.String key,
     final boolean value)
     {
         if (this.getBoolean(key) != value)
@@ -26,32 +27,32 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     }
 
     @java.lang.SuppressWarnings({"WeakerAccess"})
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void validateStringKey(@android.support.annotation.NonNull final java.lang.String key)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    protected void validateStringKey(@androidx.annotation.NonNull final java.lang.String key)
     { throw new java.lang.AssertionError(key + " is not a valid key."); }
 
     @java.lang.SuppressWarnings({"WeakerAccess"}) public BaseSharedPreferences(
-    @android.support.annotation.NonNull final android.content.SharedPreferences sharedPreferences)
+    @androidx.annotation.NonNull final android.content.SharedPreferences sharedPreferences)
     { super(); this.sharedPreferences = sharedPreferences; }
 
     // region Public Methods
     // region String Public Methods
     @java.lang.SuppressWarnings({"WeakerAccess"}) public java.lang.String getString(
-    @android.support.annotation.NonNull final java.lang.String key, final boolean validateKey)
+    @androidx.annotation.NonNull final java.lang.String key, final boolean validateKey)
     {
         if (validateKey) this.validateStringKey(key);
         return this.sharedPreferences.getString(key,"");
     }
 
     @java.lang.SuppressWarnings({"unused"}) public java.lang.String getString(
-    @android.support.annotation.NonNull final java.lang.String key)
+    @androidx.annotation.NonNull final java.lang.String key)
     { return this.getString(key, /* validateKey => */false); }
 
     @java.lang.SuppressWarnings({"WeakerAccess"}) public void setString(
-    @android.support.annotation.NonNull final java.lang.String key        ,
-    @android.support.annotation.NonNull final java.lang.String oldValue   ,
-                                              java.lang.String newValue   ,
-                                        final boolean          validateKey)
+    @androidx.annotation.NonNull final java.lang.String key        ,
+    @androidx.annotation.NonNull final java.lang.String oldValue   ,
+                                       java.lang.String newValue   ,
+                                 final boolean          validateKey)
     {
         newValue = org.wheatgenetics.javalib.Utils.makeEmptyIfNull(newValue);
         if (!oldValue.equals(newValue))
@@ -64,19 +65,19 @@ public abstract class BaseSharedPreferences extends java.lang.Object
     }
 
     @java.lang.SuppressWarnings({"unused"})
-    public void setString(@android.support.annotation.NonNull final java.lang.String key     ,
-                          @android.support.annotation.NonNull final java.lang.String oldValue,
-                                                              final java.lang.String newValue)
+    public void setString(@androidx.annotation.NonNull final java.lang.String key     ,
+                          @androidx.annotation.NonNull final java.lang.String oldValue,
+                                                       final java.lang.String newValue)
     { this.setString(key, oldValue, newValue, /* validateKey => */false); }
     // endregion
 
     // region Integer Public Methods
     @java.lang.SuppressWarnings({"WeakerAccess"})
-    public int getInt(@android.support.annotation.NonNull final java.lang.String key)
+    public int getInt(@androidx.annotation.NonNull final java.lang.String key)
     { return this.sharedPreferences.getInt(key,-1); }
 
     @java.lang.SuppressWarnings({"WeakerAccess"}) public void setInt(
-    @android.support.annotation.NonNull final java.lang.String key, final int newInt)
+    @androidx.annotation.NonNull final java.lang.String key, final int newInt)
     {
         if (this.getInt(key) != newInt)
         {
@@ -88,11 +89,11 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
     // region Long Public Methods
     @java.lang.SuppressWarnings({"WeakerAccess"})
-    public long getLong(@android.support.annotation.NonNull final java.lang.String key)
+    public long getLong(@androidx.annotation.NonNull final java.lang.String key)
     { return this.sharedPreferences.getLong(key,-1); }
 
     @java.lang.SuppressWarnings({"unused"}) public void setLong(
-    @android.support.annotation.NonNull final java.lang.String key, final long newLong)
+    @androidx.annotation.NonNull final java.lang.String key, final long newLong)
     {
         if (this.getLong(key) != newLong)
         {
@@ -104,14 +105,14 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
     // region Boolean Public Methods
     @java.lang.SuppressWarnings({"WeakerAccess"}) public java.lang.Boolean getBoolean(
-    @android.support.annotation.NonNull final java.lang.String key)
+    @androidx.annotation.NonNull final java.lang.String key)
     { return this.sharedPreferences.getBoolean(key,false); }
 
     @java.lang.SuppressWarnings({"unused"}) public void setBooleanToTrue(
-    @android.support.annotation.NonNull final java.lang.String key) { this.setBoolean(key, true); }
+    @androidx.annotation.NonNull final java.lang.String key) { this.setBoolean(key, true); }
 
     @java.lang.SuppressWarnings({"unused"}) public void setBooleanToFalse(
-    @android.support.annotation.NonNull final java.lang.String key) { this.setBoolean(key, false); }
+    @androidx.annotation.NonNull final java.lang.String key) { this.setBoolean(key, false); }
     // endregion
     // endregion
 }

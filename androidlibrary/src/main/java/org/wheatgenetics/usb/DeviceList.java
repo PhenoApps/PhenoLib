@@ -6,8 +6,9 @@ package org.wheatgenetics.usb;
  * android.content.Context
  * android.hardware.usb.UsbDevice
  * android.hardware.usb.UsbManager
- * android.support.annotation.NonNull
- * android.support.annotation.Size
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.Size
  *
  * org.wheatgenetics.javalib.Utils
  *
@@ -18,7 +19,7 @@ class DeviceList extends java.lang.Object
 {
     private final java.util.ArrayList<org.wheatgenetics.usb.Device> arrayList;
 
-    DeviceList(@android.support.annotation.NonNull final android.app.Activity activity)
+    DeviceList(@androidx.annotation.NonNull final android.app.Activity activity)
     {
         super();
 
@@ -39,7 +40,7 @@ class DeviceList extends java.lang.Object
                 this.arrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
     }
 
-    @android.support.annotation.NonNull @java.lang.Override public java.lang.String toString()
+    @androidx.annotation.NonNull @java.lang.Override public java.lang.String toString()
     {
         final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
         {
@@ -75,8 +76,8 @@ class DeviceList extends java.lang.Object
 
     org.wheatgenetics.usb.Device get(final int vendorId,
 
-    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-        @android.support.annotation.Size(min = 1) final int productIds[])
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @androidx.annotation.Size(min = 1)
+        final int productIds[])
     {
         if (null == this.arrayList || null == productIds)
             return null;

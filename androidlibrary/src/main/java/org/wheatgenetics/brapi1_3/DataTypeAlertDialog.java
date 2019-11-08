@@ -3,9 +3,10 @@ package org.wheatgenetics.brapi1_3;
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.IntRange
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
+ *
+ * androidx.annotation.IntRange
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.WSMIMEDataTypes
  *
@@ -24,7 +25,7 @@ public class DataTypeAlertDialog extends org.wheatgenetics.brapi1_3.TypeAlertDia
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.String[] items()
     {
         if (this.itemsIsNull())
@@ -49,6 +50,6 @@ public class DataTypeAlertDialog extends org.wheatgenetics.brapi1_3.TypeAlertDia
     // endregion
 
     public io.swagger.client.model.WSMIMEDataTypes item(
-    @android.support.annotation.IntRange(from = 0) final int i)
+    @androidx.annotation.IntRange(from = 0) final int i)
     { return 0 == i ? null : io.swagger.client.model.WSMIMEDataTypes.fromValue(this.items()[i]); }
 }

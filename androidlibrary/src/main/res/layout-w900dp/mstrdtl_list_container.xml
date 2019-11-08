@@ -26,7 +26,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="4dp">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/masterDetailRecyclerView"
             android:name="org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment"
 
@@ -36,10 +36,10 @@
             android:layout_above="@id/appendItemButton"
             android:layout_marginBottom="4dp"
 
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layoutManager="LinearLayoutManager"
 
             tools:context="org.wheatgenetics.androidlibrary.mstrdtl.ListActivity"
-            tools:listitem="@org.wheatgenetics.androidlibrary:layout/mstrdtl_list_item" />
+            tools:listitem="@layout/mstrdtl_list_item" />
 
         <Button
             android:id="@+id/appendItemButton"

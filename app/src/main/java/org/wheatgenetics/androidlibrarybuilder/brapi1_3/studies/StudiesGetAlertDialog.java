@@ -3,10 +3,11 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.IdRes
  * android.view.View
  * android.widget.EditText
  * android.widget.RadioGroup
+ *
+ * androidx.annotation.IdRes
  *
  * org.wheatgenetics.brapi1_3.PagedAlertDialog
  *
@@ -61,7 +62,7 @@ class StudiesGetAlertDialog extends org.wheatgenetics.brapi1_3.PagedAlertDialog
     {
         if (null != radioGroup)
         {
-            @android.support.annotation.IdRes final int id;
+            @androidx.annotation.IdRes final int id;
             if (null == active)
                 id = org.wheatgenetics.androidlibrarybuilder
                     .R.id.studiesStudiesGetNullActiveRadioButton;

@@ -3,9 +3,9 @@ package org.wheatgenetics.brapi1_3.studies;
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  * android.view.View
  * android.widget.EditText
  *
@@ -57,7 +57,7 @@ public class NewObservationsTableRequestAlertDialog extends org.wheatgenetics.br
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.newObservationsTableRequest)
@@ -137,7 +137,7 @@ public class NewObservationsTableRequestAlertDialog extends org.wheatgenetics.br
 
     public void show(final
     org.wheatgenetics.brapi1_3.studies.NewObservationsTableRequest newObservationsTableRequest,
-    @android.support.annotation.Nullable final java.lang.String stringFormat)
+    @androidx.annotation.Nullable final java.lang.String stringFormat)
     {
         final org.wheatgenetics.brapi1_3.studies.NewObservationsTableRequestAlertDialog.Format
             enumFormat;

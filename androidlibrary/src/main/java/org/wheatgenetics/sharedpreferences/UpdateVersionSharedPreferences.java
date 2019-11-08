@@ -3,7 +3,8 @@ package org.wheatgenetics.sharedpreferences;
 /**
  * Uses:
  * android.content.SharedPreferences
- * android.support.annotation.NonNull
+ *
+ * androidx.annotation.NonNull
  *
  * org.wheatgenetics.sharedpreferences.BaseSharedPreferences
  */
@@ -19,7 +20,7 @@ extends org.wheatgenetics.sharedpreferences.BaseSharedPreferences
     }
 
     public UpdateVersionSharedPreferences(
-    @android.support.annotation.NonNull final android.content.SharedPreferences sharedPreferences)
+    @androidx.annotation.NonNull final android.content.SharedPreferences sharedPreferences)
     { super(sharedPreferences); }
 
     // region Public Methods

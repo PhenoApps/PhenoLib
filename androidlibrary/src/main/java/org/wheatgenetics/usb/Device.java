@@ -7,7 +7,8 @@ package org.wheatgenetics.usb;
  * android.hardware.usb.UsbEndpoint
  * android.hardware.usb.UsbInterface
  * android.hardware.usb.UsbManager
- * android.support.annotation.NonNull
+ *
+ * androidx.annotation.NonNull
  *
  * org.wheatgenetics.javalib.Utils
  */
@@ -87,7 +88,7 @@ public class Device extends java.lang.Object
     { super(); this.usbDevice = usbDevice; this.usbManager = usbManager; }
 
     // region Overridden Methods
-    @java.lang.Override @android.support.annotation.NonNull public java.lang.String toString()
+    @java.lang.Override @androidx.annotation.NonNull public java.lang.String toString()
     {
         return org.wheatgenetics.javalib.Utils.replaceIfNull(
             this.getDeviceName(), super.toString());

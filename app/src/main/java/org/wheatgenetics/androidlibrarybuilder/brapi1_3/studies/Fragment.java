@@ -6,15 +6,16 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies;
  * android.content.Context
  * android.content.Intent
  * android.os.Bundle
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.LayoutInflater
  * android.view.View
  * android.view.View.OnClickListener
  * android.view.ViewGroup
  * android.widget.Button
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.api.StudiesApi
  * io.swagger.client.model.GermplasmSummaryListResponse
@@ -153,8 +154,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private class StudiesStudyDbIdLayoutsGetCallback extends org.wheatgenetics
     .androidlibrarybuilder.brapi1_3.studies.Fragment.StudiesStudyDbIdLayoutsPutCallback
     {
-        @java.lang.Override @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @java.lang.Override @androidx.annotation.RestrictTo(
+            androidx.annotation.RestrictTo.Scope.SUBCLASSES)
         protected void handleSuccess(
         final io.swagger.client.model.ObservationUnitPositionsResponse result)
         {
@@ -371,8 +372,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private void setPutOrPostButtonEnabled(
-    @android.support.annotation.Nullable final android.widget.Button putOrPostButton,
-                                         final boolean               enabled        )
+    @androidx.annotation.Nullable final android.widget.Button putOrPostButton,
+                                  final boolean               enabled        )
     {
         if (null != putOrPostButton)
         {
@@ -871,8 +872,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private void showStudiesStudyDbIdLayoutsPutAlertDialog()
     { this.studiesStudyDbIdLayoutsPutAlertDialog().show(); }
 
-    private void setStudyLayoutRequest(
-    @android.support.annotation.Nullable final java.lang.String json)
+    private void setStudyLayoutRequest(@androidx.annotation.Nullable final java.lang.String json)
     {
         if (null == json)
             this.studyLayoutRequest = null;
@@ -942,8 +942,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
                     io.swagger.client.model.ObservationsResponse>()
                     {
-                        @java.lang.Override @android.support.annotation.RestrictTo(
-                            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+                        @java.lang.Override @androidx.annotation.RestrictTo(
+                            androidx.annotation.RestrictTo.Scope.SUBCLASSES)
                         protected void handleSuccess(
                         final io.swagger.client.model.ObservationsResponse result)
                         {
@@ -1077,7 +1077,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     { this.studiesStudyDbIdObservationsPutAlertDialog().show(); }
 
     private void setNewObservationsRequest(
-    @android.support.annotation.Nullable final java.lang.String json)
+    @androidx.annotation.Nullable final java.lang.String json)
     {
         if (null == json)
             this.newObservationsRequest = null;
@@ -1149,8 +1149,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
                 io.swagger.client.model.ObservationUnitsResponse1>()
                 {
-                    @java.lang.Override @android.support.annotation.RestrictTo(
-                        android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+                    @java.lang.Override @androidx.annotation.RestrictTo(
+                        androidx.annotation.RestrictTo.Scope.SUBCLASSES)
                     protected void handleSuccess(
                     final io.swagger.client.model.ObservationUnitsResponse1 result)
                     {
@@ -1311,7 +1311,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     }
 
     private void setNewObservationUnitRequests(
-    @android.support.annotation.Nullable final java.lang.String json)
+    @androidx.annotation.Nullable final java.lang.String json)
     {
         if (null == json)
             this.newObservationUnitRequests = null;
@@ -1413,8 +1413,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             new org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.ApiCallback<
             java.lang.String>()
             {
-                @java.lang.Override @android.support.annotation.RestrictTo(
-                    android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+                @java.lang.Override @androidx.annotation.RestrictTo(
+                    androidx.annotation.RestrictTo.Scope.SUBCLASSES)
                 protected void handleSuccess(final java.lang.String result)
                 {
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.
@@ -1601,10 +1601,10 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 "context" : context.toString() + " must implement Helper");
     }
 
-    @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
-    @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
-    @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
-    @android.support.annotation.Nullable final android.os.Bundle           savedInstanceState)
+    @java.lang.Override @androidx.annotation.Nullable public android.view.View onCreateView(
+    @androidx.annotation.NonNull  final android.view.LayoutInflater inflater          ,
+    @androidx.annotation.Nullable final android.view.ViewGroup      container         ,
+    @androidx.annotation.Nullable final android.os.Bundle           savedInstanceState)
     {
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_studies);

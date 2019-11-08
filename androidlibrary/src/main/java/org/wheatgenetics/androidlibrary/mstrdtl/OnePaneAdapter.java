@@ -5,13 +5,14 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.app.Activity
  * android.content.Context
  * android.content.Intent
- * android.support.annotation.IntRange
- * android.support.annotation.NonNull
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.View
  * android.view.View.OnClickListener
  *
+ * androidx.annotation.IntRange
+ * androidx.annotation.NonNull
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
+
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
@@ -23,14 +24,14 @@ public abstract class OnePaneAdapter extends org.wheatgenetics.androidlibrary.ms
 {
     static final int REQUEST_CODE = 1;
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class concreteItemActivityClass();
 
-    protected OnePaneAdapter(@android.support.annotation.NonNull
+    protected OnePaneAdapter(@androidx.annotation.NonNull
     final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
 
     @java.lang.Override android.view.View.OnClickListener makeOnClickListener(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
+    @androidx.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
         final int position)
     {
         return new android.view.View.OnClickListener()

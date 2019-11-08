@@ -5,7 +5,8 @@ package org.wheatgenetics.androidlibrary;
  * android.app.ProgressDialog
  * android.content.Context
  * android.content.DialogInterface.OnCancelListener
- * android.support.annotation.StringRes
+ *
+ * androidx.annotation.StringRes
  */
 @java.lang.SuppressWarnings({"unused", "ClassExplicitlyExtendsObject"})
 public class ProgressDialog extends java.lang.Object
@@ -43,10 +44,10 @@ public class ProgressDialog extends java.lang.Object
     { this(context, onCancelListener); this.title = title; this.initialMessage = initialMessage; }
 
     public ProgressDialog(
-                                          final android.content.Context context         ,
-    @android.support.annotation.StringRes final int                     title           ,
-    @android.support.annotation.StringRes final int                     initialMessage  ,
-    final android.content.DialogInterface.OnCancelListener              onCancelListener)
+                                   final android.content.Context context         ,
+    @androidx.annotation.StringRes final int                     title           ,
+    @androidx.annotation.StringRes final int                     initialMessage  ,
+    final android.content.DialogInterface.OnCancelListener       onCancelListener)
     {
         this(context, onCancelListener);
 
@@ -63,7 +64,7 @@ public class ProgressDialog extends java.lang.Object
     public void setMessage(final java.lang.CharSequence message)
     { this.progressDialog().setMessage(message); }
 
-    public void setMessage(@android.support.annotation.StringRes final int message)
+    public void setMessage(@androidx.annotation.StringRes final int message)
     { assert null != this.context; this.setMessage(this.context.getString(message)); }
 
     public void dismiss()

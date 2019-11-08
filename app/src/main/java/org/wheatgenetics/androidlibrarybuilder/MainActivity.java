@@ -9,10 +9,6 @@ package org.wheatgenetics.androidlibrarybuilder;
  * android.content.pm.PackageManager.NameNotFoundException
  * android.Manifest.permission
  * android.os.Bundle
- * android.support.annotation.IntRange
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
- * android.support.v7.app.AppCompatActivity
  * android.util.Log
  * android.view.Menu
  * android.view.MenuInflater
@@ -22,6 +18,11 @@ package org.wheatgenetics.androidlibrarybuilder;
  * android.widget.Button
  * android.widget.EditText
  * android.widget.TextView
+ *
+ * androidx.annotation.IntRange
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
+ * androidx.appcompat.app.AppCompatActivity
  *
  * org.wheatgenetics.javalib.Dir
  * org.wheatgenetics.javalib.Dir.PermissionException
@@ -60,7 +61,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * org.wheatgenetics.androidlibrarybuilder.WebViewActivity
  */
 @java.lang.SuppressWarnings({"unused"})
-public class MainActivity extends android.support.v7.app.AppCompatActivity
+public class MainActivity extends androidx.appcompat.app.AppCompatActivity
 implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver
 {
     // region Constants
@@ -88,7 +89,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     private org.wheatgenetics.usb.DeviceReaderTester         deviceReaderTester   = null;
     private org.wheatgenetics.usb.ScaleReaderTester          scaleReaderTester    = null;
 
-    @android.support.annotation.IntRange(
+    @androidx.annotation.IntRange(
     from = org.wheatgenetics.androidlibrarybuilder.MainActivity.MIN_BUTTON_STATE) private int
         buttonState = org.wheatgenetics.androidlibrarybuilder.MainActivity.MIN_BUTTON_STATE,
         otherAppsButtonState =
@@ -100,12 +101,13 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
             org.wheatgenetics.androidlibrarybuilder.MainActivity.MIN_BUTTON_STATE;
 
     private org.wheatgenetics.javalib.mstrdtl.TestItems testItemsInstance = null;
-    private android.content.Intent webIntentInstance = null, listIntentInstance = null,
-        changeableListIntentInstance = null, brAPI1_3IntentInstance = null;
+    private android.content.Intent                      webIntentInstance = null,
+        listIntentInstance = null, changeableListIntentInstance = null,
+        brAPI1_3IntentInstance = null;
     // endregion
 
     // region Private Methods
-    private static void log(@android.support.annotation.NonNull final java.lang.String msg)
+    private static void log(@androidx.annotation.NonNull final java.lang.String msg)
     { android.util.Log.d("MainActivity", msg); }
 
     // region Button Private Methods
@@ -210,17 +212,16 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         return this.webIntentInstance;
     }
 
-    @android.support.annotation.NonNull
-    private org.wheatgenetics.javalib.mstrdtl.TestItems testItems()
+    @androidx.annotation.NonNull private org.wheatgenetics.javalib.mstrdtl.TestItems testItems()
     {
         if (null == this.testItemsInstance)
             this.testItemsInstance = new org.wheatgenetics.javalib.mstrdtl.TestItems();
         return this.testItemsInstance;
     }
 
-    @android.support.annotation.NonNull private android.content.Intent putJsonIntoIntent(
-    @android.support.annotation.NonNull final java.lang.String       source    ,
-    @android.support.annotation.NonNull final android.content.Intent listIntent)
+    @androidx.annotation.NonNull private android.content.Intent putJsonIntoIntent(
+    @androidx.annotation.NonNull final java.lang.String       source    ,
+    @androidx.annotation.NonNull final android.content.Intent listIntent)
     {
         final java.lang.String json = this.testItems().toJson();
         org.wheatgenetics.androidlibrarybuilder.MainActivity.log(
@@ -246,8 +247,8 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     }
 
     private void makeTestItemsFromJson(
-    @android.support.annotation.NonNull  final java.lang.String source,
-    @android.support.annotation.Nullable final java.lang.String json  )
+    @androidx.annotation.NonNull  final java.lang.String source,
+    @androidx.annotation.Nullable final java.lang.String json  )
     {
         org.wheatgenetics.androidlibrarybuilder.MainActivity.log(
             source + ": makeTestItemsFromJson(): " + json);
@@ -443,7 +444,7 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     }
 
     @java.lang.Override public boolean onOptionsItemSelected(
-    @android.support.annotation.NonNull final android.view.MenuItem item)
+    @androidx.annotation.NonNull final android.view.MenuItem item)
     {
         if (item.getItemId() == org.wheatgenetics.androidlibrary.R.id.cameraOptionsMenuItem)
         {
@@ -454,9 +455,11 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         else return super.onOptionsItemSelected(item);
     }
 
-    @java.lang.Override protected void onActivityResult(final int requestCode,
-    final int resultCode, final android.content.Intent data)
+    @java.lang.Override protected void onActivityResult(
+    final int requestCode, final int resultCode, final android.content.Intent data)
     {
+        super.onActivityResult(requestCode, resultCode, data);
+
         if (org.wheatgenetics.androidlibrarybuilder.MainActivity.ACTIVITY_REQUEST_CODE
         !=  requestCode                                                               )
             this.setTextViewText(org.wheatgenetics.javalib.Utils.replaceIfNull(
@@ -474,9 +477,9 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
     }
 
     @java.lang.Override public void onRequestPermissionsResult(final int requestCode,
-    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @android.support.annotation.NonNull
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @androidx.annotation.NonNull
         final java.lang.String permissions[],
-    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @android.support.annotation.NonNull
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @androidx.annotation.NonNull
         final int grantResults[])
     {
         if (org.wheatgenetics.androidlibrarybuilder.MainActivity.PERMISSIONS_REQUEST_CODE
@@ -493,29 +496,27 @@ implements org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Recei
         }
     }
 
-    @java.lang.Override protected void onSaveInstanceState(final android.os.Bundle outState)
+    @java.lang.Override protected void onSaveInstanceState(
+    @androidx.annotation.NonNull final android.os.Bundle outState)
     {
-        if (null != outState)
+        if (null != this.textView) outState.putCharSequence(
+            org.wheatgenetics.androidlibrarybuilder.MainActivity.TEXT_VIEW_TEXT_KEY,
+            this.textView.getText()                                                );
+        if (null != this.editText) outState.putCharSequence(
+            org.wheatgenetics.androidlibrarybuilder.MainActivity.EDIT_TEXT_TEXT_KEY,
+            this.editText.getText()                                                );
+        outState.putIntArray(org.wheatgenetics.androidlibrarybuilder.MainActivity.BUTTON_STATES_KEY,
+            new int[]{this.buttonState, this.otherAppsButtonState, this.deviceListButtonState,
+                this.scaleButtonState, this.scaleReaderButtonState});
+        if (null != this.testItemsInstance)
         {
-            if (null != this.textView) outState.putCharSequence(
-                org.wheatgenetics.androidlibrarybuilder.MainActivity.TEXT_VIEW_TEXT_KEY,
-                this.textView.getText()                                                );
-            if (null != this.editText) outState.putCharSequence(
-                org.wheatgenetics.androidlibrarybuilder.MainActivity.EDIT_TEXT_TEXT_KEY,
-                this.editText.getText()                                                );
-            outState.putIntArray(
-                org.wheatgenetics.androidlibrarybuilder.MainActivity.BUTTON_STATES_KEY, new int[]{
-                    this.buttonState, this.otherAppsButtonState, this.deviceListButtonState,
-                    this.scaleButtonState, this.scaleReaderButtonState});
-            if (null != this.testItemsInstance)
-            {
-                final java.lang.String json = this.testItemsInstance.toJson();
-                org.wheatgenetics.androidlibrarybuilder.MainActivity.log(
-                    "onSaveInstanceState(): " + json);
-                if (null != json) outState.putString(
-                    org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
-            }
+            final java.lang.String json = this.testItemsInstance.toJson();
+            org.wheatgenetics.androidlibrarybuilder.MainActivity.log(
+                "onSaveInstanceState(): " + json);
+            if (null != json)
+                outState.putString(org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
         }
+
         super.onSaveInstanceState(outState);
     }
 

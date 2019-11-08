@@ -4,10 +4,11 @@ package org.wheatgenetics.brapi1_3.studies.nour;                 // nour: NewObs
  * Uses:
  * android.app.Activity
  * android.content.Intent
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -131,7 +132,7 @@ extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
 
     // region Overridden Methods
     @java.lang.Override protected void onActivityResult(final int requestCode, final int resultCode,
-    @android.support.annotation.Nullable final android.content.Intent data)
+    @androidx.annotation.Nullable final android.content.Intent data)
     {
         if (android.app.Activity.RESULT_OK == resultCode && null != data)
             if (null != this.newObservationUnitRequestAlertDialogInstance)
@@ -181,8 +182,8 @@ extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override @android.support.annotation.NonNull
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override @androidx.annotation.NonNull
     protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
         if (null == this.itemsInstance) this.itemsInstance =
@@ -191,12 +192,12 @@ extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableItemActivity
         return this.itemsInstance;
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.Class listActivityClass()
     { return org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity.class; }
 
     @java.lang.Override public void change(
-    @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
+    @androidx.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         this.newObservationUnitRequestAlertDialog().show(
             (org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequest) item);

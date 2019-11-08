@@ -3,8 +3,9 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 /**
  * Uses:
  * android.content.Intent
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  *
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
@@ -13,9 +14,9 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class Utils extends java.lang.Object
 {
-    @android.support.annotation.NonNull public static android.content.Intent putJsonIntoIntent(
-    @android.support.annotation.Nullable final java.lang.String       json  ,
-    @android.support.annotation.NonNull  final android.content.Intent intent)
+    @androidx.annotation.NonNull public static android.content.Intent putJsonIntoIntent(
+    @androidx.annotation.Nullable final java.lang.String       json  ,
+    @androidx.annotation.NonNull  final android.content.Intent intent)
     {
         if (null == json)
             return intent;
@@ -27,9 +28,9 @@ public class Utils extends java.lang.Object
         }
     }
 
-    @android.support.annotation.NonNull public static android.content.Intent putJsonIntoIntent(
-    @android.support.annotation.Nullable final org.wheatgenetics.javalib.mstrdtl.Items items ,
-    @android.support.annotation.NonNull  final android.content.Intent                  intent)
+    @androidx.annotation.NonNull public static android.content.Intent putJsonIntoIntent(
+    @androidx.annotation.Nullable final org.wheatgenetics.javalib.mstrdtl.Items items ,
+    @androidx.annotation.NonNull  final android.content.Intent                  intent)
     {
         if (null == items)
             return intent;

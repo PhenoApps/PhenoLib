@@ -3,10 +3,11 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 /**
  * Uses:
  * android.os.Bundle
- * android.support.annotation.IntRange
  * android.view.View
  * android.view.View.OnClickListener
  * android.widget.Button
+ *
+ * androidx.annotation.IntRange
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
@@ -43,15 +44,15 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     }
 
     // region org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger Overridden Methods
-    @java.lang.Override public void moveUp(@android.support.annotation.IntRange(
+    @java.lang.Override public void moveUp(@androidx.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     { this.items().moveUp(position); this.refreshSinceItemsHaveChanged(); }
 
-    @java.lang.Override public void moveDown(@android.support.annotation.IntRange(
+    @java.lang.Override public void moveDown(@androidx.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     { this.items().moveDown(position); this.refreshSinceItemsHaveChanged(); }
 
-    @java.lang.Override public void delete(@android.support.annotation.IntRange(
+    @java.lang.Override public void delete(@androidx.annotation.IntRange(
     from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position)
     {
         this.items().delete(position);

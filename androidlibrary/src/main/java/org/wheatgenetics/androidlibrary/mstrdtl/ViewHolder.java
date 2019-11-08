@@ -2,21 +2,22 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 
 /**
  * Uses:
- * android.support.annotation.NonNull
- * android.support.v7.widget.RecyclerView.ViewHolder
  * android.view.View
  * android.view.View.OnClickListener
  * android.widget.TextView
+ *
+ * androidx.annotation.NonNull
+ * androidx.recyclerview.widget.RecyclerView.ViewHolder
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
  * org.wheatgenetics.androidlibrary.R
  */
-class ViewHolder extends android.support.v7.widget.RecyclerView.ViewHolder
+class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder
 {
     private final android.widget.TextView positionTextView, titleTextView;
 
-    ViewHolder(@android.support.annotation.NonNull final android.view.View itemView)
+    ViewHolder(@androidx.annotation.NonNull final android.view.View itemView)
     {
         super(itemView);
 

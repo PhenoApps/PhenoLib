@@ -7,10 +7,11 @@ package org.wheatgenetics.androidlibrary;
  * android.Manifest.permission
  * android.net.Uri
  * android.os.Environment
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
- * android.support.v4.content.ContextCompat
  * android.util.Log
+ *
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
+ * androidx.core.content.ContextCompat
  *
  * org.wheatgenetics.javalib.Dir
  * org.wheatgenetics.javalib.Dir.PermissionException
@@ -30,7 +31,7 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
             return activity;
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.SuppressWarnings({"WeakerAccess"})
     protected android.app.Activity getActivity() { return this.activity; }
 
@@ -60,7 +61,7 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
 
     @java.lang.Override protected boolean permissionGranted()
     {
-        return android.support.v4.content.ContextCompat.checkSelfPermission(
+        return androidx.core.content.ContextCompat.checkSelfPermission(
                 /* context    => */ this.getActivity()                                ,
                 /* permission => */ android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
             == android.content.pm.PackageManager.PERMISSION_GRANTED;

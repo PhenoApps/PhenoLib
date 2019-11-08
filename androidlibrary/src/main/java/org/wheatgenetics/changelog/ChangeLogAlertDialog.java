@@ -5,13 +5,14 @@ package org.wheatgenetics.changelog;
  * android.app.Activity
  * android.content.Context
  * android.content.res.Resources
- * android.support.annotation.NonNull
- * android.support.annotation.RawRes
- * android.support.annotation.StyleRes
  * android.widget.LinearLayout
  * android.widget.LinearLayout.LayoutParams
  * android.widget.ScrollView
  * android.widget.TextView
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.RawRes
+ * androidx.annotation.StyleRes
  *
  * org.wheatgenetics.changelog.ChangeLog
  * org.wheatgenetics.changelog.ChangeLog.LineHandler
@@ -23,8 +24,8 @@ package org.wheatgenetics.changelog;
 public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     public ChangeLogAlertDialog(
-    @android.support.annotation.NonNull final android.app.Activity activity              ,
-    @android.support.annotation.RawRes  final int                  changeLogRawResourceId)
+    @androidx.annotation.NonNull final android.app.Activity activity              ,
+    @androidx.annotation.RawRes  final int                  changeLogRawResourceId)
     {
         super(activity);
 
@@ -41,8 +42,8 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
             // endregion
 
             private ScrollView(
-            @android.support.annotation.NonNull final android.app.Activity activity              ,
-            @android.support.annotation.RawRes  final int                  changeLogRawResourceId)
+            @androidx.annotation.NonNull final android.app.Activity activity              ,
+            @androidx.annotation.RawRes  final int                  changeLogRawResourceId)
             {
                 super();
                 this.activity = activity; this.changeLogRawResourceId = changeLogRawResourceId;
@@ -103,8 +104,8 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         }
 
                         private void handleLine(
-                        @android.support.annotation.StyleRes final int                    resId,
-                                                             final java.lang.CharSequence text )
+                        @androidx.annotation.StyleRes final int                    resId,
+                                                      final java.lang.CharSequence text )
                         {
                             final android.widget.TextView textView = this.makeTextView();
                             assert null != textView;
@@ -116,9 +117,8 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         // endregion
 
                         private LineHandler(
-                        @android.support.annotation.NonNull final android.app.Activity activity,
-                        @android.support.annotation.NonNull
-                            final android.widget.LinearLayout linearLayout)
+                        @androidx.annotation.NonNull final android.app.Activity        activity    ,
+                        @androidx.annotation.NonNull final android.widget.LinearLayout linearLayout)
                         {
                             super();
 

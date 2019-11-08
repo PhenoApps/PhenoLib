@@ -2,7 +2,7 @@ package org.wheatgenetics.about;
 
 /**
  * Uses:
- * android.support.annotation.IntRange
+ * androidx.annotation.IntRange
  *
  * org.wheatgenetics.androidlibrary.R
  */
@@ -15,9 +15,9 @@ public class OtherApps extends java.lang.Object
         NONE(-1), FIELD_BOOK(0), INVENTORY(1),
             COORDINATE(2), ONE_KK(3);
 
-        @android.support.annotation.IntRange(from = -1, to = 3) private final int position;
+        @androidx.annotation.IntRange(from = -1, to = 3) private final int position;
 
-        private Index(@android.support.annotation.IntRange(from = -1, to = 3) final int position)
+        private Index(@androidx.annotation.IntRange(from = -1, to = 3) final int position)
         { this.position = position; }
     }
 

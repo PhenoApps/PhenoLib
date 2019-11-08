@@ -2,14 +2,15 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
 
 /**
  * Uses:
- * android.support.annotation.IntRange
- * android.support.annotation.NonNull
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
- * android.support.v7.widget.RecyclerView.Adapter
  * android.view.LayoutInflater
  * android.view.View.OnClickListener
  * android.view.ViewGroup
+ *
+ * androidx.annotation.IntRange
+ * androidx.annotation.NonNull
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
+ * androidx.recyclerview.widget.RecyclerView.Adapter
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  * org.wheatgenetics.javalib.mstrdtl.Items
@@ -18,29 +19,28 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  *
  * org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder
  */
-abstract class Adapter extends android.support.v7.widget.RecyclerView.Adapter<
+abstract class Adapter extends androidx.recyclerview.widget.RecyclerView.Adapter<
 org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
 {
-    @android.support.annotation.NonNull private final org.wheatgenetics.javalib.mstrdtl.Items items;
+    @androidx.annotation.NonNull private final org.wheatgenetics.javalib.mstrdtl.Items items;
 
     // region Package Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    abstract android.view.View.OnClickListener makeOnClickListener(
-    @android.support.annotation.IntRange(from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION)
-        final int position);
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    abstract android.view.View.OnClickListener makeOnClickListener(@androidx.annotation.IntRange(
+    from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) final int position);
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Items getItems()
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Items getItems()
     { return this.items; }
     // endregion
 
-    Adapter(@android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Items items)
+    Adapter(@androidx.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Items items)
     { super(); this.items = items; }
 
     // region Overridden Methods
-    @java.lang.Override @android.support.annotation.NonNull
+    @java.lang.Override @androidx.annotation.NonNull
     public org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder onCreateViewHolder(
-    @android.support.annotation.NonNull final android.view.ViewGroup parent, final int viewType)
+    @androidx.annotation.NonNull final android.view.ViewGroup parent, final int viewType)
     {
         return new org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder(
             android.view.LayoutInflater.from(parent.getContext()).inflate(
@@ -48,9 +48,9 @@ org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder>
                 parent, /* attachToRoot => */false));
     }
 
-    @java.lang.Override public void onBindViewHolder(@android.support.annotation.NonNull
+    @java.lang.Override public void onBindViewHolder(@androidx.annotation.NonNull
     final org.wheatgenetics.androidlibrary.mstrdtl.ViewHolder viewHolder,
-    final int                             position                      )
+    final int                                                 position  )
     {
         viewHolder.bind(
             /* item            => */ this.getItems().get     (position)                    ,

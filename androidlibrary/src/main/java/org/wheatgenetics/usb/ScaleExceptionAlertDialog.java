@@ -5,7 +5,8 @@ package org.wheatgenetics.usb;
  * android.app.Activity
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
- * android.support.annotation.NonNull
+ *
+ * androidx.annotation.NonNull
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  * org.wheatgenetics.androidlibrary.R
@@ -30,8 +31,8 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
     // endregion
 
     public ScaleExceptionAlertDialog(
-    @android.support.annotation.NonNull final android.app.Activity activity,
-    @android.support.annotation.NonNull
+    @androidx.annotation.NonNull final android.app.Activity activity,
+    @androidx.annotation.NonNull
         final org.wheatgenetics.usb.ScaleExceptionAlertDialog.Handler handler)
     { super(activity); this.handler = handler; }
 
@@ -59,11 +60,10 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
 
     // region Public Methods
     @java.lang.SuppressWarnings({"WeakerAccess"}) public void testingShow(
-        @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
+    @androidx.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     { this.setMessage(e.getMessage()); this.createShow(); }
 
-    public void show(
-        @android.support.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
+    public void show(@androidx.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     {
         if (e instanceof org.wheatgenetics.usb.Device.UsbDeviceIsNull)
         {

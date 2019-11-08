@@ -2,8 +2,8 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
 
 /**
  * Uses:
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
@@ -15,7 +15,7 @@ class ObservationOnePaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl
 {
     ObservationOnePaneAdapter(final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.Class concreteItemActivityClass()
     { return org.wheatgenetics.brapi1_3.studies.nour.o.ObservationItemActivity.class; }
 }

@@ -3,12 +3,13 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
 /**
  * Uses:
  * android.os.Bundle
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
  * android.view.LayoutInflater
  * android.view.View
  * android.view.ViewGroup
  * android.widget.TextView
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
@@ -20,10 +21,10 @@ public class StubFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1
 
     public StubFragment() {}
 
-    @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
-    @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
-    @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
-    @android.support.annotation.Nullable final android.os.Bundle           savedInstanceState)
+    @java.lang.Override @androidx.annotation.Nullable public android.view.View onCreateView(
+    @androidx.annotation.NonNull  final android.view.LayoutInflater inflater          ,
+    @androidx.annotation.Nullable final android.view.ViewGroup      container         ,
+    @androidx.annotation.Nullable final android.os.Bundle           savedInstanceState)
     {
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_stub);
@@ -53,7 +54,7 @@ public class StubFragment extends org.wheatgenetics.androidlibrarybuilder.brapi1
     }
 
     static org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment instantiate(
-    @android.support.annotation.NonNull final java.lang.String resourceName)
+    @androidx.annotation.NonNull final java.lang.String resourceName)
     {
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment result =
             new org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment();

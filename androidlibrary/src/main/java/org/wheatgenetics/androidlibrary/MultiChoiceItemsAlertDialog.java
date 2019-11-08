@@ -4,7 +4,8 @@ package org.wheatgenetics.androidlibrary;
  * Uses:
  * android.app.Activity
  * android.content.DialogInterface.OnMultiChoiceClickListener
- * android.support.annotation.Size
+ *
+ * androidx.annotation.Size
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  */
@@ -18,7 +19,7 @@ extends org.wheatgenetics.androidlibrary.AlertDialog
 
     @java.lang.SuppressWarnings({"unused"}) public void show(
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-        @android.support.annotation.Size(min = 1) final java.lang.String items[],
+        @androidx.annotation.Size(min = 1) final java.lang.String items[],
 
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final boolean checkedItems[],
 

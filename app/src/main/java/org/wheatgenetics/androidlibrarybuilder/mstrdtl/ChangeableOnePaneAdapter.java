@@ -2,8 +2,8 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
 
 /**
  * Uses:
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.javalib.mstrdtl.Items
  *
@@ -15,7 +15,6 @@ class ChangeableOnePaneAdapter extends org.wheatgenetics.androidlibrary.mstrdtl.
 {
     ChangeableOnePaneAdapter(final org.wheatgenetics.javalib.mstrdtl.Items items) { super(items); }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected java.lang.Class concreteItemActivityClass()
     { return org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeableItemActivity.class; }
 }

@@ -3,8 +3,6 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.annotation.SuppressLint
  * android.view.View
  * android.view.View.OnClickListener
@@ -12,6 +10,9 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
  * android.widget.EditText
  * android.widget.TextView
  *
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
+
  * io.swagger.client.model.Season
  *
  * org.wheatgenetics.androidlibrary.R
@@ -147,7 +148,7 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.outsideObservation)

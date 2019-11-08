@@ -4,7 +4,8 @@ package org.wheatgenetics.usb;
  * Uses:
  * android.os.AsyncTask
  * android.os.SystemClock
- * android.support.annotation.NonNull
+ *
+ * androidx.annotation.NonNull
  *
  * org.wheatgenetics.usb.Device.Exception
  */
@@ -37,10 +38,9 @@ class DeviceReader extends java.lang.Object
         private java.lang.String oldData = "";
         // endregion
 
-        private AsyncTask(@android.support.annotation.NonNull
-            final org.wheatgenetics.usb.DeviceReader.Handler handler,
-        @android.support.annotation.NonNull
-            final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
+        private AsyncTask(
+        @androidx.annotation.NonNull final org.wheatgenetics.usb.DeviceReader.Handler    handler   ,
+        @androidx.annotation.NonNull final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
         { super(); this.handler = handler; this.dataSource = dataSource; }
 
         // region Overridden Methods
@@ -89,17 +89,17 @@ class DeviceReader extends java.lang.Object
     // endregion
 
     // region Constructors
-    DeviceReader(@android.support.annotation.NonNull
+    DeviceReader(@androidx.annotation.NonNull
     final org.wheatgenetics.usb.DeviceReader.Handler handler) { super(); this.handler = handler; }
 
     DeviceReader(
-    @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.Handler    handler   ,
-    @android.support.annotation.NonNull org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
+    @androidx.annotation.NonNull org.wheatgenetics.usb.DeviceReader.Handler    handler   ,
+    @androidx.annotation.NonNull org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
     { this(handler); this.setDataSource(dataSource); }
     // endregion
 
-    void setDataSource(@android.support.annotation.NonNull
-        final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
+    void setDataSource(
+    @androidx.annotation.NonNull final org.wheatgenetics.usb.DeviceReader.DataSource dataSource)
     { this.dataSource = dataSource; }
 
     // region Public Methods

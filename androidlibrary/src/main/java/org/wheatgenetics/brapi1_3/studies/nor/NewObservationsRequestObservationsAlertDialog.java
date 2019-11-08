@@ -3,10 +3,11 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.View
  * android.widget.EditText
+ *
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.NewObservationsRequestObservations
  *
@@ -63,7 +64,7 @@ class NewObservationsRequestObservationsAlertDialog extends org.wheatgenetics.br
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.newObservationsRequestObservations)

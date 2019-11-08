@@ -4,13 +4,6 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * Uses:
  * android.app.Activity
  * android.content.Context
- * android.support.annotation.IdRes
- * android.support.annotation.LayoutRes
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
- * android.support.v4.app.Fragment
  * android.text.Editable
  * android.view.LayoutInflater
  * android.view.View
@@ -18,17 +11,25 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * android.widget.EditText
  * android.widget.TextView
  *
+ * androidx.annotation.IdRes
+ * androidx.annotation.LayoutRes
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
+ * androidx.fragment.app.Fragment
+ *
  * io.swagger.client.ApiException
  * io.swagger.client.ApiCallback
  * io.swagger.client.ApiClient
  */
-public abstract class Fragment extends android.support.v4.app.Fragment
+public abstract class Fragment extends androidx.fragment.app.Fragment
 {
     // region Types
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) interface Supplier
     {
-        @android.support.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient();
-                                            public abstract java.lang.String        authorization();
+        @androidx.annotation.NonNull public abstract io.swagger.client.ApiClient apiClient();
+                                     public abstract java.lang.String        authorization();
     }
 
     @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"}) protected abstract class
@@ -40,8 +41,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment
                 .setResponseTextViewTextFromThread(null == result ? "null" : result.toString());
         }
 
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
         protected void handleSuccess(final T result) { this.setResponseTextViewText(result); }
 
         // region Overridden Methods
@@ -93,14 +93,14 @@ public abstract class Fragment extends android.support.v4.app.Fragment
 
     // region Package Methods
     // region Supplier Package Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     void setSupplier(final android.content.Context context)
     {
         this.supplier =
             (org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier) context;
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     void failSupplier(final android.content.Context context)
     {
         this.clearSupplier();
@@ -108,12 +108,12 @@ public abstract class Fragment extends android.support.v4.app.Fragment
             "context" : context.toString() + " must implement Supplier");
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier getSupplier()
     { return this.supplier; }
     // endregion
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     static java.lang.String getString(final android.widget.EditText editText)
     {
         if (null == editText)
@@ -133,21 +133,21 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     // endregion
 
     // region Protected Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.Nullable  protected android.view.View inflate(
-    @android.support.annotation.NonNull   final android.view.LayoutInflater inflater        ,
-    @android.support.annotation.Nullable  final android.view.ViewGroup      container       ,
-    @android.support.annotation.LayoutRes final int                         layoutResourceId)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.Nullable  protected android.view.View inflate(
+    @androidx.annotation.NonNull   final android.view.LayoutInflater inflater        ,
+    @androidx.annotation.Nullable  final android.view.ViewGroup      container       ,
+    @androidx.annotation.LayoutRes final int                         layoutResourceId)
     { return inflater.inflate(layoutResourceId, container,false); }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void findResponseTextViewById(
-    @android.support.annotation.NonNull final android.view.View rootView,
-    @android.support.annotation.IdRes   final int               id      )
+    @androidx.annotation.NonNull final android.view.View rootView,
+    @androidx.annotation.IdRes   final int               id      )
     { this.responseTextView = rootView.findViewById(id); }
 
     // region setResponseTextViewText() Protected Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void setResponseTextViewText(final java.lang.Throwable throwable)
     {
         if (null == throwable)
@@ -176,7 +176,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment
         }
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void setResponseTextViewTextFromThread(final java.lang.Throwable throwable)
     {
         final android.app.Activity activity = this.getActivity();
@@ -192,16 +192,16 @@ public abstract class Fragment extends android.support.v4.app.Fragment
     // endregion
 
     // region Supplier Protected Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.Nullable protected io.swagger.client.ApiClient apiClient()
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.Nullable protected io.swagger.client.ApiClient apiClient()
     {
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
             this.getSupplier();
         return null == supplier ? null : supplier.apiClient();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @android.support.annotation.Nullable protected java.lang.String authorization()
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.Nullable protected java.lang.String authorization()
     {
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
             this.getSupplier();

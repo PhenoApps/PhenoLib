@@ -4,16 +4,17 @@ package org.wheatgenetics.androidlibrary;
  * This class provides optional debug logging.
  *
  * Uses:
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.util.Log
  * android.view.KeyEvent
  * android.view.inputmethod.EditorInfo
  * android.widget.EditText
  * android.widget.TextView
  * android.widget.TextView.OnEditorActionListener
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.androidlibrary.Utils
  */
@@ -25,24 +26,24 @@ implements android.widget.TextView.OnEditorActionListener
     { public abstract void receiveText(java.lang.String text); }
 
     // region Fields
-    @android.support.annotation.NonNull  private final android.widget.EditText editText;
-    @android.support.annotation.Nullable private final
+    @androidx.annotation.NonNull  private final android.widget.EditText editText;
+    @androidx.annotation.Nullable private final
         org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.Receiver receiver;
     private final boolean debug;
     // endregion
 
     // region Package Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     void preprocess() {}
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     void sendText(final java.lang.String text)
     {
         if (this.debug) org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.log(text);
         if (null != this.receiver) this.receiver.receiveText(text);
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     void process(final java.lang.String text)
     {
         if (!org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.isEmpty(text))
@@ -51,29 +52,29 @@ implements android.widget.TextView.OnEditorActionListener
     // endregion
 
     // region Protected Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
     protected static int log(final java.lang.String msg)
     { return android.util.Log.d("EditorActionListener", msg); }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.SuppressWarnings({"WeakerAccess", "SimplifiableConditionalExpression"})
     protected static boolean isEmpty(final java.lang.String text)
     { return null == text ? true : text.length() <= 0; }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.SuppressWarnings({"WeakerAccess"}) protected void clearEditText()
     { this.editText.setText(""); }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"}) @android.support.annotation.Nullable
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.SuppressWarnings({"WeakerAccess"}) @androidx.annotation.Nullable
     protected org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.Receiver getReceiver()
     { return this.receiver; }
     // endregion
 
     DebuggingEditorActionListener(
-    @android.support.annotation.NonNull  final android.widget.EditText editText,
-    @android.support.annotation.Nullable final
+    @androidx.annotation.NonNull  final android.widget.EditText editText,
+    @androidx.annotation.Nullable final
         org.wheatgenetics.androidlibrary.DebuggingEditorActionListener.Receiver receiver,
     final boolean debug)
     {

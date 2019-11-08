@@ -5,12 +5,13 @@ package org.wheatgenetics.brapi1_3;
  * android.app.Activity
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.text.Editable
  * android.util.Log
  * android.widget.EditText
  *
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
+
  * org.threeten.bp.Instant
  * org.threeten.bp.OffsetDateTime
  * org.threeten.bp.ZoneOffset
@@ -35,11 +36,11 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
 
     // region Protected Methods
     // region setEditTextText() Protected Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static void setEditTextText(final android.widget.EditText editText,
     final java.lang.String text) { if (null != editText) editText.setText(text); }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static void setEditTextText(
     final android.widget.EditText editText, final java.lang.Integer text)
     {
@@ -47,7 +48,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
             editText, null == text ? null : text.toString());
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static void setEditTextText(
     final android.widget.EditText editText, final org.threeten.bp.OffsetDateTime text)
     {
@@ -56,7 +57,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
         org.wheatgenetics.brapi1_3.AlertDialog.setEditTextText(editText, offsetDateTimeText);
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static void setEditTextText(final android.widget.EditText editText,
     final java.util.List<java.lang.String> text)
     {
@@ -96,7 +97,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     // endregion
 
     // region getEditTextText() Protected Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static java.lang.String getEditTextStringText(final android.widget.EditText editText)
     {
         if (null == editText)
@@ -120,7 +121,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
         }
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static java.lang.Integer getEditTextIntText(final android.widget.EditText editText)
     {
         final java.lang.String stringText =
@@ -128,7 +129,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
         return null == stringText ? null : java.lang.Integer.valueOf(stringText);
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static org.threeten.bp.OffsetDateTime getEditTextTimeStampText(
     final android.widget.EditText editText)
     {
@@ -143,7 +144,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
         return result;
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected static java.util.ArrayList<java.lang.String> getEditTextStringListText(
     final android.widget.EditText editText)
     {
@@ -187,10 +188,10 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     }
     // endregion
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected org.wheatgenetics.brapi1_3.AlertDialog.Handler getHandler() { return this.handler; }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void handlePositiveButtonClick()
     {
         final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler = this.getHandler();

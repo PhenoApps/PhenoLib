@@ -3,8 +3,9 @@ package org.wheatgenetics.usb;
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.NonNull
  * android.util.Log
+ *
+ * androidx.annotation.NonNull
  *
  * org.wheatgenetics.javalib.Utils
  *
@@ -82,7 +83,7 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     }
     // endregion
 
-    Scale(@android.support.annotation.NonNull final android.app.Activity activity)
+    Scale(@androidx.annotation.NonNull final android.app.Activity activity)
     {
         super(activity, org.wheatgenetics.usb.Scale.ELANEVendorId,
             org.wheatgenetics.usb.Scale.ELANEProductIds);

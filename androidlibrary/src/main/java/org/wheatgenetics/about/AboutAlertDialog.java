@@ -4,14 +4,15 @@ package org.wheatgenetics.about;
  * Uses:
  * android.annotation.SuppressLint
  * android.app.Activity
- * android.support.annotation.IdRes
- * android.support.annotation.NonNull
  * android.view.LayoutInflater
  * android.view.View
  * android.view.View.OnClickListener
  * android.widget.LinearLayout
  * android.widget.TextView
  *
+ * androidx.annotation.IdRes
+ * androidx.annotation.NonNull
+ * 
  * org.wheatgenetics.androidlibrary.AlertDialog
  * org.wheatgenetics.androidlibrary.R
  *
@@ -21,15 +22,13 @@ package org.wheatgenetics.about;
 public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     @android.annotation.SuppressLint({"SetTextI18n"}) public AboutAlertDialog(
-    @android.support.annotation.NonNull final android.app.Activity activity   ,
-    @android.support.annotation.NonNull final java.lang.String     title      ,
-    @android.support.annotation.NonNull final java.lang.String     versionName,
-    @android.support.annotation.NonNull @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
+    @androidx.annotation.NonNull final android.app.Activity activity   ,
+    @androidx.annotation.NonNull final java.lang.String     title      ,
+    @androidx.annotation.NonNull final java.lang.String     versionName,
+    @androidx.annotation.NonNull @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
         final java.lang.String msgs[],
-    @android.support.annotation.NonNull
-        final org.wheatgenetics.about.OtherApps.Index suppressIndex,
-    @android.support.annotation.NonNull
-        final android.view.View.OnClickListener versionOnClickListener)
+    @androidx.annotation.NonNull final org.wheatgenetics.about.OtherApps.Index    suppressIndex,
+    @androidx.annotation.NonNull final android.view.View.OnClickListener versionOnClickListener)
     {
         super(activity);
 
@@ -79,7 +78,7 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
                         {
                             final android.widget.TextView msgTextView;
                             {
-                                @android.support.annotation.IdRes final int msgTextViewId;
+                                @androidx.annotation.IdRes final int msgTextViewId;
                                 switch (i++)
                                 {
                                     case 1: msgTextViewId =

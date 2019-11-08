@@ -4,14 +4,15 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * Uses:
  * android.content.Context
  * android.os.Bundle
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
  * android.view.LayoutInflater
  * android.view.View
  * android.view.View.OnClickListener
  * android.view.ViewGroup
  * android.widget.Button
  * android.widget.EditText
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  *
@@ -80,8 +81,7 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
     // endregion
 
     // region authorization Private Methods
-    private void autofillAuthorization(
-    @android.support.annotation.NonNull final java.lang.String text)
+    private void autofillAuthorization(@androidx.annotation.NonNull final java.lang.String text)
     { if (null != this.authorizationEditText) this.authorizationEditText.setText(text); }
 
     private void autofillWithBearerXXXX()
@@ -117,10 +117,10 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
             this.failSupplier(context);
     }
 
-    @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
-    @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
-    @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
-    @android.support.annotation.Nullable final android.os.Bundle           savedInstanceState)
+    @java.lang.Override @androidx.annotation.Nullable public android.view.View onCreateView(
+    @androidx.annotation.NonNull  final android.view.LayoutInflater inflater          ,
+    @androidx.annotation.Nullable final android.view.ViewGroup      container         ,
+    @androidx.annotation.Nullable final android.os.Bundle           savedInstanceState)
     {
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_connection);

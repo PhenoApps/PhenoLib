@@ -7,12 +7,13 @@ package org.wheatgenetics.androidlibrary;
  *
  * Uses:
  * android.os.Handler
- * android.support.annotation.IntRange
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.widget.EditText
+ *
+ * androidx.annotation.IntRange
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.androidlibrary.EditorActionListener
  */
@@ -26,11 +27,11 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
         private interface Logger { public void log(java.lang.String msg); }
 
         // region Fields
-        @android.support.annotation.Nullable private final
+        @androidx.annotation.Nullable private final
             org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver receiver   ;
-        private final boolean                                                        debug      ;
-        @android.support.annotation.IntRange(from = 0) private final long            delayMillis;
-        @android.support.annotation.NonNull private final
+                                                private final boolean                debug      ;
+        @androidx.annotation.IntRange(from = 0) private final long                   delayMillis;
+        @androidx.annotation.NonNull            private final
             org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator.Logger
             logger;
 
@@ -72,7 +73,7 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
                 int longest;
                 {
                     final int first = 0, last = this.arrayList.size() - 1;
-                    @android.support.annotation.IntRange(from = 0) int maxLength = 0;
+                    @androidx.annotation.IntRange(from = 0) int maxLength = 0;
 
                     longest = first;
                     for (int i = first; i <= last; i++)
@@ -85,10 +86,10 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
             }
         }
 
-        private TextAccumulator(@android.support.annotation.Nullable
+        private TextAccumulator(@androidx.annotation.Nullable
             final org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver receiver,
-        final boolean debug, @android.support.annotation.IntRange(from = 0) final long delayMillis,
-        @android.support.annotation.NonNull final
+        final boolean debug, @androidx.annotation.IntRange(from = 0) final long delayMillis,
+        @androidx.annotation.NonNull final
             org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.TextAccumulator.Logger
             logger)
         {
@@ -114,10 +115,10 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
         textAccumulator;
 
     public DebouncingEditorActionListener(
-    @android.support.annotation.NonNull  final android.widget.EditText editText,
-    @android.support.annotation.Nullable final
+    @androidx.annotation.NonNull  final android.widget.EditText editText,
+    @androidx.annotation.Nullable final
         org.wheatgenetics.androidlibrary.DebouncingEditorActionListener.Receiver receiver,
-    final boolean debug, @android.support.annotation.IntRange(from = 0) final long delayMillis)
+    final boolean debug, @androidx.annotation.IntRange(from = 0) final long delayMillis)
     {
         super(editText, receiver, debug);
         this.textAccumulator =
@@ -130,7 +131,7 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
                 });
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override
     protected void sendText(final java.lang.String text) { this.textAccumulator.accumulate(text); }
 }

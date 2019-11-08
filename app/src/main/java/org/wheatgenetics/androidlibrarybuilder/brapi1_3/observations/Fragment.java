@@ -6,13 +6,14 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations;
  * android.content.Context
  * android.content.Intent
  * android.os.Bundle
- * android.support.annotation.NonNull
- * android.support.annotation.Nullable
  * android.view.LayoutInflater
  * android.view.View
  * android.view.View.OnClickListener
  * android.view.ViewGroup
  * android.widget.Button
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  *
  * io.swagger.client.api.ObservationsApi
  * io.swagger.client.model.NewObservationDbIdsResponse
@@ -310,8 +311,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     private void showPhenotypesPostAlertDialog()
     { this.phenotypesPostAlertDialog().show(this.getFormat()); }
 
-    private void setPhenotypesRequest(
-    @android.support.annotation.Nullable final java.lang.String json)
+    private void setPhenotypesRequest(@androidx.annotation.Nullable final java.lang.String json)
     {
         if (null == json)
             this.phenotypesRequest = null;
@@ -364,10 +364,10 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 "context" : context.toString() + " must implement Helper");
     }
 
-    @java.lang.Override @android.support.annotation.Nullable public android.view.View onCreateView(
-    @android.support.annotation.NonNull  final android.view.LayoutInflater inflater          ,
-    @android.support.annotation.Nullable final android.view.ViewGroup      container         ,
-    @android.support.annotation.Nullable final android.os.Bundle           savedInstanceState)
+    @java.lang.Override @androidx.annotation.Nullable public android.view.View onCreateView(
+    @androidx.annotation.NonNull  final android.view.LayoutInflater inflater          ,
+    @androidx.annotation.Nullable final android.view.ViewGroup      container         ,
+    @androidx.annotation.Nullable final android.os.Bundle           savedInstanceState)
     {
         final android.view.View rootView = this.inflate(inflater, container,
             org.wheatgenetics.androidlibrarybuilder.R.layout.fragment_brapi1_3_observations);

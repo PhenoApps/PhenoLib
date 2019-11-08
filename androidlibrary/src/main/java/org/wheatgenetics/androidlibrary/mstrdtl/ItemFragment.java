@@ -7,9 +7,6 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * Uses:
  * android.content.Context
  * android.os.Bundle
- * android.support.annotation.IntRange
- * android.support.annotation.NonNull
- * android.support.v4.app.Fragment
  * android.util.Log
  * android.view.LayoutInflater
  * android.view.View
@@ -18,16 +15,20 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.widget.Button
  * android.widget.TextView
  *
+ * androidx.annotation.IntRange
+ * androidx.annotation.NonNull
+ * androidx.fragment.app.Fragment
+ *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
  * org.wheatgenetics.androidlibrary.R
  */
-public class ItemFragment extends android.support.v4.app.Fragment
+public class ItemFragment extends androidx.fragment.app.Fragment
 {
     // region Types
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Helper
     {
-        public org.wheatgenetics.javalib.mstrdtl.Item get(@android.support.annotation.IntRange(
+        public org.wheatgenetics.javalib.mstrdtl.Item get(@androidx.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
 
         public void setToolbarTitle  (final java.lang.CharSequence title);
@@ -37,16 +38,16 @@ public class ItemFragment extends android.support.v4.app.Fragment
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface HelperChanger
     extends org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     {
-        public void moveUp(@android.support.annotation.IntRange(
+        public void moveUp(@androidx.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
 
-        public void moveDown(@android.support.annotation.IntRange(
+        public void moveDown(@androidx.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
 
         public void change(
-        @android.support.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item);
+        @androidx.annotation.NonNull org.wheatgenetics.javalib.mstrdtl.Item item);
 
-        public void delete(@android.support.annotation.IntRange(
+        public void delete(@androidx.annotation.IntRange(
         from = org.wheatgenetics.javalib.mstrdtl.Item.MIN_POSITION) int position);
     }
     // endregion
@@ -68,7 +69,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     // endregion
 
     // region private Methods
-    private static void log(@android.support.annotation.NonNull final java.lang.String msg)
+    private static void log(@androidx.annotation.NonNull final java.lang.String msg)
     { android.util.Log.i("ItemFragment", msg); }
 
     private boolean changerIsImplemented()
@@ -159,7 +160,8 @@ public class ItemFragment extends android.support.v4.app.Fragment
     public ItemFragment() {}
 
     // region Overridden Methods
-    @java.lang.Override public void onAttach(final android.content.Context context)
+    @java.lang.Override public void onAttach(
+    @androidx.annotation.NonNull final android.content.Context context)
     {
         super.onAttach(context);
 
@@ -172,8 +174,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
                 this.helper =
                     (org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper) context;
         else
-            throw new java.lang.RuntimeException(null == context ?
-                "context" : context.toString() + " must implement Helper");
+            throw new java.lang.RuntimeException(context.toString() + " must implement Helper");
     }
 
     @java.lang.Override public void onCreate(final android.os.Bundle savedInstanceState)
@@ -209,7 +210,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     }
 
     @java.lang.Override public android.view.View onCreateView(
-    @android.support.annotation.NonNull final android.view.LayoutInflater inflater,
+    @androidx.annotation.NonNull final android.view.LayoutInflater inflater,
     final android.view.ViewGroup container, final android.os.Bundle savedInstanceState)
     {
         final android.view.View rootView = inflater.inflate(
@@ -268,7 +269,7 @@ public class ItemFragment extends android.support.v4.app.Fragment
     { super.onResume(); this.refreshSinceItemHasChanged(); }
 
     @java.lang.Override public void onSaveInstanceState(
-    @android.support.annotation.NonNull final android.os.Bundle outState)
+    @androidx.annotation.NonNull final android.os.Bundle outState)
     {
         outState.putInt(
             org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY, this.position);

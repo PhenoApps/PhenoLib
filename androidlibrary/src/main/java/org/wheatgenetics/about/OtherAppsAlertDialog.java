@@ -6,7 +6,6 @@ package org.wheatgenetics.about;
  * android.content.Context
  * android.content.Intent
  * android.net.Uri
- * android.support.annotation.NonNull
  * android.view.LayoutInflater
  * android.view.View
  * android.view.ViewGroup
@@ -17,6 +16,8 @@ package org.wheatgenetics.about;
  * android.widget.ListView
  * android.widget.TextView
  *
+ * androidx.annotation.NonNull
+ *
  * org.wheatgenetics.androidlibrary.AlertDialog
  * org.wheatgenetics.androidlibrary.R
  *
@@ -26,9 +27,8 @@ package org.wheatgenetics.about;
 public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     public OtherAppsAlertDialog(
-    @android.support.annotation.NonNull final android.app.Activity activity,
-    @android.support.annotation.NonNull
-        final org.wheatgenetics.about.OtherApps.Index suppressIndex)
+    @androidx.annotation.NonNull final android.app.Activity                    activity     ,
+    @androidx.annotation.NonNull final org.wheatgenetics.about.OtherApps.Index suppressIndex)
     {
         super(activity);
 
@@ -36,7 +36,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
         class ListView extends android.widget.ListView
         {
             private ListView(final android.content.Context context,
-            @android.support.annotation.NonNull
+            @androidx.annotation.NonNull
                 final org.wheatgenetics.about.OtherApps.Index suppressIndex)
             {
                 super(context); this.setDivider(null); this.setDividerHeight(0);
@@ -50,7 +50,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         private final org.wheatgenetics.about.OtherApps otherApps;
 
                         private ArrayAdapter(final android.content.Context context,
-                        @android.support.annotation.NonNull
+                        @androidx.annotation.NonNull
                             final org.wheatgenetics.about.OtherApps otherApps)
                         {
                             super(
@@ -64,9 +64,9 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
 
                         @android.annotation.SuppressLint({"InflateParams", "ViewHolder"})
                         @java.lang.Override
-                        public @android.support.annotation.NonNull android.view.View
+                        public @androidx.annotation.NonNull android.view.View
                         getView(final int position, final android.view.View convertView,
-                        @android.support.annotation.NonNull final android.view.ViewGroup parent)
+                        @androidx.annotation.NonNull final android.view.ViewGroup parent)
                         {
                             final android.view.View result;
                             {
@@ -107,10 +107,9 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                     private final org.wheatgenetics.about.OtherApps otherApps;
                     // endregion
 
-                    private OnItemClickListener(@android.support.annotation.NonNull
-                        final android.content.Context context,
-                    @android.support.annotation.NonNull
-                        final org.wheatgenetics.about.OtherApps otherApps)
+                    private OnItemClickListener(
+                    @androidx.annotation.NonNull final android.content.Context           context  ,
+                    @androidx.annotation.NonNull final org.wheatgenetics.about.OtherApps otherApps)
                     { super(); this.context = context; this.otherApps = otherApps; }
 
                     @java.lang.Override public void onItemClick(

@@ -3,10 +3,11 @@ package org.wheatgenetics.brapi1_3.studies.nour.o;               // nour: NewObs
 /**
  * Uses:
  * android.app.Activity activity
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.View
  * android.widget.EditText
+ *
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.Season
  *
@@ -46,7 +47,7 @@ class SeasonAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.season)

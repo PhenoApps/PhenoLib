@@ -2,9 +2,9 @@ package org.wheatgenetics.brapi1_3.studies.nor;                       // nor: Ne
 
 /**
  * Uses:
- * android.support.annotation.NonNull
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
+ * androidx.annotation.NonNull
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.NewObservationsRequestObservations
  *
@@ -48,8 +48,8 @@ extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
     }
 
     // region Overridden Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.Override @android.support.annotation.NonNull
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.Override @androidx.annotation.NonNull
     protected org.wheatgenetics.javalib.mstrdtl.Items items()
     {
         if (null == this.itemsInstance) this.itemsInstance =
@@ -58,7 +58,7 @@ extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
         return this.itemsInstance;
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override
     protected org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter()
     {
@@ -68,7 +68,7 @@ extends org.wheatgenetics.androidlibrary.mstrdtl.ChangeableListActivity
     }
 
     @java.lang.Override public void change(
-    @android.support.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
+    @androidx.annotation.NonNull final org.wheatgenetics.javalib.mstrdtl.Item item)
     {
         this.newObservationsRequestObservationsAlertDialog().show(
             (io.swagger.client.model.NewObservationsRequestObservations) item);

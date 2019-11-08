@@ -5,15 +5,16 @@ package org.wheatgenetics.brapi1_3.studies.slr;                           // slr
  * android.app.Activity
  * android.content.DialogInterface
  * android.content.DialogInterface.OnClickListener
- * android.support.annotation.IntRange
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.View
  * android.view.View.OnClickListener
  * android.widget.Button
  * android.widget.EditText
  * android.widget.TextView
+ *
+ * androidx.annotation.IntRange
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.StudyLayoutRequestLayout
  * io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum
@@ -40,8 +41,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
             super.configure();
         }
 
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -68,7 +68,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
         // endregion
 
         private io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum item(
-        @android.support.annotation.IntRange(from = 0) final int i)
+        @androidx.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null :
                 io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum.fromValue(
@@ -90,8 +90,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
             super.configure();
         }
 
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -119,7 +118,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
         // endregion
 
         private io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateXTypeEnum item(
-        @android.support.annotation.IntRange(from = 0) final int i)
+        @androidx.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null : io.swagger.client.model.StudyLayoutRequestLayout
                 .PositionCoordinateXTypeEnum.fromValue(this.items()[i]);
@@ -140,8 +139,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
             super.configure();
         }
 
-        @android.support.annotation.RestrictTo(
-            android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+        @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
         @java.lang.Override protected java.lang.String[] items()
         {
             if (this.itemsIsNull())
@@ -169,7 +167,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
         // endregion
 
         private io.swagger.client.model.StudyLayoutRequestLayout.PositionCoordinateYTypeEnum item(
-        @android.support.annotation.IntRange(from = 0) final int i)
+        @androidx.annotation.IntRange(from = 0) final int i)
         {
             return 0 == i ? null : io.swagger.client.model.StudyLayoutRequestLayout
                 .PositionCoordinateYTypeEnum.fromValue(this.items()[i]);
@@ -287,8 +285,8 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
 
     // region set() Private Methods
     private static void setTextViewText(
-    @android.support.annotation.Nullable final android.widget.TextView textView,
-    @android.support.annotation.Nullable final java.lang.Object        object  )
+    @androidx.annotation.Nullable final android.widget.TextView textView,
+    @androidx.annotation.Nullable final java.lang.Object        object  )
     { if (null != textView) textView.setText(null == object ? "null" : object.toString()); }
 
     // region entryType set() Private Methods
@@ -303,7 +301,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
     final io.swagger.client.model.StudyLayoutRequestLayout.EntryTypeEnum entryTypeEnum)
     { this.entryTypeEnum = entryTypeEnum; this.setEntryTypeTextViewText(this.entryTypeEnum); }
 
-    private void setEntryTypeEnum(@android.support.annotation.IntRange(from = 0) final int i)
+    private void setEntryTypeEnum(@androidx.annotation.IntRange(from = 0) final int i)
     { this.setEntryTypeEnum(this.entryTypeAlertDialog().item(i)); }
     // endregion
 
@@ -324,8 +322,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
             this.positionCoordinateXTypeEnum = positionCoordinateXTypeEnum);
     }
 
-    private void setPositionCoordinateXTypeEnum(
-    @android.support.annotation.IntRange(from = 0) final int i)
+    private void setPositionCoordinateXTypeEnum(@androidx.annotation.IntRange(from = 0) final int i)
     { this.setPositionCoordinateXTypeEnum(this.positionCoordinateXTypeAlertDialog().item(i)); }
     // endregion
 
@@ -346,8 +343,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
             this.positionCoordinateYTypeEnum = positionCoordinateYTypeEnum);
     }
 
-    private void setPositionCoordinateYTypeEnum(
-    @android.support.annotation.IntRange(from = 0) final int i)
+    private void setPositionCoordinateYTypeEnum(@androidx.annotation.IntRange(from = 0) final int i)
     { this.setPositionCoordinateYTypeEnum(this.positionCoordinateYTypeAlertDialog().item(i)); }
     // endregion
     // endregion
@@ -455,7 +451,7 @@ class StudyLayoutRequestLayoutAlertDialog extends org.wheatgenetics.brapi1_3.Ale
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.studyLayoutRequestLayout)

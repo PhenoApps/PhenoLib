@@ -10,10 +10,11 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.app.Activity
  * android.content.Intent
  * android.os.Bundle
- * android.support.annotation.Nullable
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
- * android.support.v7.widget.RecyclerView
+ *
+ * androidx.annotation.Nullable
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
+ * androidx.recyclerview.widget.RecyclerView
  *
  * org.wheatgenetics.androidlibrary.R
  *
@@ -40,10 +41,10 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
     // endregion
 
     // region Package Methods
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract org.wheatgenetics.androidlibrary.mstrdtl.OnePaneAdapter makeOnePaneAdapter();
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     void notifyDataSetChanged() { if (null != this.adapter) this.adapter.notifyDataSetChanged(); }
     // endregion
 
@@ -73,7 +74,7 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
                 this.makeOnePaneAdapter();
         }
         {
-            final android.support.v7.widget.RecyclerView recyclerView = this.findViewById(
+            final androidx.recyclerview.widget.RecyclerView recyclerView = this.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.masterDetailRecyclerView);
             if (null != recyclerView)
                 { recyclerView.setHasFixedSize(true); recyclerView.setAdapter(this.adapter); }
@@ -84,7 +85,7 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
     { super.onStart(); this.refreshSinceItemsHaveChanged(); }
 
     @java.lang.Override protected void onActivityResult(final int requestCode, final int resultCode,
-    @android.support.annotation.Nullable final android.content.Intent data)
+    @androidx.annotation.Nullable final android.content.Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -102,7 +103,7 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
         }
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override void refreshSinceItemsHaveChanged()
     { super.refreshSinceItemsHaveChanged(); this.notifyDataSetChanged(); }
 

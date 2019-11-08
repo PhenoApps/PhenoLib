@@ -4,14 +4,15 @@ package org.wheatgenetics.brapi1_3.observations.pr;
  * Uses:
  * android.annotation.SuppressLint
  * android.app.Activity
- * android.support.annotation.NonNull
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
  * android.view.View
  * android.view.View.OnClickListener
  * android.widget.Button
  * android.widget.EditText
  * android.widget.TextView
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * io.swagger.client.model.PhenotypesRequestObservation
  *
@@ -67,7 +68,7 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
 
     PhenotypesRequestDataAlertDialog(final android.app.Activity activity, final
     org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.Handler handler,
-    @android.support.annotation.NonNull final
+    @androidx.annotation.NonNull final
         org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataAlertDialog.ActivityHandler
         activityHandler) { super(activity, handler); this.activityHandler = activityHandler; }
 
@@ -115,7 +116,7 @@ class PhenotypesRequestDataAlertDialog extends org.wheatgenetics.brapi1_3.AlertD
         super.configure();
     }
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @java.lang.Override protected void handlePositiveButtonClick()
     {
         if (null != this.permanentPhenotypesRequestData)

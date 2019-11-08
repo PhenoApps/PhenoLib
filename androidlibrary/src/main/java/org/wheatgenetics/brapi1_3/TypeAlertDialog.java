@@ -3,9 +3,10 @@ package org.wheatgenetics.brapi1_3;
 /**
  * Uses:
  * android.app.Activity
- * android.support.annotation.NonNull
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
  *
  * org.wheatgenetics.androidlibrary.ItemsAlertDialog
  */
@@ -16,13 +17,13 @@ public abstract class TypeAlertDialog extends org.wheatgenetics.androidlibrary.I
 
     // region Protected Methods
     /** Used by subclasses. */
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected boolean itemsIsNull() { return null == this.itemsInstance; }
 
     /** Used by subclasses. */
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected void createItems(
-    @android.support.annotation.NonNull final java.util.ArrayList<java.lang.String> arrayList)
+    @androidx.annotation.NonNull final java.util.ArrayList<java.lang.String> arrayList)
     {
         if (this.itemsIsNull())
         {
@@ -32,7 +33,7 @@ public abstract class TypeAlertDialog extends org.wheatgenetics.androidlibrary.I
     }
 
     /** Overridden by subclasses. */
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected java.lang.String[] items() { return this.itemsInstance; }
     // endregion
 

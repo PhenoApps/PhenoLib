@@ -8,13 +8,14 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.content.Intent
  * android.os.Bundle
  * android.R
- * android.support.annotation.NonNull
- * android.support.annotation.RestrictTo
- * android.support.annotation.RestrictTo.Scope
- * android.support.design.widget.CollapsingToolbarLayout
- * android.support.v4.app.NavUtils
- * android.support.v7.app.ActionBar
  * android.view.MenuItem
+ *
+ * androidx.annotation.NonNull
+ * androidx.annotation.RestrictTo
+ * androidx.annotation.RestrictTo.Scope
+ * androidx.appcompat.app.ActionBar
+ *
+ * com.google.android.material.appbar.CollapsingToolbarLayout
  *
  * org.wheatgenetics.androidlibrary.R
  *
@@ -23,9 +24,10 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  */
 public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstrdtl.Activity
 {
-    private android.support.design.widget.CollapsingToolbarLayout collapsingToolbarLayout = null;
+    private com.google.android.material.appbar.CollapsingToolbarLayout
+        collapsingToolbarLayout = null;
 
-    @android.support.annotation.RestrictTo(android.support.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected abstract java.lang.Class listActivityClass();
 
     // region Overridden Methods
@@ -36,7 +38,7 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
 
         {
             // Show the Up button in the action bar.
-            final android.support.v7.app.ActionBar actionBar = this.getSupportActionBar();
+            final androidx.appcompat.app.ActionBar actionBar = this.getSupportActionBar();
             if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
@@ -77,17 +79,16 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
     }
 
     @java.lang.Override public boolean onOptionsItemSelected(
-    @android.support.annotation.NonNull final android.view.MenuItem menuItem)
+    @androidx.annotation.NonNull final android.view.MenuItem menuItem)
     {
         if (menuItem.getItemId() == android.R.id.home)
         {
             // This id represents the Home or Up button.  In the case of this activity, the Up
-            // button is shown.  Use NavUtils to allow users to navigate up one level in the
-            // application structure.  For more details, see the Navigation pattern on Android
-            // Design (http://developer.android.com/design/patterns/navigation.html#up-vs-back).
+            // button is shown.  For more details, see the Navigation pattern on Android Design
+            // (http://developer.android.com/design/patterns/navigation.html#up-vs-back).
             this.setResultFromJson();
-            android.support.v4.app.NavUtils.navigateUpTo(this,
-                new android.content.Intent(this, this.listActivityClass()));
+            this.navigateUpTo(new android.content.Intent(
+                this, this.listActivityClass()));
             return true;
         }
         else return super.onOptionsItemSelected(menuItem);

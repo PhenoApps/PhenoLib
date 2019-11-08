@@ -6,7 +6,8 @@ package org.wheatgenetics.usb;
  * android.content.Context
  * android.hardware.usb.UsbDevice
  * android.hardware.usb.UsbManager
- * android.support.annotation.NonNull
+ *
+ * androidx.annotation.NonNull
  *
  * org.wheatgenetics.usb.Device
  * org.wheatgenetics.usb.DeviceList
@@ -14,7 +15,7 @@ package org.wheatgenetics.usb;
 class ExtraDevice extends org.wheatgenetics.usb.Device
 {
     ExtraDevice(
-    @android.support.annotation.NonNull                     final android.app.Activity activity    ,
+    @androidx.annotation.NonNull                            final android.app.Activity activity    ,
                                                             final int                  vendorId    ,
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final int                  productIds[])
     {
