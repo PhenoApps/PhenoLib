@@ -11,10 +11,10 @@ package org.wheatgenetics.sharedpreferences;
  *
  * org.wheatgenetics.javalib.Utils
  */
-@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject", "WeakerAccess"})
+@java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public abstract class BaseSharedPreferences extends java.lang.Object
 {
-    private final android.content.SharedPreferences sharedPreferences;
+    @androidx.annotation.NonNull private final android.content.SharedPreferences sharedPreferences;
 
     private void setBoolean(@androidx.annotation.NonNull final java.lang.String key,
     final boolean value)
@@ -22,13 +22,13 @@ public abstract class BaseSharedPreferences extends java.lang.Object
         if (this.getBoolean(key) != value)
         {
             final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            assert null != editor; editor.putBoolean(key, value); editor.apply();
+            if (null != editor) { editor.putBoolean(key, value); editor.apply(); }
         }
     }
 
-    @java.lang.SuppressWarnings({"WeakerAccess"})
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
-    protected void validateStringKey(@androidx.annotation.NonNull final java.lang.String key)
+    @java.lang.SuppressWarnings({"WeakerAccess"}) protected void validateStringKey(
+    @androidx.annotation.NonNull final java.lang.String key)
     { throw new java.lang.AssertionError(key + " is not a valid key."); }
 
     @java.lang.SuppressWarnings({"WeakerAccess"}) public BaseSharedPreferences(
@@ -37,16 +37,16 @@ public abstract class BaseSharedPreferences extends java.lang.Object
 
     // region Public Methods
     // region String Public Methods
-    @java.lang.SuppressWarnings({"WeakerAccess"}) public java.lang.String getString(
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
+    public java.lang.String getString(@androidx.annotation.NonNull final java.lang.String key)
+    { return this.sharedPreferences.getString(key,""); }
+
+    @java.lang.SuppressWarnings({"unused"}) public java.lang.String getString(
     @androidx.annotation.NonNull final java.lang.String key, final boolean validateKey)
     {
         if (validateKey) this.validateStringKey(key);
-        return this.sharedPreferences.getString(key,"");
+        return this.getString(key);
     }
-
-    @java.lang.SuppressWarnings({"unused"}) public java.lang.String getString(
-    @androidx.annotation.NonNull final java.lang.String key)
-    { return this.getString(key, /* validateKey => */false); }
 
     @java.lang.SuppressWarnings({"WeakerAccess"}) public void setString(
     @androidx.annotation.NonNull final java.lang.String key        ,
@@ -60,7 +60,7 @@ public abstract class BaseSharedPreferences extends java.lang.Object
             if (validateKey) this.validateStringKey(key);
 
             final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            assert null != editor; editor.putString(key, newValue); editor.apply();
+            if (null != editor) { editor.putString(key, newValue); editor.apply(); }
         }
     }
 
@@ -82,7 +82,7 @@ public abstract class BaseSharedPreferences extends java.lang.Object
         if (this.getInt(key) != newInt)
         {
             final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            assert null != editor; editor.putInt(key, newInt); editor.apply();
+            if (null != editor) { editor.putInt(key, newInt); editor.apply(); }
         }
     }
     // endregion
@@ -98,7 +98,7 @@ public abstract class BaseSharedPreferences extends java.lang.Object
         if (this.getLong(key) != newLong)
         {
             final android.content.SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            assert null != editor; editor.putLong(key, newLong); editor.apply();
+            if (null != editor) { editor.putLong(key, newLong); editor.apply(); }
         }
     }
     // endregion

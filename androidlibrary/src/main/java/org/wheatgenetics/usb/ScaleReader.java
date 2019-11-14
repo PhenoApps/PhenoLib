@@ -15,8 +15,9 @@ package org.wheatgenetics.usb;
 public class ScaleReader extends org.wheatgenetics.usb.DeviceReader
 {
     // region Fields
-    private final android.app.Activity        activity            ;
-    private       org.wheatgenetics.usb.Scale scaleInstance = null;
+    @androidx.annotation.NonNull private final android.app.Activity activity;
+
+    private org.wheatgenetics.usb.Scale scaleInstance = null;                           // lazy load
     // endregion
 
     // region Private Methods

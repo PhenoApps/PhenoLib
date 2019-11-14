@@ -25,7 +25,7 @@ extends org.wheatgenetics.androidlibrary.DebuggingEditorActionListener
         final org.wheatgenetics.androidlibrary.ClearingEditorActionListener.Receiver receiver =
             (org.wheatgenetics.androidlibrary.ClearingEditorActionListener.Receiver)
                 this.getReceiver();
-        assert null != receiver; receiver.clearText();
+        if (null != receiver) receiver.clearText();
     }
 
     public ClearingEditorActionListener(

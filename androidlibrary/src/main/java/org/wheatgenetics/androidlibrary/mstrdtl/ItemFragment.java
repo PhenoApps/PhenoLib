@@ -17,6 +17,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  *
  * androidx.annotation.IntRange
  * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  * androidx.fragment.app.Fragment
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
@@ -181,7 +182,7 @@ public class ItemFragment extends androidx.fragment.app.Fragment
     {
         super.onCreate(savedInstanceState);
 
-        final java.lang.String positionMsg;
+        @androidx.annotation.NonNull final java.lang.String positionMsg;
         {
             final java.lang.String POSITION_KEY =
                 org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.POSITION_KEY;
@@ -210,8 +211,9 @@ public class ItemFragment extends androidx.fragment.app.Fragment
     }
 
     @java.lang.Override public android.view.View onCreateView(
-    @androidx.annotation.NonNull final android.view.LayoutInflater inflater,
-    final android.view.ViewGroup container, final android.os.Bundle savedInstanceState)
+    @androidx.annotation.NonNull  final android.view.LayoutInflater inflater          ,
+    @androidx.annotation.Nullable final android.view.ViewGroup      container         ,
+    @androidx.annotation.Nullable final android.os.Bundle           savedInstanceState)
     {
         final android.view.View rootView = inflater.inflate(
             org.wheatgenetics.androidlibrary.R.layout.mstrdtl_item_fragment,

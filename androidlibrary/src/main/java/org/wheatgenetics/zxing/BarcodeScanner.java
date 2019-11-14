@@ -14,11 +14,11 @@ public class BarcodeScanner extends java.lang.Object
 {
     // region Fields
     private final android.app.Activity                                  activity               ;
-    private       com.google.zxing.integration.android.IntentIntegrator intentIntegrator = null;
+    private       com.google.zxing.integration.android.IntentIntegrator intentIntegrator = null;//ll
     // endregion
 
-    @java.lang.SuppressWarnings({"unused"}) public BarcodeScanner(
-    final android.app.Activity activity) { super(); this.activity = activity; }
+    public BarcodeScanner(final android.app.Activity activity)
+    { super(); this.activity = activity; }
 
     // region Public Methods
     @java.lang.SuppressWarnings({"UnusedReturnValue"}) public android.app.AlertDialog scan()
@@ -35,7 +35,6 @@ public class BarcodeScanner extends java.lang.Object
             com.google.zxing.integration.android.IntentIntegrator.parseActivityResult(
                 requestCode, resultCode, data);
         return null == intentResult ? null : intentResult.getContents();
-
     }
     // endregion
 }

@@ -155,8 +155,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     .androidlibrarybuilder.brapi1_3.studies.Fragment.StudiesStudyDbIdLayoutsPutCallback
     {
         @java.lang.Override @androidx.annotation.RestrictTo(
-            androidx.annotation.RestrictTo.Scope.SUBCLASSES)
-        protected void handleSuccess(
+        androidx.annotation.RestrictTo.Scope.SUBCLASSES) protected void handleSuccess(
         final io.swagger.client.model.ObservationUnitPositionsResponse result)
         {
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies
@@ -943,7 +942,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                     io.swagger.client.model.ObservationsResponse>()
                     {
                         @java.lang.Override @androidx.annotation.RestrictTo(
-                            androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+                        androidx.annotation.RestrictTo.Scope.SUBCLASSES)
                         protected void handleSuccess(
                         final io.swagger.client.model.ObservationsResponse result)
                         {
@@ -1150,8 +1149,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 io.swagger.client.model.ObservationUnitsResponse1>()
                 {
                     @java.lang.Override @androidx.annotation.RestrictTo(
-                        androidx.annotation.RestrictTo.Scope.SUBCLASSES)
-                    protected void handleSuccess(
+                    androidx.annotation.RestrictTo.Scope.SUBCLASSES) protected void handleSuccess(
                     final io.swagger.client.model.ObservationUnitsResponse1 result)
                     {
                         org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.this
@@ -1414,8 +1412,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             java.lang.String>()
             {
                 @java.lang.Override @androidx.annotation.RestrictTo(
-                    androidx.annotation.RestrictTo.Scope.SUBCLASSES)
-                protected void handleSuccess(final java.lang.String result)
+                androidx.annotation.RestrictTo.Scope.SUBCLASSES) protected void handleSuccess(
+                final java.lang.String result)
                 {
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.
                         Fragment.this.enableStudiesStudyDbIdTablePostButton();
@@ -1588,7 +1586,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     public Fragment() {}
 
     // region Overridden Method
-    @java.lang.Override public void onAttach(final android.content.Context context)
+    @java.lang.Override public void onAttach(
+    @androidx.annotation.NonNull final android.content.Context context)
     {
         super.onAttach(context);
 
@@ -1597,8 +1596,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
             this.helper =
                 (org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper) context;
         else
-            throw new java.lang.RuntimeException(null == context ?
-                "context" : context.toString() + " must implement Helper");
+            throw new java.lang.RuntimeException(context.toString() + " must implement Helper");
     }
 
     @java.lang.Override @androidx.annotation.Nullable public android.view.View onCreateView(

@@ -23,8 +23,8 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
     @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
     private static class TextAccumulator extends java.lang.Object
     {
-        @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"})
-        private interface Logger { public void log(java.lang.String msg); }
+        @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) private interface Logger
+        { public void log(java.lang.String msg); }
 
         // region Fields
         @androidx.annotation.Nullable private final
@@ -36,9 +36,10 @@ extends org.wheatgenetics.androidlibrary.EditorActionListener
             logger;
 
         private boolean accumulating = false;
-        @java.lang.SuppressWarnings({"Convert2Diamond"})
-        private final java.util.ArrayList<java.lang.String> arrayList =
-            new java.util.ArrayList<java.lang.String>();
+
+        @java.lang.SuppressWarnings({"Convert2Diamond"}) private final java.util.ArrayList<
+            java.lang.String> arrayList = new java.util.ArrayList<java.lang.String>();
+
         private final java.lang.Runnable runnable = new java.lang.Runnable()
             {
                 @java.lang.Override public void run()

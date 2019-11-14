@@ -9,7 +9,6 @@ package org.wheatgenetics.androidlibrary;
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
  */
-@java.lang.SuppressWarnings({"unused"})
 public abstract class ItemsAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     private android.content.DialogInterface.OnClickListener onClickListener;

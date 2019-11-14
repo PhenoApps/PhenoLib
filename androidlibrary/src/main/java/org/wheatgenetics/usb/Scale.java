@@ -52,8 +52,8 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     // region Constants
             static final int ELANEVendorId            = 31612                                  ;
     private static final int ELANEUSBPlus5kgProductId =   513, ELANEUSBPS20005kgProductId = 519;
-                @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) static final int
-                    ELANEProductIds[] = { ELANEUSBPS20005kgProductId, ELANEUSBPlus5kgProductId };
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) static final int ELANEProductIds[] = {
+        ELANEUSBPS20005kgProductId, ELANEUSBPlus5kgProductId};
     // endregion
 
     private double weight;
@@ -90,14 +90,15 @@ class Scale extends org.wheatgenetics.usb.ExtraDevice
     }
 
     // region Overridden Methods
-    @java.lang.Override int read(@java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-    final byte buffer[]) throws org.wheatgenetics.usb.Device.Exception
+    @java.lang.Override int read(@androidx.annotation.NonNull
+    @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) final byte buffer[])
+    throws org.wheatgenetics.usb.Device.Exception
     {
         final int length = super.read(buffer);      // throws org.wheatgenetics.usb.Device.Exception
 
         if (6 == length)
         {
-            assert null != buffer; final byte report = buffer[0], status = buffer[1];
+            final byte report = buffer[0], status = buffer[1];
             if (3 == report)
                 switch (status)
                 {

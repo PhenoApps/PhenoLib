@@ -12,7 +12,7 @@ package org.wheatgenetics.about;
  *
  * androidx.annotation.IdRes
  * androidx.annotation.NonNull
- * 
+ *
  * org.wheatgenetics.androidlibrary.AlertDialog
  * org.wheatgenetics.androidlibrary.R
  *
@@ -37,76 +37,80 @@ public class AboutAlertDialog extends org.wheatgenetics.androidlibrary.AlertDial
                 /* resource     => */ org.wheatgenetics.androidlibrary.R.layout.alert_dialog_about,
                 /* root         => */ new android.widget.LinearLayout(activity)                   ,
                 /* attachToRoot => */false);
+        if (null != aboutView)
         {
-            assert null != aboutView;
-            final android.widget.TextView versionTextView =
-                aboutView.findViewById(org.wheatgenetics.androidlibrary.R.id.aboutVersionTextView);
-            assert null != versionTextView;
-            versionTextView.setText(versionTextView.getText() + " " + versionName);
-            versionTextView.setOnClickListener(versionOnClickListener);
-        }
-        {
-            final android.widget.TextView otherAppsTextView = aboutView.findViewById(
-                org.wheatgenetics.androidlibrary.R.id.aboutOtherAppsTextView);
-            assert null != otherAppsTextView; otherAppsTextView.setOnClickListener(
-                new org.wheatgenetics.about.OtherAppsOnClickListener(activity, suppressIndex));
-        }
-        {
-            @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
-            class MsgSetter extends java.lang.Object
             {
-                // region Fields
-                private final android.view.View aboutView;
-                @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-                    private final java.lang.String  msgs[];
-                // endregion
-
-                private MsgSetter(final android.view.View aboutView,
-                @java.lang.SuppressWarnings({"CStyleArrayDeclaration"})
-                    final java.lang.String msgs[])
-                { super(); this.aboutView = aboutView; this.msgs = msgs; }
-
-                private void execute()
+                final android.widget.TextView versionTextView = aboutView.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.aboutVersionTextView);
+                if (null != versionTextView)
                 {
-                    if (null != this.msgs) if (this.msgs.length > 0)
+                    versionTextView.setText(versionTextView.getText() + " " + versionName);
+                    versionTextView.setOnClickListener(versionOnClickListener);
+                }
+            }
+            {
+                final android.widget.TextView otherAppsTextView = aboutView.findViewById(
+                    org.wheatgenetics.androidlibrary.R.id.aboutOtherAppsTextView);
+                if (null != otherAppsTextView) otherAppsTextView.setOnClickListener(
+                    new org.wheatgenetics.about.OtherAppsOnClickListener(activity, suppressIndex));
+            }
+            {
+                @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
+                class MsgSetter extends java.lang.Object
+                {
+                    // region Fields
+                    @androidx.annotation.NonNull private final android.view.View aboutView;
+                    @androidx.annotation.NonNull @java.lang.SuppressWarnings(
+                        {"CStyleArrayDeclaration"}) private final java.lang.String msgs[];
+                    // endregion
+
+                    private MsgSetter(
+                    @androidx.annotation.NonNull final android.view.View aboutView,
+                    @androidx.annotation.NonNull @java.lang.SuppressWarnings(
+                        {"CStyleArrayDeclaration"}) final java.lang.String msgs[])
+                    { super(); this.aboutView = aboutView; this.msgs = msgs; }
+
+                    private void execute()
                     {
-                        assert null != this.aboutView;
-                        int i = 1;
-                        for (final java.lang.String msg: this.msgs) if (i > 3)
-                            break;
-                        else
+                        if (this.msgs.length > 0)
                         {
-                            final android.widget.TextView msgTextView;
-                            {
-                                @androidx.annotation.IdRes final int msgTextViewId;
-                                switch (i++)
+                            int i = 1;
+                            for (final java.lang.String msg: this.msgs)
+                                if (i > 3)
+                                    break;
+                                else
                                 {
-                                    case 1: msgTextViewId =
-                                        org.wheatgenetics.androidlibrary.R.id.aboutMsg1TextView;
-                                        break;
+                                    final android.widget.TextView msgTextView;
+                                    {
+                                        @androidx.annotation.IdRes final int msgTextViewId;
+                                        switch (i++)
+                                        {
+                                            case 1: msgTextViewId = org.wheatgenetics
+                                                .androidlibrary.R.id.aboutMsg1TextView; break;
 
-                                    case 2: msgTextViewId =
-                                        org.wheatgenetics.androidlibrary.R.id.aboutMsg2TextView;
-                                        break;
+                                            case 2: msgTextViewId = org.wheatgenetics
+                                                .androidlibrary.R.id.aboutMsg2TextView; break;
 
-                                    case 3: msgTextViewId =
-                                        org.wheatgenetics.androidlibrary.R.id.aboutMsg3TextView;
-                                        break;
+                                            case 3: msgTextViewId = org.wheatgenetics
+                                                .androidlibrary.R.id.aboutMsg3TextView; break;
 
-                                    default: return;
+                                            default: return;
+                                        }
+                                        msgTextView = this.aboutView.findViewById(msgTextViewId);
+                                    }
+                                    if (null != msgTextView)
+                                    {
+                                        msgTextView.setText(msg);
+                                        msgTextView.setVisibility(android.view.View.VISIBLE);
+                                    }
                                 }
-                                msgTextView = this.aboutView.findViewById(msgTextViewId);
-                            }
-                            assert null != msgTextView;
-                            msgTextView.setText      (msg                      );
-                            msgTextView.setVisibility(android.view.View.VISIBLE);
                         }
                     }
                 }
+                new MsgSetter(aboutView, msgs).execute();
             }
-            new MsgSetter(aboutView, msgs).execute();
+            this.setTitle(title).setView(aboutView);
         }
-        this.setTitle(title).setView(aboutView);
     }
 
     @java.lang.Override public void configure()

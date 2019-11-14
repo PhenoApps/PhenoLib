@@ -26,34 +26,42 @@ class DeviceList extends java.lang.Object
         final android.hardware.usb.UsbManager usbManager = (android.hardware.usb.UsbManager)
             activity.getSystemService(android.content.Context.USB_SERVICE);
 
-        assert null != usbManager;
         final java.util.HashMap<java.lang.String, android.hardware.usb.UsbDevice> deviceHashMap =
-            usbManager.getDeviceList();
+            null == usbManager ? null : usbManager.getDeviceList();
 
-        assert null != deviceHashMap;
-        // noinspection Convert2Diamond
-        this.arrayList =
-            new java.util.ArrayList<org.wheatgenetics.usb.Device>(deviceHashMap.size());
+        if (null == deviceHashMap)
+            this.arrayList = null;
+        else
+        {
+            // noinspection Convert2Diamond
+            this.arrayList =
+                new java.util.ArrayList<org.wheatgenetics.usb.Device>(deviceHashMap.size());
 
-        for (final android.hardware.usb.UsbDevice usbDevice: deviceHashMap.values())
-            if (null != usbDevice)
-                this.arrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
+            for (final android.hardware.usb.UsbDevice usbDevice: deviceHashMap.values())
+                if (null != usbDevice)
+                    this.arrayList.add(new org.wheatgenetics.usb.Device(usbDevice, usbManager));
+        }
     }
 
     @androidx.annotation.NonNull @java.lang.Override public java.lang.String toString()
     {
-        final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
+        final java.lang.String string;
+        if (null == this.arrayList)
+            string = null;
+        else
         {
-            boolean firstDevice = true;
-            assert null != this.arrayList;
-            for (final org.wheatgenetics.usb.Device device: this.arrayList)
+            final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
             {
-                if (firstDevice) firstDevice = false; else stringBuilder.append('\n');
-                stringBuilder.append(device.toString());
+                boolean firstDevice = true;
+                for (final org.wheatgenetics.usb.Device device: this.arrayList)
+                {
+                    if (firstDevice) firstDevice = false; else stringBuilder.append('\n');
+                    stringBuilder.append(device.toString());
+                }
             }
+            string = stringBuilder.toString();
         }
-        return org.wheatgenetics.javalib.Utils.replaceIfNull(
-            stringBuilder.toString(), super.toString());
+        return org.wheatgenetics.javalib.Utils.replaceIfNull(string, super.toString());
     }
 
     // region Package Methods
@@ -61,17 +69,23 @@ class DeviceList extends java.lang.Object
 
     java.lang.String information()
     {
-        final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
+        final java.lang.String result;
+        if (null == this.arrayList)
+            result = null;
+        else
         {
-            boolean firstDevice = true;
-            assert null != this.arrayList;
-            for (final org.wheatgenetics.usb.Device device: this.arrayList)
+            final java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
             {
-                if (firstDevice) firstDevice = false; else stringBuilder.append('\n');
-                stringBuilder.append(device.information());
+                boolean firstDevice = true;
+                for (final org.wheatgenetics.usb.Device device: this.arrayList)
+                {
+                    if (firstDevice) firstDevice = false; else stringBuilder.append('\n');
+                    stringBuilder.append(device.information());
+                }
             }
+            result = stringBuilder.toString();
         }
-        return stringBuilder.toString();
+        return result;
     }
 
     org.wheatgenetics.usb.Device get(final int vendorId,

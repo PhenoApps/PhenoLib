@@ -33,7 +33,7 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
         else
         {
             this.cancelAlertDialog();
-            assert null != this.handler; this.handler.handleGetFileNameDone(fileName);
+            if (null != this.handler) this.handler.handleGetFileNameDone(fileName);
         }
     }
 
@@ -51,11 +51,8 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
                 org.wheatgenetics.androidlibrary.R.layout.alert_dialog_get_export_file_name,
                 null);
 
-            if (null == this.editText)
-            {
-                assert null != view; this.editText = view.findViewById(
-                    org.wheatgenetics.androidlibrary.R.id.editText);
-            }
+            if (null != view) if (null == this.editText) this.editText = view.findViewById(
+                org.wheatgenetics.androidlibrary.R.id.editText);
 
             this.setView(view);
         }
@@ -65,18 +62,20 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
 
     public void show(final java.lang.String initialFileName)
     {
-        assert null != this.editText;
-        this.editText.setText(initialFileName); this.editText.selectAll();
+        if (null != this.editText)
+        {
+            this.editText.setText(initialFileName); this.editText.selectAll();
 
-        this.show();
-        if (!this.positiveOnClickListenerHasBeenReplaced()) this.replacePositiveOnClickListener(
-            new android.view.View.OnClickListener()
-            {
-                @java.lang.Override public void onClick(final android.view.View view)
+            this.show();
+            if (!this.positiveOnClickListenerHasBeenReplaced()) this.replacePositiveOnClickListener(
+                new android.view.View.OnClickListener()
                 {
-                    org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog
-                        .this.handleGetFileNameDone();
-                }
-            });
+                    @java.lang.Override public void onClick(final android.view.View view)
+                    {
+                        org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog
+                            .this.handleGetFileNameDone();
+                    }
+                });
+        }
     }
 }

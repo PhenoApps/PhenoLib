@@ -9,6 +9,7 @@ package org.wheatgenetics.androidlibrary;
  * android.os.Environment
  * android.util.Log
  *
+ * androidx.annotation.NonNull
  * androidx.annotation.RestrictTo
  * androidx.annotation.RestrictTo.Scope
  * androidx.core.content.ContextCompat
@@ -21,8 +22,9 @@ package org.wheatgenetics.androidlibrary;
  */
 public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
 {
-    private final android.app.Activity activity;
+    @androidx.annotation.NonNull private final android.app.Activity activity;
 
+    @androidx.annotation.NonNull
     private static android.app.Activity nonNullActivity(final android.app.Activity activity)
     {
         if (null == activity)
@@ -31,9 +33,10 @@ public class PermissionDir extends org.wheatgenetics.javalib.PermissionDir
             return activity;
     }
 
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
-    @java.lang.SuppressWarnings({"WeakerAccess"})
-    protected android.app.Activity getActivity() { return this.activity; }
+    @androidx.annotation.NonNull protected android.app.Activity getActivity()
+    { return this.activity; }
 
     // region Constructors
     public PermissionDir(final android.app.Activity activity, final java.lang.String name,

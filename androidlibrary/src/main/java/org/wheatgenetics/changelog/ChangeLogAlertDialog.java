@@ -33,8 +33,8 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
         class ScrollView extends java.lang.Object
         {
             // region Fields
-            private final android.app.Activity activity              ;
-            private final int                  changeLogRawResourceId;
+            @androidx.annotation.NonNull private final android.app.Activity activity              ;
+            @androidx.annotation.RawRes  private final int                  changeLogRawResourceId;
 
             private android.widget.LinearLayout           linearLayout = null;
             private org.wheatgenetics.changelog.ChangeLog changeLog    = null;
@@ -61,21 +61,22 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                 {
                     final java.io.InputStreamReader inputStreamReader;
                     {
-                        assert null != this.activity;
                         final android.content.res.Resources resources =
                             this.activity.getResources();
 
-                        assert null != resources; inputStreamReader = new java.io.InputStreamReader(
-                            resources.openRawResource(this.changeLogRawResourceId));
+                        inputStreamReader = null == resources ? null :
+                            new java.io.InputStreamReader(
+                                resources.openRawResource(this.changeLogRawResourceId));
                     }
 
                     class LineHandler extends java.lang.Object
                     implements org.wheatgenetics.changelog.ChangeLog.LineHandler
                     {
                         // region Fields
-                        private final android.app.Activity        activity          ;
-                        private final android.widget.LinearLayout linearLayout      ;
-                        private final android.content.Context     applicationContext;
+                        @androidx.annotation.NonNull private final android.app.Activity activity;
+                        @androidx.annotation.NonNull private final
+                            android.widget.LinearLayout linearLayout;
+                        private final android.content.Context applicationContext;
 
                         private android.widget.LinearLayout.LayoutParams layoutParams = null;
                         // endregion
@@ -108,11 +109,13 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                                                       final java.lang.CharSequence text )
                         {
                             final android.widget.TextView textView = this.makeTextView();
-                            assert null != textView;
-                            textView.setTextAppearance(this.applicationContext, resId);
-                            textView.setText(text);
+                            if (null != textView)
+                            {
+                                textView.setTextAppearance(this.applicationContext, resId);
+                                textView.setText(text);
+                            }
 
-                            assert null != this.linearLayout; this.linearLayout.addView(textView);
+                            this.linearLayout.addView(textView);
                         }
                         // endregion
 
@@ -131,10 +134,8 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         @java.lang.Override public void handleBlankLine()
                         {
                             final android.widget.TextView spacerTextView = this.makeTextView();
-                            assert null != spacerTextView;
-                            spacerTextView.setTextSize(5); spacerTextView.setText("\n");
-
-                            assert null != this.linearLayout;
+                            if (null != spacerTextView)
+                                { spacerTextView.setTextSize(5); spacerTextView.setText("\n"); }
                             this.linearLayout.addView(spacerTextView);
                         }
 

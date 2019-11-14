@@ -95,7 +95,7 @@ public class NewObservationsTableRequestAlertDialog extends org.wheatgenetics.br
     // endregion
 
     // region Public Methods
-    public void show(final
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"}) public void show(final
     org.wheatgenetics.brapi1_3.studies.NewObservationsTableRequest newObservationsTableRequest,
     final org.wheatgenetics.brapi1_3.studies.NewObservationsTableRequestAlertDialog.Format format)
     {

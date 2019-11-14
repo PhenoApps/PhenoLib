@@ -32,7 +32,7 @@ public class Utils extends java.lang.Object
                 {
                     @java.lang.Override public void onClick(
                     final android.content.DialogInterface dialog, final int which)
-                    { assert null != dialog; dialog.dismiss(); }
+                    { if (null != dialog) dialog.dismiss(); }
                 };
         return org.wheatgenetics.androidlibrary.Utils.dismissingOnClickListenerInstance;
     }
@@ -46,7 +46,7 @@ public class Utils extends java.lang.Object
                 {
                     @java.lang.Override public void onClick(
                     final android.content.DialogInterface dialog, final int which)
-                    { assert null != dialog; dialog.cancel(); }
+                    { if (null != dialog) dialog.cancel(); }
                 };
         return org.wheatgenetics.androidlibrary.Utils.cancellingOnClickListenerInstance;
     }
@@ -84,7 +84,7 @@ public class Utils extends java.lang.Object
                 /* paths     => */ org.wheatgenetics.javalib.Utils.stringArray(file.getPath()),
                 /* mimeTypes => */null,
                 /* callback  => */null);
-            assert null != context; context.sendBroadcast(new android.content.Intent(
+            if (null != context) context.sendBroadcast(new android.content.Intent(
                 /* action => */ android.content.Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
                 /* uri    => */ android.net.Uri.fromFile(file)                       ));
         }
@@ -94,11 +94,11 @@ public class Utils extends java.lang.Object
     @java.lang.SuppressWarnings({"unused"}) public static void shareFile(
     final android.content.Context context, final android.net.Uri uri)
     {
-        final android.content.Intent intent =
-            new android.content.Intent(android.content.Intent.ACTION_SEND)
-                .setType("text/plain").putExtra(android.content.Intent.EXTRA_STREAM, uri);
+        final android.content.Intent intent = new android.content.Intent(
+            android.content.Intent.ACTION_SEND).setType("text/plain").putExtra(
+                android.content.Intent.EXTRA_STREAM, uri);
 
-        assert null != context; context.startActivity(android.content.Intent.createChooser(
+        if (null != context) context.startActivity(android.content.Intent.createChooser(
             intent, context.getString(org.wheatgenetics.androidlibrary.R.string.sendingFile)));
     }
     // endregion
@@ -107,14 +107,14 @@ public class Utils extends java.lang.Object
     @java.lang.SuppressWarnings({"unused"})
     public static java.lang.String getText(final android.widget.TextView textView)
     {
-        assert null != textView;
-        return org.wheatgenetics.javalib.Utils.adjust(textView.getText().toString());
+        return null == textView ? null :
+            org.wheatgenetics.javalib.Utils.adjust(textView.getText().toString());
     }
 
     public static java.lang.String getText(final android.widget.EditText editText)
     {
-        assert null != editText;
-        return org.wheatgenetics.javalib.Utils.adjust(editText.getText().toString());
+        return null == editText ? null :
+            org.wheatgenetics.javalib.Utils.adjust(editText.getText().toString());
     }
     // endregion
 

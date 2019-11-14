@@ -17,7 +17,7 @@ implements android.view.View.OnClickListener
     private final android.app.Activity                    activity     ;
     private final org.wheatgenetics.about.OtherApps.Index suppressIndex;
 
-    private org.wheatgenetics.about.OtherAppsAlertDialog otherAppsAlertDialog = null;
+    private org.wheatgenetics.about.OtherAppsAlertDialog otherAppsAlertDialog = null;   // lazy load
     // endregion
 
     public OtherAppsOnClickListener(

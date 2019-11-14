@@ -16,7 +16,7 @@ public class ProgressDialog extends java.lang.Object
     private final android.content.DialogInterface.OnCancelListener onCancelListener;
 
     private java.lang.CharSequence     title, initialMessage        ;
-    private android.app.ProgressDialog progressDialogInstance = null;
+    private android.app.ProgressDialog progressDialogInstance = null;                   // lazy load
     // endregion
 
     private android.app.ProgressDialog progressDialog()
@@ -43,17 +43,18 @@ public class ProgressDialog extends java.lang.Object
     final android.content.DialogInterface.OnCancelListener onCancelListener)
     { this(context, onCancelListener); this.title = title; this.initialMessage = initialMessage; }
 
-    public ProgressDialog(
-                                   final android.content.Context context         ,
+    public ProgressDialog(         final android.content.Context context         ,
     @androidx.annotation.StringRes final int                     title           ,
     @androidx.annotation.StringRes final int                     initialMessage  ,
     final android.content.DialogInterface.OnCancelListener       onCancelListener)
     {
         this(context, onCancelListener);
 
-        assert null != this.context;
-        this.title          = this.context.getString(title         );
-        this.initialMessage = this.context.getString(initialMessage);
+        if (null != this.context)
+        {
+            this.title          = this.context.getString(title         );
+            this.initialMessage = this.context.getString(initialMessage);
+        }
     }
     // endregion
 
@@ -65,7 +66,7 @@ public class ProgressDialog extends java.lang.Object
     { this.progressDialog().setMessage(message); }
 
     public void setMessage(@androidx.annotation.StringRes final int message)
-    { assert null != this.context; this.setMessage(this.context.getString(message)); }
+    { if (null != this.context) this.setMessage(this.context.getString(message)); }
 
     public void dismiss()
     {

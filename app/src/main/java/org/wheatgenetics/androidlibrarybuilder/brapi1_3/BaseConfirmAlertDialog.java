@@ -64,6 +64,7 @@ public abstract class BaseConfirmAlertDialog extends org.wheatgenetics.brapi1_3.
         this.setView(view); super.configure();
     }
 
+    @java.lang.SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
     public BaseConfirmAlertDialog(final android.app.Activity activity,
     final org.wheatgenetics.androidlibrarybuilder.brapi1_3.BaseConfirmAlertDialog.Handler handler,
     final java.lang.String title) { super(activity, handler); this.title = title; }

@@ -81,7 +81,7 @@ implements android.widget.TextView.OnEditorActionListener
         super();
 
         this.editText = editText; this.editText.setOnEditorActionListener(this);
-        this.receiver = receiver; this.debug = debug;
+        this.receiver = receiver; this.debug = debug                           ;
     }
 
     // region android.widget.TextView.OnEditorActionListener Overridden Method
@@ -133,8 +133,10 @@ implements android.widget.TextView.OnEditorActionListener
         switch (actionId)
         {
             case android.view.inputmethod.EditorInfo.IME_NULL:
-                assert null != event;
-                if (event.getAction() == android.view.KeyEvent.ACTION_DOWN) return true;
+                if (null == event)
+                    throw new java.lang.AssertionError();
+                else
+                    if (event.getAction() == android.view.KeyEvent.ACTION_DOWN) return true;
                 // break statement is intentionally omitted here.
 
             case android.view.inputmethod.EditorInfo.IME_ACTION_DONE:

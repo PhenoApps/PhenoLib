@@ -14,20 +14,20 @@ package org.wheatgenetics.usb;
  * org.wheatgenetics.usb.Device.Exception
  * org.wheatgenetics.usb.Device.UsbDeviceIsNull
  */
-@java.lang.SuppressWarnings({"unused"})
 public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
 {
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Handler
     {
-                                                     public abstract void tryAgain();
-        @java.lang.SuppressWarnings({"EmptyMethod"}) public abstract void ignore ();
+        public abstract void tryAgain();
+        public abstract void ignore  ();
     }
 
+    @androidx.annotation.NonNull
     private final org.wheatgenetics.usb.ScaleExceptionAlertDialog.Handler handler;
 
     // region Private Methods
-    private void tryAgain() { assert null != this.handler; this.handler.tryAgain(); }
-    private void ignore  () { assert null != this.handler; this.handler.ignore  (); }
+    private void tryAgain() { this.handler.tryAgain(); }
+    private void ignore  () { this.handler.ignore  (); }
     // endregion
 
     public ScaleExceptionAlertDialog(
@@ -59,11 +59,12 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
     }
 
     // region Public Methods
-    @java.lang.SuppressWarnings({"WeakerAccess"}) public void testingShow(
+    public void testingShow(
     @androidx.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     { this.setMessage(e.getMessage()); this.createShow(); }
 
-    public void show(@androidx.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
+    @java.lang.SuppressWarnings({"unused"}) public void show(
+    @androidx.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     {
         if (e instanceof org.wheatgenetics.usb.Device.UsbDeviceIsNull)
         {

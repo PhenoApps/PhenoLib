@@ -9,8 +9,7 @@ package org.wheatgenetics.about;
 @java.lang.SuppressWarnings({"ClassExplicitlyExtendsObject"})
 public class OtherApps extends java.lang.Object
 {
-    @java.lang.SuppressWarnings({"UnnecessaryEnumModifier"})
-    public enum Index
+    @java.lang.SuppressWarnings({"UnnecessaryEnumModifier"}) public enum Index
     {
         NONE(-1), FIELD_BOOK(0), INVENTORY(1),
             COORDINATE(2), ONE_KK(3);

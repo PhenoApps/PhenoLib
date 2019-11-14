@@ -74,8 +74,7 @@ public class Device extends java.lang.Object
         else
         {
             released = this.usbDeviceConnection.releaseInterface(this.usbInterface);
-            this.usbDeviceConnection.close();
-            this.usbDeviceConnection = null;
+            this.usbDeviceConnection.close(); this.usbDeviceConnection = null;
         }
         this.usbEndpoint = null; this.usbInterface = null;
         return released;
@@ -140,6 +139,7 @@ public class Device extends java.lang.Object
                 if (null == this.usbInterface)
                 {
                     this.usbInterface = this.usbDevice.getInterface(0);
+
                     // noinspection ConstantConditions
                     if (null == this.usbInterface)
                         throw new org.wheatgenetics.usb.Device.GetInterfaceFailed();

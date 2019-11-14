@@ -70,7 +70,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
 
         // region Overridden Methods
         /** getItem() is called to instantiate the fragment for the given page. */
-        @java.lang.Override @androidx.annotation.NonNull 
+        @java.lang.Override @androidx.annotation.NonNull
         public androidx.fragment.app.Fragment getItem(final int position)
         {
             switch (position)
@@ -455,7 +455,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     { if (null != this.viewPager) this.viewPager.clearOnPageChangeListeners(); super.onDestroy(); }
 
     // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier Overridden Methods
-    @java.lang.Override @androidx.annotation.NonNull public io.swagger.client.ApiClient apiClient() 
+    @java.lang.Override @androidx.annotation.NonNull public io.swagger.client.ApiClient apiClient()
     { return this.apiClientInstance; }
 
     @java.lang.Override public java.lang.String authorization()

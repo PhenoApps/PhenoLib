@@ -10,7 +10,6 @@ package org.wheatgenetics.androidlibrarybuilder;
  *
  * org.wheatgenetics.androidlibrarybuilder.R
  */
-@java.lang.SuppressWarnings({"unused"})
 public class WebViewActivity extends androidx.appcompat.app.AppCompatActivity
 {
     static final java.lang.String CONTENT = "content", ENCODING = "encoding";

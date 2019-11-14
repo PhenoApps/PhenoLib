@@ -106,7 +106,8 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
     public ConnectionFragment() {}
 
     // region Overridden Methods
-    @java.lang.Override public void onAttach(final android.content.Context context)
+    @java.lang.Override public void onAttach(
+    @androidx.annotation.NonNull final android.content.Context context)
     {
         super.onAttach(context);
 

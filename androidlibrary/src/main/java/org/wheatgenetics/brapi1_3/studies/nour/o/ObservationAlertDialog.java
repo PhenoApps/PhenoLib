@@ -41,7 +41,6 @@ class ObservationAlertDialog extends org.wheatgenetics.brapi1_3.AlertDialog
     // endregion
 
     // region Private Methods
-    @android.annotation.SuppressLint({"DefaultLocale"})
     private void setSeasonTextViewText(final io.swagger.client.model.Season season)
     {
         if (null != this.seasonTextView) this.seasonTextView.setText(

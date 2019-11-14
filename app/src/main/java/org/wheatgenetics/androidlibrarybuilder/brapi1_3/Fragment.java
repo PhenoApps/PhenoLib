@@ -148,6 +148,7 @@ public abstract class Fragment extends androidx.fragment.app.Fragment
 
     // region setResponseTextViewText() Protected Methods
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @java.lang.SuppressWarnings({"WeakerAccess"})
     protected void setResponseTextViewText(final java.lang.Throwable throwable)
     {
         if (null == throwable)
@@ -211,7 +212,8 @@ public abstract class Fragment extends androidx.fragment.app.Fragment
     // endregion
 
     // region Overridden Methods
-    @java.lang.Override public void onAttach(final android.content.Context context)
+    @java.lang.Override public void onAttach(
+    @androidx.annotation.NonNull final android.content.Context context)
     {
         super.onAttach(context);
 

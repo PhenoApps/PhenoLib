@@ -350,7 +350,8 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // endregion
 
     // region Overridden Methods
-    @java.lang.Override public void onAttach(final android.content.Context context)
+    @java.lang.Override public void onAttach(
+    @androidx.annotation.NonNull final android.content.Context context)
     {
         super.onAttach(context);
 
@@ -360,8 +361,7 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
                 (org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper)
                     context;
         else
-            throw new java.lang.RuntimeException(null == context ?
-                "context" : context.toString() + " must implement Helper");
+            throw new java.lang.RuntimeException(context.toString() + " must implement Helper");
     }
 
     @java.lang.Override @androidx.annotation.Nullable public android.view.View onCreateView(

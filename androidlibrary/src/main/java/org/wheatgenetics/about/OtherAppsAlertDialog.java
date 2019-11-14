@@ -2,10 +2,12 @@ package org.wheatgenetics.about;
 
 /**
  * Uses:
+ * android.annotation.SuppressLint
  * android.app.Activity
  * android.content.Context
  * android.content.Intent
  * android.net.Uri
+ * android.view.InflateException
  * android.view.LayoutInflater
  * android.view.View
  * android.view.ViewGroup
@@ -47,6 +49,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                 {
                     class ArrayAdapter extends android.widget.ArrayAdapter<java.lang.String>
                     {
+                        @androidx.annotation.NonNull
                         private final org.wheatgenetics.about.OtherApps otherApps;
 
                         private ArrayAdapter(final android.content.Context context,
@@ -63,8 +66,7 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         }
 
                         @android.annotation.SuppressLint({"InflateParams", "ViewHolder"})
-                        @java.lang.Override
-                        public @androidx.annotation.NonNull android.view.View
+                        @java.lang.Override public @androidx.annotation.NonNull android.view.View
                         getView(final int position, final android.view.View convertView,
                         @androidx.annotation.NonNull final android.view.ViewGroup parent)
                         {
@@ -74,22 +76,23 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                                     (android.view.LayoutInflater)
                                         this.getContext().getSystemService(
                                             android.content.Context.LAYOUT_INFLATER_SERVICE);
-                                assert null != layoutInflater;
-                                result = layoutInflater.inflate(org.wheatgenetics.
-                                        androidlibrary.R.layout.alert_dialog_other_apps,
-                                    null,true);
+                                if (null == layoutInflater)
+                                    throw new android.view.InflateException();
+                                else
+                                    result = layoutInflater.inflate(org.wheatgenetics
+                                        .androidlibrary.R.layout.alert_dialog_other_apps,
+                                        null,true);
                             }
-                            assert null != result;
                             {
                                 final android.widget.TextView textView = result.findViewById(
                                     org.wheatgenetics.androidlibrary.R.id.otherAppsTextView);
-                                assert null != this.otherApps; assert null != textView;
-                                textView.setText(this.otherApps.getTexts()[position]);
+                                if (null != textView)
+                                    textView.setText(this.otherApps.getTexts()[position]);
                             }
                             {
                                 final android.widget.ImageView imageView = result.findViewById(
                                     org.wheatgenetics.androidlibrary.R.id.otherAppsImageView);
-                                assert null != imageView; imageView.setImageResource(
+                                if (null != imageView) imageView.setImageResource(
                                     this.otherApps.getResIds()[position]);
                             }
                             return result;
@@ -103,7 +106,9 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                 implements android.widget.AdapterView.OnItemClickListener
                 {
                     // region Fields
-                    private final android.content.Context           context  ;
+                    @androidx.annotation.NonNull private final android.content.Context context;
+
+                    @androidx.annotation.NonNull
                     private final org.wheatgenetics.about.OtherApps otherApps;
                     // endregion
 
@@ -116,7 +121,6 @@ public class OtherAppsAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                     final android.widget.AdapterView<?> parent, final android.view.View view,
                     final int position, final long id)
                     {
-                        assert null != this.otherApps; assert null != this.context;
                         this.context.startActivity(new android.content.Intent(
                             android.content.Intent.ACTION_VIEW                       ,
                             android.net.Uri.parse(this.otherApps.getUris()[position])));
