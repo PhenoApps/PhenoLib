@@ -8,6 +8,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.widget.Button
  *
  * androidx.annotation.IntRange
+ * androidx.annotation.Nullable
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
  *
@@ -23,7 +24,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.HelperChanger
     private void append() { this.items().append(); this.refreshSinceItemsHaveChanged(); }
 
     // region Overridden Methods
-    @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
+    @java.lang.Override protected void onCreate(
+    @androidx.annotation.Nullable final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 

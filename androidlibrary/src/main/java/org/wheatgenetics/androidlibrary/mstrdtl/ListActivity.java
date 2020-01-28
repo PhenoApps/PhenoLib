@@ -49,7 +49,8 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
     // endregion
 
     // region Overridden Methods
-    @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
+    @java.lang.Override protected void onCreate(
+    @androidx.annotation.Nullable final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         this.setContentView(org.wheatgenetics.androidlibrary.R.layout.mstrdtl_list_activity);
@@ -76,8 +77,7 @@ public abstract class ListActivity extends org.wheatgenetics.androidlibrary.mstr
         {
             final androidx.recyclerview.widget.RecyclerView recyclerView = this.findViewById(
                 org.wheatgenetics.androidlibrary.R.id.masterDetailRecyclerView);
-            if (null != recyclerView)
-                { recyclerView.setHasFixedSize(true); recyclerView.setAdapter(this.adapter); }
+            if (null != recyclerView) recyclerView.setAdapter(this.adapter);
         }
     }
 

@@ -7,6 +7,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.widget.TextView
  *
  * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  * androidx.recyclerview.widget.RecyclerView.ViewHolder
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
@@ -27,11 +28,12 @@ class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder
             org.wheatgenetics.androidlibrary.R.id.masterDetailListItemTitleTextView);
     }
 
-    void bind(final org.wheatgenetics.javalib.mstrdtl.Item item,
-    final android.view.View.OnClickListener onClickListener)
+    void bind(
+    @androidx.annotation.Nullable final org.wheatgenetics.javalib.mstrdtl.Item item           ,
+    @androidx.annotation.Nullable final android.view.View.OnClickListener      onClickListener)
     {
         {
-            final java.lang.String position, title;
+            @androidx.annotation.Nullable final java.lang.String position, title;
             if (null == item)
                 position = title = null;
             else

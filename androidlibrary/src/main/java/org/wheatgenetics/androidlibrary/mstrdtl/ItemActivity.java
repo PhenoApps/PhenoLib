@@ -11,6 +11,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * android.view.MenuItem
  *
  * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  * androidx.annotation.RestrictTo
  * androidx.annotation.RestrictTo.Scope
  * androidx.appcompat.app.ActionBar
@@ -31,13 +32,15 @@ public abstract class ItemActivity extends org.wheatgenetics.androidlibrary.mstr
     protected abstract java.lang.Class listActivityClass();
 
     // region Overridden Methods
-    @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
+    @java.lang.Override protected void onCreate(
+    @androidx.annotation.Nullable final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         this.setContentView(org.wheatgenetics.androidlibrary.R.layout.mstrdtl_item_activity);
 
         {
             // Show the Up button in the action bar.
+            @androidx.annotation.Nullable
             final androidx.appcompat.app.ActionBar actionBar = this.getSupportActionBar();
             if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
         }

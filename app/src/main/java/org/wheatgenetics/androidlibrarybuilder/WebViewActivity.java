@@ -6,6 +6,7 @@ package org.wheatgenetics.androidlibrarybuilder;
  * android.os.Bundle
  * android.webkit.WebView
  *
+ * androidx.annotation.Nullable
  * androidx.appcompat.app.AppCompatActivity
  *
  * org.wheatgenetics.androidlibrarybuilder.R
@@ -14,7 +15,8 @@ public class WebViewActivity extends androidx.appcompat.app.AppCompatActivity
 {
     static final java.lang.String CONTENT = "content", ENCODING = "encoding";
 
-    @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
+    @java.lang.Override protected void onCreate(
+    @androidx.annotation.Nullable final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         this.setContentView(org.wheatgenetics.androidlibrarybuilder.R.layout.activity_web_view);

@@ -11,6 +11,7 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * androidx.annotation.IntRange
  * androidx.annotation.MenuRes
  * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  * androidx.annotation.Size
  * androidx.appcompat.app.ActionBar
  * androidx.appcompat.app.AppCompatActivity
@@ -277,7 +278,8 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     // endregion
 
     // region Overridden Methods
-    @java.lang.Override protected void onCreate(final android.os.Bundle savedInstanceState)
+    @java.lang.Override protected void onCreate(
+    @androidx.annotation.Nullable final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         this.setContentView(org.wheatgenetics.androidlibrarybuilder.R.layout.activity_brapi1_3);

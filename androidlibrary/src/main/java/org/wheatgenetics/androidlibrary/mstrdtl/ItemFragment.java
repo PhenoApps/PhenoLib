@@ -76,14 +76,14 @@ public class ItemFragment extends androidx.fragment.app.Fragment
     private boolean changerIsImplemented()
     { return null == this.helper && null != this.helperChanger; }
 
-    private org.wheatgenetics.javalib.mstrdtl.Item get()
+    @androidx.annotation.Nullable private org.wheatgenetics.javalib.mstrdtl.Item get()
     {
         final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper helper =
             null == this.helper ? this.helperChanger : this.helper;
         return null == helper ? null : helper.get(this.position);
     }
 
-    private org.wheatgenetics.javalib.mstrdtl.Item item()
+    @androidx.annotation.Nullable private org.wheatgenetics.javalib.mstrdtl.Item item()
     {
         if (null == this.itemInstance)
             try { this.itemInstance = this.get(); }
@@ -95,6 +95,7 @@ public class ItemFragment extends androidx.fragment.app.Fragment
     {
         if (this.changerIsImplemented())
         {
+            @androidx.annotation.Nullable
             final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
             if (null != item)
             {
@@ -108,6 +109,7 @@ public class ItemFragment extends androidx.fragment.app.Fragment
     {
         if (this.changerIsImplemented())
         {
+            @androidx.annotation.Nullable
             final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
             if (null != item)
             {
@@ -121,6 +123,7 @@ public class ItemFragment extends androidx.fragment.app.Fragment
     {
         if (this.changerIsImplemented())
         {
+            @androidx.annotation.Nullable
             final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
             if (null != item) this.helperChanger.change(item);
         }
@@ -130,6 +133,7 @@ public class ItemFragment extends androidx.fragment.app.Fragment
     {
         if (this.changerIsImplemented())
         {
+            @androidx.annotation.Nullable
             final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
             if (null != item)
             {
@@ -178,7 +182,8 @@ public class ItemFragment extends androidx.fragment.app.Fragment
             throw new java.lang.RuntimeException(context.toString() + " must implement Helper");
     }
 
-    @java.lang.Override public void onCreate(final android.os.Bundle savedInstanceState)
+    @java.lang.Override public void onCreate(
+    @androidx.annotation.Nullable final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
@@ -289,6 +294,7 @@ public class ItemFragment extends androidx.fragment.app.Fragment
         {
             final boolean itemIsNotNull;
             {
+                @androidx.annotation.Nullable
                 final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
                 itemIsNotNull = null != item;
 
@@ -310,6 +316,7 @@ public class ItemFragment extends androidx.fragment.app.Fragment
     {
         final boolean canMoveUp, canMoveDown;
         {
+            @androidx.annotation.Nullable
             final org.wheatgenetics.javalib.mstrdtl.Item item = this.item();
             if (null == item)
                 { canMoveUp = canMoveDown = false; }

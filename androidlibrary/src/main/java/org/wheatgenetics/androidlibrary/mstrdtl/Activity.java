@@ -14,6 +14,7 @@ package org.wheatgenetics.androidlibrary.mstrdtl;
  * androidx.annotation.RestrictTo
  * androidx.annotation.RestrictTo.Scope
  * androidx.appcompat.app.AppCompatActivity
+ * androidx.fragment.app.Fragment
  * androidx.fragment.app.FragmentManager
  *
  * org.wheatgenetics.javalib.mstrdtl.Item
@@ -38,7 +39,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     private void log(@androidx.annotation.NonNull final java.lang.String msg)
     { android.util.Log.d(this.getClass().getName(), msg); }
 
-    private java.lang.String jsonFromItems()
+    @androidx.annotation.Nullable private java.lang.String jsonFromItems()
     {
         final java.lang.String trimmedJson;
         {
@@ -54,7 +55,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     @androidx.annotation.NonNull private android.content.Intent putJsonIntoIntent(
     @androidx.annotation.NonNull final android.content.Intent intent)
     {
-        final java.lang.String json = this.jsonFromItems();
+        @androidx.annotation.Nullable final java.lang.String json = this.jsonFromItems();
         this.log("setResultFromJson(): putJsonIntoIntent(): " + json);
         return org.wheatgenetics.androidlibrary.mstrdtl.Utils.putJsonIntoIntent(json, intent);
     }
@@ -89,8 +90,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     /** Called by ItemActivity.onCreate(). */
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     void setAndAddItemFragment(@androidx.annotation.IdRes final int containerViewId,
-    @androidx.annotation.NonNull
-        final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment itemFragment)
+    @androidx.annotation.NonNull final org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment
+        itemFragment)
     {
         this.getSupportFragmentManager().beginTransaction().add(
             containerViewId, this.itemFragment = itemFragment).commit();
@@ -142,7 +143,8 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
 
     // region Protected Methods
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
-    @androidx.annotation.NonNull protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
+    @androidx.annotation.NonNull
+    protected abstract org.wheatgenetics.javalib.mstrdtl.Items items();
 
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     protected java.lang.String getJson() { return this.json; }
@@ -173,7 +175,7 @@ implements org.wheatgenetics.androidlibrary.mstrdtl.ItemFragment.Helper
     @androidx.annotation.NonNull final android.os.Bundle outState)
     {
         {
-            final java.lang.String json = this.jsonFromItems();
+            @androidx.annotation.Nullable final java.lang.String json = this.jsonFromItems();
             if (null != json) outState.putString(
                 org.wheatgenetics.androidlibrary.mstrdtl.Consts.JSON_KEY, json);
         }
