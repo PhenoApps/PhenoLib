@@ -42,12 +42,12 @@ ext {
 dependencies {
     api                       fileTree(dir: "libs", include: ["*.jar"])
     implementation            "androidx.appcompat:appcompat:1.1.0"
-    implementation            "com.google.android.material:material:1.0.0"
+    implementation            "com.google.android.material:material:1.1.0"
     implementation            "androidx.recyclerview:recyclerview:1.1.0"
-    testImplementation        "junit:junit:4.12"
+    testImplementation        "junit:junit:4.13"
     androidTestImplementation "androidx.test.ext:junit:1.1.1"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
-    implementation            "org.phenoapps:javalib:1.0.2"
+    implementation            "org.phenoapps:javalib:1.0.5"
 
     api "com.android.volley:volley:${volley_version}"
     api "com.google.code.gson:gson:${gson_version}"
@@ -78,7 +78,7 @@ apply plugin: "com.novoda.bintray-release"
 ext {
     bintrayGroupId    = "org.phenoapps"
     bintrayArtifactId = "androidlibrary"
-    bintrayVersion    = "1.0.1"
+    bintrayVersion    = "1.0.2"
 }
 
 Properties properties = new Properties()
