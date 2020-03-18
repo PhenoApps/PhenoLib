@@ -5,6 +5,7 @@ package org.wheatgenetics.androidlibrary;
  * android.app.Activity
  * android.content.DialogInterface.OnMultiChoiceClickListener
  *
+ * androidx.annotation.NonNull
  * androidx.annotation.Size
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
@@ -12,8 +13,8 @@ package org.wheatgenetics.androidlibrary;
 @java.lang.SuppressWarnings({"unused"}) public abstract class MultiChoiceItemsAlertDialog
 extends org.wheatgenetics.androidlibrary.AlertDialog
 {
-    public MultiChoiceItemsAlertDialog(final android.app.Activity activity)
-    { super(activity); }
+    public MultiChoiceItemsAlertDialog(@androidx.annotation.NonNull
+    final android.app.Activity activity) { super(activity); }
 
     @java.lang.Override public void configure() { this.setCancelNegativeButton(); }
 
