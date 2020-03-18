@@ -160,6 +160,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
                 final int notFoundIndex = -1                      ;
                 if (endIndex == notFoundIndex)
                 {
+                    // noinspection ConstantConditions
                     arrayList = org.wheatgenetics.brapi1_3.AlertDialog.arrayList(arrayList);
                     arrayList.add(stringText);
                 }

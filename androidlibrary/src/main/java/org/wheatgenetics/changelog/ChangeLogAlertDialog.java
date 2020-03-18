@@ -82,6 +82,7 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         // endregion
 
                         // region Private Methods
+                        @androidx.annotation.NonNull
                         private android.widget.TextView makeTextView()
                         {
                             if (null == this.layoutParams)
@@ -109,11 +110,8 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                                                       final java.lang.CharSequence text )
                         {
                             final android.widget.TextView textView = this.makeTextView();
-                            if (null != textView)
-                            {
-                                textView.setTextAppearance(this.applicationContext, resId);
-                                textView.setText(text);
-                            }
+                            textView.setTextAppearance(this.applicationContext, resId);
+                            textView.setText(text);
 
                             this.linearLayout.addView(textView);
                         }
@@ -134,8 +132,7 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         @java.lang.Override public void handleBlankLine()
                         {
                             final android.widget.TextView spacerTextView = this.makeTextView();
-                            if (null != spacerTextView)
-                                { spacerTextView.setTextSize(5); spacerTextView.setText("\n"); }
+                            spacerTextView.setTextSize(5); spacerTextView.setText("\n");
                             this.linearLayout.addView(spacerTextView);
                         }
 
