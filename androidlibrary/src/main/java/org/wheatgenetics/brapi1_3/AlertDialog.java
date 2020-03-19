@@ -9,6 +9,7 @@ package org.wheatgenetics.brapi1_3;
  * android.util.Log
  * android.widget.EditText
  *
+ * androidx.annotation.NonNull
  * androidx.annotation.RestrictTo
  * androidx.annotation.RestrictTo.Scope
 
@@ -200,7 +201,7 @@ public abstract class AlertDialog extends org.wheatgenetics.androidlibrary.Alert
     }
     // endregion
 
-    public AlertDialog(final android.app.Activity activity,
+    public AlertDialog(@androidx.annotation.NonNull final android.app.Activity activity,
     final org.wheatgenetics.brapi1_3.AlertDialog.Handler handler)
     { super(activity); this.handler = handler; }
 

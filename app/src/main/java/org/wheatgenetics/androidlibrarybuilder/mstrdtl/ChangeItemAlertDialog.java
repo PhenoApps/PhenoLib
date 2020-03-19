@@ -8,6 +8,8 @@ package org.wheatgenetics.androidlibrarybuilder.mstrdtl;
  * android.view.View.OnClickListener
  * android.widget.EditText
  *
+ * androidx.annotation.NonNull
+ *
  * org.wheatgenetics.javalib.mstrdtl.TestItem
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
@@ -36,7 +38,7 @@ class ChangeItemAlertDialog extends org.wheatgenetics.androidlibrary.AlertDialog
         if (null != this.handler) this.handler.handleChangeItemDone();
     }
 
-    ChangeItemAlertDialog(final android.app.Activity activity,
+    ChangeItemAlertDialog(@androidx.annotation.NonNull final android.app.Activity activity,
     final org.wheatgenetics.androidlibrarybuilder.mstrdtl.ChangeItemAlertDialog.Handler handler)
     { super(activity); this.handler = handler; }
 

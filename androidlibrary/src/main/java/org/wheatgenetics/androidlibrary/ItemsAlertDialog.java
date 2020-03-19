@@ -5,6 +5,7 @@ package org.wheatgenetics.androidlibrary;
  * android.app.Activity
  * android.content.DialogInterface.OnClickListener
  *
+ * androidx.annotation.NonNull
  * androidx.annotation.Size
  *
  * org.wheatgenetics.androidlibrary.AlertDialog
@@ -13,8 +14,8 @@ public abstract class ItemsAlertDialog extends org.wheatgenetics.androidlibrary.
 {
     private android.content.DialogInterface.OnClickListener onClickListener;
 
-    @java.lang.SuppressWarnings({"unused"})
-    public ItemsAlertDialog(final android.app.Activity activity) { super(activity); }
+    @java.lang.SuppressWarnings({"unused"}) public ItemsAlertDialog(@androidx.annotation.NonNull
+    final android.app.Activity activity) { super(activity); }
 
     // region Public Methods
     @java.lang.SuppressWarnings({"unused"}) public void setOnClickListener(

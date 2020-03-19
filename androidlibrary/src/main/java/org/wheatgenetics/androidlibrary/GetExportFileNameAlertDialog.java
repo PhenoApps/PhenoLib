@@ -8,6 +8,8 @@ package org.wheatgenetics.androidlibrary;
  * android.view.View.OnClickListener
  * android.widget.EditText
  *
+ * androidx.annotation.NonNull
+ *
  * org.wheatgenetics.androidlibrary.AlertDialog
  * org.wheatgenetics.androidlibrary.R
  * org.wheatgenetics.androidlibrary.Utils
@@ -27,7 +29,7 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
     {
         final java.lang.String fileName =
             org.wheatgenetics.androidlibrary.Utils.getText(this.editText);
-        if (0 == fileName.length())
+        if (fileName.length() < 1)
             this.showToast(
                 org.wheatgenetics.androidlibrary.R.string.getExportFileNameAlertDialogToast);
         else
@@ -37,7 +39,8 @@ public class GetExportFileNameAlertDialog extends org.wheatgenetics.androidlibra
         }
     }
 
-    public GetExportFileNameAlertDialog(final android.app.Activity              activity,
+    public GetExportFileNameAlertDialog(@androidx.annotation.NonNull
+    final android.app.Activity                                                  activity,
     final org.wheatgenetics.androidlibrary.GetExportFileNameAlertDialog.Handler handler )
     { super(activity); this.handler = handler; }
 

@@ -11,6 +11,7 @@ package org.wheatgenetics.changelog;
  * android.widget.TextView
  *
  * androidx.annotation.NonNull
+ * androidx.annotation.Nullable
  * androidx.annotation.RawRes
  * androidx.annotation.StyleRes
  *
@@ -36,28 +37,25 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
             @androidx.annotation.NonNull private final android.app.Activity activity              ;
             @androidx.annotation.RawRes  private final int                  changeLogRawResourceId;
 
-            private android.widget.LinearLayout           linearLayout = null;
-            private org.wheatgenetics.changelog.ChangeLog changeLog    = null;
-            private android.widget.ScrollView             scrollView   = null;
+            private android.widget.LinearLayout           linearLayoutInstance = null;
+            private org.wheatgenetics.changelog.ChangeLog changeLogInstance    = null;
+            private android.widget.ScrollView             scrollViewInstance   = null;
             // endregion
 
-            private ScrollView(
-            @androidx.annotation.NonNull final android.app.Activity activity              ,
-            @androidx.annotation.RawRes  final int                  changeLogRawResourceId)
+            // region Private Methods
+            @androidx.annotation.NonNull private android.widget.LinearLayout linearLayout()
             {
-                super();
-                this.activity = activity; this.changeLogRawResourceId = changeLogRawResourceId;
+                if (null == this.linearLayoutInstance)
+                {
+                    this.linearLayoutInstance = new android.widget.LinearLayout(this.activity);
+                    this.linearLayoutInstance.setOrientation(android.widget.LinearLayout.VERTICAL);
+                }
+                return this.linearLayoutInstance;
             }
 
-            private android.widget.ScrollView get()
+            @androidx.annotation.NonNull private org.wheatgenetics.changelog.ChangeLog changeLog()
             {
-                if (null == this.linearLayout)
-                {
-                    this.linearLayout = new android.widget.LinearLayout(this.activity);
-                    this.linearLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
-                }
-
-                if (null == this.changeLog)
+                if (null == this.changeLogInstance)
                 {
                     final java.io.InputStreamReader inputStreamReader;
                     {
@@ -73,35 +71,41 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                     implements org.wheatgenetics.changelog.ChangeLog.LineHandler
                     {
                         // region Fields
-                        @androidx.annotation.NonNull private final android.app.Activity activity;
-                        @androidx.annotation.NonNull private final
-                            android.widget.LinearLayout linearLayout;
+                        @androidx.annotation.NonNull private final android.app.Activity    activity;
+                        @androidx.annotation.NonNull private final android.widget.LinearLayout
+                            linearLayout;
                         private final android.content.Context applicationContext;
 
-                        private android.widget.LinearLayout.LayoutParams layoutParams = null;
+                        private android.widget.LinearLayout.LayoutParams
+                            layoutParamsInstance = null;                                // lazy load
                         // endregion
 
                         // region Private Methods
                         @androidx.annotation.NonNull
-                        private android.widget.TextView makeTextView()
+                        private android.widget.LinearLayout.LayoutParams layoutParams()
                         {
-                            if (null == this.layoutParams)
+                            if (null == this.layoutParamsInstance)
                             {
-                                this.layoutParams = new android.widget.LinearLayout.LayoutParams(
-                                    /* width => */
-                                        android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
-                                    /* height => */
-                                        android.widget.LinearLayout.LayoutParams.MATCH_PARENT);
-                                this.layoutParams.setMargins(
+                                this.layoutParamsInstance =
+                                    new android.widget.LinearLayout.LayoutParams(
+                                        /* width => */
+                                            android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                                        /* height => */
+                                            android.widget.LinearLayout.LayoutParams.MATCH_PARENT);
+                                this.layoutParamsInstance.setMargins(
                                     /* left   => */20,
                                     /* top    => */5,
                                     /* right  => */20,
                                     /* bottom => */0);
                             }
+                            return this.layoutParamsInstance;
+                        }
 
+                        @androidx.annotation.NonNull private android.widget.TextView makeTextView()
+                        {
                             final android.widget.TextView result =
                                 new android.widget.TextView(this.activity);
-                            result.setLayoutParams(this.layoutParams);
+                            result.setLayoutParams(this.layoutParams());
                             return result;
                         }
 
@@ -152,19 +156,39 @@ public class ChangeLogAlertDialog extends org.wheatgenetics.androidlibrary.Alert
                         // endregion
                     }
 
-                    this.changeLog = new org.wheatgenetics.changelog.ChangeLog(
+                    this.changeLogInstance = new org.wheatgenetics.changelog.ChangeLog(
                         /* inputStreamReader => */ inputStreamReader,
-                        /* lineHandler => */ new LineHandler(this.activity, this.linearLayout));
+                        /* lineHandler => */ new LineHandler(this.activity, this.linearLayout()));
                 }
-                try { this.changeLog.iterate() /* throws java.io.IOException */; }
+                return this.changeLogInstance;
+            }
+
+            @androidx.annotation.NonNull private android.widget.ScrollView scrollView()
+            {
+                if (null == this.scrollViewInstance)
+                {
+                    this.scrollViewInstance = new android.widget.ScrollView(this.activity);
+                    this.scrollViewInstance.removeAllViews();
+                    this.scrollViewInstance.addView       (this.linearLayout());
+                }
+                return this.scrollViewInstance;
+            }
+            // endregion
+
+            private ScrollView(
+            @androidx.annotation.NonNull final android.app.Activity activity              ,
+            @androidx.annotation.RawRes  final int                  changeLogRawResourceId)
+            {
+                super();
+                this.activity = activity; this.changeLogRawResourceId = changeLogRawResourceId;
+            }
+
+            @androidx.annotation.Nullable private android.widget.ScrollView get()
+            {
+                try { this.changeLog().iterate() /* throws java.io.IOException */; }
                 catch (final java.io.IOException e) { return null; }
 
-                if (null == this.scrollView)
-                {
-                    this.scrollView = new android.widget.ScrollView(this.activity);
-                    this.scrollView.removeAllViews(); this.scrollView.addView(this.linearLayout);
-                }
-                return this.scrollView;
+                return this.scrollView();
             }
         }
         this.setView(new ScrollView(activity, changeLogRawResourceId).get());

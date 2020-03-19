@@ -39,8 +39,7 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
     @java.lang.Override public void configure()
     {
         this.setTitle(org.wheatgenetics.androidlibrary.R.string.scaleExceptionAlertDialogTitle)
-            .setCancelableToFalse()
-            .setPositiveButton(org.wheatgenetics.androidlibrary.
+            .setCancelableToFalse().setPositiveButton(org.wheatgenetics.androidlibrary.
                     R.string.scaleExceptionAlertDialogPositiveButtonText,
                 new android.content.DialogInterface.OnClickListener()
                 {
@@ -63,8 +62,7 @@ public class ScaleExceptionAlertDialog extends org.wheatgenetics.androidlibrary.
     @androidx.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     { this.setMessage(e.getMessage()); this.createShow(); }
 
-    @java.lang.SuppressWarnings({"unused"}) public void show(
-    @androidx.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
+    public void show(@androidx.annotation.NonNull final org.wheatgenetics.usb.Device.Exception e)
     {
         if (e instanceof org.wheatgenetics.usb.Device.UsbDeviceIsNull)
         {
