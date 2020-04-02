@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +9,7 @@
 
     tools:context=".brapi1_3.studies.Fragment">
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/studiesMiddleGuideline"
 
         android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
 
 
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/studiesLeftGuideline"
 
         android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
 
         app:layout_constraintGuide_percent="0.33" />
 
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/studiesRightGuideline"
 
         android:layout_width="wrap_content"
@@ -377,4 +377,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

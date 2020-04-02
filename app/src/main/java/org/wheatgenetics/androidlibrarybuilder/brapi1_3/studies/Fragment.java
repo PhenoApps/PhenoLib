@@ -125,20 +125,21 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
     // region Types
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Helper
     {
-        public abstract org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest
-        getStudyLayoutRequest();
+        @androidx.annotation.Nullable public abstract
+        org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest getStudyLayoutRequest();
 
         public abstract void setStudyLayoutRequest(
         org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest studyLayoutRequest);
 
 
-        public abstract org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest
-        getNewObservationsRequest();
+        @androidx.annotation.Nullable public abstract
+        org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest getNewObservationsRequest();
 
         public abstract void setNewObservationsRequest(
         org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest newObservationsRequest);
 
 
+        @androidx.annotation.Nullable
         public abstract org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
         getNewObservationUnitRequests();
 

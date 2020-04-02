@@ -45,7 +45,8 @@ public abstract class Fragment extends androidx.fragment.app.Fragment
         protected void handleSuccess(final T result) { this.setResponseTextViewText(result); }
 
         // region Overridden Methods
-        @java.lang.Override public void onFailure(final io.swagger.client.ApiException e,
+        @java.lang.Override public void onFailure(
+        final io.swagger.client.ApiException                                    e              ,
         final int                                                               statusCode     ,
         final java.util.Map<java.lang.String, java.util.List<java.lang.String>> responseHeaders)
         {
@@ -74,6 +75,7 @@ public abstract class Fragment extends androidx.fragment.app.Fragment
     // region Private Methods
     private void clearSupplier() { this.setSupplier(null); }
 
+    // region setResponseTextViewText() Private Methods
     private void setResponseTextViewText(final java.lang.String text)
     { if (null != this.responseTextView) this.responseTextView.setText(text); }
 
@@ -90,6 +92,7 @@ public abstract class Fragment extends androidx.fragment.app.Fragment
             });
     }
     // endregion
+    // endregion
 
     // region Package Methods
     // region Supplier Package Methods
@@ -101,14 +104,14 @@ public abstract class Fragment extends androidx.fragment.app.Fragment
     }
 
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
-    void failSupplier(final android.content.Context context)
+    void failSupplier(@androidx.annotation.NonNull final android.content.Context context)
     {
         this.clearSupplier();
-        throw new java.lang.RuntimeException(null == context ?
-            "context" : context.toString() + " must implement Supplier");
+        throw new java.lang.RuntimeException(context.toString() + " must implement Supplier");
     }
 
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
+    @androidx.annotation.Nullable
     org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier getSupplier()
     { return this.supplier; }
     // endregion
@@ -196,6 +199,7 @@ public abstract class Fragment extends androidx.fragment.app.Fragment
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @androidx.annotation.Nullable protected io.swagger.client.ApiClient apiClient()
     {
+        @androidx.annotation.Nullable
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
             this.getSupplier();
         return null == supplier ? null : supplier.apiClient();
@@ -204,6 +208,7 @@ public abstract class Fragment extends androidx.fragment.app.Fragment
     @androidx.annotation.RestrictTo(androidx.annotation.RestrictTo.Scope.SUBCLASSES)
     @androidx.annotation.Nullable protected java.lang.String authorization()
     {
+        @androidx.annotation.Nullable
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
             this.getSupplier();
         return null == supplier ? null : supplier.authorization();

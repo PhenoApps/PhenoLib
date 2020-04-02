@@ -48,13 +48,15 @@ public class Fragment extends org.wheatgenetics.androidlibrarybuilder.brapi1_3.F
 {
     @java.lang.SuppressWarnings({"UnnecessaryInterfaceModifier"}) public interface Helper
     {
-        public abstract org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
-        getPhenotypesRequest();
+        @androidx.annotation.Nullable public abstract
+        org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest getPhenotypesRequest();
 
         public abstract void setPhenotypesRequest(
         org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest);
 
+        @androidx.annotation.Nullable
         public abstract io.swagger.client.model.WSMIMEDataTypes getFormat();
+
         public abstract void setFormat(io.swagger.client.model.WSMIMEDataTypes format);
     }
 

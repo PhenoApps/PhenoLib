@@ -21,9 +21,11 @@ package org.wheatgenetics.androidlibrarybuilder.brapi1_3;
  * androidx.fragment.app.FragmentPagerAdapter
  * androidx.viewpager.widget.ViewPager
  * androidx.viewpager.widget.ViewPager.OnPageChangeListener
- * 
+ *
  * io.swagger.client.ApiClient
  * io.swagger.client.model.WSMIMEDataTypes
+ *
+ * org.wheatgenetics.javalib.mstrdtl.Items
  *
  * org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest
  *
@@ -70,14 +72,18 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
         final androidx.fragment.app.FragmentManager fragmentManager) { super(fragmentManager); }
 
         // region Overridden Methods
-        /** getItem() is called to instantiate the fragment for the given page. */
+        /**
+         * getItem() is called to instantiate the fragment for the page indicated by the position
+         * parameter.
+         */
         @java.lang.Override @androidx.annotation.NonNull
         public androidx.fragment.app.Fragment getItem(final int position)
         {
             switch (position)
             {
-                case org.wheatgenetics.androidlibrarybuilder.brapi1_3
-                    .Activity.FIRST_FRAGMENT_NAME_INDEX: return
+                case
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX:
+                    return
                         new org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment();
 
                 case 1: return new org.wheatgenetics.androidlibrarybuilder.brapi1_3.CallsFragment();
@@ -145,9 +151,11 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
                     org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
                         "People");
 
-                case org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity
-                    .LAST_FRAGMENT_NAME_INDEX: return org.wheatgenetics.androidlibrarybuilder
-                        .brapi1_3.StubFragment.instantiate("SearchServices");
+                case
+                org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX:
+                    return
+                        org.wheatgenetics.androidlibrarybuilder.brapi1_3.StubFragment.instantiate(
+                            "SearchServices");
                 
                 default: throw new java.lang.IllegalArgumentException("Bad position was passed");
             }
@@ -187,6 +195,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     // endregion
 
     // region Private Methods
+    // region setToolBarTitle() Private Methods
     private void setToolBarTitle(@androidx.annotation.IntRange(
     from = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX,
     to   = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX )
@@ -204,6 +213,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
         this.setToolBarTitle(
             org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX);
     }
+    // endregion
 
     private void setBasePathButNotToolbarTitle(final java.lang.String basePath)
     { this.apiClient().setBasePath(basePath); }
@@ -236,6 +246,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
         this.getPhenotypesRequest().fromJson(json);
     }
 
+    // region setPage() Private Methods
     private void setPage(@androidx.annotation.IntRange(
     from = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.FIRST_FRAGMENT_NAME_INDEX,
     to   = org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity.LAST_FRAGMENT_NAME_INDEX )
@@ -261,6 +272,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
             }
         }
     }
+    // endregion
 
     private static void putJsonIntoBundle(final java.lang.String key,
     final org.wheatgenetics.javalib.mstrdtl.Items items, final android.os.Bundle bundle)
@@ -474,7 +486,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     // endregion
 
     // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.studies.Fragment.Helper Overridden Methods
-    @java.lang.Override
+    @java.lang.Override @androidx.annotation.Nullable
     public org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequest getStudyLayoutRequest()
     { return this.studyLayoutRequestInstance; }
 
@@ -483,7 +495,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     { this.studyLayoutRequestInstance = studyLayoutRequest; }
 
 
-    @java.lang.Override
+    @java.lang.Override @androidx.annotation.Nullable
     public org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequest getNewObservationsRequest()
     { return this.newObservationsRequestInstance; }
 
@@ -492,7 +504,8 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     { this.newObservationsRequestInstance = newObservationsRequest; }
 
 
-    @java.lang.Override public org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
+    @java.lang.Override @androidx.annotation.Nullable public
+    org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequests
     getNewObservationUnitRequests() { return this.newObservationUnitRequestsInstance; }
 
     @java.lang.Override public void setNewObservationUnitRequests(final
@@ -501,7 +514,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     // endregion
 
     // region org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper Overridden Methods
-    @java.lang.Override
+    @java.lang.Override @androidx.annotation.Nullable
     public org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest getPhenotypesRequest()
     { return this.phenotypesRequest; }
 
@@ -509,7 +522,7 @@ org.wheatgenetics.androidlibrarybuilder.brapi1_3.observations.Fragment.Helper
     final org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequest phenotypesRequest)
     { this.phenotypesRequest = phenotypesRequest; }
 
-    @java.lang.Override
+    @java.lang.Override @androidx.annotation.Nullable
     public io.swagger.client.model.WSMIMEDataTypes getFormat() { return this.format; }
 
     @java.lang.Override public void setFormat(final io.swagger.client.model.WSMIMEDataTypes format)

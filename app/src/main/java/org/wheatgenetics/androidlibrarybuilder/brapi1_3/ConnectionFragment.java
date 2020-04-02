@@ -35,9 +35,11 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
     private android.widget.EditText basePathEditText, authorizationEditText;
 
     // region Private Methods
+    @androidx.annotation.Nullable
     private org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier
     getConnectionFragmentSupplier()
     {
+        @androidx.annotation.Nullable
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.Fragment.Supplier supplier =
             this.getSupplier();
         if (null == supplier)
@@ -55,6 +57,7 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
     // region basePath Private Methods
     private java.lang.CharSequence testServerBasePath()
     {
+        @androidx.annotation.Nullable
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier
             connectionFragmentSupplier = this.getConnectionFragmentSupplier();
         return null == connectionFragmentSupplier ? null :
@@ -72,6 +75,7 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
 
     private void setBasePath()
     {
+        @androidx.annotation.Nullable
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier
             connectionFragmentSupplier = this.getConnectionFragmentSupplier();
         if (null != connectionFragmentSupplier) connectionFragmentSupplier.setBasePath(
@@ -94,6 +98,7 @@ public class ConnectionFragment extends org.wheatgenetics.androidlibrarybuilder.
 
     private void setAuthorization()
     {
+        @androidx.annotation.Nullable
         final org.wheatgenetics.androidlibrarybuilder.brapi1_3.ConnectionFragment.Supplier
             connectionFragmentSupplier = this.getConnectionFragmentSupplier();
         if (null != connectionFragmentSupplier) connectionFragmentSupplier.setAuthorization(
