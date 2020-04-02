@@ -22,7 +22,7 @@ android {
 
 ext {
     okhttp_version     = "2.7.5"
-    threetenbp_version = "1.4.0"
+    threetenbp_version = "1.4.2"
 }
 
 dependencies {
