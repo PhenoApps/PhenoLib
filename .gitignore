@@ -57,6 +57,5 @@ secrets.properties
 *.orig
 
 # Unnecessary Github files
-.github/*
 !.github/ISSUE_TEMPLATE/
 !.github/PULL_REQUEST_TEMPLATE.md
