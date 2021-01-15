@@ -105,6 +105,7 @@ bintray {
         name = bintrayName
         version {
             name     = libraryVersion
+            released  = new Date()
         }
         websiteUrl = siteUrl
         vcsUrl = gitUrl

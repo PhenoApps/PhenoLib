@@ -5,7 +5,7 @@ apply plugin: 'com.jfrog.bintray'
 android {
     compileSdkVersion 29
 
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 16
@@ -66,4 +66,110 @@ dependencies {
     implementation "org.threeten:threetenbp:${threetenbp_version}"
 }
 
-apply from: 'bintray.gradle'
+ext {
+    bintrayRepo = 'PhenoLib'
+    bintrayName = 'PhenoLib'
+
+    publishedGroupId = 'org.phenoapps'
+    libraryName = 'PhenoLib'
+    artifact = 'phenolib'
+    libraryDescription = 'A Library for PhenoApps'
+    libraryVersion = '0.9.5'
+
+    siteUrl = 'https://github.com/PhenoApps/PhenoLib'
+    gitUrl = 'https://github.com/PhenoApps/PhenoLib.git'
+    githubRepository = 'PhenoApps/PhenoLib'
+
+    developerId = 'trife'
+    developerName = 'Trevor Rife'
+    developerEmail = 'trife@ksu.edu'
+
+    licenseName = 'GNU General Public License v3'
+    licenseUrl = 'https://www.gnu.org/licenses/gpl-3.0.en.html'
+    allLicenses = ["GPL-3.0"]
+}
+
+// mandatory
+group = publishedGroupId
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+
+                groupId publishedGroupId
+                artifactId = artifact
+                name libraryName
+                description = libraryDescription
+                url siteUrl
+                version libraryVersion
+
+                licenses {
+                    license {
+                        name licenseName
+                        url licenseUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id developerId
+                        name developerName
+                        email developerEmail
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+// Avoid Kotlin docs error
+tasks.withType(Javadoc) {
+    enabled = false
+}
+
+// Remove javadoc related tasks
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// https://github.com/bintray/gradle-bintray-plugin
+bintray {
+    user = System.getenv("bintrayUser")
+    key = System.getenv("bintrayApiKey")
+
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        version {
+            name = libraryVersion
+            released = new Date()
+        }
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = allLicenses
+        publish = true
+    }
+}
