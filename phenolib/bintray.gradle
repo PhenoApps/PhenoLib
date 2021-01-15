@@ -20,7 +20,7 @@ ext {
     githubRepository= 'PhenoApps/PhenoLib'
 
     // Developer Details
-    developerId = 'trife'
+    developerId = 'pheno-apps'
     developerName = 'Trevor Rife'
     developerEmail = 'trife@ksu.edu'
 
