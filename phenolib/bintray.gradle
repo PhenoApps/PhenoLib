@@ -12,7 +12,7 @@ ext {
     libraryName = 'PhenoLib'
     artifact = 'PhenoLib'
     libraryDescription = 'A Library for PhenoApps'
-    libraryVersion = version
+    libraryVersion = '0.9.3'
 
     // Repository Link (For e.g. GitHub repo)
     siteUrl = 'https://github.com/PhenoApps/PhenoLib'
