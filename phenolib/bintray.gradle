@@ -103,6 +103,9 @@ bintray {
     pkg {
         repo = bintrayRepo
         name = bintrayName
+        version {
+            name     = libraryVersion
+        }
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = allLicenses
