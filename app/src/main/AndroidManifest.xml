@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
-    package="org.wheatgenetics.androidlibrarybuilder">
+    package="org.phenoapps.androidlibrarybuilder">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"          />
     <uses-permission android:name="android.permission.INTERNET"                        />
@@ -19,7 +19,7 @@
 
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity" android:launchMode="singleTask">
+        <activity android:name="org.phenoapps.androidlibrarybuilder.MainActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
@@ -34,75 +34,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".WebViewActivity" />
+        <activity android:name="org.phenoapps.androidlibrarybuilder.WebViewActivity" />
 
-        <activity android:name=".mstrdtl.ItemActivity"           android:launchMode="singleTask" />
-        <activity android:name=".mstrdtl.ChangeableItemActivity" android:launchMode="singleTask" />
+        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ItemActivity"           android:launchMode="singleTask" />
+        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ChangeableItemActivity" android:launchMode="singleTask" />
 
-        <activity android:name=".mstrdtl.ListActivity"           android:launchMode="singleTask" />
-        <activity android:name=".mstrdtl.ChangeableListActivity" android:launchMode="singleTask" />
-
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestLayoutItemActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.slr.StudyLayoutRequestListActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestObservationsItemActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nor.NewObservationsRequestListActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestItemActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nour.NewObservationUnitRequestsListActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefItemActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nour.oux.ObservationUnitXrefListActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nour.o.ObservationItemActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nour.o.ObservationsListActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentItemActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.studies.nour.ot.ObservationTreatmentsListActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestDataItemActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.observations.pr.PhenotypesRequestListActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.observations.pr.o.ObservationItemActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="org.wheatgenetics.brapi1_3.observations.pr.o.ObservationsListActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name=".brapi1_3.Activity"
-            android:launchMode="singleTask"
-            android:label="@string/title_activity_brapi1_3"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ListActivity"           android:launchMode="singleTask" />
+        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ChangeableListActivity" android:launchMode="singleTask" />
 
     </application>
 

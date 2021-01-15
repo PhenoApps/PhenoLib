@@ -1,0 +1,99 @@
+apply plugin: "com.android.library"
+
+android {
+    compileSdkVersion 29
+
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion    16
+        targetSdkVersion 29
+        versionCode       1
+        versionName      "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles     "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    packagingOptions { exclude "META-INF/DEPENDENCIES" }
+}
+
+ext {
+    volley_version              = "1.1.1"
+    gson_version                = "2.8.6"
+    swagger_annotations_version = "1.6.1"
+    httpcore_version            = "4.4.13"
+    httpmime_version            = "4.5.12"
+
+    okhttp_version                 = "2.7.5"
+    gsonfire_version               = "1.8.4"
+    v3_swagger_annotations_version = "2.1.2"
+    javax_annotation_version       = "1.3.2"
+    threetenbp_version             = "1.4.2"
+}
+
+dependencies {
+    api                       fileTree(dir: "libs", include: ["*.jar"])
+    implementation            "androidx.appcompat:appcompat:1.1.0"
+    implementation            "com.google.android.material:material:1.1.0"
+    implementation            "androidx.recyclerview:recyclerview:1.1.0"
+    testImplementation        "junit:junit:4.13"
+    androidTestImplementation "androidx.test.ext:junit:1.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
+
+    api "com.android.volley:volley:${volley_version}"
+    api "com.google.code.gson:gson:${gson_version}"
+    api "io.swagger:swagger-annotations:${swagger_annotations_version}"
+    api "org.apache.httpcomponents:httpcore:${httpcore_version}"
+    api "org.apache.httpcomponents:httpmime:${httpmime_version}"
+
+    api "com.google.code.gson:gson:${gson_version}"
+    api "com.squareup.okhttp:okhttp:${okhttp_version}"
+    api "com.squareup.okhttp:logging-interceptor:${okhttp_version}"
+    api "io.gsonfire:gson-fire:${gsonfire_version}"
+    api "io.swagger.core.v3:swagger-annotations:${v3_swagger_annotations_version}"
+    api "javax.annotation:javax.annotation-api:${javax_annotation_version}"
+    api "org.threeten:threetenbp:${threetenbp_version}"
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// USAGE:
+// Run the command
+// 'export JAVA_HOME="/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home"' if you
+// haven't already.
+//
+// Run the command './gradlew bintrayUpload'
+
+apply plugin: "com.novoda.bintray-release"
+
+ext {
+    bintrayGroupId    = "org.phenoapps"
+    bintrayArtifactId = "androidlibrary"
+    bintrayVersion    = "1.0.2"
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file("secrets.properties").newDataInputStream())
+
+publish {
+    userOrg        = "pheno-apps"
+    repoName       = "pheno-apps-android-library"
+    groupId        = "${bintrayGroupId}"
+    artifactId     = "${bintrayArtifactId}"
+    publishVersion = "${bintrayVersion}"
+    licences       = ["GPL-2.0"]
+    uploadName     = "${bintrayGroupId}:${bintrayArtifactId}"
+    desc           = "${bintrayGroupId}:${bintrayArtifactId}:${bintrayVersion}"
+    website        = "https://github.com/PhenoLibs/AndroidLibraryBuilder"
+    bintrayUser    = properties.getProperty("bintray.username")
+    bintrayKey     = properties.getProperty("bintray.apiKey"  )
+    dryRun         = false
+}

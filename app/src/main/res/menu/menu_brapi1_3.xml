@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    tools:context="org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity">
+    tools:context="org.phenoapps.androidlibrarybuilder.brapi1_3.Activity">
 
     <item
         android:id="@+id/ConnectionMenuItemId"

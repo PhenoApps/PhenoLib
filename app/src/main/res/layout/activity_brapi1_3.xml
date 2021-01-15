@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
 
-    tools:context="org.wheatgenetics.androidlibrarybuilder.brapi1_3.Activity">
+    tools:context="org.phenoapps.androidlibrarybuilder.brapi1_3.Activity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
