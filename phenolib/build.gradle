@@ -1,6 +1,10 @@
 apply plugin: "com.android.library"
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+
+version '0.9.6'
 
 android {
     compileSdkVersion 29
@@ -74,7 +78,7 @@ ext {
     libraryName = 'PhenoLib'
     artifact = 'phenolib'
     libraryDescription = 'A Library for PhenoApps'
-    libraryVersion = '0.9.5'
+    libraryVersion = this.version
 
     siteUrl = 'https://github.com/PhenoApps/PhenoLib'
     gitUrl = 'https://github.com/PhenoApps/PhenoLib.git'
@@ -104,7 +108,7 @@ install {
                 name libraryName
                 description = libraryDescription
                 url siteUrl
-                version libraryVersion
+                version this.version
 
                 licenses {
                     license {
@@ -154,6 +158,14 @@ artifacts {
     archives sourcesJar
 }
 
+publishing {
+    publications {
+        Production(MavenPublication) {
+            version this.version
+        }
+    }
+}
+
 // https://github.com/bintray/gradle-bintray-plugin
 bintray {
     user = System.getenv("bintrayUser")
@@ -164,7 +176,7 @@ bintray {
         repo = bintrayRepo
         name = bintrayName
         version {
-            name = libraryVersion
+            name = this.version
             released = new Date()
         }
         websiteUrl = siteUrl
