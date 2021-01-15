@@ -8,11 +8,11 @@ ext {
     bintrayName = 'PhenoLib'
 
     // Library Details
-    publishedGroupId = 'phenoapps'
+    publishedGroupId = 'org.phenoapps'
     libraryName = 'PhenoLib'
-    artifact = 'PhenoLib'
+    artifact = 'phenolib'
     libraryDescription = 'A Library for PhenoApps'
-    libraryVersion = '0.9.3'
+    libraryVersion = '0.9.4'
 
     // Repository Link (For e.g. GitHub repo)
     siteUrl = 'https://github.com/PhenoApps/PhenoLib'
