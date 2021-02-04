@@ -36,8 +36,8 @@ jobs:
       - name: Publish to GitHub Package Registry 🚀
         run: bash ./gradlew :phenolib:publish
         env:
-          GPR_USER: ${{ github.actor }}
-          GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
+          GPR_USER: ${{ secrets.GPR_USER }}
+          GPR_KEY: ${{ secrets.GPR_API_KEY }}
 
       - name: Create Release ✅
         id: create_release
