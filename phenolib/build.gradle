@@ -1,21 +1,17 @@
 apply plugin: "com.android.library"
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
-
-
-version '0.9.7'
+apply from: "../dependencies.gradle"
 
 android {
-    compileSdkVersion 29
-
-    buildToolsVersion "29.0.3"
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.publishVersionCode
+        versionName versions.publishVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -31,20 +27,6 @@ android {
     packagingOptions { exclude "META-INF/DEPENDENCIES" }
 }
 
-ext {
-    volley_version = "1.1.1"
-    gson_version = "2.8.6"
-    swagger_annotations_version = "1.6.1"
-    httpcore_version = "4.4.13"
-    httpmime_version = "4.5.12"
-
-    okhttp_version = "2.7.5"
-    gsonfire_version = "1.8.4"
-    v3_swagger_annotations_version = "2.1.2"
-    javax_annotation_version = "1.3.2"
-    threetenbp_version = "1.4.2"
-}
-
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "androidx.appcompat:appcompat:1.2.0"
@@ -55,133 +37,56 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:1.1.2"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
 
-    implementation "com.android.volley:volley:${volley_version}"
-    implementation "com.google.code.gson:gson:${gson_version}"
-    implementation "io.swagger:swagger-annotations:${swagger_annotations_version}"
-    implementation "org.apache.httpcomponents:httpcore:${httpcore_version}"
-    implementation "org.apache.httpcomponents:httpmime:${httpmime_version}"
+    implementation "com.android.volley:volley:1.1.1"
+    implementation "com.google.code.gson:gson:2.8.6"
+    implementation "io.swagger:swagger-annotations:1.6.1"
+    implementation "org.apache.httpcomponents:httpcore:4.4.13"
+    implementation "org.apache.httpcomponents:httpmime:4.5.12"
 
-    implementation "com.google.code.gson:gson:${gson_version}"
-    implementation "com.squareup.okhttp:okhttp:${okhttp_version}"
-    implementation "com.squareup.okhttp:logging-interceptor:${okhttp_version}"
-    implementation "io.gsonfire:gson-fire:${gsonfire_version}"
-    implementation "io.swagger.core.v3:swagger-annotations:${v3_swagger_annotations_version}"
-    implementation "javax.annotation:javax.annotation-api:${javax_annotation_version}"
-    implementation "org.threeten:threetenbp:${threetenbp_version}"
+    implementation "com.google.code.gson:gson:2.8.6"
+    implementation "com.squareup.okhttp:okhttp:2.7.5"
+    implementation "com.squareup.okhttp:logging-interceptor:2.7.5"
+    implementation "io.gsonfire:gson-fire:1.8.4"
+    implementation "io.swagger.core.v3:swagger-annotations:2.1.2"
+    implementation "javax.annotation:javax.annotation-api:1.3.2"
+    implementation "org.threeten:threetenbp:1.4.2"
 }
 
 ext {
-    bintrayRepo = 'PhenoLib'
-    bintrayName = 'PhenoLib'
+    mGroupId = "org.phenoapps.phenolib"
+    mArtifactId = "phenolib"
+    mVersionCode = versions.publishVersionCode
+    mVersionName = versions.publishVersion
 
-    publishedGroupId = 'org.phenoapps'
-    libraryName = 'PhenoLib'
-    artifact = 'phenolib'
-    libraryDescription = 'A Library for PhenoApps'
-    libraryVersion = this.version
-
-    siteUrl = 'https://github.com/PhenoApps/PhenoLib'
-    gitUrl = 'https://github.com/PhenoApps/PhenoLib.git'
-    githubRepository = 'PhenoApps/PhenoLib'
-
-    developerId = 'trife'
-    developerName = 'Trevor Rife'
-    developerEmail = 'trife@ksu.edu'
-
-    licenseName = 'GNU General Public License v3'
-    licenseUrl = 'https://www.gnu.org/licenses/gpl-3.0.en.html'
-    allLicenses = ["GPL-3.0"]
+    mLibraryName = "PhenoLib"
+    mLibraryDescription = "A library for PhenoApps"
 }
 
-// mandatory
-group = publishedGroupId
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
 
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId mGroupId
+                artifactId mArtifactId
+                version mVersionName
 
-                groupId publishedGroupId
-                artifactId = artifact
-                name libraryName
-                description = libraryDescription
-                url siteUrl
-                version this.version
+                from components.release
 
-                licenses {
-                    license {
-                        name licenseName
-                        url licenseUrl
-                    }
-                }
-                developers {
-                    developer {
-                        id developerId
-                        name developerName
-                        email developerEmail
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
+                artifact androidSourcesJar
+
+                pom {
+                    name = mLibraryName
+                    description = mLibraryDescription
                 }
             }
         }
+        repositories {}
     }
 }
 
-// Avoid Kotlin docs error
-tasks.withType(Javadoc) {
-    enabled = false
-}
-
-// Remove javadoc related tasks
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-publishing {
-    publications {
-        Production(MavenPublication) {
-            version this.version
-        }
-    }
-}
-
-// https://github.com/bintray/gradle-bintray-plugin
-bintray {
-    user = System.getenv("bintrayUser")
-    key = System.getenv("bintrayApiKey")
-
-    configurations = ['archives']
-    pkg {
-        repo = bintrayRepo
-        name = bintrayName
-        version {
-            name = this.version
-            released = new Date()
-        }
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = allLicenses
-        publish = true
-    }
-}
+publish.dependsOn assemble

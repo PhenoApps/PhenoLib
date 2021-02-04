@@ -9,16 +9,26 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'
 
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
+
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
 
 allprojects {
     repositories {
         google ()
         jcenter()
-        maven { url "https://dl.bintray.com/pheno-apps/pheno-apps-java-client-library" }
+
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/PhenoApps/PhenoLib")
+            credentials {
+                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+            }
+        }
     }
 }
 

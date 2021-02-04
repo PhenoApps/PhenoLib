@@ -48,6 +48,8 @@ proguard/
 # Other
 **/ApiKeys.java
 secrets.properties
+project.properties
+github.properties
 /captures
 .externalNativeBuild
 /androidlibrary/build
