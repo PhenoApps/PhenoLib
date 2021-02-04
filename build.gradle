@@ -13,9 +13,6 @@ buildscript {
     }
 }
 
-def githubProperties = new Properties()
-githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
-
 allprojects {
     repositories {
         google ()
@@ -25,8 +22,8 @@ allprojects {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/PhenoApps/PhenoLib")
             credentials {
-                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
-                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+                username = System.getenv("GPR_USER")
+                password = System.getenv("GPR_API_KEY")
             }
         }
     }
