@@ -93,9 +93,6 @@ afterEvaluate {
                 artifact("$buildDir/outputs/aar/phenolib-release.aar")
 
                 pom.withXml {
-                    name = mLibraryName
-                    description = mLibraryDescription
-
                     def dependenciesNode = asNode().appendNode('dependencies')
 
                     //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
