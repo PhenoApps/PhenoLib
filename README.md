@@ -1,6 +1,6 @@
 # PhenoLib
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Features:
@@ -40,6 +40,7 @@ implementation 'com.github.phenoapps:PhenoLib:v0.9.25'
   <tr>
     <td align="center"><a href="https://github.com/trife"><img src="https://avatars.githubusercontent.com/u/1869534?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Trevor Rife</b></sub></a><br /><a href="#projectManagement-trife" title="Project Management">📆</a> <a href="#ideas-trife" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/peterrosario"><img src="https://avatars.githubusercontent.com/u/26546705?v=4?s=100" width="100px;" alt=""/><br /><sub><b>peterrosario</b></sub></a><br /><a href="https://github.com/PhenoApps/PhenoLib/commits?author=peterrosario" title="Code">💻</a> <a href="#example-peterrosario" title="Examples">💡</a></td>
+    <td align="center"><a href="https://github.com/chaneylc"><img src="https://avatars.githubusercontent.com/u/5421632?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chaney Courtney</b></sub></a><br /><a href="https://github.com/PhenoApps/PhenoLib/commits?author=chaneylc" title="Code">💻</a></td>
   </tr>
 </table>
 
