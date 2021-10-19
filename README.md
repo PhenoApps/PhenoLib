@@ -33,7 +33,6 @@ implementation 'com.github.phenoapps:PhenoLib:v0.9.25'
 
 ## Contributors
 
-Trevor Rife - [trife@ksu.edu](mailto:trife@ksu.edu)
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -47,7 +46,6 @@ Trevor Rife - [trife@ksu.edu](mailto:trife@ksu.edu)
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-Peter J. Rosario - [peterrosario@ksu.edu](mailto:peterrosario@ksu.edu)
 
 ## License
 
