@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NeutralButtonEditTextDialog">
+        <attr name="positiveButtonText" format="string" />
+        <attr name="negativeButtonText" format="string" />
+        <attr name="neutralButtonText" format="string" />
+    </declare-styleable>
+</resources>

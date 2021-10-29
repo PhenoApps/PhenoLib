@@ -210,4 +210,9 @@
     <string name="PRObservationAlertDialogObservationVariableNameEditTextHint">observationVariableName</string>
     <string name="PRObservationAlertDialogSeasonEditTextHint">season</string>
     <string name="PRObservationAlertDialogValueEditTextHint">value</string>
+
+    <!-- Neutral Button Edit Text Dialog Preference -->
+    <string name="neutral">Neutral</string>
+    <string name="dialog_neutral_button_edit_text_hint">Input text here</string>
+
 </resources>
