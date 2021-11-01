@@ -34,6 +34,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="activities.PreferencesActivity"/>
+
         <activity android:name="org.phenoapps.androidlibrarybuilder.WebViewActivity" />
 
         <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ItemActivity"           android:launchMode="singleTask" />

@@ -1,11 +1,18 @@
 package org.phenoapps.androidlibrarybuilder;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.view.View;
+
 import org.phenoapps.mstrdtl.Consts;
 import org.phenoapps.mstrdtl.TestItems;
 import org.phenoapps.mstrdtl.Utils;
 import org.phenoapps.permissions.Dir;
 import org.phenoapps.permissions.PermissionDir;
 import org.phenoapps.permissions.RequestDir;
+
+import activities.PreferencesActivity;
 
 /**
  * Uses:
@@ -433,19 +440,22 @@ implements org.phenoapps.androidlibrary.DebouncingEditorActionListener.Receiver
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @androidx.annotation.NonNull
         final java.lang.String permissions[],
     @java.lang.SuppressWarnings({"CStyleArrayDeclaration"}) @androidx.annotation.NonNull
-        final int grantResults[])
-    {
-        if (org.phenoapps.androidlibrarybuilder.MainActivity.PERMISSIONS_REQUEST_CODE
-        ==  requestCode                                                                  )
-        {
+        final int grantResults[]) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (MainActivity.PERMISSIONS_REQUEST_CODE
+                == requestCode) {
             boolean permissionFound = false;
-            for (final java.lang.String permission: permissions)
-                if (android.Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(permission))
-                    { permissionFound = true; break; }
+            for (final String permission : permissions)
+                if (Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(permission)) {
+                    permissionFound = true;
+                    break;
+                }
 
-            if (permissionFound) for (final int grantResult: grantResults)
-                if (android.content.pm.PackageManager.PERMISSION_GRANTED == grantResult)
-                    { this.listAll(this.requestDir); break; }
+            if (permissionFound) for (final int grantResult : grantResults)
+                if (PackageManager.PERMISSION_GRANTED == grantResult) {
+                    this.listAll(this.requestDir);
+                    break;
+                }
         }
     }
 
@@ -591,6 +601,13 @@ implements org.phenoapps.androidlibrary.DebouncingEditorActionListener.Receiver
                 org.phenoapps.androidlibrarybuilder.MainActivity.MIN_BUTTON_STATE; break;
         }
         this.makeScaleButtonReflectCurrentButtonState();
+    }
+
+    public void onPreferenceClick(View view) {
+
+        Intent i = new Intent(this, PreferencesActivity.class);
+
+        startActivity(i);
     }
 
     public void onScaleReaderButtonClick(

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="PhenoLibs"
+        app:iconSpaceReserved="false">
+
+        <org.phenoapps.sharedpreferences.dialogs.NeutralButtonEditTextDialog
+            android:key="neutral_button_edit_text"
+            android:title="Neutral Button Edit Text"
+            app:positiveButtonText="@android:string/ok"
+            app:neutralButtonText="@string/neutral"
+            app:negativeButtonText="@android:string/no"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
