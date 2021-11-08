@@ -84,7 +84,7 @@ open class NeutralButtonEditTextDialogFragmentCompat: PreferenceDialogFragmentCo
 
         mEditText = view?.findViewById(R.id.dialog_neutral_button_edit_text_et)
 
-        mEditText?.setText(preference.sharedPreferences.getString(key, "test"))
+        mEditText?.setText(preference.sharedPreferences.getString(key, ""))
 
         view?.findViewById<Button>(R.id.dialog_neutral_button_edit_text_neutral_btn)?.let { button ->
             button.text = dialog.mNeutralText
