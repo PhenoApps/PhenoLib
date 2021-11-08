@@ -2,7 +2,9 @@ package org.phenoapps.sharedpreferences.dialogs
 
 import android.content.Context
 import android.util.AttributeSet
+import android.widget.EditText
 import androidx.preference.DialogPreference
+import androidx.preference.PreferenceViewHolder
 import org.phenoapps.androidlibrary.R
 
 /**
@@ -21,7 +23,7 @@ import org.phenoapps.androidlibrary.R
  * author: Chaney
  * date: 10/28/2021
  */
-class NeutralButtonEditTextDialog : DialogPreference {
+open class NeutralButtonEditTextDialog : DialogPreference {
 
     var mNeutralText: String? = null
     var mPositiveText: String? = null
@@ -58,5 +60,9 @@ class NeutralButtonEditTextDialog : DialogPreference {
 
             styled.recycle()
         }
+    }
+
+    open fun setText(text: String) {
+        persistString(text)
     }
 }
