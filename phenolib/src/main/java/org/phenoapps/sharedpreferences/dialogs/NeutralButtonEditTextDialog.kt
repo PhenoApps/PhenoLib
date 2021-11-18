@@ -62,6 +62,8 @@ open class NeutralButtonEditTextDialog : DialogPreference {
         }
     }
 
+    open fun getText() = getPersistedString("")
+
     open fun setText(text: String) {
         persistString(text)
     }
