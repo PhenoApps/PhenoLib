@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/bluetooth_discover_action_off"
+        android:icon="@drawable/ic_power_off"
+        android:title="Power Off"
+        app:showAsAction="always"/>
+    <item android:id="@+id/bluetooth_discover_action_on"
+        android:icon="@drawable/ic_power_on"
+        android:title="Power On"
+        app:showAsAction="always"/>
+</menu>

@@ -4,4 +4,18 @@
 
     <public name="camera_options_menu" type="menu" />
     <public name="cameraOptionsMenuItem" type="id" />
+
+    <public name="dir_export" type="string"/>
+    <public name="dir_database" type="string"/>
+    <public name="dir_sample" type="string"/>
+    <public name="directories" type="array"/>
+
+    <!-- keys -->
+    <public name="key_first_install" type="string"/>
+    <public name="key_default_uri" type="string"/>
+    <public name="key_enable_migrator" type="string"/>
+    <public name="key_pref_database" type="string"/>
+    <public name="key_pref_database_delete" type="string"/>
+    <public name="key_pref_database_export" type="string"/>
+    <public name="key_pref_database_import" type="string"/>
 </resources>

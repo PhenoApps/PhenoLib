@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:title="PhenoLibs"
+        android:title="Storage"
         app:iconSpaceReserved="false">
 
-        <org.phenoapps.sharedpreferences.dialogs.NeutralButtonEditTextDialog
-            android:key="neutral_button_edit_text"
-            android:title="Neutral Button Edit Text"
-            app:positiveButtonText="@android:string/ok"
-            app:neutralButtonText="@string/neutral"
-            app:negativeButtonText="@android:string/no"/>
+        <Preference
+            android:title="Definer"
+            android:icon="@drawable/ic_sdcard"
+            android:key="@string/key_pref_definer"
+            android:summary="Define Storage"/>
 
     </PreferenceCategory>
 

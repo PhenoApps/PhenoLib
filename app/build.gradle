@@ -1,4 +1,7 @@
-apply plugin: "com.android.application"
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 31
@@ -6,7 +9,7 @@ android {
     defaultConfig {
         applicationId "org.phenoapps.phenolib"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -20,8 +23,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     packagingOptions { exclude "META-INF/DEPENDENCIES" }
@@ -32,6 +35,7 @@ dependencies {
     implementation project(':phenolib')
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
     implementation "androidx.appcompat:appcompat:1.2.0"
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     implementation "androidx.preference:preference:1.1.1"
@@ -43,6 +47,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     implementation "com.squareup.okhttp:okhttp:2.7.5"
     implementation "org.threeten:threetenbp:1.5.0"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
 
     testImplementation "junit:junit:4.13.2"
 

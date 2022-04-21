@@ -214,5 +214,6 @@
     <!-- Neutral Button Edit Text Dialog Preference -->
     <string name="neutral">Neutral</string>
     <string name="dialog_neutral_button_edit_text_hint">Input text here</string>
+    <string name="frag_migrator_status_complete">Migration complete.</string>
 
 </resources>

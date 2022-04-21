@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY package "org.phenoapps.phenolib.keys.">
+    ]>
+<resources>
+    <string name="key_default_uri">&package;default_uri</string>
+
+    <string name="key_first_install">&package;first_install</string>
+    <string name="key_enable_migrator">&package;enable_migrator</string>
+
+    <string name="key_pref_database_export">&package;database.export</string>
+    <string name="key_pref_database_import">&package;database.import</string>
+    <string name="key_pref_database">&package;database</string>
+    <string name="key_pref_database_delete">&package;database.delete</string>
+
+    <string name="key_pref_definer">&package;storage.definer</string>
+
+</resources>

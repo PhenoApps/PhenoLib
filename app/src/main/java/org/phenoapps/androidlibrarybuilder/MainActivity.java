@@ -12,7 +12,7 @@ import org.phenoapps.permissions.Dir;
 import org.phenoapps.permissions.PermissionDir;
 import org.phenoapps.permissions.RequestDir;
 
-import activities.PreferencesActivity;
+import org.phenoapps.activities.PreferencesActivity;
 
 /**
  * Uses:
@@ -340,7 +340,7 @@ implements org.phenoapps.androidlibrary.DebouncingEditorActionListener.Receiver
     @androidx.annotation.Nullable final android.os.Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        this.setContentView(org.phenoapps.androidlibrarybuilder.R.layout.activity_main);
+        this.setContentView(org.phenoapps.androidlibrarybuilder.R.layout.activity_main_old);
 
         // region Find views.
         this.textView = this.findViewById(org.phenoapps.androidlibrarybuilder.R.id.textView);
