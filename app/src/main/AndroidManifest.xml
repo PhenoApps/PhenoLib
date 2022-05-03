@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     package="org.phenoapps.androidlibrarybuilder">
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"          />
-    <uses-permission android:name="android.permission.INTERNET"                        />
-    <uses-feature    android:name="android.hardware.usb.host" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -19,22 +14,38 @@
 
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="org.phenoapps.androidlibrarybuilder.MainActivity" android:launchMode="singleTask">
+        <activity android:name="org.phenoapps.activities.MainActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
-                android:resource="@xml/device_filter" />
-
-            <intent-filter>
-                <action   android:name="android.intent.action.MAIN"       />
+                <action android:name="android.intent.action.MAIN"       />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name="activities.PreferencesActivity"/>
+<!--        <activity android:name="org.phenoapps.activities.MainPhenoLibActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"       />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+<!--        <activity android:name="org.phenoapps.androidlibrarybuilder.MainActivity" android:launchMode="singleTask">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />-->
+<!--            </intent-filter>-->
+
+<!--            <meta-data-->
+<!--                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"-->
+<!--                android:resource="@xml/device_filter" />-->
+
+<!--            <intent-filter>-->
+<!--                <action   android:name="android.intent.action.MAIN"       />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+<!--        <activity android:name="org.phenoapps.activities.PreferencesActivity"/>-->
 
         <activity android:name="org.phenoapps.androidlibrarybuilder.WebViewActivity" />
 

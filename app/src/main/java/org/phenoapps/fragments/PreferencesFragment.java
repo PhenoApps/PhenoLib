@@ -1,4 +1,4 @@
-package fragments;
+package org.phenoapps.fragments;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -1,0 +1,35 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/phenolib_index_fragment"
+    android:id="@+id/phenolib_index_graph">
+
+    <include app:graph="@navigation/storage_definer_graph"/>
+    <include app:graph="@navigation/preferences_graph"/>
+
+    <fragment
+        android:id="@+id/phenolib_index_fragment"
+        android:name="org.phenoapps.fragments.examples.PhenoLibIndexHomeFragment"
+        android:label="Index" >
+        <action
+            android:id="@+id/action_from_index_to_bluetooth_hardware_fragment"
+            app:popUpTo="@id/phenolib_index_fragment"
+            app:destination="@id/bluetooth_hardware_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bluetooth_hardware_fragment"
+        android:name="org.phenoapps.fragments.examples.BluetoothPagerFragment"
+        android:label="Bluetooth Hardware Pager" />
+
+    <fragment android:id="@+id/preferences_index_fragment"
+        android:name="org.phenoapps.fragments.examples.PhenoLibIndexPreferenceFragment"
+        android:label="Preferences"/>
+
+    <action android:id="@+id/global_action_to_home_fragment"
+        app:destination="@id/phenolib_index_fragment"/>
+
+    <action android:id="@+id/global_action_to_preferences_fragment"
+        app:destination="@id/preferences_index_fragment"/>
+
+</navigation>
