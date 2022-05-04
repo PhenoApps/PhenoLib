@@ -24,6 +24,16 @@
         android:layout_margin="16dp"
         android:text="@string/frag_storage_definer_summary"/>
 
+    <ProgressBar
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/frag_storage_definer_choose_dir_btn"
+        android:layout_margin="16dp"
+        android:id="@+id/frag_storage_definer_pb"/>
+
     <Button style="@style/TextAppearance.MaterialComponents.Button"
         android:text="@string/define"
         android:id="@+id/frag_storage_definer_choose_dir_btn"

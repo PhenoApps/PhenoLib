@@ -10,6 +10,36 @@
     <public name="dir_sample" type="string"/>
     <public name="directories" type="array"/>
 
+    <public name="frag_migrator_status_complete" type="string"/>
+    <public name="storage_definer_graph" type="navigation"/>
+    <public name="cell" type="drawable"/>
+    <public name="ic_about_changelog" type="drawable"/>
+    <public name="ic_about_contributors" type="drawable"/>
+    <public name="ic_about_email" type="drawable"/>
+    <public name="ic_about_funding" type="drawable"/>
+    <public name="ic_about_github" type="drawable"/>
+    <public name="ic_about_help_translate" type="drawable"/>
+    <public name="ic_about_info" type="drawable"/>
+    <public name="ic_about_libraries" type="drawable"/>
+    <public name="ic_about_rate" type="drawable"/>
+    <public name="ic_about_translators" type="drawable"/>
+    <public name="ic_about_website" type="drawable"/>
+    <public name="preferences" type="xml"/>
+    <public name="fragment_storage_definer" type="layout"/>
+    <public name="fragment_storage_migrator" type="layout"/>
+    <public name="frag_storage_definer_title" type="string"/>
+    <public name="frag_storage_definer_summary" type="string"/>
+    <public name="define" type="string"/>
+    <public name="pref_storage_definer_title" type="string"/>
+    <public name="pref_storage_definer_summary" type="string"/>
+    <public name="migrate" type="string"/>
+    <public name="frag_storage_migrator_title" type="string"/>
+    <public name="frag_storage_migrator_summary" type="string"/>
+    <public name="skip" type="string"/>
+    <public name="document_tree_undefined" type="string"/>
+    <public name="error_dtu_dir_not_created" type="string"/>
+    <public name="activity_define_storage" type="layout"/>
+
     <!-- keys -->
     <public name="key_first_install" type="string"/>
     <public name="key_default_uri" type="string"/>

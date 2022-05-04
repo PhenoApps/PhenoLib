@@ -114,9 +114,9 @@ open class BaseDocumentTreeUtil {
 
                         if (dir == null || !dir.isDirectory) {
 
-                            val dirs = directories
-
-                            if (dir?.name in dirs) {
+                            val isFbPlotMedia = file.parentFile?.name == "plot_data"
+                            val isFbMediaDir = file.name in setOf("audio", "photos")
+                            if (dir?.name in directories || isFbPlotMedia || isFbMediaDir) {
 
                                 output.createDirectory(name)?.breadthCopy(context, directories, root, file, updateUri)
 
@@ -413,7 +413,7 @@ open class BaseDocumentTreeUtil {
         /**
          * Used to create or return a document file by name.
          */
-        private fun DocumentFile.getOrCreate(name: String): DocumentFile? {
+        fun DocumentFile.getOrCreate(name: String): DocumentFile? {
 
             try {
 
@@ -434,7 +434,7 @@ open class BaseDocumentTreeUtil {
         /**
          * Logs whether or not the file exists
          */
-        private fun DocumentFile?.logDirectoryExists(ctx: Context, name: String) {
+        fun DocumentFile?.logDirectoryExists(ctx: Context, name: String) {
 
             if (this == null || !exists()) {
 
@@ -445,7 +445,7 @@ open class BaseDocumentTreeUtil {
         /**
          * Creates a child directory within a parent directory.
          */
-        private fun createDir(ctx: Context, parent: String, child: String): DocumentFile? {
+        fun createDir(ctx: Context, parent: String, child: String): DocumentFile? {
 
             val file = createDir(ctx, parent)
             return if (file?.findFile(child)?.isDirectory == true) {

@@ -4,9 +4,12 @@ import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -28,7 +31,7 @@ open class PhenoLibStorageDefinerFragment: Fragment(R.layout.fragment_storage_de
 
     open val defaultAppName = "PhenoApp"
 
-    open val documentAdvisor by Security().secureDocumentTree()
+    private val documentAdvisor by Security().secureDocumentTree()
 
     private var mDefineBtn: Button? = null
 
@@ -44,6 +47,16 @@ open class PhenoLibStorageDefinerFragment: Fragment(R.layout.fragment_storage_de
     open val buttonTextColor: Int? = null
 
     open val backgroundColor: Int? = null
+
+    private var mProgressBar: ProgressBar? = null
+
+    private val mHandlerThread = HandlerThread("definer")
+
+    init {
+
+        mHandlerThread.looper
+        mHandlerThread.start()
+    }
 
     /**
      * Define this if this fragment should skip the migrator after defining a folder,
@@ -62,6 +75,9 @@ open class PhenoLibStorageDefinerFragment: Fragment(R.layout.fragment_storage_de
         documentAdvisor.setDefaultAppName(defaultAppName)
 
         mDefineBtn = view.findViewById(R.id.frag_storage_definer_choose_dir_btn)
+        mProgressBar = view.findViewById(R.id.frag_storage_definer_pb)
+
+        Log.d("FBProgressF", mProgressBar?.visibility?.toString() ?: "Null")
 
         mDefineBtn?.setOnClickListener { _ ->
 
@@ -100,7 +116,15 @@ open class PhenoLibStorageDefinerFragment: Fragment(R.layout.fragment_storage_de
 
             documentAdvisor.defineDocumentTree({ treeUri ->
 
-                onTreeDefined(treeUri)
+                mProgressBar?.visibility = View.VISIBLE
+
+                Log.d("FBProgress", mProgressBar?.visibility?.toString() ?: "Null")
+
+                mDefineBtn?.isEnabled = false
+
+                Handler(mHandlerThread.looper).postDelayed({
+                    onTreeDefined(treeUri)
+                }, 500)
 
             }) {
 
@@ -120,7 +144,7 @@ open class PhenoLibStorageDefinerFragment: Fragment(R.layout.fragment_storage_de
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
 
-        runBlocking(Dispatchers.IO) {
+        runBlocking {
 
             directories?.let { dirs ->
 
@@ -145,12 +169,23 @@ open class PhenoLibStorageDefinerFragment: Fragment(R.layout.fragment_storage_de
             }
         }
 
-        if (prefs.getBoolean(mKeyUtil.enableMigrator, true)) {
-            findNavController().navigate(actionToMigrator)
-        } else findNavController().popBackStack()
+        actionAfterDefine()
+    }
 
-        if (migrateChecker != null) { //reset enable migrator check
-            prefs.edit().putBoolean(mKeyUtil.enableMigrator, false).apply()
+    open fun actionNoMigrate() {
+        findNavController().popBackStack()
+    }
+
+    open fun actionAfterDefine() {
+        activity?.runOnUiThread {
+            val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+            if (prefs.getBoolean(mKeyUtil.enableMigrator, true)) {
+                findNavController().navigate(actionToMigrator)
+            } else actionNoMigrate()
+
+            if (migrateChecker != null) { //reset enable migrator check
+                prefs.edit().putBoolean(mKeyUtil.enableMigrator, true).apply()
+            }
         }
     }
 }
