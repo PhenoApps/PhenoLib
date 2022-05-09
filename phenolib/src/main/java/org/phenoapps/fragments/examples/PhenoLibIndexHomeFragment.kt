@@ -1,16 +1,19 @@
 package org.phenoapps.fragments.examples
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.phenoapps.androidlibrary.R
 import org.phenoapps.fragments.toolbar.IndexNavFragment
-import org.phenoapps.fragments.toolbar.ToolbarsFragment
+import org.phenoapps.utils.BaseDocumentTreeUtil
+import org.phenoapps.utils.IntentUtil
 
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 class PhenoLibIndexHomeFragment(
     override val navMenuId: Int = R.menu.menu_phenolib_index,
     override val selectedActionId: Int = R.id.index_home_action,
@@ -31,6 +34,42 @@ class PhenoLibIndexHomeFragment(
 
                 findNavController().navigate(PhenoLibIndexHomeFragmentDirections
                     .actionFromIndexToBluetoothHardwareFragment())
+            }
+
+            val shareFileButton = view.findViewById<Button>(R.id.frag_main_intent_share_file_btn)
+            shareFileButton.setOnClickListener {
+
+                shareFile()
+            }
+        }
+
+        private fun shareFile() {
+
+            try {
+
+                context?.let { ctx ->
+
+                    BaseDocumentTreeUtil.createDir(ctx, "test")?.let { dir ->
+
+                        dir.createFile("*/*", "temp.txt")?.let { temp ->
+
+                            ctx.contentResolver.openOutputStream(temp.uri).use { output ->
+
+                                output?.write(1)
+
+                            }
+
+                            IntentUtil.shareFile(context, temp.uri, "Test Subject", "Test text")
+
+                            temp.delete()
+                        }
+                    }
+                }
+
+            } catch (e: Exception) {
+
+                e.printStackTrace()
+
             }
         }
     }

@@ -456,7 +456,7 @@ open class BaseDocumentTreeUtil {
         /**
          * Finds the persisted uri and creates the basic coordinate file structure if it doesn't exist.
          */
-        private fun createDir(ctx: Context, parent: String) = getRoot(ctx)?.getOrCreate(parent)
+        fun createDir(ctx: Context, parent: String) = getRoot(ctx)?.getOrCreate(parent)
 
     }
 }
