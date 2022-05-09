@@ -2,13 +2,13 @@
 <resources>
     <!-- storage definer and migrator org.phenoapps.fragments -->
     <string name="frag_storage_definer_title">Storage Definer</string>
-    <string name="frag_storage_definer_summary">With the latest version of Android, users must grant access to use folders within apps.</string>
+    <string name="frag_storage_definer_summary">The newest version of Android requires users to manually select or create a specific directory for each app to access.</string>
     <string name="define">Define</string>
     <string name="pref_storage_definer_title">Define Storage Location</string>
-    <string name="pref_storage_definer_summary">Choose a location on your system to save files to.</string>
+    <string name="pref_storage_definer_summary">Choose the default location to save files.</string>
     <string name="migrate">Migrate</string>
     <string name="frag_storage_migrator_title">Storage Migrator</string>
-    <string name="frag_storage_migrator_summary">App files were not found. Choosing migrate will allow you to select your old folder to transfer the data.</string>
+    <string name="frag_storage_migrator_summary">Files from a previous installation can optionally be migrated to your selected directory.</string>
     <string name="skip">Skip</string>
     <string name="document_tree_undefined">Would you like to define the root folder?</string>
     <string name="error_dtu_dir_not_created">Directory %s could not be created.</string>
