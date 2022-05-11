@@ -78,6 +78,23 @@ open class BaseDocumentTreeUtil {
             }
         }
 
+        private fun findCaseInsensitive(docTree: DocumentFile, name: String): DocumentFile? {
+            var checkDoc = docTree.findFile(name)
+
+            if (checkDoc == null || !checkDoc.exists()) {
+                val upperCaseName = name.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+                }
+                checkDoc = docTree.findFile(upperCaseName)
+                //trick to make a temp replacement, otherwise provider might
+                //rename it to "name (1)"
+                checkDoc?.renameTo(UUID.randomUUID().toString())
+                checkDoc?.renameTo(name)
+            }
+
+            return checkDoc
+        }
+
         fun copy(context: Context, directories: Array<String>,
                          root: Uri, output: DocumentFile, file: DocumentFile,
                          updateUri: ((DocumentFile, DocumentFile) -> Unit)? = null) {
@@ -89,6 +106,7 @@ open class BaseDocumentTreeUtil {
                     if (!file.isDirectory) {
 
                         val checkDoc = output.findFile(name)
+
                         if (checkDoc == null || !checkDoc.exists()) {
 
                             output.createFile("*/*", name)?.let { docFile ->
@@ -146,7 +164,7 @@ open class BaseDocumentTreeUtil {
 
                     directories.forEach { dir ->
 
-                        val dirFile = tree.findFile(dir.lowercase(Locale.getDefault()))
+                        val dirFile = findCaseInsensitive(tree, dir.lowercase(Locale.getDefault()))
                         if (dirFile == null || !dirFile.exists()) {
                             tree.createDirectory(dir)
                         }
@@ -196,7 +214,7 @@ open class BaseDocumentTreeUtil {
 
                 getDirectory(ctx, dir)?.let { dir ->
 
-                    dir.findFile(fileName)?.let { file ->
+                    findCaseInsensitive(dir, fileName)?.let { file ->
 
                         return file
                     }
@@ -417,7 +435,7 @@ open class BaseDocumentTreeUtil {
 
             try {
 
-                val dir = findFile(name)
+                val dir = findCaseInsensitive(this, name)
                 return if (dir == null || !dir.exists()) {
                     createDirectory(name)
                 } else dir
