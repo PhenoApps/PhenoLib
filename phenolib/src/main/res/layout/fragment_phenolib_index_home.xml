@@ -49,4 +49,15 @@
         app:layout_constraintTop_toBottomOf="@id/frag_main_intent_header"
         android:layout_margin="16dp"/>
 
+    <Button style="@style/Platform.MaterialComponents.Light"
+        android:text="Share File Chooser"
+        android:textSize="24sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/frag_main_intent_share_file_chooser_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_main_intent_share_file_btn"
+        android:layout_margin="16dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
