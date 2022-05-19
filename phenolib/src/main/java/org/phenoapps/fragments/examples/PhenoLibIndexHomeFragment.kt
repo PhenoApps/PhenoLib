@@ -38,38 +38,12 @@ class PhenoLibIndexHomeFragment(
 
             val shareFileButton = view.findViewById<Button>(R.id.frag_main_intent_share_file_btn)
             shareFileButton.setOnClickListener {
-
-                shareFile()
+                IntentUtil.appTestShareFile(context)
             }
-        }
 
-        private fun shareFile() {
-
-            try {
-
-                context?.let { ctx ->
-
-                    BaseDocumentTreeUtil.createDir(ctx, "test")?.let { dir ->
-
-                        dir.createFile("*/*", "temp.txt")?.let { temp ->
-
-                            ctx.contentResolver.openOutputStream(temp.uri).use { output ->
-
-                                output?.write(1)
-
-                            }
-
-                            IntentUtil.shareFile(context, temp.uri, "Test Subject", "Test text")
-
-                            temp.delete()
-                        }
-                    }
-                }
-
-            } catch (e: Exception) {
-
-                e.printStackTrace()
-
+            val shareFileChooserButton = view.findViewById<Button>(R.id.frag_main_intent_share_file_chooser_btn)
+            shareFileChooserButton.setOnClickListener {
+                IntentUtil.appTestShareFileChooser(context)
             }
         }
     }

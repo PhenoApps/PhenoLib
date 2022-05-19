@@ -1,16 +1,12 @@
 package org.phenoapps.androidlibrary
 
 import android.content.Context
-import androidx.core.net.toUri
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.phenoapps.utils.BaseDocumentTreeUtil
 import org.phenoapps.utils.IntentUtil
-import java.io.File
-import java.io.FileWriter
 
 @RunWith(AndroidJUnit4::class)
 class ShareFileTest {
@@ -27,7 +23,7 @@ class ShareFileTest {
 
         try {
 
-            shareFile()
+            IntentUtil.testShareFile(mContext)
 
         } catch (e: Exception) {
 
@@ -37,25 +33,18 @@ class ShareFileTest {
         }
     }
 
-    private fun shareFile() {
+    @Test
+    fun testShareFileChooser() {
 
-        mContext?.let { ctx ->
+        try {
 
-            BaseDocumentTreeUtil.createDir(ctx, "test")?.let { dir ->
+            IntentUtil.testShareFileChooser(mContext)
 
-                dir.createFile("*/*", "temp.txt")?.let { temp ->
+        } catch (e: Exception) {
 
-                    ctx.contentResolver.openOutputStream(temp.uri).use { output ->
+            e.printStackTrace()
 
-                        output?.write(1)
-
-                    }
-
-                    IntentUtil.shareFile(ctx, temp.uri, "Test Subject", "Test text")
-
-                    temp.delete()
-                }
-            }
+            assert(false)
         }
     }
 }
