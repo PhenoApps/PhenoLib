@@ -15,6 +15,10 @@ open class KeyUtil(private val ctx: Context?) {
 
     val defaultTreeUri by key(R.string.key_default_uri)
 
+    open val argBluetoothDeviceAddress by key(R.string.key_arg_bt_device_address)
+    open val argBluetoothServiceAddress by key(R.string.key_arg_bt_service_address)
+    open val argBluetoothCharAddress by key(R.string.key_arg_bt_char_address)
+
     open val isFirstInstall by key(R.string.key_first_install)
     open val enableMigrator by key(R.string.key_enable_migrator)
 

@@ -8,13 +8,12 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.phenoapps.androidlibrary.R
 import org.phenoapps.fragments.bluetooth.BluetoothAdvertiseFragment
-import org.phenoapps.fragments.bluetooth.BluetoothDiscoverFragment
 import org.phenoapps.fragments.toolbar.PopOnBackToolbarFragment
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class BluetoothAdvertisePage(pager: ViewPager2?): PopOnBackToolbarFragment(pager) {
+class BluetoothAdvertisePage(pager: ViewPager2? = null): PopOnBackToolbarFragment(pager) {
 
-    override val containedFragment = BluetoothAdvertiseFragment()
+    override val containedFragment = BluetoothAdvertiseFragment(pager)
 
     override val title = "Bluetooth Advertise"
 

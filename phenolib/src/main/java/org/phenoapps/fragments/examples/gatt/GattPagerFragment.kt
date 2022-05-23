@@ -1,4 +1,4 @@
-package org.phenoapps.fragments.examples
+package org.phenoapps.fragments.examples.gatt
 
 import android.os.Build
 import android.os.Bundle
@@ -8,9 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import org.phenoapps.androidlibrary.R
+import org.phenoapps.fragments.examples.BluetoothAdvertisePage
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class BluetoothPagerFragment: Fragment(R.layout.fragment_pager) {
+class GattPagerFragment: Fragment(R.layout.fragment_pager) {
 
     private val pages = 3
 
@@ -38,9 +39,9 @@ class BluetoothPagerFragment: Fragment(R.layout.fragment_pager) {
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> BluetoothDevicePage(pager)
-                1 -> BluetoothAdvertisePage(pager)
-                else -> BluetoothDiscoverPage(pager)
+                0 -> BluetoothAdvertisePage(pager)
+                1 -> GattServicePage(pager)
+                else -> GattCharacteristicPage(pager)
             }
         }
     }

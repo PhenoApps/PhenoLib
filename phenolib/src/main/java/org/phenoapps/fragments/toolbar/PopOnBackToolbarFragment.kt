@@ -7,24 +7,26 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import org.phenoapps.androidlibrary.R
 
-open class PopOnBackToolbarFragment(private val pager: ViewPager2? = null) : ToolbarsFragment() {
+open class PopOnBackToolbarFragment(open val pager: ViewPager2? = null) : ToolbarsFragment() {
+
+    protected var mTopToolbar: Toolbar? = null
 
     override val isTopToolbarEnabled = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val toolbar = view.findViewById<Toolbar>(R.id.frag_toolbars_tl)
+        mTopToolbar = view.findViewById(R.id.frag_toolbars_tl)
 
-        toolbar.setNavigationOnClickListener {
+        mTopToolbar?.setNavigationOnClickListener {
 
             if (onBackCheck()) {
 
                 if (pager != null) {
 
-                    if (pager.currentItem > 0) {
+                    if (pager!!.currentItem > 0) {
 
-                        pager.currentItem = pager.currentItem - 1
+                        pager!!.currentItem = pager!!.currentItem - 1
 
                     } else findNavController().popBackStack()
 
