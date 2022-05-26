@@ -9,7 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.phenoapps.androidlibrary.R
 import org.phenoapps.fragments.bluetooth.BluetoothFragment
 import org.phenoapps.viewmodels.spectrometers.Indigo
@@ -43,30 +46,23 @@ class IndigoControlFragment(private val pager: ViewPager2? = null):
 
         context?.let { ctx ->
 
-            viewModel.unregister()
+            advisor.withNearby { adapter ->
 
+                viewModel.reset(adapter, ctx)
+
+            }
         }
     }
 
     fun isConnected() = viewModel.isConnected()
 
     private fun enableScans(view: View) {
-        view.findViewById<Button>(R.id.frag_indigo_scan_btn)?.setOnClickListener {
-
-            viewModel.triggerSingleCapture()
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         val scanTextView = view.findViewById<TextView>(R.id.frag_indigo_scan_tv)
 
-        viewModel.loadParameters().observe(viewLifecycleOwner) { params ->
-            if (params == IndigoViewModel.REFERENCE_LAMBDA_SIZE) {
-                Toast.makeText(context, "Parameters loaded.", Toast.LENGTH_SHORT).show()
-                enableScans(view)
-            }
+        view.findViewById<Button>(R.id.frag_indigo_scan_btn)?.setOnClickListener {
+
+            viewModel.triggerSingleCapture()
         }
 
         viewModel.interpolatedData().observe(viewLifecycleOwner) { frames ->
@@ -82,29 +78,47 @@ class IndigoControlFragment(private val pager: ViewPager2? = null):
             Log.d("Indigo", "Scan event started...")
         }
 
-        viewModel.services().observe(viewLifecycleOwner) { services ->
+//        viewModel.services().observe(viewLifecycleOwner) { services ->
+//
+//            val system = services.find { it.service.uuid.toString() == IndigoViewModel.SYSTEM_SERVICE }?.service
+//
+//            val wave1 = system?.characteristics?.find { it.uuid.toString() == IndigoViewModel.SYSTEM_LAMBDA_1 }
+//            val wave2 = system?.characteristics?.find { it.uuid.toString() == IndigoViewModel.SYSTEM_LAMBDA_2 }
+//            val wave3 = system?.characteristics?.find { it.uuid.toString() == IndigoViewModel.SYSTEM_LAMBDA_3 }
+//            val wave4 = system?.characteristics?.find { it.uuid.toString() == IndigoViewModel.SYSTEM_LAMBDA_4 }
+//
+//            wave1?.value?.let { bytes ->
+//                Log.d("Gatt", "wave1 ${bytes.toPixelWave()}")
+//            }
+//
+//            wave2?.value?.let { bytes ->
+//                Log.d("Gatt", "wave2 ${bytes.toPixelWave()}")
+//            }
+//
+//            wave3?.value?.let { bytes ->
+//                Log.d("Gatt", "wave3 ${bytes.toPixelWave()}")
+//            }
+//
+//            wave4?.value?.let { bytes ->
+//                Log.d("Gatt", "wave4 ${bytes.toPixelWave()}")
+//            }
+//        }
+    }
 
-            val system = services.find { it.service.uuid.toString() == IndigoViewModel.SYSTEM_SERVICE }?.service
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-            val wave1 = system?.characteristics?.find { it.uuid.toString() == IndigoViewModel.SYSTEM_LAMBDA_1 }
-            val wave2 = system?.characteristics?.find { it.uuid.toString() == IndigoViewModel.SYSTEM_LAMBDA_2 }
-            val wave3 = system?.characteristics?.find { it.uuid.toString() == IndigoViewModel.SYSTEM_LAMBDA_3 }
-            val wave4 = system?.characteristics?.find { it.uuid.toString() == IndigoViewModel.SYSTEM_LAMBDA_4 }
+        advisor.withNearby { adapter ->
+            viewModel.connect(adapter, requireContext())
+        }
 
-            wave1?.value?.let { bytes ->
-                Log.d("Gatt", "wave1 ${bytes.toPixelWave()}")
-            }
-
-            wave2?.value?.let { bytes ->
-                Log.d("Gatt", "wave2 ${bytes.toPixelWave()}")
-            }
-
-            wave3?.value?.let { bytes ->
-                Log.d("Gatt", "wave3 ${bytes.toPixelWave()}")
-            }
-
-            wave4?.value?.let { bytes ->
-                Log.d("Gatt", "wave4 ${bytes.toPixelWave()}")
+        lifecycleScope.launch {
+            while (!viewModel.isConnected()) {
+                delay(2000L)
+                if (viewModel.isConnected()) {
+                    Toast.makeText(context, "Parameters loaded.", Toast.LENGTH_SHORT).show()
+                    enableScans(view)
+                }
             }
         }
     }

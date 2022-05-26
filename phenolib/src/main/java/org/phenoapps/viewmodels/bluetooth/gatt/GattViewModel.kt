@@ -11,16 +11,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import org.phenoapps.interfaces.bridge.GattBridge
-import org.phenoapps.interfaces.spectrometers.IndigoControlListener
 import org.phenoapps.interfaces.gatt.GattCallbackInterface
 import org.phenoapps.models.bluetooth.gatt.BluetoothGattCharacteristicModel
 import org.phenoapps.models.bluetooth.gatt.BluetoothGattModel
-import org.phenoapps.utils.GattUtil.Companion.isIndicatable
-import org.phenoapps.utils.GattUtil.Companion.isNotifiable
-import org.phenoapps.utils.GattUtil.Companion.isReadable
-import org.phenoapps.utils.GattUtil.Companion.toHexString
 import java.util.UUID
-import kotlin.coroutines.CoroutineContext
 
 /**
  * View model extended class for handling ble gatt server communication.
@@ -35,9 +29,11 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
 
     companion object {
 
-        const val LIVE_DATA_DELAY_MS = 3000L
+        const val LIVE_DATA_DELAY_MS = 5000L
 
-        const val BLE_COMMAND_QUEUE_DELAY = 1000L
+        const val LIVE_READ_DATA_DELAY_MS = 2000L
+
+        const val BLE_COMMAND_QUEUE_DELAY = 500L
 
         const val CCC_DESCRIPTOR_UUID = "00002902-0000-1000-8000-00805f9b34fb"
 
@@ -71,7 +67,9 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
     }
 
     fun clearServices() {
-        mServiceList.clear()
+        synchronized(mServiceList) {
+            mServiceList.clear()
+        }
     }
 
     open fun connectGatt(context: Context, device: BluetoothDevice, callback: BluetoothGattCallback) {
@@ -121,6 +119,8 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
         clearServices()
 
         resetContext()
+
+        //viewModelScope.cancel()
     }
 
     /**
@@ -128,6 +128,7 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
      */
     fun resetContext() {
         liveContext.cancel()
+        liveJob.cancel()
         liveJob = Job()
         liveContext = CoroutineScope(Dispatchers.IO + liveJob)
     }
@@ -153,22 +154,21 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
         while (true) {
 
             val charsList = arrayListOf<BluetoothGattCharacteristicModel>()
-            mServiceList.find { it.service.uuid.toString() == serviceUuid }?.service?.characteristics?.forEach { characteristic ->
 
-                try {
+            synchronized(mServiceList) {
+
+                mServiceList.find { it.service.uuid.toString() == serviceUuid }?.service?.characteristics?.forEach { characteristic ->
+
                     if (!charsList.any { it.characteristic.uuid == characteristic.uuid }) {
 
                         BluetoothGattCharacteristicModel(characteristic).also { model ->
                             charsList.add(model)
                         }
                     }
-
-                    emit(charsList.toList())
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }
+
+            emit(charsList.toList())
 
             delay(LIVE_DATA_DELAY_MS)
 
@@ -250,11 +250,13 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
      */
     fun notify(service: String, characteristic: String) {
 
-        mServiceList.find { it.service.uuid.toString() == service }
-            ?.service?.characteristics?.find { it.uuid.toString() == characteristic }?.let { model ->
+        synchronized(mServiceList) {
+            mServiceList.find { it.service.uuid.toString() == service }
+                ?.service?.characteristics?.find { it.uuid.toString() == characteristic }?.let { model ->
 
-                notify(BluetoothGattCharacteristicModel(model))
-            }
+                    notify(BluetoothGattCharacteristicModel(model))
+                }
+        }
     }
 
     /**
@@ -262,11 +264,13 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
      */
     fun write(service: String, characteristic: String, value: ByteArray) {
 
-        mServiceList.find { it.service.uuid.toString() == service }
-            ?.service?.characteristics?.find { it.uuid.toString() == characteristic }?.let { model ->
+        synchronized(mServiceList) {
+            mServiceList.find { it.service.uuid.toString() == service }
+                ?.service?.characteristics?.find { it.uuid.toString() == characteristic }?.let { model ->
 
-                write(BluetoothGattCharacteristicModel(model), value)
-            }
+                    write(BluetoothGattCharacteristicModel(model), value)
+                }
+        }
     }
 
     /**
@@ -274,11 +278,13 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
      */
     fun read(service: String, characteristic: String) {
 
-        mServiceList.find { it.service.uuid.toString() == service }
-            ?.service?.characteristics?.find { it.uuid.toString() == characteristic }?.let { model ->
+        synchronized(mServiceList) {
+            mServiceList.find { it.service.uuid.toString() == service }
+                ?.service?.characteristics?.find { it.uuid.toString() == characteristic }?.let { model ->
 
-                read(BluetoothGattCharacteristicModel(model))
-            }
+                    read(BluetoothGattCharacteristicModel(model))
+                }
+        }
     }
 
     /**
@@ -299,7 +305,10 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
             BluetoothGatt.STATE_CONNECTED -> {
                 Log.d("Gatt", "Connected")
                 mGatt = gatt
-                gatt?.discoverServices()
+                viewModelScope.launch(liveContext.coroutineContext) {
+                    delay(BLE_COMMAND_QUEUE_DELAY)
+                    mGatt?.discoverServices()
+                }
                 mConnectionStatus = newState
             }
             BluetoothGatt.STATE_DISCONNECTING -> {
@@ -323,21 +332,34 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
      * Saves discovered services into memory.
      */
     override fun onServicesDiscovered(gatt: BluetoothGatt?, status: Int) {
-        gatt?.let { gattModel ->
+        if (status == BluetoothGatt.GATT_SUCCESS) {
 
-            gattModel.services?.forEach { service ->
+            Log.d("Gatt", "Service Discovery success.")
 
-                Log.d("Gatt", "Service Discovered: ${service.uuid}")
+            gatt?.let { gattModel ->
 
-                if (!mServiceList.any { it.service.uuid == service.uuid }) {
-                    mServiceList.add(
-                        BluetoothGattModel(
-                            gattModel,
-                            service
-                        )
-                    )
+                gattModel.services?.forEach { service ->
+
+                    Log.d("Gatt", "Service Discovered: ${service.uuid}")
+
+                    synchronized(mServiceList) {
+                        if (!mServiceList.any { it.service.uuid == service.uuid }) {
+                            mServiceList.add(
+                                BluetoothGattModel(
+                                    gattModel,
+                                    service
+                                )
+                            )
+                        }
+                    }
                 }
             }
+
+        } else {
+
+            Log.d("Gatt", "Service discovery failed, retrying.")
+
+            mGatt?.discoverServices()
         }
     }
 }

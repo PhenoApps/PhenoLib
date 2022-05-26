@@ -1,22 +1,27 @@
 package org.phenoapps.viewmodels.spectrometers
 
+import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCharacteristic
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import androidx.preference.PreferenceManager
+import kotlinx.coroutines.*
 import org.phenoapps.interfaces.iot.Device
 import org.phenoapps.interfaces.spectrometers.IndigoControlListener
+import org.phenoapps.interfaces.spectrometers.Spectrometer.Companion.DEVICE_TYPE_INDIGO
 import org.phenoapps.utils.GattUtil.Companion.toHexByteArray
 import org.phenoapps.utils.GattUtil.Companion.toHexString
 import org.phenoapps.utils.GattUtil.Companion.toPixelWave
 import org.phenoapps.utils.GattUtil.Companion.toUnsignedInt8Array
+import org.phenoapps.utils.KeyUtil
 import org.phenoapps.viewmodels.bluetooth.gatt.GattViewModel
+import kotlin.math.min
 
 /** Indigo NIR ATT Definitions:
  * Services
@@ -100,6 +105,8 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
     companion object {
         const val INDIGO_SAMPLE_VECTOR_SIZE = 6
         const val REFERENCE_LAMBDA_SIZE = 4
+        const val DEVICE_INFO_SIZE = 3
+
         const val RAW_DATA_SIZE = 1206
 
         const val SYSTEM_SERVICE = "d973f4e0-b19e-11e2-9e96-0800200c9a66"
@@ -128,6 +135,9 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
 
         const val MTU_SIZE_RAW_PIXEL_MODE = 205
 
+        const val SCAN_DELAY_MS = 5000L
+
+        const val ALLOWED_NUM_FAILS = 16
     }
 
     data class WaveVal(var wave: Double, var value: Double) {
@@ -141,83 +151,61 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
      */
     data class LambdaReference(var wave: Int, var pix: Int)
 
-    private val scanArray = arrayOfNulls<ByteArray>(INDIGO_SAMPLE_VECTOR_SIZE)
-    private val referenceArray = arrayOfNulls<LambdaReference>(REFERENCE_LAMBDA_SIZE)
-
+    private var scanArray = arrayOfNulls<ByteArray>(INDIGO_SAMPLE_VECTOR_SIZE)
+    private var referenceArray = arrayOfNulls<LambdaReference>(REFERENCE_LAMBDA_SIZE)
+    private var infoArray = arrayOfNulls<String>(DEVICE_INFO_SIZE)
     var onClickScanButton: () -> Unit = {}
 
+    private var adapter: BluetoothAdapter? = null
+
     fun isConnected(): Boolean {
-        return super.isGattConnected()
-    }
-
-    fun getDeviceInfo(): Device.DeviceInfo {
-
-        synchronized(mServiceList) {
-            val systemChars = mServiceList
-                .find { it.service.uuid.toString() == SYSTEM_SERVICE }
-                ?.service?.characteristics
-
-            val soft = systemChars?.find { it.uuid.toString() == SYSTEM_FIRMWARE }?.value?.let {
-                String(it)
-            }
-            val hard = systemChars?.find { it.uuid.toString() == SYSTEM_HARDWARE }?.value?.let {
-                String(it)
-            }
-            val deviceId = systemChars?.find { it.uuid.toString() == SYSTEM_SERIAL_NUMBER }?.value?.let {
-                String(it)
-            }
-            return Device.DeviceInfo(
-                soft ?: "?",
-                hard ?: "?",
-                deviceId ?: "?",
-                "?",
-                "?",
-                "?",
-                "?",
-                "?",
-                "?")
+        return if (!((referenceArray.mapNotNull { it }.size == REFERENCE_LAMBDA_SIZE) and
+            (infoArray.mapNotNull { it }.size == DEVICE_INFO_SIZE))) {
+                if (referenceArray[0] == null) read(SYSTEM_SERVICE, SYSTEM_LAMBDA_1)
+                if (referenceArray[1] == null) read(SYSTEM_SERVICE, SYSTEM_LAMBDA_2)
+                if (referenceArray[2] == null) read(SYSTEM_SERVICE, SYSTEM_LAMBDA_3)
+                if (referenceArray[3] == null) read(SYSTEM_SERVICE, SYSTEM_LAMBDA_4)
+                if (infoArray[0] == null) read(SYSTEM_SERVICE, SYSTEM_FIRMWARE)
+                if (infoArray[1] == null) read(SYSTEM_SERVICE, SYSTEM_HARDWARE)
+                if (infoArray[2] == null) read(SYSTEM_SERVICE, SYSTEM_SERIAL_NUMBER)
+            false
+        } else {
+            super.isGattConnected()
         }
     }
 
-    /**
-     * Count which lambda parameters are non-null valued.
-     * Lambdas 1-4 are used in the Indigo NIR
-     */
-    private fun checkParametersLoaded(): Int {
-        synchronized(mServiceList) {
-            return mServiceList.filter { it.service.uuid.toString() == SYSTEM_SERVICE }
-                .flatMap { it.service.characteristics }
-                .count {
-                    when (it.uuid.toString()) {
-                        SYSTEM_LAMBDA_1, SYSTEM_LAMBDA_2,
-                        SYSTEM_LAMBDA_3, SYSTEM_LAMBDA_4 -> it.value != null
-                        else -> false
-                    }
-                }
-        }
-    }
-
-    /**
-     * This is required to run before taking data.
-     * Reads system properties from the device which are used to map pixels to wavelength data
-     * using linear interpolation.
-     */
-    fun loadParameters(): LiveData<Int> = liveData {
-
-        var count = 0
-        while (count < REFERENCE_LAMBDA_SIZE) {
-            count = checkParametersLoaded()
-            emit(count)
+    fun isConnectedLive() = liveData {
+        while (!isConnected()) {
+            emit(isConnected())
 
             read(SYSTEM_SERVICE, SYSTEM_LAMBDA_1)
             read(SYSTEM_SERVICE, SYSTEM_LAMBDA_2)
             read(SYSTEM_SERVICE, SYSTEM_LAMBDA_3)
             read(SYSTEM_SERVICE, SYSTEM_LAMBDA_4)
+            read(SYSTEM_SERVICE, SYSTEM_FIRMWARE)
+            read(SYSTEM_SERVICE, SYSTEM_HARDWARE)
+            read(SYSTEM_SERVICE, SYSTEM_SERIAL_NUMBER)
 
             delay(LIVE_DATA_DELAY_MS)
         }
+        emit(isConnected())
+    }
 
-        emit(count)
+    fun getDeviceInfo(): Device.DeviceInfo {
+
+        val soft = infoArray[0]
+        val hard = infoArray[1]
+        val deviceId = infoArray[2]
+        return Device.DeviceInfo(
+            soft ?: "?",
+            hard ?: "?",
+            deviceId?.replace("\"", "")?.replace(" ", "") ?: "?",
+            "?",
+            "?",
+            DEVICE_TYPE_INDIGO,
+            "?",
+            "?",
+            "?")
     }
 
     /**
@@ -226,29 +214,45 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
      * Converts data to unsigned 8 bit integers and interpolates data once
      * all reference points are found.
      */
-    fun interpolatedData(): LiveData<List<Frame>?> = liveData {
+    fun interpolatedData(): LiveData<List<Frame>?> = liveData(liveContext.coroutineContext) {
 
+        var fails = 0
         while (true) {
-
-            val uint8Data = scanArray.toUnsignedInt8Array().toIntArray()
-
-            Log.d("Gatt", "uint8 data size: ${uint8Data.size}")
 
             val references = referenceArray.mapNotNull { it }
 
             if (references.size == REFERENCE_LAMBDA_SIZE) {
 
+                val uint8Data = scanArray.toUnsignedInt8Array().toIntArray()
+
+                Log.d("Gatt", "uint8 data size: ${uint8Data.size}")
+
                 if (uint8Data.size == RAW_DATA_SIZE) {
 
                     emit(listOf(Frame().apply {
-                        rawDataMap = interpolate(uint8Data, references.toTypedArray()).associate {
+                        val data = interpolate(uint8Data, references.toTypedArray()).associate {
                             it.wave.toString() to it.value.toString()
                         }
+                        wavelengths = data.keys.joinToString(" ") { it }
+                        rawData = data.values.joinToString(" ") { it }
                     }))
+
+                    //clear scan array
+                    (0 until INDIGO_SAMPLE_VECTOR_SIZE).forEach { scanArray[it] = null }
+
+                    fails = 0
+
+                } else if (++fails >= ALLOWED_NUM_FAILS) {
+
+                    requestMtu(MTU_SIZE_RAW_PIXEL_MODE)
+
+                    emit(listOf(Frame().apply { length = -1 }))
+
+                    fails = 0
                 }
             }
 
-            delay(LIVE_DATA_DELAY_MS)
+            delay(LIVE_READ_DATA_DELAY_MS)
 
         }
     }
@@ -257,12 +261,12 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
      * load parameters must be called first
      *
      */
-    override fun readRawData(): LiveData<List<Frame>?> = liveData {
+    override fun readRawData(): LiveData<List<Frame>?> = liveData(liveContext.coroutineContext) {
 
         while (true) {
 
             val frames = scanArray.map { byteArray ->
-                Frame(arrayListOf<Int>().apply {
+                Frame(rawData = arrayListOf<Int>().apply {
                     byteArray?.forEach { byte ->
                         //convert each signed byte to unsigned 2^8
                         add(byte.toInt() and 0xFF)
@@ -271,6 +275,9 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
             }
 
             emit(frames)
+
+            //clear scan array
+            (0 until INDIGO_SAMPLE_VECTOR_SIZE).forEach { scanArray[it] = null }
 
             delay(LIVE_DATA_DELAY_MS)
         }
@@ -290,10 +297,14 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
         if (!isScanning) {
             isScanning = true
             viewModelScope.launch(liveContext.coroutineContext) {
+                requestMtu(MTU_SIZE_RAW_PIXEL_MODE)
+                delay(BLE_COMMAND_QUEUE_DELAY)
+                notify(SAMPLE_SERVICE, SAMPLE_TRANSMIT)
+                delay(BLE_COMMAND_QUEUE_DELAY)
                 write(CONTROL_SERVICE, CONTROL_RECEIVE, RECEIVE_ENABLE_UV.toHexByteArray())
                 delay(BLE_COMMAND_QUEUE_DELAY)
                 write(CONTROL_SERVICE, CONTROL_RECEIVE, RECEIVE_SINGLE_SCAN.toByteArray())
-                delay(BLE_COMMAND_QUEUE_DELAY)
+                delay(SCAN_DELAY_MS)
                 write(CONTROL_SERVICE, CONTROL_RECEIVE, RECEIVE_DISABLE_UV.toHexByteArray())
                 delay(BLE_COMMAND_QUEUE_DELAY)
                 isScanning = false
@@ -379,22 +390,22 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
         val minBoundaryIndex = 0
         val maxBoundaryIndex = values.size + 1
 
-        if (knowns.size == 4) {
+        if (knowns.size == REFERENCE_LAMBDA_SIZE) {
 
-            val K = listOf(LambdaReference(minBoundaryWave, minBoundaryIndex)) + knowns.toMutableList() + listOf(LambdaReference(maxBoundaryWave, maxBoundaryIndex))
+            val n = listOf(LambdaReference(minBoundaryWave, minBoundaryIndex)) + knowns.toMutableList() + listOf(LambdaReference(maxBoundaryWave, maxBoundaryIndex))
 
             //for each  pixel in the raw data, find a wavelength interpolated from the known points
             //generate a new wave/value pair based on the linear interpolation between knownA and knownB
             values.forEachIndexed { index, value ->
 
                 //find the closest point before the pixel
-                val knownA = K.filter { k -> index >= k.pix }
+                val knownA = n.filter { k -> index >= k.pix }
                     .maxByOrNull { it.pix }?.let { x ->
                         WaveVal(x.wave.toDouble(), x.pix.toDouble())
                     }
 
                 //find the closest point after the pixel
-                val knownB = K.filter { k -> index < k.pix }
+                val knownB = n.filter { k -> index < k.pix }
                     .minByOrNull { it.pix }?.let { y ->
                         WaveVal(y.wave.toDouble(), y.pix.toDouble())
                     }
@@ -404,8 +415,19 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
 
                     val wavelength = knownA.wave + (index - knownA.value) * ((knownB.wave - knownA.wave) / (knownB.value - knownA.value))
 
-                    //add generated point to output
-                    add(WaveVal(wavelength, value.toDouble()))
+                    //trim and add generated point to output
+                    val waveString = wavelength.toString()
+                    val trimWave = try {
+                        val dot = waveString.indexOf(".") + 1
+                        val pre = waveString.substring(0, dot)
+                        val sig = waveString.substring(dot, waveString.length)
+                        val post = sig.substring(0, min(sig.length, 4))
+                        "$pre$post".toDouble()
+                    } catch (e: Exception) {
+                        wavelength
+                    }
+
+                    add(WaveVal(trimWave, value.toDouble()))
                 }
             }
         }
@@ -421,13 +443,65 @@ open class IndigoViewModel: GattViewModel(), IndigoControlListener {
     ) {
         super.onCharacteristicRead(gatt, characteristic, status)
         with (characteristic!!) {
-            referenceArray[when (characteristic.uuid?.toString()) {
-                SYSTEM_LAMBDA_1 -> 0
-                SYSTEM_LAMBDA_2 -> 1
-                SYSTEM_LAMBDA_3 -> 2
-                else -> 3
-            }] = value?.toPixelWave()
+            when (characteristic.uuid?.toString()) {
+                SYSTEM_LAMBDA_1 -> referenceArray[0] = value?.toPixelWave()
+                SYSTEM_LAMBDA_2 -> referenceArray[1] = value?.toPixelWave()
+                SYSTEM_LAMBDA_3 -> referenceArray[2] = value?.toPixelWave()
+                SYSTEM_LAMBDA_4 -> referenceArray[3] = value?.toPixelWave()
+                SYSTEM_FIRMWARE -> infoArray[0] = String(value)
+                SYSTEM_HARDWARE -> infoArray[1] = String(value)
+                else -> infoArray[2] = String(value)
+            }
         }
+    }
+
+    open fun connect(adapter: BluetoothAdapter, context: Context) {
+        this.adapter = adapter
+        val libKeys = KeyUtil(context)
+        val address = PreferenceManager.getDefaultSharedPreferences(context)
+            .getString(libKeys.argBluetoothDeviceAddress, null)
+        if (address != null) {
+            register(adapter, context, address)
+        }
+    }
+
+    open fun reset(adapter: BluetoothAdapter?, context: Context?) {
+        clear()
+        unregister()
+
+        viewModelScope.launch(liveContext.coroutineContext) {
+            delay(LIVE_DATA_DELAY_MS)
+            adapter?.let { a ->
+                context?.let { ctx ->
+                    connect(a, ctx)
+                }
+            }
+        }
+    }
+
+    /**
+     * Override for connection state callback that will start discovering services.
+     * Also handles gatt closing if disconnection happens.
+     */
+    override fun onConnectionStateChange(gatt: BluetoothGatt?, status: Int, newState: Int) {
+        super.onConnectionStateChange(gatt, status, newState)
+        when (newState) {
+            BluetoothGatt.STATE_DISCONNECTED -> {
+                clear()
+                unregister()
+            }
+        }
+    }
+
+    fun clear() {
+        scanArray = arrayOfNulls(INDIGO_SAMPLE_VECTOR_SIZE)
+        referenceArray = arrayOfNulls(REFERENCE_LAMBDA_SIZE)
+        infoArray = arrayOfNulls(DEVICE_INFO_SIZE)
+    }
+
+    fun forceViewModelDisconnect() {
+        clear()
+        unregister()
     }
 
     override fun disableLowMtuMode() {

@@ -28,6 +28,8 @@ interface Device {
 
     fun disconnect() = Unit
 
+    fun forceDisconnect() = Unit
+
     fun isConnected(): Boolean
 
     fun reset(context: Context?) = Unit
