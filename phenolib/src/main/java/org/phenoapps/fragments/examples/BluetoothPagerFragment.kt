@@ -10,19 +10,19 @@ import androidx.viewpager2.widget.ViewPager2
 import org.phenoapps.androidlibrary.R
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class BluetoothPagerFragment: Fragment(R.layout.fragment_bluetooth_pager) {
+class BluetoothPagerFragment: Fragment(R.layout.fragment_pager) {
 
     private val pages = 3
 
-    private lateinit var mPager: ViewPager2
+    private var pager: ViewPager2? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mPager = view.findViewById(R.id.frag_bluetooth_p2v)
+        pager = view.findViewById(R.id.frag_p2v)
 
         val pagerAdapter = ScreenSlidePagerAdapter(this)
-        mPager.adapter = pagerAdapter
+        pager?.adapter = pagerAdapter
 
     }
 
@@ -38,9 +38,9 @@ class BluetoothPagerFragment: Fragment(R.layout.fragment_bluetooth_pager) {
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> BluetoothDevicePage(mPager)
-                1 -> BluetoothAdvertisePage(mPager)
-                else -> BluetoothDiscoverPage(mPager)
+                0 -> BluetoothDevicePage(pager)
+                1 -> BluetoothAdvertisePage(pager)
+                else -> BluetoothDiscoverPage(pager)
             }
         }
     }

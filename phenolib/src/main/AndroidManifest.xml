@@ -5,24 +5,22 @@
     <!--bluetooth permission for Android S 12 (31) -->
     <!-- run time region, required to check on use -->
     <!-- scan required when searching for Bluetooth devices -->
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
-        android:usesPermissionFlags="neverForLocation"
-        tools:targetApi="s" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <!-- advertise allows other devices discover this app -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>
     <!-- connect lets you communicate with os-paired devices -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
     <!-- fine / coarse locations are never used for location in phenoapps -->
     <!-- but they are required to check on runtime and for older versions -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"
-        android:usesPermissionFlags="neverForLocation"
-        tools:targetApi="s"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
-        android:usesPermissionFlags="neverForLocation"
-        tools:targetApi="s"/>
+<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"-->
+<!--        android:usesPermissionFlags="neverForLocation"-->
+<!--        tools:targetApi="s"/>-->
+<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"-->
+<!--        android:usesPermissionFlags="neverForLocation"-->
+<!--        tools:targetApi="s"/>-->
     <!-- Android 11 R (30) and lower -->
-    <!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>-->
-    <!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!-- run time region end -->
 
     <!-- Request legacy Bluetooth permissions on older devices. -->

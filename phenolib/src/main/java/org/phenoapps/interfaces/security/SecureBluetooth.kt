@@ -15,4 +15,5 @@ interface SecureBluetooth: SecureFragmentInterface {
     fun discoverWith(function: (adapter: BluetoothAdapter) -> Unit)
     fun discoverWithBackground(function: (adapter: BluetoothAdapter) -> Unit)
     fun advertiseWith(function: (adapter: BluetoothAdapter) -> Unit)
+    fun withNearby(function: (adapter: BluetoothAdapter) -> Unit)
 }

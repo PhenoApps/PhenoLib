@@ -11,7 +11,7 @@ import org.phenoapps.fragments.bluetooth.BluetoothDiscoverFragment
 import org.phenoapps.fragments.toolbar.PopOnBackToolbarFragment
 
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-class BluetoothDiscoverPage(pager: ViewPager2?): PopOnBackToolbarFragment(pager) {
+class BluetoothDiscoverPage(pager: ViewPager2? = null): PopOnBackToolbarFragment(pager) {
 
     override val containedFragment = BluetoothDiscoverFragment()
 

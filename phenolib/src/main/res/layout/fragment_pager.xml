@@ -7,7 +7,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/frag_bluetooth_p2v"
+        android:id="@+id/frag_p2v"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

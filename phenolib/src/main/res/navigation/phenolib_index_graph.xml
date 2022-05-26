@@ -15,6 +15,24 @@
             android:id="@+id/action_from_index_to_bluetooth_hardware_fragment"
             app:popUpTo="@id/phenolib_index_fragment"
             app:destination="@id/bluetooth_hardware_fragment" />
+        <action
+            android:id="@+id/action_from_index_to_gatt_fragment"
+            app:popUpTo="@id/phenolib_index_fragment"
+            app:destination="@id/gatt_index_fragment" />
+        <action
+            android:id="@+id/action_from_index_to_indigo_fragment"
+            app:popUpTo="@id/phenolib_index_fragment"
+            app:destination="@id/indigo_index_fragment" />
+    </fragment>
+
+    <fragment android:id="@+id/indigo_index_fragment"
+        android:name="org.phenoapps.fragments.examples.spectrometers.IndigoPagerFragment"
+        android:label="Indigo Index">
+    </fragment>
+
+    <fragment android:id="@+id/gatt_index_fragment"
+        android:name="org.phenoapps.fragments.examples.gatt.GattPagerFragment"
+        android:label="Gatt Index">
     </fragment>
 
     <fragment

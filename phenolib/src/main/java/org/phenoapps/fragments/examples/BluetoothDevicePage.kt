@@ -6,10 +6,10 @@ import androidx.viewpager2.widget.ViewPager2
 import org.phenoapps.fragments.bluetooth.BluetoothListFragment
 import org.phenoapps.fragments.toolbar.PopOnBackToolbarFragment
 
-@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-class BluetoothDevicePage(pager: ViewPager2? = null): PopOnBackToolbarFragment(pager) {
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+class BluetoothDevicePage(override val pager: ViewPager2? = null): PopOnBackToolbarFragment(pager) {
 
-    override val containedFragment = BluetoothListFragment()
+    override val containedFragment = BluetoothListFragment(pager)
 
     override val isTopToolbarEnabled = true
 

@@ -21,6 +21,10 @@ open class ToolbarsFragment: Fragment(R.layout.fragment_toolbars) {
 
     open val bottomToolbarMenuId: Int? = null
 
+    open val topToolbarColor: Int? = null
+
+    open val bottomToolbarColor: Int? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -37,6 +41,10 @@ open class ToolbarsFragment: Fragment(R.layout.fragment_toolbars) {
     private fun setupBottomToolbar(view: View) {
 
         val toolbar = view.findViewById<BottomNavigationView>(R.id.frag_toolbars_bl)
+
+        if (bottomToolbarColor != null) {
+            toolbar.setBackgroundColor(bottomToolbarColor!!)
+        }
 
         if (isBottomToolbarEnabled) {
 
@@ -57,6 +65,10 @@ open class ToolbarsFragment: Fragment(R.layout.fragment_toolbars) {
     private fun setupTopToolbar(view: View) {
 
         val toolbar = view.findViewById<Toolbar>(R.id.frag_toolbars_tl)
+
+        if (topToolbarColor != null) {
+            toolbar.setBackgroundColor(topToolbarColor!!)
+        }
 
         if (isTopToolbarEnabled) {
 

@@ -36,6 +36,19 @@ class PhenoLibIndexHomeFragment(
                     .actionFromIndexToBluetoothHardwareFragment())
             }
 
+            val gattButton = view.findViewById<Button>(R.id.frag_main_hardware_gatt_btn)
+            gattButton.setOnClickListener {
+
+                findNavController().navigate(PhenoLibIndexHomeFragmentDirections
+                    .actionFromIndexToGattFragment())
+            }
+
+            val indigoButton = view.findViewById<Button>(R.id.frag_main_hardware_indigo_btn)
+            indigoButton.setOnClickListener {
+                findNavController().navigate(PhenoLibIndexHomeFragmentDirections
+                    .actionFromIndexToIndigoFragment())
+            }
+
             val shareFileButton = view.findViewById<Button>(R.id.frag_main_intent_share_file_btn)
             shareFileButton.setOnClickListener {
                 IntentUtil.appTestShareFile(context)

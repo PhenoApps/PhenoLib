@@ -215,5 +215,6 @@
     <string name="neutral">Neutral</string>
     <string name="dialog_neutral_button_edit_text_hint">Input text here</string>
     <string name="frag_migrator_status_complete">Migration complete.</string>
+    <string name="frag_toolbar_connection_menu_title">Connection status</string>
 
 </resources>

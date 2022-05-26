@@ -15,4 +15,8 @@
 
     <string name="key_pref_definer">&package;storage.definer</string>
 
+    <string name="key_arg_bt_device_address">&package;args.bluetooth.device</string>
+    <string name="key_arg_bt_service_address">&package;args.bluetooth.service</string>
+    <string name="key_arg_bt_char_address">&package;args.bluetooth.char</string>
+
 </resources>

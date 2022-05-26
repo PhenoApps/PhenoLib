@@ -1,10 +1,14 @@
 package org.phenoapps.security
 
+import android.app.Activity
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import org.phenoapps.annotations.Experimental
 import org.phenoapps.interfaces.security.SecureFragmentInterface
+import org.phenoapps.interfaces.security.SecureInterface
 import org.phenoapps.interfaces.security.SecureOpenDocumentTree
 import kotlin.properties.ReadOnlyProperty
 
@@ -16,6 +20,9 @@ class Security {
     private var secureOpenDocument: SecureOpenDocumentImpl? = null
     private var secureDocument: SecureDefineDocumentTreeImpl? = null
     private var secureBluetooth: SecureBluetoothImpl? = null
+
+    private var secureActivity: SecureActivityImpl? = null
+    private var secureBluetoothActivity: SecureBluetoothActivityImpl? = null
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     fun secureBluetooth(): ReadOnlyProperty<Fragment, SecureBluetoothImpl> =
@@ -73,4 +80,23 @@ class Security {
             secureFragment!!
         }
 
+    @Experimental
+    fun secureActivity(act: FragmentActivity): ReadOnlyProperty<SecureInterface, SecureActivityImpl> =
+        ReadOnlyProperty { thisRef, property ->
+            Log.d(TAG, "$thisRef has utilized Bluetooth security by ${property.name}")
+            if (secureActivity == null) {
+                secureActivity = SecureActivityImpl(act)
+            }
+            secureActivity!!
+        }
+
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+    fun secureBluetoothActivity(): ReadOnlyProperty<FragmentActivity, SecureBluetoothActivityImpl> =
+        ReadOnlyProperty { thisRef, property ->
+            Log.d(TAG, "$thisRef has utilized Bluetooth security by ${property.name}")
+            if (secureBluetoothActivity == null) {
+                secureBluetoothActivity = SecureBluetoothActivityImpl(thisRef)
+            }
+            secureBluetoothActivity!!
+        }
 }

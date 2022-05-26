@@ -27,6 +27,27 @@
         app:layout_constraintTop_toBottomOf="@id/frag_main_hardware_header"
         android:layout_margin="16dp"/>
 
+    <Button style="@style/Platform.MaterialComponents.Light"
+        android:text="GATT Explorer"
+        android:textSize="24sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/frag_main_hardware_gatt_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_main_hardware_bluetooth_btn"
+        android:layout_margin="16dp"/>
+
+    <Button style="@style/Platform.MaterialComponents.Light"
+        android:text="Indigo Goya Spectrometer"
+        android:textSize="24sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/frag_main_hardware_indigo_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_main_hardware_gatt_btn"
+        android:layout_margin="16dp"/>
 
     <TextView style="@style/TextAppearance.MaterialComponents.Headline4"
         android:id="@+id/frag_main_intent_header"
@@ -34,7 +55,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frag_main_hardware_bluetooth_btn"
+        app:layout_constraintTop_toBottomOf="@id/frag_main_hardware_indigo_btn"
         android:layout_margin="16dp"
         android:text="Intents"/>
 

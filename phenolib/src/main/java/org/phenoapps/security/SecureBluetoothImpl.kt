@@ -12,9 +12,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import org.phenoapps.interfaces.security.SecureBluetooth
+import org.phenoapps.interfaces.security.SecureLocation
 
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-class SecureBluetoothImpl(private val fragment: Fragment): SecureBluetooth {
+class SecureBluetoothImpl(private val fragment: Fragment): SecureBluetooth, SecureLocation {
 
     companion object {
 
@@ -109,7 +110,6 @@ class SecureBluetoothImpl(private val fragment: Fragment): SecureBluetooth {
 
                 function(adapter)
             }
-
         }
     }
 
@@ -128,11 +128,38 @@ class SecureBluetoothImpl(private val fragment: Fragment): SecureBluetooth {
         } else function(adapter)
     }
 
+    /**
+     * Grants all permissions for connecting/advertising/discovering.
+     */
+    override fun withNearby(function: (adapter: BluetoothAdapter) -> Unit) = withLocation {
+
+        connectWith {
+
+            discoverWith {
+
+                advertiseWith { adapter ->
+
+                    function(adapter)
+                }
+            }
+        }
+    }
+
     override fun initialize() {
         advisor.initialize()
     }
 
     override fun withPermission(permissions: Array<String>, onResult: () -> Unit) {
         advisor.withPermission(permissions, onResult)
+    }
+
+    override fun withLocation(onResult: () -> Unit) {
+
+        withPermission(arrayOf(
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+           onResult()
+        }
     }
 }
