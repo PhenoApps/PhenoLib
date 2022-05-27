@@ -81,4 +81,26 @@
         app:layout_constraintTop_toBottomOf="@id/frag_main_intent_share_file_btn"
         android:layout_margin="16dp"/>
 
+    <Button style="@style/Platform.MaterialComponents.Light"
+        android:text="Test System Location Providers"
+        android:textSize="24sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/frag_main_intent_location_provider_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_main_intent_share_file_chooser_btn"
+        android:layout_margin="16dp"/>
+
+    <Button style="@style/Platform.MaterialComponents.Light"
+        android:text="Test System Bluetooth"
+        android:textSize="24sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/frag_main_intent_bluetooth_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_main_intent_location_provider_btn"
+        android:layout_margin="16dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

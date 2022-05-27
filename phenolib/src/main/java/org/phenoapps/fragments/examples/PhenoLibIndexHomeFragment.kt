@@ -58,6 +58,16 @@ class PhenoLibIndexHomeFragment(
             shareFileChooserButton.setOnClickListener {
                 IntentUtil.appTestShareFileChooser(context)
             }
+
+            val locationProvidersButton = view.findViewById<Button>(R.id.frag_main_intent_location_provider_btn)
+            locationProvidersButton.setOnClickListener {
+                IntentUtil.testSystemLocation(context)
+            }
+
+            val bluetoothEnableButton = view.findViewById<Button>(R.id.frag_main_intent_bluetooth_btn)
+            bluetoothEnableButton.setOnClickListener {
+                IntentUtil.testSystemBluetooth(context)
+            }
         }
     }
 }

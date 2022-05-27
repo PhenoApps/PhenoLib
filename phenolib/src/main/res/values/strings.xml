@@ -217,4 +217,9 @@
     <string name="frag_migrator_status_complete">Migration complete.</string>
     <string name="frag_toolbar_connection_menu_title">Connection status</string>
 
+    <string name="location_provider_not_enabled">Please enable location.</string>
+    <string name="location_provider_not_enabled_title">Location Not Enabled</string>
+    <string name="bluetooth_not_enabled">Please enable Bluetooth.</string>
+    <string name="bluetooth_not_enabled_title">Bluetooth Not Enabled</string>
+
 </resources>
