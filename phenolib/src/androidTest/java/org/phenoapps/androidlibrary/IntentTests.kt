@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 import org.phenoapps.utils.IntentUtil
 
 @RunWith(AndroidJUnit4::class)
-class ShareFileTest {
+class IntentTests {
 
     private var mContext: Context? = null
 

@@ -13,10 +13,32 @@ import java.io.File
 interface TestIntentUtil {
 
     fun startActivity(context: Context?, intent: Intent)
+
+    //file sharing
     fun shareFile(context: Context?, uri: Uri, subject: String?, text: String?)
     fun shareFileChooser(context: Context?, uri: Uri, title: String, subject: String?, text: String?)
     fun shareFileChooserIntent(uri: Uri, title: String, subject: String?, text: String?): Intent
     fun shareFileIntent(uri: Uri, subject: String?, text: String?): Intent
+
+    //ask system functionality
+    fun askSystemLocation(context: Context?)
+    fun askSystemBluetooth(context: Context?)
+
+    fun testSystemLocation(context: Context?) {
+
+        context?.let { ctx ->
+
+            askSystemLocation(ctx)
+        }
+    }
+
+    fun testSystemBluetooth(context: Context?) {
+
+        context?.let { ctx ->
+
+            askSystemBluetooth(ctx)
+        }
+    }
 
     //to be used in pheno lib app examples, requires defined storage
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
