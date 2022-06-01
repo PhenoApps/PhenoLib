@@ -19,4 +19,5 @@
     <string name="key_arg_bt_service_address">&package;args.bluetooth.service</string>
     <string name="key_arg_bt_char_address">&package;args.bluetooth.char</string>
 
+    <string name="key_tts_locale">&package;args.tts.locale</string>
 </resources>

@@ -19,6 +19,8 @@ open class KeyUtil(private val ctx: Context?) {
     open val argBluetoothServiceAddress by key(R.string.key_arg_bt_service_address)
     open val argBluetoothCharAddress by key(R.string.key_arg_bt_char_address)
 
+    open val argTtsLocale by key(R.string.key_tts_locale)
+
     open val isFirstInstall by key(R.string.key_first_install)
     open val enableMigrator by key(R.string.key_enable_migrator)
 
