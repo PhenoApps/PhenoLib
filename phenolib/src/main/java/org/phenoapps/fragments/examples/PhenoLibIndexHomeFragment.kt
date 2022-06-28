@@ -68,6 +68,12 @@ class PhenoLibIndexHomeFragment(
             bluetoothEnableButton.setOnClickListener {
                 IntentUtil.testSystemBluetooth(context)
             }
+
+            val ttsButton = view.findViewById<Button>(R.id.frag_main_tts_btn)
+            ttsButton.setOnClickListener {
+                findNavController().navigate(PhenoLibIndexHomeFragmentDirections
+                    .actionFromIndexToTts())
+            }
         }
     }
 }
