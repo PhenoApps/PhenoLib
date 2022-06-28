@@ -23,6 +23,15 @@
             android:id="@+id/action_from_index_to_indigo_fragment"
             app:popUpTo="@id/phenolib_index_fragment"
             app:destination="@id/indigo_index_fragment" />
+        <action
+            android:id="@+id/action_from_index_to_tts"
+            app:popUpTo="@id/phenolib_index_fragment"
+            app:destination="@id/tts_fragment" />
+    </fragment>
+
+    <fragment android:id="@+id/tts_fragment"
+        android:name="org.phenoapps.fragments.examples.tts.TextToSpeechPagerFragment"
+        android:label="TTS">
     </fragment>
 
     <fragment android:id="@+id/indigo_index_fragment"
