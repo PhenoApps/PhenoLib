@@ -27,7 +27,15 @@
             android:id="@+id/action_from_index_to_tts"
             app:popUpTo="@id/phenolib_index_fragment"
             app:destination="@id/tts_fragment" />
+        <action
+            android:id="@+id/action_from_index_to_usb_camera"
+            app:popUpTo="@id/phenolib_index_fragment"
+            app:destination="@id/usb_camera_fragment" />
     </fragment>
+
+    <fragment android:id="@+id/usb_camera_fragment"
+        android:name="org.phenoapps.fragments.usb.camera.UsbCameraFragment"
+        android:label="Usb Camera"/>
 
     <fragment android:id="@+id/tts_fragment"
         android:name="org.phenoapps.fragments.examples.tts.TextToSpeechPagerFragment"
