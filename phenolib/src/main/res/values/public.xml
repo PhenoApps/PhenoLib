@@ -39,6 +39,8 @@
     <public name="document_tree_undefined" type="string"/>
     <public name="error_dtu_dir_not_created" type="string"/>
     <public name="activity_define_storage" type="layout"/>
+    <public name="ic_arrow_collapse_all" type="drawable"/>
+    <public name="ic_arrow_expand_all" type="drawable"/>
 
     <!-- keys -->
     <public name="key_first_install" type="string"/>

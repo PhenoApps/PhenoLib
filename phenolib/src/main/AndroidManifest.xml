@@ -2,6 +2,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Camera/Record audio needed for usb cameras -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
     <!--bluetooth permission for Android S 12 (31) -->
     <!-- run time region, required to check on use -->
     <!-- scan required when searching for Bluetooth devices -->

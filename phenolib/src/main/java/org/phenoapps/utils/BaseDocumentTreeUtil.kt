@@ -132,7 +132,7 @@ open class BaseDocumentTreeUtil {
 
                         if (dir == null || !dir.isDirectory) {
 
-                            val isFbPlotMedia = file.parentFile?.name == "plot_data"
+                            val isFbPlotMedia = file.parentFile?.name in setOf("audio", "photos", "plot_data")
                             val isFbMediaDir = file.name in setOf("audio", "photos")
                             if (dir?.name in directories || isFbPlotMedia || isFbMediaDir) {
 
