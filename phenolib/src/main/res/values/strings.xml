@@ -221,5 +221,8 @@
     <string name="location_provider_not_enabled_title">Location Not Enabled</string>
     <string name="bluetooth_not_enabled">Please enable Bluetooth.</string>
     <string name="bluetooth_not_enabled_title">Bluetooth Not Enabled</string>
+    <string name="usb_camera_frag_connect_btn_content_description">Choose a device to connect to</string>
+    <string name="list_item_image_content_description">An image in a list.</string>
+    <string name="list_item_image_close_content_description">Delete this image.</string>
 
 </resources>

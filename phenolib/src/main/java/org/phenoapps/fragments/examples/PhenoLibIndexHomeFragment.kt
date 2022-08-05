@@ -1,5 +1,6 @@
 package org.phenoapps.fragments.examples
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View

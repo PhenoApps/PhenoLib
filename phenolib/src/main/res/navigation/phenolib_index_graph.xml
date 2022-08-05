@@ -6,6 +6,7 @@
 
     <include app:graph="@navigation/storage_definer_graph"/>
     <include app:graph="@navigation/preferences_graph"/>
+    <include app:graph="@navigation/phenolib_camera_graph"/>
 
     <fragment
         android:id="@+id/phenolib_index_fragment"
@@ -30,12 +31,8 @@
         <action
             android:id="@+id/action_from_index_to_usb_camera"
             app:popUpTo="@id/phenolib_index_fragment"
-            app:destination="@id/usb_camera_fragment" />
+            app:destination="@id/phenolib_camera_graph" />
     </fragment>
-
-    <fragment android:id="@+id/usb_camera_fragment"
-        android:name="org.phenoapps.fragments.usb.camera.UsbCameraFragment"
-        android:label="Usb Camera"/>
 
     <fragment android:id="@+id/tts_fragment"
         android:name="org.phenoapps.fragments.examples.tts.TextToSpeechPagerFragment"

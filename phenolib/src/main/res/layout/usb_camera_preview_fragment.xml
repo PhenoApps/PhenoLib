@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/usb_camera_fragment_cv">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="horizontal"
+        tools:listitem="@layout/list_item_image"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/usb_camera_fragment_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:contentDescription="@string/usb_camera_frag_connect_btn_content_description"
+        android:src="@drawable/ic_connection"
+        android:id="@+id/usb_camera_fragment_connect_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="16dp"
+        android:text="Devices"
+        app:layout_constraintTop_toBottomOf="@id/usb_camera_fragment_rv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:visibility="invisible"
+        android:id="@+id/usb_camera_fragment_preview_group"
+        app:constraint_referenced_ids="usb_camera_fragment_capture_btn, usb_camera_fragment_expand_btn, usb_camera_fragment_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <com.serenegiant.SimpleUVCCameraTextureView
+        android:id="@+id/usb_camera_fragment_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usb_camera_fragment_rv" />
+
+    <ImageButton
+        android:background="@drawable/circle_background"
+        android:id="@+id/usb_camera_fragment_capture_btn"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:text="Capture"
+        app:layout_constraintBottom_toBottomOf="@id/usb_camera_fragment_tv"
+        app:layout_constraintEnd_toEndOf="@id/usb_camera_fragment_tv"
+        app:layout_constraintStart_toStartOf="@id/usb_camera_fragment_tv" />
+
+    <ImageButton
+        android:layout_margin="8dp"
+        android:background="@drawable/circle_background_simple"
+        android:src="@drawable/ic_arrow_expand"
+        android:minWidth="64dp"
+        android:minHeight="64dp"
+        android:id="@+id/usb_camera_fragment_expand_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View"
+        app:layout_constraintTop_toTopOf="@id/usb_camera_fragment_tv"
+        app:layout_constraintEnd_toEndOf="@id/usb_camera_fragment_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
