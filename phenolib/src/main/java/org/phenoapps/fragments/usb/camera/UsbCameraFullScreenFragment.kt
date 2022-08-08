@@ -79,6 +79,8 @@ class UsbCameraFullScreenFragment : Fragment(), UsbCameraController {
 
         activity?.let { act ->
 
+            helper = (act as? UsbCameraInterface)?.getCameraHelper()
+
             previewLayoutParams = binding.usbCameraFragmentTv.layoutParams
 
             binding.usbCameraFragmentPreviewGroup.visibility = View.VISIBLE
@@ -94,8 +96,6 @@ class UsbCameraFullScreenFragment : Fragment(), UsbCameraController {
                 override fun onSurfaceTextureAvailable(p0: SurfaceTexture, p1: Int, p2: Int) {
 
                     binding.usbCameraFragmentPreviewGroup.visibility = View.VISIBLE
-
-                    (act as? UsbCameraInterface)?.getCameraHelper()?.init(this@UsbCameraFullScreenFragment, binding.usbCameraFragmentTv)
 
                     helper?.init(this@UsbCameraFullScreenFragment, binding.usbCameraFragmentTv)
 

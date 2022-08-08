@@ -149,6 +149,20 @@ open class UsbCameraHelper(private val activity: Activity) {
         resetMonitor()
     }
 
+    fun swap(controller: UsbCameraController, view: SimpleUVCCameraTextureView) {
+
+        this.controller = controller
+
+        this.view = view
+
+        this.view?.let { v ->
+
+            previewLayoutParams = v.layoutParams
+
+            previewSurface = Surface(v.surfaceTexture)
+        }
+    }
+
     fun disconnect() {
         camera?.close()
         resetMonitor()
