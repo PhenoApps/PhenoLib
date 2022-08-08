@@ -225,7 +225,7 @@ open class UsbCameraHelper(private val activity: Activity) {
 
                 camera?.setPreviewSize(size.width, size.height)
 
-                aspectRatio = (size.width / size.height).toDouble()
+                aspectRatio = size.width / size.height.toDouble()
 
                 this.controller?.refreshCameraAspectRatio(aspectRatio)
 
