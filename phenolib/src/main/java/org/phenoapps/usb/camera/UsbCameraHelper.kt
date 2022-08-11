@@ -8,8 +8,11 @@ import android.view.Surface
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.serenegiant.SimpleUVCCameraTextureView
+import com.serenegiant.usb.IFrameCallback
 import com.serenegiant.usb.USBMonitor
 import com.serenegiant.usb.UVCCamera
+import org.phenoapps.interfaces.usb.camera.UsbCameraInterface
+import java.nio.ByteBuffer
 
 /***
  * Tested Pixel 6 API 12  -- working
@@ -18,33 +21,46 @@ import com.serenegiant.usb.UVCCamera
  */
 open class UsbCameraHelper(private val activity: Activity) {
 
+    companion object {
+        private var TAG = UsbCameraHelper::class.simpleName
+        const val DISPLAY_MODE_PREVIEW = 0
+        const val DISPLAY_MODE_MAX = 1
+    }
+
+    private var controller: UsbCameraInterface.AspectRatioController? = null
+
     private var monitor: USBMonitor? = null
 
     private var camera: UVCCamera? = null
 
-    private var displayMode = 0
+    private var displayMode = DISPLAY_MODE_PREVIEW
 
     private var previewLayoutParams: ViewGroup.LayoutParams? = null
 
     private var previewSurface: Surface? = null
 
+    private var lastFrame: ByteBuffer? = null
+
+    var aspectRatio: Double = UVCCamera.DEFAULT_PREVIEW_WIDTH / UVCCamera.DEFAULT_PREVIEW_HEIGHT.toDouble()
+
     var view: SimpleUVCCameraTextureView? = null
 
-    private var maxWidth = 512
-    private var maxHeight = 512
+    private val frameCallback = IFrameCallback {
+        lastFrame = it
+    }
 
     private val listener = object : USBMonitor.OnDeviceConnectListener {
 
         override fun onAttach(device: UsbDevice?) {
 
-            Log.d("Monitor", "Attach")
+            Log.d(TAG, "Attach")
 
             monitor?.requestPermission(device)
 
         }
 
         override fun onDetach(device: UsbDevice?) {
-            Log.d("Monitor", "Detach")
+            Log.d(TAG, "Detach")
         }
 
         override fun onConnect(
@@ -52,11 +68,11 @@ open class UsbCameraHelper(private val activity: Activity) {
             ctrlBlock: USBMonitor.UsbControlBlock?,
             createNew: Boolean
         ) {
-            Log.d("Monitor", "Connect createNew: $createNew")
+            Log.d(TAG, "Connect createNew: $createNew")
 
             ctrlBlock?.let { control ->
 
-                Log.d("Monitor", "Connecting")
+                Log.d(TAG, "Connecting")
 
                 connect(control)
 
@@ -68,13 +84,13 @@ open class UsbCameraHelper(private val activity: Activity) {
             ctrlBlock: USBMonitor.UsbControlBlock?
         ) {
 
-            Log.d("Monitor", "Disconnect")
+            Log.d(TAG, "Disconnect")
 
         }
 
         override fun onCancel(device: UsbDevice?) {
 
-            Log.d("Monitor", "Cancel")
+            Log.d(TAG, "Cancel")
 
         }
     }
@@ -93,40 +109,40 @@ open class UsbCameraHelper(private val activity: Activity) {
                 Build.SUPPORTED_64_BIT_ABIS // Return an ordered list of 64 bit ABIs supported by this device.
 
             supportedABIS?.forEach { abi ->
-                Log.d("ABI", abi)
+                Log.d(TAG, "ABI: $abi")
             }
 
             supported32BitABIS?.forEach { abi ->
-                Log.d("ABI32", abi)
+                Log.d(TAG, "ABI32: $abi")
             }
 
             supported64BitABIS?.forEach { abi ->
-                Log.d("ABI64", abi)
+                Log.d(TAG, "ABI64: $abi")
             }
         }
     }
 
-    fun init(min: SimpleUVCCameraTextureView, width: Int, height: Int) {
+    fun init(tv: SimpleUVCCameraTextureView, controller: UsbCameraInterface.AspectRatioController) {
 
-        maxWidth = width
-        maxHeight = height
-
-        previewLayoutParams = min.layoutParams
+        this.controller = controller
 
         monitor?.unregister()
         monitor?.destroy()
         camera?.close()
         camera?.destroy()
 
-        view = min
+        view = tv
 
         view?.let { v ->
 
-            previewSurface = Surface(v.surfaceTexture)
+            v.setAspectRatio(aspectRatio)
 
+            previewLayoutParams = v.layoutParams
+
+            previewSurface = Surface(v.surfaceTexture)
         }
 
-        Log.d("Monitor", "Register opening")
+        Log.d(TAG, "Register opening")
 
         resetMonitor()
     }
@@ -147,33 +163,33 @@ open class UsbCameraHelper(private val activity: Activity) {
         camera?.destroy()
     }
 
-    fun switchDisplayMode() {
+    fun switchDisplayMode(): Int {
 
         displayMode = when (displayMode) {
-            0 -> {
+            DISPLAY_MODE_PREVIEW -> {
                 setMax()
-                1
+                DISPLAY_MODE_MAX
             }
             else -> {
                 setMin()
-                0
+                DISPLAY_MODE_PREVIEW
             }
         }
+
+        return displayMode
     }
 
     open fun setMax() {
-        view?.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, maxHeight)
+        view?.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, 512)
     }
 
     open fun setMin() {
         view?.layoutParams = previewLayoutParams
     }
 
-    fun getBitmap() = when (displayMode) { 0 -> view?.bitmap else -> view?.bitmap }
-
     private fun resetMonitor() {
 
-        Log.d("Monitor", "Resetting monitor.")
+        Log.d(TAG, "Resetting monitor.")
 
         monitor = USBMonitor(activity, listener)
 
@@ -183,45 +199,47 @@ open class UsbCameraHelper(private val activity: Activity) {
 
     private fun connect(ctrlBlock: USBMonitor.UsbControlBlock) {
 
-        Log.d("Monitor", "Running on ui thread")
+        Log.d(TAG, "Running on ui thread")
 
         try {
 
             camera?.close()
 
-            Log.d("Monitor", "Opening camera")
+            Log.d(TAG, "Opening camera")
 
             camera = UVCCamera()
 
             camera?.open(ctrlBlock)
 
-            camera?.supportedSizeList?.maxByOrNull { it.height*it.width }?.let { size ->
+            camera?.supportedSizeList?.forEach { size ->
 
-                camera?.setPreviewSize(size.width, size.height)
+                Log.d(TAG, "Supported size: width: ${size.width} height: ${size.height} aspect ratio: ${size.width/size.height} fps: ${size.fps}")
 
             }
 
-            camera?.setPreviewDisplay(previewSurface)
+            camera?.supportedSizeList?.maxByOrNull { it.height*it.width }?.let { size ->
 
-//            val sizeList = camera?.supportedSizeList
-//            val minSize = sizeList?.minByOrNull { it.height }
-//            val maxSize = sizeList?.maxByOrNull { it.height }
-//
-//            if (minSize != null) {
-//                minView?.minimumWidth = minSize.width
-//                minView?.minimumHeight = minSize.height
-//            }
-//
-//            if (maxSize != null) {
-//                maxView?.minimumWidth = maxSize.width
-//                maxView?.minimumHeight = maxSize.height
-//            }
+                Log.d(TAG, "Preview size: width: ${size.width} height: ${size.height}")
+
+                camera?.setPreviewSize(size.width, size.height)
+
+                aspectRatio = size.width / size.height.toDouble()
+
+                this.controller?.refreshCameraAspectRatio(aspectRatio)
+
+            }
+
+            camera?.setFrameCallback(frameCallback, UVCCamera.PIXEL_FORMAT_YUV)
+
+            camera?.setPreviewDisplay(previewSurface)
 
             camera?.startPreview()
 
+            camera?.startCapture(previewSurface)
+
         } catch (e: Exception) {
 
-            Log.d("Monitor", "Error during camera setup.")
+            Log.d(TAG, "Error during camera setup.")
 
             e.printStackTrace()
 

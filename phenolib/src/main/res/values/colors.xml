@@ -4,4 +4,8 @@
     <color name="changeLogAlertDialogContentTextColor">#000000</color>
 
     <color name="aboutAlertDialogAccentTextColor">#304FFE</color>
+
+    <color name="circleBackgroundMiddleColor">#80FEFEFE</color>
+    <color name="circleBackgroundMiddleColorPressed">#20FEFEFE</color>
+    <color name="circleBackgroundOuterColor">#FFFFFF</color>
 </resources>

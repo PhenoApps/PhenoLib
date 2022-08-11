@@ -6,4 +6,10 @@
     <dimen name="masterDetailItemAppBarHeight">200dp</dimen>
     <dimen name="masterDetailListItemTextViewMargin">16dp</dimen>
     <dimen name="masterDetailListItemWidth">200dp</dimen>
+
+    <dimen name="vgaWidth">640dp</dimen>
+    <dimen name="vgaHeight">480dp</dimen>
+
+    <integer name="thumbnailWidth">320</integer>
+    <integer name="thumbnailHeight">240</integer>
 </resources>

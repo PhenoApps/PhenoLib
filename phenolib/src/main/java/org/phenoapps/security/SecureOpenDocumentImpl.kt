@@ -20,7 +20,7 @@ class SecureOpenDocumentImpl(private val fragment: Fragment) : SecureOpenDocumen
     private var mOnTreePicked: (Uri) -> Unit = { _ -> /* not implemented */ }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private var mDocumentTree: ActivityResultLauncher<Uri>? = null
+    private var mDocumentTree: ActivityResultLauncher<Uri?>? = null
 
     override fun openTree(onSuccess: (uri: Uri) -> Unit) {
 

@@ -1,0 +1,29 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/camera_preview_fragment"
+    android:id="@+id/phenolib_camera_graph">
+
+    <fragment
+        android:id="@+id/camera_preview_fragment"
+        android:name="org.phenoapps.fragments.usb.camera.UsbCameraPreviewFragment"
+        android:label="Preview" >
+        <argument android:name="fromFull"
+            android:defaultValue="false"
+            app:argType="boolean"/>
+        <action
+            android:id="@+id/action_from_preview_to_fullscreen"
+            app:popUpTo="@id/camera_preview_fragment"
+            app:destination="@id/camera_fullscreen_fragment" />
+    </fragment>
+
+    <fragment android:id="@+id/camera_fullscreen_fragment"
+        android:name="org.phenoapps.fragments.usb.camera.UsbCameraFullScreenFragment"
+        android:label="Fullscreen">
+        <action
+            android:id="@+id/action_from_fullscreen_to_preview"
+            app:popUpTo="@id/camera_fullscreen_fragment"
+            app:destination="@id/camera_preview_fragment" />
+    </fragment>
+
+</navigation>

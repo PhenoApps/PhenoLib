@@ -54,7 +54,6 @@
 
         <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ListActivity"           android:launchMode="singleTask" />
         <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ChangeableListActivity" android:launchMode="singleTask" />
-
     </application>
 
 </manifest>
