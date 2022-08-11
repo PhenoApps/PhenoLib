@@ -50,4 +50,15 @@
     <public name="key_pref_database_delete" type="string"/>
     <public name="key_pref_database_export" type="string"/>
     <public name="key_pref_database_import" type="string"/>
+
+    <!--usb camera -->
+    <public name="circle_background" type="drawable"/>
+    <public name="ic_connection" type="drawable"/>
+    <public name="list_item_image" type="layout"/>
+    <public name="thumbnailHeight" type="integer"/>
+    <public name="thumbnailWidth" type="integer"/>
+    <public name="aspect_ratio_keys" type="array"/>
+    <public name="aspect_ratio_values" type="array"/>
+    <public name="usb_camera_frag_connect_btn_content_description" type="string"/>
+
 </resources>
