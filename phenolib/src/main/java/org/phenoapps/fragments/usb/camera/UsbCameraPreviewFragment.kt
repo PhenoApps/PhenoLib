@@ -1,5 +1,6 @@
 package org.phenoapps.fragments.usb.camera
 
+import android.app.Activity
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -8,41 +9,33 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.SurfaceTexture
 import android.hardware.usb.UsbManager
-import android.media.ExifInterface
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
+import android.widget.ImageButton
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.constraintlayout.widget.Group
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.serenegiant.SimpleUVCCameraTextureView
 import com.serenegiant.usb.UVCCamera
 import org.phenoapps.adapters.ImageAdapter
 import org.phenoapps.androidlibrary.R
 import org.phenoapps.androidlibrary.databinding.UsbCameraPreviewFragmentBinding
-import org.phenoapps.interfaces.security.OnClickListItem
+import org.phenoapps.interfaces.usb.camera.CameraSurfaceListener
 import org.phenoapps.receivers.UsbPermissionReceiver
 import org.phenoapps.security.Security
-import org.phenoapps.usb.camera.UsbCameraController
 import org.phenoapps.usb.camera.UsbCameraHelper
-import org.phenoapps.usb.camera.UsbCameraInterface
-import org.phenoapps.utils.BaseDocumentTreeUtil
-import org.phenoapps.utils.BaseDocumentTreeUtil.Companion.getStem
+import org.phenoapps.interfaces.usb.camera.UsbCameraInterface
 import java.io.File
 import java.util.*
 import kotlin.math.abs
 
-class UsbCameraPreviewFragment : Fragment(), UsbCameraController, ImageAdapter.ImageItemHandler {
+class UsbCameraPreviewFragment : Fragment(), ImageAdapter.ImageItemHandler {
 
     companion object {
         private var TAG = this::class.simpleName
@@ -128,55 +121,53 @@ class UsbCameraPreviewFragment : Fragment(), UsbCameraController, ImageAdapter.I
 
     private fun setup() {
 
-        activity?.let { act ->
+        previewLayoutParams = binding.usbCameraFragmentTv.layoutParams
 
-            previewLayoutParams = binding.usbCameraFragmentTv.layoutParams
+        binding.usbCameraFragmentConnectBtn.visibility = View.GONE
 
-            binding.usbCameraFragmentConnectBtn.visibility = View.GONE
+        binding.usbCameraFragmentPreviewGroup.visibility = View.VISIBLE
 
-            binding.usbCameraFragmentPreviewGroup.visibility = View.VISIBLE
+        binding.usbCameraFragmentTv.surfaceTextureListener = object : CameraSurfaceListener {
 
-            binding.usbCameraFragmentTv.surfaceTextureListener = object : TextureView.SurfaceTextureListener {
-                override fun onSurfaceTextureAvailable(p0: SurfaceTexture, p1: Int, p2: Int) {
+            override fun onSurfaceTextureAvailable(surface: SurfaceTexture, width: Int, height: Int) {
 
-                    binding.usbCameraFragmentPreviewGroup.visibility = View.VISIBLE
+                initPreview()
+            }
 
-                    (act as? UsbCameraInterface)?.getCameraHelper()?.init(this@UsbCameraPreviewFragment, binding.usbCameraFragmentTv)
+            override fun onSurfaceTextureUpdated(surfaceTexture: SurfaceTexture) {
+                bmp = binding.usbCameraFragmentTv.bitmap
 
-                    binding.usbCameraFragmentCaptureBtn.setOnClickListener {
-
-                        saveBitmapToCache(bmp)
-                    }
-
-                    binding.usbCameraFragmentExpandBtn.setOnClickListener {
-
-                        findNavController().navigate(
-                            UsbCameraPreviewFragmentDirections
-                                .actionFromPreviewToFullscreen()
-                        )
-                    }
-                }
-
-                override fun onSurfaceTextureSizeChanged(p0: SurfaceTexture, p1: Int, p2: Int) {}
-                override fun onSurfaceTextureDestroyed(p0: SurfaceTexture): Boolean { return true }
-                override fun onSurfaceTextureUpdated(p0: SurfaceTexture) {
-
-                    bmp = binding.usbCameraFragmentTv.bitmap
-
-                }
+                binding.usbCameraFragmentIv.setImageBitmap(bmp)
             }
         }
     }
 
-    override fun refreshCameraAspectRatio(ratio: Double) {
-        activity?.runOnUiThread {
-            binding.usbCameraFragmentTv.setAspectRatio(ratio)
-            binding.usbCameraFragmentCaptureBtn.invalidate()
+    private fun initPreview() {
+
+        (activity as? UsbCameraInterface)?.let { cameraInterface ->
+
+            binding.usbCameraFragmentPreviewGroup.visibility = View.VISIBLE
+
+            cameraInterface.getCameraHelper()?.init(binding.usbCameraFragmentTv) { ratio ->
+                activity?.runOnUiThread {
+                    binding.usbCameraFragmentTv.setAspectRatio(ratio)
+                    binding.usbCameraFragmentCaptureBtn.invalidate()
+                }
+            }
+
+            binding.usbCameraFragmentCaptureBtn.setOnClickListener {
+
+                saveBitmapToCache(bmp)
+            }
+
+            binding.usbCameraFragmentExpandBtn.setOnClickListener {
+
+                findNavController().navigate(
+                    UsbCameraPreviewFragmentDirections
+                        .actionFromPreviewToFullscreen()
+                )
+            }
         }
-    }
-
-    override fun onMaximize() {
-
     }
 
     private fun setupCacheAdapter() {

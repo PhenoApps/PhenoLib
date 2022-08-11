@@ -1,8 +1,6 @@
 package org.phenoapps.usb.camera
 
 import android.app.Activity
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.hardware.usb.UsbDevice
 import android.os.Build
 import android.util.Log
@@ -13,8 +11,8 @@ import com.serenegiant.SimpleUVCCameraTextureView
 import com.serenegiant.usb.IFrameCallback
 import com.serenegiant.usb.USBMonitor
 import com.serenegiant.usb.UVCCamera
+import org.phenoapps.interfaces.usb.camera.UsbCameraInterface
 import java.nio.ByteBuffer
-import java.util.*
 
 /***
  * Tested Pixel 6 API 12  -- working
@@ -24,12 +22,12 @@ import java.util.*
 open class UsbCameraHelper(private val activity: Activity) {
 
     companion object {
-        private var TAG = this::class.simpleName
+        private var TAG = UsbCameraHelper::class.simpleName
         const val DISPLAY_MODE_PREVIEW = 0
         const val DISPLAY_MODE_MAX = 1
     }
 
-    private var controller: UsbCameraController? = null
+    private var controller: UsbCameraInterface.AspectRatioController? = null
 
     private var monitor: USBMonitor? = null
 
@@ -124,7 +122,7 @@ open class UsbCameraHelper(private val activity: Activity) {
         }
     }
 
-    fun init(controller: UsbCameraController, min: SimpleUVCCameraTextureView) {
+    fun init(tv: SimpleUVCCameraTextureView, controller: UsbCameraInterface.AspectRatioController) {
 
         this.controller = controller
 
@@ -133,7 +131,7 @@ open class UsbCameraHelper(private val activity: Activity) {
         camera?.close()
         camera?.destroy()
 
-        view = min
+        view = tv
 
         view?.let { v ->
 
@@ -147,20 +145,6 @@ open class UsbCameraHelper(private val activity: Activity) {
         Log.d(TAG, "Register opening")
 
         resetMonitor()
-    }
-
-    fun swap(controller: UsbCameraController, view: SimpleUVCCameraTextureView) {
-
-        this.controller = controller
-
-        this.view = view
-
-        this.view?.let { v ->
-
-            previewLayoutParams = v.layoutParams
-
-            previewSurface = Surface(v.surfaceTexture)
-        }
     }
 
     fun disconnect() {

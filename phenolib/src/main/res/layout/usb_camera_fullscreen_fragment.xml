@@ -18,22 +18,32 @@
     <androidx.constraintlayout.widget.Group
         android:visibility="invisible"
         android:id="@+id/usb_camera_fragment_preview_group"
-        app:constraint_referenced_ids="usb_camera_fragment_capture_btn, usb_camera_fragment_tv"
+        app:constraint_referenced_ids="usb_camera_fragment_iv, usb_camera_fragment_capture_btn, usb_camera_fragment_tv"
         android:layout_width="0dp"
         android:layout_height="0dp"/>
 
+    <ImageView
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0"
+        android:id="@+id/usb_camera_fragment_iv"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usb_camera_fragment_tb"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <com.serenegiant.SimpleUVCCameraTextureView
-        android:layout_marginBottom="8dp"
         android:id="@+id/usb_camera_fragment_tv"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constrainedHeight="true"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_weight="0"
-        app:layout_constraintBottom_toTopOf="@id/usb_camera_fragment_capture_btn"
+        app:layout_constraintVertical_bias="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usb_camera_fragment_tb" />
+        app:layout_constraintTop_toBottomOf="parent" />
 
     <ImageButton
         android:background="@drawable/circle_background"

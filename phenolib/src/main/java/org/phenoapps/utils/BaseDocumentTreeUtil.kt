@@ -132,9 +132,8 @@ open class BaseDocumentTreeUtil {
 
                         if (dir == null || !dir.isDirectory) {
 
-                            val isFbPlotMedia = file.parentFile?.name in setOf("audio", "photos", "plot_data")
-                            val isFbMediaDir = file.name in setOf("audio", "photos")
-                            if (dir?.name in directories || isFbPlotMedia || isFbMediaDir) {
+                            val isFbPlotMedia = file.parentFile?.name in setOf("plot_data") || file.parentFile?.parentFile?.name == "plot_data" || file.parentFile?.parentFile?.parentFile?.name == "plot_data"
+                            if (dir?.name in directories || isFbPlotMedia) {
 
                                 output.createDirectory(name)?.breadthCopy(context, directories, root, file, updateUri)
 

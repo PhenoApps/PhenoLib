@@ -1,12 +1,10 @@
 package org.phenoapps.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import org.phenoapps.androidlibrarybuilder.R
-import org.phenoapps.fragments.examples.PhenoLibIndexFragment
 import org.phenoapps.usb.camera.UsbCameraHelper
-import org.phenoapps.usb.camera.UsbCameraInterface
+import org.phenoapps.interfaces.usb.camera.UsbCameraInterface
 
 class MainActivity: AppCompatActivity(), UsbCameraInterface {
 
