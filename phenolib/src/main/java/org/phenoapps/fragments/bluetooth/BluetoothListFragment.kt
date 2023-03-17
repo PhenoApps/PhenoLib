@@ -46,7 +46,7 @@ open class BluetoothListFragment(open val pager: ViewPager2? = null):
 
         advisor.connectWith { devices ->
 
-            Toast.makeText(context, "Loading ${devices.size} devices...", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "Loading ${devices.size} devices...", Toast.LENGTH_SHORT).show()
 
             (mRecyclerView.adapter as? BluetoothDeviceAdapter)
                 ?.submitList(devices.map { BluetoothDeviceModel(it) })
@@ -63,7 +63,7 @@ open class BluetoothListFragment(open val pager: ViewPager2? = null):
     }
 
     open fun onItemClicked(model: BluetoothDeviceModel) {
-        Toast.makeText(context, model.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, model.toString(), Toast.LENGTH_SHORT).show()
 
         mPrefs.edit().putString(mKeys.argBluetoothDeviceAddress, model.device.address).apply()
 

@@ -2,6 +2,7 @@ package org.phenoapps.interfaces.security
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothManager
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresPermission
@@ -16,4 +17,5 @@ interface SecureBluetooth: SecureFragmentInterface {
     fun discoverWithBackground(function: (adapter: BluetoothAdapter) -> Unit)
     fun advertiseWith(function: (adapter: BluetoothAdapter) -> Unit)
     fun withNearby(function: (adapter: BluetoothAdapter) -> Unit)
+    fun withManager(function: (manager: BluetoothManager) -> Unit)
 }

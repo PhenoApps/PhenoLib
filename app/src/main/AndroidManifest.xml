@@ -47,13 +47,13 @@
 
 <!--        <activity android:name="org.phenoapps.activities.PreferencesActivity"/>-->
 
-        <activity android:name="org.phenoapps.androidlibrarybuilder.WebViewActivity" />
+<!--        <activity android:name="org.phenoapps.androidlibrarybuilder.WebViewActivity" />-->
 
-        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ItemActivity"           android:launchMode="singleTask" />
-        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ChangeableItemActivity" android:launchMode="singleTask" />
+<!--        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ItemActivity"           android:launchMode="singleTask" />-->
+<!--        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ChangeableItemActivity" android:launchMode="singleTask" />-->
 
-        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ListActivity"           android:launchMode="singleTask" />
-        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ChangeableListActivity" android:launchMode="singleTask" />
+<!--        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ListActivity"           android:launchMode="singleTask" />-->
+<!--        <activity android:name="org.phenoapps.androidlibrarybuilder.mstrdtl.ChangeableListActivity" android:launchMode="singleTask" />-->
     </application>
 
 </manifest>

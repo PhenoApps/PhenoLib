@@ -99,6 +99,14 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
         }
     }
 
+    fun disconnectGatt() {
+
+        mGatt?.disconnect()
+
+        mGatt?.close()
+
+    }
+
     /**
      * Disconnects gatt server and clears memory.
      */

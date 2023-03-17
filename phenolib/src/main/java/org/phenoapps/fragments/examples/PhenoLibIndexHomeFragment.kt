@@ -50,6 +50,12 @@ class PhenoLibIndexHomeFragment(
                     .actionFromIndexToIndigoFragment())
             }
 
+            val ohausButton = view.findViewById<Button>(R.id.frag_main_hardware_ohaus_btn)
+            ohausButton.setOnClickListener {
+                findNavController().navigate(PhenoLibIndexHomeFragmentDirections
+                    .actionFromIndexToOhausFragment())
+            }
+
             val shareFileButton = view.findViewById<Button>(R.id.frag_main_intent_share_file_btn)
             shareFileButton.setOnClickListener {
                 IntentUtil.appTestShareFile(context)
