@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
+import android.bluetooth.BluetoothProfile
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -35,6 +36,12 @@ class SecureBluetoothImpl(private val fragment: Fragment): SecureBluetooth, Secu
 
     private fun Context.getBluetoothService() =
         getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+
+    override fun withManager(function: (manager: BluetoothManager) -> Unit) {
+
+        mBluetoothManager?.let(function)
+
+    }
 
     override fun withAdapter(function: (adapter: BluetoothAdapter) -> Unit) {
 

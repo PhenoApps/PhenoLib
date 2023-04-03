@@ -148,6 +148,10 @@ class SecureBluetoothActivityImpl(private val act: FragmentActivity): SecureBlue
         }
     }
 
+    override fun withManager(function: (manager: BluetoothManager) -> Unit) {
+        mBluetoothManager?.let(function)
+    }
+
     override fun initialize() {
         advisor.initialize()
     }
