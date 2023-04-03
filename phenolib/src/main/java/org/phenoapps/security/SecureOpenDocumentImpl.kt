@@ -26,7 +26,7 @@ class SecureOpenDocumentImpl(private val fragment: Fragment) : SecureOpenDocumen
 
         mOnTreePicked = onSuccess
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
             withPermission(arrayOf(
                 android.Manifest.permission.READ_MEDIA_AUDIO,
