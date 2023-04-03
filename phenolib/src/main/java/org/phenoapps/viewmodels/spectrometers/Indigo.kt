@@ -25,6 +25,7 @@ open class Indigo: IndigoViewModel(), Spectrometer {
         return "None"
     }
 
+
     override fun setEventListener(onClick: () -> Unit): LiveData<String> = liveData {
 
         onClickScanButton = onClick

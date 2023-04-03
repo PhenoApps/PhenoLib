@@ -24,7 +24,7 @@ class GattBridge {
                 characteristic: BluetoothGattCharacteristic?
             ) {
                 super.onCharacteristicChanged(gatt, characteristic)
-                Log.d("Gatt", "Characteristic changed.")
+                //Log.d("Gatt", "Characteristic changed.")
                 implementation.onCharacteristicChanged(gatt, characteristic)
             }
 
@@ -36,13 +36,13 @@ class GattBridge {
                 super.onCharacteristicRead(gatt, characteristic, status)
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        Log.d("Gatt", "Characteristic read success.")
+                        //Log.d("Gatt", "Characteristic read success.")
                     }
                     BluetoothGatt.GATT_READ_NOT_PERMITTED -> {
-                        Log.d("Gatt", "Char read not permitted")
+                        //Log.d("Gatt", "Char read not permitted")
                     }
                     else -> {
-                        Log.d("Gatt", "Char read failed.")
+                        //Log.d("Gatt", "Char read failed.")
                     }
                 }
                 implementation.onCharacteristicRead(gatt, characteristic, status)
@@ -56,13 +56,13 @@ class GattBridge {
                 super.onCharacteristicWrite(gatt, characteristic, status)
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        Log.d("Gatt", "Characteristic write success.")
+                        //Log.d("Gatt", "Characteristic write success.")
                     }
                     BluetoothGatt.GATT_WRITE_NOT_PERMITTED -> {
-                        Log.d("Gatt", "Characteristic write not permitted.")
+                        //Log.d("Gatt", "Characteristic write not permitted.")
                     }
                     else -> {
-                        Log.d("Gatt", "Characteristic write failed.")
+                        //Log.d("Gatt", "Characteristic write failed.")
                     }
                 }
                 implementation.onCharacteristicWrite(gatt, characteristic, status)
@@ -74,7 +74,7 @@ class GattBridge {
                 newState: Int
             ) {
                 super.onConnectionStateChange(gatt, status, newState)
-                Log.d("Gatt", "Connection state changed.")
+                //Log.d("Gatt", "Connection state changed.")
                 implementation.onConnectionStateChange(gatt, status, newState)
             }
 
@@ -86,13 +86,13 @@ class GattBridge {
                 super.onDescriptorRead(gatt, descriptor, status)
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        Log.d("Gatt", "Descriptor read success.")
+                        //Log.d("Gatt", "Descriptor read success.")
                     }
                     BluetoothGatt.GATT_READ_NOT_PERMITTED -> {
-                        Log.d("Gatt", "Descriptor read not permitted.")
+                        //Log.d("Gatt", "Descriptor read not permitted.")
                     }
                     else -> {
-                        Log.d("Gatt", "Descriptor read failed.")
+                        //Log.d("Gatt", "Descriptor read failed.")
                     }
                 }
                 implementation.onDescriptorRead(gatt, descriptor, status)
@@ -106,13 +106,13 @@ class GattBridge {
                 super.onDescriptorWrite(gatt, descriptor, status)
                 when (status) {
                     BluetoothGatt.GATT_SUCCESS -> {
-                        Log.d("Gatt", "Descriptor write success.")
+                        //Log.d("Gatt", "Descriptor write success.")
                     }
                     BluetoothGatt.GATT_WRITE_NOT_PERMITTED -> {
-                        Log.d("Gatt", "Descriptor write not permitted.")
+                        //Log.d("Gatt", "Descriptor write not permitted.")
                     }
                     else -> {
-                        Log.d("Gatt", "Descriptor write failed.")
+                        //Log.d("Gatt", "Descriptor write failed.")
                     }
                 }
                 implementation.onDescriptorWrite(gatt, descriptor, status)
@@ -120,13 +120,13 @@ class GattBridge {
 
             override fun onMtuChanged(gatt: BluetoothGatt?, mtu: Int, status: Int) {
                 super.onMtuChanged(gatt, mtu, status)
-                Log.d("Gatt", "Mtu changed.")
+                //Log.d("Gatt", "Mtu changed.")
                 implementation.onMtuChanged(gatt, mtu, status)
             }
 
             override fun onPhyRead(gatt: BluetoothGatt?, txPhy: Int, rxPhy: Int, status: Int) {
                 super.onPhyRead(gatt, txPhy, rxPhy, status)
-                Log.d("Gatt", "Phy read.")
+                //Log.d("Gatt", "Phy read.")
                 implementation.onPhyRead(gatt, txPhy, rxPhy, status)
             }
 
@@ -137,31 +137,31 @@ class GattBridge {
                 status: Int
             ) {
                 super.onPhyUpdate(gatt, txPhy, rxPhy, status)
-                Log.d("Gatt", "Phy updated.")
+               // Log.d("Gatt", "Phy updated.")
                 implementation.onPhyUpdate(gatt, txPhy, rxPhy, status)
             }
 
             override fun onReadRemoteRssi(gatt: BluetoothGatt?, rssi: Int, status: Int) {
                 super.onReadRemoteRssi(gatt, rssi, status)
-                Log.d("Gatt", "Remote rssi read.")
+                //Log.d("Gatt", "Remote rssi read.")
                 implementation.onReadRemoteRssi(gatt, rssi, status)
             }
 
             override fun onReliableWriteCompleted(gatt: BluetoothGatt?, status: Int) {
                 super.onReliableWriteCompleted(gatt, status)
-                Log.d("Gatt", "Reliable write completed.")
+                //Log.d("Gatt", "Reliable write completed.")
                 implementation.onReliableWriteCompleted(gatt, status)
             }
 
             override fun onServiceChanged(gatt: BluetoothGatt) {
                 super.onServiceChanged(gatt)
-                Log.d("Gatt", "Service changed.")
+                //Log.d("Gatt", "Service changed.")
                 implementation.onServiceChanged(gatt)
             }
 
             override fun onServicesDiscovered(gatt: BluetoothGatt?, status: Int) {
                 super.onServicesDiscovered(gatt, status)
-                Log.d("Gatt", "Service discovered.")
+                //Log.d("Gatt", "Service discovered.")
                 implementation.onServicesDiscovered(gatt, status)
             }
         }

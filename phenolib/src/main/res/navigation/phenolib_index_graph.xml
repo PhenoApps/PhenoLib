@@ -25,6 +25,10 @@
             app:popUpTo="@id/phenolib_index_fragment"
             app:destination="@id/indigo_index_fragment" />
         <action
+            android:id="@+id/action_from_index_to_ohaus_fragment"
+            app:popUpTo="@id/phenolib_index_fragment"
+            app:destination="@id/ohaus_index_fragment" />
+        <action
             android:id="@+id/action_from_index_to_tts"
             app:popUpTo="@id/phenolib_index_fragment"
             app:destination="@id/tts_fragment" />
@@ -37,6 +41,11 @@
     <fragment android:id="@+id/tts_fragment"
         android:name="org.phenoapps.fragments.examples.tts.TextToSpeechPagerFragment"
         android:label="TTS">
+    </fragment>
+
+    <fragment android:id="@+id/ohaus_index_fragment"
+        android:name="org.phenoapps.fragments.examples.scale.OhausScaleFragment"
+        android:label="Ohaus Scale">
     </fragment>
 
     <fragment android:id="@+id/indigo_index_fragment"

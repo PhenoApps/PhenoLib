@@ -26,9 +26,19 @@ class SecureOpenDocumentImpl(private val fragment: Fragment) : SecureOpenDocumen
 
         mOnTreePicked = onSuccess
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
 
-            withPermission(arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            withPermission(arrayOf(
+                android.Manifest.permission.READ_MEDIA_AUDIO,
+                android.Manifest.permission.READ_MEDIA_IMAGES,
+                android.Manifest.permission.READ_MEDIA_VIDEO)) {
+                mDocumentTree?.launch(null)
+            }
+
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            withPermission(arrayOf(
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 mDocumentTree?.launch(null)
             }
