@@ -36,7 +36,15 @@
             android:id="@+id/action_from_index_to_usb_camera"
             app:popUpTo="@id/phenolib_index_fragment"
             app:destination="@id/phenolib_camera_graph" />
+        <action
+            android:id="@+id/action_from_index_to_serial_port"
+            app:popUpTo="@id/phenolib_index_fragment"
+            app:destination="@id/serial_port_fragment"/>
     </fragment>
+
+    <fragment android:id="@+id/serial_port_fragment"
+        android:name="org.phenoapps.fragments.examples.scale.SerialPortScaleFragment"
+        android:label="Serial IO Port"/>
 
     <fragment android:id="@+id/tts_fragment"
         android:name="org.phenoapps.fragments.examples.tts.TextToSpeechPagerFragment"

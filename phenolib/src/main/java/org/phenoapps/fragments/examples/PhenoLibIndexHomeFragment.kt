@@ -56,6 +56,12 @@ class PhenoLibIndexHomeFragment(
                     .actionFromIndexToOhausFragment())
             }
 
+            val serialPortButton = view.findViewById<Button>(R.id.frag_main_hardware_serial_port_btn)
+            serialPortButton.setOnClickListener {
+                findNavController().navigate(PhenoLibIndexHomeFragmentDirections
+                    .actionFromIndexToSerialPort())
+            }
+
             val shareFileButton = view.findViewById<Button>(R.id.frag_main_intent_share_file_btn)
             shareFileButton.setOnClickListener {
                 IntentUtil.appTestShareFile(context)
