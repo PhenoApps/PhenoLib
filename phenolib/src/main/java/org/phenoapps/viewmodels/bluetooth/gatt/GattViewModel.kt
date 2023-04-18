@@ -214,11 +214,18 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
 
                     Log.d("Gatt", "Notification descriptor sending.")
 
-                    val desc = model.characteristic.getDescriptor(UUID.fromString(CCC_DESCRIPTOR_UUID))
+                    try {
 
-                    desc.value = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE
+                        val desc = model.characteristic.getDescriptor(UUID.fromString(CCC_DESCRIPTOR_UUID))
 
-                    this?.writeDescriptor(desc)
+                        desc.value = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE
+
+                        this?.writeDescriptor(desc)
+
+                    } catch (e: Exception ) {
+
+                    }
+
                 }
             }
         }
@@ -262,7 +269,12 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
             mServiceList.find { it.service.uuid.toString() == service }
                 ?.service?.characteristics?.find { it.uuid.toString() == characteristic }?.let { model ->
 
-                    notify(BluetoothGattCharacteristicModel(model))
+                    try {
+                        notify(BluetoothGattCharacteristicModel(model))
+
+                    } catch (e: Exception) {
+
+                    }
                 }
         }
     }
