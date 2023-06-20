@@ -7,10 +7,13 @@ apply from: "../dependencies.gradle"
 
 android {
     compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
+        versionCode versions.publishVersionCode
+        versionName versions.publishVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
