@@ -39,12 +39,12 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
 
     }
 
-    private var mGatt: BluetoothGatt? = null
+    protected var mGatt: BluetoothGatt? = null
 
     private var mConnectionStatus: Int = BluetoothGatt.STATE_DISCONNECTED
 
     //helper that delegates callbacks to GattCallbackInterface implementation
-    private val gattCallback by lazy { GattBridge.gattBridge(this) }
+    protected val gattCallback by lazy { GattBridge.gattBridge(this) }
 
     //producer/consumer channel
     private val channel = Channel<BluetoothGatt?.() -> Unit>()
@@ -337,6 +337,8 @@ open class GattViewModel: ViewModel(), GattCallbackInterface {
             }
             BluetoothGatt.STATE_DISCONNECTED -> {
                 Log.d("Gatt", "Disconnected.")
+                Log.d("Gatt", status.toString())
+                Log.d("Gatt", newState.toString())
                 mGatt?.close()
                 mGatt = null
                 mConnectionStatus = newState

@@ -93,6 +93,12 @@ class PhenoLibIndexHomeFragment(
                 findNavController().navigate(PhenoLibIndexHomeFragmentDirections
                     .actionFromIndexToUsbCamera())
             }
+
+            val goproButton = view.findViewById<Button>(R.id.frag_main_hardware_gopro_camera_btn)
+            goproButton.setOnClickListener {
+                findNavController().navigate(PhenoLibIndexHomeFragmentDirections
+                    .actionFromIndexToGoproCamera())
+            }
         }
     }
 }

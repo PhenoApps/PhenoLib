@@ -17,7 +17,7 @@ open class TextToSpeechFragment(layoutId: Int): Fragment(layoutId) {
     protected var tts: TextToSpeechHelper? = null
 
     protected val mPrefs: SharedPreferences by lazy {
-        PreferenceManager.getDefaultSharedPreferences(context)
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
     }
 
     protected val mKeys by lazy {
