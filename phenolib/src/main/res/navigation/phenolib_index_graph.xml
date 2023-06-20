@@ -37,10 +37,18 @@
             app:popUpTo="@id/phenolib_index_fragment"
             app:destination="@id/phenolib_camera_graph" />
         <action
+            android:id="@+id/action_from_index_to_gopro_camera"
+            app:popUpTo="@id/phenolib_index_fragment"
+            app:destination="@id/phenolib_gopro_fragment" />
+        <action
             android:id="@+id/action_from_index_to_serial_port"
             app:popUpTo="@id/phenolib_index_fragment"
             app:destination="@id/serial_port_fragment"/>
     </fragment>
+
+    <fragment android:id="@+id/phenolib_gopro_fragment"
+        android:name="org.phenoapps.fragments.gopro.GoProFragment"
+        android:label="GoPro"/>
 
     <fragment android:id="@+id/serial_port_fragment"
         android:name="org.phenoapps.fragments.examples.scale.SerialPortScaleFragment"

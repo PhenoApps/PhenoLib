@@ -142,7 +142,7 @@ open class PhenoLibStorageDefinerFragment: Fragment(R.layout.fragment_storage_de
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     open fun onTreeDefined(treeUri: Uri) {
 
-        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
         runBlocking {
 
@@ -178,7 +178,7 @@ open class PhenoLibStorageDefinerFragment: Fragment(R.layout.fragment_storage_de
 
     open fun actionAfterDefine() {
         activity?.runOnUiThread {
-            val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+            val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
             if (prefs.getBoolean(mKeyUtil.enableMigrator, true)) {
                 findNavController().navigate(actionToMigrator)
             } else actionNoMigrate()

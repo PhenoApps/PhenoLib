@@ -4,12 +4,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 33
     defaultConfig {
         applicationId "org.phenoapps.phenolib"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -26,8 +25,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES']
+        }
+    }
 
-    packagingOptions { exclude "META-INF/DEPENDENCIES" }
+    namespace 'org.phenoapps.androidlibrarybuilder'
 }
 
 
@@ -35,18 +39,18 @@ dependencies {
     implementation project(':phenolib')
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    implementation "androidx.fragment:fragment-ktx:1.4.1"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
-    implementation "androidx.preference:preference:1.1.1"
-    implementation "androidx.core:core-ktx:1.6.0"
-    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
-    implementation "androidx.recyclerview:recyclerview:1.2.0"
-    implementation "com.google.android.material:material:1.3.0"
-    implementation "androidx.appcompat:appcompat:1.2.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.7"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.preference:preference-ktx:1.2.0"
+    implementation "androidx.core:core-ktx:1.10.1"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.2.0"
+    implementation "androidx.recyclerview:recyclerview:1.3.0"
+    implementation "com.google.android.material:material:1.9.0"
+    implementation "androidx.appcompat:appcompat:1.6.1"
     implementation "com.squareup.okhttp:okhttp:2.7.5"
     implementation "org.threeten:threetenbp:1.5.0"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 
     testImplementation "junit:junit:4.13.2"
 

@@ -68,11 +68,11 @@ open class NeutralButtonEditTextDialogFragmentCompat: PreferenceDialogFragmentCo
     private var mPositiveOnClick: ((Dialog?, String) -> Unit)? = null
     private var mNegativeOnClick: ((Dialog?, String) -> Unit)? = null
 
-    override fun onCreateDialogView(context: Context?): View {
+    override fun onCreateDialogView(context: Context): View? {
         return super.onCreateDialogView(context)
     }
 
-    override fun onBindDialogView(view: View?) {
+    override fun onBindDialogView(view: View) {
         super.onBindDialogView(view)
 
         val key = arguments?.getString(ARG_KEY)
@@ -82,11 +82,11 @@ open class NeutralButtonEditTextDialogFragmentCompat: PreferenceDialogFragmentCo
         dialog.negativeButtonText = ""
         dialog.positiveButtonText = ""
 
-        mEditText = view?.findViewById(R.id.dialog_neutral_button_edit_text_et)
+        mEditText = view.findViewById(R.id.dialog_neutral_button_edit_text_et)
 
-        mEditText?.setText(preference.sharedPreferences.getString(key, ""))
+        mEditText?.setText(preference.sharedPreferences?.getString(key, ""))
 
-        view?.findViewById<Button>(R.id.dialog_neutral_button_edit_text_neutral_btn)?.let { button ->
+        view.findViewById<Button>(R.id.dialog_neutral_button_edit_text_neutral_btn)?.let { button ->
             button.text = dialog.mNeutralText
             button.setOnClickListener {
                 mNeutralOnClick?.invoke(this@NeutralButtonEditTextDialogFragmentCompat.dialog,
@@ -94,16 +94,16 @@ open class NeutralButtonEditTextDialogFragmentCompat: PreferenceDialogFragmentCo
             }
         }
 
-        view?.findViewById<Button>(R.id.dialog_neutral_button_edit_text_positive_btn)?.let { button ->
+        view.findViewById<Button>(R.id.dialog_neutral_button_edit_text_positive_btn)?.let { button ->
             button.text = dialog.mPositiveText
             button.setOnClickListener {
-                preference.sharedPreferences.edit().putString(key, mEditText?.text?.toString() ?: "").apply()
+                preference.sharedPreferences?.edit()?.putString(key, mEditText?.text?.toString() ?: "")?.apply()
                 mPositiveOnClick?.invoke(this@NeutralButtonEditTextDialogFragmentCompat.dialog,
                     mEditText?.text.toString())
             }
         }
 
-        view?.findViewById<Button>(R.id.dialog_neutral_button_edit_text_negative_btn)?.let { button ->
+        view.findViewById<Button>(R.id.dialog_neutral_button_edit_text_negative_btn)?.let { button ->
             button.text = dialog.mNegativeText
             button.setOnClickListener {
                 mNegativeOnClick?.invoke(this@NeutralButtonEditTextDialogFragmentCompat.dialog,
