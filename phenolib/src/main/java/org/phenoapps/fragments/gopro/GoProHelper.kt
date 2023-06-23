@@ -159,7 +159,20 @@ open class GoProHelper(val context: Context, val onReady: OnGoProStreamReady) : 
 
     }
 
-    init {
+    private fun unregister(receiver: BroadcastReceiver) {
+        try {
+            context.unregisterReceiver(receiver)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun unregisterReceivers() {
+        unregister(receiver)
+        unregister(wifiReceiver)
+    }
+
+    override fun registerReceivers() {
         context.registerReceiver(receiver, IntentFilter(BluetoothDevice.ACTION_FOUND))
         context.registerReceiver(
             wifiReceiver,
@@ -763,12 +776,7 @@ open class GoProHelper(val context: Context, val onReady: OnGoProStreamReady) : 
 
         udpSocket?.disconnect()
 
-        try {
-            context.unregisterReceiver(receiver)
-            context.unregisterReceiver(wifiReceiver)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        unregisterReceivers()
 
         networkCallback?.let {
             connectivityManager.unregisterNetworkCallback(it)
