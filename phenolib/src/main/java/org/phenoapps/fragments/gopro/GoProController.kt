@@ -9,6 +9,10 @@ import androidx.appcompat.app.AlertDialog
 
 interface GoProController {
 
+        //register/unregister receivers to find bluetooth devices
+        fun registerReceivers()
+        fun unregisterReceivers()
+
         //BLE connect and initialization
         //check that system bluetooth is enabled
         fun isBluetoothEnabled(adapter: BluetoothAdapter): Boolean
