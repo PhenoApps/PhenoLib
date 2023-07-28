@@ -16,6 +16,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.constraintlayout.widget.Group
 import androidx.core.net.toUri
@@ -115,6 +117,24 @@ class UsbCameraPreviewFragment : Fragment(), ImageAdapter.ImageItemHandler {
                     }
                 }
             }
+
+            binding.usbCameraFragmentTv.setOnClickListener {
+                helper?.setFocus()
+            }
+
+            binding.usbCameraFragmentSlider.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    helper?.setZoom(progress)
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+            })
 
         } else setup()
     }

@@ -97,4 +97,14 @@
         app:layout_constraintTop_toTopOf="@id/usb_camera_fragment_iv"
         app:layout_constraintEnd_toEndOf="@id/usb_camera_fragment_iv" />
 
+    <SeekBar
+        android:id="@+id/usb_camera_fragment_slider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:min="100"
+        android:max="500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

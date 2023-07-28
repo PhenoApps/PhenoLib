@@ -179,6 +179,20 @@ open class UsbCameraHelper(private val activity: Activity) {
         return displayMode
     }
 
+    open fun getAutoFocus(): Boolean = camera?.autoFocus ?: true
+    open fun getZoom(): Int = camera?.zoom ?: 0
+    open fun setZoom(zoom: Int) {
+
+        camera?.zoom = zoom
+
+    }
+
+    open fun setFocus() {
+
+        camera?.autoFocus = !(camera?.autoFocus ?: true)
+
+    }
+
     open fun setMax() {
         view?.layoutParams = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, 512)
     }
