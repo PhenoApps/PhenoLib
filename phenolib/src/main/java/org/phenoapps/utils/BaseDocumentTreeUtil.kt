@@ -29,7 +29,7 @@ open class BaseDocumentTreeUtil {
         const val TAG = "DocumentTreeUtil"
 
         fun Uri.getStem(context: Context?): String {
-            Log.d(TAG, "Getting stem for ${toString()}")
+            //Log.d(TAG, "Getting stem for ${toString()}")
             var stem = try {
                 getFileStem()
             } catch (e: Exception) {
@@ -360,7 +360,7 @@ open class BaseDocumentTreeUtil {
                     val prefs = PreferenceManager.getDefaultSharedPreferences(ctx)
                     val default = prefs.getString(KeyUtil(ctx).defaultTreeUri, null)
                     val uri = persists.first().uri
-                    Log.d(TAG, "Checking volume uri $uri: $default")
+                    //Log.d(TAG, "Checking volume uri $uri: $default")
                     return DocumentFile.fromTreeUri(ctx,
                         if (uri.isVolumeRoot()) Uri.parse(default)
                         else uri)
@@ -391,7 +391,7 @@ open class BaseDocumentTreeUtil {
                                         if (dir.findFile(file)?.exists() != true) {
                                             dir.createFile("*/*", file)?.let {
 
-                                                Log.d(TAG, "Copying sample ${it.name} from $assetDir/$file to ${it.uri}")
+                                                //Log.d(TAG, "Copying sample ${it.name} from $assetDir/$file to ${it.uri}")
 
                                                 context.contentResolver.openOutputStream(it.uri)?.use { outputStream ->
                                                     context.assets.open("$assetDir/$file").use { input ->

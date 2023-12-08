@@ -2,7 +2,7 @@ ext.versions = [
         minSdk: 16,
         compileSdk: 33,
         buildTools: "29.0.3",
-        publishVersion: "0.9.49",
+        publishVersion: "0.9.50",
         publishVersionCode: 1
 ]
 
