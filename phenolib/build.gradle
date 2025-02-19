@@ -56,11 +56,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
 
     //gopro
     api 'com.google.android.exoplayer:exoplayer:2.17.0'
-    api 'com.arthenica:ffmpeg-kit-min:5.1.LTS'
     api 'com.squareup.okhttp3:okhttp:4.11.0'
 
     //uvc camera java native libs
