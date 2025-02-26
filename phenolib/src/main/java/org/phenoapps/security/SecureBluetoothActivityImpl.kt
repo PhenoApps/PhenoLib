@@ -79,8 +79,17 @@ class SecureBluetoothActivityImpl(private val act: FragmentActivity): SecureBlue
      */
     override fun discoverWith(function: (adapter: BluetoothAdapter) -> Unit) = withAdapter { adapter ->
 
-        //discovering new devices on API >= 12 requires SCAN permissions runtime check
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        // discovering new devices on API >= 13 requires SCAN and NEARBY_WIFI permissions runtime check
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+            withPermission(arrayOf(
+                Manifest.permission.BLUETOOTH_SCAN,
+                Manifest.permission.NEARBY_WIFI_DEVICES)) {
+
+                function(adapter)
+            }
+
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {//on API >= 12 requires SCAN
 
             withPermission(arrayOf(
                 Manifest.permission.BLUETOOTH_SCAN)) {
