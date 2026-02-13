@@ -39,11 +39,10 @@ open class SecureActivityImpl(private val activity: FragmentActivity): SecureFra
         //set the callback if permissions are not already granted
         mOnResultCallback = onResult
 
-        //check permission that aren't granted which are needed
-        val needed = permissions.associateBy {
-            ActivityCompat.checkSelfPermission(activity, it) == PackageManager.PERMISSION_GRANTED
-        }.filter { !it.key }
-            .map { it.value }
+        //check permissions that aren't granted which are needed
+        val needed = permissions.filter {
+            ActivityCompat.checkSelfPermission(activity, it) != PackageManager.PERMISSION_GRANTED
+        }
 
         if (needed.isNotEmpty()) {
 

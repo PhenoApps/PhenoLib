@@ -39,11 +39,10 @@ open class SecureFragmentImpl(private val fragment: Fragment): SecureFragmentInt
 
         fragment.context?.let { ctx ->
 
-            //check permission that aren't granted which are needed
-            val needed = permissions.associateBy {
-                ActivityCompat.checkSelfPermission(ctx, it) == PackageManager.PERMISSION_GRANTED
-            }.filter { !it.key }
-                .map { it.value }
+            //check permissions that aren't granted which are needed
+            val needed = permissions.filter {
+                ActivityCompat.checkSelfPermission(ctx, it) != PackageManager.PERMISSION_GRANTED
+            }
 
             if (needed.isNotEmpty()) {
 
