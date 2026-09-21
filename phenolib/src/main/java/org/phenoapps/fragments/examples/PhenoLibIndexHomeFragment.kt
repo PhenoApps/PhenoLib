@@ -88,11 +88,6 @@ class PhenoLibIndexHomeFragment(
                     .actionFromIndexToTts())
             }
 
-            val usbCameraButton = view.findViewById<Button>(R.id.frag_main_hardware_usb_camera_btn)
-            usbCameraButton.setOnClickListener {
-                findNavController().navigate(PhenoLibIndexHomeFragmentDirections
-                    .actionFromIndexToUsbCamera())
-            }
 
             val goproButton = view.findViewById<Button>(R.id.frag_main_hardware_gopro_camera_btn)
             goproButton.setOnClickListener {
